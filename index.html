@@ -1,0 +1,218 @@
+<html>
+	<head>
+		<title>Latin Vocabulary Tester</title>
+		<link rel="icon" href="./assets/favicon.png" type="image/png" />
+
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="author" content="Aurorum" />
+		<meta
+			name="description"
+			content="Provides a way to test your knowledge of the OCR Latin vocabulary list."
+		/>
+		<meta property="og:title" content="Latin Vocabulary Tester" />
+		<meta property="og:type" content="website" />
+		<meta
+			property="og:description"
+			content="Provides a way to test your knowledge of the OCR Latin vocabulary list."
+		/>
+		<meta property="og:url" content="https://aurorum.github.io/latin-vocabulary-tester" />
+		<script type="text/javascript" src="./vocab.js"></script>
+		<script type="text/javascript" src="./scripts.js"></script>
+		<link rel="stylesheet" type="text/css" href="./style.css" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;family=Roboto&amp;display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<div class="loading-screen" id="loading">
+			<div class="loading-screen-wrapper">
+				<img src="./assets/dictionary.svg" alt="" />
+				<div class="progress-bar">
+					<div class="inner-progress"></div>
+				</div>
+			</div>
+		</div>
+
+		<div id="curtain" class="curtain is-not-triggered"></div>
+
+		<div class="header">
+			<div class="heading">
+				<h1>Latin Vocabulary Tester</h1>
+			</div>
+		</div>
+
+		<div id="vocab-tester-wrapper" class="main-content">
+			<div class="left-content">
+				<div class="incorrect-words">
+					<h3>Words to focus on</h3>
+					<p>A list of words either entered incorrectly or for which the answer was revealed:</p>
+					<ul id="wrong-vocab">
+						<li id="no-words-wrong">None so far - well done!</li>
+					</ul>
+				</div>
+			</div>
+			<div class="right-content">
+				<div id="vocab-tester" class="vocab-tester-wrapper">
+					<strong><p id="vocab-question"></p></strong>
+					<p id="wrong-answer" style="display: none;">
+						chiaki nanami voice: no, that's wrong <br />
+						(todo: remove danganronpa references if i take this seriously and make it public)
+					</p>
+
+					<p class="progress-indicator">
+						<span id="progress-indicator-changing">0</span><span>/</span
+						><span id="progress-indicator-set"></span>
+					</p>
+					<div class="progress-bar">
+						<div class="inner-progress" id="progress-bar-content" style="width: 0%;"></div>
+					</div>
+
+					<div class="vocab-submit-answer-wrapper">
+						<p class="vocab-submit-prompt">Enter the root meaning in the box below:</p>
+						<input type="text" id="vocab-answer" />
+						<div class="vocab-submit-buttons">
+							<input
+								type="submit"
+								class="reveal-answer-button"
+								id="reveal-answer"
+								value="Reveal answer"
+								onclick="checkAnswer(true)"
+							/>
+							<input
+								type="submit"
+								class="submit-answer-button"
+								value="Submit"
+								onclick="checkAnswer(false)"
+							/>
+						</div>
+					</div>
+				</div>
+
+				<div id="complete" class="celebration">
+					<div class="confetti">
+						<img
+							src="https://cdn.discordapp.com/attachments/448937740399017985/763833863721582632/confetti.png"
+							width="180"
+						/>
+					</div>
+					<h3>
+						Congratulations - you've completed all <span id="celebration-word-count"></span> words!
+					</h3>
+				</div>
+			</div>
+		</div>
+
+		<div id="vocab-selector" class="main-content">
+			<div class="left-content">
+				<div class="introductary-text">
+					<h3>How do I try it?</h3>
+					<p>Some Latin vocabulary knowledge is necessary!</p>
+					<ul>
+						<li>Select the categories you'd like to try</li>
+						<li>Press the "Start" button below</li>
+						<li>Complete the vocabulary!</li>
+					</ul>
+					<p>
+						Please note that this was primarily created for fun as a project started during the
+						coronavirus lockdown. I don't imagine this to be particularly helpful, however if there
+						are any issues or requests, I'd be happy to address them.
+					</p>
+				</div>
+
+				<div id="start-button" class="start-button-wrapper is-inactive">
+					<button onclick="startTest()">Start</button>
+				</div>
+			</div>
+
+			<div class="right-content">
+				<div class="verb-buttons button-group">
+					<button class="vocab-type" id="verb 1" onclick="formAcceptableVocab('verb 1')">
+						<p>Verb 1</p>
+					</button>
+					<button class="vocab-type" id="verb 2" onclick="formAcceptableVocab('verb 2')">
+						<p>Verb 2</p>
+					</button>
+					<button class="vocab-type" id="verb 3" onclick="formAcceptableVocab('verb 3')">
+						<p>Verb 3</p>
+					</button>
+				</div>
+
+				<div class="dep-verb-buttons button-group">
+					<button class="vocab-type" id="verb 1 dep" onclick="formAcceptableVocab('verb 1 dep')">
+						<p>Verb 1 - Deponents</p>
+					</button>
+					<button class="vocab-type" id="verb 2 dep" onclick="formAcceptableVocab('verb 2 dep')">
+						<p>Verb 2 - Deponents</p>
+					</button>
+					<button class="vocab-type" id="verb 3 dep" onclick="formAcceptableVocab('verb 3 dep')">
+						<p>Verb 3 - Deponents</p>
+					</button>
+				</div>
+
+				<div class="noun-buttons button-group">
+					<button class="vocab-type" id="noun 1" onclick="formAcceptableVocab('noun 1')">
+						<p>Noun 1</p>
+					</button>
+					<button class="vocab-type" id="noun 2" onclick="formAcceptableVocab('noun 2')">
+						<p>Noun 2</p>
+					</button>
+					<button class="vocab-type" id="noun 3" onclick="formAcceptableVocab('noun 3')">
+						<p>Noun 3</p>
+					</button>
+					<button class="vocab-type" id="noun 4" onclick="formAcceptableVocab('noun 4')">
+						<p>Noun 4</p>
+					</button>
+					<button class="vocab-type" id="noun 5" onclick="formAcceptableVocab('noun 5')">
+						<p>Noun 5</p>
+					</button>
+				</div>
+
+				<div class="other-nouns button-group">
+					<button class="vocab-type" id="noun irreg" onclick="formAcceptableVocab('noun irreg')">
+						<p>Irregular Nouns</p>
+					</button>
+					<button class="vocab-type" id="noun phrase" onclick="formAcceptableVocab('noun phrase')">
+						<p>Noun Phrases</p>
+					</button>
+					<button class="vocab-type" id="noun & adj" onclick="formAcceptableVocab('noun & adj')">
+						<p>Noun &amp; Adjectives</p>
+					</button>
+				</div>
+
+				<div class="other-language button-group">
+					<button class="vocab-type" id="adj" onclick="formAcceptableVocab('adj')">
+						<p>Adjectives</p>
+					</button>
+					<button class="vocab-type" id="adverb" onclick="formAcceptableVocab('adverb')">
+						<p>Adverbs</p>
+					</button>
+					<button class="vocab-type" id="conjunction" onclick="formAcceptableVocab('conjunction')">
+						<p>Conjunctions</p>
+					</button>
+					<button class="vocab-type" id="prep" onclick="formAcceptableVocab('prep')">
+						<p>Prepositions</p>
+					</button>
+					<button class="vocab-type" id="pron" onclick="formAcceptableVocab('pron')">
+						<p>Pronouns</p>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer">
+			<div class="footer-links">
+				<a
+					href="mailto:contact@clubpenguinmountains.com?cc=aurorum@clubpenguinmountains.com&amp;subject=Latin%20Vocabulary%20Tester"
+					>Email me</a
+				>
+				<a href="https://github.com/Aurorum/latin-vocabulary-tester">View the code</a>
+			</div>
+			<div class="gravatar">
+				<p>An open-source project by Aurorum</p>
+				<img src="https://www.gravatar.com/avatar/581e9719c44732a58a27b872f282c053.jpg?s=80" />
+			</div>
+		</div>
+	</body>
+</html>

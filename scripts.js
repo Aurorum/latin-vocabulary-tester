@@ -166,11 +166,11 @@ function checkAnswer( shouldReveal = false ) {
 	if ( shouldReveal ) {
 		if ( ! vocabToFocusOn.includes( question ) ) {
 			vocabToFocusOn.push( question );
-		}
 
-		var node = document.createElement( 'LI' );
-		node.appendChild( document.createTextNode( question ) );
-		document.getElementById( 'wrong-vocab' ).appendChild( node );
+			var node = document.createElement( 'LI' );
+			node.appendChild( document.createTextNode( question ) );
+			document.getElementById( 'wrong-vocab' ).appendChild( node );
+		}
 		document.getElementById( 'wrong-answer' ).style.display = 'none';
 		document.getElementById( 'no-words-wrong' ).style.display = 'none';
 		document.getElementById( 'vocab-answer' ).value = answerArray[ 0 ];

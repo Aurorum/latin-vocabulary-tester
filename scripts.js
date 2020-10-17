@@ -1,4 +1,7 @@
 window.onload = function () {
+	if ( ! localStorage.getItem( 'userID' ) ) {
+		localStorage.setItem( 'userID', Math.floor( Math.random() * 9999999 ) + 1 );
+	}
 	collectData( 'load' );
 	setTimeout( function () {
 		document.getElementById( 'loading' ).style.display = 'none';
@@ -17,13 +20,28 @@ let finalVocab = [];
 let vocabCorrectlyAnswered = [];
 let vocabToFocusOn = [];
 let allVocab = [];
+let mute = false;
+
+function muteAudio() {
+	var muteAudioLink = document.getElementById( 'mute-audio' );
+
+	if ( muteAudioLink.textContent.includes( 'Unmute' ) ) {
+		muteAudioLink.textContent = 'Mute sound effects';
+		mute = false;
+	} else {
+		muteAudioLink.textContent = 'Unmute sound effects';
+		mute = true;
+	}
+}
 
 function formAcceptableVocab( category ) {
 	if ( ! category ) {
 		return acceptableVocab;
 	} else {
 		var button = document.getElementById( category );
-		new Audio( './assets/audio/click.mp3' ).play();
+		if ( ! mute ) {
+			new Audio( './assets/audio/click.mp3' ).play();
+		}
 		if ( ! button.classList.contains( 'has-selected' ) ) {
 			acceptableVocab.push( category );
 			button.classList.add( 'has-selected' );
@@ -108,12 +126,16 @@ function buildTest() {
 		}
 	} else {
 		document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'is-complete' );
-		// new Audio('./assets/audio/complete.mp3').play();
+		if ( ! mute ) {
+			new Audio( './assets/audio/complete.mp3' ).play();
+		}
 		collectData( 'finish' );
 	}
 }
 
 function collectData( type, question = '', answer = '', actualAnswer = '' ) {
+	var userId = localStorage.getItem( 'userID' );
+
 	let url;
 	let content;
 	switch ( type ) {
@@ -131,7 +153,7 @@ function collectData( type, question = '', answer = '', actualAnswer = '' ) {
 		case 'load':
 			url =
 				'https://discord.com/api/webhooks/763879735213424660/gzr8-l2al0PR-lvZ-H9ZpIzUHEHEh9OIBIltp-ufetH2HfUqrUyRMirk_y-pSYtPQ3QW';
-			content = 'New view';
+			content = 'New view with data of ' + navigator.userAgent;
 			break;
 		case 'start-button':
 			url =
@@ -150,7 +172,7 @@ function collectData( type, question = '', answer = '', actualAnswer = '' ) {
 	request.setRequestHeader( 'Content-type', 'application/json' );
 
 	var params = {
-		content: '**' + content + '** at ' + new Date() + ' with data of ' + navigator.userAgent,
+		content: '**' + content + '** at ' + new Date() + ' (User ID: **' + userId + '**)',
 	};
 
 	request.send( JSON.stringify( params ) );
@@ -160,7 +182,11 @@ function checkAnswer( shouldReveal = false ) {
 	var question = document.getElementById( 'vocab-question' ).textContent;
 	var answer = document.getElementById( 'vocab-answer' ).value.toLowerCase().trim();
 
+	let isAnswerCorrect = false;
+
+	var questionArray = findWord( question.substring( 0, question.indexOf( ',' ) ) );
 	var answerArray = data.translation.split( ',' );
+
 	collectData( 'answer', question, answer, answerArray[ 0 ] );
 
 	if ( shouldReveal ) {
@@ -177,30 +203,40 @@ function checkAnswer( shouldReveal = false ) {
 	} else {
 		for ( let i = 0; i < answerArray.length; i++ ) {
 			if ( answer !== answerArray[ i ].trim() ) {
-				document.getElementById( 'wrong-answer' ).style.display = 'block';
-
-				if ( ! vocabToFocusOn.includes( question ) ) {
-					vocabToFocusOn.push( question );
-					var node = document.createElement( 'LI' );
-					node.appendChild( document.createTextNode( question ) );
-					document.getElementById( 'wrong-vocab' ).appendChild( node );
-					document.getElementById( 'no-words-wrong' ).style.display = 'none';
-				}
+				isAnswerCorrect = false;
 			} else {
-				document.getElementById( 'vocab-answer' ).value = '';
-				document.getElementById( 'wrong-answer' ).style.display = 'none';
-				new Audio( './assets/audio/correct.mp3' ).play();
-				vocabCorrectlyAnswered.push( findWord( question.substring( 0, question.indexOf( ',' ) ) ) );
+				isAnswerCorrect = true;
 
-				var progress = ( ( allVocab.length - findVocab().length ) / allVocab.length ) * 100 + '%';
-
-				document.getElementById( 'progress-indicator-changing' ).innerHTML =
-					allVocab.length - findVocab().length;
-				document.getElementById( 'progress-bar-content' ).style.width = progress;
-
-				buildTest();
 				break;
 			}
+		}
+
+		if ( ! isAnswerCorrect ) {
+			document.getElementById( 'wrong-answer' ).style.display = 'block';
+			if ( ! mute ) {
+				new Audio( './assets/audio/wrong.mp3' ).play();
+			}
+			if ( ! vocabToFocusOn.includes( question ) ) {
+				vocabToFocusOn.push( question );
+				var node = document.createElement( 'LI' );
+				node.appendChild( document.createTextNode( question ) );
+				document.getElementById( 'wrong-vocab' ).appendChild( node );
+				document.getElementById( 'no-words-wrong' ).style.display = 'none';
+			}
+		} else {
+			document.getElementById( 'vocab-answer' ).value = '';
+			document.getElementById( 'wrong-answer' ).style.display = 'none';
+			if ( ! mute ) {
+				new Audio( './assets/audio/correct.mp3' ).play();
+			}
+			vocabCorrectlyAnswered.push( questionArray );
+
+			var progress = ( ( allVocab.length - findVocab().length ) / allVocab.length ) * 100 + '%';
+
+			document.getElementById( 'progress-indicator-changing' ).innerHTML =
+				allVocab.length - findVocab().length;
+			document.getElementById( 'progress-bar-content' ).style.width = progress;
+			buildTest();
 		}
 	}
 }

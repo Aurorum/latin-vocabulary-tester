@@ -51,15 +51,15 @@
 					<ul id="wrong-vocab">
 						<li id="no-words-wrong">None so far - well done!</li>
 					</ul>
+					<div id="retry-test-button" class="start-button-wrapper is-inactive">
+						<button onclick="startRetryTest()">Try the words on this list</button>
+					</div>
 				</div>
 			</div>
 			<div class="right-content">
 				<div id="vocab-tester" class="vocab-tester-wrapper">
 					<strong><p id="vocab-question"></p></strong>
-					<p id="wrong-answer" style="display: none">
-						chiaki nanami voice: no, that's wrong <br />
-						(todo: remove danganronpa references if i take this seriously and make it public)
-					</p>
+					<p id="wrong-answer" style="display: none">Not quite - try again!</p>
 
 					<p class="progress-indicator">
 						<span id="progress-indicator-changing">0</span><span>/</span
@@ -70,7 +70,9 @@
 					</div>
 
 					<div class="vocab-submit-answer-wrapper">
-						<p class="vocab-submit-prompt">Enter the root meaning in the box below:</p>
+						<p class="vocab-submit-prompt">
+							Enter the <span id="vocab-submit-word-form">root meaning</span> in the box below:
+						</p>
 						<input type="text" id="vocab-answer" />
 						<div class="vocab-submit-buttons">
 							<input
@@ -92,14 +94,15 @@
 
 				<div id="complete" class="celebration">
 					<div class="confetti">
-						<img
-							src="https://cdn.discordapp.com/attachments/448937740399017985/763833863721582632/confetti.png"
-							width="180"
-						/>
+						<img src="./assets/confetti.png" width="180" />
 					</div>
 					<h3>
 						Congratulations - you've completed all <span id="celebration-word-count"></span> words!
 					</h3>
+					<p id="retry-test-prompt" class="try-retest-prompt is-inactive">
+						Click the button by the words you answered incorrectly if you'd like to focus on
+						practising those!
+					</p>
 				</div>
 			</div>
 		</div>
@@ -115,10 +118,31 @@
 						<li>Complete the vocabulary!</li>
 					</ul>
 					<p>
-						Please note that this was primarily created for fun as a project started during the
-						coronavirus lockdown. I don't imagine this to be particularly helpful, however if there
-						are any issues or requests, I'd be happy to address them.
+						It's possible to practise your vocabulary both ways by configuring the test's settings
+						below, and once you've concluded the test, you can attempt just the words that you
+						answered incorrectly. If there are any issues or requests, please feel free to contact
+						me, and I'd be happy to address them.
 					</p>
+				</div>
+
+				<div id="test-settings" class="test-settings-wrapper">
+					<h3>Configure test settings</h3>
+					<div class="difficulty-toggle">
+						<p class="difficulty-text">
+							Enable hard difficulty (include English to Latin questions)
+						</p>
+						<label class="switch">
+							<input id="hardCheckbox" onclick="changeDifficulty()" type="checkbox" checked />
+							<span class="slider round"></span>
+						</label>
+					</div>
+
+					<div class="difficulty-toggle extreme-difficulty">
+						<p class="difficulty-text">
+							Enable extreme difficulty (answer every question in Latin)
+						</p>
+						<input type="checkbox" id="extremeCheckbox" />
+					</div>
 				</div>
 
 				<div id="start-button" class="start-button-wrapper is-inactive">
@@ -151,7 +175,7 @@
 					</button>
 					<button class="vocab-type" id="verb irreg" onclick="formAcceptableVocab('verb irreg')">
 						<p>Irregular Verbs</p>
-					</button>	
+					</button>
 				</div>
 
 				<div class="noun-buttons button-group">

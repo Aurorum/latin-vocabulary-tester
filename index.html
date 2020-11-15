@@ -41,6 +41,7 @@
 			<div class="heading">
 				<h1>Latin Vocabulary Tester</h1>
 			</div>
+			<div class="top-footer-toggle" onclick="toggleFooter(true)"></div>
 		</div>
 
 		<div id="vocab-tester-wrapper" class="main-content">
@@ -228,13 +229,14 @@
 			</div>
 		</div>
 
-		<div class="footer">
+		<div id="footer" class="footer">
 			<div class="footer-links">
 				<a
 					href="mailto:contact@clubpenguinmountains.com?cc=aurorum@clubpenguinmountains.com&amp;subject=Latin%20Vocabulary%20Tester"
 					>Email me</a
 				>
 				<a href="https://github.com/Aurorum/latin-vocabulary-tester">View the code</a>
+				<a class="collapse-footer" onclick="toggleFooter(false)">Collapse footer</a>
 				<a id="mute-audio" onclick="muteAudio()">Mute sound effects</a>
 			</div>
 			<div class="gravatar">

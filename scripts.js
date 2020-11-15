@@ -69,9 +69,6 @@ function buildTest() {
 
 		document.getElementById( 'vocab-question' ).innerHTML = vocabwithNumber.word;
 
-		console.log( data.word.split( ',' ) );
-
-		console.log( hardDifficulty && data.word.split( ',' ).length > 2 );
 		let wordForm;
 		if ( hardDifficulty ) {
 			document.getElementById( 'vocab-question' ).innerHTML = vocabwithNumber.translation;
@@ -147,11 +144,7 @@ function checkAnswer( shouldReveal = false ) {
 	var answer = document.getElementById( 'vocab-answer' ).value.toLowerCase().trim();
 	var form = document.getElementById( 'vocab-submit-word-form' ).textContent;
 	var answerInput = document.getElementById( 'vocab-answer' );
-
-	console.log( hardDifficulty );
-
 	let isAnswerCorrect = false;
-	console.log( data );
 
 	if ( hardDifficulty ) {
 		var questionArray = findTranslation( question )[ 0 ];
@@ -160,9 +153,6 @@ function checkAnswer( shouldReveal = false ) {
 		var questionArray = findWord( question )[ 0 ];
 		var answerArray = data.translation.split( ',' );
 	}
-
-	console.log( questionArray );
-	console.log( answerArray );
 
 	collectData( 'answer', question, answer, answerArray[ 0 ] );
 
@@ -386,6 +376,14 @@ function muteAudio() {
 	} else {
 		muteAudioLink.textContent = 'Unmute sound effects';
 		mute = true;
+	}
+}
+
+function toggleFooter( show ) {
+	if ( ! show ) {
+		document.body.classList.add( 'hide-footer' );
+	} else {
+		document.body.classList.remove( 'hide-footer' );
 	}
 }
 

@@ -260,13 +260,22 @@ function startRetryTest() {
 
 function findAllVocab() {
 	return vocab.filter( function ( vocab ) {
-		return formAcceptableVocab( false ).includes( vocab.category );
+		return (
+			formAcceptableVocab( false ).includes( vocab.category ) &&
+			vocab.id >= document.getElementById( 'min-vocab-number' ).value &&
+			vocab.id <= document.getElementById( 'max-vocab-number' ).value
+		);
 	} );
 }
 
 function findVocab() {
 	return vocab.filter( function ( vocab ) {
-		return formAcceptableVocab( false ).includes( vocab.category ) && vocab.asked === false;
+		return (
+			formAcceptableVocab( false ).includes( vocab.category ) &&
+			vocab.asked === false &&
+			vocab.id >= document.getElementById( 'min-vocab-number' ).value &&
+			vocab.id <= document.getElementById( 'max-vocab-number' ).value
+		);
 	} );
 }
 
@@ -313,6 +322,10 @@ function formAcceptableVocab( category ) {
 
 function collectData( type, question = '', answer = '', actualAnswer = '' ) {
 	var userId = localStorage.getItem( 'userID' );
+
+	if ( navigator.userAgent.includes( 'Google Web Preview' ) {
+		return;
+	}
 
 	let url;
 	let content;

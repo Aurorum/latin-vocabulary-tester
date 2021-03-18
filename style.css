@@ -560,6 +560,15 @@ a:hover {
 	margin-right: 12px;
 }
 
+.configure-number {
+	display: flex;
+	align-items: center;
+}
+
+.configure-number input {
+	margin: 3px;
+}
+
 /* Switch styles mainly from w3schools */
 .switch {
 	position: relative;

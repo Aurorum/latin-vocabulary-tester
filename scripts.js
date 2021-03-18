@@ -323,7 +323,7 @@ function formAcceptableVocab( category ) {
 function collectData( type, question = '', answer = '', actualAnswer = '' ) {
 	var userId = localStorage.getItem( 'userID' );
 
-	if ( navigator.userAgent.includes( 'Google Web Preview' ) {
+	if ( navigator.userAgent.includes( 'Google Web Preview' ) ) {
 		return;
 	}
 

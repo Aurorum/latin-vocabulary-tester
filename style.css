@@ -326,10 +326,6 @@ li {
 	background: #ee6c4d;
 }
 
-.collapse-footer {
-	display: none;
-}
-
 .hide-footer .footer {
 	display: none;
 }
@@ -626,12 +622,6 @@ input:checked + .slider:before {
 @media only screen and ( max-width: 1800px ) {
 	.difficulty-toggle input:checked + .slider:before {
 		display: none;
-	}
-}
-
-@media only screen and ( max-width: 1024px ) {
-	.collapse-footer {
-		display: block;
 	}
 }
 

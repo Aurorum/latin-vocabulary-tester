@@ -27,6 +27,15 @@ let hardDifficulty = false;
 let isTestingParticipleParts = false;
 let data = 0;
 
+/*
+- TODO after exams (this will work until then): 
+ - basically refactor this so one can restart the test without connection
+ - simplify a lot with what I've learnt over the last year
+ - replace the ID system with alphabetical sorting
+ - add remaining categories and update principle parts
+ - Eduqas GCSE list
+*/
+
 function startTest() {
 	document.getElementById( 'curtain' ).classList.remove( 'is-not-triggered' );
 	document.getElementById( 'curtain' ).classList.add( 'is-triggered' );
@@ -258,6 +267,32 @@ function startRetryTest() {
 	document.getElementById( 'vocab-tester-wrapper' ).classList.remove( 'is-complete' );
 }
 
+function exportIncorrectVocab() {
+	let exportArray = [];
+	for ( let i = 0; i < vocabToFocusOn.length; i++ ) {
+		exportArray.push( findWord( vocabToFocusOn[ i ] )[ 0 ] );
+		delete exportArray[ i ].asked;
+		delete exportArray[ i ].id;
+	}
+	collectData( 'export-csv' );
+	csvData = convertToCSV( exportArray );
+	var dataBlob = new Blob( [ csvData ], { type: 'text/csv;charset=utf-8' } );
+	document.getElementById( 'export-prompt' ).href = window.URL.createObjectURL( dataBlob );
+}
+
+function convertToCSV( arr ) {
+	const array = [ Object.keys( arr[ 0 ] ) ].concat( arr );
+	return array
+		.map( ( row ) => {
+			return Object.values( row )
+				.map( ( value ) => {
+					return typeof value === 'string' ? JSON.stringify( value ) : value;
+				} )
+				.toString();
+		} )
+		.join( '\n' );
+}
+
 function findAllVocab() {
 	return vocab.filter( function ( vocab ) {
 		return (
@@ -361,6 +396,11 @@ function collectData( type, question = '', answer = '', actualAnswer = '' ) {
 			url =
 				'https://discord.com/api/webhooks/763880875439161374/UF1HCcxldH5zS9jDFzR4b1aWfqVx9hYYI5jYFRnOa79jb5cgNEUmEaliPloUFdh3n_Vp';
 			content = 'Retest button clicked for ' + allVocab.length + ' words';
+			break;
+		case 'export-csv':
+			url =
+				'https://discord.com/api/webhooks/848861602212216832/PraQyP1V3MHd_8PbnP9NTc_0Ce8My7bpXoi7vH_qRtFXvUQ3FGa0MGQTdrdQsqnQEeZZ';
+			content = 'CSV downloaded with ' + vocabToFocusOn.length + ' incorrect words';
 			break;
 		default:
 			url =

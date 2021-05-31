@@ -435,6 +435,13 @@ a:hover {
 	display: none;
 }
 
+.export-prompt,
+.export-prompt:hover {
+	color: #fff;
+	cursor: pointer;
+	text-decoration: underline;
+}
+
 #vocab-submit-word-form {
 	font-weight: 700;
 	font-size: 21px;

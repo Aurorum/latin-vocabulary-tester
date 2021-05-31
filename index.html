@@ -103,6 +103,14 @@
 					<p id="retry-test-prompt" class="try-retest-prompt is-inactive">
 						Click the button by the words you answered incorrectly if you'd like to focus on
 						practising those!
+						<a
+							id="export-prompt"
+							download="latin-incorrect-vocabulary"
+							onclick="exportIncorrectVocab()"
+							class="export-prompt"
+						>
+							Export incorrect words.
+						</a>
 					</p>
 				</div>
 			</div>
@@ -148,9 +156,9 @@
 					<div class="difficulty-toggle">
 						<p class="">Filter words by ID based on their starting character</p>
 						<div class="configure-number">
-							<input type="number" id="min-vocab-number" value="1" min="1" max="845" />
+							<input type="number" id="min-vocab-number" value="1" min="1" max="844" />
 							<span>to</span>
-							<input type="number" id="max-vocab-number" value="845" min="844" max="845" />
+							<input type="number" id="max-vocab-number" value="845" min="2" max="845" />
 						</div>
 					</div>
 				</div>
@@ -173,7 +181,7 @@
 					</button>
 					<button class="vocab-type" id="verb 4" onclick="formAcceptableVocab('verb 4')">
 						<p>Verb 4</p>
-					</button>				
+					</button>
 				</div>
 
 				<div class="dep-verb-buttons button-group">

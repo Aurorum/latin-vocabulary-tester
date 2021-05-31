@@ -304,6 +304,14 @@ li {
 	padding: 8px 24px;
 }
 
+.file-upload {
+	font-size: 14px;
+}
+
+.file-upload input {
+	margin: 0 12px;
+}
+
 .top-footer-toggle {
 	background: #ee6c4d;
 	border-top-right-radius: 12px;

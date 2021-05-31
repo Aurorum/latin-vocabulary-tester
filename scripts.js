@@ -12,6 +12,26 @@ window.onload = function () {
 			checkAnswer();
 		}
 	} );
+
+	var fileInput = document.getElementById( 'fileupload' ),
+		readFile = function () {
+			var reader = new FileReader();
+			reader.onload = function () {
+				var result = reader.result;
+				for ( let i = 0; i < result.split( /\r\n|\r|\n/ ).length; i++ ) {
+					var str = result.split( '\n' )[ i ];
+					var wordArray = findWord( str.split( '"', 2 ).join( '"' ).replace( '"', '' ) )[ 0 ];
+					if ( wordArray ) {
+						wordArray.category = 'uploaded';
+						document.getElementById( 'start-button' ).classList.remove( 'is-inactive' );
+					}
+				}
+				formAcceptableVocab( 'uploaded' );
+			};
+			reader.readAsBinaryString( fileInput.files[ 0 ] );
+		};
+
+	fileInput.addEventListener( 'change', readFile );
 };
 
 // Definitions
@@ -47,7 +67,6 @@ function startTest() {
 
 function buildTest() {
 	finalVocab = vocabToTest.concat( findVocab() );
-
 	if (
 		! document.getElementById( 'extremeCheckbox' ).checked &&
 		document.getElementById( 'hardCheckbox' ).checked
@@ -330,7 +349,7 @@ function formAcceptableVocab( category ) {
 	if ( ! category ) {
 		return acceptableVocab;
 	} else {
-		if ( category !== 'redo' ) {
+		if ( category !== 'redo' && category !== 'uploaded' ) {
 			var button = document.getElementById( category );
 			if ( ! mute ) {
 				new Audio( './assets/audio/click.mp3' ).play();

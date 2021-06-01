@@ -430,6 +430,11 @@ a:hover {
 	background: linear-gradient( 90deg, rgb( 101, 212, 42 ) 36%, rgba( 81, 214, 10, 1 ) 92% );
 }
 
+.times-wrong {
+	text-align: right;
+	margin-right: 4px;
+}
+
 .celebration {
 	display: none;
 }

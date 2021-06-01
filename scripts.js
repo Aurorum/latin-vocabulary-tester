@@ -172,6 +172,8 @@ function checkAnswer( shouldReveal = false ) {
 	var answer = document.getElementById( 'vocab-answer' ).value.toLowerCase().trim();
 	var form = document.getElementById( 'vocab-submit-word-form' ).textContent;
 	var answerInput = document.getElementById( 'vocab-answer' );
+	var incorrectCount = document.getElementById( 'vocab-incorrect-count' );
+	var incorrectCountNumber = parseInt( incorrectCount.textContent );
 	let isAnswerCorrect = false;
 
 	if ( hardDifficulty ) {
@@ -238,6 +240,19 @@ function checkAnswer( shouldReveal = false ) {
 				document.getElementById( 'wrong-vocab' ).appendChild( node );
 				document.getElementById( 'no-words-wrong' ).style.display = 'none';
 			}
+			incorrectCount.innerHTML = incorrectCountNumber + 1;
+
+			if ( incorrectCountNumber === 0 ) {
+				document.getElementById( 'vocab-times-wrong' ).innerHTML = document
+					.getElementById( 'vocab-times-wrong' )
+					.innerHTML.replace( 'times', 'time' );
+			}
+
+			if ( incorrectCountNumber === 1 ) {
+				document.getElementById( 'vocab-times-wrong' ).innerHTML = document
+					.getElementById( 'vocab-times-wrong' )
+					.innerHTML.replace( 'time', 'times' );
+			}
 		} else {
 			document.getElementById( 'vocab-answer' ).value = '';
 			document.getElementById( 'wrong-answer' ).style.display = 'none';
@@ -258,6 +273,10 @@ function checkAnswer( shouldReveal = false ) {
 					'progress-indicator-changing'
 				).innerHTML = vocabRetestCorrectAnswerCount;
 			}
+
+			questionArray.incorrectlyAnswered = incorrectCountNumber;
+
+			incorrectCount.innerHTML = '0';
 
 			document.getElementById( 'progress-bar-content' ).style.width = progress * 100 + '%';
 			buildTest();

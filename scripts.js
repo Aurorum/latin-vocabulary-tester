@@ -186,6 +186,10 @@ function checkAnswer( shouldReveal = false ) {
 
 	collectData( 'answer', question, answer, answerArray[ 0 ] );
 
+	if ( questionArray.didReveal !== true ) {
+		questionArray.didReveal = false;
+	}
+
 	if ( shouldReveal ) {
 		if ( ! vocabToFocusOn.includes( questionArray.word ) ) {
 			vocabToFocusOn.push( questionArray.word );
@@ -196,6 +200,8 @@ function checkAnswer( shouldReveal = false ) {
 		}
 		document.getElementById( 'wrong-answer' ).style.display = 'none';
 		document.getElementById( 'no-words-wrong' ).style.display = 'none';
+
+		questionArray.didReveal = true;
 
 		if ( ! isTestingParticipleParts ) {
 			answerInput.value = answerArray[ 0 ];

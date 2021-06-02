@@ -471,7 +471,7 @@ var vocab = [
 	{
 		word: 'auxilium, auxilii, n',
 		category: 'noun 2',
-		translation: 'help; (pl ) (auxiliary) troops',
+		translation: 'help, (auxiliary) troops',
 		asked: false,
 		id: 68,
 	},
@@ -632,7 +632,7 @@ var vocab = [
 	{
 		word: 'cedo, cedere, cessi, cessus',
 		category: 'verb 3',
-		translation: 'yield, give up; (in compounds) go',
+		translation: 'yield, give up, (in compounds) go',
 		asked: false,
 		id: 91,
 	},
@@ -1059,7 +1059,7 @@ var vocab = [
 	{
 		word: 'curo, curare, curavi, curatus',
 		category: 'verb 1',
-		translation: 'care for, cure; with gerundive = get something done',
+		translation: 'care for, cure',
 		asked: false,
 		id: 152,
 	},
@@ -1409,7 +1409,7 @@ var vocab = [
 	{
 		word: 'e, ex + abl',
 		category: 'prep',
-		translation: 'from, out of; (in compounds) out',
+		translation: 'from, out of, out',
 		asked: false,
 		id: 202,
 	},
@@ -3523,7 +3523,7 @@ var vocab = [
 	{
 		word: '(ops), opis, f',
 		category: 'noun 3',
-		translation: 'help; (pl) resources, riches',
+		translation: 'help, resources, riches',
 		asked: false,
 		id: 504,
 	},
@@ -3635,7 +3635,7 @@ var vocab = [
 	{
 		word: 'parens, parentis, m and f',
 		category: 'noun 3',
-		translation: 'parent; (pl) relations',
+		translation: 'parent, relations',
 		asked: false,
 		id: 520,
 	},
@@ -5161,7 +5161,7 @@ var vocab = [
 	{
 		word: 'sub + abl or + acc',
 		category: 'prep',
-		translation: 'under, beneath; up to',
+		translation: 'under, beneath, up to',
 		asked: false,
 		id: 738,
 	},
@@ -5749,7 +5749,7 @@ var vocab = [
 	{
 		word: 'veto, vetare, vetui, vetitus',
 		category: 'verb 1',
-		translation: 'forbid, orderâ€¦not',
+		translation: 'forbid, order not',
 		asked: false,
 		id: 822,
 	},
@@ -5826,7 +5826,7 @@ var vocab = [
 	{
 		word: 'vis, pl vires, f',
 		category: 'noun irreg',
-		translation: 'force, violence; (pl) strength, forces',
+		translation: 'force, violence, (pl) strength, forces',
 		asked: false,
 		id: 833,
 	},

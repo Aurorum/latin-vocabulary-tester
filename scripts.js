@@ -175,16 +175,31 @@ function checkAnswer( shouldReveal = false ) {
 	var incorrectCount = document.getElementById( 'vocab-incorrect-count' );
 	var incorrectCountNumber = parseInt( incorrectCount.textContent );
 	let isAnswerCorrect = false;
+	let answerArray;
 
 	if ( hardDifficulty ) {
 		var questionArray = findTranslation( question )[ 0 ];
-		var answerArray = data.word.split( ',' );
+		answerArray = data.word.split( ',' );
 	} else {
 		var questionArray = findWord( question )[ 0 ];
-		var answerArray = data.translation.split( ',' );
+		answerArray = data.translation.split( ',' );
 	}
 
 	collectData( 'answer', question, answer, answerArray[ 0 ] );
+
+	for ( let i = 0; i < answerArray.length; i++ ) {
+		if (
+			answerArray[ i ].includes( '(' ) ||
+			answerArray[ i ].includes( ';' ) ||
+			answerArray[ i ].includes( '-' )
+		) {
+			answerArray.push(
+				answerArray[ i ].replace( '(', '' ).replace( ')', '' ).replace( ';', '' ).replace( '-', '' )
+			);
+		}
+
+		answerArray.splice( i, 1, answerArray[ i ].trim() );
+	}
 
 	if ( questionArray.didReveal !== true ) {
 		questionArray.didReveal = false;
@@ -207,17 +222,17 @@ function checkAnswer( shouldReveal = false ) {
 			answerInput.value = answerArray[ 0 ];
 		} else {
 			if ( form.includes( 'first' ) ) {
-				answerInput.value = answerArray[ 0 ].trim();
+				answerInput.value = answerArray[ 0 ];
 			} else if ( form.includes( 'second' ) ) {
-				answerInput.value = answerArray[ 1 ].trim();
+				answerInput.value = answerArray[ 1 ];
 			} else if ( form.includes( 'third' ) ) {
-				answerInput.value = answerArray[ 2 ].trim();
+				answerInput.value = answerArray[ 2 ];
 			}
 		}
 	} else {
 		if ( ! isTestingParticipleParts ) {
 			for ( let i = 0; i < answerArray.length; i++ ) {
-				if ( answer !== answerArray[ i ].trim() ) {
+				if ( answer !== answerArray[ i ] ) {
 					isAnswerCorrect = false;
 				} else {
 					isAnswerCorrect = true;
@@ -226,11 +241,11 @@ function checkAnswer( shouldReveal = false ) {
 			}
 		} else {
 			if ( form.includes( 'first' ) ) {
-				isAnswerCorrect = answer === answerArray[ 0 ].trim();
+				isAnswerCorrect = answer === answerArray[ 0 ];
 			} else if ( form.includes( 'second' ) ) {
-				isAnswerCorrect = answer === answerArray[ 1 ].trim();
+				isAnswerCorrect = answer === answerArray[ 1 ];
 			} else if ( form.includes( 'third' ) ) {
-				isAnswerCorrect = answer === answerArray[ 2 ].trim();
+				isAnswerCorrect = answer === answerArray[ 2 ];
 			}
 		}
 

@@ -191,10 +191,11 @@ function checkAnswer( shouldReveal = false ) {
 		if (
 			answerArray[ i ].includes( '(' ) ||
 			answerArray[ i ].includes( ';' ) ||
-			answerArray[ i ].includes( '-' )
+			answerArray[ i ].includes( '-' ) ||
+			answerArray[ i ].includes( '?' )
 		) {
 			answerArray.push(
-				answerArray[ i ].replace( '(', '' ).replace( ')', '' ).replace( ';', '' ).replace( '-', '' )
+				answerArray[ i ].replace( '(', '' ).replace( ')', '' ).replace( ';', '' ).replace( '?', '' ).replace( '-', '' )
 			);
 		}
 
@@ -309,9 +310,9 @@ function startRetryTest() {
 	document.getElementById( 'progress-bar-content' ).style.width = 0;
 
 	for ( let i = 0; i < vocabToFocusOn.length; i++ ) {
-		let wordArray = findWord( vocabToFocusOn[ i ] )[ 0 ];
-		wordArray.asked = false;
-		wordArray.category = 'redo';
+		let findWordArray = findWord( vocabToFocusOn[ i ] )[ 0 ];
+		findWordArray.asked = false;
+		findWordArray.category = 'redo';
 	}
 
 	let vocabRetestCorrectAnswerCount = 0;

@@ -2410,7 +2410,7 @@ var vocab = [
 	{
 		word: 'invitus, invita, invitum',
 		category: 'adj',
-		translation: 'unwillling, reluctant',
+		translation: 'unwilling, reluctant',
 		asked: false,
 		id: 345,
 	},
@@ -4349,7 +4349,7 @@ var vocab = [
 	{
 		word: 'quantus?, quanta, quantum',
 		category: 'adj',
-		translation: 'how big? how much?',
+		translation: 'how big?, how much?',
 		asked: false,
 		id: 622,
 	},
@@ -4405,7 +4405,7 @@ var vocab = [
 	{
 		word: 'ne ... quidem',
 		category: 'adverb',
-		translation: 'not ... even',
+		translation: 'not ... even, not even',
 		asked: false,
 		id: 630,
 	},
@@ -4419,7 +4419,7 @@ var vocab = [
 	{
 		word: 'quis?, quid',
 		category: 'pron',
-		translation: 'who? what? any',
+		translation: 'who?, what?, any',
 		asked: false,
 		id: 632,
 	},
@@ -4475,7 +4475,7 @@ var vocab = [
 	{
 		word: 'quomodo?',
 		category: 'adverb',
-		translation: 'how? in what way?',
+		translation: 'how?, in what way?',
 		asked: false,
 		id: 640,
 	},
@@ -4503,7 +4503,7 @@ var vocab = [
 	{
 		word: 'quotiens?',
 		category: 'adverb',
-		translation: 'how often? as often as',
+		translation: 'how often?, as often as',
 		asked: false,
 		id: 644,
 	},
@@ -5490,7 +5490,7 @@ var vocab = [
 	{
 		word: 'ubi',
 		category: 'adverb',
-		translation: 'where? where, when',
+		translation: 'where?, where, when',
 		asked: false,
 		id: 785,
 	},

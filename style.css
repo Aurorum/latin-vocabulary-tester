@@ -531,6 +531,7 @@ a:hover {
 .competition-conclusion,
 .leaderboard-wrapper,
 .is-competitive-mode #practise-mode,
+.is-competitive-mode .practise-declensions-link,
 .is-competitive-mode .introductary-text,
 .is-competitive-mode .test-settings-wrapper,
 .is-competitive-mode .reveal-answer-button,
@@ -682,6 +683,11 @@ a:hover {
 
 .test-settings-wrapper p {
 	font-size: 13px;
+}
+
+.practise-declensions-link {
+	flex-basis: 75%;
+	justify-content: end;
 }
 
 .close-settings {

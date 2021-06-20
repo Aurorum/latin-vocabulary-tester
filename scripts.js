@@ -73,6 +73,10 @@ window.onload = function () {
 		switchMode();
 		startCompetition( 'vocab' );
 	}
+	
+	if ( new URLSearchParams( window.location.search ).get( 'declensionpractise' ) ) {
+		startTest( true );
+	}
 
 	if ( new URLSearchParams( window.location.search ).get( 'ref' ) ) {
 		collectData(
@@ -528,7 +532,7 @@ function checkDeclensionAnswer( shouldReveal = false ) {
 			if ( ! mute ) {
 				new Audio( './assets/audio/correct.mp3' ).play();
 			}
-			collectData( 'Answered declension question correctly by inputting ' + answerInput );
+			collectData( 'Answered declension question correctly by inputting ' + enteredAnswer );
 			return buildDeclensionTest();
 		}
 
@@ -538,7 +542,7 @@ function checkDeclensionAnswer( shouldReveal = false ) {
 
 		collectData(
 			'Answered declension question incorrectly by inputting ' +
-				answerInput +
+				enteredAnswer +
 				' when expecting ' +
 				actualAnswer
 		);

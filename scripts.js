@@ -64,6 +64,16 @@ window.onload = function () {
 		switchMode();
 	}
 
+	if ( new URLSearchParams( window.location.search ).get( 'declensiontest' ) ) {
+		switchMode();
+		startCompetition( 'declension' );
+	}
+
+	if ( new URLSearchParams( window.location.search ).get( 'vocabtest' ) ) {
+		switchMode();
+		startCompetition( 'vocab' );
+	}
+
 	if ( new URLSearchParams( window.location.search ).get( 'ref' ) ) {
 		collectData(
 			'Loaded site with ref ' +
@@ -205,7 +215,7 @@ function startCompetitionTimer() {
 		if ( timeleft <= 0 ) {
 			clearInterval( timer );
 			endCompetitionTimer();
-			if ( ! mute ) {
+			if ( ! mute && ! document.getElementById( 'vocab-tester-wrapper' ).classList.contains( 'time-ended' ) ) {
 				new Audio( './assets/audio/complete.mp3' ).play();
 			}
 		} else {
@@ -271,6 +281,7 @@ function buildDeclensionTest() {
 	let vocabwithNumber = finalVocab[ randomNumber ];
 
 	collectData( 'Started declensions test' );
+	handleNounDeclensions();
 
 	finalVocab[ randomNumber ].asked = true;
 

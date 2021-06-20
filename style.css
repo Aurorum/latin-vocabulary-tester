@@ -201,53 +201,6 @@ li {
 	margin-bottom: 8px;
 }
 
-.loading-screen {
-	background: #ee6c4d;
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	z-index: 99999;
-}
-
-.loading-screen-wrapper {
-	top: 40%;
-	right: 50%;
-	transform: translate( 50%, -50% );
-	position: absolute;
-	display: flex;
-	flex-direction: column-reverse;
-}
-
-.loading-screen-wrapper img {
-	width: 200px;
-	background: #ec5c39;
-	padding: 12px;
-	border-radius: 42px;
-	margin: 52px;
-}
-
-.loading-screen .progress-bar {
-	max-width: 300px;
-	right: 50%;
-	border: 2px solid #1d395d;
-	border-radius: 14px;
-	transform: translateX( 50% );
-	position: absolute;
-	width: 100%;
-}
-
-.loading-screen .progress-bar .inner-progress {
-	background: #3d5a80;
-	transition: width 1.8s ease-in-out;
-	animation: width-animation 1.8s;
-	border-radius: 14px;
-	width: 100%;
-}
-
 @keyframes width-animation {
 	from {
 		width: 0;
@@ -257,33 +210,36 @@ li {
 	}
 }
 
-.verb-buttons button,
-.reveal-answer-button {
+.row-1 button,
+.reveal-answer-button,
+.start-declension-test-button,
+.leaderboard-button {
 	background: #facad7;
 	border-color: #ffe7e8 #f7c2d6 #e89f9f;
 	outline-color: #993359;
 }
 
-.dep-verb-buttons button {
+.row-2 button {
 	background: #fae9ca;
 	border-color: #fffbe7 #f7e4c2 #ffd6a2;
 	outline-color: #ff9900;
 }
 
-.noun-buttons button,
+.row-3 button,
 .submit-answer-button {
 	background: #c9eec7;
 	border-color: #b9deb7 #cae4c9 #a4c1a2;
 	outline-color: #288c21;
 }
 
-.other-nouns button {
+.row-4 button {
 	background: #cadffa;
 	border-color: #e7f5ff #c2d7f7 #a2baff;
 	outline-color: #486bca;
 }
 
-.other-language button {
+.row-5 button,
+.start-vocabulary-test-button {
 	background: #e2d3ff;
 	border-color: #c9bce2 #c2b1e6 #bf9fff;
 	outline-color: #6a4ca7;
@@ -312,18 +268,71 @@ li {
 	margin: 0 12px;
 }
 
-.top-footer-toggle {
+.options-menu {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.options-menu a {
+	cursor: pointer;
+	margin-right: 24px;
+}
+
+.select-all-option {
+	cursor: pointer;
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 14px;
+}
+
+.select-all-option-mobile {
+	margin-bottom: 14px;
+	margin-top: 0;
+	display: none;
+}
+
+.is-alevelocr .alevelocrlink,
+.is-gcseeduqas .gcseeduqaslink,
+.is-gcseocr .gcseocrlink {
+	text-decoration: underline;
+}
+
+.stages,
+.is-gcseeduqas .categories {
+	display: none;
+}
+
+.is-gcseeduqas .stages {
+	display: block;
+}
+
+.stages button {
+	padding: 0 18px;
+}
+
+.top-footer-toggle,
+.top-settings-toggle {
 	background: #ee6c4d;
 	border-top-right-radius: 12px;
 	border-bottom-right-radius: 12px;
 	box-shadow: 2px 2px #756865;
 	display: none;
 	height: 30px;
-	position: absolute;
+	position: fixed;
 	width: 28px;
 	left: 0;
 	top: 0;
 	z-index: 3;
+}
+
+.top-settings-toggle {
+	right: 0;
+	left: auto;
+	border-radius: 0;
+	border-bottom-left-radius: 12px;
+	border-top-left-radius: 12px;
+	background: #5c7c7d;
+	box-shadow: 2px 2px #506869;
 }
 
 .footer {
@@ -334,11 +343,13 @@ li {
 	background: #ee6c4d;
 }
 
-.hide-footer .footer {
+.hide-footer .footer,
+.hide-settings:not( .has-begun-vocab-test ) .left-content {
 	display: none;
 }
 
-.hide-footer .top-footer-toggle {
+.hide-footer .top-footer-toggle,
+.hide-settings .top-settings-toggle {
 	display: block;
 }
 
@@ -455,6 +466,113 @@ a:hover {
 	text-decoration: underline;
 }
 
+.practise-prompt {
+	margin-left: 32px;
+	font-size: 18px;
+}
+
+.practise-prompt a {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.leaderboard-submit-name {
+	display: flex;
+	justify-content: center;
+}
+
+.leaderboard-button {
+	margin: 0;
+	margin-left: 12px;
+}
+
+.countdown-clock-circle {
+	display: none;
+	position: relative;
+	float: left;
+	margin: auto;
+}
+
+.countdown-clock-circle h2 {
+	text-align: center;
+	position: absolute;
+	line-height: 95px;
+	font-size: 40px;
+	width: 100%;
+}
+
+.countdown-clock-circle svg {
+	-webkit-transform: rotate( -90deg );
+	transform: rotate( -90deg );
+}
+
+.countdown-clock-circle-animation {
+	stroke-dasharray: 440;
+	stroke-dashoffset: 0;
+	-webkit-transition: all 1s linear;
+	transition: all 1s linear;
+}
+
+.competition-introduction {
+	text-align: center;
+}
+
+.competition-countdown {
+	font-size: 64px;
+	font-weight: 600;
+}
+
+#vocab-tester-wrapper.time-ended .competition-countdown {
+	font-size: 32px;
+}
+
+#competitive-mode,
+#vocab-test-competition,
+.competition-conclusion,
+.leaderboard-wrapper,
+.is-competitive-mode #practise-mode,
+.is-competitive-mode .introductary-text,
+.is-competitive-mode .test-settings-wrapper,
+.is-competitive-mode .reveal-answer-button,
+.is-competitive-mode .progress-bar,
+.is-competitive-mode .times-wrong,
+.is-competitive-mode .incorrect-words,
+.is-competitive-mode #progress-indicator-set,
+.is-competitive-mode #vocab-tester-wrapper.time-started .competition-introduction,
+.is-competitive-mode #vocab-tester-wrapper #vocab-tester,
+.is-competitive-mode .file-upload {
+	display: none;
+}
+
+.is-competitive-mode #vocab-tester-wrapper.time-started #vocab-tester,
+.is-competitive-mode #vocab-test-competition,
+.is-competitive-mode:not( .has-begun-vocab-test ) .leaderboard-wrapper,
+.is-competitive-mode.has-begun-vocab-test .time-ended .leaderboard-wrapper,
+.is-competitive-mode #vocab-tester-wrapper.time-ended .competition-conclusion,
+.is-competitive-mode #vocab-tester-wrapper:not( .time-ended ) .countdown-clock-circle {
+	display: block;
+}
+
+.is-competitive-mode #competitive-mode,
+.is-competitive-mode #vocab-test-competition {
+	display: block;
+	padding: 24px;
+	font-size: 18px;
+}
+
+.is-competitive-mode .main-content {
+	margin: 20px 52px;
+}
+
+.is-competitive-mode.has-begun-vocab-test .left-content {
+	display: flex;
+	justify-content: center;
+}
+
+.is-competitive-mode .time-ended .left-content {
+	display: block;
+}
+
 #vocab-submit-word-form {
 	font-weight: 700;
 	font-size: 21px;
@@ -466,6 +584,10 @@ a:hover {
 
 .has-begun-vocab-test #vocab-tester-wrapper {
 	display: flex;
+}
+
+.has-begun-vocab-test .practise-prompt {
+	display: none;
 }
 
 .vocab-submit-buttons {
@@ -543,6 +665,12 @@ a:hover {
 	animation: curtain 2.3s forwards;
 }
 
+.complete-actions {
+	display: flex;
+	justify-content: center;
+	margin-left: -20px;
+}
+
 @keyframes curtain {
 	0% {
 		transform: none;
@@ -556,10 +684,20 @@ a:hover {
 	font-size: 13px;
 }
 
-.difficulty-toggle {
+.close-settings {
+	display: none;
+	text-align: right;
+	font-size: 14px;
+}
+
+.toggle {
 	display: flex;
 	margin: auto;
 	justify-content: space-between;
+}
+
+.toggle input {
+	margin: auto 0;
 }
 
 .difficulty-text {
@@ -567,7 +705,7 @@ a:hover {
 	margin-right: 8px;
 }
 
-.difficulty-toggle.extreme-difficulty {
+.toggle.extreme-difficulty {
 	margin-top: 24px;
 }
 
@@ -576,13 +714,19 @@ a:hover {
 	margin-right: 12px;
 }
 
-.configure-number {
+.max-word-prompt {
+	display: none;
+	margin-bottom: 12px;
+}
+
+.configure-values {
 	display: flex;
 	align-items: center;
 }
 
-.configure-number input {
-	margin: 3px;
+.configure-values input {
+	margin: 4px;
+	width: 30px;
 }
 
 /* Switch styles mainly from w3schools */
@@ -640,7 +784,7 @@ input:checked + .slider:before {
 }
 
 @media only screen and ( max-width: 1800px ) {
-	.difficulty-toggle input:checked + .slider:before {
+	.toggle input:checked + .slider:before {
 		display: none;
 	}
 }
@@ -653,6 +797,11 @@ input:checked + .slider:before {
 		bottom: 120px;
 		right: 0;
 		width: auto;
+	}
+
+	.close-settings,
+	.select-all-option-mobile {
+		display: block;
 	}
 
 	.introductary-text,

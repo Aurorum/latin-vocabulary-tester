@@ -251,6 +251,12 @@ function switchMode() {
 }
 
 function leaderboardSubmitName() {
+	if ( ! document.getElementById( 'leaderboard-name-input' ).value.trim().length ) {
+		document.getElementById( 'leaderboard-valid-name-warning' ).style.display = 'block';
+		return;
+	}
+
+	document.getElementById( 'leaderboard-valid-name-warning' ).style.display = 'none';
 	document.getElementById( 'leaderboard-button-submit' ).innerHTML = 'Submitting';
 	document.getElementById( 'leaderboard-name-input' ).disabled = true;
 

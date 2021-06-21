@@ -583,6 +583,12 @@ a:hover {
 	margin: auto;
 }
 
+.valid-name-warning {
+	display: none;
+	color: #ffe7e8;
+	text-align: center;
+}
+
 #vocab-submit-word-form {
 	font-weight: 700;
 	font-size: 21px;

@@ -574,6 +574,15 @@ a:hover {
 	display: block;
 }
 
+.has-begun-declension-test:not( .is-competitive-mode ) .left-content {
+	display: none;
+}
+
+.has-begun-declension-test:not( .is-competitive-mode ) #vocab-tester-wrapper .right-content {
+	width: 75%;
+	margin: auto;
+}
+
 #vocab-submit-word-form {
 	font-weight: 700;
 	font-size: 21px;

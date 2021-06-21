@@ -8,6 +8,8 @@ Provides a way to test your knowledge of the GCSE and A-Level Latin vocabulary l
 - CSV exports (can be used with Google Sheets) of words answered incorrectly
 - Competitive mode with a functioning leaderboard
 
+Link: https://latinvocabularytester.com
+
 If there is any desire to use it, I'm happy to ensure it functions better with additional features. Feel free to let me know if there are any issues or requests, including if it involves adding new vocabulary!
 
 ![screenshot](./assets/screenshot.png)

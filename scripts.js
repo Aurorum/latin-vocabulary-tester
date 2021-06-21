@@ -73,7 +73,7 @@ window.onload = function () {
 		switchMode();
 		startCompetition( 'vocab' );
 	}
-	
+
 	if ( new URLSearchParams( window.location.search ).get( 'declensionpractise' ) ) {
 		startTest( true );
 	}
@@ -219,7 +219,10 @@ function startCompetitionTimer() {
 		if ( timeleft <= 0 ) {
 			clearInterval( timer );
 			endCompetitionTimer();
-			if ( ! mute && ! document.getElementById( 'vocab-tester-wrapper' ).classList.contains( 'time-ended' ) ) {
+			if (
+				! mute &&
+				! document.getElementById( 'vocab-tester-wrapper' ).classList.contains( 'time-ended' )
+			) {
 				new Audio( './assets/audio/complete.mp3' ).play();
 			}
 		} else {
@@ -411,13 +414,13 @@ function buildTest() {
 			) {
 				switch ( Math.floor( Math.random() * 3 ) ) {
 					case 0:
-						wordForm = '1st person present (first)';
+						wordForm = '1st person present (first) form';
 						break;
 					case 1:
-						wordForm = 'present infinitive (second)';
+						wordForm = 'present infinitive (second) form';
 						break;
 					case 2:
-						wordForm = '1st person perfect (third)';
+						wordForm = '1st person perfect (third) form';
 						break;
 				}
 				isTestingParticipleParts = true;
@@ -430,7 +433,7 @@ function buildTest() {
 			wordForm = 'root meaning';
 		}
 
-		document.getElementById( 'vocab-submit-word-form' ).innerHTML = wordForm + ' form';
+		document.getElementById( 'vocab-submit-word-form' ).innerHTML = wordForm;
 
 		return;
 	}
@@ -548,6 +551,16 @@ function checkDeclensionAnswer( shouldReveal = false ) {
 		);
 
 		if ( competitiveMode ) {
+			document.getElementById( 'competition-correction' ).innerHTML =
+				'You entered <strong>' +
+				enteredAnswer +
+				'</strong> as the ' +
+				document.getElementById( 'vocab-submit-word-form' ).textContent +
+				' for <strong>' +
+				actualAnswerArray.word +
+				'</strong> when it was actually <strong>' +
+				actualAnswer +
+				'</strong>.';
 			return endCompetitionTimer();
 		}
 	}
@@ -647,13 +660,13 @@ function checkAnswer( shouldReveal = false ) {
 				new Audio( './assets/audio/wrong.mp3' ).play();
 			}
 
-			if ( competitiveMode ) {
-				return endCompetitionTimer();
-			}
-
 			collectData(
 				'Answered vocabulary question incorrectly by inputting ' + answer + ' for ' + question
 			);
+
+			if ( competitiveMode ) {
+				return endCompetitionTimer();
+			}
 
 			document.getElementById( 'wrong-answer' ).style.display = 'block';
 

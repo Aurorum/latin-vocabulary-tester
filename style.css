@@ -271,6 +271,7 @@ li {
 .options-menu {
 	display: flex;
 	justify-content: flex-end;
+	margin-top: 12px;
 }
 
 .options-menu a {
@@ -660,6 +661,11 @@ a:hover {
 
 .confetti {
 	text-align: center;
+}
+
+.wrong-vocab-list {
+	max-height: 280px;
+	overflow-y: scroll;
 }
 
 .curtain {

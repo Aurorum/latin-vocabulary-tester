@@ -88,6 +88,13 @@ window.onload = function () {
 		);
 	}
 
+	if (
+		localStorage.getItem( 'defaultAudio' ) &&
+		localStorage.getItem( 'defaultAudio' ) === 'Muted'
+	) {
+		muteAudio();
+	}
+
 	for ( let i = 1; i < 301; i++ ) {
 		var option = document.createElement( 'option' );
 		option.text = i;
@@ -528,11 +535,6 @@ function checkDeclensionAnswer( shouldReveal = false ) {
 		answerInput.value = actualAnswer;
 	} else {
 		document.getElementById( 'wrong-answer' ).style.display = isAnswerCorrect ? 'none' : 'block';
-		if ( ! mute ) {
-			new Audio(
-				isAnswerCorrect ? './assets/audio/correct.mp3' : './assets/audio/wrong.mp3'
-			).play();
-		}
 
 		if ( isAnswerCorrect ) {
 			answerInput.value = '';
@@ -619,6 +621,10 @@ function checkAnswer( shouldReveal = false ) {
 	if ( questionArray.didReveal !== true ) {
 		questionArray.didReveal = false;
 	}
+
+	document.getElementById( 'wrong-vocab' ).scrollTop = document.getElementById(
+		'wrong-vocab'
+	).scrollHeight;
 
 	if ( shouldReveal ) {
 		if ( ! vocabToFocusOn.includes( questionArray.word ) ) {
@@ -887,11 +893,12 @@ function muteAudio() {
 	if ( muteAudioLink.textContent.includes( 'Unmute' ) ) {
 		muteAudioLink.textContent = 'Mute sound effects';
 		mute = false;
+		localStorage.setItem( 'defaultAudio', 'Unmuted' );
 	} else {
 		muteAudioLink.textContent = 'Unmute sound effects';
+		localStorage.setItem( 'defaultAudio', 'Muted' );
 		mute = true;
 	}
-
 	collectData( 'Audio toggled so mute is **' + mute + '**', 'audio_toggled' );
 }
 

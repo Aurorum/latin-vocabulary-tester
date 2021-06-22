@@ -146,7 +146,7 @@ function startTest( startDeclensionTest = false ) {
 
 	document.getElementById( 'option' ).innerHTML = '<a onclick="resetTest()">Reset test</a>';
 
-	collectData( 'Started test' );
+	collectData( 'Started test of ' + selectedOption );
 
 	if ( startDeclensionTest ) {
 		document.body.classList.add( 'has-begun-declension-test' );
@@ -514,6 +514,7 @@ function selectAll() {
 }
 
 function checkDeclensionAnswer( shouldReveal = false ) {
+	var question = document.getElementById( 'vocab-submit-word-form' ).textContent;
 	var answerInput = document.getElementById( 'vocab-answer' );
 	var enteredAnswer = answerInput.value.toLowerCase().trim();
 	var progressIndicator = document.getElementById( 'progress-indicator-changing' );
@@ -541,7 +542,9 @@ function checkDeclensionAnswer( shouldReveal = false ) {
 			if ( ! mute ) {
 				new Audio( './assets/audio/correct.mp3' ).play();
 			}
-			collectData( 'Answered declension question correctly by inputting ' + enteredAnswer );
+			collectData(
+				'Answered declension question correctly by inputting ' + enteredAnswer + ' for ' + question
+			);
 			return buildDeclensionTest();
 		}
 
@@ -553,7 +556,9 @@ function checkDeclensionAnswer( shouldReveal = false ) {
 			'Answered declension question incorrectly by inputting ' +
 				enteredAnswer +
 				' when expecting ' +
-				actualAnswer
+				actualAnswer +
+				' for ' +
+				question
 		);
 
 		if ( competitiveMode ) {
@@ -561,7 +566,7 @@ function checkDeclensionAnswer( shouldReveal = false ) {
 				'You entered <strong>' +
 				enteredAnswer +
 				'</strong> as the ' +
-				document.getElementById( 'vocab-submit-word-form' ).textContent +
+				question +
 				' for <strong>' +
 				actualAnswerArray.word +
 				'</strong> when it was actually <strong>' +

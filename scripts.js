@@ -9,6 +9,7 @@ let isTestingDeclensions = false;
 let isTestingParticipleParts = false;
 let mute = false;
 let selectedOption;
+var userId = localStorage.getItem( 'userID' ) || Math.floor( Math.random() * 9999999 ) + 1;
 let vocab = vocabGCSEOCR;
 let vocabAnswered = [];
 let vocabDeclension;
@@ -28,7 +29,7 @@ window.onload = function () {
 			checkAnswer();
 		}
 	} );
-	collectData( 'Loaded site with data ' + navigator.userAgent );
+	collectData( 'Loaded site with data ' + navigator.userAgent, 'load' );
 
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function () {
@@ -107,7 +108,7 @@ window.onload = function () {
 						document.getElementById( 'start-button' ).classList.remove( 'is-inactive' );
 					}
 				}
-				collectData( 'CSV file uploaded' );
+				collectData( 'CSV file uploaded', 'csv_upload' );
 				formAcceptableVocab( 'uploaded' );
 			};
 			reader.readAsBinaryString( fileInput.files[ 0 ] );
@@ -146,12 +147,12 @@ function startTest( startDeclensionTest = false ) {
 
 	document.getElementById( 'option' ).innerHTML = '<a onclick="resetTest()">Reset test</a>';
 
-	collectData( 'Started test of ' + selectedOption );
+	collectData( 'Started test of ' + selectedOption, 'started_test' );
 
 	if ( startDeclensionTest ) {
 		document.body.classList.add( 'has-begun-declension-test' );
 		document.getElementById( 'progress-indicator-slash' ).innerHTML = ' declined correctly';
-		collectData( 'Started declension test' );
+		collectData( 'Started declension test', 'started_declension_test' );
 		return buildDeclensionTest();
 	}
 
@@ -177,7 +178,7 @@ function startCompetition( test ) {
 			? 'decline as many nouns as possible'
 			: 'translate as many words as possible';
 	startTest( test === 'declension' );
-	collectData( 'Started competition of ' + test );
+	collectData( 'Started competition of ' + test, 'started_competition' );
 
 	if ( test === 'vocab' ) {
 		document.getElementById( 'progress-indicator-slash' ).innerHTML = ' answered correctly';
@@ -197,7 +198,7 @@ function startCompetition( test ) {
 }
 
 function endCompetitionTimer() {
-	collectData( 'Competition ended' );
+	collectData( 'Competition ended', 'ended_competition' );
 	document.getElementById( 'countdown-clock-circle' ).style.strokeDashoffset = 0;
 	document.getElementById( 'countdown-clock-time-left' ).innerHTML = 0;
 	document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'time-ended' );
@@ -292,10 +293,7 @@ function buildDeclensionTest() {
 
 	let randomNumber = Math.floor( Math.random() * finalVocab.length );
 	let vocabwithNumber = finalVocab[ randomNumber ];
-
-	collectData( 'Started declensions test' );
 	handleNounDeclensions();
-
 	finalVocab[ randomNumber ].asked = true;
 
 	document.getElementById( 'vocab-question' ).innerHTML = vocabwithNumber.word;
@@ -456,7 +454,7 @@ function buildTest() {
 }
 
 function resetTest() {
-	collectData( 'Reset test' );
+	collectData( 'Reset test', 'reset_test' );
 	location.reload();
 }
 
@@ -510,7 +508,7 @@ function selectAll() {
 		new Audio( './assets/audio/click.mp3' ).play();
 	}
 
-	collectData( 'Selected all options' );
+	collectData( 'Selected all options', 'selected_all_options' );
 }
 
 function checkDeclensionAnswer( shouldReveal = false ) {
@@ -543,7 +541,8 @@ function checkDeclensionAnswer( shouldReveal = false ) {
 				new Audio( './assets/audio/correct.mp3' ).play();
 			}
 			collectData(
-				'Answered declension question correctly by inputting ' + enteredAnswer + ' for ' + question
+				'Answered declension question correctly by inputting ' + enteredAnswer + ' for ' + question,
+				'correct_declension_answer'
 			);
 			return buildDeclensionTest();
 		}
@@ -558,7 +557,8 @@ function checkDeclensionAnswer( shouldReveal = false ) {
 				' when expecting ' +
 				actualAnswer +
 				' for ' +
-				question
+				question,
+			'incorrect_declension_answer'
 		);
 
 		if ( competitiveMode ) {
@@ -631,7 +631,7 @@ function checkAnswer( shouldReveal = false ) {
 		document.getElementById( 'wrong-answer' ).style.display = 'none';
 		document.getElementById( 'no-words-wrong' ).style.display = 'none';
 
-		collectData( 'Answer revealed for ' + question );
+		collectData( 'Answer revealed for ' + question, 'revealed_answer' );
 
 		questionArray.didReveal = true;
 
@@ -672,7 +672,8 @@ function checkAnswer( shouldReveal = false ) {
 			}
 
 			collectData(
-				'Answered vocabulary question incorrectly by inputting ' + answer + ' for ' + question
+				'Answered vocabulary question incorrectly by inputting ' + answer + ' for ' + question,
+				'incorrect_vocabulary_answer'
 			);
 
 			if ( competitiveMode ) {
@@ -710,7 +711,8 @@ function checkAnswer( shouldReveal = false ) {
 			}
 
 			collectData(
-				'Answered vocabulary question correctly by inputting ' + answer + ' for ' + question
+				'Answered vocabulary question correctly by inputting ' + answer + ' for ' + question,
+				'correct_vocabulary_answer'
 			);
 
 			var select = document.getElementById( 'max-word-select' );
@@ -749,7 +751,7 @@ function startRetryTest() {
 		'progress-indicator-changing'
 	).innerHTML = vocabRetestCorrectAnswerCount;
 
-	collectData( 'Retried test with ' + vocabToFocusOn.length + ' incorrect words' );
+	collectData( 'Retried test with ' + vocabToFocusOn.length + ' incorrect words', 'retried_test' );
 
 	formAcceptableVocab( 'redo' );
 	buildTest();
@@ -763,7 +765,7 @@ function exportIncorrectVocab() {
 		exportArray.push( findWord( vocabToFocusOn[ i ] )[ 0 ] );
 		delete exportArray[ i ].asked;
 	}
-	collectData( 'CSV exported with ' + vocabToFocusOn.length + ' words' );
+	collectData( 'CSV exported with ' + vocabToFocusOn.length + ' words', 'csv_export' );
 	csvData = convertToCSV( exportArray );
 	var dataBlob = new Blob( [ csvData ], { type: 'text/csv;charset=utf-8' } );
 	document.getElementById( 'export-prompt' ).href = window.URL.createObjectURL( dataBlob );
@@ -868,11 +870,9 @@ function formAcceptableVocab( category ) {
 	allVocab = vocabToTest.concat( findAllVocab() );
 }
 
-function collectData( content ) {
-	var userId = localStorage.getItem( 'userID' ) || Math.floor( Math.random() * 9999999 ) + 1;
-
-	if ( navigator.userAgent.includes( 'Google Web Preview' ) ) {
-		return;
+function collectData( content, analyticsID ) {
+	if ( analyticsID ) {
+		gtag( 'event', analyticsID );
 	}
 
 	var request = new XMLHttpRequest();
@@ -892,7 +892,7 @@ function muteAudio() {
 		mute = true;
 	}
 
-	collectData( 'Audio toggled so mute is **' + mute + '**' );
+	collectData( 'Audio toggled so mute is **' + mute + '**', 'audio_toggled' );
 }
 
 function toggleFooter( show ) {
@@ -901,7 +901,7 @@ function toggleFooter( show ) {
 	} else {
 		document.body.classList.remove( 'hide-footer' );
 	}
-	collectData( 'Footer toggled' );
+	collectData( 'Footer toggled', 'footer_toggled' );
 }
 
 function toggleSettings( show ) {
@@ -910,7 +910,7 @@ function toggleSettings( show ) {
 	} else {
 		document.body.classList.remove( 'hide-settings' );
 	}
-	collectData( 'Settings toggled' );
+	collectData( 'Settings toggled', 'settings_toggled' );
 }
 
 function changeDifficulty() {
@@ -923,7 +923,10 @@ function changeDifficulty() {
 	} else {
 		extremeCheckbox.disabled = false;
 	}
-	collectData( 'Difficulty changed so that the hard checkbox is ' + hardCheckbox.checked );
+	collectData(
+		'Difficulty changed so that the hard checkbox is ' + hardCheckbox.checked,
+		'difficulty_changed'
+	);
 }
 
 function toggleLimit() {

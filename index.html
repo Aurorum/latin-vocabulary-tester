@@ -7,17 +7,17 @@
 		<meta name="author" content="Aurorum" />
 		<meta
 			name="keywords"
-			content="Latin, Vocabulary, Declensions, Latin Declensions Tester, OCR, A-Level, Eduqas, GCSE, Vocab, Latin Vocab Tester"
+			content="Latin, Vocabulary, Declensions, Latin Declensions Tester, Conjugations, OCR, A-Level, Eduqas, GCSE, Vocab, Latin Vocab Tester"
 		/>
 		<meta
 			name="description"
-			content="Provides a way to test your knowledge of the OCR Latin vocabulary list."
+			content="Provides a way to test your knowledge of the GCSE and A-Level Latin vocabulary list, along with a Noun Declension & Verb Conjugation Tester with both a competitive leaderboard and a practice mode."
 		/>
 		<meta property="og:title" content="Latin Vocabulary Tester" />
 		<meta property="og:type" content="website" />
 		<meta
 			property="og:description"
-			content="Provides a way to test your knowledge of the GCSE and A-Level Latin vocabulary list, along with a Declension Tester with both a competitive leaderboard and a practice mode."
+			content="Provides a way to test your knowledge of the GCSE and A-Level Latin vocabulary list, along with a Noun Declension & Verb Conjugation Tester with both a competitive leaderboard and a practice mode."
 		/>
 		<meta property="og:url" content="https://latinvocabularytester.com" />
 		<meta property="og:image" content="https://latinvocabularytester.com/assets/screenshot.png" />
@@ -41,20 +41,32 @@
 		</script>
 	</head>
 	<body>
+		<div class="loading-screen" id="loading">
+			<div class="loading-screen-wrapper">
+				<img src="./assets/dictionary.svg" alt="" />
+				<div class="progress-bar">
+					<div class="inner-progress"></div>
+				</div>
+			</div>
+		</div>
 		<div id="curtain" class="curtain is-not-triggered"></div>
 
 		<div class="header">
 			<div class="heading">
 				<h1>Latin Vocabulary Tester</h1>
 			</div>
-			<div id="option" class="options-menu">
-				<a onclick="startTest(true)" class="practise-declensions-link">Practise noun declensions</a>
-				<a class="alevelocrlink" onclick="changeOption('alevelocr')">A-Level (OCR)</a>
-				<a class="gcseeduqaslink" onclick="changeOption('gcseeduqas')">GCSE (Eduqas)</a>
-				<a class="gcseocrlink" onclick="changeOption('gcseocr')">GCSE (OCR)</a>
-			</div>
+			<p id="practise-mode-prompt" class="practise-prompt">
+				You are in <span id="current-mode">Practice</span> mode! Switch to
+				<a id="switch-to-mode" onclick="switchMode()">Competitive mode</a>.
+			</p>
 			<div class="top-footer-toggle" onclick="toggleFooter(true)"></div>
-			<div class="top-settings-toggle" onclick="toggleSettings(true)"></div>
+		</div>
+		<div id="option" class="options-menu">
+			<a onclick="startTest(true)">Practise noun declensions</a>
+			<a onclick="startTest(false, true)">Practise verb conjugations</a>
+			<a class="alevelocrlink" onclick="changeOption('alevelocr')">A-Level (OCR)</a>
+			<a class="gcseeduqaslink" onclick="changeOption('gcseeduqas')">GCSE (Eduqas)</a>
+			<a class="gcseocrlink" onclick="changeOption('gcseocr')">GCSE (OCR)</a>
 		</div>
 
 		<div id="vocab-tester-wrapper" class="main-content">
@@ -65,16 +77,18 @@
 						<li id="first-declensions-leaderboard-1">Loading...</li>
 						<li id="first-declensions-leaderboard-2">Loading...</li>
 						<li id="first-declensions-leaderboard-3">Loading...</li>
-						<li id="first-declensions-leaderboard-4">Loading...</li>
-						<li id="first-declensions-leaderboard-5">Loading...</li>
 					</ol>
 					<p><strong>Vocabulary Leaderboard:</strong></p>
 					<ol>
+						<li id="first-vocabulary-leaderboard-7">Loading...</li>
 						<li id="first-vocabulary-leaderboard-8">Loading...</li>
 						<li id="first-vocabulary-leaderboard-9">Loading...</li>
-						<li id="first-vocabulary-leaderboard-10">Loading...</li>
-						<li id="first-vocabulary-leaderboard-11">Loading...</li>
-						<li id="first-vocabulary-leaderboard-12">Loading...</li>
+					</ol>
+					<p><strong>Conjugations Leaderboard:</strong></p>
+					<ol>
+						<li id="first-conjugations-leaderboard-12">Loading...</li>
+						<li id="first-conjugations-leaderboard-13">Loading...</li>
+						<li id="first-conjugations-leaderboard-14">Loading...</li>
 					</ol>
 				</div>
 				<div class="incorrect-words">
@@ -196,11 +210,6 @@
 				</div>
 			</div>
 		</div>
-
-		<p id="practise-mode-prompt" class="practise-prompt">
-			You are in <span id="current-mode">Practice</span> mode! Switch to
-			<a id="switch-to-mode" onclick="switchMode()">Competitive mode</a>.
-		</p>
 		<div id="vocab-selector" class="main-content">
 			<div class="left-content">
 				<div id="leaderboard" class="leaderboard-wrapper">
@@ -209,30 +218,28 @@
 						<li id="declensions-leaderboard-1">Loading...</li>
 						<li id="declensions-leaderboard-2">Loading...</li>
 						<li id="declensions-leaderboard-3">Loading...</li>
-						<li id="declensions-leaderboard-4">Loading...</li>
-						<li id="declensions-leaderboard-5">Loading...</li>
 					</ol>
 					<p><strong>Vocabulary Leaderboard:</strong></p>
 					<ol>
+						<li id="vocabulary-leaderboard-7">Loading...</li>
 						<li id="vocabulary-leaderboard-8">Loading...</li>
 						<li id="vocabulary-leaderboard-9">Loading...</li>
-						<li id="vocabulary-leaderboard-10">Loading...</li>
-						<li id="vocabulary-leaderboard-11">Loading...</li>
-						<li id="vocabulary-leaderboard-12">Loading...</li>
+					</ol>
+					<p><strong>Conjugations Leaderboard:</strong></p>
+					<ol>
+						<li id="conjugations-leaderboard-12">Loading...</li>
+						<li id="conjugations-leaderboard-13">Loading...</li>
+						<li id="conjugations-leaderboard-14">Loading...</li>
 					</ol>
 				</div>
-				<div class="introductary-text">
-					<h3>How do I try it?</h3>
-					<p>Some Latin vocabulary knowledge is necessary!</p>
-					<ul>
-						<li>Select the categories you'd like to try</li>
-						<li>Press the "Start" button below</li>
-						<li>Complete the vocabulary!</li>
-					</ul>
+				<h3 class="start-button-wrapper-text">Configure test settings</h3>
+				<div id="start-button" class="start-button-wrapper is-inactive">
+					<img onclick="startTest()" src="./assets/start.svg" alt="" />
 				</div>
-
+				<p class="starting-warning">
+					You need to select some categories before beginning the test!
+				</p>
 				<div id="test-settings" class="test-settings-wrapper">
-					<a onclick="toggleSettings(false)" class="close-settings">Close</a>
 					<h3>Configure test settings</h3>
 					<div class="toggle">
 						<p class="difficulty-text">
@@ -272,285 +279,366 @@
 				</div>
 
 				<div class="file-upload">
-					<p>
-						Enter a CSV file obtained by previously completing this test to include those words.
-					</p>
+					<p>Enter a file obtained by previously completing this test to include those words.</p>
 					<input type="file" accept=".csv" id="fileupload" />
-				</div>
-
-				<div id="start-button" class="start-button-wrapper is-inactive">
-					<button onclick="startTest()">Start</button>
 				</div>
 			</div>
 
 			<div class="right-content">
 				<div id="competitive-mode">
-					<p>There are two challenges within Competitive mode:</p>
-					<ul>
-						<li>Declension test - enter the declension for Latin nouns.</li>
-						<li>Vocabulary test - translate words from Latin to English.</li>
-					</ul>
-					<p>
-						You have <strong>two minutes</strong> to complete as many as possible, but if you get
-						even one word wrong, your turn will end! At the end, you can submit your name to be
-						included on the Leaderboard. Please select your exam board at the top before beginning
-						the test.
-					</p>
-					<div class="button-group">
-						<button
-							class="vocab-type start-declension-test-button"
-							onclick="startCompetition('declension')"
-						>
+					<div class="competition-options">
+						<div class="competition-option-button" onclick="startCompetition('declension')">
+							<img src="./assets/helmet.svg" alt="" />
 							<p>Start declension test</p>
-						</button>
-						<button
-							class="vocab-type start-vocabulary-test-button"
-							onclick="startCompetition('vocab')"
-						>
+						</div>
+						<div class="competition-option-button" onclick="startCompetition('vocab')">
+							<img src="./assets/colosseum.svg" alt="" />
 							<p>Start vocabulary test</p>
-						</button>
+						</div>
+						<div class="competition-option-button" onclick="startCompetition('conjugation')">
+							<img src="./assets/scroll.svg" alt="" />
+							<p>Start conjugation test</p>
+						</div>
 					</div>
 				</div>
 				<div id="practise-mode">
 					<a class="select-all-option select-all-option-mobile" onclick="selectAll()">Select all</a>
 					<div class="categories">
-						<div class="row-1 button-group">
-							<button class="vocab-type" id="verb 1" onclick="formAcceptableVocab('verb 1')">
-								<p>Verb 1</p>
-							</button>
-							<button class="vocab-type" id="verb 2" onclick="formAcceptableVocab('verb 2')">
-								<p>Verb 2</p>
-							</button>
-							<button class="vocab-type" id="verb 3" onclick="formAcceptableVocab('verb 3')">
-								<p>Verb 3</p>
-							</button>
-							<button class="vocab-type" id="verb 4" onclick="formAcceptableVocab('verb 4')">
-								<p>Verb 4</p>
-							</button>
+						<div class="row-wrapper">
+							<div class="row-header">
+								<p>Common verbs</p>
+								<img
+									src="./assets/dropdown.svg"
+									class="dropdown"
+									onclick="toggleRow(this)"
+									alt="Dropdown"
+								/>
+							</div>
+							<div class="row-1 button-group">
+								<button class="vocab-type" id="verb 1" onclick="formAcceptableVocab('verb 1')">
+									<p>Verb 1</p>
+								</button>
+								<button class="vocab-type" id="verb 2" onclick="formAcceptableVocab('verb 2')">
+									<p>Verb 2</p>
+								</button>
+								<button class="vocab-type" id="verb 3" onclick="formAcceptableVocab('verb 3')">
+									<p>Verb 3</p>
+								</button>
+								<button class="vocab-type" id="verb 4" onclick="formAcceptableVocab('verb 4')">
+									<p>Verb 4</p>
+								</button>
+							</div>
 						</div>
 
-						<div class="row-2 button-group">
-							<button
-								class="vocab-type"
-								id="verb 1 dep"
-								onclick="formAcceptableVocab('verb 1 dep')"
-							>
-								<p>Verb 1 - Deponents</p>
-							</button>
-							<button
-								class="vocab-type"
-								id="verb 2 dep"
-								onclick="formAcceptableVocab('verb 2 dep')"
-							>
-								<p>Verb 2 - Deponents</p>
-							</button>
-							<button
-								class="vocab-type"
-								id="verb 3 dep"
-								onclick="formAcceptableVocab('verb 3 dep')"
-							>
-								<p>Verb 3 - Deponents</p>
-							</button>
-							<button
-								class="vocab-type"
-								id="verb 4 dep"
-								onclick="formAcceptableVocab('verb 4 dep')"
-							>
-								<p>Verb 4 - Deponents</p>
-							</button>
-							<button
-								class="vocab-type"
-								id="verb irreg"
-								onclick="formAcceptableVocab('verb irreg')"
-							>
-								<p>Irregular Verbs</p>
-							</button>
+						<div class="row-wrapper">
+							<div class="row-header">
+								<p>Rare verbs</p>
+								<img
+									src="./assets/dropdown.svg"
+									class="dropdown"
+									onclick="toggleRow(this)"
+									alt="Dropdown"
+								/>
+							</div>
+							<div class="row-2 button-group">
+								<button
+									class="vocab-type"
+									id="verb 1 dep"
+									onclick="formAcceptableVocab('verb 1 dep')"
+								>
+									<p>Verb 1 - Deponents</p>
+								</button>
+								<button
+									class="vocab-type"
+									id="verb 2 dep"
+									onclick="formAcceptableVocab('verb 2 dep')"
+								>
+									<p>Verb 2 - Deponents</p>
+								</button>
+								<button
+									class="vocab-type"
+									id="verb 3 dep"
+									onclick="formAcceptableVocab('verb 3 dep')"
+								>
+									<p>Verb 3 - Deponents</p>
+								</button>
+								<button
+									class="vocab-type"
+									id="verb 4 dep"
+									onclick="formAcceptableVocab('verb 4 dep')"
+								>
+									<p>Verb 4 - Deponents</p>
+								</button>
+								<button
+									class="vocab-type"
+									id="verb irreg"
+									onclick="formAcceptableVocab('verb irreg')"
+								>
+									<p>Irregular Verbs</p>
+								</button>
+							</div>
 						</div>
 
-						<div class="row-3 button-group">
-							<button class="vocab-type" id="noun 1" onclick="formAcceptableVocab('noun 1')">
-								<p>Noun 1</p>
-							</button>
-							<button class="vocab-type" id="noun 2" onclick="formAcceptableVocab('noun 2')">
-								<p>Noun 2</p>
-							</button>
-							<button class="vocab-type" id="noun 3" onclick="formAcceptableVocab('noun 3')">
-								<p>Noun 3</p>
-							</button>
-							<button class="vocab-type" id="noun 4" onclick="formAcceptableVocab('noun 4')">
-								<p>Noun 4</p>
-							</button>
-							<button class="vocab-type" id="noun 5" onclick="formAcceptableVocab('noun 5')">
-								<p>Noun 5</p>
-							</button>
+						<div class="row-wrapper">
+							<div class="row-header">
+								<p>Common nouns</p>
+								<img
+									src="./assets/dropdown.svg"
+									class="dropdown"
+									onclick="toggleRow(this)"
+									alt="Dropdown"
+								/>
+							</div>
+							<div class="row-3 button-group">
+								<button class="vocab-type" id="noun 1" onclick="formAcceptableVocab('noun 1')">
+									<p>Noun 1</p>
+								</button>
+								<button class="vocab-type" id="noun 2" onclick="formAcceptableVocab('noun 2')">
+									<p>Noun 2</p>
+								</button>
+								<button class="vocab-type" id="noun 3" onclick="formAcceptableVocab('noun 3')">
+									<p>Noun 3</p>
+								</button>
+								<button class="vocab-type" id="noun 4" onclick="formAcceptableVocab('noun 4')">
+									<p>Noun 4</p>
+								</button>
+								<button class="vocab-type" id="noun 5" onclick="formAcceptableVocab('noun 5')">
+									<p>Noun 5</p>
+								</button>
+							</div>
 						</div>
 
-						<div class="row-4 button-group">
-							<button
-								class="vocab-type"
-								id="noun irreg"
-								onclick="formAcceptableVocab('noun irreg')"
-							>
-								<p>Irregular Nouns</p>
-							</button>
-							<button
-								class="vocab-type"
-								id="noun phrase"
-								onclick="formAcceptableVocab('noun phrase')"
-							>
-								<p>Noun Phrases</p>
-							</button>
-							<button
-								class="vocab-type"
-								id="noun & adj"
-								onclick="formAcceptableVocab('noun & adj')"
-							>
-								<p>Noun &amp; Adjectives</p>
-							</button>
+						<div class="row-wrapper">
+							<div class="row-header">
+								<p>Rare nouns</p>
+								<img
+									src="./assets/dropdown.svg"
+									class="dropdown"
+									onclick="toggleRow(this)"
+									alt="Dropdown"
+								/>
+							</div>
+							<div class="row-4 button-group">
+								<button
+									class="vocab-type"
+									id="noun irreg"
+									onclick="formAcceptableVocab('noun irreg')"
+								>
+									<p>Irregular Nouns</p>
+								</button>
+								<button
+									class="vocab-type"
+									id="noun phrase"
+									onclick="formAcceptableVocab('noun phrase')"
+								>
+									<p>Noun Phrases</p>
+								</button>
+								<button
+									class="vocab-type"
+									id="noun & adj"
+									onclick="formAcceptableVocab('noun & adj')"
+								>
+									<p>Noun &amp; Adjectives</p>
+								</button>
+							</div>
 						</div>
 
-						<div class="row-5 button-group">
-							<button class="vocab-type" id="adj" onclick="formAcceptableVocab('adj')">
-								<p>Adjectives</p>
-							</button>
-							<button class="vocab-type" id="adverb" onclick="formAcceptableVocab('adverb')">
-								<p>Adverbs</p>
-							</button>
-							<button
-								class="vocab-type"
-								id="conjunction"
-								onclick="formAcceptableVocab('conjunction')"
-							>
-								<p>Conjunctions</p>
-							</button>
-							<button class="vocab-type" id="prep" onclick="formAcceptableVocab('prep')">
-								<p>Prepositions</p>
-							</button>
-							<button class="vocab-type" id="pron" onclick="formAcceptableVocab('pron')">
-								<p>Pronouns</p>
-							</button>
+						<div class="row-wrapper">
+							<div class="row-header">
+								<p>Other</p>
+								<img
+									src="./assets/dropdown.svg"
+									class="dropdown"
+									onclick="toggleRow(this)"
+									alt="Dropdown"
+								/>
+							</div>
+							<div class="row-5 button-group">
+								<button class="vocab-type" id="adj" onclick="formAcceptableVocab('adj')">
+									<p>Adjectives</p>
+								</button>
+								<button class="vocab-type" id="adverb" onclick="formAcceptableVocab('adverb')">
+									<p>Adverbs</p>
+								</button>
+								<button
+									class="vocab-type"
+									id="conjunction"
+									onclick="formAcceptableVocab('conjunction')"
+								>
+									<p>Conjunctions</p>
+								</button>
+								<button class="vocab-type" id="prep" onclick="formAcceptableVocab('prep')">
+									<p>Prepositions</p>
+								</button>
+								<button class="vocab-type" id="pron" onclick="formAcceptableVocab('pron')">
+									<p>Pronouns</p>
+								</button>
+							</div>
 						</div>
 					</div>
 
 					<div class="stages">
-						<div class="row-1 button-group">
-							<button class="vocab-type" id="1" onclick="formAcceptableVocab(1)">
-								<p>Stage 1</p>
-							</button>
-							<button class="vocab-type" id="2" onclick="formAcceptableVocab(2)">
-								<p>Stage 2</p>
-							</button>
-							<button class="vocab-type" id="3" onclick="formAcceptableVocab(3)">
-								<p>Stage 3</p>
-							</button>
-							<button class="vocab-type" id="4" onclick="formAcceptableVocab(4)">
-								<p>Stage 4</p>
-							</button>
-							<button class="vocab-type" id="5" onclick="formAcceptableVocab(5)">
-								<p>Stage 5</p>
-							</button>
-							<button class="vocab-type" id="6" onclick="formAcceptableVocab(6)">
-								<p>Stage 6</p>
-							</button>
-							<button class="vocab-type" id="7" onclick="formAcceptableVocab(7)">
-								<p>Stage 7</p>
-							</button>
+						<div class="row-wrapper">
+							<div class="row-header">
+								<p>CLC - Book 1</p>
+								<img
+									src="./assets/dropdown.svg"
+									class="dropdown"
+									onclick="toggleRow(this)"
+									alt="Dropdown"
+								/>
+							</div>
+
+							<div class="row-1 button-group">
+								<button class="vocab-type" id="1" onclick="formAcceptableVocab(1)">
+									<p>Stage 1</p>
+								</button>
+								<button class="vocab-type" id="2" onclick="formAcceptableVocab(2)">
+									<p>Stage 2</p>
+								</button>
+								<button class="vocab-type" id="3" onclick="formAcceptableVocab(3)">
+									<p>Stage 3</p>
+								</button>
+								<button class="vocab-type" id="4" onclick="formAcceptableVocab(4)">
+									<p>Stage 4</p>
+								</button>
+								<button class="vocab-type" id="5" onclick="formAcceptableVocab(5)">
+									<p>Stage 5</p>
+								</button>
+								<button class="vocab-type" id="6" onclick="formAcceptableVocab(6)">
+									<p>Stage 6</p>
+								</button>
+								<button class="vocab-type" id="7" onclick="formAcceptableVocab(7)">
+									<p>Stage 7</p>
+								</button>
+								<button class="vocab-type" id="8" onclick="formAcceptableVocab(8)">
+									<p>Stage 8</p>
+								</button>
+								<button class="vocab-type" id="9" onclick="formAcceptableVocab(9)">
+									<p>Stage 9</p>
+								</button>
+								<button class="vocab-type" id="10" onclick="formAcceptableVocab(10)">
+									<p>Stage 10</p>
+								</button>
+								<button class="vocab-type" id="11" onclick="formAcceptableVocab(11)">
+									<p>Stage 11</p>
+								</button>
+								<button class="vocab-type" id="12" onclick="formAcceptableVocab(12)">
+									<p>Stage 12</p>
+								</button>
+							</div>
 						</div>
 
-						<div class="row-2 button-group">
-							<button class="vocab-type" id="8" onclick="formAcceptableVocab(8)">
-								<p>Stage 8</p>
-							</button>
-							<button class="vocab-type" id="9" onclick="formAcceptableVocab(9)">
-								<p>Stage 9</p>
-							</button>
-							<button class="vocab-type" id="10" onclick="formAcceptableVocab(10)">
-								<p>Stage 10</p>
-							</button>
-							<button class="vocab-type" id="11" onclick="formAcceptableVocab(11)">
-								<p>Stage 11</p>
-							</button>
-							<button class="vocab-type" id="12" onclick="formAcceptableVocab(12)">
-								<p>Stage 12</p>
-							</button>
-							<button class="vocab-type" id="13" onclick="formAcceptableVocab(13)">
-								<p>Stage 13</p>
-							</button>
-							<button class="vocab-type" id="14" onclick="formAcceptableVocab(14)">
-								<p>Stage 14</p>
-							</button>
+						<div class="row-wrapper">
+							<div class="row-header">
+								<p>CLC - Book 2</p>
+								<img
+									src="./assets/dropdown.svg"
+									class="dropdown"
+									onclick="toggleRow(this)"
+									alt="Dropdown"
+								/>
+							</div>
+							<div class="row-2 button-group">
+								<button class="vocab-type" id="13" onclick="formAcceptableVocab(13)">
+									<p>Stage 13</p>
+								</button>
+								<button class="vocab-type" id="14" onclick="formAcceptableVocab(14)">
+									<p>Stage 14</p>
+								</button>
+
+								<button class="vocab-type" id="15" onclick="formAcceptableVocab(15)">
+									<p>Stage 15</p>
+								</button>
+								<button class="vocab-type" id="16" onclick="formAcceptableVocab(16)">
+									<p>Stage 16</p>
+								</button>
+								<button class="vocab-type" id="17" onclick="formAcceptableVocab(17)">
+									<p>Stage 17</p>
+								</button>
+								<button class="vocab-type" id="18" onclick="formAcceptableVocab(18)">
+									<p>Stage 18</p>
+								</button>
+								<button class="vocab-type" id="19" onclick="formAcceptableVocab(19)">
+									<p>Stage 19</p>
+								</button>
+								<button class="vocab-type" id="20" onclick="formAcceptableVocab(20)">
+									<p>Stage 20</p>
+								</button>
+							</div>
 						</div>
 
-						<div class="row-3 button-group">
-							<button class="vocab-type" id="15" onclick="formAcceptableVocab(15)">
-								<p>Stage 15</p>
-							</button>
-							<button class="vocab-type" id="16" onclick="formAcceptableVocab(16)">
-								<p>Stage 16</p>
-							</button>
-							<button class="vocab-type" id="17" onclick="formAcceptableVocab(17)">
-								<p>Stage 17</p>
-							</button>
-							<button class="vocab-type" id="18" onclick="formAcceptableVocab(18)">
-								<p>Stage 18</p>
-							</button>
-							<button class="vocab-type" id="19" onclick="formAcceptableVocab(19)">
-								<p>Stage 19</p>
-							</button>
-							<button class="vocab-type" id="20" onclick="formAcceptableVocab(20)">
-								<p>Stage 20</p>
-							</button>
-							<button class="vocab-type" id="21" onclick="formAcceptableVocab(21)">
-								<p>Stage 21</p>
-							</button>
+						<div class="row-wrapper">
+							<div class="row-header">
+								<p>CLC - Book 3</p>
+								<img
+									src="./assets/dropdown.svg"
+									class="dropdown"
+									onclick="toggleRow(this)"
+									alt="Dropdown"
+								/>
+							</div>
+							<div class="row-3 button-group">
+								<button class="vocab-type" id="21" onclick="formAcceptableVocab(21)">
+									<p>Stage 21</p>
+								</button>
+								<button class="vocab-type" id="22" onclick="formAcceptableVocab(22)">
+									<p>Stage 22</p>
+								</button>
+								<button class="vocab-type" id="23" onclick="formAcceptableVocab(23)">
+									<p>Stage 23</p>
+								</button>
+								<button class="vocab-type" id="24" onclick="formAcceptableVocab(24)">
+									<p>Stage 24</p>
+								</button>
+								<button class="vocab-type" id="25" onclick="formAcceptableVocab(25)">
+									<p>Stage 25</p>
+								</button>
+								<button class="vocab-type" id="26" onclick="formAcceptableVocab(26)">
+									<p>Stage 26</p>
+								</button>
+								<button class="vocab-type" id="27" onclick="formAcceptableVocab(27)">
+									<p>Stage 27</p>
+								</button>
+								<button class="vocab-type" id="28" onclick="formAcceptableVocab(28)">
+									<p>Stage 28</p>
+								</button>
+							</div>
 						</div>
 
-						<div class="row-4 button-group">
-							<button class="vocab-type" id="22" onclick="formAcceptableVocab(22)">
-								<p>Stage 22</p>
-							</button>
-							<button class="vocab-type" id="23" onclick="formAcceptableVocab(23)">
-								<p>Stage 23</p>
-							</button>
-							<button class="vocab-type" id="24" onclick="formAcceptableVocab(24)">
-								<p>Stage 24</p>
-							</button>
-							<button class="vocab-type" id="25" onclick="formAcceptableVocab(25)">
-								<p>Stage 25</p>
-							</button>
-							<button class="vocab-type" id="26" onclick="formAcceptableVocab(26)">
-								<p>Stage 26</p>
-							</button>
-							<button class="vocab-type" id="27" onclick="formAcceptableVocab(27)">
-								<p>Stage 27</p>
-							</button>
-							<button class="vocab-type" id="28" onclick="formAcceptableVocab(28)">
-								<p>Stage 28</p>
-							</button>
-						</div>
-
-						<div class="row-5 button-group">
-							<button class="vocab-type" id="29" onclick="formAcceptableVocab(29)">
-								<p>Stage 29</p>
-							</button>
-							<button class="vocab-type" id="30" onclick="formAcceptableVocab(30)">
-								<p>Stage 30</p>
-							</button>
-							<button class="vocab-type" id="31" onclick="formAcceptableVocab(31)">
-								<p>Stage 31</p>
-							</button>
-							<button class="vocab-type" id="32" onclick="formAcceptableVocab(32)">
-								<p>Stage 32</p>
-							</button>
-							<button class="vocab-type" id="33" onclick="formAcceptableVocab(33)">
-								<p>Stage 33</p>
-							</button>
-							<button class="vocab-type" id="34" onclick="formAcceptableVocab(34)">
-								<p>Stage 34</p>
-							</button>
-							<button class="vocab-type" id="other" onclick="formAcceptableVocab('other')">
-								<p>Other Stages</p>
-							</button>
+						<div class="row-wrapper">
+							<div class="row-header">
+								<p>CLC - Book 4</p>
+								<img
+									src="./assets/dropdown.svg"
+									class="dropdown"
+									onclick="toggleRow(this)"
+									alt="Dropdown"
+								/>
+							</div>
+							<div class="row-4 button-group">
+								<button class="vocab-type" id="29" onclick="formAcceptableVocab(29)">
+									<p>Stage 29</p>
+								</button>
+								<button class="vocab-type" id="30" onclick="formAcceptableVocab(30)">
+									<p>Stage 30</p>
+								</button>
+								<button class="vocab-type" id="31" onclick="formAcceptableVocab(31)">
+									<p>Stage 31</p>
+								</button>
+								<button class="vocab-type" id="32" onclick="formAcceptableVocab(32)">
+									<p>Stage 32</p>
+								</button>
+								<button class="vocab-type" id="33" onclick="formAcceptableVocab(33)">
+									<p>Stage 33</p>
+								</button>
+								<button class="vocab-type" id="34" onclick="formAcceptableVocab(34)">
+									<p>Stage 34</p>
+								</button>
+								<button class="vocab-type" id="other" onclick="formAcceptableVocab('other')">
+									<p>Other Stages</p>
+								</button>
+							</div>
 						</div>
 					</div>
 					<a class="select-all-option" onclick="selectAll()">Select all</a>
@@ -570,7 +658,7 @@
 			</div>
 			<div class="gravatar">
 				<p>An open-source project by Aurorum</p>
-				<img src="https://www.gravatar.com/avatar/581e9719c44732a58a27b872f282c053.jpg?s=80" />
+				<img src="https://www.gravatar.com/avatar/581e9719c44732a58a27b872f282c053.jpg?s=60" />
 			</div>
 		</div>
 	</body>

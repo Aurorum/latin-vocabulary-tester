@@ -5,13 +5,15 @@ let competitiveTestType;
 let data = 0;
 let finalVocab = [];
 let hardDifficulty = false;
+let isTestingConjugations = false;
 let isTestingDeclensions = false;
 let isTestingParticipleParts = false;
 let mute = false;
 let selectedOption;
-var userId = localStorage.getItem( 'userID' ) || Math.floor( Math.random() * 9999999 ) + 1;
+let userId = localStorage.getItem( 'userID' ) || Math.floor( Math.random() * 9999999 ) + 1;
 let vocab = vocabGCSEOCR;
 let vocabAnswered = [];
+let vocabConjugation;
 let vocabDeclension;
 let vocabRetestCorrectAnswerCount = 0;
 let vocabToFocusOn = [];
@@ -22,7 +24,12 @@ window.onload = function () {
 		localStorage.setItem( 'userID', Math.floor( Math.random() * 9999999 ) + 1 );
 	}
 
-	changeOption( localStorage.getItem( 'defaultOption' ) || 'alevelocr' );
+	// This is an arbitary figure, but it ensures parameters can take effect without a jump on the screen.
+	setTimeout( function () {
+		document.getElementById( 'loading' ).style.display = 'none';
+	}, 1200 );
+
+	changeOption( localStorage.getItem( 'defaultOption' ) || 'alevelocr', false );
 	document.getElementById( 'vocab-answer' ).addEventListener( 'keyup', function ( event ) {
 		if ( event.keyCode === 13 ) {
 			event.preventDefault();
@@ -35,7 +42,7 @@ window.onload = function () {
 	xmlhttp.onreadystatechange = function () {
 		if ( this.readyState == 4 && this.status == 200 ) {
 			let response = this.response.split( ',' );
-			for ( let i = 1; i < 6; i++ ) {
+			for ( let i = 1; i < 4; i++ ) {
 				document.getElementById(
 					'first-declensions-leaderboard-' + i.toString()
 				).innerHTML = response[ i ].replace( /\[|\]|\"/gi, '' );
@@ -44,11 +51,20 @@ window.onload = function () {
 				].replace( /\[|\]|\"/gi, '' );
 			}
 
-			for ( let i = 8; i < 13; i++ ) {
+			for ( let i = 7; i < 10; i++ ) {
 				document.getElementById(
 					'first-vocabulary-leaderboard-' + i.toString()
 				).innerHTML = response[ i ].replace( /\[|\]|\"/gi, '' );
 				document.getElementById( 'vocabulary-leaderboard-' + i.toString() ).innerHTML = response[
+					i
+				].replace( /\[|\]|\"/gi, '' );
+			}
+
+			for ( let i = 12; i < 15; i++ ) {
+				document.getElementById(
+					'first-conjugations-leaderboard-' + i.toString()
+				).innerHTML = response[ i ].replace( /\[|\]|\"/gi, '' );
+				document.getElementById( 'conjugations-leaderboard-' + i.toString() ).innerHTML = response[
 					i
 				].replace( /\[|\]|\"/gi, '' );
 			}
@@ -75,8 +91,17 @@ window.onload = function () {
 		startCompetition( 'vocab' );
 	}
 
+	if ( new URLSearchParams( window.location.search ).get( 'conjugationtest' ) ) {
+		switchMode();
+		startCompetition( 'conjugation' );
+	}
+
 	if ( new URLSearchParams( window.location.search ).get( 'declensionpractise' ) ) {
 		startTest( true );
+	}
+
+	if ( new URLSearchParams( window.location.search ).get( 'conjugationpractise' ) ) {
+		startTest( false, true );
 	}
 
 	if ( new URLSearchParams( window.location.search ).get( 'ref' ) ) {
@@ -124,7 +149,7 @@ window.onload = function () {
 	fileInput.addEventListener( 'change', readFile );
 };
 
-function changeOption( option ) {
+function changeOption( option, playAudio = true ) {
 	document.body.classList.remove( 'is-alevelocr' );
 	document.body.classList.remove( 'is-gcseeduqas' );
 	document.body.classList.remove( 'is-gcseocr' );
@@ -144,9 +169,13 @@ function changeOption( option ) {
 	localStorage.setItem( 'defaultOption', option );
 	selectedOption = option;
 	vocab = type;
+
+	if ( ! mute && playAudio ) {
+		new Audio( './assets/audio/click.mp3' ).play();
+	}
 }
 
-function startTest( startDeclensionTest = false ) {
+function startTest( startDeclensionTest = false, startConjugationTest = false ) {
 	document.getElementById( 'curtain' ).classList.remove( 'is-not-triggered' );
 	document.getElementById( 'curtain' ).classList.add( 'is-triggered' );
 	document.body.classList.add( 'has-begun-vocab-test' );
@@ -160,7 +189,14 @@ function startTest( startDeclensionTest = false ) {
 		document.body.classList.add( 'has-begun-declension-test' );
 		document.getElementById( 'progress-indicator-slash' ).innerHTML = ' declined correctly';
 		collectData( 'Started declension test', 'started_declension_test' );
-		return buildDeclensionTest();
+		return buildDeclensionOrConjugationTest( false );
+	}
+
+	if ( startConjugationTest ) {
+		document.body.classList.add( 'has-begun-conjugation-test' );
+		document.getElementById( 'progress-indicator-slash' ).innerHTML = ' conjugated correctly';
+		collectData( 'Started conjugation test', 'started_conjugation_test' );
+		return buildDeclensionOrConjugationTest( true );
 	}
 
 	let maxWordSelect = document.getElementById( 'max-word-select' );
@@ -180,16 +216,23 @@ function startCompetition( test ) {
 	competitiveMode = true;
 	competitiveTestType = test;
 
-	document.getElementById( 'competition-challenge' ).innerHTML =
-		test === 'declension'
-			? 'decline as many nouns as possible'
-			: 'translate as many words as possible';
-	startTest( test === 'declension' );
-	collectData( 'Started competition of ' + test, 'started_competition' );
-
-	if ( test === 'vocab' ) {
-		document.getElementById( 'progress-indicator-slash' ).innerHTML = ' answered correctly';
+	let challenge;
+	switch ( test ) {
+		case 'declension':
+			challenge = 'decline as many nouns as possible';
+			break;
+		case 'conjugation':
+			challenge = 'conjugate as many verbs as possible';
+			document.getElementById( 'progress-indicator-slash' ).innerHTML = ' conjugated correctly';
+			break;
+		default:
+			challenge = 'translate as many words as possible';
+			document.getElementById( 'progress-indicator-slash' ).innerHTML = ' answered correctly';
 	}
+
+	document.getElementById( 'competition-challenge' ).innerHTML = challenge;
+	startTest( test === 'declension', test === 'conjugation' );
+	collectData( 'Started competition of ' + test, 'started_competition' );
 
 	var timeleft = 5;
 	var timer = setInterval( function () {
@@ -209,13 +252,46 @@ function endCompetitionTimer() {
 	document.getElementById( 'countdown-clock-circle' ).style.strokeDashoffset = 0;
 	document.getElementById( 'countdown-clock-time-left' ).innerHTML = 0;
 	document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'time-ended' );
-	document.getElementById( 'competition-warning' ).innerHTML =
-		'Congratulations! Enter your name below to be included on the Leaderboard - your name will only appear if you are in the top five.';
 	document.getElementById( 'competition-countdown' ).innerHTML =
 		'Score: ' +
 		document.getElementById( 'progress-indicator-changing' ).textContent +
 		' words completed';
 	document.getElementById( 'vocab-tester-wrapper' ).classList.remove( 'time-started' );
+
+	let leaderboardId;
+
+	if ( isTestingConjugations ) {
+		leaderboardId = document.getElementById( 'conjugations-leaderboard-14' ).textContent;
+	} else if ( isTestingDeclensions ) {
+		leaderboardId = document.getElementById( 'declensions-leaderboard-3' ).textContent;
+	} else {
+		leaderboardId = document.getElementById( 'vocabulary-leaderboard-9' ).textContent;
+	}
+
+	if ( leaderboardId === 'Empty' || leaderboardId === 'Loading' ) {
+		document.getElementById( 'competition-warning' ).innerHTML =
+			'Congratulations! Enter your name below to be included on the Leaderboard - your name will only appear if you are in the top three.';
+		return;
+	}
+
+	var neededScore = leaderboardId.substring(
+		leaderboardId.lastIndexOf( '-' ) + 1,
+		leaderboardId.lastIndexOf( 'words' )
+	);
+
+	if (
+		parseInt( neededScore ) >=
+		parseInt( document.getElementById( 'progress-indicator-changing' ).textContent )
+	) {
+		document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'leaderboard-ineligible' );
+		document.getElementById( 'competition-warning' ).innerHTML =
+			'Unfortunately, you need a score of <strong>' +
+			( parseInt( neededScore ) + 1 ) +
+			'</strong> to be added to the Leaderboard - good luck next time! You can <a onclick="resetTest()">try again</a>.';
+	} else {
+		document.getElementById( 'competition-warning' ).innerHTML =
+			'Congratulations! Enter your name below to be included on the Leaderboard.';
+	}
 }
 
 function startCompetitionTimer() {
@@ -291,19 +367,121 @@ function leaderboardSubmitName() {
 	xhttp.send();
 }
 
-function buildDeclensionTest() {
-	allVocab = vocabToTest.concat( findAllDeclensionVocab() );
-	finalVocab = vocabToTest.concat( findDeclensionVocab() );
+function buildDeclensionOrConjugationTest( isConjugationTest = false ) {
+	if ( isConjugationTest ) {
+		allVocab = vocabToTest.concat( findAllConjugationVocab() );
+		finalVocab = vocabToTest.concat( findConjugationVocab() );
+	} else {
+		allVocab = vocabToTest.concat( findAllVocab() );
+		finalVocab = vocabToTest.concat( findDeclensionVocab() );
+	}
+
 	isTestingParticipleParts = true;
-	isTestingDeclensions = true;
 	hardDifficulty = false;
 
 	let randomNumber = Math.floor( Math.random() * finalVocab.length );
 	let vocabwithNumber = finalVocab[ randomNumber ];
-	handleNounDeclensions();
+	if ( isConjugationTest ) {
+		isTestingConjugations = true;
+		handleVerbConjugations();
+	} else {
+		isTestingDeclensions = true;
+		handleNounDeclensions();
+	}
 	finalVocab[ randomNumber ].asked = true;
 
 	document.getElementById( 'vocab-question' ).innerHTML = vocabwithNumber.word;
+}
+
+function handleVerbConjugations() {
+	let verbForm;
+	// Remove subjunctives from GCSE tests.
+	let conjugationNumber = selectedOption === 'alevelocr' ? 20 : 11;
+
+	switch ( Math.floor( Math.random() * conjugationNumber ) ) {
+		case 0:
+			verbForm = 'present, active, indicative';
+			vocabConjugation = 'pracind';
+			break;
+		case 1:
+			verbForm = 'imperfect, active, indicative';
+			vocabConjugation = 'impacind';
+			break;
+		case 2:
+			verbForm = 'future, active, indicative';
+			vocabConjugation = 'ftacind';
+			break;
+		case 3:
+			verbForm = 'perfect, active, indicative';
+			vocabConjugation = 'pfacind';
+			break;
+		case 4:
+			verbForm = 'pluperfect, active, indicative';
+			vocabConjugation = 'placind';
+			break;
+		case 5:
+			verbForm = 'present singular imperative';
+			vocabConjugation = 'imp';
+			break;
+		case 6:
+			verbForm = 'present active participle';
+			vocabConjugation = 'pap';
+			break;
+		case 7:
+			verbForm = 'present, passive, indicative';
+			vocabConjugation = 'prpaind';
+			break;
+		case 8:
+			verbForm = 'imperfect, passive, indicative';
+			vocabConjugation = 'imppaind';
+			break;
+		case 9:
+			verbForm = 'perfect, passive, indicative';
+			vocabConjugation = 'pfpaind';
+			break;
+		case 10:
+			verbForm = 'pluperfect, passive, indicative';
+			vocabConjugation = 'plpaind';
+			break;
+		case 11:
+			verbForm = 'present, active, subjunctive';
+			vocabConjugation = 'pracsuj';
+			break;
+		case 12:
+			verbForm = 'imperfect, active, subjunctive';
+			vocabConjugation = 'impacsuj';
+			break;
+		case 13:
+			verbForm = 'pluperfect, active, subjunctive';
+			vocabConjugation = 'placsuj';
+			break;
+		case 14:
+			verbForm = 'future, active, subjunctive';
+			vocabConjugation = 'ftacsuj';
+			break;
+		case 15:
+			verbForm = 'perfect, active, subjunctive';
+			vocabConjugation = 'pfacsuj';
+			break;
+		case 16:
+			verbForm = 'present, passive, subjunctive';
+			vocabConjugation = 'prpasuj';
+			break;
+		case 17:
+			verbForm = 'imperfect, passive, subjunctive';
+			vocabConjugation = 'imppasuj';
+			break;
+		case 18:
+			verbForm = 'perfect, passive, subjunctive';
+			vocabConjugation = 'pfpasuj';
+			break;
+		case 19:
+			verbForm = 'pluperfect, passive, subjunctive';
+			vocabConjugation = 'plpasuj';
+			break;
+	}
+	document.getElementById( 'vocab-submit-word-form' ).innerHTML = verbForm + ' form';
+	return vocabConjugation;
 }
 
 function handleNounDeclensions() {
@@ -497,16 +675,22 @@ function selectAll() {
 
 	if ( selectedOption === 'gcseeduqas' ) {
 		for ( let i = 1; i < 35; i++ ) {
-			allOptions.push( i );
+			if ( ! acceptableVocab.includes( i ) ) {
+				allOptions.push( i );
+			}
 		}
-		allOptions.push( 'other' );
+		if ( ! acceptableVocab.includes( 'other' ) ) {
+			allOptions.push( 'other' );
+		}
 	}
 
 	var isPreviouslyMuted = mute;
 	mute = true;
 
 	allOptions.forEach( ( option ) => {
-		formAcceptableVocab( option );
+		if ( ! acceptableVocab.includes( option ) ) {
+			formAcceptableVocab( option );
+		}
 	} );
 
 	if ( ! isPreviouslyMuted ) {
@@ -518,14 +702,17 @@ function selectAll() {
 	collectData( 'Selected all options', 'selected_all_options' );
 }
 
-function checkDeclensionAnswer( shouldReveal = false ) {
+function checkDeclensionOrConjugationAnswer( shouldReveal = false ) {
 	var question = document.getElementById( 'vocab-submit-word-form' ).textContent;
 	var answerInput = document.getElementById( 'vocab-answer' );
 	var enteredAnswer = answerInput.value.toLowerCase().trim();
 	var progressIndicator = document.getElementById( 'progress-indicator-changing' );
 	var actualAnswerArray = findWord( document.getElementById( 'vocab-question' ).textContent )[ 0 ];
-	var actualAnswer = actualAnswerArray[ vocabDeclension ];
+	var actualAnswer = isTestingConjugations
+		? actualAnswerArray[ vocabConjugation ]
+		: actualAnswerArray[ vocabDeclension ];
 	var isAnswerCorrect = enteredAnswer === actualAnswer;
+	var testType = isTestingConjugations ? 'conjugation' : 'declension';
 
 	if ( ! shouldReveal && enteredAnswer === '' ) {
 		return;
@@ -543,10 +730,15 @@ function checkDeclensionAnswer( shouldReveal = false ) {
 				new Audio( './assets/audio/correct.mp3' ).play();
 			}
 			collectData(
-				'Answered declension question correctly by inputting ' + enteredAnswer + ' for ' + question,
-				'correct_declension_answer'
+				'Answered ' +
+					testType +
+					' question correctly by inputting ' +
+					enteredAnswer +
+					' for ' +
+					question,
+				'correct_' + testType + '_answer'
 			);
-			return buildDeclensionTest();
+			return buildDeclensionOrConjugationTest( isTestingConjugations );
 		}
 
 		if ( ! mute ) {
@@ -554,13 +746,15 @@ function checkDeclensionAnswer( shouldReveal = false ) {
 		}
 
 		collectData(
-			'Answered declension question incorrectly by inputting ' +
+			'Answered ' +
+				testType +
+				' question incorrectly by inputting ' +
 				enteredAnswer +
 				' when expecting ' +
 				actualAnswer +
 				' for ' +
 				question,
-			'incorrect_declension_answer'
+			'incorrect_' + testType + '_answer'
 		);
 
 		if ( competitiveMode ) {
@@ -580,8 +774,8 @@ function checkDeclensionAnswer( shouldReveal = false ) {
 }
 
 function checkAnswer( shouldReveal = false ) {
-	if ( isTestingDeclensions ) {
-		return checkDeclensionAnswer( shouldReveal );
+	if ( isTestingDeclensions || isTestingConjugations ) {
+		return checkDeclensionOrConjugationAnswer( shouldReveal );
 	}
 
 	var question = document.getElementById( 'vocab-question' ).textContent;
@@ -683,6 +877,14 @@ function checkAnswer( shouldReveal = false ) {
 			);
 
 			if ( competitiveMode ) {
+				document.getElementById( 'competition-correction' ).innerHTML =
+					'You entered <strong>' +
+					answer +
+					'</strong> as the translation for <strong>' +
+					questionArray.word +
+					'</strong> when the accepted answers were: <strong>' +
+					questionArray.translation +
+					'</strong>.';
 				return endCompetitionTimer();
 			}
 
@@ -822,6 +1024,18 @@ function findVocab() {
 	} );
 }
 
+function findAllConjugationVocab() {
+	return vocab.filter( function ( vocab ) {
+		return typeof vocab.placsuj === 'string';
+	} );
+}
+
+function findConjugationVocab() {
+	return vocab.filter( function ( vocab ) {
+		return typeof vocab.placsuj === 'string' && ! vocab.asked;
+	} );
+}
+
 function findAllDeclensionVocab() {
 	return vocab.filter( function ( vocab ) {
 		return typeof vocab.noms === 'string';
@@ -911,15 +1125,6 @@ function toggleFooter( show ) {
 	collectData( 'Footer toggled', 'footer_toggled' );
 }
 
-function toggleSettings( show ) {
-	if ( ! show ) {
-		document.body.classList.add( 'hide-settings' );
-	} else {
-		document.body.classList.remove( 'hide-settings' );
-	}
-	collectData( 'Settings toggled', 'settings_toggled' );
-}
-
 function changeDifficulty() {
 	var hardCheckbox = document.getElementById( 'hardCheckbox' );
 	var extremeCheckbox = document.getElementById( 'extremeCheckbox' );
@@ -942,4 +1147,10 @@ function toggleLimit() {
 	} else {
 		document.getElementById( 'maxWordSelect' ).style.display = 'flex';
 	}
+}
+
+function toggleRow( e ) {
+	! e.parentNode.parentNode.classList.contains( 'is-collapsed' )
+		? e.parentNode.parentNode.classList.add( 'is-collapsed' )
+		: e.parentNode.parentNode.classList.remove( 'is-collapsed' );
 }

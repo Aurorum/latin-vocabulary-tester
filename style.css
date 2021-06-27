@@ -939,6 +939,10 @@ a:hover {
 	font-size: 14px;
 }
 
+.loading-screen .progress-bar {
+	display: block;
+}
+
 .toggle {
 	display: flex;
 	margin: auto;

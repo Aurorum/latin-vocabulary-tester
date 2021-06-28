@@ -632,6 +632,7 @@ a:hover {
 
 .practise-prompt {
 	margin: 0;
+	margin-top: 14px;
 	margin-left: 32px;
 	font-size: 18px;
 }
@@ -739,6 +740,11 @@ a:hover {
 
 .is-competitive-mode .main-content {
 	margin: 20px 52px;
+}
+
+.is-competitive-mode .main-content {
+	align-items: flex-start;
+	margin-bottom: 80px;
 }
 
 .is-competitive-mode.has-begun-vocab-test .left-content {
@@ -853,6 +859,7 @@ a:hover {
 .competition-options {
 	display: flex;
 	justify-content: center;
+	flex-wrap: wrap;
 }
 
 .competition-option-button {
@@ -862,6 +869,7 @@ a:hover {
 	border-radius: 64px;
 	cursor: pointer;
 	box-shadow: 2px 3px #f5eeee;
+	margin-bottom: 24px;
 }
 
 .competition-option-button:hover {
@@ -869,6 +877,7 @@ a:hover {
 }
 
 .competition-option-button img {
+	display: flex;
 	height: 180px;
 	margin: auto;
 }
@@ -1042,6 +1051,18 @@ input:checked + .slider:before {
 	}
 }
 
+@media only screen and ( max-width: 1024px ) {
+	.competition-option-button {
+		border-radius: 6px;
+		margin-left: 12px;
+		padding: 14px 24px;
+	}
+
+	.competition-option-button img {
+		max-width: 50%;
+	}
+}
+
 @media only screen and ( max-width: 600px ) {
 	#vocab-selector .left-content {
 		width: auto;
@@ -1092,9 +1113,22 @@ input:checked + .slider:before {
 		flex-wrap: wrap;
 	}
 
+	.competition-option-button {
+		margin-left: 0;
+	}
+
+	.competition-option-button img {
+		height: 50px;
+	}
+
 	.has-begun-vocab-test #vocab-tester-wrapper,
 	.vocab-submit-buttons {
 		flex-direction: column-reverse;
+	}
+
+	.is-competitive-mode .main-content {
+		align-items: stretch;
+		margin-bottom: 120px;
 	}
 
 	#vocab-tester-wrapper {

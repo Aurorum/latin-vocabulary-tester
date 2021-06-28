@@ -248,6 +248,44 @@ function startCompetition( test ) {
 }
 
 function endCompetitionTimer() {
+	let leaderboardId;
+	let endingMessage;
+	let answerArray = findWord( document.getElementById( 'vocab-question' ).textContent )[ 0 ];
+
+	if ( isTestingConjugations ) {
+		leaderboardId = document.getElementById( 'conjugations-leaderboard-14' ).textContent;
+		endingMessage =
+			"Time's up! The <strong>" +
+			document.getElementById( 'vocab-submit-word-form' ).textContent +
+			'</strong> of <strong>' +
+			answerArray.word +
+			'</strong> was <strong>' +
+			answerArray[ vocabConjugation ] +
+			'</strong>.';
+	} else if ( isTestingDeclensions ) {
+		leaderboardId = document.getElementById( 'declensions-leaderboard-3' ).textContent;
+		endingMessage =
+			"Time's up! The <strong>" +
+			document.getElementById( 'vocab-submit-word-form' ).textContent +
+			'</strong> of <strong>' +
+			answerArray.word +
+			'</strong> was <strong>' +
+			answerArray[ vocabDeclension ] +
+			'</strong>.';
+	} else {
+		leaderboardId = document.getElementById( 'vocabulary-leaderboard-9' ).textContent;
+		endingMessage =
+			"Time's up! The acceptable meanings for <strong>" +
+			answerArray.word +
+			'</strong> were: <strong>' +
+			answerArray.translation +
+			'</strong>.';
+	}
+
+	if ( ! document.getElementById( 'competition-correction' ).textContent.length ) {
+		document.getElementById( 'competition-correction' ).innerHTML = endingMessage;
+	}
+
 	collectData( 'Competition ended', 'ended_competition' );
 	document.getElementById( 'countdown-clock-circle' ).style.strokeDashoffset = 0;
 	document.getElementById( 'countdown-clock-time-left' ).innerHTML = 0;
@@ -257,16 +295,6 @@ function endCompetitionTimer() {
 		document.getElementById( 'progress-indicator-changing' ).textContent +
 		' words completed';
 	document.getElementById( 'vocab-tester-wrapper' ).classList.remove( 'time-started' );
-
-	let leaderboardId;
-
-	if ( isTestingConjugations ) {
-		leaderboardId = document.getElementById( 'conjugations-leaderboard-14' ).textContent;
-	} else if ( isTestingDeclensions ) {
-		leaderboardId = document.getElementById( 'declensions-leaderboard-3' ).textContent;
-	} else {
-		leaderboardId = document.getElementById( 'vocabulary-leaderboard-9' ).textContent;
-	}
 
 	if ( leaderboardId === 'Empty' || leaderboardId === 'Loading' ) {
 		document.getElementById( 'competition-warning' ).innerHTML =
@@ -395,76 +423,80 @@ function buildDeclensionOrConjugationTest( isConjugationTest = false ) {
 
 function handleVerbConjugations() {
 	let verbForm;
+	let firstPersonWarning = true;
+
 	// Remove subjunctives from GCSE tests.
 	let conjugationNumber = selectedOption === 'alevelocr' ? 20 : 11;
 
 	switch ( Math.floor( Math.random() * conjugationNumber ) ) {
 		case 0:
-			verbForm = 'present, active, indicative';
+			verbForm = 'present active indicative';
 			vocabConjugation = 'pracind';
 			break;
 		case 1:
-			verbForm = 'imperfect, active, indicative';
+			verbForm = 'imperfect active indicative';
 			vocabConjugation = 'impacind';
 			break;
 		case 2:
-			verbForm = 'future, active, indicative';
+			verbForm = 'future active indicative';
 			vocabConjugation = 'ftacind';
 			break;
 		case 3:
-			verbForm = 'perfect, active, indicative';
+			verbForm = 'perfect active indicative';
 			vocabConjugation = 'pfacind';
 			break;
 		case 4:
-			verbForm = 'pluperfect, active, indicative';
+			verbForm = 'pluperfect active indicative';
 			vocabConjugation = 'placind';
 			break;
 		case 5:
 			verbForm = 'present singular imperative';
 			vocabConjugation = 'imp';
+			firstPersonWarning = false;
 			break;
 		case 6:
 			verbForm = 'present active participle';
 			vocabConjugation = 'pap';
+			firstPersonWarning = false;
 			break;
 		case 7:
-			verbForm = 'present, passive, indicative';
+			verbForm = 'present passive indicative';
 			vocabConjugation = 'prpaind';
 			break;
 		case 8:
-			verbForm = 'imperfect, passive, indicative';
+			verbForm = 'imperfect passive indicative';
 			vocabConjugation = 'imppaind';
 			break;
 		case 9:
-			verbForm = 'perfect, passive, indicative';
+			verbForm = 'perfect passive indicative';
 			vocabConjugation = 'pfpaind';
 			break;
 		case 10:
-			verbForm = 'pluperfect, passive, indicative';
+			verbForm = 'pluperfect passive indicative';
 			vocabConjugation = 'plpaind';
 			break;
 		case 11:
-			verbForm = 'present, active, subjunctive';
+			verbForm = 'present active subjunctive';
 			vocabConjugation = 'pracsuj';
 			break;
 		case 12:
-			verbForm = 'imperfect, active, subjunctive';
+			verbForm = 'imperfect active subjunctive';
 			vocabConjugation = 'impacsuj';
 			break;
 		case 13:
-			verbForm = 'pluperfect, active, subjunctive';
+			verbForm = 'pluperfect active subjunctive';
 			vocabConjugation = 'placsuj';
 			break;
 		case 14:
-			verbForm = 'future, active, subjunctive';
-			vocabConjugation = 'ftacsuj';
+			verbForm = 'future passive indicative';
+			vocabConjugation = 'ftpaind';
 			break;
 		case 15:
-			verbForm = 'perfect, active, subjunctive';
+			verbForm = 'perfect active subjunctive';
 			vocabConjugation = 'pfacsuj';
 			break;
 		case 16:
-			verbForm = 'present, passive, subjunctive';
+			verbForm = 'present passive subjunctive';
 			vocabConjugation = 'prpasuj';
 			break;
 		case 17:
@@ -480,7 +512,16 @@ function handleVerbConjugations() {
 			vocabConjugation = 'plpasuj';
 			break;
 	}
+
 	document.getElementById( 'vocab-submit-word-form' ).innerHTML = verbForm + ' form';
+
+	if ( firstPersonWarning ) {
+		document.getElementById( 'vocab-submit-first-person-warning' ).innerHTML =
+			' first-person singular ';
+	} else {
+		document.getElementById( 'vocab-submit-first-person-warning' ).innerHTML = '';
+	}
+
 	return vocabConjugation;
 }
 
@@ -640,6 +681,9 @@ function buildTest() {
 
 function resetTest() {
 	collectData( 'Reset test', 'reset_test' );
+	if ( competitiveMode ) {
+		document.location.href = '/?competitive=1';
+	}
 	location.reload();
 }
 

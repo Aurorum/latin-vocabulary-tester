@@ -771,6 +771,11 @@ a:hover {
 	margin: auto;
 }
 
+.has-begun-conjugation-test .vocab-submit-answer-wrapper,
+.has-begun-declension-test .vocab-submit-answer-wrapper {
+	margin-top: 32px;
+}
+
 .valid-name-warning {
 	display: none;
 	color: #ffe7e8;

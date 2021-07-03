@@ -351,7 +351,8 @@ li {
 	margin-left: 12px;
 }
 
-.starting-warning {
+.starting-warning,
+.start-declensions-warning {
 	display: none;
 	color: #ffe7e8;
 	text-align: center;
@@ -756,19 +757,39 @@ a:hover {
 	display: block;
 }
 
-.has-begun-declension-test:not( .is-competitive-mode ) .left-content,
+.is-competitive-mode .options-menu a:nth-of-type( 1 ),
+.is-competitive-mode .options-menu a:nth-of-type( 2 ),
+.has-begun-declension-test:not( .is-competitive-mode ) .left-content .incorrect-words,
 .has-begun-conjugation-test:not( .is-competitive-mode ) .left-content,
 .has-begun-declension-test .times-wrong,
 .has-begun-conjugation-test .times-wrong,
 .has-begun-declension-test .progress-bar,
-.has-begun-conjugation-test .progress-bar {
+.has-begun-conjugation-test .progress-bar,
+.select-declensions-wrapper {
 	display: none;
 }
 
-.has-begun-declension-test:not( .is-competitive-mode ) #vocab-tester-wrapper .right-content,
 .has-begun-conjugation-test:not( .is-competitive-mode ) #vocab-tester-wrapper .right-content {
 	width: 75%;
 	margin: auto;
+}
+
+.has-begun-declension-test:not( .is-competitive-mode ) .left-content .select-declensions-wrapper {
+	display: block;
+}
+
+.select-declensions {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+.select-declensions-wrapper h3 {
+	font-size: 16px;
+}
+
+.select-declensions .toggle input {
+	margin-left: 8px;
 }
 
 .has-begun-conjugation-test .vocab-submit-answer-wrapper,

@@ -99,6 +99,118 @@
 					</ul>
 				</div>
 
+				<div class="select-declensions-wrapper">
+					<h3>Select declensions and cases to practise</h3>
+					<div class="select-declensions">
+						<div class="noun-types">
+							<div class="toggle">
+								<p>First declension</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleNounSelection(this)"
+									id="declensions-noun-1"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Second declension</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleNounSelection(this)"
+									id="declensions-noun-2"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Third declension</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleNounSelection(this)"
+									id="declensions-noun-3"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Fourth declension</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleNounSelection(this)"
+									id="declensions-noun-4"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Fifth declension</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleNounSelection(this)"
+									id="declensions-noun-5"
+								/>
+							</div>
+						</div>
+						<div class="case-types">
+							<div class="toggle">
+								<p>Nominative</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleCaseSelection(this)"
+									id="cases-nominative"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Vocative</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleCaseSelection(this)"
+									id="cases-vocative"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Accusative</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleCaseSelection(this)"
+									id="cases-accusative"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Genitive</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleCaseSelection(this)"
+									id="cases-genitive"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Dative</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleCaseSelection(this)"
+									id="cases-dative"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Ablative</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleCaseSelection(this)"
+									id="cases-ablative"
+								/>
+							</div>
+						</div>
+					</div>
+					<p id="declensions-warning" class="start-declensions-warning">
+						Error: you are required to select at least one declension and case.
+					</p>
+				</div>
+
 				<div class="countdown-clock-circle">
 					<h2 id="countdown-clock-time-left">120</h2>
 					<svg width="160" height="160" xmlns="https://www.w3.org/2000/svg">

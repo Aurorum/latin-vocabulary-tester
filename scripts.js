@@ -1,3 +1,4 @@
+let acceptableCases = [];
 let acceptableVocab = [];
 let allVocab = [];
 let competitiveMode = false;
@@ -24,7 +25,7 @@ window.onload = function () {
 		localStorage.setItem( 'userID', Math.floor( Math.random() * 9999999 ) + 1 );
 	}
 
-	// This is an arbitary figure, but it ensures parameters can take effect without a jump on the screen.
+	// This is an arbitrary figure, but it ensures parameters can take effect without a jump on the screen.
 	setTimeout( function () {
 		document.getElementById( 'loading' ).style.display = 'none';
 	}, 1200 );
@@ -120,6 +121,10 @@ window.onload = function () {
 		muteAudio();
 	}
 
+	for ( let i = 0; i < 12; i++ ) {
+		acceptableCases.push( i );
+	}
+
 	for ( let i = 1; i < 301; i++ ) {
 		var option = document.createElement( 'option' );
 		option.text = i;
@@ -183,7 +188,10 @@ function startTest( startDeclensionTest = false, startConjugationTest = false ) 
 
 	document.getElementById( 'option' ).innerHTML = '<a onclick="resetTest()">Reset test</a>';
 
-	collectData( 'Started test of ' + selectedOption, 'started_test' );
+	collectData(
+		'Started test of ' + selectedOption + ' with competition mode set to ' + competitiveMode,
+		'started_test'
+	);
 
 	if ( startDeclensionTest ) {
 		document.body.classList.add( 'has-begun-declension-test' );
@@ -525,9 +533,68 @@ function handleVerbConjugations() {
 	return vocabConjugation;
 }
 
+function handleNounSelection( e ) {
+	if ( ! document.querySelectorAll( '.noun-types input[type="checkbox"]:checked' ).length ) {
+		e.checked = true;
+		return ( document.getElementById( 'declensions-warning' ).style.display = 'block' );
+	}
+
+	collectData(
+		'Set declension selection ' + e.id + ' to be ' + e.checked,
+		'set_declension_settings'
+	);
+
+	document.getElementById( 'declensions-warning' ).style.display = 'none';
+	buildDeclensionOrConjugationTest( false );
+}
+
+function handleCaseSelection( e ) {
+	if ( ! document.querySelectorAll( '.case-types input[type="checkbox"]:checked' ).length ) {
+		e.checked = true;
+		return ( document.getElementById( 'declensions-warning' ).style.display = 'block' );
+	}
+
+	let caseNumber;
+	switch ( e.id ) {
+		case 'cases-nominative':
+			caseNumber = [ 0, 1 ];
+			break;
+		case 'cases-vocative':
+			caseNumber = [ 2, 3 ];
+			break;
+		case 'cases-accusative':
+			caseNumber = [ 4, 5 ];
+			break;
+		case 'cases-genitive':
+			caseNumber = [ 6, 7 ];
+			break;
+		case 'cases-dative':
+			caseNumber = [ 8, 9 ];
+			break;
+		case 'cases-ablative':
+			caseNumber = [ 10, 11 ];
+			break;
+	}
+
+	caseNumber.forEach( ( number ) => {
+		e.checked
+			? acceptableCases.push( number )
+			: acceptableCases.splice( acceptableCases.indexOf( number ), 1 );
+	} );
+
+	collectData( 'Set case selection ' + e.id + ' to be ' + e.checked, 'set_case_settings' );
+
+	document.getElementById( 'declensions-warning' ).style.display = 'none';
+	buildDeclensionOrConjugationTest( false );
+}
+
 function handleNounDeclensions() {
 	let wordForm;
-	switch ( Math.floor( Math.random() * 12 ) ) {
+	let randomCasesInteger = parseInt(
+		acceptableCases[ Math.floor( Math.random() * acceptableCases.length ) ]
+	);
+
+	switch ( competitiveMode ? Math.floor( Math.random() * 12 ) : randomCasesInteger ) {
 		case 0:
 			wordForm = 'nominative singular';
 			vocabDeclension = 'noms';
@@ -1080,15 +1147,33 @@ function findConjugationVocab() {
 	} );
 }
 
-function findAllDeclensionVocab() {
-	return vocab.filter( function ( vocab ) {
-		return typeof vocab.noms === 'string';
-	} );
-}
-
 function findDeclensionVocab() {
 	return vocab.filter( function ( vocab ) {
-		return typeof vocab.noms === 'string' && ! vocab.asked;
+		if ( competitiveMode ) {
+			return typeof vocab.noms === 'string' && ! vocab.asked;
+		}
+
+		// This isn't pretty, but Eduqas doesn't split words into categories, so it must be done manually.
+		return (
+			typeof vocab.noms === 'string' &&
+			( ( document.getElementById( 'declensions-noun-1' ).checked &&
+				vocab.noms === vocab.abls &&
+				vocab.noms !== vocab.accs ) ||
+				( document.getElementById( 'declensions-noun-2' ).checked &&
+					vocab.dats === vocab.abls &&
+					! vocab.ablp.endsWith( 'bus' ) ) ||
+				( document.getElementById( 'declensions-noun-3' ).checked &&
+					vocab.nomp === vocab.accp &&
+					vocab.abls.endsWith( 'e' ) &&
+					vocab.dats !== vocab.gens ) ||
+				( document.getElementById( 'declensions-noun-4' ).checked &&
+					vocab.nomp === vocab.accp &&
+					vocab.abls.endsWith( 'u' ) ) ||
+				( document.getElementById( 'declensions-noun-5' ).checked &&
+					vocab.nomp === vocab.accp &&
+					vocab.dats === vocab.gens &&
+					vocab.noms !== vocab.accs ) )
+		);
 	} );
 }
 

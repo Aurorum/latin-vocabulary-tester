@@ -82,6 +82,11 @@ window.onload = function () {
 		switchMode();
 	}
 
+	if ( sessionStorage.getItem( 'reset-mode' ) === 'competitive' ) {
+		switchMode();
+		sessionStorage.removeItem( 'reset-mode' );
+	}
+
 	if ( new URLSearchParams( window.location.search ).get( 'declensiontest' ) ) {
 		switchMode();
 		startCompetition( 'declension' );
@@ -346,6 +351,12 @@ function startCompetitionTimer() {
 				new Audio( './assets/audio/complete.mp3' ).play();
 			}
 		} else {
+			if ( timeleft < 120 / 4 ) {
+				document.getElementById( 'countdown-clock-circle' ).style.stroke = '#eb0001';
+			} else if ( timeleft < 120 / 2 ) {
+				document.getElementById( 'countdown-clock-circle' ).style.stroke = '#f67c00';
+			}
+
 			document.getElementById( 'countdown-clock-circle' ).style.strokeDashoffset =
 				( timeleft / 120 ) * 440;
 			document.getElementById( 'countdown-clock-time-left' ).innerHTML = timeleft;
@@ -749,7 +760,7 @@ function buildTest() {
 function resetTest() {
 	collectData( 'Reset test', 'reset_test' );
 	if ( competitiveMode ) {
-		document.location.href = '/?competitive=1';
+		sessionStorage.setItem( 'reset-mode', 'competitive' );
 	}
 	location.reload();
 }

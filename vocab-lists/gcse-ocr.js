@@ -1060,7 +1060,7 @@ var vocabGCSEOCR = [
 	{
 		word: 'cum',
 		category: 'conjunction',
-		translation: 'when, since',
+		translation: 'when, since, with',
 		asked: false,
 	},
 	{

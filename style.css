@@ -646,15 +646,21 @@ a:hover {
 .leaderboard-submit-name {
 	display: flex;
 	justify-content: center;
+	flex-wrap: wrap;
 }
 
 .leaderboard-ineligible .leaderboard-submit-name {
 	display: none;
 }
 
+.leaderboard-submit-name input {
+	margin-bottom: 8px;
+	margin-left: 12px;
+	max-width: 100%;
+}
+
 .leaderboard-button {
 	margin: 0;
-	margin-left: 12px;
 }
 
 #competition-warning a {
@@ -796,6 +802,10 @@ a:hover {
 .has-begun-conjugation-test .vocab-submit-answer-wrapper,
 .has-begun-declension-test .vocab-submit-answer-wrapper {
 	margin-top: 32px;
+}
+
+.vocab-submit-answer-wrapper input {
+	max-width: 100%;
 }
 
 .valid-name-warning {
@@ -1104,6 +1114,7 @@ input:checked + .slider:before {
 
 	.practise-prompt {
 		margin-top: 8px;
+		margin-left: 0;
 	}
 
 	.select-all-option:nth-of-type( 2 ) {
@@ -1159,6 +1170,8 @@ input:checked + .slider:before {
 	}
 
 	#vocab-tester-wrapper {
+		margin-right: 0;
+		margin-left: 0;
 		flex-wrap: wrap;
 	}
 

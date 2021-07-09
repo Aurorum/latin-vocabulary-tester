@@ -4437,13 +4437,13 @@ var vocabGCSEOCR = [
 	{
 		word: 'quam + superlative adverb',
 		category: 'conjunction',
-		translation: 'as Ã¢â‚¬Â¦ as possible',
+		translation: 'as...as possible, as possible',
 		asked: false,
 	},
 	{
 		word: 'quam',
 		category: 'adverb',
-		translation: 'than, how Ã¢â‚¬Â¦ ? how Ã¢â‚¬Â¦ !',
+		translation: 'than, how, how?',
 		asked: false,
 	},
 	{
@@ -5643,7 +5643,7 @@ var vocabGCSEOCR = [
 	{
 		word: 'ubi',
 		category: 'adverb',
-		translation: 'where? where, when',
+		translation: 'where?, where, when',
 		asked: false,
 	},
 	{

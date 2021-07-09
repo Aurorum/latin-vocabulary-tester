@@ -8160,7 +8160,7 @@ var vocabALevelOCR = [
 	{
 		word: 'quantus?, quanta, quantum',
 		category: 'adj',
-		translation: 'how big? how much?',
+		translation: 'how big?, how much?',
 		asked: false,
 	},
 	{
@@ -8232,7 +8232,7 @@ var vocabALevelOCR = [
 	{
 		word: 'quis?, quid',
 		category: 'pron',
-		translation: 'who? what? any',
+		translation: 'who?, what?, any',
 		asked: false,
 	},
 	{
@@ -8280,7 +8280,7 @@ var vocabALevelOCR = [
 	{
 		word: 'quomodo?',
 		category: 'adverb',
-		translation: 'how? in what way?',
+		translation: 'how?, in what way?',
 		asked: false,
 	},
 	{
@@ -8304,7 +8304,7 @@ var vocabALevelOCR = [
 	{
 		word: 'quotiens?',
 		category: 'adverb',
-		translation: 'how often? as often as',
+		translation: 'how often?, as often as',
 		asked: false,
 	},
 	{
@@ -10158,7 +10158,7 @@ var vocabALevelOCR = [
 	{
 		word: 'ubi',
 		category: 'adverb',
-		translation: 'where? where, when',
+		translation: 'where?, where, when',
 		asked: false,
 	},
 	{

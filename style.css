@@ -479,6 +479,7 @@ li {
 	border-top-right-radius: 12px;
 	border-bottom-right-radius: 12px;
 	box-shadow: 2px 2px #756865;
+	cursor: pointer;
 	display: none;
 	height: 30px;
 	position: fixed;
@@ -907,6 +908,10 @@ a:hover {
 	cursor: pointer;
 	box-shadow: 2px 3px #f5eeee;
 	margin-bottom: 24px;
+}
+
+.competition-option-button p {
+	text-align: center;
 }
 
 .competition-option-button:hover {

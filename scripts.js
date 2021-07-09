@@ -842,6 +842,15 @@ function checkDeclensionOrConjugationAnswer( shouldReveal = false ) {
 
 	if ( shouldReveal ) {
 		answerInput.value = actualAnswer;
+		collectData(
+			'Answered revealed in ' +
+				testType +
+				' test for ' +
+				question +
+				' of ' +
+				document.getElementById( 'vocab-question' ).textContent,
+			'revealed_' + testType + '_answer'
+		);
 	} else {
 		document.getElementById( 'wrong-answer' ).style.display = isAnswerCorrect ? 'none' : 'block';
 
@@ -921,17 +930,30 @@ function checkAnswer( shouldReveal = false ) {
 		answerArray = data.translation.split( ',' );
 	}
 
+	let additionalAnswers = [];
 	for ( let i = 0; i < answerArray.length; i++ ) {
+		if ( answerArray[ i ].includes( '(' ) && answerArray[ i ].includes( ')' ) ) {
+			additionalAnswers.push( answerArray[ i ].replace( '(', '*' ).split( '*' )[ 0 ] );
+		}
+
+		if ( answerArray[ i ].includes( '?' ) ) {
+			additionalAnswers.concat( answerArray[ i ].split( '?' ) );
+		}
+
 		if (
 			answerArray[ i ].includes( '(' ) ||
 			answerArray[ i ].includes( ';' ) ||
 			answerArray[ i ].includes( '-' ) ||
 			answerArray[ i ].includes( '?' )
 		) {
-			answerArray.push( answerArray[ i ].replace( /\(|\)|\;|\?|\-/gi, '' ) );
+			additionalAnswers.push( answerArray[ i ].replace( /\(|\)|\;|\?|\-/gi, '' ) );
 		}
+	}
 
-		answerArray.splice( i, 1, answerArray[ i ].trim() );
+	answerArray = answerArray.concat( additionalAnswers );
+
+	for ( let i = 0; i < answerArray.length; i++ ) {
+		answerArray[ i ] = answerArray[ i ].toLowerCase().trim();
 	}
 
 	if ( questionArray.didReveal !== true ) {
@@ -1287,6 +1309,12 @@ function toggleLimit() {
 	} else {
 		document.getElementById( 'maxWordSelect' ).style.display = 'flex';
 	}
+
+	collectData(
+		'Limit of words toggled to be marked as ' +
+			document.getElementById( 'wordLimitCheckbox' ).checked,
+		'word_limit_toggled'
+	);
 }
 
 function toggleRow( e ) {

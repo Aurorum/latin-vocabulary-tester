@@ -287,6 +287,11 @@ li {
 	max-height: 0;
 }
 
+.is-gcseocr .miscellaneous-nouns,
+.is-gcseocr .rare-verbs .vocab-type:nth-child( 4 ) {
+	display: none;
+}
+
 .row-header {
 	padding: 0;
 	margin: 0;
@@ -363,6 +368,10 @@ li {
 	opacity: 0.7;
 }
 
+.start-button-wrapper.is-inactive button {
+	pointer-events: none;
+}
+
 .start-button-wrapper.is-inactive img {
 	pointer-events: none;
 	animation: none;
@@ -395,6 +404,7 @@ li {
 
 .file-upload input {
 	margin: 0 12px;
+	max-width: 100%;
 }
 
 .options-menu {
@@ -416,18 +426,20 @@ li {
 	text-decoration: none;
 }
 
-.options-menu a:first-of-type {
-	margin-left: 12px;
-	margin-right: 8px;
-	background: #ee6c4d;
-	color: white;
+.options-menu .practise-options {
+	display: flex;
+	margin: auto;
+	margin-left: 18px;
 }
 
-.options-menu a:nth-of-type( 2 ) {
-	margin: auto;
-	margin-left: 0;
+.options-menu .practise-options a {
+	margin-right: 8px;
+}
+
+.options-menu .practise-options a,
+.has-begun-vocab-test .options-menu a {
 	background: #ee6c4d;
-	color: white;
+	color: #fff;
 }
 
 .select-all-option {
@@ -495,6 +507,7 @@ li {
 	bottom: 0;
 	width: 100%;
 	background: #ee6c4d;
+	overflow: hidden;
 }
 
 .hide-footer .footer {
@@ -506,6 +519,7 @@ li {
 }
 
 .footer-links {
+	align-items: center;
 	display: flex;
 	margin: auto;
 	margin-left: 12px;
@@ -541,6 +555,7 @@ a:hover {
 	background: #1b2b63;
 	color: #fff;
 	padding: 28px;
+	position: relative;
 }
 
 .heading {
@@ -630,6 +645,12 @@ a:hover {
 	color: #fff;
 	cursor: pointer;
 	text-decoration: underline;
+}
+
+.export-sidebar-prompt-wrapper {
+	display: none;
+	margin: auto;
+	text-align: center;
 }
 
 .practise-prompt {
@@ -764,8 +785,7 @@ a:hover {
 	display: block;
 }
 
-.is-competitive-mode .options-menu a:nth-of-type( 1 ),
-.is-competitive-mode .options-menu a:nth-of-type( 2 ),
+.is-competitive-mode .options-menu .practise-options,
 .has-begun-declension-test:not( .is-competitive-mode ) .left-content .incorrect-words,
 .has-begun-conjugation-test:not( .is-competitive-mode ) .left-content,
 .has-begun-declension-test .times-wrong,
@@ -784,6 +804,10 @@ a:hover {
 .has-begun-declension-test:not( .is-competitive-mode ) .left-content .select-declensions-wrapper,
 .has-begun-vocab-test .options-menu a:nth-of-type( 1 ) {
 	display: block;
+}
+
+.leaderboard-wrapper {
+	text-align: left;
 }
 
 .select-declensions {
@@ -890,7 +914,7 @@ a:hover {
 }
 
 .wrong-vocab-list {
-	max-height: 280px;
+	max-height: 220px;
 	overflow-y: scroll;
 }
 
@@ -1108,6 +1132,8 @@ input:checked + .slider:before {
 @media only screen and ( max-width: 600px ) {
 	#vocab-selector .left-content {
 		width: auto;
+		max-width: calc( 100% - 24px );
+		margin: 0;
 	}
 
 	.select-all-option-mobile {
@@ -1115,10 +1141,11 @@ input:checked + .slider:before {
 		position: absolute;
 		right: 0;
 		margin-right: 4px;
+		margin-top: -48px;
 	}
 
 	.practise-prompt {
-		margin-top: 8px;
+		font-size: 16px;
 		margin-left: 0;
 	}
 
@@ -1127,19 +1154,25 @@ input:checked + .slider:before {
 	}
 
 	.options-menu {
-		flex-wrap: wrap;
+		align-items: flex-start;
 	}
 
-	.options-menu a:first-of-type {
-		margin-right: 4px;
+	.options-menu .practise-options {
+		flex-direction: column;
+		margin-left: 0;
 	}
 
-	.options-menu a:nth-of-type( 2 ) {
-		margin-right: 0;
+	.options-menu .practise-options a {
+		border-radius: 0;
+	}
+
+	.options-menu .practise-options a:first-of-type {
+		border-bottom: 1px solid #d66043;
 	}
 
 	.options-menu a {
-		border-radius: 0;
+		margin-right: 4px;
+		font-size: 12px;
 	}
 
 	.introductary-text,
@@ -1151,7 +1184,13 @@ input:checked + .slider:before {
 		height: 48px;
 	}
 
+	.footer-links a {
+		margin-right: 12px;
+		font-size: 12px;
+	}
+
 	.main-content {
+		align-items: center;
 		flex-direction: column-reverse;
 		flex-wrap: wrap;
 	}

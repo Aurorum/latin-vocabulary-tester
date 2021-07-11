@@ -12,5 +12,6 @@ Link: https://latinvocabularytester.com
 
 If there is any desire to use it, I'm happy to ensure it functions better with additional features. Feel free to let me know if there are any issues or requests, including if it involves adding new vocabulary!
 
-| <img alt="Screenshot 1" src="./assets/screenshot.png"> | <img alt="Screenshot 2" src="./assets/screenshot-2.png"> |
-| ------------------------------------------------------ | -------------------------------------------------------- |
+| <img alt="Screenshot 1" src="./assets/screenshots/screenshot-1.png"> | <img alt="Screenshot 2" src="./assets/screenshots/screenshot-2.png"> |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| <img alt="Screenshot 3" src="./assets/screenshots/screenshot-3.png"> | <img alt="Screenshot 4" src="./assets/screenshots/screenshot-4.png"> |

@@ -20,7 +20,10 @@
 			content="Provides a way to test your knowledge of the GCSE and A-Level Latin vocabulary list, along with a Noun Declension & Verb Conjugation Tester with both a competitive leaderboard and a practice mode."
 		/>
 		<meta property="og:url" content="https://latinvocabularytester.com" />
-		<meta property="og:image" content="https://latinvocabularytester.com/assets/screenshot.png" />
+		<meta
+			property="og:image"
+			content="https://latinvocabularytester.com/assets/screenshots/screenshot-1.png"
+		/>
 		<script type="text/javascript" src="./vocab-lists/alevel-ocr.js"></script>
 		<script type="text/javascript" src="./vocab-lists/gcse-eduqas.js"></script>
 		<script type="text/javascript" src="./vocab-lists/gcse-ocr.js"></script>
@@ -62,8 +65,10 @@
 			<div class="top-footer-toggle" onclick="toggleFooter(true)"></div>
 		</div>
 		<div id="option" class="options-menu">
-			<a onclick="startTest(true)">Practise noun declensions</a>
-			<a onclick="startTest(false, true)">Practise verb conjugations</a>
+			<div class="practise-options">
+				<a onclick="startTest(true)">Practise noun declensions</a>
+				<a onclick="startTest(false, true)">Practise verb conjugations</a>
+			</div>
 			<a class="alevelocrlink" onclick="changeOption('alevelocr')">A-Level (OCR)</a>
 			<a class="gcseeduqaslink" onclick="changeOption('gcseeduqas')">GCSE (Eduqas)</a>
 			<a class="gcseocrlink" onclick="changeOption('gcseocr')">GCSE (OCR)</a>
@@ -97,6 +102,16 @@
 					<ul id="wrong-vocab" class="wrong-vocab-list">
 						<li id="no-words-wrong">None so far - well done!</li>
 					</ul>
+					<p id="export-incorrect-vocab-sidebar" class="export-sidebar-prompt-wrapper">
+						<a
+							id="export-sidebar-prompt"
+							download="latin-incorrect-vocabulary"
+							onclick="exportIncorrectVocab()"
+							class="export-prompt"
+						>
+							Export incorrect words.
+						</a>
+					</p>
 				</div>
 
 				<div class="select-declensions-wrapper">
@@ -422,9 +437,14 @@
 					</div>
 				</div>
 				<div id="practise-mode">
-					<a class="select-all-option select-all-option-mobile" onclick="selectAll()">Select all</a>
+					<a
+						id="select-all-mobile"
+						class="select-all-option select-all-option-mobile"
+						onclick="selectAll()"
+						>Select all</a
+					>
 					<div class="categories">
-						<div class="row-wrapper">
+						<div class="row-wrapper common-verbs">
 							<div class="row-header">
 								<p>Common verbs</p>
 								<img
@@ -450,7 +470,7 @@
 							</div>
 						</div>
 
-						<div class="row-wrapper">
+						<div class="row-wrapper rare-verbs">
 							<div class="row-header">
 								<p>Rare verbs</p>
 								<img
@@ -499,7 +519,7 @@
 							</div>
 						</div>
 
-						<div class="row-wrapper">
+						<div class="row-wrapper common-nouns">
 							<div class="row-header">
 								<p>Common nouns</p>
 								<img
@@ -528,9 +548,9 @@
 							</div>
 						</div>
 
-						<div class="row-wrapper">
+						<div class="row-wrapper miscellaneous-nouns">
 							<div class="row-header">
-								<p>Rare nouns</p>
+								<p>Miscellaneous nouns</p>
 								<img
 									src="./assets/dropdown.svg"
 									class="dropdown"
@@ -761,7 +781,7 @@
 							</div>
 						</div>
 					</div>
-					<a class="select-all-option" onclick="selectAll()">Select all</a>
+					<a id="select-all-desktop" class="select-all-option" onclick="selectAll()">Select all</a>
 				</div>
 			</div>
 		</div>

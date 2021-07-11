@@ -137,6 +137,13 @@ window.onload = function () {
 	}
 	document.getElementById( 'max-word-select' ).selectedIndex = 19;
 
+	if ( window.innerWidth < 480 ) {
+		let rowWrapper = document.querySelectorAll( '.row-wrapper' );
+		for ( let i = 0; i < rowWrapper.length; i++ ) {
+			rowWrapper[ i ].classList.add( 'is-collapsed' );
+		}
+	}
+
 	var fileInput = document.getElementById( 'fileupload' ),
 		readFile = function () {
 			var reader = new FileReader();
@@ -175,6 +182,7 @@ function changeOption( option, playAudio = true ) {
 			type = vocabGCSEOCR;
 			break;
 	}
+	selectAll( 'change-option' );
 	document.body.classList.add( 'is-' + option );
 	localStorage.setItem( 'defaultOption', option );
 	selectedOption = option;
@@ -191,7 +199,9 @@ function startTest( startDeclensionTest = false, startConjugationTest = false ) 
 	document.body.classList.add( 'has-begun-vocab-test' );
 	hardDifficulty = true;
 
+	window.scrollTo( 0, 0 );
 	document.getElementById( 'option' ).innerHTML = '<a onclick="resetTest()">Reset test</a>';
+	document.getElementById( 'vocab-answer' ).focus();
 
 	collectData(
 		'Started test of ' + selectedOption + ' with competition mode set to ' + competitiveMode,
@@ -264,6 +274,7 @@ function endCompetitionTimer() {
 	let leaderboardId;
 	let endingMessage;
 	let answerArray = findWord( document.getElementById( 'vocab-question' ).textContent )[ 0 ];
+	let score = parseInt( document.getElementById( 'progress-indicator-changing' ).textContent );
 
 	if ( isTestingConjugations ) {
 		leaderboardId = document.getElementById( 'conjugations-leaderboard-14' ).textContent;
@@ -304,9 +315,13 @@ function endCompetitionTimer() {
 	document.getElementById( 'countdown-clock-time-left' ).innerHTML = 0;
 	document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'time-ended' );
 	document.getElementById( 'competition-countdown' ).innerHTML =
-		'Score: ' +
-		document.getElementById( 'progress-indicator-changing' ).textContent +
-		' words completed';
+		'Score: ' + score + ' words completed';
+
+	if ( score === 1 ) {
+		document.getElementById( 'competition-countdown' ).innerHTML = document
+			.getElementById( 'competition-countdown' )
+			.innerHTML.replace( 'words', 'word' );
+	}
 	document.getElementById( 'vocab-tester-wrapper' ).classList.remove( 'time-started' );
 
 	if ( leaderboardId === 'Empty' || leaderboardId === 'Loading' ) {
@@ -320,10 +335,7 @@ function endCompetitionTimer() {
 		leaderboardId.lastIndexOf( 'words' )
 	);
 
-	if (
-		parseInt( neededScore ) >=
-		parseInt( document.getElementById( 'progress-indicator-changing' ).textContent )
-	) {
+	if ( parseInt( neededScore ) >= score ) {
 		document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'leaderboard-ineligible' );
 		document.getElementById( 'competition-warning' ).innerHTML =
 			'Unfortunately, you need a score of <strong>' +
@@ -765,7 +777,7 @@ function resetTest() {
 	location.reload();
 }
 
-function selectAll() {
+function selectAll( context ) {
 	let allOptions = [];
 
 	if ( selectedOption && selectedOption.endsWith( 'ocr' ) ) {
@@ -777,48 +789,57 @@ function selectAll() {
 			'verb 1 dep',
 			'verb 2 dep',
 			'verb 3 dep',
-			'verb 4 dep',
 			'verb irreg',
 			'noun 1',
 			'noun 2',
 			'noun 3',
 			'noun 4',
 			'noun 5',
-			'noun irreg',
-			'noun phrase',
-			'noun & adj',
 			'adj',
 			'adverb',
 			'conjunction',
 			'prep',
 			'pron',
+			'noun irreg',
+			'noun phrase',
+			'noun & adj',
+			'verb 4 dep',
 		];
+	}
+
+	if ( selectedOption === 'gcseocr' ) {
+		allOptions.splice( 18, 4 );
 	}
 
 	if ( selectedOption === 'gcseeduqas' ) {
 		for ( let i = 1; i < 35; i++ ) {
-			if ( ! acceptableVocab.includes( i ) ) {
-				allOptions.push( i );
-			}
+			allOptions.push( i );
 		}
-		if ( ! acceptableVocab.includes( 'other' ) ) {
-			allOptions.push( 'other' );
-		}
+
+		allOptions.push( 'other' );
 	}
 
 	var isPreviouslyMuted = mute;
 	mute = true;
 
+	let deselect = context === 'change-option' || context === 'deselect-all';
+
 	allOptions.forEach( ( option ) => {
-		if ( ! acceptableVocab.includes( option ) ) {
+		if (
+			( ! acceptableVocab.includes( option ) && ! deselect ) ||
+			( acceptableVocab.includes( option ) && deselect )
+		) {
 			formAcceptableVocab( option );
 		}
 	} );
 
 	if ( ! isPreviouslyMuted ) {
 		mute = false;
-		// Otherwise it'd play at least 50 times at once - not nice for the ears!
-		new Audio( './assets/audio/click.mp3' ).play();
+
+		if ( context !== 'change-option' ) {
+			// Otherwise it'd play at least 50 times at once - not nice for the ears!
+			new Audio( './assets/audio/click.mp3' ).play();
+		}
 	}
 
 	collectData( 'Selected all options', 'selected_all_options' );
@@ -869,6 +890,7 @@ function checkDeclensionOrConjugationAnswer( shouldReveal = false ) {
 					question,
 				'correct_' + testType + '_answer'
 			);
+			answerInput.focus();
 			return buildDeclensionOrConjugationTest( isTestingConjugations );
 		}
 
@@ -974,6 +996,7 @@ function checkAnswer( shouldReveal = false ) {
 		}
 		document.getElementById( 'wrong-answer' ).style.display = 'none';
 		document.getElementById( 'no-words-wrong' ).style.display = 'none';
+		document.getElementById( 'export-incorrect-vocab-sidebar' ).style.display = 'block';
 
 		collectData( 'Answer revealed for ' + question, 'revealed_answer' );
 
@@ -1040,6 +1063,7 @@ function checkAnswer( shouldReveal = false ) {
 				node.appendChild( document.createTextNode( question ) );
 				document.getElementById( 'wrong-vocab' ).appendChild( node );
 				document.getElementById( 'no-words-wrong' ).style.display = 'none';
+				document.getElementById( 'export-incorrect-vocab-sidebar' ).style.display = 'block';
 			}
 			incorrectCount.innerHTML = incorrectCountNumber + 1;
 
@@ -1121,6 +1145,7 @@ function exportIncorrectVocab() {
 	csvData = convertToCSV( exportArray );
 	var dataBlob = new Blob( [ csvData ], { type: 'text/csv;charset=utf-8' } );
 	document.getElementById( 'export-prompt' ).href = window.URL.createObjectURL( dataBlob );
+	document.getElementById( 'export-sidebar-prompt' ).href = window.URL.createObjectURL( dataBlob );
 }
 
 function convertToCSV( arr ) {
@@ -1154,16 +1179,14 @@ function isWithinValue( vocab ) {
 
 function findAllVocab() {
 	return vocab.filter( function ( vocab ) {
-		return formAcceptableVocab( false ).includes( vocab.category ) && isWithinValue( vocab.word );
+		return acceptableVocab.includes( vocab.category ) && isWithinValue( vocab.word );
 	} );
 }
 
 function findVocab() {
 	return vocab.filter( function ( vocab ) {
 		return (
-			formAcceptableVocab( false ).includes( vocab.category ) &&
-			! vocab.asked &&
-			isWithinValue( vocab.word )
+			acceptableVocab.includes( vocab.category ) && ! vocab.asked && isWithinValue( vocab.word )
 		);
 	} );
 }
@@ -1223,10 +1246,6 @@ function findTranslation( translation ) {
 }
 
 function formAcceptableVocab( category ) {
-	if ( ! category ) {
-		return acceptableVocab;
-	}
-
 	if ( category !== 'redo' && category !== 'uploaded' ) {
 		var button = document.getElementById( category );
 		if ( ! mute ) {
@@ -1244,6 +1263,39 @@ function formAcceptableVocab( category ) {
 			document.getElementById( 'start-button' ).classList.remove( 'is-inactive' );
 		} else {
 			document.getElementById( 'start-button' ).classList.add( 'is-inactive' );
+		}
+
+		let maxVocabOptions;
+		switch ( selectedOption ) {
+			case 'alevelocr':
+				maxVocabOptions = 22;
+				break;
+			case 'gcseeduqas':
+				maxVocabOptions = 35;
+				break;
+			case 'gcseocr':
+				maxVocabOptions = 18;
+				break;
+		}
+
+		if ( acceptableVocab.length >= maxVocabOptions ) {
+			document.getElementById( 'select-all-desktop' ).innerHTML = 'Deselect all';
+			document.getElementById( 'select-all-desktop' ).onclick = function () {
+				selectAll( 'deselect-all' );
+			};
+			document.getElementById( 'select-all-mobile' ).innerHTML = 'Deselect all';
+			document.getElementById( 'select-all-mobile' ).onclick = function () {
+				selectAll( 'deselect-all' );
+			};
+		} else {
+			document.getElementById( 'select-all-desktop' ).innerHTML = 'Select all';
+			document.getElementById( 'select-all-desktop' ).onclick = function () {
+				selectAll();
+			};
+			document.getElementById( 'select-all-mobile' ).innerHTML = 'Select all';
+			document.getElementById( 'select-all-mobile' ).onclick = function () {
+				selectAll();
+			};
 		}
 	} else {
 		acceptableVocab.push( category );

@@ -887,7 +887,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'conor, conari, conatus sum',
-		category: 'verb 1 deponent',
+		category: 'verb 1 dep',
 		translation: 'try',
 		asked: false,
 	},
@@ -1595,7 +1595,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'egredior, egredi, egressus sum',
-		category: 'verb 3 deponent',
+		category: 'verb 3 dep',
 		translation: 'go out',
 		asked: false,
 	},
@@ -2174,7 +2174,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'hortor, hortari, hortatus sum',
-		category: 'verb 1 deponent',
+		category: 'verb 1 dep',
 		translation: 'encourage, urge',
 		asked: false,
 	},
@@ -2408,7 +2408,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'ingredior, ingredi, ingressus sum',
-		category: 'verb 3 deponent',
+		category: 'verb 3 dep',
 		translation: 'enter',
 		asked: false,
 	},
@@ -2936,7 +2936,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'loquor, loqui, locutus sum',
-		category: 'verb 3 deponent',
+		category: 'verb 3 dep',
 		translation: 'speak, talk',
 		asked: false,
 	},
@@ -3118,7 +3118,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'miror, mirari, miratus sum',
-		category: 'verb 1 deponent',
+		category: 'verb 1 dep',
 		translation: 'wonder at, admire',
 		asked: false,
 	},
@@ -3218,7 +3218,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'morior, mori, mortuus sum',
-		category: 'verb 3 deponent',
+		category: 'verb 3 dep',
 		translation: 'die',
 		asked: false,
 	},
@@ -3828,7 +3828,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'patior, pati, passus sum',
-		category: 'verb 3 deponent',
+		category: 'verb 3 dep',
 		translation: 'suffer, endure',
 		asked: false,
 	},
@@ -4248,13 +4248,13 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'proficiscor, proficisci, profectus sum',
-		category: 'verb 3 deponent',
+		category: 'verb 3 dep',
 		translation: 'set out',
 		asked: false,
 	},
 	{
 		word: 'progredior, progredi, progressus sum',
-		category: 'verb 3 deponent',
+		category: 'verb 3 dep',
 		translation: 'advance',
 		asked: false,
 	},
@@ -4652,7 +4652,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'regredior, regredi, regressus sum',
-		category: 'verb 3 deponent',
+		category: 'verb 3 dep',
 		translation: 'go back, return',
 		asked: false,
 	},
@@ -5040,7 +5040,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'sequor, sequi, secutus sum',
-		category: 'verb 3 deponent',
+		category: 'verb 3 dep',
 		translation: 'follow',
 		asked: false,
 	},
@@ -5884,7 +5884,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'videor, videri, visus sum',
-		category: 'verb 2 deponent',
+		category: 'verb 2 dep',
 		translation: 'seem, appear',
 		asked: false,
 	},

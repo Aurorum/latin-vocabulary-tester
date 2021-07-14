@@ -166,7 +166,7 @@ input:focus {
 	outline: 1px auto #005fcc;
 }
 
-button:not( .vocab-type ),
+button:not( .vocab-type ):not( .competition-option-button ),
 [type='submit'] {
 	background: #dacafa;
 	border-color: #efe7ff #d3c2f7 #c1a2ff;
@@ -357,7 +357,8 @@ li {
 }
 
 .starting-warning,
-.start-declensions-warning {
+.start-declensions-warning,
+.start-verbs-warning {
 	display: none;
 	color: #ffe7e8;
 	text-align: center;
@@ -787,21 +788,18 @@ a:hover {
 
 .is-competitive-mode .options-menu .practise-options,
 .has-begun-declension-test:not( .is-competitive-mode ) .left-content .incorrect-words,
-.has-begun-conjugation-test:not( .is-competitive-mode ) .left-content,
+.has-begun-conjugation-test:not( .is-competitive-mode ) .left-content .incorrect-words,
 .has-begun-declension-test .times-wrong,
 .has-begun-conjugation-test .times-wrong,
 .has-begun-declension-test .progress-bar,
 .has-begun-conjugation-test .progress-bar,
-.select-declensions-wrapper {
+.select-declensions-wrapper,
+.select-verbs-wrapper {
 	display: none;
 }
 
-.has-begun-conjugation-test:not( .is-competitive-mode ) #vocab-tester-wrapper .right-content {
-	width: 75%;
-	margin: auto;
-}
-
 .has-begun-declension-test:not( .is-competitive-mode ) .left-content .select-declensions-wrapper,
+.has-begun-conjugation-test:not( .is-competitive-mode ) .left-content .select-verbs-wrapper,
 .has-begun-vocab-test .options-menu a:nth-of-type( 1 ) {
 	display: block;
 }
@@ -810,18 +808,32 @@ a:hover {
 	text-align: left;
 }
 
-.select-declensions {
+.select-declensions,
+.select-verbs {
 	display: flex;
 	justify-content: space-around;
 	flex-wrap: wrap;
 }
 
-.select-declensions-wrapper h3 {
+.select-declensions-wrapper h3,
+.select-verbs-wrapper h3 {
 	font-size: 16px;
 }
 
 .select-declensions .toggle input {
 	margin-left: 8px;
+}
+
+.select-verbs .toggle input {
+	margin-left: 10px;
+}
+
+.select-verbs-wrapper .verb-division {
+	margin-top: 14px;
+}
+
+.select-verbs p {
+	font-size: 12px;
 }
 
 .has-begun-conjugation-test .vocab-submit-answer-wrapper,
@@ -928,10 +940,12 @@ a:hover {
 	background: #fff;
 	padding: 48px;
 	margin-left: 48px;
+	border: 0;
 	border-radius: 64px;
 	cursor: pointer;
 	box-shadow: 2px 3px #f5eeee;
 	margin-bottom: 24px;
+	outline: none;
 }
 
 .competition-option-button p {

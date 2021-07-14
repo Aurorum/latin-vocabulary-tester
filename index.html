@@ -114,6 +114,191 @@
 					</p>
 				</div>
 
+				<div class="select-verbs-wrapper">
+					<h3>Select verb types to practise</h3>
+					<div class="select-verbs">
+						<div class="indicative">
+							<p><strong>Indicative verbs</strong></p>
+							<div class="toggle">
+								<p>Present active</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleVerbSelection(this)"
+									id="verbs-pracind"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Imperfect active</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleVerbSelection(this)"
+									id="verbs-impacind"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Perfect active</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleVerbSelection(this)"
+									id="verbs-pfacind"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Future active</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleVerbSelection(this)"
+									id="verbs-ftacind"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Pluperfect active</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleVerbSelection(this)"
+									id="verbs-placind"
+								/>
+							</div>
+							<div class="toggle verb-divison">
+								<p>Present imperative</p>
+								<input type="checkbox" checked onclick="handleVerbSelection(this)" id="verbs-imp" />
+							</div>
+							<div class="toggle">
+								<p>Present active participle</p>
+								<input type="checkbox" checked onclick="handleVerbSelection(this)" id="verbs-pap" />
+							</div>
+							<div class="toggle verb-division">
+								<p>Present passive</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleVerbSelection(this)"
+									id="verbs-prpaind"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Imperfect passive</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleVerbSelection(this)"
+									id="verbs-imppaind"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Perfect passive</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleVerbSelection(this)"
+									id="verbs-pfpaind"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Future passive</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleVerbSelection(this)"
+									id="verbs-ftpaind"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Pluperfect passive</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleVerbSelection(this)"
+									id="verbs-plpaind"
+								/>
+							</div>
+						</div>
+						<div class="subjunctive">
+							<p><strong>Subjunctive verbs</strong></p>
+							<div class="toggle">
+								<p>Present active</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleVerbSelection(this)"
+									id="verbs-pracsuj"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Imperfect active</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleVerbSelection(this)"
+									id="verbs-impacsuj"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Pluperfect active</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleVerbSelection(this)"
+									id="verbs-placsuj"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Perfect active</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleVerbSelection(this)"
+									id="verbs-pfacsuj"
+								/>
+							</div>
+							<div class="toggle verb-division">
+								<p>Present passive</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleVerbSelection(this)"
+									id="verbs-prpasuj"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Imperfect passive</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleVerbSelection(this)"
+									id="verbs-imppasuj"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Perfect passive</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleVerbSelection(this)"
+									id="verbs-pfpasuj"
+								/>
+							</div>
+							<div class="toggle">
+								<p>Pluperfect passive</p>
+								<input
+									type="checkbox"
+									checked
+									onclick="handleVerbSelection(this)"
+									id="verbs-plpasuj"
+								/>
+							</div>
+						</div>
+					</div>
+					<p id="verbs-warning" class="start-verbs-warning">
+						Error: you are required to select at least one verb type.
+					</p>
+				</div>
+
 				<div class="select-declensions-wrapper">
 					<h3>Select declensions and cases to practise</h3>
 					<div class="select-declensions">
@@ -422,18 +607,18 @@
 			<div class="right-content">
 				<div id="competitive-mode">
 					<div class="competition-options">
-						<div class="competition-option-button" onclick="startCompetition('declension')">
+						<button class="competition-option-button" onclick="startCompetition('declension')">
 							<img src="./assets/helmet.svg" alt="" />
 							<p>Start declension test</p>
-						</div>
-						<div class="competition-option-button" onclick="startCompetition('vocab')">
+						</button>
+						<button class="competition-option-button" onclick="startCompetition('vocab')">
 							<img src="./assets/colosseum.svg" alt="" />
 							<p>Start vocabulary test</p>
-						</div>
-						<div class="competition-option-button" onclick="startCompetition('conjugation')">
+						</button>
+						<button class="competition-option-button" onclick="startCompetition('conjugation')">
 							<img src="./assets/scroll.svg" alt="" />
 							<p>Start conjugation test</p>
-						</div>
+						</button>
 					</div>
 				</div>
 				<div id="practise-mode">

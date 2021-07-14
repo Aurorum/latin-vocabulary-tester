@@ -1,4 +1,5 @@
 let acceptableCases = [];
+let acceptableVerbs = [];
 let acceptableVocab = [];
 let allVocab = [];
 let competitiveMode = false;
@@ -130,6 +131,10 @@ window.onload = function () {
 		acceptableCases.push( i );
 	}
 
+	for ( let i = 0; i < 20; i++ ) {
+		acceptableVerbs.push( i );
+	}
+
 	for ( let i = 1; i < 301; i++ ) {
 		var option = document.createElement( 'option' );
 		option.text = i;
@@ -166,10 +171,13 @@ window.onload = function () {
 	fileInput.addEventListener( 'change', readFile );
 };
 
-function changeOption( option, playAudio = true ) {
+function changeOption( option, manualChange = true ) {
 	document.body.classList.remove( 'is-alevelocr' );
 	document.body.classList.remove( 'is-gcseeduqas' );
 	document.body.classList.remove( 'is-gcseocr' );
+	if ( manualChange ) {
+		collectData( 'Changed option from ' + selectedOption + ' to ' + option, 'changed_option' );
+	}
 	let type;
 	switch ( option ) {
 		case 'alevelocr':
@@ -188,7 +196,7 @@ function changeOption( option, playAudio = true ) {
 	selectedOption = option;
 	vocab = type;
 
-	if ( ! mute && playAudio ) {
+	if ( ! mute && manualChange ) {
 		new Audio( './assets/audio/click.mp3' ).play();
 	}
 }
@@ -201,7 +209,6 @@ function startTest( startDeclensionTest = false, startConjugationTest = false ) 
 
 	window.scrollTo( 0, 0 );
 	document.getElementById( 'option' ).innerHTML = '<a onclick="resetTest()">Reset test</a>';
-	document.getElementById( 'vocab-answer' ).focus();
 
 	collectData(
 		'Started test of ' + selectedOption + ' with competition mode set to ' + competitiveMode,
@@ -216,6 +223,15 @@ function startTest( startDeclensionTest = false, startConjugationTest = false ) 
 	}
 
 	if ( startConjugationTest ) {
+		if ( selectedOption !== 'alevelocr' ) {
+			let subjunctiveCheckboxes = document.querySelectorAll(
+				'.select-verbs .subjunctive .toggle input[type="checkbox"]'
+			);
+			for ( let i = 0; i < subjunctiveCheckboxes.length; i++ ) {
+				subjunctiveCheckboxes[ i ].checked = false;
+				handleVerbSelection( subjunctiveCheckboxes[ i ] );
+			}
+		}
 		document.body.classList.add( 'has-begun-conjugation-test' );
 		document.getElementById( 'progress-indicator-slash' ).innerHTML = ' conjugated correctly';
 		collectData( 'Started conjugation test', 'started_conjugation_test' );
@@ -382,15 +398,17 @@ function switchMode() {
 
 	if ( currentMode.textContent === 'Practice' ) {
 		document.body.classList.add( 'is-competitive-mode' );
-
 		currentMode.innerHTML = 'Competitive';
 		document.getElementById( 'switch-to-mode' ).innerHTML = 'Practice mode';
+		collectData( 'Switched to Competitive mode', 'switched_mode' );
 		return;
 	}
 
 	document.body.classList.remove( 'is-competitive-mode' );
 	currentMode.innerHTML = 'Practice';
 	document.getElementById( 'switch-to-mode' ).innerHTML = 'Competitive mode';
+
+	collectData( 'Switched to Practice mode', 'switched_mode' );
 }
 
 function leaderboardSubmitName() {
@@ -452,14 +470,100 @@ function buildDeclensionOrConjugationTest( isConjugationTest = false ) {
 	document.getElementById( 'vocab-question' ).innerHTML = vocabwithNumber.word;
 }
 
+function handleVerbSelection( e ) {
+	if ( ! document.querySelectorAll( '.select-verbs input[type="checkbox"]:checked' ).length ) {
+		e.checked = true;
+		return ( document.getElementById( 'verbs-warning' ).style.display = 'block' );
+	}
+
+	let verbNumber;
+	switch ( e.id ) {
+		case 'verbs-pracind':
+			verbNumber = 0;
+			break;
+		case 'verbs-impacind':
+			verbNumber = 1;
+			break;
+		case 'verbs-ftacind':
+			verbNumber = 2;
+			break;
+		case 'verbs-pfacind':
+			verbNumber = 3;
+			break;
+		case 'verbs-placind':
+			verbNumber = 4;
+			break;
+		case 'verbs-imp':
+			verbNumber = 5;
+			break;
+		case 'verbs-pap':
+			verbNumber = 6;
+			break;
+		case 'verbs-prpaind':
+			verbNumber = 7;
+			break;
+		case 'verbs-imppaind':
+			verbNumber = 8;
+			break;
+		case 'verbs-pfpaind':
+			verbNumber = 9;
+			break;
+		case 'verbs-plpaind':
+			verbNumber = 10;
+			break;
+		case 'verbs-ftpaind':
+			verbNumber = 11;
+			break;
+		case 'verbs-pracsuj':
+			verbNumber = 12;
+			break;
+		case 'verbs-impacsuj':
+			verbNumber = 13;
+			break;
+		case 'verbs-placsuj':
+			verbNumber = 14;
+			break;
+		case 'verbs-pfacsuj':
+			verbNumber = 15;
+			break;
+		case 'verbs-prpasuj':
+			verbNumber = 16;
+			break;
+		case 'verbs-imppasuj':
+			verbNumber = 17;
+			break;
+		case 'verbs-pfpasuj':
+			verbNumber = 18;
+			break;
+		case 'verbs-plpasuj':
+			verbNumber = 19;
+			break;
+	}
+
+	if ( e.checked ) {
+		acceptableVerbs.push( verbNumber );
+	} else {
+		acceptableVerbs.splice( acceptableVerbs.indexOf( verbNumber ), 1 );
+	}
+
+	collectData( 'Set verb selection ' + e.id + ' to be ' + e.checked, 'set_case_settings' );
+
+	document.getElementById( 'verbs-warning' ).style.display = 'none';
+	buildDeclensionOrConjugationTest( true );
+}
+
 function handleVerbConjugations() {
 	let verbForm;
 	let firstPersonWarning = true;
 
+	let randomVerbsInteger = acceptableVerbs[ Math.floor( Math.random() * acceptableVerbs.length ) ];
+
 	// Remove subjunctives from GCSE tests.
 	let conjugationNumber = selectedOption === 'alevelocr' ? 20 : 11;
 
-	switch ( Math.floor( Math.random() * conjugationNumber ) ) {
+	switch (
+		competitiveMode ? Math.floor( Math.random() * conjugationNumber ) : randomVerbsInteger
+	) {
 		case 0:
 			verbForm = 'present active indicative';
 			vocabConjugation = 'pracind';
@@ -507,20 +611,20 @@ function handleVerbConjugations() {
 			vocabConjugation = 'plpaind';
 			break;
 		case 11:
+			verbForm = 'future passive indicative';
+			vocabConjugation = 'ftpaind';
+			break;
+		case 12:
 			verbForm = 'present active subjunctive';
 			vocabConjugation = 'pracsuj';
 			break;
-		case 12:
+		case 13:
 			verbForm = 'imperfect active subjunctive';
 			vocabConjugation = 'impacsuj';
 			break;
-		case 13:
+		case 14:
 			verbForm = 'pluperfect active subjunctive';
 			vocabConjugation = 'placsuj';
-			break;
-		case 14:
-			verbForm = 'future passive indicative';
-			vocabConjugation = 'ftpaind';
 			break;
 		case 15:
 			verbForm = 'perfect active subjunctive';
@@ -531,15 +635,15 @@ function handleVerbConjugations() {
 			vocabConjugation = 'prpasuj';
 			break;
 		case 17:
-			verbForm = 'imperfect, passive, subjunctive';
+			verbForm = 'imperfect passive subjunctive';
 			vocabConjugation = 'imppasuj';
 			break;
 		case 18:
-			verbForm = 'perfect, passive, subjunctive';
+			verbForm = 'perfect passive subjunctive';
 			vocabConjugation = 'pfpasuj';
 			break;
 		case 19:
-			verbForm = 'pluperfect, passive, subjunctive';
+			verbForm = 'pluperfect passive subjunctive';
 			vocabConjugation = 'plpasuj';
 			break;
 	}
@@ -842,7 +946,11 @@ function selectAll( context ) {
 		}
 	}
 
-	collectData( 'Selected all options', 'selected_all_options' );
+	if ( context !== 'change-option' ) {
+		deselect
+			? collectData( 'Deselected all options', 'deselected_all_options' )
+			: collectData( 'Selected all options', 'selected_all_options' );
+	}
 }
 
 function checkDeclensionOrConjugationAnswer( shouldReveal = false ) {

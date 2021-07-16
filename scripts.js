@@ -1,5 +1,5 @@
-let acceptableCases = [];
-let acceptableVerbs = [];
+let acceptableCases = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ];
+let acceptableVerbs = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 ];
 let acceptableVocab = [];
 let allVocab = [];
 let competitiveMode = false;
@@ -127,14 +127,6 @@ window.onload = function () {
 		muteAudio();
 	}
 
-	for ( let i = 0; i < 12; i++ ) {
-		acceptableCases.push( i );
-	}
-
-	for ( let i = 0; i < 20; i++ ) {
-		acceptableVerbs.push( i );
-	}
-
 	for ( let i = 1; i < 301; i++ ) {
 		var option = document.createElement( 'option' );
 		option.text = i;
@@ -229,7 +221,7 @@ function startTest( startDeclensionTest = false, startConjugationTest = false ) 
 			);
 			for ( let i = 0; i < subjunctiveCheckboxes.length; i++ ) {
 				subjunctiveCheckboxes[ i ].checked = false;
-				handleVerbSelection( subjunctiveCheckboxes[ i ] );
+				handleVerbSelection( subjunctiveCheckboxes[ i ], false );
 			}
 		}
 		document.body.classList.add( 'has-begun-conjugation-test' );
@@ -465,12 +457,21 @@ function buildDeclensionOrConjugationTest( isConjugationTest = false ) {
 		isTestingDeclensions = true;
 		handleNounDeclensions();
 	}
-	finalVocab[ randomNumber ].asked = true;
+	vocabwithNumber.asked = true;
+
+	if ( isTestingDeclensions && ! competitiveMode ) {
+		let select = document.getElementById( 'declension-table-select' );
+		let option = document.createElement( 'option' );
+
+		option.text = vocabwithNumber.word;
+		select.add( option );
+		select.selectedIndex = select.length - 1;
+	}
 
 	document.getElementById( 'vocab-question' ).innerHTML = vocabwithNumber.word;
 }
 
-function handleVerbSelection( e ) {
+function handleVerbSelection( e, manualChange = true ) {
 	if ( ! document.querySelectorAll( '.select-verbs input[type="checkbox"]:checked' ).length ) {
 		e.checked = true;
 		return ( document.getElementById( 'verbs-warning' ).style.display = 'block' );
@@ -546,10 +547,12 @@ function handleVerbSelection( e ) {
 		acceptableVerbs.splice( acceptableVerbs.indexOf( verbNumber ), 1 );
 	}
 
-	collectData( 'Set verb selection ' + e.id + ' to be ' + e.checked, 'set_case_settings' );
-
 	document.getElementById( 'verbs-warning' ).style.display = 'none';
-	buildDeclensionOrConjugationTest( true );
+
+	if ( manualChange ) {
+		collectData( 'Set verb selection ' + e.id + ' to be ' + e.checked, 'set_case_settings' );
+		buildDeclensionOrConjugationTest( true );
+	}
 }
 
 function handleVerbConjugations() {
@@ -772,7 +775,40 @@ function handleNounDeclensions() {
 			break;
 	}
 	document.getElementById( 'vocab-submit-word-form' ).innerHTML = wordForm + ' form';
+
 	return vocabDeclension;
+}
+
+function constructDeclensionTable() {
+	let answer = findWord( document.getElementById( 'declension-table-select' ).value )[ 0 ];
+	let declensionTable = document.querySelectorAll( '.further-content table td' );
+
+	collectData( 'Answer declension table shown for ' + answer.word, 'constructed_declension_table' );
+
+	for ( let i = 0; i < declensionTable.length; i++ ) {
+		if ( declensionTable[ i ].id && declensionTable[ i ].id.endsWith( 'slot' ) ) {
+			declensionTable[ i ].innerHTML = answer[ declensionTable[ i ].id.replace( '-slot', '' ) ];
+		}
+	}
+}
+
+function toggleDeclensionTable( show ) {
+	if ( ! show ) {
+		document.getElementById( 'declension-table' ).style.display = 'none';
+		document.getElementById( 'declensions-table-prompt' ).innerHTML = 'Show declensions table';
+		document.getElementById( 'declensions-table-prompt' ).onclick = function () {
+			toggleDeclensionTable( true );
+		};
+		document.body.classList.remove( 'is-displaying-declension-table' );
+	} else {
+		constructDeclensionTable();
+		document.getElementById( 'declension-table' ).style.display = 'block';
+		document.getElementById( 'declensions-table-prompt' ).innerHTML = 'Hide declensions table';
+		document.getElementById( 'declensions-table-prompt' ).onclick = function () {
+			toggleDeclensionTable( false );
+		};
+		document.body.classList.add( 'is-displaying-declension-table' );
+	}
 }
 
 function buildTest() {
@@ -972,7 +1008,7 @@ function checkDeclensionOrConjugationAnswer( shouldReveal = false ) {
 	if ( shouldReveal ) {
 		answerInput.value = actualAnswer;
 		collectData(
-			'Answered revealed in ' +
+			'Answer revealed in ' +
 				testType +
 				' test for ' +
 				question +
@@ -999,6 +1035,9 @@ function checkDeclensionOrConjugationAnswer( shouldReveal = false ) {
 				'correct_' + testType + '_answer'
 			);
 			answerInput.focus();
+			if ( isTestingDeclensions ) {
+				toggleDeclensionTable( false );
+			}
 			return buildDeclensionOrConjugationTest( isTestingConjugations );
 		}
 

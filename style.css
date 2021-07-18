@@ -274,7 +274,8 @@ li {
 	justify-content: flex-start;
 }
 
-.row-wrapper.is-collapsed .dropdown {
+.row-wrapper.is-collapsed .dropdown,
+.select-verbs .is-collapsed .dropdown {
 	-webkit-transform: rotate( 180deg );
 	transform: rotate( 180deg );
 }
@@ -285,6 +286,11 @@ li {
 
 .row-wrapper.is-collapsed .button-group {
 	max-height: 0;
+}
+
+.select-verbs .indicative.is-collapsed .indicative-toggle-wrapper,
+.select-verbs .subjunctive.is-collapsed .subjunctive-toggle-wrapper {
+	display: none;
 }
 
 .is-gcseocr .miscellaneous-nouns,
@@ -624,12 +630,12 @@ a:hover {
 }
 
 .times-wrong,
-.show-declension-table-toggle {
+.show-word-table-toggle {
 	text-align: right;
 	margin-right: 4px;
 }
 
-.show-declension-table-toggle a {
+.show-word-table-toggle a {
 	cursor: pointer;
 	text-decoration: underline;
 }
@@ -812,14 +818,17 @@ a:hover {
 .has-begun-conjugation-test .progress-bar,
 .select-declensions-wrapper,
 .select-verbs-wrapper,
-.show-declension-table-toggle {
+.show-word-table-toggle {
 	display: none;
 }
 
 .has-begun-declension-test:not( .is-competitive-mode ) .left-content .select-declensions-wrapper,
 .has-begun-conjugation-test:not( .is-competitive-mode ) .left-content .select-verbs-wrapper,
-.has-begun-declension-test:not( .is-competitive-mode ) .show-declension-table-toggle,
-.has-begun-vocab-test .options-menu a:nth-of-type( 1 ) {
+.has-begun-declension-test:not( .is-competitive-mode ) .show-word-table-toggle,
+.has-begun-conjugation-test:not( .is-competitive-mode ) .show-word-table-toggle,
+.has-begun-vocab-test .options-menu a:nth-of-type( 1 ),
+.has-begun-declension-test #vocab-tester-wrapper.time-ended .show-word-table-toggle,
+.has-begun-conjugation-test #vocab-tester-wrapper.time-ended .show-word-table-toggle {
 	display: block;
 }
 
@@ -859,6 +868,22 @@ a:hover {
 	font-size: 12px;
 }
 
+.select-verbs-wrapper .singular-only-option {
+	margin-top: 24px;
+	flex-direction: column;
+}
+
+.select-verbs-wrapper .singular-only-option p {
+	font-size: 15px;
+	line-height: 1.5;
+	margin-bottom: 6px;
+	text-align: center;
+}
+
+.select-verbs-wrapper .singular-only-option input {
+	margin: auto;
+}
+
 .has-begun-conjugation-test .vocab-submit-answer-wrapper,
 .has-begun-declension-test .vocab-submit-answer-wrapper {
 	margin-top: 32px;
@@ -866,6 +891,10 @@ a:hover {
 
 .vocab-submit-answer-wrapper input {
 	max-width: 100%;
+}
+
+.show-word-table-toggle-competition {
+	margin-top: 48px;
 }
 
 .valid-name-warning {
@@ -918,7 +947,16 @@ a:hover {
 
 #vocab-tester-wrapper .left-content {
 	margin-right: 32px;
-	width: 30%;
+	flex-shrink: 0;
+	width: 20%;
+}
+
+.is-competitive-mode #vocab-tester-wrapper .left-content {
+	min-width: 180px;
+}
+
+.is-displaying-word-table #vocab-tester-wrapper .left-content {
+	min-width: 0;
 }
 
 .left-content,
@@ -932,11 +970,13 @@ a:hover {
 }
 
 #vocab-tester-wrapper .right-content {
+	flex-shrink: 1;
 	width: 100%;
 }
 
 .further-content {
 	display: none;
+	width: 50%;
 	margin-left: 32px;
 }
 
@@ -955,6 +995,24 @@ a:hover {
 	overflow: hidden;
 }
 
+.further-content td.is-highlighted {
+	background-color: #ee6c4d;
+	color: #fff;
+}
+
+.noun-table,
+.verb-tables,
+.verb-table,
+.subjunctive-verb-table-toggle.toggle {
+	display: none;
+}
+
+.has-begun-declension-test .noun-table,
+.has-begun-conjugation-test .verb-tables,
+.verb-table.is-active {
+	display: block;
+}
+
 .further-content td {
 	padding: 12px;
 }
@@ -968,16 +1026,71 @@ a:hover {
 	font-weight: 600;
 }
 
-.declension-table-select-wrapper.toggle {
+.further-content #other-verbs-table td {
+	font-weight: normal;
+}
+
+.further-content #other-verbs-table table {
+	margin-bottom: 32px;
+}
+
+.show-enhanced-verb-table-prompt {
+	cursor: pointer;
+	display: none;
+	margin-top: 24px;
+	font-size: 18px;
+	text-align: right;
+	text-decoration: underline;
+}
+
+.has-begun-conjugation-test .show-enhanced-verb-table-prompt {
+	display: block;
+}
+
+.word-table-select-wrapper.toggle {
 	margin-top: 18px;
 }
 
-.declension-table-select-wrapper p {
-	margin: auto 12px auto 0;
+.verb-table-select-wrapper.toggle {
+	margin-top: 0;
+	margin-bottom: 18px;
 }
 
-.declension-table-select-wrapper select {
+.verb-table p {
+	text-align: center;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.verb-tables-heading {
+	display: none;
+}
+
+.word-table-select-wrapper p {
+	margin: auto 12px auto 0;
+	font-size: 14px;
+}
+
+.word-table-select-wrapper select {
+	font-size: 14px;
 	width: 160px;
+}
+
+.verb-table-select-wrapper select {
+	width: 240px;
+}
+
+.verb-selection-toggle {
+	display: flex;
+}
+
+.verb-selection-toggle p {
+	margin: auto;
+}
+
+.verb-selection-toggle .dropdown {
+	cursor: pointer;
+	width: 32px;
 }
 
 #vocab-question {
@@ -1198,6 +1311,115 @@ input:checked + .slider:before {
 	transform: translateX( 26px );
 }
 
+.is-displaying-enhanced-word-table .verb-tables {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.is-displaying-enhanced-word-table .further-content {
+	display: flex !important;
+	flex-direction: column-reverse;
+	width: 80%;
+	margin: auto;
+	margin-bottom: 40px;
+}
+
+.is-displaying-enhanced-word-table .word-table-select-wrapper select {
+	width: auto;
+}
+
+.is-displaying-enhanced-word-table .left-content,
+.is-displaying-enhanced-word-table.is-competitive-mode
+	#vocab-tester-wrapper.main-content
+	.left-content,
+.is-displaying-enhanced-word-table .right-content {
+	display: none;
+}
+
+.is-displaying-enhanced-word-table .further-content table {
+	min-width: 0;
+	margin-right: 24px;
+	margin-bottom: 18px;
+}
+
+.is-displaying-enhanced-word-table #other-verbs-table {
+	display: flex;
+	flex-direction: column;
+	margin-left: 32px;
+}
+
+.is-displaying-enhanced-word-table #other-verbs-table table {
+	margin: auto;
+	margin-bottom: 12px;
+}
+
+.is-displaying-enhanced-word-table .verb-table-settings {
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+.is-displaying-enhanced-word-table .word-table-select-wrapper.toggle {
+	margin-left: 0;
+	margin-bottom: 12px;
+}
+
+.is-displaying-enhanced-word-table .declension-return-to-test-prompt {
+	display: block;
+	font-size: 24px;
+	margin-top: 0;
+	margin-bottom: 8px;
+}
+
+.is-displaying-enhanced-word-table .verb-table-select-wrapper.toggle,
+.is-displaying-enhanced-word-table .show-enhanced-verb-table-prompt {
+	display: none;
+}
+
+.is-displaying-enhanced-word-table .verb-table {
+	display: block;
+}
+
+.is-displaying-enhanced-word-table .toggle {
+	font-size: 14px;
+	margin: 0;
+	justify-content: end;
+}
+
+.is-displaying-enhanced-word-table .verb-table-settings-inner {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.is-displaying-enhanced-word-table .verb-table.suj,
+.is-displaying-enhanced-word-table .is-displaying-subjunctives .verb-table:not( .suj ),
+.is-displaying-enhanced-word-table .is-displaying-subjunctives #other-verbs-table {
+	display: none;
+}
+
+.is-displaying-enhanced-word-table .is-displaying-subjunctives .verb-table.suj {
+	display: block;
+}
+
+.is-displaying-enhanced-word-table .subjunctive-verb-table-toggle {
+	display: flex;
+	margin-top: 3px;
+	margin-left: 32px;
+}
+
+.is-displaying-enhanced-word-table .subjunctive-verb-table-toggle input {
+	margin-top: 0;
+	margin-left: 8px;
+}
+
+.is-displaying-enhanced-word-table .verb-tables-heading {
+	display: block;
+	font-weight: 600;
+	font-size: 34px;
+	margin: auto;
+	margin-top: 8px;
+}
+
 @media only screen and ( max-width: 1800px ) {
 	.toggle input:checked + .slider:before {
 		display: none;
@@ -1205,11 +1427,16 @@ input:checked + .slider:before {
 }
 
 @media only screen and ( max-width: 1200px ) and ( min-width: 600px ) {
-	.is-displaying-declension-table .right-content {
+	.is-displaying-word-table .right-content {
 		display: none;
 	}
 
+	.is-competitive-mode #vocab-tester-wrapper .left-content {
+		font-size: 14px;
+	}
+
 	.further-content {
+		align-self: flex-start;
 		margin-left: 0;
 		width: 100%;
 	}
@@ -1218,7 +1445,7 @@ input:checked + .slider:before {
 		display: block;
 	}
 
-	.declension-table-select-wrapper select {
+	.word-table-select-wrapper select {
 		width: 50%;
 	}
 }
@@ -1343,11 +1570,24 @@ input:checked + .slider:before {
 		font-size: 12px;
 	}
 
-	.declension-table-select-wrapper select {
+	.is-displaying-enhanced-word-table .declension-return-to-test-prompt {
+		margin-top: 18px;
+		margin-bottom: 24px;
+	}
+
+	.is-displaying-enhanced-word-table .word-table-select-wrapper select {
+		width: 120px;
+	}
+
+	.subjunctive-verb-table-toggle.toggle {
+		margin-left: 0;
+	}
+
+	.word-table-select-wrapper select {
 		width: 50%;
 	}
 
-	.has-begun-declension-test:not( .is-competitive-mode ) .right-content {
+	.right-content {
 		order: 1;
 	}
 }

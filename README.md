@@ -5,6 +5,7 @@ Provides a way to test your knowledge of the GCSE and A-Level Latin vocabulary l
 - Practise your vocabulary
 - If you've enabled answering in Latin, verify that you know each principle part or form
 - Focus on exclusively the vocabulary that you've answered incorrectly once the test includes
+- See tables of noun declensions and verb conjugations
 - CSV exports (can be used with Google Sheets) of words answered incorrectly
 - Competitive mode with a functioning leaderboard
 

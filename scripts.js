@@ -1,5 +1,5 @@
 let acceptableCases = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ];
-let acceptableVerbs = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 ];
+let acceptableVerbs = [];
 let acceptableVocab = [];
 let allVocab = [];
 let competitiveMode = false;
@@ -127,6 +127,10 @@ window.onload = function () {
 		muteAudio();
 	}
 
+	for ( let i = 0; i < 114; i++ ) {
+		acceptableVerbs.push( i );
+	}
+
 	for ( let i = 1; i < 301; i++ ) {
 		var option = document.createElement( 'option' );
 		option.text = i;
@@ -207,9 +211,12 @@ function startTest( startDeclensionTest = false, startConjugationTest = false ) 
 		'started_test'
 	);
 
+	let wordTablePrompt = competitiveMode ? 'word-table-prompt-competitive' : 'word-table-prompt';
+
 	if ( startDeclensionTest ) {
 		document.body.classList.add( 'has-begun-declension-test' );
 		document.getElementById( 'progress-indicator-slash' ).innerHTML = ' declined correctly';
+		document.getElementById( wordTablePrompt ).innerHTML = 'Show declensions table';
 		collectData( 'Started declension test', 'started_declension_test' );
 		return buildDeclensionOrConjugationTest( false );
 	}
@@ -217,7 +224,7 @@ function startTest( startDeclensionTest = false, startConjugationTest = false ) 
 	if ( startConjugationTest ) {
 		if ( selectedOption !== 'alevelocr' ) {
 			let subjunctiveCheckboxes = document.querySelectorAll(
-				'.select-verbs .subjunctive .toggle input[type="checkbox"]'
+				'.select-verbs .subjunctive .subjunctive-toggle-wrapper .toggle input[type="checkbox"]'
 			);
 			for ( let i = 0; i < subjunctiveCheckboxes.length; i++ ) {
 				subjunctiveCheckboxes[ i ].checked = false;
@@ -226,6 +233,7 @@ function startTest( startDeclensionTest = false, startConjugationTest = false ) 
 		}
 		document.body.classList.add( 'has-begun-conjugation-test' );
 		document.getElementById( 'progress-indicator-slash' ).innerHTML = ' conjugated correctly';
+		document.getElementById( wordTablePrompt ).innerHTML = 'Show verb tables';
 		collectData( 'Started conjugation test', 'started_conjugation_test' );
 		return buildDeclensionOrConjugationTest( true );
 	}
@@ -436,7 +444,7 @@ function leaderboardSubmitName() {
 	xhttp.send();
 }
 
-function buildDeclensionOrConjugationTest( isConjugationTest = false ) {
+function buildDeclensionOrConjugationTest( isConjugationTest = false, addToTable = true ) {
 	if ( isConjugationTest ) {
 		allVocab = vocabToTest.concat( findAllConjugationVocab() );
 		finalVocab = vocabToTest.concat( findConjugationVocab() );
@@ -459,10 +467,11 @@ function buildDeclensionOrConjugationTest( isConjugationTest = false ) {
 	}
 	vocabwithNumber.asked = true;
 
-	if ( isTestingDeclensions && ! competitiveMode ) {
-		let select = document.getElementById( 'declension-table-select' );
+	if ( addToTable && ( isTestingDeclensions || isTestingConjugations ) ) {
+		let select = document.getElementById( 'word-table-select' );
 		let option = document.createElement( 'option' );
 
+		option.setAttribute( 'data-type', isTestingDeclensions ? vocabDeclension : vocabConjugation );
 		option.text = vocabwithNumber.word;
 		select.add( option );
 		select.selectedIndex = select.length - 1;
@@ -480,185 +489,608 @@ function handleVerbSelection( e, manualChange = true ) {
 	let verbNumber;
 	switch ( e.id ) {
 		case 'verbs-pracind':
-			verbNumber = 0;
+			verbNumber = [ 0, 2, 4, 6, 8, 10 ];
 			break;
 		case 'verbs-impacind':
-			verbNumber = 1;
+			verbNumber = [ 12, 14, 16, 18, 20, 22 ];
 			break;
 		case 'verbs-ftacind':
-			verbNumber = 2;
+			verbNumber = [ 48, 50, 52, 54, 56, 58 ];
 			break;
 		case 'verbs-pfacind':
-			verbNumber = 3;
+			verbNumber = [ 24, 26, 28, 30, 32, 34 ];
 			break;
 		case 'verbs-placind':
-			verbNumber = 4;
+			verbNumber = [ 36, 38, 40, 42, 44, 46 ];
 			break;
 		case 'verbs-imp':
-			verbNumber = 5;
+			verbNumber = [ 62, 63 ];
 			break;
-		case 'verbs-pap':
-			verbNumber = 6;
+		case 'verbs-inf':
+			verbNumber = [ 112, 113 ];
+			break;
+		case 'verbs-par':
+			verbNumber = [ 60, 61 ];
 			break;
 		case 'verbs-prpaind':
-			verbNumber = 7;
+			verbNumber = [ 1, 3, 5, 7, 9, 11 ];
 			break;
 		case 'verbs-imppaind':
-			verbNumber = 8;
+			verbNumber = [ 13, 15, 17, 19, 21, 23 ];
 			break;
 		case 'verbs-pfpaind':
-			verbNumber = 9;
+			verbNumber = [ 25, 27, 29, 31, 33, 35 ];
 			break;
 		case 'verbs-plpaind':
-			verbNumber = 10;
+			verbNumber = [ 37, 39, 41, 43, 45, 47 ];
 			break;
 		case 'verbs-ftpaind':
-			verbNumber = 11;
+			verbNumber = [ 49, 51, 53, 55, 57, 59 ];
 			break;
 		case 'verbs-pracsuj':
-			verbNumber = 12;
+			verbNumber = [ 64, 66, 68, 70, 72, 74 ];
 			break;
 		case 'verbs-impacsuj':
-			verbNumber = 13;
+			verbNumber = [ 76, 78, 80, 82, 84, 86 ];
 			break;
 		case 'verbs-placsuj':
-			verbNumber = 14;
+			verbNumber = [ 100, 102, 104, 106, 108, 110 ];
 			break;
 		case 'verbs-pfacsuj':
-			verbNumber = 15;
+			verbNumber = [ 88, 90, 92, 94, 96, 98 ];
 			break;
 		case 'verbs-prpasuj':
-			verbNumber = 16;
+			verbNumber = [ 65, 67, 69, 71, 73, 75 ];
 			break;
 		case 'verbs-imppasuj':
-			verbNumber = 17;
+			verbNumber = [ 77, 79, 81, 83, 85, 87 ];
 			break;
 		case 'verbs-pfpasuj':
-			verbNumber = 18;
+			verbNumber = [ 89, 91, 93, 95, 97, 99 ];
 			break;
 		case 'verbs-plpasuj':
-			verbNumber = 19;
+			verbNumber = [ 101, 103, 105, 107, 109, 111 ];
 			break;
 	}
 
-	if ( e.checked ) {
-		acceptableVerbs.push( verbNumber );
-	} else {
-		acceptableVerbs.splice( acceptableVerbs.indexOf( verbNumber ), 1 );
-	}
+	verbNumber.forEach( ( number ) => {
+		e.checked
+			? acceptableVerbs.push( number )
+			: acceptableVerbs.splice( acceptableVerbs.indexOf( number ), 1 );
+	} );
 
 	document.getElementById( 'verbs-warning' ).style.display = 'none';
 
 	if ( manualChange ) {
 		collectData( 'Set verb selection ' + e.id + ' to be ' + e.checked, 'set_case_settings' );
-		buildDeclensionOrConjugationTest( true );
+		buildDeclensionOrConjugationTest( true, false );
 	}
 }
 
 function handleVerbConjugations() {
 	let verbForm;
-	let firstPersonWarning = true;
+	let filteredAcceptableVerbs = acceptableVerbs;
 
-	let randomVerbsInteger = acceptableVerbs[ Math.floor( Math.random() * acceptableVerbs.length ) ];
+	if ( document.getElementById( 'verbs-fps-option' ).checked ) {
+		let firstPersonSingular = [
+			0,
+			1,
+			12,
+			13,
+			24,
+			25,
+			36,
+			37,
+			48,
+			49,
+			60,
+			61,
+			62,
+			64,
+			65,
+			76,
+			77,
+			88,
+			89,
+			100,
+			101,
+			112,
+			113,
+		];
+		filteredAcceptableVerbs = acceptableVerbs.filter( function ( id ) {
+			return firstPersonSingular.indexOf( id ) > -1;
+		} );
+	}
+
+	let randomVerbsInteger =
+		filteredAcceptableVerbs[ Math.floor( Math.random() * filteredAcceptableVerbs.length ) ];
 
 	// Remove subjunctives from GCSE tests.
-	let conjugationNumber = selectedOption === 'alevelocr' ? 20 : 11;
+	let conjugationNumber = selectedOption === 'alevelocr' ? 114 : 64;
 
 	switch (
 		competitiveMode ? Math.floor( Math.random() * conjugationNumber ) : randomVerbsInteger
 	) {
+		// Present indicative.
 		case 0:
-			verbForm = 'present active indicative';
-			vocabConjugation = 'pracind';
+			verbForm = 'first-person singular present active indicative';
+			vocabConjugation = 'pracind1s';
 			break;
 		case 1:
-			verbForm = 'imperfect active indicative';
-			vocabConjugation = 'impacind';
+			verbForm = 'first-person singular present passive indicative';
+			vocabConjugation = 'prpaind1s';
 			break;
 		case 2:
-			verbForm = 'future active indicative';
-			vocabConjugation = 'ftacind';
+			verbForm = 'second-person singular present active indicative';
+			vocabConjugation = 'pracind2s';
 			break;
 		case 3:
-			verbForm = 'perfect active indicative';
-			vocabConjugation = 'pfacind';
+			verbForm = 'second-person singular present passive indicative';
+			vocabConjugation = 'prpaind2s';
 			break;
 		case 4:
-			verbForm = 'pluperfect active indicative';
-			vocabConjugation = 'placind';
+			verbForm = 'third-person singular present active indicative';
+			vocabConjugation = 'pracind3s';
 			break;
 		case 5:
-			verbForm = 'present singular imperative';
-			vocabConjugation = 'imp';
-			firstPersonWarning = false;
+			verbForm = 'third-person singular present passive indicative';
+			vocabConjugation = 'prpaind3s';
 			break;
 		case 6:
-			verbForm = 'present active participle';
-			vocabConjugation = 'pap';
-			firstPersonWarning = false;
+			verbForm = 'first-person plural present active indicative';
+			vocabConjugation = 'pracind1pl';
 			break;
 		case 7:
-			verbForm = 'present passive indicative';
-			vocabConjugation = 'prpaind';
+			verbForm = 'first-person plural present passive indicative';
+			vocabConjugation = 'prpaind1pl';
 			break;
 		case 8:
-			verbForm = 'imperfect passive indicative';
-			vocabConjugation = 'imppaind';
+			verbForm = 'second-person plural present active indicative';
+			vocabConjugation = 'pracind2pl';
 			break;
 		case 9:
-			verbForm = 'perfect passive indicative';
-			vocabConjugation = 'pfpaind';
+			verbForm = 'second-person plural present passive indicative';
+			vocabConjugation = 'prpaind2pl';
 			break;
 		case 10:
-			verbForm = 'pluperfect passive indicative';
-			vocabConjugation = 'plpaind';
+			verbForm = 'third-person plural present active indicative';
+			vocabConjugation = 'pracind3pl';
 			break;
 		case 11:
-			verbForm = 'future passive indicative';
-			vocabConjugation = 'ftpaind';
+			verbForm = 'third-person plural present passive indicative';
+			vocabConjugation = 'prpaind3pl';
 			break;
+
+		// Imperfect indicative.
 		case 12:
-			verbForm = 'present active subjunctive';
-			vocabConjugation = 'pracsuj';
+			verbForm = 'first-person singular imperfect active indicative';
+			vocabConjugation = 'impacind1s';
 			break;
 		case 13:
-			verbForm = 'imperfect active subjunctive';
-			vocabConjugation = 'impacsuj';
+			verbForm = 'first-person singular imperfect passive indicative';
+			vocabConjugation = 'imppaind1s';
 			break;
 		case 14:
-			verbForm = 'pluperfect active subjunctive';
-			vocabConjugation = 'placsuj';
+			verbForm = 'second-person singular imperfect active indicative';
+			vocabConjugation = 'impacind2s';
 			break;
 		case 15:
-			verbForm = 'perfect active subjunctive';
-			vocabConjugation = 'pfacsuj';
+			verbForm = 'second-person singular imperfect passive indicative';
+			vocabConjugation = 'imppaind2s';
 			break;
 		case 16:
-			verbForm = 'present passive subjunctive';
-			vocabConjugation = 'prpasuj';
+			verbForm = 'third-person singular imperfect active indicative';
+			vocabConjugation = 'impacind3s';
 			break;
 		case 17:
-			verbForm = 'imperfect passive subjunctive';
-			vocabConjugation = 'imppasuj';
+			verbForm = 'third-person singular imperfect passive indicative';
+			vocabConjugation = 'imppaind3s';
 			break;
 		case 18:
-			verbForm = 'perfect passive subjunctive';
-			vocabConjugation = 'pfpasuj';
+			verbForm = 'first-person plural imperfect active indicative';
+			vocabConjugation = 'impacind1pl';
 			break;
 		case 19:
-			verbForm = 'pluperfect passive subjunctive';
-			vocabConjugation = 'plpasuj';
+			verbForm = 'first-person plural imperfect passive indicative';
+			vocabConjugation = 'imppaind1pl';
+			break;
+		case 20:
+			verbForm = 'second-person plural imperfect active indicative';
+			vocabConjugation = 'impacind2pl';
+			break;
+		case 21:
+			verbForm = 'second-person plural imperfect passive indicative';
+			vocabConjugation = 'imppaind2pl';
+			break;
+		case 22:
+			verbForm = 'third-person plural imperfect active indicative';
+			vocabConjugation = 'impacind3pl';
+			break;
+		case 23:
+			verbForm = 'third-person plural imperfect passive indicative';
+			vocabConjugation = 'imppaind3pl';
+			break;
+
+		// Perfect indicative.
+		case 24:
+			verbForm = 'first-person singular perfect active indicative';
+			vocabConjugation = 'pfacind1s';
+			break;
+		case 25:
+			verbForm = 'first-person singular perfect passive indicative';
+			vocabConjugation = 'pfpaind1s';
+			break;
+		case 26:
+			verbForm = 'second-person singular perfect active indicative';
+			vocabConjugation = 'pfacind2s';
+			break;
+		case 27:
+			verbForm = 'second-person singular perfect passive indicative';
+			vocabConjugation = 'pfpaind2s';
+			break;
+		case 28:
+			verbForm = 'third-person singular perfect active indicative';
+			vocabConjugation = 'pfacind3s';
+			break;
+		case 29:
+			verbForm = 'third-person singular perfect passive indicative';
+			vocabConjugation = 'pfpaind3s';
+			break;
+		case 30:
+			verbForm = 'first-person plural perfect active indicative';
+			vocabConjugation = 'pfacind1pl';
+			break;
+		case 31:
+			verbForm = 'first-person plural perfect passive indicative';
+			vocabConjugation = 'pfpaind1pl';
+			break;
+		case 32:
+			verbForm = 'second-person plural perfect active indicative';
+			vocabConjugation = 'pfacind2pl';
+			break;
+		case 33:
+			verbForm = 'second-person plural perfect passive indicative';
+			vocabConjugation = 'pfpaind2pl';
+			break;
+		case 34:
+			verbForm = 'third-person plural perfect active indicative';
+			vocabConjugation = 'pfacind3pl';
+			break;
+		case 35:
+			verbForm = 'third-person plural perfect passive indicative';
+			vocabConjugation = 'pfpaind3pl';
+			break;
+
+		// Pluperfect indicative.
+		case 36:
+			verbForm = 'first-person singular pluperfect active indicative';
+			vocabConjugation = 'placind1s';
+			break;
+		case 37:
+			verbForm = 'first-person singular pluperfect passive indicative';
+			vocabConjugation = 'plpaind1s';
+			break;
+		case 38:
+			verbForm = 'second-person singular pluperfect active indicative';
+			vocabConjugation = 'placind2s';
+			break;
+		case 39:
+			verbForm = 'second-person singular pluperfect passive indicative';
+			vocabConjugation = 'plpaind2s';
+			break;
+		case 40:
+			verbForm = 'third-person singular pluperfect active indicative';
+			vocabConjugation = 'placind3s';
+			break;
+		case 41:
+			verbForm = 'third-person singular pluperfect passive indicative';
+			vocabConjugation = 'plpaind3s';
+			break;
+		case 42:
+			verbForm = 'first-person plural pluperfect active indicative';
+			vocabConjugation = 'placind1pl';
+			break;
+		case 43:
+			verbForm = 'first-person plural pluperfect passive indicative';
+			vocabConjugation = 'plpaind2pl';
+			break;
+		case 44:
+			verbForm = 'second-person plural pluperfect active indicative';
+			vocabConjugation = 'placind2pl';
+			break;
+		case 45:
+			verbForm = 'second-person plural pluperfect passive indicative';
+			vocabConjugation = 'plpaind2pl';
+			break;
+		case 46:
+			verbForm = 'third-person plural pluperfect active indicative';
+			vocabConjugation = 'placind3pl';
+			break;
+		case 47:
+			verbForm = 'third-person plural pluperfect passive indicative';
+			vocabConjugation = 'plpaind3pl';
+			break;
+
+		// Future indicative.
+		case 48:
+			verbForm = 'first-person singular future active indicative';
+			vocabConjugation = 'ftacind1s';
+			break;
+		case 49:
+			verbForm = 'first-person singular future passive indicative';
+			vocabConjugation = 'ftpaind1s';
+			break;
+		case 50:
+			verbForm = 'second-person singular future active indicative';
+			vocabConjugation = 'ftacind2s';
+			break;
+		case 51:
+			verbForm = 'second-person singular future passive indicative';
+			vocabConjugation = 'ftpaind2s';
+			break;
+		case 52:
+			verbForm = 'third-person singular future active indicative';
+			vocabConjugation = 'ftacind3s';
+			break;
+		case 53:
+			verbForm = 'third-person singular future passive indicative';
+			vocabConjugation = 'ftpaind3s';
+			break;
+		case 54:
+			verbForm = 'first-person plural future active indicative';
+			vocabConjugation = 'ftacind2pl';
+			break;
+		case 55:
+			verbForm = 'first-person plural future passive indicative';
+			vocabConjugation = 'ftpaind2pl';
+			break;
+		case 56:
+			verbForm = 'second-person plural future active indicative';
+			vocabConjugation = 'ftacind2pl';
+			break;
+		case 57:
+			verbForm = 'second-person plural future passive indicative';
+			vocabConjugation = 'ftpaind2pl';
+			break;
+		case 58:
+			verbForm = 'third-person plural future active indicative';
+			vocabConjugation = 'ftacind3pl';
+			break;
+		case 59:
+			verbForm = 'third-person plural future passive indicative';
+			vocabConjugation = 'ftpaind3pl';
+			break;
+
+		// Participles and imperatives.
+		case 60:
+			verbForm = 'present active participle';
+			vocabConjugation = 'pap';
+			break;
+		case 61:
+			verbForm = 'perfect passive participle';
+			vocabConjugation = 'ppp';
+			break;
+		case 62:
+			verbForm = 'singular active imperative';
+			vocabConjugation = 'imps';
+			break;
+		case 63:
+			verbForm = 'plural active imperative';
+			vocabConjugation = 'imppl';
+			break;
+
+		// Present subjunctive.
+		case 64:
+			verbForm = 'first-person singular present active subjunctive';
+			vocabConjugation = 'pracsuj1s';
+			break;
+		case 65:
+			verbForm = 'first-person singular present passive subjunctive';
+			vocabConjugation = 'prpasuj1s';
+			break;
+		case 66:
+			verbForm = 'second-person singular present active subjunctive';
+			vocabConjugation = 'pracsuj2s';
+			break;
+		case 67:
+			verbForm = 'second-person singular present passive subjunctive';
+			vocabConjugation = 'prpasuj2s';
+			break;
+		case 68:
+			verbForm = 'third-person singular present active subjunctive';
+			vocabConjugation = 'pracsuj3s';
+			break;
+		case 69:
+			verbForm = 'third-person singular present passive subjunctive';
+			vocabConjugation = 'prpasuj3s';
+			break;
+		case 70:
+			verbForm = 'first-person plural present active subjunctive';
+			vocabConjugation = 'pracsuj2pl';
+			break;
+		case 71:
+			verbForm = 'first-person plural present passive subjunctive';
+			vocabConjugation = 'prpasuj2pl';
+			break;
+		case 72:
+			verbForm = 'second-person plural present active subjunctive';
+			vocabConjugation = 'pracsuj2pl';
+			break;
+		case 73:
+			verbForm = 'second-person plural present passive subjunctive';
+			vocabConjugation = 'prpasuj2pl';
+			break;
+		case 74:
+			verbForm = 'third-person plural present active subjunctive';
+			vocabConjugation = 'pracsuj3pl';
+			break;
+		case 75:
+			verbForm = 'third-person plural present passive subjunctive';
+			vocabConjugation = 'prpasuj3pl';
+			break;
+
+		// Imperfect subjunctive.
+		case 76:
+			verbForm = 'first-person singular imperfect active subjunctive';
+			vocabConjugation = 'impacsuj1s';
+			break;
+		case 77:
+			verbForm = 'first-person singular imperfect passive subjunctive';
+			vocabConjugation = 'imppasuj1s';
+			break;
+		case 78:
+			verbForm = 'second-person singular imperfect active subjunctive';
+			vocabConjugation = 'impacsuj2s';
+			break;
+		case 79:
+			verbForm = 'second-person singular imperfect passive subjunctive';
+			vocabConjugation = 'imppasuj2s';
+			break;
+		case 80:
+			verbForm = 'third-person singular imperfect active subjunctive';
+			vocabConjugation = 'impacsuj3s';
+			break;
+		case 81:
+			verbForm = 'third-person singular imperfect passive subjunctive';
+			vocabConjugation = 'imppasuj3s';
+			break;
+		case 82:
+			verbForm = 'first-person plural imperfect active subjunctive';
+			vocabConjugation = 'impacsuj2pl';
+			break;
+		case 83:
+			verbForm = 'first-person plural imperfect passive subjunctive';
+			vocabConjugation = 'imppasuj2pl';
+			break;
+		case 84:
+			verbForm = 'second-person plural imperfect active subjunctive';
+			vocabConjugation = 'impacsuj2pl';
+			break;
+		case 85:
+			verbForm = 'second-person plural imperfect passive subjunctive';
+			vocabConjugation = 'imppasuj2pl';
+			break;
+		case 86:
+			verbForm = 'third-person plural imperfect active subjunctive';
+			vocabConjugation = 'impacsuj3pl';
+			break;
+		case 87:
+			verbForm = 'third-person plural imperfect passive subjunctive';
+			vocabConjugation = 'imppasuj3pl';
+			break;
+
+		// Perfect subjunctive.
+		case 88:
+			verbForm = 'first-person singular perfect active subjunctive';
+			vocabConjugation = 'pfacsuj1s';
+			break;
+		case 89:
+			verbForm = 'first-person singular perfect passive subjunctive';
+			vocabConjugation = 'pfpasuj1s';
+			break;
+		case 90:
+			verbForm = 'second-person singular perfect active subjunctive';
+			vocabConjugation = 'pfacsuj2s';
+			break;
+		case 91:
+			verbForm = 'second-person singular perfect passive subjunctive';
+			vocabConjugation = 'pfpasuj2s';
+			break;
+		case 92:
+			verbForm = 'third-person singular perfect active subjunctive';
+			vocabConjugation = 'pfacsuj3s';
+			break;
+		case 93:
+			verbForm = 'third-person singular perfect passive subjunctive';
+			vocabConjugation = 'pfpasuj3s';
+			break;
+		case 94:
+			verbForm = 'first-person plural perfect active subjunctive';
+			vocabConjugation = 'pfacsuj2pl';
+			break;
+		case 95:
+			verbForm = 'first-person plural perfect passive subjunctive';
+			vocabConjugation = 'pfpasuj2pl';
+			break;
+		case 96:
+			verbForm = 'second-person plural perfect active subjunctive';
+			vocabConjugation = 'pfacsuj2pl';
+			break;
+		case 97:
+			verbForm = 'second-person plural perfect passive subjunctive';
+			vocabConjugation = 'pfpasuj2pl';
+			break;
+		case 98:
+			verbForm = 'third-person plural perfect active subjunctive';
+			vocabConjugation = 'pfacsuj3pl';
+			break;
+		case 99:
+			verbForm = 'third-person plural perfect passive subjunctive';
+			vocabConjugation = 'pfpasuj3pl';
+			break;
+
+		// Pluperfect subjunctive.
+		case 100:
+			verbForm = 'first-person singular pluperfect active subjunctive';
+			vocabConjugation = 'placsuj1s';
+			break;
+		case 101:
+			verbForm = 'first-person singular pluperfect passive subjunctive';
+			vocabConjugation = 'plpasuj1s';
+			break;
+		case 102:
+			verbForm = 'second-person singular pluperfect active subjunctive';
+			vocabConjugation = 'placsuj2s';
+			break;
+		case 103:
+			verbForm = 'second-person singular pluperfect passive subjunctive';
+			vocabConjugation = 'plpasuj2s';
+			break;
+		case 104:
+			verbForm = 'third-person singular pluperfect active subjunctive';
+			vocabConjugation = 'placsuj3s';
+			break;
+		case 105:
+			verbForm = 'third-person singular pluperfect passive subjunctive';
+			vocabConjugation = 'plpasuj3s';
+			break;
+		case 106:
+			verbForm = 'first-person plural pluperfect active subjunctive';
+			vocabConjugation = 'placsuj2pl';
+			break;
+		case 107:
+			verbForm = 'first-person plural pluperfect passive subjunctive';
+			vocabConjugation = 'plpasuj2pl';
+			break;
+		case 108:
+			verbForm = 'second-person plural pluperfect active subjunctive';
+			vocabConjugation = 'placsuj2pl';
+			break;
+		case 109:
+			verbForm = 'second-person plural pluperfect passive subjunctive';
+			vocabConjugation = 'plpasuj2pl';
+			break;
+		case 110:
+			verbForm = 'third-person plural pluperfect active subjunctive';
+			vocabConjugation = 'placsuj3pl';
+			break;
+		case 111:
+			verbForm = 'third-person plural pluperfect passive subjunctive';
+			vocabConjugation = 'plpasuj3pl';
+			break;
+
+		// Infinitives.
+		case 112:
+			verbForm = 'present infinitive';
+			vocabConjugation = 'infpr';
+			break;
+		case 113:
+			verbForm = 'perfect infinitive';
+			vocabConjugation = 'infpf';
 			break;
 	}
 
 	document.getElementById( 'vocab-submit-word-form' ).innerHTML = verbForm + ' form';
-
-	if ( firstPersonWarning ) {
-		document.getElementById( 'vocab-submit-first-person-warning' ).innerHTML =
-			' first-person singular ';
-	} else {
-		document.getElementById( 'vocab-submit-first-person-warning' ).innerHTML = '';
-	}
 
 	return vocabConjugation;
 }
@@ -675,7 +1107,7 @@ function handleNounSelection( e ) {
 	);
 
 	document.getElementById( 'declensions-warning' ).style.display = 'none';
-	buildDeclensionOrConjugationTest( false );
+	buildDeclensionOrConjugationTest( false, false );
 }
 
 function handleCaseSelection( e ) {
@@ -715,7 +1147,7 @@ function handleCaseSelection( e ) {
 	collectData( 'Set case selection ' + e.id + ' to be ' + e.checked, 'set_case_settings' );
 
 	document.getElementById( 'declensions-warning' ).style.display = 'none';
-	buildDeclensionOrConjugationTest( false );
+	buildDeclensionOrConjugationTest( false, false );
 }
 
 function handleNounDeclensions() {
@@ -779,36 +1211,115 @@ function handleNounDeclensions() {
 	return vocabDeclension;
 }
 
-function constructDeclensionTable() {
-	let answer = findWord( document.getElementById( 'declension-table-select' ).value )[ 0 ];
-	let declensionTable = document.querySelectorAll( '.further-content table td' );
+function constructWordTable( changingVerbTable = false ) {
+	let answer = findWord( document.getElementById( 'word-table-select' ).value )[ 0 ];
+	let selectedIndex = document.getElementById( 'word-table-select' ).selectedIndex;
+	let optionType = document
+		.querySelector( '#word-table-select option:nth-of-type(' + ( selectedIndex + 1 ) + ')' )
+		.getAttribute( 'data-type' );
 
-	collectData( 'Answer declension table shown for ' + answer.word, 'constructed_declension_table' );
+	if ( isTestingDeclensions ) {
+		let declensionTable = document.querySelectorAll( '.further-content .noun-table table td' );
 
-	for ( let i = 0; i < declensionTable.length; i++ ) {
-		if ( declensionTable[ i ].id && declensionTable[ i ].id.endsWith( 'slot' ) ) {
-			declensionTable[ i ].innerHTML = answer[ declensionTable[ i ].id.replace( '-slot', '' ) ];
+		collectData(
+			'Answer declension table shown for ' + answer.word,
+			'constructed_declension_table'
+		);
+
+		for ( let i = 0; i < declensionTable.length; i++ ) {
+			if ( declensionTable[ i ].id && declensionTable[ i ].id.endsWith( 'slot' ) ) {
+				declensionTable[ i ].innerHTML = answer[ declensionTable[ i ].id.replace( '-slot', '' ) ];
+				document.getElementById( declensionTable[ i ].id ).classList.remove( 'is-highlighted' );
+			}
 		}
+	}
+
+	if ( isTestingConjugations ) {
+		let verbTable = document.querySelectorAll( '.further-content .verb-tables table td' );
+
+		collectData( 'Answer verb table shown for ' + answer.word, 'constructed_verb_table' );
+
+		for ( let i = 0; i < verbTable.length; i++ ) {
+			if ( verbTable[ i ].id && verbTable[ i ].id.endsWith( 'slot' ) ) {
+				verbTable[ i ].innerHTML = answer[ verbTable[ i ].id.replace( '-slot', '' ) ];
+				document.getElementById( verbTable[ i ].id ).classList.remove( 'is-highlighted' );
+			}
+		}
+
+		let indicativeOrSubjunctive = optionType.includes( 'suj' ) ? 'suj' : 'ind';
+		let wordTableId = optionType.substring( 0, 2 ) + indicativeOrSubjunctive + '-table';
+
+		if ( ! /\d/.test( optionType ) ) {
+			wordTableId = 'other-verbs-table';
+		}
+
+		if ( ! changingVerbTable ) {
+			document.getElementById( 'verb-type-table-select' ).value = wordTableId;
+		}
+
+		wordTableId = document.getElementById( 'verb-type-table-select' ).value;
+
+		let verbTableWrapper = document.querySelectorAll( '.further-content .verb-table' );
+
+		for ( let i = 0; i < verbTableWrapper.length; i++ ) {
+			verbTableWrapper[ i ].classList.remove( 'is-active' );
+		}
+
+		document
+			.querySelector( '.further-content .verb-tables #' + wordTableId )
+			.classList.add( 'is-active' );
+	}
+
+	document.getElementById( optionType + '-slot' ).classList.add( 'is-highlighted' );
+}
+
+function toggleWordTable( show ) {
+	let wordTablePrompt = competitiveMode ? 'word-table-prompt-competitive' : 'word-table-prompt';
+	if ( ! show ) {
+		document.getElementById( 'word-table' ).style.display = 'none';
+		document.getElementById( wordTablePrompt ).innerHTML = isTestingDeclensions
+			? 'Show declensions table'
+			: 'Show verb tables';
+		document.getElementById( wordTablePrompt ).onclick = function () {
+			toggleWordTable( true );
+		};
+		document.body.classList.remove( 'is-displaying-word-table' );
+		document.body.classList.remove( 'is-displaying-enhanced-word-table' );
+		window.scrollTo( 0, 0 );
+	} else {
+		constructWordTable();
+		document.getElementById( 'word-table' ).style.display = 'block';
+		document.getElementById( wordTablePrompt ).innerHTML = isTestingDeclensions
+			? 'Hide declensions table'
+			: 'Hide verb tables';
+		document.getElementById( wordTablePrompt ).onclick = function () {
+			toggleWordTable( false );
+		};
+		document.body.classList.add( 'is-displaying-word-table' );
 	}
 }
 
-function toggleDeclensionTable( show ) {
-	if ( ! show ) {
-		document.getElementById( 'declension-table' ).style.display = 'none';
-		document.getElementById( 'declensions-table-prompt' ).innerHTML = 'Show declensions table';
-		document.getElementById( 'declensions-table-prompt' ).onclick = function () {
-			toggleDeclensionTable( true );
-		};
-		document.body.classList.remove( 'is-displaying-declension-table' );
-	} else {
-		constructDeclensionTable();
-		document.getElementById( 'declension-table' ).style.display = 'block';
-		document.getElementById( 'declensions-table-prompt' ).innerHTML = 'Hide declensions table';
-		document.getElementById( 'declensions-table-prompt' ).onclick = function () {
-			toggleDeclensionTable( false );
-		};
-		document.body.classList.add( 'is-displaying-declension-table' );
+function toggleEnhancedWordTable() {
+	if ( competitiveMode ) {
+		document.getElementById( 'return-to-test-prompt' ).innerHTML = 'Return to Leaderboard';
 	}
+
+	document.body.classList.add( 'is-displaying-enhanced-word-table' );
+	window.scrollTo( 0, 0 );
+	collectData( 'Displayed enhanced word table', 'displayed_enhanced_word_table' );
+}
+
+function handleSubjunctiveTableSelection( e ) {
+	if ( e.checked ) {
+		document.getElementById( 'word-table' ).classList.add( 'is-displaying-subjunctives' );
+	} else {
+		document.getElementById( 'word-table' ).classList.remove( 'is-displaying-subjunctives' );
+	}
+	collectData(
+		'Set subjunctive tables on enhanced table display as ' + e.checked,
+		'toggled_subjunctive_table'
+	);
+	window.scrollTo( 0, 0 );
 }
 
 function buildTest() {
@@ -1035,9 +1546,7 @@ function checkDeclensionOrConjugationAnswer( shouldReveal = false ) {
 				'correct_' + testType + '_answer'
 			);
 			answerInput.focus();
-			if ( isTestingDeclensions ) {
-				toggleDeclensionTable( false );
-			}
+			toggleWordTable( false );
 			return buildDeclensionOrConjugationTest( isTestingConjugations );
 		}
 
@@ -1153,11 +1662,11 @@ function checkAnswer( shouldReveal = false ) {
 			answerInput.value = answerArray[ 0 ];
 		} else {
 			if ( form.includes( 'first' ) ) {
-				answerInput.value = answerArray[ 0 ];
+				answerInput.value = data.pracind1s || answerArray[ 0 ];
 			} else if ( form.includes( 'second' ) ) {
-				answerInput.value = answerArray[ 1 ];
+				answerInput.value = data.infpr || answerArray[ 1 ];
 			} else if ( form.includes( 'third' ) ) {
-				answerInput.value = answerArray[ 2 ];
+				answerInput.value = data.pfacind1s || answerArray[ 2 ];
 			}
 		}
 	} else {
@@ -1172,11 +1681,11 @@ function checkAnswer( shouldReveal = false ) {
 			}
 		} else {
 			if ( form.includes( 'first' ) ) {
-				isAnswerCorrect = answer === answerArray[ 0 ];
+				isAnswerCorrect = answer === answerArray[ 0 ] || answer === data.pracind1s;
 			} else if ( form.includes( 'second' ) ) {
-				isAnswerCorrect = answer === answerArray[ 1 ];
+				isAnswerCorrect = answer === answerArray[ 1 ] || answer === data.infpr;
 			} else if ( form.includes( 'third' ) ) {
-				isAnswerCorrect = answer === answerArray[ 2 ];
+				isAnswerCorrect = answer === answerArray[ 2 ] || answer === data.pfacind1s;
 			}
 		}
 
@@ -1340,13 +1849,13 @@ function findVocab() {
 
 function findAllConjugationVocab() {
 	return vocab.filter( function ( vocab ) {
-		return typeof vocab.placsuj === 'string';
+		return typeof vocab.impacsuj1s === 'string';
 	} );
 }
 
 function findConjugationVocab() {
 	return vocab.filter( function ( vocab ) {
-		return typeof vocab.placsuj === 'string' && ! vocab.asked;
+		return typeof vocab.impacsuj1s === 'string' && ! vocab.asked;
 	} );
 }
 
@@ -1392,7 +1901,9 @@ function findTranslation( translation ) {
 	} );
 }
 
-function formAcceptableVocab( category ) {
+function formAcceptableVocab( receivedCategory ) {
+	let category = receivedCategory.toString();
+
 	if ( category !== 'redo' && category !== 'uploaded' ) {
 		var button = document.getElementById( category );
 		if ( ! mute ) {

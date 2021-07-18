@@ -118,178 +118,228 @@
 					<h3>Select verb types to practise</h3>
 					<div class="select-verbs">
 						<div class="indicative">
-							<p><strong>Indicative verbs</strong></p>
-							<div class="toggle">
-								<p>Present active</p>
-								<input
-									type="checkbox"
-									checked
-									onclick="handleVerbSelection(this)"
-									id="verbs-pracind"
+							<div class="verb-selection-toggle">
+								<p><strong>Indicative verbs</strong></p>
+								<img
+									src="./assets/dropdown-white.svg"
+									class="dropdown"
+									alt="Dropdown"
+									onclick="toggleRow(this)"
 								/>
 							</div>
-							<div class="toggle">
-								<p>Imperfect active</p>
-								<input
-									type="checkbox"
-									checked
-									onclick="handleVerbSelection(this)"
-									id="verbs-impacind"
-								/>
-							</div>
-							<div class="toggle">
-								<p>Perfect active</p>
-								<input
-									type="checkbox"
-									checked
-									onclick="handleVerbSelection(this)"
-									id="verbs-pfacind"
-								/>
-							</div>
-							<div class="toggle">
-								<p>Future active</p>
-								<input
-									type="checkbox"
-									checked
-									onclick="handleVerbSelection(this)"
-									id="verbs-ftacind"
-								/>
-							</div>
-							<div class="toggle">
-								<p>Pluperfect active</p>
-								<input
-									type="checkbox"
-									checked
-									onclick="handleVerbSelection(this)"
-									id="verbs-placind"
-								/>
-							</div>
-							<div class="toggle verb-divison">
-								<p>Present imperative</p>
-								<input type="checkbox" checked onclick="handleVerbSelection(this)" id="verbs-imp" />
-							</div>
-							<div class="toggle">
-								<p>Present active participle</p>
-								<input type="checkbox" checked onclick="handleVerbSelection(this)" id="verbs-pap" />
-							</div>
-							<div class="toggle verb-division">
-								<p>Present passive</p>
-								<input
-									type="checkbox"
-									checked
-									onclick="handleVerbSelection(this)"
-									id="verbs-prpaind"
-								/>
-							</div>
-							<div class="toggle">
-								<p>Imperfect passive</p>
-								<input
-									type="checkbox"
-									checked
-									onclick="handleVerbSelection(this)"
-									id="verbs-imppaind"
-								/>
-							</div>
-							<div class="toggle">
-								<p>Perfect passive</p>
-								<input
-									type="checkbox"
-									checked
-									onclick="handleVerbSelection(this)"
-									id="verbs-pfpaind"
-								/>
-							</div>
-							<div class="toggle">
-								<p>Future passive</p>
-								<input
-									type="checkbox"
-									checked
-									onclick="handleVerbSelection(this)"
-									id="verbs-ftpaind"
-								/>
-							</div>
-							<div class="toggle">
-								<p>Pluperfect passive</p>
-								<input
-									type="checkbox"
-									checked
-									onclick="handleVerbSelection(this)"
-									id="verbs-plpaind"
-								/>
+							<div class="indicative-toggle-wrapper">
+								<div class="toggle">
+									<p>Present active</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-pracind"
+									/>
+								</div>
+								<div class="toggle">
+									<p>Imperfect active</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-impacind"
+									/>
+								</div>
+								<div class="toggle">
+									<p>Perfect active</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-pfacind"
+									/>
+								</div>
+								<div class="toggle">
+									<p>Pluperfect active</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-placind"
+									/>
+								</div>
+								<div class="toggle">
+									<p>Future active</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-ftacind"
+									/>
+								</div>
+								<div class="toggle verb-division">
+									<p>Imperatives</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-imp"
+									/>
+								</div>
+								<div class="toggle">
+									<p>Infinitives</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-inf"
+									/>
+								</div>
+								<div class="toggle">
+									<p>Participles</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-par"
+									/>
+								</div>
+								<div class="toggle verb-division">
+									<p>Present passive</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-prpaind"
+									/>
+								</div>
+								<div class="toggle">
+									<p>Imperfect passive</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-imppaind"
+									/>
+								</div>
+								<div class="toggle">
+									<p>Perfect passive</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-pfpaind"
+									/>
+								</div>
+								<div class="toggle">
+									<p>Future passive</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-ftpaind"
+									/>
+								</div>
+								<div class="toggle">
+									<p>Pluperfect passive</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-plpaind"
+									/>
+								</div>
 							</div>
 						</div>
 						<div class="subjunctive">
-							<p><strong>Subjunctive verbs</strong></p>
-							<div class="toggle">
-								<p>Present active</p>
-								<input
-									type="checkbox"
-									checked
-									onclick="handleVerbSelection(this)"
-									id="verbs-pracsuj"
+							<div class="verb-selection-toggle">
+								<p><strong>Subjunctive verbs</strong></p>
+								<img
+									src="./assets/dropdown-white.svg"
+									class="dropdown"
+									alt="Dropdown"
+									onclick="toggleRow(this)"
 								/>
 							</div>
-							<div class="toggle">
-								<p>Imperfect active</p>
-								<input
-									type="checkbox"
-									checked
-									onclick="handleVerbSelection(this)"
-									id="verbs-impacsuj"
-								/>
+							<div class="subjunctive-toggle-wrapper">
+								<div class="toggle">
+									<p>Present active</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-pracsuj"
+									/>
+								</div>
+								<div class="toggle">
+									<p>Imperfect active</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-impacsuj"
+									/>
+								</div>
+								<div class="toggle">
+									<p>Perfect active</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-pfacsuj"
+									/>
+								</div>
+								<div class="toggle">
+									<p>Pluperfect active</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-placsuj"
+									/>
+								</div>
+								<div class="toggle verb-division">
+									<p>Present passive</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-prpasuj"
+									/>
+								</div>
+								<div class="toggle">
+									<p>Imperfect passive</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-imppasuj"
+									/>
+								</div>
+								<div class="toggle">
+									<p>Perfect passive</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-pfpasuj"
+									/>
+								</div>
+								<div class="toggle">
+									<p>Pluperfect passive</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-plpasuj"
+									/>
+								</div>
 							</div>
-							<div class="toggle">
-								<p>Pluperfect active</p>
+							<div class="toggle singular-only-option">
+								<p>
+									Try first-person and<br />
+									singular verbs only
+								</p>
 								<input
 									type="checkbox"
-									checked
-									onclick="handleVerbSelection(this)"
-									id="verbs-placsuj"
-								/>
-							</div>
-							<div class="toggle">
-								<p>Perfect active</p>
-								<input
-									type="checkbox"
-									checked
-									onclick="handleVerbSelection(this)"
-									id="verbs-pfacsuj"
-								/>
-							</div>
-							<div class="toggle verb-division">
-								<p>Present passive</p>
-								<input
-									type="checkbox"
-									checked
-									onclick="handleVerbSelection(this)"
-									id="verbs-prpasuj"
-								/>
-							</div>
-							<div class="toggle">
-								<p>Imperfect passive</p>
-								<input
-									type="checkbox"
-									checked
-									onclick="handleVerbSelection(this)"
-									id="verbs-imppasuj"
-								/>
-							</div>
-							<div class="toggle">
-								<p>Perfect passive</p>
-								<input
-									type="checkbox"
-									checked
-									onclick="handleVerbSelection(this)"
-									id="verbs-pfpasuj"
-								/>
-							</div>
-							<div class="toggle">
-								<p>Pluperfect passive</p>
-								<input
-									type="checkbox"
-									checked
-									onclick="handleVerbSelection(this)"
-									id="verbs-plpasuj"
+									onclick="buildDeclensionOrConjugationTest(true)"
+									id="verbs-fps-option"
 								/>
 							</div>
 						</div>
@@ -437,6 +487,9 @@
 						You have <strong>two minutes</strong> to <span id="competition-challenge"></span>! If
 						you get one wrong, your attempt will be over.
 					</p>
+					<p class="show-word-table-toggle show-word-table-toggle-competition">
+						<a id="word-table-prompt-competitive" onclick="toggleWordTable(true)">Show table</a>
+					</p>
 				</div>
 				<div id="vocab-test-end-competition" class="competition-conclusion">
 					<div id="submit-name" class="leaderboard-submit-name">
@@ -496,10 +549,8 @@
 						<p id="vocab-times-wrong" class="times-wrong">
 							Incorrectly answered: <span id="vocab-incorrect-count">0</span> times
 						</p>
-						<p class="show-declension-table-toggle">
-							<a id="declensions-table-prompt" onclick="toggleDeclensionTable(true)"
-								>Show declensions table</a
-							>
+						<p class="show-word-table-toggle">
+							<a id="word-table-prompt" onclick="toggleWordTable(true)">Show table</a>
 						</p>
 					</div>
 				</div>
@@ -534,59 +585,630 @@
 					</div>
 				</div>
 			</div>
-			<div class="further-content" id="declension-table">
-				<table>
-					<thead>
-						<tr>
-							<th></th>
-							<th>Singular</th>
-							<th>Plural</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Nom.</td>
-							<td id="noms-slot"></td>
-							<td id="nomp-slot"></td>
-						</tr>
-						<tr>
-							<td>Voc.</td>
-							<td id="vocs-slot"></td>
-							<td id="vocp-slot"></td>
-						</tr>
-						<tr>
-							<td>Acc.</td>
-							<td id="accs-slot"></td>
-							<td id="accp-slot"></td>
-						</tr>
-						<tr>
-							<td>Gen.</td>
-							<td id="gens-slot"></td>
-							<td id="genp-slot"></td>
-						</tr>
-						<tr>
-							<td>Dat.</td>
-							<td id="dats-slot"></td>
-							<td id="datp-slot"></td>
-						</tr>
-						<tr>
-							<td>Abl.</td>
-							<td id="abls-slot"></td>
-							<td id="ablp-slot"></td>
-						</tr>
-					</tbody>
-				</table>
-				<div class="toggle declension-table-select-wrapper">
-					<p>Select word</p>
-					<select
-						onchange="constructDeclensionTable()"
-						id="declension-table-select"
-						size="1"
-					></select>
+			<div class="further-content" id="word-table">
+				<div class="noun-table">
+					<table>
+						<thead>
+							<tr>
+								<th></th>
+								<th>Singular</th>
+								<th>Plural</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Nom.</td>
+								<td id="noms-slot"></td>
+								<td id="nomp-slot"></td>
+							</tr>
+							<tr>
+								<td>Voc.</td>
+								<td id="vocs-slot"></td>
+								<td id="vocp-slot"></td>
+							</tr>
+							<tr>
+								<td>Acc.</td>
+								<td id="accs-slot"></td>
+								<td id="accp-slot"></td>
+							</tr>
+							<tr>
+								<td>Gen.</td>
+								<td id="gens-slot"></td>
+								<td id="genp-slot"></td>
+							</tr>
+							<tr>
+								<td>Dat.</td>
+								<td id="dats-slot"></td>
+								<td id="datp-slot"></td>
+							</tr>
+							<tr>
+								<td>Abl.</td>
+								<td id="abls-slot"></td>
+								<td id="ablp-slot"></td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-				<p class="declension-return-to-test-prompt">
-					<a onclick="toggleDeclensionTable(false)">Return to test</a>
-				</p>
+
+				<div class="verb-tables">
+					<div class="toggle verb-table-select-wrapper word-table-select-wrapper">
+						<p>Select table</p>
+						<select onchange="constructWordTable(true)" id="verb-type-table-select" size="1">
+							<option value="prind-table">Present indicative</option>
+							<option value="imind-table">Imperfect indicative</option>
+							<option value="pfind-table">Perfect indicative</option>
+							<option value="plind-table">Pluperfect indicative</option>
+							<option value="ftind-table">Future indicative</option>
+							<option value="prsuj-table">Present subjunctive</option>
+							<option value="imsuj-table">Imperfect subjunctive</option>
+							<option value="pfsuj-table">Perfect subjunctive</option>
+							<option value="plsuj-table">Pluperfect subjunctive</option>
+							<option value="other-verbs-table">Other</option>
+						</select>
+					</div>
+
+					<div id="prind-table" class="verb-table">
+						<p>Present indicative</p>
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Active</th>
+									<th>Passive</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Sing.</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1st</td>
+									<td id="pracind1s-slot"></td>
+									<td id="prpaind1s-slot"></td>
+								</tr>
+								<tr>
+									<td>2nd</td>
+									<td id="pracind2s-slot"></td>
+									<td id="prpaind2s-slot"></td>
+								</tr>
+								<tr>
+									<td>3rd</td>
+									<td id="pracind3s-slot"></td>
+									<td id="prpaind3s-slot"></td>
+								</tr>
+								<tr>
+									<td>Pl.</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1st</td>
+									<td id="pracind1pl-slot"></td>
+									<td id="prpaind1pl-slot"></td>
+								</tr>
+								<tr>
+									<td>2nd</td>
+									<td id="pracind2pl-slot"></td>
+									<td id="prpaind2pl-slot"></td>
+								</tr>
+								<tr>
+									<td>3rd</td>
+									<td id="pracind3pl-slot"></td>
+									<td id="prpaind3pl-slot"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div id="pfind-table" class="verb-table">
+						<p>Perfect indicative</p>
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Active</th>
+									<th>Passive</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Sing.</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1st</td>
+									<td id="pfacind1s-slot"></td>
+									<td id="pfpaind1s-slot"></td>
+								</tr>
+								<tr>
+									<td>2nd</td>
+									<td id="pfacind2s-slot"></td>
+									<td id="pfpaind2s-slot"></td>
+								</tr>
+								<tr>
+									<td>3rd</td>
+									<td id="pfacind3s-slot"></td>
+									<td id="pfpaind3s-slot"></td>
+								</tr>
+								<tr>
+									<td>Pl.</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1st</td>
+									<td id="pfacind1pl-slot"></td>
+									<td id="pfpaind1pl-slot"></td>
+								</tr>
+								<tr>
+									<td>2nd</td>
+									<td id="pfacind2pl-slot"></td>
+									<td id="pfpaind2pl-slot"></td>
+								</tr>
+								<tr>
+									<td>3rd</td>
+									<td id="pfacind3pl-slot"></td>
+									<td id="pfpaind3pl-slot"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div id="imind-table" class="verb-table">
+						<p>Imperfect indicative</p>
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Active</th>
+									<th>Passive</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Sing.</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1st</td>
+									<td id="impacind1s-slot"></td>
+									<td id="imppaind1s-slot"></td>
+								</tr>
+								<tr>
+									<td>2nd</td>
+									<td id="impacind2s-slot"></td>
+									<td id="imppaind2s-slot"></td>
+								</tr>
+								<tr>
+									<td>3rd</td>
+									<td id="impacind3s-slot"></td>
+									<td id="imppaind3s-slot"></td>
+								</tr>
+								<tr>
+									<td>Pl.</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1st</td>
+									<td id="impacind1pl-slot"></td>
+									<td id="imppaind1pl-slot"></td>
+								</tr>
+								<tr>
+									<td>2nd</td>
+									<td id="impacind2pl-slot"></td>
+									<td id="imppaind2pl-slot"></td>
+								</tr>
+								<tr>
+									<td>3rd</td>
+									<td id="impacind3pl-slot"></td>
+									<td id="imppaind3pl-slot"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div id="plind-table" class="verb-table">
+						<p>Pluperfect indicative</p>
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Active</th>
+									<th>Passive</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Sing.</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1st</td>
+									<td id="placind1s-slot"></td>
+									<td id="plpaind1s-slot"></td>
+								</tr>
+								<tr>
+									<td>2nd</td>
+									<td id="placind2s-slot"></td>
+									<td id="plpaind2s-slot"></td>
+								</tr>
+								<tr>
+									<td>3rd</td>
+									<td id="placind3s-slot"></td>
+									<td id="plpaind3s-slot"></td>
+								</tr>
+								<tr>
+									<td>Pl.</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1st</td>
+									<td id="placind1pl-slot"></td>
+									<td id="plpaind1pl-slot"></td>
+								</tr>
+								<tr>
+									<td>2nd</td>
+									<td id="placind2pl-slot"></td>
+									<td id="plpaind2pl-slot"></td>
+								</tr>
+								<tr>
+									<td>3rd</td>
+									<td id="placind3pl-slot"></td>
+									<td id="plpaind3pl-slot"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div id="ftind-table" class="verb-table">
+						<p>Future indicative</p>
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Active</th>
+									<th>Passive</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Sing.</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1st</td>
+									<td id="ftacind1s-slot"></td>
+									<td id="ftpaind1s-slot"></td>
+								</tr>
+								<tr>
+									<td>2nd</td>
+									<td id="ftacind2s-slot"></td>
+									<td id="ftpaind2s-slot"></td>
+								</tr>
+								<tr>
+									<td>3rd</td>
+									<td id="ftacind3s-slot"></td>
+									<td id="ftpaind3s-slot"></td>
+								</tr>
+								<tr>
+									<td>Pl.</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1st</td>
+									<td id="ftacind1pl-slot"></td>
+									<td id="ftpaind1pl-slot"></td>
+								</tr>
+								<tr>
+									<td>2nd</td>
+									<td id="ftacind2pl-slot"></td>
+									<td id="ftpaind2pl-slot"></td>
+								</tr>
+								<tr>
+									<td>3rd</td>
+									<td id="ftacind3pl-slot"></td>
+									<td id="ftpaind3pl-slot"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div id="prsuj-table" class="verb-table suj">
+						<p>Present subjunctive</p>
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Active</th>
+									<th>Passive</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Sing.</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1st</td>
+									<td id="pracsuj1s-slot"></td>
+									<td id="prpasuj1s-slot"></td>
+								</tr>
+								<tr>
+									<td>2nd</td>
+									<td id="pracsuj2s-slot"></td>
+									<td id="prpasuj2s-slot"></td>
+								</tr>
+								<tr>
+									<td>3rd</td>
+									<td id="pracsuj3s-slot"></td>
+									<td id="prpasuj3s-slot"></td>
+								</tr>
+								<tr>
+									<td>Pl.</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1st</td>
+									<td id="pracsuj1pl-slot"></td>
+									<td id="prpasuj1pl-slot"></td>
+								</tr>
+								<tr>
+									<td>2nd</td>
+									<td id="pracsuj2pl-slot"></td>
+									<td id="prpasuj2pl-slot"></td>
+								</tr>
+								<tr>
+									<td>3rd</td>
+									<td id="pracsuj3pl-slot"></td>
+									<td id="prpasuj3pl-slot"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div id="pfsuj-table" class="verb-table suj">
+						<p>Perfect subjunctive</p>
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Active</th>
+									<th>Passive</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Sing.</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1st</td>
+									<td id="pfacsuj1s-slot"></td>
+									<td id="pfpasuj1s-slot"></td>
+								</tr>
+								<tr>
+									<td>2nd</td>
+									<td id="pfacsuj2s-slot"></td>
+									<td id="pfpasuj2s-slot"></td>
+								</tr>
+								<tr>
+									<td>3rd</td>
+									<td id="pfacsuj3s-slot"></td>
+									<td id="pfpasuj3s-slot"></td>
+								</tr>
+								<tr>
+									<td>Pl.</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1st</td>
+									<td id="pfacsuj1pl-slot"></td>
+									<td id="pfpasuj1pl-slot"></td>
+								</tr>
+								<tr>
+									<td>2nd</td>
+									<td id="pfacsuj2pl-slot"></td>
+									<td id="pfpasuj2pl-slot"></td>
+								</tr>
+								<tr>
+									<td>3rd</td>
+									<td id="pfacsuj3pl-slot"></td>
+									<td id="pfpasuj3pl-slot"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div id="imsuj-table" class="verb-table suj">
+						<p>Imperfect subjunctive</p>
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Active</th>
+									<th>Passive</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Sing.</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1st</td>
+									<td id="impacsuj1s-slot"></td>
+									<td id="imppasuj1s-slot"></td>
+								</tr>
+								<tr>
+									<td>2nd</td>
+									<td id="impacsuj2s-slot"></td>
+									<td id="imppasuj2s-slot"></td>
+								</tr>
+								<tr>
+									<td>3rd</td>
+									<td id="impacsuj3s-slot"></td>
+									<td id="imppasuj3s-slot"></td>
+								</tr>
+								<tr>
+									<td>Pl.</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1st</td>
+									<td id="impacsuj1pl-slot"></td>
+									<td id="imppasuj1pl-slot"></td>
+								</tr>
+								<tr>
+									<td>2nd</td>
+									<td id="impacsuj2pl-slot"></td>
+									<td id="imppasuj2pl-slot"></td>
+								</tr>
+								<tr>
+									<td>3rd</td>
+									<td id="impacsuj3pl-slot"></td>
+									<td id="imppasuj3pl-slot"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div id="plsuj-table" class="verb-table suj">
+						<p>Pluperfect subjunctive</p>
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Active</th>
+									<th>Passive</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Sing.</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1st</td>
+									<td id="placsuj1s-slot"></td>
+									<td id="plpasuj1s-slot"></td>
+								</tr>
+								<tr>
+									<td>2nd</td>
+									<td id="placsuj2s-slot"></td>
+									<td id="plpasuj2s-slot"></td>
+								</tr>
+								<tr>
+									<td>3rd</td>
+									<td id="placsuj3s-slot"></td>
+									<td id="plpasuj3s-slot"></td>
+								</tr>
+								<tr>
+									<td>Pl.</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1st</td>
+									<td id="placsuj1pl-slot"></td>
+									<td id="plpasuj1pl-slot"></td>
+								</tr>
+								<tr>
+									<td>2nd</td>
+									<td id="placsuj2pl-slot"></td>
+									<td id="plpasuj2pl-slot"></td>
+								</tr>
+								<tr>
+									<td>3rd</td>
+									<td id="placsuj3pl-slot"></td>
+									<td id="plpasuj3pl-slot"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div id="other-verbs-table" class="verb-table">
+						<table>
+							<thead>
+								<tr>
+									<th>Present infinitive</th>
+									<th>Perfect infinitive</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td id="infpr-slot"></td>
+									<td id="infpf-slot"></td>
+								</tr>
+							</tbody>
+						</table>
+
+						<table>
+							<thead>
+								<tr>
+									<th>Present active participle</th>
+									<th>Perfect passive participle</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td id="pap-slot"></td>
+									<td id="ppp-slot"></td>
+								</tr>
+							</tbody>
+						</table>
+
+						<table>
+							<thead>
+								<tr>
+									<th>Singular active imperative</th>
+									<th>Plural active imperative</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td id="imps-slot"></td>
+									<td id="imppl-slot"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="verb-table-settings">
+					<div class="verb-table-settings-inner">
+						<div class="toggle word-table-select-wrapper">
+							<p>Select word:</p>
+							<select onchange="constructWordTable()" id="word-table-select" size="1"></select>
+						</div>
+						<div class="toggle subjunctive-verb-table-toggle">
+							<p style="margin: 0">Show subjunctive tables</p>
+							<input type="checkbox" onclick="handleSubjunctiveTableSelection(this)" />
+						</div>
+					</div>
+					<p class="show-enhanced-verb-table-prompt">
+						<a onclick="toggleEnhancedWordTable()">Show all tables together</a>
+					</p>
+					<p class="declension-return-to-test-prompt">
+						<a id="return-to-test-prompt" onclick="toggleWordTable(false)">Return to test</a>
+					</p>
+					<p class="verb-tables-heading">Verb Tables</p>
+				</div>
 			</div>
 		</div>
 		<div id="vocab-selector" class="main-content">

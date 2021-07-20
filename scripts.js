@@ -23,7 +23,7 @@ let vocabToTest = [];
 
 window.onload = function () {
 	if ( ! localStorage.getItem( 'userID' ) ) {
-		localStorage.setItem( 'userID', Math.floor( Math.random() * 9999999 ) + 1 );
+		localStorage.setItem( 'userID', userId );
 	}
 
 	// This is an arbitrary figure, but it ensures parameters can take effect without a jump on the screen.
@@ -117,6 +117,12 @@ window.onload = function () {
 				new URLSearchParams( window.location.search ).get( 'ref' ) +
 				' and data ' +
 				navigator.userAgent
+		);
+	}
+
+	if ( document.referrer ) {
+		collectData(
+			'Loaded site with referrer ' + document.referrer + ' and data ' + navigator.userAgent
 		);
 	}
 
@@ -324,6 +330,10 @@ function endCompetitionTimer() {
 
 	if ( ! document.getElementById( 'competition-correction' ).textContent.length ) {
 		document.getElementById( 'competition-correction' ).innerHTML = endingMessage;
+	}
+
+	if ( innerWidth > 1200 && ( isTestingConjugations || isTestingDeclensions ) ) {
+		toggleWordTable( true );
 	}
 
 	collectData( 'Competition ended', 'ended_competition' );
@@ -1138,11 +1148,11 @@ function handleCaseSelection( e ) {
 			break;
 	}
 
-	caseNumber.forEach( ( number ) => {
+	caseNumber.forEach( ( number ) =>
 		e.checked
 			? acceptableCases.push( number )
-			: acceptableCases.splice( acceptableCases.indexOf( number ), 1 );
-	} );
+			: acceptableCases.splice( acceptableCases.indexOf( number ), 1 )
+	);
 
 	collectData( 'Set case selection ' + e.id + ' to be ' + e.checked, 'set_case_settings' );
 
@@ -1271,6 +1281,64 @@ function constructWordTable( changingVerbTable = false ) {
 	}
 
 	document.getElementById( optionType + '-slot' ).classList.add( 'is-highlighted' );
+}
+
+function constructVocabSelectionTable() {
+	let table = '<tbody>';
+	for ( i = 0; i < allVocab.length; i++ ) {
+		let category = Number.isInteger( parseInt( allVocab[ i ].category ) )
+			? 'stage ' + allVocab[ i ].category
+			: allVocab[ i ].category;
+		if ( allVocab[ i ].category === 'other' ) {
+			category = 'other stage';
+		}
+		table += '<tr>';
+		table += '<td>' + allVocab[ i ].word + '</td>';
+		table += '<td>' + category + '</td>';
+		table += '<td>' + allVocab[ i ].translation + '</td>';
+		table +=
+			'<td><svg onclick="discardVocabSelection(\'' +
+			i +
+			'\')" class="trash-icon"><g><path d="M6.187 8h11.625l-.695 11.125C17.05 20.18 16.177 21 15.12 21H8.88c-1.057 0-1.93-.82-1.997-1.875L6.187 8zM19 5v2H5V5h3V4c0-1.105.895-2 2-2h4c1.105 0 2 .895 2 2v1h3zm-9 0h4V4h-4v1z"></path></g></svg></td>';
+		table += '</tr>';
+	}
+	table += '</tbody>';
+	document.getElementById( 'vocabulary-table' ).innerHTML = table;
+}
+
+function discardVocabSelection( id ) {
+	if ( allVocab.length === 1 ) {
+		return ( document.getElementById( 'vocabulary-selection-error' ).style.display = 'block' );
+	}
+
+	allVocab.splice( parseInt( id ), 1 );
+	constructVocabSelectionTable();
+	collectData( 'Answer discarded in vocabulary selection', 'discarded_vocabulary_section' );
+}
+
+function toggleVocabSelectionTable( display ) {
+	if ( display ) {
+		constructVocabSelectionTable();
+		document.getElementById( 'modal' ).style.display = 'block';
+		collectData( 'Displayed vocabulary selection table', 'displayed_vocab_selection_table' );
+		return;
+	}
+
+	collectData( 'Dismissed vocabulary selection table', 'dismissed_vocab_selection_table' );
+
+	document.getElementById( 'modal' ).style.display = 'none';
+}
+
+window.onclick = function ( event ) {
+	if ( event.target === document.getElementById( 'modal' ) ) {
+		toggleVocabSelectionTable( false );
+	}
+};
+
+function sortVocabSelectionTable( column ) {
+	allVocab.sort( ( a, b ) => a[ column ].localeCompare( b[ column ] ) );
+	constructVocabSelectionTable();
+	collectData( 'Sorted vocabulary selection table by ' + column, 'sorted_vocab_selection_table' );
 }
 
 function toggleWordTable( show ) {

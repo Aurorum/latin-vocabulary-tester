@@ -1233,9 +1233,12 @@
 						<li id="conjugations-leaderboard-14">Loading...</li>
 					</ol>
 				</div>
-				<h3 class="start-button-wrapper-text">Begin test</h3>
+				<h3 class="start-button-wrapper-text">Begin vocabulary test</h3>
 				<div id="start-button" class="start-button-wrapper is-inactive">
 					<img onclick="startTest()" src="./assets/start.svg" alt="" />
+					<a class="selected-words-prompt" onclick="toggleVocabSelectionTable(true)"
+						>View selected words</a
+					>
 				</div>
 				<p class="starting-warning">
 					You need to select some categories before beginning the test!
@@ -1649,6 +1652,63 @@
 					</div>
 					<a id="select-all-desktop" class="select-all-option" onclick="selectAll()">Select all</a>
 				</div>
+			</div>
+		</div>
+
+		<div id="modal" class="modal-wrapper">
+			<div class="modal-content">
+				<img
+					src="./assets/close.svg"
+					class="close-icon"
+					alt="Close"
+					onclick="toggleVocabSelectionTable(false)"
+				/>
+				<h3>Selected choices</h3>
+				<p>Note: changing your selected categories will re-add any words which you remove here.</p>
+				<table cellspacing="16" class="vocabulary-selection-table">
+					<thead>
+						<tr>
+							<th>
+								<div class="vocabulary-selection-table-heading">
+									<p>Word</p>
+									<img
+										src="./assets/dropdown-white.svg"
+										class="dropdown"
+										alt="Sort"
+										onclick="sortVocabSelectionTable('word')"
+									/>
+								</div>
+							</th>
+							<th>
+								<div class="vocabulary-selection-table-heading">
+									<p>Category</p>
+									<img
+										src="./assets/dropdown-white.svg"
+										class="dropdown"
+										alt="Sort"
+										onclick="sortVocabSelectionTable('category')"
+									/>
+								</div>
+							</th>
+							<th>
+								<div class="vocabulary-selection-table-heading">
+									<p>Translation</p>
+									<img
+										src="./assets/dropdown-white.svg"
+										class="dropdown"
+										alt="Sort"
+										onclick="sortVocabSelectionTable('translation')"
+									/>
+								</div>
+							</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody id="vocabulary-table"></tbody>
+				</table>
+				<p id="vocabulary-selection-error" class="vocabulary-selection-warning">
+					Error: you must leave at least one word selected.
+				</p>
 			</div>
 		</div>
 

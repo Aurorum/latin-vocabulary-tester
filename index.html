@@ -7,7 +7,7 @@
 		<meta name="author" content="Aurorum" />
 		<meta
 			name="keywords"
-			content="Latin, Vocabulary, Declensions, Latin Declensions Tester, Conjugations, OCR, A-Level, Eduqas, GCSE, Vocab, Latin Vocab Tester"
+			content="Latin, Vocabulary, Declensions, Latin Declensions Tester, Conjugations, OCR, A-Level, Eduqas, GCSE, Vocab, Cambridge Latin Course, Latin Vocab Tester"
 		/>
 		<meta
 			name="description"
@@ -116,6 +116,84 @@
 
 				<div class="select-verbs-wrapper">
 					<h3>Select verb types to practise</h3>
+
+					<div
+						onclick="constructWordTable(true)"
+						id="verb-type-table-mode-menu"
+						class="table-mode-menu"
+					>
+						<button
+							onclick="handleWordTableSelection(this)"
+							class="verb-table-option-button is-selected"
+							id="prind-button"
+						>
+							Present indicative
+						</button>
+						<button
+							onclick="handleWordTableSelection(this)"
+							class="verb-table-option-button"
+							id="imind-button"
+						>
+							Imperfect indicative
+						</button>
+						<button
+							onclick="handleWordTableSelection(this)"
+							class="verb-table-option-button"
+							id="pfind-button"
+						>
+							Perfect indicative
+						</button>
+						<button
+							onclick="handleWordTableSelection(this)"
+							class="verb-table-option-button"
+							id="plind-button"
+						>
+							Pluperfect indicative
+						</button>
+						<button
+							onclick="handleWordTableSelection(this)"
+							class="verb-table-option-button"
+							id="ftind-button"
+						>
+							Future indicative
+						</button>
+						<button
+							onclick="handleWordTableSelection(this)"
+							class="verb-table-option-button"
+							id="prsuj-button"
+						>
+							Present subjunctive
+						</button>
+						<button
+							onclick="handleWordTableSelection(this)"
+							class="verb-table-option-button"
+							id="imsuj-button"
+						>
+							Imperfect subjunctive
+						</button>
+						<button
+							onclick="handleWordTableSelection(this)"
+							class="verb-table-option-button"
+							id="pfsuj-button"
+						>
+							Perfect subjunctive
+						</button>
+						<button
+							onclick="handleWordTableSelection(this)"
+							class="verb-table-option-button"
+							id="plsuj-button"
+						>
+							Pluperfect subjunctive
+						</button>
+						<button
+							onclick="handleWordTableSelection(this)"
+							class="verb-table-option-button"
+							id="other-verbs-button"
+						>
+							Other
+						</button>
+					</div>
+
 					<div class="select-verbs">
 						<div class="indicative">
 							<div class="verb-selection-toggle">
@@ -550,6 +628,7 @@
 							Incorrectly answered: <span id="vocab-incorrect-count">0</span> times
 						</p>
 						<p class="show-word-table-toggle">
+							<a onclick="toggleTableMode()">Switch to table mode</a>
 							<a id="word-table-prompt" onclick="toggleWordTable(true)">Show table</a>
 						</p>
 					</div>
@@ -647,8 +726,13 @@
 						</select>
 					</div>
 
+					<p id="vocab-question-table-mode"></p>
+
 					<div id="prind-table" class="verb-table">
-						<p>Present indicative</p>
+						<p class="table-mode-prompt">
+							Conjugate the <strong>present indicative</strong> in the table below
+						</p>
+						<p class="verb-table-title">Present indicative</p>
 						<table>
 							<thead>
 								<tr>
@@ -665,18 +749,72 @@
 								</tr>
 								<tr>
 									<td>1st</td>
-									<td id="pracind1s-slot"></td>
-									<td id="prpaind1s-slot"></td>
+									<td id="pracind1s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="prpaind1s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>2nd</td>
-									<td id="pracind2s-slot"></td>
-									<td id="prpaind2s-slot"></td>
+									<td id="pracind2s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="prpaind2s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>3rd</td>
-									<td id="pracind3s-slot"></td>
-									<td id="prpaind3s-slot"></td>
+									<td id="pracind3s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="prpaind3s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>Pl.</td>
@@ -685,25 +823,82 @@
 								</tr>
 								<tr>
 									<td>1st</td>
-									<td id="pracind1pl-slot"></td>
-									<td id="prpaind1pl-slot"></td>
+									<td id="pracind1pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="prpaind1pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>2nd</td>
-									<td id="pracind2pl-slot"></td>
-									<td id="prpaind2pl-slot"></td>
+									<td id="pracind2pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="prpaind2pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>3rd</td>
-									<td id="pracind3pl-slot"></td>
-									<td id="prpaind3pl-slot"></td>
+									<td id="pracind3pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="prpaind3pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 
 					<div id="pfind-table" class="verb-table">
-						<p>Perfect indicative</p>
+						<p class="table-mode-prompt">
+							Conjugate the <strong>perfect indicative</strong> in the table below
+						</p>
+						<p class="verb-table-title">Perfect indicative</p>
 						<table>
 							<thead>
 								<tr>
@@ -720,18 +915,72 @@
 								</tr>
 								<tr>
 									<td>1st</td>
-									<td id="pfacind1s-slot"></td>
-									<td id="pfpaind1s-slot"></td>
+									<td id="pfacind1s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="pfpaind1s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>2nd</td>
-									<td id="pfacind2s-slot"></td>
-									<td id="pfpaind2s-slot"></td>
+									<td id="pfacind2s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="pfpaind2s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>3rd</td>
-									<td id="pfacind3s-slot"></td>
-									<td id="pfpaind3s-slot"></td>
+									<td id="pfacind3s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="pfpaind3s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>Pl.</td>
@@ -740,25 +989,82 @@
 								</tr>
 								<tr>
 									<td>1st</td>
-									<td id="pfacind1pl-slot"></td>
-									<td id="pfpaind1pl-slot"></td>
+									<td id="pfacind1pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="pfpaind1pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>2nd</td>
-									<td id="pfacind2pl-slot"></td>
-									<td id="pfpaind2pl-slot"></td>
+									<td id="pfacind2pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="pfpaind2pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>3rd</td>
-									<td id="pfacind3pl-slot"></td>
-									<td id="pfpaind3pl-slot"></td>
+									<td id="pfacind3pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="pfpaind3pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 
 					<div id="imind-table" class="verb-table">
-						<p>Imperfect indicative</p>
+						<p class="table-mode-prompt">
+							Conjugate the <strong>imperfect indicative</strong> in the table below
+						</p>
+						<p class="verb-table-title">Imperfect indicative</p>
 						<table>
 							<thead>
 								<tr>
@@ -775,18 +1081,72 @@
 								</tr>
 								<tr>
 									<td>1st</td>
-									<td id="impacind1s-slot"></td>
-									<td id="imppaind1s-slot"></td>
+									<td id="impacind1s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="imppaind1s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>2nd</td>
-									<td id="impacind2s-slot"></td>
-									<td id="imppaind2s-slot"></td>
+									<td id="impacind2s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="imppaind2s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>3rd</td>
-									<td id="impacind3s-slot"></td>
-									<td id="imppaind3s-slot"></td>
+									<td id="impacind3s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="imppaind3s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>Pl.</td>
@@ -795,25 +1155,82 @@
 								</tr>
 								<tr>
 									<td>1st</td>
-									<td id="impacind1pl-slot"></td>
-									<td id="imppaind1pl-slot"></td>
+									<td id="impacind1pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="imppaind1pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>2nd</td>
-									<td id="impacind2pl-slot"></td>
-									<td id="imppaind2pl-slot"></td>
+									<td id="impacind2pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="imppaind2pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>3rd</td>
-									<td id="impacind3pl-slot"></td>
-									<td id="imppaind3pl-slot"></td>
+									<td id="impacind3pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="imppaind3pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 
 					<div id="plind-table" class="verb-table">
-						<p>Pluperfect indicative</p>
+						<p class="table-mode-prompt">
+							Conjugate the <strong>pluperfect indicative</strong> in the table below
+						</p>
+						<p class="verb-table-title">Pluperfect indicative</p>
 						<table>
 							<thead>
 								<tr>
@@ -830,18 +1247,72 @@
 								</tr>
 								<tr>
 									<td>1st</td>
-									<td id="placind1s-slot"></td>
-									<td id="plpaind1s-slot"></td>
+									<td id="placind1s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="plpaind1s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>2nd</td>
-									<td id="placind2s-slot"></td>
-									<td id="plpaind2s-slot"></td>
+									<td id="placind2s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="plpaind2s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>3rd</td>
-									<td id="placind3s-slot"></td>
-									<td id="plpaind3s-slot"></td>
+									<td id="placind3s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="plpaind3s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>Pl.</td>
@@ -850,25 +1321,82 @@
 								</tr>
 								<tr>
 									<td>1st</td>
-									<td id="placind1pl-slot"></td>
-									<td id="plpaind1pl-slot"></td>
+									<td id="placind1pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="plpaind1pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>2nd</td>
-									<td id="placind2pl-slot"></td>
-									<td id="plpaind2pl-slot"></td>
+									<td id="placind2pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="plpaind2pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>3rd</td>
-									<td id="placind3pl-slot"></td>
-									<td id="plpaind3pl-slot"></td>
+									<td id="placind3pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="plpaind3pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 
 					<div id="ftind-table" class="verb-table">
-						<p>Future indicative</p>
+						<p class="table-mode-prompt">
+							Conjugate the <strong>future indicative</strong> in the table below
+						</p>
+						<p class="verb-table-title">Future indicative</p>
 						<table>
 							<thead>
 								<tr>
@@ -885,18 +1413,72 @@
 								</tr>
 								<tr>
 									<td>1st</td>
-									<td id="ftacind1s-slot"></td>
-									<td id="ftpaind1s-slot"></td>
+									<td id="ftacind1s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="ftpaind1s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>2nd</td>
-									<td id="ftacind2s-slot"></td>
-									<td id="ftpaind2s-slot"></td>
+									<td id="ftacind2s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="ftpaind2s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>3rd</td>
-									<td id="ftacind3s-slot"></td>
-									<td id="ftpaind3s-slot"></td>
+									<td id="ftacind3s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="ftpaind3s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>Pl.</td>
@@ -905,25 +1487,82 @@
 								</tr>
 								<tr>
 									<td>1st</td>
-									<td id="ftacind1pl-slot"></td>
-									<td id="ftpaind1pl-slot"></td>
+									<td id="ftacind1pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="ftpaind1pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>2nd</td>
-									<td id="ftacind2pl-slot"></td>
-									<td id="ftpaind2pl-slot"></td>
+									<td id="ftacind2pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="ftpaind2pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>3rd</td>
-									<td id="ftacind3pl-slot"></td>
-									<td id="ftpaind3pl-slot"></td>
+									<td id="ftacind3pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="ftpaind3pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 
 					<div id="prsuj-table" class="verb-table suj">
-						<p>Present subjunctive</p>
+						<p class="table-mode-prompt">
+							Conjugate the <strong>present subjunctive</strong> in the table below
+						</p>
+						<p class="verb-table-title">Present subjunctive</p>
 						<table>
 							<thead>
 								<tr>
@@ -940,18 +1579,72 @@
 								</tr>
 								<tr>
 									<td>1st</td>
-									<td id="pracsuj1s-slot"></td>
-									<td id="prpasuj1s-slot"></td>
+									<td id="pracsuj1s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="prpasuj1s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>2nd</td>
-									<td id="pracsuj2s-slot"></td>
-									<td id="prpasuj2s-slot"></td>
+									<td id="pracsuj2s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="prpasuj2s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>3rd</td>
-									<td id="pracsuj3s-slot"></td>
-									<td id="prpasuj3s-slot"></td>
+									<td id="pracsuj3s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="prpasuj3s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>Pl.</td>
@@ -960,25 +1653,82 @@
 								</tr>
 								<tr>
 									<td>1st</td>
-									<td id="pracsuj1pl-slot"></td>
-									<td id="prpasuj1pl-slot"></td>
+									<td id="pracsuj1pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="prpasuj1pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>2nd</td>
-									<td id="pracsuj2pl-slot"></td>
-									<td id="prpasuj2pl-slot"></td>
+									<td id="pracsuj2pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="prpasuj2pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>3rd</td>
-									<td id="pracsuj3pl-slot"></td>
-									<td id="prpasuj3pl-slot"></td>
+									<td id="pracsuj3pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="prpasuj3pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 
 					<div id="pfsuj-table" class="verb-table suj">
-						<p>Perfect subjunctive</p>
+						<p class="table-mode-prompt">
+							Conjugate the <strong>perfect subjunctive</strong> in the table below
+						</p>
+						<p class="verb-table-title">Perfect subjunctive</p>
 						<table>
 							<thead>
 								<tr>
@@ -995,18 +1745,72 @@
 								</tr>
 								<tr>
 									<td>1st</td>
-									<td id="pfacsuj1s-slot"></td>
-									<td id="pfpasuj1s-slot"></td>
+									<td id="pfacsuj1s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="pfpasuj1s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>2nd</td>
-									<td id="pfacsuj2s-slot"></td>
-									<td id="pfpasuj2s-slot"></td>
+									<td id="pfacsuj2s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="pfpasuj2s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>3rd</td>
-									<td id="pfacsuj3s-slot"></td>
-									<td id="pfpasuj3s-slot"></td>
+									<td id="pfacsuj3s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="pfpasuj3s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>Pl.</td>
@@ -1015,25 +1819,82 @@
 								</tr>
 								<tr>
 									<td>1st</td>
-									<td id="pfacsuj1pl-slot"></td>
-									<td id="pfpasuj1pl-slot"></td>
+									<td id="pfacsuj1pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="pfpasuj1pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>2nd</td>
-									<td id="pfacsuj2pl-slot"></td>
-									<td id="pfpasuj2pl-slot"></td>
+									<td id="pfacsuj2pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="pfpasuj2pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>3rd</td>
-									<td id="pfacsuj3pl-slot"></td>
-									<td id="pfpasuj3pl-slot"></td>
+									<td id="pfacsuj3pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="pfpasuj3pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 
 					<div id="imsuj-table" class="verb-table suj">
-						<p>Imperfect subjunctive</p>
+						<p class="table-mode-prompt">
+							Conjugate the <strong>imperfect subjunctive</strong> in the table below
+						</p>
+						<p class="verb-table-title">Imperfect subjunctive</p>
 						<table>
 							<thead>
 								<tr>
@@ -1050,18 +1911,72 @@
 								</tr>
 								<tr>
 									<td>1st</td>
-									<td id="impacsuj1s-slot"></td>
-									<td id="imppasuj1s-slot"></td>
+									<td id="impacsuj1s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="imppasuj1s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>2nd</td>
-									<td id="impacsuj2s-slot"></td>
-									<td id="imppasuj2s-slot"></td>
+									<td id="impacsuj2s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="imppasuj2s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>3rd</td>
-									<td id="impacsuj3s-slot"></td>
-									<td id="imppasuj3s-slot"></td>
+									<td id="impacsuj3s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="imppasuj3s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>Pl.</td>
@@ -1070,25 +1985,82 @@
 								</tr>
 								<tr>
 									<td>1st</td>
-									<td id="impacsuj1pl-slot"></td>
-									<td id="imppasuj1pl-slot"></td>
+									<td id="impacsuj1pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="imppasuj1pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>2nd</td>
-									<td id="impacsuj2pl-slot"></td>
-									<td id="imppasuj2pl-slot"></td>
+									<td id="impacsuj2pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="imppasuj2pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>3rd</td>
-									<td id="impacsuj3pl-slot"></td>
-									<td id="imppasuj3pl-slot"></td>
+									<td id="impacsuj3pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="imppasuj3pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 
 					<div id="plsuj-table" class="verb-table suj">
-						<p>Pluperfect subjunctive</p>
+						<p class="table-mode-prompt">
+							Conjugate the <strong>pluperfect subjunctive</strong> in the table below
+						</p>
+						<p class="verb-table-title">Pluperfect subjunctive</p>
 						<table>
 							<thead>
 								<tr>
@@ -1105,18 +2077,72 @@
 								</tr>
 								<tr>
 									<td>1st</td>
-									<td id="placsuj1s-slot"></td>
-									<td id="plpasuj1s-slot"></td>
+									<td id="placsuj1s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="plpasuj1s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>2nd</td>
-									<td id="placsuj2s-slot"></td>
-									<td id="plpasuj2s-slot"></td>
+									<td id="placsuj2s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="plpasuj2s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>3rd</td>
-									<td id="placsuj3s-slot"></td>
-									<td id="plpasuj3s-slot"></td>
+									<td id="placsuj3s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="plpasuj3s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>Pl.</td>
@@ -1125,24 +2151,83 @@
 								</tr>
 								<tr>
 									<td>1st</td>
-									<td id="placsuj1pl-slot"></td>
-									<td id="plpasuj1pl-slot"></td>
+									<td id="placsuj1pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="plpasuj1pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>2nd</td>
-									<td id="placsuj2pl-slot"></td>
-									<td id="plpasuj2pl-slot"></td>
+									<td id="placsuj2pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="plpasuj2pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 								<tr>
 									<td>3rd</td>
-									<td id="placsuj3pl-slot"></td>
-									<td id="plpasuj3pl-slot"></td>
+									<td id="placsuj3pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="plpasuj3pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
 
 					<div id="other-verbs-table" class="verb-table">
+						<p class="table-mode-prompt">
+							Conjugate the <strong>infinitives, participles and imperatives</strong> in the tables
+							below
+						</p>
+						<p class="verb-table-title">Other</p>
 						<table>
 							<thead>
 								<tr>
@@ -1152,8 +2237,26 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td id="infpr-slot"></td>
-									<td id="infpf-slot"></td>
+									<td id="infpr-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="infpf-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -1167,8 +2270,26 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td id="pap-slot"></td>
-									<td id="ppp-slot"></td>
+									<td id="pap-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="ppp-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -1182,8 +2303,26 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td id="imps-slot"></td>
-									<td id="imppl-slot"></td>
+									<td id="imps-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="imppl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -1206,6 +2345,11 @@
 					</p>
 					<p class="declension-return-to-test-prompt">
 						<a id="return-to-test-prompt" onclick="toggleWordTable(false)">Return to test</a>
+					</p>
+					<p class="table-mode-options">
+						<a id="toggle-table-mode-prompt" onclick="toggleTableMode()">Switch to regular mode</a>
+						<a onclick="checkTableModeAnswer()">Check answers</a>
+						<a onclick="generateNewTableWord()">Generate new word</a>
 					</p>
 					<p class="verb-tables-heading">Verb Tables</p>
 				</div>

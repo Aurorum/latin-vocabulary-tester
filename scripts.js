@@ -7,6 +7,7 @@ let competitiveTestType;
 let data = 0;
 let finalVocab = [];
 let hardDifficulty = false;
+let isTableMode = false;
 let isTestingConjugations = false;
 let isTestingDeclensions = false;
 let isTestingParticipleParts = false;
@@ -38,7 +39,7 @@ window.onload = function () {
 			checkAnswer();
 		}
 	} );
-	collectData( 'Loaded site with data ' + navigator.userAgent, 'load' );
+	collectData( 'Loaded site with data ' + navigator.userAgent + ' at ' + new Date(), 'load' );
 
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.onreadystatechange = function () {
@@ -241,7 +242,8 @@ function startTest( startDeclensionTest = false, startConjugationTest = false ) 
 		document.getElementById( 'progress-indicator-slash' ).innerHTML = ' conjugated correctly';
 		document.getElementById( wordTablePrompt ).innerHTML = 'Show verb tables';
 		collectData( 'Started conjugation test', 'started_conjugation_test' );
-		return buildDeclensionOrConjugationTest( true );
+
+		return buildDeclensionOrConjugationTest( true, true, true );
 	}
 
 	let maxWordSelect = document.getElementById( 'max-word-select' );
@@ -454,7 +456,11 @@ function leaderboardSubmitName() {
 	xhttp.send();
 }
 
-function buildDeclensionOrConjugationTest( isConjugationTest = false, addToTable = true ) {
+function buildDeclensionOrConjugationTest(
+	isConjugationTest = false,
+	addToTable = true,
+	startTableMode = false
+) {
 	if ( isConjugationTest ) {
 		allVocab = vocabToTest.concat( findAllConjugationVocab() );
 		finalVocab = vocabToTest.concat( findConjugationVocab() );
@@ -488,6 +494,16 @@ function buildDeclensionOrConjugationTest( isConjugationTest = false, addToTable
 	}
 
 	document.getElementById( 'vocab-question' ).innerHTML = vocabwithNumber.word;
+	document.getElementById( 'vocab-question-table-mode' ).innerHTML = vocabwithNumber.word;
+
+	if ( isTableMode && isTestingConjugations ) {
+		resetTableMode();
+		constructWordTable( true );
+	}
+
+	if ( startTableMode && ! competitiveMode ) {
+		toggleTableMode();
+	}
 }
 
 function handleVerbSelection( e, manualChange = true ) {
@@ -1251,7 +1267,8 @@ function constructWordTable( changingVerbTable = false ) {
 
 		for ( let i = 0; i < verbTable.length; i++ ) {
 			if ( verbTable[ i ].id && verbTable[ i ].id.endsWith( 'slot' ) ) {
-				verbTable[ i ].innerHTML = answer[ verbTable[ i ].id.replace( '-slot', '' ) ];
+				verbTable[ i ].childNodes[ 3 ].innerHTML =
+					answer[ verbTable[ i ].id.replace( '-slot', '' ) ];
 				document.getElementById( verbTable[ i ].id ).classList.remove( 'is-highlighted' );
 			}
 		}
@@ -1269,6 +1286,12 @@ function constructWordTable( changingVerbTable = false ) {
 
 		wordTableId = document.getElementById( 'verb-type-table-select' ).value;
 
+		if ( isTableMode ) {
+			wordTableId = document
+				.querySelector( '.verb-table-option-button.is-selected' )
+				.id.replace( 'button', 'table' );
+		}
+
 		let verbTableWrapper = document.querySelectorAll( '.further-content .verb-table' );
 
 		for ( let i = 0; i < verbTableWrapper.length; i++ ) {
@@ -1281,6 +1304,116 @@ function constructWordTable( changingVerbTable = false ) {
 	}
 
 	document.getElementById( optionType + '-slot' ).classList.add( 'is-highlighted' );
+}
+
+function toggleTableMode() {
+	if ( ! isTableMode ) {
+		collectData( 'Toggled table mode to be true', 'toggle_table_mode' );
+		isTableMode = true;
+		document.body.classList.add( 'is-table-mode' );
+		toggleWordTable( true );
+		return;
+	}
+
+	collectData( 'Toggled table mode to be false', 'toggle_table_mode' );
+	isTableMode = false;
+	document.body.classList.remove( 'is-table-mode' );
+	toggleWordTable( false );
+}
+
+function resetTableMode() {
+	let markedTables = document.querySelectorAll( '.verb-table.is-marked' );
+
+	for ( let i = 0; i < markedTables.length; i++ ) {
+		markedTables[ i ].classList.remove( 'is-marked' );
+	}
+
+	let correctAnswers = document.querySelectorAll( '.verb-table .answer-correct' );
+	for ( let i = 0; i < correctAnswers.length; i++ ) {
+		correctAnswers[ i ].classList.remove( 'answer-correct' );
+	}
+
+	let incorrectAnswers = document.querySelectorAll( '.verb-table .answer-incorrect' );
+	for ( let i = 0; i < incorrectAnswers.length; i++ ) {
+		incorrectAnswers[ i ].classList.remove( 'answer-incorrect' );
+	}
+
+	let answerInputs = document.querySelectorAll( '.verb-table input' );
+	for ( let i = 0; i < answerInputs.length; i++ ) {
+		answerInputs[ i ].value = '';
+	}
+}
+
+function handleWordTableSelection( e ) {
+	let verbTableOptions = document.querySelectorAll( '#verb-type-table-mode-menu button' );
+
+	for ( let i = 0; i < verbTableOptions.length; i++ ) {
+		verbTableOptions[ i ].classList.remove( 'is-selected' );
+	}
+
+	e.classList.add( 'is-selected' );
+
+	if ( ! mute ) {
+		new Audio( './assets/audio/click.mp3' ).play();
+	}
+
+	collectData( 'Switched verb test to ' + e.id.replace( '-button', '' ), 'switch_verb_test' );
+
+	constructWordTable( true );
+}
+
+function generateNewTableWord() {
+	buildDeclensionOrConjugationTest( true );
+
+	if ( ! mute ) {
+		new Audio( './assets/audio/click.mp3' ).play();
+	}
+
+	collectData( 'Answer completed and generated new word', 'generate_new_table_word' );
+}
+
+function checkTableModeAnswer() {
+	if (
+		document
+			.querySelector( '.further-content .verb-tables .verb-table.is-active' )
+			.classList.contains( 'is-marked' )
+	) {
+		return;
+	}
+
+	let currentCount = 0;
+	let verbTable = document.querySelectorAll(
+		'.further-content .verb-tables .verb-table.is-active table td'
+	);
+
+	for ( let i = 0; i < verbTable.length; i++ ) {
+		if ( verbTable[ i ].id && verbTable[ i ].id.endsWith( 'slot' ) ) {
+			let enteredAnswer = verbTable[ i ].childNodes[ 1 ].value.toLowerCase().trim();
+			let realAnswer = verbTable[ i ].childNodes[ 3 ].textContent.toLowerCase();
+			let isAnswerCorrect = enteredAnswer === realAnswer;
+
+			if ( isAnswerCorrect ) {
+				verbTable[ i ].classList.add( 'answer-correct' );
+				currentCount++;
+			} else {
+				verbTable[ i ].classList.add( 'answer-incorrect' );
+				verbTable[ i ].childNodes[ 3 ].innerHTML =
+					'<span>Entered: ' + enteredAnswer + '</span>' + realAnswer;
+			}
+		}
+	}
+	collectData(
+		'Answers checked in table mode: ' + currentCount + ' correct',
+		'table_mode_answer_checked'
+	);
+
+	document
+		.querySelector( '.further-content .verb-tables .verb-table.is-active' )
+		.classList.add( 'is-marked' );
+
+	if ( ! mute ) {
+		new Audio( './assets/audio/click.mp3' ).play();
+	}
 }
 
 function constructVocabSelectionTable() {

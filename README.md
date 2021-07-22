@@ -16,3 +16,4 @@ If there is any desire to use it, I'm happy to ensure it functions better with a
 | <img alt="Screenshot 1" src="./assets/screenshots/screenshot-1.png"> | <img alt="Screenshot 2" src="./assets/screenshots/screenshot-2.png"> |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | <img alt="Screenshot 3" src="./assets/screenshots/screenshot-3.png"> | <img alt="Screenshot 4" src="./assets/screenshots/screenshot-4.png"> |
+| <img alt="Screenshot 5" src="./assets/screenshots/screenshot-5.png"> | <img alt="Screenshot 6" src="./assets/screenshots/screenshot-6.png"> |

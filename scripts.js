@@ -450,7 +450,9 @@ function leaderboardSubmitName() {
 			'&quiz=' +
 			competitiveTestType +
 			'&option=' +
-			selectedOption,
+			selectedOption +
+			'&id=' +
+			userId,
 		true
 	);
 	xhttp.send();
@@ -818,7 +820,7 @@ function handleVerbConjugations() {
 			break;
 		case 43:
 			verbForm = 'first-person plural pluperfect passive indicative';
-			vocabConjugation = 'plpaind2pl';
+			vocabConjugation = 'plpaind1pl';
 			break;
 		case 44:
 			verbForm = 'second-person plural pluperfect active indicative';
@@ -864,11 +866,11 @@ function handleVerbConjugations() {
 			break;
 		case 54:
 			verbForm = 'first-person plural future active indicative';
-			vocabConjugation = 'ftacind2pl';
+			vocabConjugation = 'ftacind1pl';
 			break;
 		case 55:
 			verbForm = 'first-person plural future passive indicative';
-			vocabConjugation = 'ftpaind2pl';
+			vocabConjugation = 'ftpaind1pl';
 			break;
 		case 56:
 			verbForm = 'second-person plural future active indicative';
@@ -932,11 +934,11 @@ function handleVerbConjugations() {
 			break;
 		case 70:
 			verbForm = 'first-person plural present active subjunctive';
-			vocabConjugation = 'pracsuj2pl';
+			vocabConjugation = 'pracsuj1pl';
 			break;
 		case 71:
 			verbForm = 'first-person plural present passive subjunctive';
-			vocabConjugation = 'prpasuj2pl';
+			vocabConjugation = 'prpasuj1pl';
 			break;
 		case 72:
 			verbForm = 'second-person plural present active subjunctive';
@@ -982,11 +984,11 @@ function handleVerbConjugations() {
 			break;
 		case 82:
 			verbForm = 'first-person plural imperfect active subjunctive';
-			vocabConjugation = 'impacsuj2pl';
+			vocabConjugation = 'impacsuj1pl';
 			break;
 		case 83:
 			verbForm = 'first-person plural imperfect passive subjunctive';
-			vocabConjugation = 'imppasuj2pl';
+			vocabConjugation = 'imppasuj1pl';
 			break;
 		case 84:
 			verbForm = 'second-person plural imperfect active subjunctive';
@@ -1032,11 +1034,11 @@ function handleVerbConjugations() {
 			break;
 		case 94:
 			verbForm = 'first-person plural perfect active subjunctive';
-			vocabConjugation = 'pfacsuj2pl';
+			vocabConjugation = 'pfacsuj1pl';
 			break;
 		case 95:
 			verbForm = 'first-person plural perfect passive subjunctive';
-			vocabConjugation = 'pfpasuj2pl';
+			vocabConjugation = 'pfpasuj1pl';
 			break;
 		case 96:
 			verbForm = 'second-person plural perfect active subjunctive';
@@ -1082,11 +1084,11 @@ function handleVerbConjugations() {
 			break;
 		case 106:
 			verbForm = 'first-person plural pluperfect active subjunctive';
-			vocabConjugation = 'placsuj2pl';
+			vocabConjugation = 'placsuj1pl';
 			break;
 		case 107:
 			verbForm = 'first-person plural pluperfect passive subjunctive';
-			vocabConjugation = 'plpasuj2pl';
+			vocabConjugation = 'plpasuj1pl';
 			break;
 		case 108:
 			verbForm = 'second-person plural pluperfect active subjunctive';

@@ -166,7 +166,7 @@ input:focus {
 	outline: 1px auto #005fcc;
 }
 
-button:not( .vocab-type ):not( .competition-option-button ):not( .verb-table-option-button ),
+button:not( .vocab-type ):not( .option-button ):not( .verb-table-option-button ),
 [type='submit'] {
 	background: #dacafa;
 	border-color: #efe7ff #d3c2f7 #c1a2ff;
@@ -460,7 +460,8 @@ li {
 }
 
 .options-menu .practise-options a {
-	margin-right: 8px;
+	animation: pulse-orange 2s infinite;
+	margin-right: 14px;
 }
 
 .options-menu .practise-options a,
@@ -725,13 +726,22 @@ a:hover {
 	text-align: center;
 }
 
+.leaderboard-submit-name .compact-options .option-button {
+	margin: 0;
+}
+
+.leaderboard-submit-name .option-button .laurel-image {
+	height: 30px;
+	margin-right: 12px;
+}
+
 .leaderboard-ineligible .leaderboard-submit-name {
 	display: none;
 }
 
 .leaderboard-submit-name input {
-	margin-bottom: 8px;
-	margin-left: 12px;
+	height: 45px;
+	margin: auto 12px auto;
 	max-width: 100%;
 }
 
@@ -848,6 +858,7 @@ a:hover {
 .has-begun-conjugation-test .progress-bar,
 .select-declensions-wrapper,
 .select-verbs-wrapper,
+#vocab-question-details,
 .show-word-table-toggle,
 .show-word-table-toggle a:first-of-type {
 	display: none;
@@ -857,8 +868,11 @@ a:hover {
 .has-begun-conjugation-test:not( .is-competitive-mode ) .left-content .select-verbs-wrapper,
 .has-begun-declension-test:not( .is-competitive-mode ) .show-word-table-toggle,
 .has-begun-vocab-test .options-menu a:nth-of-type( 1 ),
-.has-begun-declension-test #vocab-tester-wrapper.time-ended .show-word-table-toggle,
-.has-begun-conjugation-test #vocab-tester-wrapper.time-ended .show-word-table-toggle,
+.has-begun-conjugation-test #vocab-question-details,
+.has-begun-declension-test #vocab-question-details,
+#vocab-tester-wrapper.time-ended .show-word-table-toggle-competition,
+.has-begun-declension-test #vocab-tester-wrapper.time-ended #word-table-prompt-competitive,
+.has-begun-conjugation-test #vocab-tester-wrapper.time-ended #word-table-prompt-competitive,
 .has-begun-conjugation-test:not( .is-competitive-mode ) .show-word-table-toggle a:first-of-type {
 	display: block;
 }
@@ -1048,6 +1062,10 @@ a:hover {
 	display: block;
 }
 
+.noun-table {
+	overflow: scroll;
+}
+
 .further-content td {
 	padding: 12px;
 }
@@ -1151,8 +1169,19 @@ a:hover {
 
 #vocab-question {
 	font-size: 2em;
+	margin-bottom: 12px;
 }
 
+#vocab-question-details,
+#vocab-question-table-mode-details {
+	border-bottom: 1px solid #fff;
+	margin: 0;
+	font-size: 14px;
+	padding-bottom: 12px;
+	text-align: center;
+}
+
+#vocab-question-table-mode-details,
 #vocab-tester-wrapper.is-complete #vocab-tester,
 #vocab-tester-wrapper,
 .has-begun-vocab-test #vocab-selector {
@@ -1172,13 +1201,13 @@ a:hover {
 	overflow-y: scroll;
 }
 
-.competition-options {
+.options-wrapper {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
 }
 
-.competition-option-button {
+.option-button {
 	background: #fff;
 	padding: 48px;
 	margin-left: 48px;
@@ -1190,18 +1219,38 @@ a:hover {
 	outline: none;
 }
 
-.competition-option-button p {
+.option-button p {
 	text-align: center;
 }
 
-.competition-option-button:hover {
+.option-button:hover {
 	transform: scale( 1.1 );
 }
 
-.competition-option-button img {
+.option-button img {
 	display: flex;
 	height: 180px;
 	margin: auto;
+}
+
+.compact-options .option-button {
+	border-radius: 6px;
+	display: flex;
+	padding: 8px 14px;
+}
+
+.compact-options .option-button img {
+	height: 85px;
+	margin-right: 12px;
+}
+
+.compact-options .option-button p {
+	margin: auto;
+}
+
+.option-button.is-inactive {
+	pointer-events: none;
+	opacity: 0.7;
 }
 
 .curtain {
@@ -1226,7 +1275,7 @@ a:hover {
 .complete-actions {
 	display: flex;
 	justify-content: center;
-	margin-left: -20px;
+	margin-top: 28px;
 }
 
 @keyframes curtain {
@@ -1252,6 +1301,25 @@ a:hover {
 	100% {
 		transform: scale( 0.95 );
 		box-shadow: 0 0 0 0 rgba( 0, 0, 0, 0 );
+	}
+}
+
+@keyframes pulse-orange {
+	0% {
+		transform: scale( 0.95 );
+		box-shadow: 0 0 0 0 rgb( 238 108 77 / 0.7 );
+		margin-top: -2px;
+	}
+
+	70% {
+		transform: scale( 1 );
+		box-shadow: 0 0 0 8px rgba( 0, 0, 0, 0 );
+	}
+
+	100% {
+		transform: scale( 0.95 );
+		box-shadow: 0 0 0 0 rgba( 0, 0, 0, 0 );
+		margin-top: -2px;
 	}
 }
 
@@ -1510,6 +1578,16 @@ input:checked + .slider:before {
 	color: #fff;
 }
 
+.verb-table-option-button:first-of-type.is-selected {
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+}
+
+.verb-table-option-button:last-of-type.is-selected {
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+
 button.verb-table-option-button:hover {
 	transform: none;
 }
@@ -1518,7 +1596,7 @@ button.verb-table-option-button:hover {
 	display: none;
 	font-size: 2em;
 	font-weight: 600;
-	margin-bottom: 0;
+	margin: 10px auto;
 	text-align: center;
 }
 
@@ -1559,6 +1637,7 @@ button.verb-table-option-button:hover {
 
 .is-table-mode .verb-table input,
 .is-table-mode #vocab-question-table-mode,
+.is-table-mode #vocab-question-table-mode-details,
 .is-table-mode .table-mode-prompt {
 	display: block;
 }
@@ -1756,13 +1835,13 @@ button.verb-table-option-button:hover {
 }
 
 @media only screen and ( max-width: 1024px ) {
-	.competition-option-button {
+	.option-button {
 		border-radius: 6px;
 		margin-left: 12px;
 		padding: 14px 24px;
 	}
 
-	.competition-option-button img {
+	.option-button img {
 		max-width: 50%;
 	}
 }
@@ -1801,6 +1880,7 @@ button.verb-table-option-button:hover {
 	}
 
 	.options-menu .practise-options a {
+		animation: none;
 		border-radius: 0;
 	}
 
@@ -1833,12 +1913,16 @@ button.verb-table-option-button:hover {
 		flex-wrap: wrap;
 	}
 
-	.competition-option-button {
+	.option-button {
 		margin-left: 0;
 	}
 
-	.competition-option-button img {
+	.option-button img {
 		height: 50px;
+	}
+
+	.options-wrapper.compact-options .option-button {
+		width: 100%;
 	}
 
 	.has-begun-vocab-test #vocab-tester-wrapper,

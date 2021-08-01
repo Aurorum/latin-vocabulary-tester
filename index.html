@@ -572,13 +572,13 @@
 				<div id="vocab-test-end-competition" class="competition-conclusion">
 					<div id="submit-name" class="leaderboard-submit-name">
 						<input type="text" id="leaderboard-name-input" placeholder="Caecilius" />
-						<input
-							type="submit"
-							class="leaderboard-button"
-							id="leaderboard-button-submit"
-							value="Submit name"
-							onclick="leaderboardSubmitName()"
-						/>
+						<input type="text" id="leaderboard-name-input" maxlength="24" placeholder="Caecilius" />
+						<div class="options-wrapper compact-options">
+							<button class="option-button" onclick="leaderboardSubmitName()">
+								<img class="laurel-image" src="./assets/laurel.svg" alt="" />
+								<p id="leaderboard-button-submit">Submit name</p>
+							</button>
+						</div>
 					</div>
 					<p id="leaderboard-valid-name-warning" class="valid-name-warning">
 						Error: please enter a valid name which you would like to appear on the Leaderboard.
@@ -586,6 +586,7 @@
 				</div>
 				<div id="vocab-tester" class="vocab-tester-wrapper">
 					<strong><p id="vocab-question"></p></strong>
+					<p id="vocab-question-details"></p>
 					<p id="wrong-answer" style="display: none">Not quite - try again!</p>
 
 					<p class="progress-indicator">
@@ -642,8 +643,7 @@
 						Congratulations - you've completed all <span id="celebration-word-count"></span> words!
 					</h3>
 					<p id="retry-test-prompt" class="try-retest-prompt is-inactive">
-						Click the button by the words you answered incorrectly if you'd like to focus on
-						practising those!
+						Click the button below if you'd like to focus on the incorrectly answered words!
 						<a
 							id="export-prompt"
 							download="latin-incorrect-vocabulary"
@@ -654,13 +654,19 @@
 						</a>
 					</p>
 
-					<div class="complete-actions">
-						<div id="retry-test-button" class="start-button-wrapper is-inactive">
-							<button onclick="startRetryTest()">Try incorrect words</button>
-						</div>
-						<div class="start-button-wrapper">
-							<button onclick="resetTest()">Reset test</button>
-						</div>
+					<div class="complete-actions options-wrapper compact-options">
+						<button
+							id="retry-test-button"
+							class="option-button is-inactive"
+							onclick="startRetryTest()"
+						>
+							<img src="./assets/scroll.svg" alt="" />
+							<p>Try incorrect words</p>
+						</button>
+						<button class="option-button" onclick="resetTest()">
+							<img src="./assets/helmet.svg" alt="" />
+							<p>Reset test</p>
+						</button>
 					</div>
 				</div>
 			</div>
@@ -727,6 +733,7 @@
 					</div>
 
 					<p id="vocab-question-table-mode"></p>
+					<p id="vocab-question-table-mode-details"></p>
 
 					<div id="prind-table" class="verb-table">
 						<p class="table-mode-prompt">
@@ -2434,16 +2441,16 @@
 
 			<div class="right-content">
 				<div id="competitive-mode">
-					<div class="competition-options">
-						<button class="competition-option-button" onclick="startCompetition('declension')">
+					<div class="options-wrapper">
+						<button class="option-button" onclick="startCompetition('declension')">
 							<img src="./assets/helmet.svg" alt="" />
 							<p>Start declension test</p>
 						</button>
-						<button class="competition-option-button" onclick="startCompetition('vocab')">
+						<button class="option-button" onclick="startCompetition('vocab')">
 							<img src="./assets/colosseum.svg" alt="" />
 							<p>Start vocabulary test</p>
 						</button>
-						<button class="competition-option-button" onclick="startCompetition('conjugation')">
+						<button class="option-button" onclick="startCompetition('conjugation')">
 							<img src="./assets/scroll.svg" alt="" />
 							<p>Start conjugation test</p>
 						</button>

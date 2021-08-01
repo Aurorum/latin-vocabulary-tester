@@ -18,7 +18,6 @@ let vocab = vocabGCSEOCR;
 let vocabAnswered = [];
 let vocabConjugation;
 let vocabDeclension;
-let vocabRetestCorrectAnswerCount = 0;
 let vocabToFocusOn = [];
 let vocabToTest = [];
 
@@ -497,6 +496,9 @@ function buildDeclensionOrConjugationTest(
 
 	document.getElementById( 'vocab-question' ).innerHTML = vocabwithNumber.word;
 	document.getElementById( 'vocab-question-table-mode' ).innerHTML = vocabwithNumber.word;
+	document.getElementById( 'vocab-question-details' ).innerHTML = vocabwithNumber.translation;
+	document.getElementById( 'vocab-question-table-mode-details' ).innerHTML =
+		vocabwithNumber.translation;
 
 	if ( isTableMode && isTestingConjugations ) {
 		resetTableMode();
@@ -1583,8 +1585,9 @@ function buildTest() {
 
 		if ( hardDifficulty ) {
 			if (
-				verbsWithParticiples.includes( vocabwithNumber.category ) &&
-				data.word.split( ',' ).length > 2
+				( verbsWithParticiples.includes( vocabwithNumber.category ) &&
+					data.word.split( ',' ).length > 2 ) ||
+				data.impacsuj1s
 			) {
 				switch ( Math.floor( Math.random() * 3 ) ) {
 					case 0:
@@ -1595,6 +1598,16 @@ function buildTest() {
 						break;
 					case 2:
 						wordForm = '1st person perfect (third) form';
+						break;
+				}
+				isTestingParticipleParts = true;
+			} else if ( data.noms ) {
+				switch ( Math.floor( Math.random() * 2 ) ) {
+					case 0:
+						wordForm = 'nominative singular form';
+						break;
+					case 1:
+						wordForm = 'genitive singular form';
 						break;
 				}
 				isTestingParticipleParts = true;
@@ -1667,7 +1680,7 @@ function selectAll( context ) {
 
 	if ( selectedOption === 'gcseeduqas' ) {
 		for ( let i = 1; i < 35; i++ ) {
-			allOptions.push( i );
+			allOptions.push( i.toString() );
 		}
 
 		allOptions.push( 'other' );
@@ -1790,25 +1803,18 @@ function checkAnswer( shouldReveal = false ) {
 		return checkDeclensionOrConjugationAnswer( shouldReveal );
 	}
 
-	var question = document.getElementById( 'vocab-question' ).textContent;
-	var answer = document.getElementById( 'vocab-answer' ).value.toLowerCase().trim();
-	var form = document.getElementById( 'vocab-submit-word-form' ).textContent;
-	var answerInput = document.getElementById( 'vocab-answer' );
-	var incorrectCount = document.getElementById( 'vocab-incorrect-count' );
-	var incorrectCountNumber = parseInt( incorrectCount.textContent );
+	let question = document.getElementById( 'vocab-question' ).textContent;
+	let answer = document.getElementById( 'vocab-answer' ).value.toLowerCase().trim();
+	let form = document.getElementById( 'vocab-submit-word-form' ).textContent;
+	let answerInput = document.getElementById( 'vocab-answer' );
+	let incorrectCount = document.getElementById( 'vocab-incorrect-count' );
+	let incorrectCountNumber = parseInt( incorrectCount.textContent );
 	let isAnswerCorrect = false;
-	let answerArray;
+	let questionArray = hardDifficulty ? findTranslation( question )[ 0 ] : findWord( question )[ 0 ];
+	let answerArray = hardDifficulty ? data.word.split( ',' ) : data.translation.split( ',' );
 
 	if ( ! shouldReveal && answer === '' ) {
 		return;
-	}
-
-	if ( hardDifficulty ) {
-		var questionArray = findTranslation( question )[ 0 ];
-		answerArray = data.word.split( ',' );
-	} else {
-		var questionArray = findWord( question )[ 0 ];
-		answerArray = data.translation.split( ',' );
 	}
 
 	let additionalAnswers = [];
@@ -1870,6 +1876,10 @@ function checkAnswer( shouldReveal = false ) {
 				answerInput.value = data.infpr || answerArray[ 1 ];
 			} else if ( form.includes( 'third' ) ) {
 				answerInput.value = data.pfacind1s || answerArray[ 2 ];
+			} else if ( form.includes( 'nominative' ) ) {
+				answerInput.value = data.noms;
+			} else if ( form.includes( 'genitive' ) ) {
+				answerInput.value = data.gens;
 			}
 		}
 	} else {
@@ -1889,7 +1899,15 @@ function checkAnswer( shouldReveal = false ) {
 				isAnswerCorrect = answer === answerArray[ 1 ] || answer === data.infpr;
 			} else if ( form.includes( 'third' ) ) {
 				isAnswerCorrect = answer === answerArray[ 2 ] || answer === data.pfacind1s;
+			} else if ( form.includes( 'nominative' ) ) {
+				isAnswerCorrect = answer === data.noms;
+			} else if ( form.includes( 'genitive' ) ) {
+				isAnswerCorrect = answer === data.gens;
 			}
+		}
+
+		if ( answer.length === 1 ) {
+			isAnswerCorrect = false;
 		}
 
 		if ( ! isAnswerCorrect ) {
@@ -1937,60 +1955,63 @@ function checkAnswer( shouldReveal = false ) {
 					.getElementById( 'vocab-times-wrong' )
 					.innerHTML.replace( 'time', 'times' );
 			}
-		} else {
-			vocabAnswered.push( questionArray );
-			document.getElementById( 'vocab-answer' ).value = '';
-			document.getElementById( 'wrong-answer' ).style.display = 'none';
-			if ( ! mute ) {
-				new Audio( './assets/audio/correct.mp3' ).play();
-			}
 
-			collectData(
-				'Answered vocabulary question correctly by inputting ' + answer + ' for ' + question,
-				'correct_vocabulary_answer'
-			);
-
-			var select = document.getElementById( 'max-word-select' );
-			var trimmedWordSelection = parseInt( select.options[ select.selectedIndex ].text );
-
-			let progress = vocabAnswered.length / Math.min( trimmedWordSelection, allVocab.length );
-
-			document.getElementById( 'progress-indicator-changing' ).innerHTML = vocabAnswered.length;
-
-			questionArray.incorrectlyAnswered = incorrectCountNumber;
-
-			incorrectCount.innerHTML = '0';
-
-			document.getElementById( 'progress-bar-content' ).style.width = progress * 100 + '%';
-			answerInput.focus();
-			buildTest();
+			return;
 		}
+
+		vocabAnswered.push( questionArray );
+		document.getElementById( 'vocab-answer' ).value = '';
+		document.getElementById( 'wrong-answer' ).style.display = 'none';
+		if ( ! mute ) {
+			new Audio( './assets/audio/correct.mp3' ).play();
+		}
+
+		collectData(
+			'Answered vocabulary question correctly by inputting ' + answer + ' for ' + question,
+			'correct_vocabulary_answer'
+		);
+
+		var select = document.getElementById( 'max-word-select' );
+		var trimmedWordSelection = parseInt( select.options[ select.selectedIndex ].text );
+
+		let progress = vocabAnswered.length / Math.min( trimmedWordSelection, allVocab.length );
+
+		document.getElementById( 'progress-indicator-changing' ).innerHTML = vocabAnswered.length;
+
+		questionArray.incorrectlyAnswered = incorrectCountNumber;
+
+		incorrectCount.innerHTML = '0';
+
+		document.getElementById( 'progress-bar-content' ).style.width = progress * 100 + '%';
+		answerInput.focus();
+		buildTest();
 	}
 }
 
 function startRetryTest() {
-	document.getElementById( 'progress-bar-content' ).style.width = 0;
-
+	selectAll( 'deselect-all' );
 	allVocab = [];
 	vocabAnswered = [];
 
-	for ( let i = 0; i < vocabToFocusOn.length; i++ ) {
-		let findWordArray = findWord( vocabToFocusOn[ i ] )[ 0 ];
+	vocabToFocusOn.forEach( ( word ) => {
+		let findWordArray = findWord( word )[ 0 ];
 		allVocab.push( findWordArray );
 		findWordArray.asked = false;
 		findWordArray.category = 'redo';
-	}
+	} );
 
 	let vocabRetestCorrectAnswerCount = 0;
 	document.getElementById(
 		'progress-indicator-changing'
 	).innerHTML = vocabRetestCorrectAnswerCount;
+	document.getElementById( 'progress-indicator-set' ).innerHTML = vocabToFocusOn.length;
 
 	collectData( 'Retried test with ' + vocabToFocusOn.length + ' incorrect words', 'retried_test' );
 
 	formAcceptableVocab( 'redo' );
 	buildTest();
 
+	document.getElementById( 'progress-bar-content' ).style.width = 0;
 	document.getElementById( 'vocab-tester-wrapper' ).classList.remove( 'is-complete' );
 }
 

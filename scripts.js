@@ -177,6 +177,7 @@ function changeOption( option, manualChange = true ) {
 	document.body.classList.remove( 'is-alevelocr' );
 	document.body.classList.remove( 'is-gcseeduqas' );
 	document.body.classList.remove( 'is-gcseocr' );
+	document.body.classList.remove( 'is-clc' );
 	if ( manualChange ) {
 		collectData( 'Changed option from ' + selectedOption + ' to ' + option, 'changed_option' );
 	}
@@ -190,6 +191,9 @@ function changeOption( option, manualChange = true ) {
 			break;
 		case 'gcseocr':
 			type = vocabGCSEOCR;
+			break;
+		case 'clc':
+			type = vocabCLC;
 			break;
 	}
 	selectAll( 'change-option' );
@@ -1423,12 +1427,20 @@ function checkTableModeAnswer() {
 function constructVocabSelectionTable() {
 	let table = '<tbody>';
 	for ( i = 0; i < allVocab.length; i++ ) {
-		let category = Number.isInteger( parseInt( allVocab[ i ].category ) )
-			? 'stage ' + allVocab[ i ].category
-			: allVocab[ i ].category;
+		let category = allVocab[ i ].category;
+
+		if ( Number.isInteger( parseInt( allVocab[ i ].category ) ) ) {
+			category = 'stage ' + allVocab[ i ].category;
+		}
+
+		if ( typeof allVocab[ i ].alternativeCategory === 'string' ) {
+			category += ' & ' + allVocab[ i ].alternativeCategory;
+		}
+
 		if ( allVocab[ i ].category === 'other' ) {
 			category = 'other stage';
 		}
+
 		table += '<tr>';
 		table += '<td>' + allVocab[ i ].word + '</td>';
 		table += '<td>' + category + '</td>';
@@ -1473,7 +1485,14 @@ window.onclick = function ( event ) {
 };
 
 function sortVocabSelectionTable( column ) {
-	allVocab.sort( ( a, b ) => a[ column ].localeCompare( b[ column ] ) );
+	allVocab
+		.sort( ( a, b ) => a[ column ].localeCompare( b[ column ] ) )
+		.sort( function ( a, b ) {
+			return (
+				parseInt( a[ column ].replace( 'stage', '' ) ) -
+				parseInt( b[ column ].replace( 'stage', '' ) )
+			);
+		} );
 	constructVocabSelectionTable();
 	collectData( 'Sorted vocabulary selection table by ' + column, 'sorted_vocab_selection_table' );
 }
@@ -1684,6 +1703,12 @@ function selectAll( context ) {
 		}
 
 		allOptions.push( 'other' );
+	}
+
+	if ( selectedOption === 'clc' ) {
+		for ( let i = 1; i < 41; i++ ) {
+			allOptions.push( i.toString() );
+		}
 	}
 
 	var isPreviouslyMuted = mute;
@@ -1906,7 +1931,7 @@ function checkAnswer( shouldReveal = false ) {
 			}
 		}
 
-		if ( answer.length === 1 ) {
+		if ( answer.length === 1 && answer !== 'a' && answer !== 'e' ) {
 			isAnswerCorrect = false;
 		}
 
@@ -2059,14 +2084,21 @@ function isWithinValue( vocab ) {
 
 function findAllVocab() {
 	return vocab.filter( function ( vocab ) {
-		return acceptableVocab.includes( vocab.category ) && isWithinValue( vocab.word );
+		return (
+			( acceptableVocab.includes( vocab.category ) ||
+				acceptableVocab.includes( vocab.alternativeCategory ) ) &&
+			isWithinValue( vocab.word )
+		);
 	} );
 }
 
 function findVocab() {
 	return vocab.filter( function ( vocab ) {
 		return (
-			acceptableVocab.includes( vocab.category ) && ! vocab.asked && isWithinValue( vocab.word )
+			( acceptableVocab.includes( vocab.category ) ||
+				acceptableVocab.includes( vocab.alternativeCategory ) ) &&
+			! vocab.asked &&
+			isWithinValue( vocab.word )
 		);
 	} );
 }
@@ -2157,6 +2189,9 @@ function formAcceptableVocab( receivedCategory ) {
 				break;
 			case 'gcseocr':
 				maxVocabOptions = 18;
+				break;
+			case 'clc':
+				maxVocabOptions = 40;
 				break;
 		}
 

@@ -7,7 +7,7 @@
 		<meta name="author" content="Aurorum" />
 		<meta
 			name="keywords"
-			content="Latin, Vocabulary, Declensions, Latin Declensions Tester, Conjugations, OCR, A-Level, Eduqas, GCSE, Vocab, Cambridge Latin Course, Latin Vocab Tester"
+			content="Latin, Vocabulary, Declensions, Latin Declensions Tester, Conjugations, OCR, A-Level, Eduqas, GCSE, Vocab, Cambridge Latin Course, Latin Vocab Tester, Resources"
 		/>
 		<meta
 			name="description"
@@ -27,6 +27,7 @@
 		<script type="text/javascript" src="./vocab-lists/alevel-ocr.js"></script>
 		<script type="text/javascript" src="./vocab-lists/gcse-eduqas.js"></script>
 		<script type="text/javascript" src="./vocab-lists/gcse-ocr.js"></script>
+		<script type="text/javascript" src="./vocab-lists/cambridge-latin-course.js"></script>
 		<script type="text/javascript" src="./scripts.js"></script>
 		<link rel="stylesheet" type="text/css" href="./style.css" />
 		<link
@@ -69,9 +70,12 @@
 				<a onclick="startTest(true)">Practise noun declensions</a>
 				<a onclick="startTest(false, true)">Practise verb conjugations</a>
 			</div>
-			<a class="alevelocrlink" onclick="changeOption('alevelocr')">A-Level (OCR)</a>
-			<a class="gcseeduqaslink" onclick="changeOption('gcseeduqas')">GCSE (Eduqas)</a>
-			<a class="gcseocrlink" onclick="changeOption('gcseocr')">GCSE (OCR)</a>
+			<div class="course-options">
+				<a class="alevelocrlink" onclick="changeOption('alevelocr')">A-Level (OCR)</a>
+				<a class="gcseeduqaslink" onclick="changeOption('gcseeduqas')">GCSE (Eduqas)</a>
+				<a class="gcseocrlink" onclick="changeOption('gcseocr')">GCSE (OCR)</a>
+				<a class="clclink" onclick="changeOption('clc')">CLC</a>
+			</div>
 		</div>
 
 		<div id="vocab-tester-wrapper" class="main-content">
@@ -2796,6 +2800,38 @@
 								</button>
 								<button class="vocab-type" id="other" onclick="formAcceptableVocab('other')">
 									<p>Other Stages</p>
+								</button>
+							</div>
+						</div>
+
+						<div class="row-wrapper book-5">
+							<div class="row-header">
+								<p>CLC - Book 5</p>
+								<img
+									src="./assets/dropdown.svg"
+									class="dropdown"
+									onclick="toggleRow(this)"
+									alt="Dropdown"
+								/>
+							</div>
+							<div class="row-5 button-group">
+								<button class="vocab-type" id="35" onclick="formAcceptableVocab(35)">
+									<p>Stage 35</p>
+								</button>
+								<button class="vocab-type" id="36" onclick="formAcceptableVocab(36)">
+									<p>Stage 36</p>
+								</button>
+								<button class="vocab-type" id="37" onclick="formAcceptableVocab(37)">
+									<p>Stage 37</p>
+								</button>
+								<button class="vocab-type" id="38" onclick="formAcceptableVocab(38)">
+									<p>Stage 38</p>
+								</button>
+								<button class="vocab-type" id="39" onclick="formAcceptableVocab(39)">
+									<p>Stage 39</p>
+								</button>
+								<button class="vocab-type" id="40" onclick="formAcceptableVocab(40)">
+									<p>Stage 40</p>
 								</button>
 							</div>
 						</div>

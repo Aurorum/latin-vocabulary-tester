@@ -293,6 +293,8 @@ li {
 	display: none;
 }
 
+.is-gcseeduqas .book-5,
+.is-clc .row-4 .vocab-type:last-of-type,
 .is-gcseocr .miscellaneous-nouns,
 .is-gcseocr .rare-verbs .vocab-type:nth-child( 4 ) {
 	display: none;
@@ -454,8 +456,9 @@ li {
 }
 
 .options-menu .practise-options {
+	align-items: baseline;
 	display: flex;
-	margin: auto;
+	margin-right: auto;
 	margin-left: 18px;
 }
 
@@ -468,6 +471,11 @@ li {
 .has-begun-vocab-test .options-menu a {
 	background: #ee6c4d;
 	color: #fff;
+}
+
+.options-menu .course-options {
+	align-items: stretch;
+	display: flex;
 }
 
 .select-all-option {
@@ -490,17 +498,20 @@ li {
 
 .is-alevelocr .alevelocrlink,
 .is-gcseeduqas .gcseeduqaslink,
-.is-gcseocr .gcseocrlink {
+.is-gcseocr .gcseocrlink,
+.is-clc .clclink {
 	background: #1b2b63;
 	color: white;
 }
 
 .stages,
-.is-gcseeduqas .categories {
+.is-gcseeduqas .categories,
+.is-clc .categories {
 	display: none;
 }
 
-.is-gcseeduqas .stages {
+.is-gcseeduqas .stages,
+.is-clc .stages {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -2005,5 +2016,17 @@ button.verb-table-option-button:hover {
 
 	.right-content {
 		order: 1;
+	}
+}
+
+@media only screen and ( max-width: 480px ) {
+	.heading h1 {
+		font-size: 28px;
+	}
+
+	.options-menu a {
+		border-radius: 0;
+		font-size: 10px;
+		margin-right: 2px;
 	}
 }

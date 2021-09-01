@@ -120,6 +120,15 @@ window.onload = function () {
 		);
 	}
 
+	if ( new URLSearchParams( window.location.search ).get( 'cid' ) ) {
+		collectData(
+			'Loaded site with centre ID ' +
+				new URLSearchParams( window.location.search ).get( 'cid' ) +
+				' and data ' +
+				navigator.userAgent
+		);
+	}
+
 	if ( document.referrer ) {
 		collectData(
 			'Loaded site with referrer ' + document.referrer + ' and data ' + navigator.userAgent

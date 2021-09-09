@@ -75,6 +75,7 @@
 				<a class="gcseeduqaslink" onclick="changeOption('gcseeduqas')">GCSE (Eduqas)</a>
 				<a class="gcseocrlink" onclick="changeOption('gcseocr')">GCSE (OCR)</a>
 				<a class="clclink" onclick="changeOption('clc')">CLC</a>
+				<a class="customlistlink" onclick="changeOption('custom-list')">Custom</a>
 			</div>
 		</div>
 
@@ -2440,6 +2441,18 @@
 					<p>Enter a file obtained by previously completing this test to include those words.</p>
 					<input type="file" accept=".csv" id="fileupload" />
 				</div>
+
+				<div class="advanced-mode">
+					<h3>Advanced mode</h3>
+					<p>
+						These features are much more complicated to set up - please get in touch if you wish to
+						use them.
+					</p>
+					<div class="file-upload">
+						<p>Upload your own lists with a JSON file.</p>
+						<input type="file" id="advancedfileupload" />
+					</div>
+				</div>
 			</div>
 
 			<div class="right-content">
@@ -2637,6 +2650,22 @@
 									<p>Pronouns</p>
 								</button>
 							</div>
+						</div>
+					</div>
+
+					<div class="custom-lists">
+						<div class="row-wrapper">
+							<div class="row-header">
+								<p>Custom lists</p>
+								<img
+									src="./assets/dropdown.svg"
+									class="dropdown"
+									onclick="toggleRow(this)"
+									alt="Dropdown"
+								/>
+							</div>
+
+							<div class="row-1 button-group"></div>
 						</div>
 					</div>
 

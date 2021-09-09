@@ -1,7 +1,7 @@
 var vocabGCSEOCR = [
 	{
 		word: 'a, ab + ablative (also used as prefix with verbs)',
-		category: 'preposition',
+		category: 'prep',
 		translation: 'from, away from, by (as prefix = away)',
 		asked: false,
 	},
@@ -145,7 +145,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'ad + accusative (also used as prefix with verbs)',
-		category: 'preposition',
+		category: 'prep',
 		translation: 'to, towards, at',
 		asked: false,
 	},
@@ -427,19 +427,19 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'alii...alii',
-		category: 'pronoun',
+		category: 'pron',
 		translation: 'some...others, some others',
 		asked: false,
 	},
 	{
 		word: 'alius, alia, aliud',
-		category: 'pronoun',
+		category: 'pron',
 		translation: 'other, another, else',
 		asked: false,
 	},
 	{
 		word: 'alter, altera, alterum',
-		category: 'pronoun',
+		category: 'pron',
 		translation: 'the other, another, one (of two), the second (of two)',
 		asked: false,
 	},
@@ -1645,7 +1645,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'circum + accusative',
-		category: 'preposition',
+		category: 'prep',
 		translation: 'around',
 		asked: false,
 	},
@@ -2377,7 +2377,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'contra + accusative',
-		category: 'preposition',
+		category: 'prep',
 		translation: 'against',
 		asked: false,
 	},
@@ -2557,7 +2557,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'cum + ablative',
-		category: 'preposition',
+		category: 'prep',
 		translation: 'with',
 		asked: false,
 	},
@@ -2971,7 +2971,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'de + ablative',
-		category: 'preposition',
+		category: 'prep',
 		translation: 'from, down from, about',
 		asked: false,
 	},
@@ -3889,7 +3889,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'e, ex + ablative (also used as prefix with verbs)',
-		category: 'preposition',
+		category: 'prep',
 		translation: 'from, out of, out',
 		asked: false,
 	},
@@ -4021,7 +4021,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'ego, mei',
-		category: 'pronoun',
+		category: 'pron',
 		translation: 'I, me',
 		asked: false,
 	},
@@ -5299,7 +5299,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'hic, haec, hoc',
-		category: 'pronoun',
+		category: 'pron',
 		translation: 'this, he, she, it',
 		asked: false,
 	},
@@ -5545,7 +5545,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'idem, eadem, idem',
-		category: 'pronoun',
+		category: 'pron',
 		translation: 'the same',
 		asked: false,
 	},
@@ -5557,7 +5557,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'ille, ilIa, illud',
-		category: 'pronoun',
+		category: 'pron',
 		translation: 'that, he, she, it',
 		asked: false,
 	},
@@ -5719,13 +5719,13 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'in + ablative (also used as prefix with verbs)',
-		category: 'preposition',
+		category: 'prep',
 		translation: 'in, on',
 		asked: false,
 	},
 	{
 		word: 'in + accusative (also used as prefix with verbs)',
-		category: 'preposition',
+		category: 'prep',
 		translation: 'into, onto',
 		asked: false,
 	},
@@ -6031,7 +6031,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'inter + accusative',
-		category: 'preposition',
+		category: 'prep',
 		translation: 'among, between',
 		asked: false,
 	},
@@ -6295,7 +6295,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'ipse, ipsa, ipsum',
-		category: 'pronoun',
+		category: 'pron',
 		translation: 'himself, herself, itself, themselves',
 		asked: false,
 	},
@@ -6325,7 +6325,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'is, ea, id',
-		category: 'pronoun',
+		category: 'pron',
 		translation: 'this, that, he, she, it, them',
 		asked: false,
 	},
@@ -7483,7 +7483,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'meus, mea, meum',
-		category: 'pronoun',
+		category: 'pron',
 		translation: 'my',
 		asked: false,
 	},
@@ -8569,13 +8569,13 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'nos, nostrum',
-		category: 'pronoun',
+		category: 'pron',
 		translation: 'we, us',
 		asked: false,
 	},
 	{
 		word: 'noster, nostra, nostrum',
-		category: 'pronoun',
+		category: 'pron',
 		translation: 'our',
 		asked: false,
 	},
@@ -9631,7 +9631,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'per + accusative',
-		category: 'preposition',
+		category: 'prep',
 		translation: 'through, along',
 		asked: false,
 	},
@@ -10099,7 +10099,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'post + accusative',
-		category: 'preposition',
+		category: 'prep',
 		translation: 'after, behind',
 		asked: false,
 	},
@@ -10171,7 +10171,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'pro + ablative',
-		category: 'preposition',
+		category: 'prep',
 		translation: 'in front of, for, in return for',
 		asked: false,
 	},
@@ -10447,13 +10447,13 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'prope + accusative',
-		category: 'preposition',
+		category: 'prep',
 		translation: 'near',
 		asked: false,
 	},
 	{
 		word: 'propter + accusative',
-		category: 'preposition',
+		category: 'prep',
 		translation: 'on account of, because of',
 		asked: false,
 	},
@@ -10915,19 +10915,19 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'qui, quae, quod',
-		category: 'pronoun',
+		category: 'pron',
 		translation: 'who, which',
 		asked: false,
 	},
 	{
 		word: 'quidam, quaedam, quoddam',
-		category: 'pronoun',
+		category: 'pron',
 		translation: 'one, a certain, some',
 		asked: false,
 	},
 	{
 		word: 'quis?, quid?',
-		category: 'pronoun',
+		category: 'pron',
 		translation: 'who?, what?',
 		asked: false,
 	},
@@ -12109,7 +12109,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'se, sui',
-		category: 'pronoun',
+		category: 'pron',
 		translation: 'himself, herself, itself, themselves',
 		asked: false,
 	},
@@ -12463,7 +12463,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'sine + ablative',
-		category: 'preposition',
+		category: 'prep',
 		translation: 'without',
 		asked: false,
 	},
@@ -12871,7 +12871,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'sub + accusative/ablative',
-		category: 'preposition',
+		category: 'prep',
 		translation: 'under, beneath',
 		asked: false,
 	},
@@ -13021,7 +13021,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'suus, sua, suum',
-		category: 'pronoun',
+		category: 'pron',
 		translation: 'his, her, its, their (own)',
 		asked: false,
 	},
@@ -13771,7 +13771,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'trans + accusative (also used as prefix with verbs)',
-		category: 'preposition',
+		category: 'prep',
 		translation: 'across',
 		asked: false,
 	},
@@ -13783,7 +13783,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'tu, tui',
-		category: 'pronoun',
+		category: 'pron',
 		translation: 'you (singular)',
 		asked: false,
 	},
@@ -13813,7 +13813,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'tuus, tua, tuum',
-		category: 'pronoun',
+		category: 'pron',
 		translation: 'your (singular), yours',
 		asked: false,
 	},
@@ -14275,7 +14275,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'vester, vestra, vestrum',
-		category: 'pronoun',
+		category: 'pron',
 		translation: 'your (plural), yours',
 		asked: false,
 	},
@@ -14899,7 +14899,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'vos, vestrum',
-		category: 'pronoun',
+		category: 'pron',
 		translation: 'you (plural)',
 		asked: false,
 	},

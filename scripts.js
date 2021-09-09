@@ -17,6 +17,7 @@ let userId = localStorage.getItem( 'userID' ) || Math.floor( Math.random() * 999
 let vocab = vocabGCSEOCR;
 let vocabAnswered = [];
 let vocabConjugation;
+let vocabCustomList = [];
 let vocabDeclension;
 let vocabToFocusOn = [];
 let vocabToTest = [];
@@ -135,6 +136,10 @@ window.onload = function () {
 		);
 	}
 
+	if ( new URLSearchParams( window.location.search ).get( 'advanced' ) ) {
+		document.body.classList.add( 'is-advanced-mode' );
+	}
+
 	if (
 		localStorage.getItem( 'defaultAudio' ) &&
 		localStorage.getItem( 'defaultAudio' ) === 'Muted'
@@ -180,13 +185,115 @@ window.onload = function () {
 		};
 
 	fileInput.addEventListener( 'change', readFile );
+
+	var advancedFileInput = document.getElementById( 'advancedfileupload' ),
+		advancedReadFile = function () {
+			var advancedReader = new FileReader();
+			advancedReader.onload = function () {
+				handleCustomList( advancedReader.result );
+			};
+			advancedReader.readAsText( advancedFileInput.files[ 0 ] );
+		};
+
+	advancedFileInput.addEventListener( 'change', advancedReadFile );
 };
+
+function handleCustomList( list ) {
+	let savedList = JSON.parse( localStorage.getItem( 'customList' ) ) || [];
+	vocabCustomList = JSON.parse( list );
+	vocabCustomListExistingCategories = [];
+	vocabCustomListCategories = [];
+
+	document.querySelectorAll( '.custom-category p' ).forEach( ( word ) => {
+		vocabCustomListExistingCategories.push( word.textContent );
+	} );
+
+	vocabCustomList.forEach( ( word, index ) => {
+		word.asked = false;
+
+		if ( word.noms === '' ) {
+			word.noms = null;
+		}
+
+		if ( word.impacsuj1s === '' ) {
+			word.impacsuj1s = null;
+		}
+
+		if (
+			savedList &&
+			savedList.findIndex(
+				( item ) => item.word === word.word && item.category === word.category
+			) === -1
+		) {
+			savedList.push( word );
+		}
+
+		if ( ! vocabCustomListCategories.includes( word.category ) ) {
+			vocabCustomListCategories.push( word.category );
+		}
+	} );
+
+	localStorage.setItem( 'customList', JSON.stringify( savedList ) );
+	vocab = vocabCustomList;
+	let categoriesList = vocabCustomListCategories.filter(
+		( item ) => ! vocabCustomListExistingCategories.includes( item )
+	);
+
+	categoriesList.forEach( ( category ) => {
+		let button = document.createElement( 'button' );
+		button.id = category;
+		button.className = 'vocab-type';
+		button.onclick = function () {
+			formAcceptableVocab( category );
+		};
+
+		button.innerHTML =
+			'<div class="custom-category"><p>' +
+			category +
+			'</p><div onclick="removeCustomCategory(\'' +
+			category +
+			'\')" class="trash-icon"></div></div>';
+
+		document.querySelector( '.custom-lists .row-wrapper .button-group' ).appendChild( button );
+	} );
+}
+
+function removeCustomCategory( category ) {
+	setTimeout( function () {
+		let savedList = JSON.parse( localStorage.getItem( 'customList' ) ) || [];
+		wordsInCategory = vocabCustomList.filter( function ( vocab ) {
+			return vocab.category === category;
+		} );
+
+		wordsInCategory.forEach( ( word ) => {
+			vocabCustomList.splice(
+				vocabCustomList.findIndex( ( item ) => item.word === word.word ),
+				1
+			);
+
+			let savedListIndex = savedList.findIndex( ( item ) => item.word === word.word );
+
+			if ( savedListIndex !== -1 ) {
+				savedList.splice(
+					vocabCustomList.findIndex( ( item ) => item.word === word.word ),
+					1
+				);
+			}
+		} );
+
+		localStorage.setItem( 'customList', JSON.stringify( savedList ) );
+
+		var categoryButton = document.getElementById( category );
+		categoryButton.parentNode.removeChild( categoryButton );
+	}, 30 );
+}
 
 function changeOption( option, manualChange = true ) {
 	document.body.classList.remove( 'is-alevelocr' );
 	document.body.classList.remove( 'is-gcseeduqas' );
 	document.body.classList.remove( 'is-gcseocr' );
 	document.body.classList.remove( 'is-clc' );
+	document.body.classList.remove( 'is-custom-list' );
 	if ( manualChange ) {
 		collectData( 'Changed option from ' + selectedOption + ' to ' + option, 'changed_option' );
 	}
@@ -204,12 +311,21 @@ function changeOption( option, manualChange = true ) {
 		case 'clc':
 			type = vocabCLC;
 			break;
+		case 'custom-list':
+			type = vocabCustomList;
 	}
 	selectAll( 'change-option' );
 	document.body.classList.add( 'is-' + option );
-	localStorage.setItem( 'defaultOption', option );
 	selectedOption = option;
 	vocab = type;
+
+	if ( option !== 'custom-list' ) {
+		localStorage.setItem( 'defaultOption', option );
+	}
+
+	if ( option === 'custom-list' && localStorage.getItem( 'customList' ) ) {
+		handleCustomList( localStorage.getItem( 'customList' ) );
+	}
 
 	if ( ! mute && manualChange ) {
 		new Audio( './assets/audio/click.mp3' ).play();
@@ -1454,10 +1570,10 @@ function constructVocabSelectionTable() {
 		table += '<td>' + allVocab[ i ].word + '</td>';
 		table += '<td>' + category + '</td>';
 		table += '<td>' + allVocab[ i ].translation + '</td>';
+
 		table +=
-			'<td><svg onclick="discardVocabSelection(\'' +
-			i +
-			'\')" class="trash-icon"><g><path d="M6.187 8h11.625l-.695 11.125C17.05 20.18 16.177 21 15.12 21H8.88c-1.057 0-1.93-.82-1.997-1.875L6.187 8zM19 5v2H5V5h3V4c0-1.105.895-2 2-2h4c1.105 0 2 .895 2 2v1h3zm-9 0h4V4h-4v1z"></path></g></svg></td>';
+			'<td><div onclick="discardVocabSelection(\'' + i + '\')" class="trash-icon"></div></td>';
+
 		table += '</tr>';
 	}
 	table += '</tbody>';
@@ -1718,6 +1834,13 @@ function selectAll( context ) {
 		for ( let i = 1; i < 41; i++ ) {
 			allOptions.push( i.toString() );
 		}
+	}
+
+	if ( selectedOption === 'custom-list' ) {
+		document
+			.querySelector( '.custom-lists' )
+			.querySelectorAll( '.vocab-type' )
+			.forEach( ( list ) => allOptions.push( list.id ) );
 	}
 
 	var isPreviouslyMuted = mute;
@@ -2201,6 +2324,11 @@ function formAcceptableVocab( receivedCategory ) {
 				break;
 			case 'clc':
 				maxVocabOptions = 40;
+				break;
+			case 'custom-list':
+				maxVocabOptions = document
+					.querySelector( '.custom-lists' )
+					.querySelectorAll( '.vocab-type' ).length;
 				break;
 		}
 

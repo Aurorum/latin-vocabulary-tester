@@ -499,19 +499,24 @@ li {
 .is-alevelocr .alevelocrlink,
 .is-gcseeduqas .gcseeduqaslink,
 .is-gcseocr .gcseocrlink,
-.is-clc .clclink {
+.is-clc .clclink,
+.is-custom-list .customlistlink {
 	background: #1b2b63;
 	color: white;
 }
 
+.customlistlink,
 .stages,
 .is-gcseeduqas .categories,
-.is-clc .categories {
+.is-clc .categories,
+.is-custom-list .categories,
+.custom-lists {
 	display: none;
 }
 
 .is-gcseeduqas .stages,
-.is-clc .stages {
+.is-clc .stages,
+.is-custom-list .custom-lists {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -1073,6 +1078,10 @@ a:hover {
 	display: block;
 }
 
+.is-custom-list #vocab-selector .left-content {
+	width: 35%;
+}
+
 .noun-table {
 	overflow: scroll;
 }
@@ -1497,15 +1506,42 @@ a:hover {
 	text-align: center;
 }
 
+.advanced-mode {
+	display: none;
+}
+
+.advanced-mode p {
+	font-size: 13px;
+	margin-top: 8px;
+}
+
+.advanced-mode h3 {
+	margin-bottom: 0;
+}
+
+.is-advanced-mode:not( .is-competitive-mode ) .advanced-mode,
+.is-advanced-mode:not( .is-competitive-mode ) .customlistlink {
+	display: block;
+}
+
 .trash-icon {
+	background-image: url( './assets/trash.svg' );
 	cursor: pointer;
-	fill: #787c82;
 	height: 24px;
+	margin: auto;
 	width: 24px;
 }
 
 .trash-icon:hover {
-	fill: #e65054;
+	background-image: url( './assets/trash-red.svg' );
+}
+
+.custom-category {
+	display: flex;
+}
+
+.custom-category .trash-icon {
+	margin-right: 8px;
 }
 
 /* Switch styles mainly from w3schools */

@@ -138,6 +138,9 @@ window.onload = function () {
 
 	if ( new URLSearchParams( window.location.search ).get( 'advanced' ) ) {
 		document.body.classList.add( 'is-advanced-mode' );
+		collectData( 'Activated advanced mode', 'activated_advance_mode' );
+	} else if ( localStorage.getItem( 'defaultOption' ) === 'custom-list' ) {
+		changeOption( 'alevelocr', false );
 	}
 
 	if (
@@ -191,6 +194,7 @@ window.onload = function () {
 			var advancedReader = new FileReader();
 			advancedReader.onload = function () {
 				handleCustomList( advancedReader.result );
+				collectData( 'Custom file uploaded in advanced mode', 'custom_file_uploaded' );
 			};
 			advancedReader.readAsText( advancedFileInput.files[ 0 ] );
 		};
@@ -198,105 +202,17 @@ window.onload = function () {
 	advancedFileInput.addEventListener( 'change', advancedReadFile );
 };
 
-function handleCustomList( list ) {
-	let savedList = JSON.parse( localStorage.getItem( 'customList' ) ) || [];
-	vocabCustomList = JSON.parse( list );
-	vocabCustomListExistingCategories = [];
-	vocabCustomListCategories = [];
-
-	document.querySelectorAll( '.custom-category p' ).forEach( ( word ) => {
-		vocabCustomListExistingCategories.push( word.textContent );
-	} );
-
-	vocabCustomList.forEach( ( word, index ) => {
-		word.asked = false;
-
-		if ( word.noms === '' ) {
-			word.noms = null;
-		}
-
-		if ( word.impacsuj1s === '' ) {
-			word.impacsuj1s = null;
-		}
-
-		if (
-			savedList &&
-			savedList.findIndex(
-				( item ) => item.word === word.word && item.category === word.category
-			) === -1
-		) {
-			savedList.push( word );
-		}
-
-		if ( ! vocabCustomListCategories.includes( word.category ) ) {
-			vocabCustomListCategories.push( word.category );
-		}
-	} );
-
-	localStorage.setItem( 'customList', JSON.stringify( savedList ) );
-	vocab = vocabCustomList;
-	let categoriesList = vocabCustomListCategories.filter(
-		( item ) => ! vocabCustomListExistingCategories.includes( item )
-	);
-
-	categoriesList.forEach( ( category ) => {
-		let button = document.createElement( 'button' );
-		button.id = category;
-		button.className = 'vocab-type';
-		button.onclick = function () {
-			formAcceptableVocab( category );
-		};
-
-		button.innerHTML =
-			'<div class="custom-category"><p>' +
-			category +
-			'</p><div onclick="removeCustomCategory(\'' +
-			category +
-			'\')" class="trash-icon"></div></div>';
-
-		document.querySelector( '.custom-lists .row-wrapper .button-group' ).appendChild( button );
-	} );
-}
-
-function removeCustomCategory( category ) {
-	setTimeout( function () {
-		let savedList = JSON.parse( localStorage.getItem( 'customList' ) ) || [];
-		wordsInCategory = vocabCustomList.filter( function ( vocab ) {
-			return vocab.category === category;
-		} );
-
-		wordsInCategory.forEach( ( word ) => {
-			vocabCustomList.splice(
-				vocabCustomList.findIndex( ( item ) => item.word === word.word ),
-				1
-			);
-
-			let savedListIndex = savedList.findIndex( ( item ) => item.word === word.word );
-
-			if ( savedListIndex !== -1 ) {
-				savedList.splice(
-					vocabCustomList.findIndex( ( item ) => item.word === word.word ),
-					1
-				);
-			}
-		} );
-
-		localStorage.setItem( 'customList', JSON.stringify( savedList ) );
-
-		var categoryButton = document.getElementById( category );
-		categoryButton.parentNode.removeChild( categoryButton );
-	}, 30 );
-}
-
 function changeOption( option, manualChange = true ) {
-	document.body.classList.remove( 'is-alevelocr' );
-	document.body.classList.remove( 'is-gcseeduqas' );
-	document.body.classList.remove( 'is-gcseocr' );
-	document.body.classList.remove( 'is-clc' );
-	document.body.classList.remove( 'is-custom-list' );
+	let allOptions = [ 'alevelocr', 'gcseeduqas', 'gcseocr', 'clc', 'custom-list' ];
+
+	allOptions.forEach( ( option ) => {
+		document.body.classList.remove( 'is-' + option );
+	} );
+
 	if ( manualChange ) {
 		collectData( 'Changed option from ' + selectedOption + ' to ' + option, 'changed_option' );
 	}
+
 	let type;
 	switch ( option ) {
 		case 'alevelocr':
@@ -315,15 +231,13 @@ function changeOption( option, manualChange = true ) {
 			type = vocabCustomList;
 	}
 	selectAll( 'change-option' );
-	document.body.classList.add( 'is-' + option );
 	selectedOption = option;
+
+	document.body.classList.add( 'is-' + selectedOption );
 	vocab = type;
+	localStorage.setItem( 'defaultOption', selectedOption );
 
-	if ( option !== 'custom-list' ) {
-		localStorage.setItem( 'defaultOption', option );
-	}
-
-	if ( option === 'custom-list' && localStorage.getItem( 'customList' ) ) {
+	if ( selectedOption === 'custom-list' && localStorage.getItem( 'customList' ) ) {
 		handleCustomList( localStorage.getItem( 'customList' ) );
 	}
 
@@ -1671,6 +1585,121 @@ function handleSubjunctiveTableSelection( e ) {
 	window.scrollTo( 0, 0 );
 }
 
+function csvToJSON( string, headers, quoteChar = '"', delimiter = ',' ) {
+	// Credit: csvToJSON function by matthew-e-brown on Stack Overflow.
+	const regex = new RegExp( `\\s*(${ quoteChar })?(.*?)\\1\\s*(?:${ delimiter }|$)`, 'gs' );
+	const match = ( string ) =>
+		[ ...string.matchAll( regex ) ]
+			.map( ( match ) => match[ 2 ] )
+			.filter( ( _, i, a ) => i < a.length - 1 );
+
+	const lines = string.split( '\n' );
+	const heads = headers || match( lines.splice( 0, 1 )[ 0 ] );
+
+	return lines.map( ( line ) =>
+		match( line ).reduce(
+			( acc, cur, i ) => ( {
+				...acc,
+				[ heads[ i ] || 'id' ]: cur.length > 0 ? Number( cur.trim() ) || cur.trim() : null,
+			} ),
+			{}
+		)
+	);
+}
+
+function handleCustomList( list ) {
+	let savedList = JSON.parse( localStorage.getItem( 'customList' ) ) || [];
+	vocabCustomList = ! isJSONFile( list ) ? csvToJSON( list ) : JSON.parse( list );
+	vocabCustomListExistingCategories = [];
+	vocabCustomListCategories = [];
+
+	document.querySelectorAll( '.custom-category p' ).forEach( ( word ) => {
+		vocabCustomListExistingCategories.push( word.textContent );
+	} );
+
+	vocabCustomList.forEach( ( word, index ) => {
+		word.asked = false;
+
+		if ( word.noms === '' ) {
+			word.noms = null;
+		}
+
+		if ( word.impacsuj1s === '' ) {
+			word.impacsuj1s = null;
+		}
+
+		if (
+			savedList &&
+			savedList.findIndex(
+				( item ) => item.word === word.word && item.category === word.category
+			) === -1
+		) {
+			savedList.push( word );
+		}
+
+		if ( ! vocabCustomListCategories.includes( word.category ) ) {
+			vocabCustomListCategories.push( word.category );
+		}
+	} );
+
+	localStorage.setItem( 'customList', JSON.stringify( savedList ) );
+	vocab = vocabCustomList;
+	let categoriesList = vocabCustomListCategories.filter(
+		( item ) => ! vocabCustomListExistingCategories.includes( item )
+	);
+
+	categoriesList.forEach( ( category ) => {
+		let button = document.createElement( 'button' );
+		button.id = category;
+		button.className = 'vocab-type';
+		button.onclick = function () {
+			formAcceptableVocab( category );
+		};
+
+		button.innerHTML =
+			'<div class="custom-category"><p>' +
+			category +
+			'</p><div onclick="removeCustomCategory(\'' +
+			category +
+			'\')" class="trash-icon"></div></div>';
+
+		document.querySelector( '.custom-lists .row-wrapper .button-group' ).appendChild( button );
+	} );
+}
+
+function isJSONFile( list ) {
+	try {
+		return JSON.parse( list ) && !! list;
+	} catch ( e ) {
+		return false;
+	}
+}
+
+function removeCustomCategory( category ) {
+	let savedList = JSON.parse( localStorage.getItem( 'customList' ) ) || [];
+	wordsInCategory = vocabCustomList.filter( function ( vocab ) {
+		return vocab.category === category;
+	} );
+
+	wordsInCategory.forEach( ( word ) => {
+		vocabCustomList.splice(
+			vocabCustomList.findIndex( ( item ) => item.word === word.word ),
+			1
+		);
+
+		let savedListIndex = savedList.findIndex( ( item ) => item.word === word.word );
+
+		if ( savedListIndex !== -1 ) {
+			savedList.splice( savedListIndex, 1 );
+		}
+	} );
+
+	localStorage.setItem( 'customList', JSON.stringify( savedList ) );
+
+	var categoryButton = document.getElementById( category );
+	categoryButton.parentNode.removeChild( categoryButton );
+}
+
 function buildTest() {
 	finalVocab = vocabToTest.concat( findVocab() );
 
@@ -2294,6 +2323,11 @@ function formAcceptableVocab( receivedCategory ) {
 
 	if ( category !== 'redo' && category !== 'uploaded' ) {
 		var button = document.getElementById( category );
+
+		if ( ! button ) {
+			return;
+		}
+
 		if ( ! mute ) {
 			new Audio( './assets/audio/click.mp3' ).play();
 		}

@@ -265,6 +265,7 @@ function startTest( startDeclensionTest = false, startConjugationTest = false ) 
 	if ( startDeclensionTest ) {
 		document.body.classList.add( 'has-begun-declension-test' );
 		document.getElementById( 'progress-indicator-slash' ).innerHTML = ' declined correctly';
+		document.getElementById( 'grammar-type' ).innerHTML = 'noun';
 		document.getElementById( wordTablePrompt ).innerHTML = 'Show declensions table';
 		collectData( 'Started declension test', 'started_declension_test' );
 		return buildDeclensionOrConjugationTest( false );
@@ -282,6 +283,7 @@ function startTest( startDeclensionTest = false, startConjugationTest = false ) 
 		}
 		document.body.classList.add( 'has-begun-conjugation-test' );
 		document.getElementById( 'progress-indicator-slash' ).innerHTML = ' conjugated correctly';
+		document.getElementById( 'grammar-type' ).innerHTML = 'verb';
 		document.getElementById( wordTablePrompt ).innerHTML = 'Show verb tables';
 		collectData( 'Started conjugation test', 'started_conjugation_test' );
 
@@ -309,9 +311,11 @@ function startCompetition( test ) {
 	switch ( test ) {
 		case 'declension':
 			challenge = 'decline as many nouns as possible';
+			document.getElementById( 'grammar-type-competition' ).innerHTML = 'noun';
 			break;
 		case 'conjugation':
 			challenge = 'conjugate as many verbs as possible';
+			document.getElementById( 'grammar-type-competition' ).innerHTML = 'verb';
 			document.getElementById( 'progress-indicator-slash' ).innerHTML = ' conjugated correctly';
 			break;
 		default:
@@ -336,6 +340,117 @@ function startCompetition( test ) {
 	}, 1000 );
 }
 
+function checkIncorrectAnswerGrammar() {
+	let grammarForm = getKeysInObject(
+		findWord( document.getElementById( 'vocab-question' ).textContent )[ 0 ],
+		document.getElementById( 'vocab-answer' ).value.toLowerCase().trim()
+	);
+	let possibleForms = [];
+
+	grammarForm.forEach( ( form ) => {
+		let fullForm = '';
+
+		if ( isTestingDeclensions ) {
+			if ( form.startsWith( 'nom' ) ) {
+				fullForm = 'nominative';
+			} else if ( form.startsWith( 'voc' ) ) {
+				fullForm = 'vocative';
+			} else if ( form.startsWith( 'acc' ) ) {
+				fullForm = 'accusative';
+			} else if ( form.startsWith( 'gen' ) ) {
+				fullForm = 'genitive';
+			} else if ( form.startsWith( 'dat' ) ) {
+				fullForm = 'dative';
+			} else if ( form.startsWith( 'abl' ) ) {
+				fullForm = 'ablative';
+			}
+
+			if ( form.endsWith( 'p' ) ) {
+				fullForm += ' plural';
+			} else {
+				fullForm += ' singular';
+			}
+		}
+
+		if ( isTestingConjugations ) {
+			if ( form.includes( '1' ) ) {
+				fullForm = 'first-person';
+			} else if ( form.includes( '2' ) ) {
+				fullForm = 'second-person';
+			} else if ( form.includes( '3' ) ) {
+				fullForm = 'third-person';
+			}
+
+			let formNumber = form.replace( /^\D*/, '' );
+
+			if ( formNumber.endsWith( 's' ) ) {
+				fullForm += ' singular';
+			} else if ( formNumber.endsWith( 'pl' ) ) {
+				fullForm += ' plural';
+			}
+
+			if ( form.startsWith( 'pr' ) ) {
+				fullForm += ' present';
+			} else if ( form.startsWith( 'imp' ) && form.length > 5 ) {
+				fullForm += ' imperfect';
+			} else if ( form.startsWith( 'ft' ) ) {
+				fullForm += ' future';
+			} else if ( form.startsWith( 'pf' ) ) {
+				fullForm += ' perfect';
+			} else if ( form.startsWith( 'pl' ) ) {
+				fullForm += ' pluperfect';
+			}
+
+			if ( form.includes( 'ac' ) ) {
+				fullForm += ' active';
+			} else if ( form.includes( 'pa' ) ) {
+				fullForm += ' passive';
+			}
+
+			if ( form.includes( 'suj' ) ) {
+				fullForm += ' subjunctive';
+			} else {
+				fullForm += ' indicative';
+			}
+
+			switch ( form ) {
+				case 'imps':
+					fullForm = 'present singular imperative';
+					break;
+				case 'imppl':
+					fullForm = 'present plural imperative';
+					break;
+				case 'infpr':
+					fullForm = 'present infinitive';
+					break;
+				case 'infpf':
+					fullForm = 'perfect infinitive';
+					break;
+				case 'pap':
+					fullForm = 'present active participle';
+					break;
+				case 'ppp':
+					fullForm = 'present passive participle';
+					break;
+			}
+		}
+
+		possibleForms.push( fullForm );
+	} );
+
+	if ( possibleForms.length ) {
+		let suffix = competitiveMode ? '-competition' : '';
+		document.getElementById( 'grammar-form' + suffix ).innerHTML = possibleForms
+			.join( ', ' )
+			.replace( /,(?=[^,]*$)/, ' and' );
+		document.getElementById( 'grammar-info' + suffix ).classList.add( 'is-active' );
+	}
+}
+
+function getKeysInObject( object, value ) {
+	return Object.keys( object ).filter( ( key ) => object[ key ] === value );
+}
+
 function endCompetitionTimer() {
 	let leaderboardId;
 	let endingMessage;
@@ -352,6 +467,7 @@ function endCompetitionTimer() {
 			'</strong> was <strong>' +
 			answerArray[ vocabConjugation ] +
 			'</strong>.';
+		checkIncorrectAnswerGrammar();
 	} else if ( isTestingDeclensions ) {
 		leaderboardId = document.getElementById( 'declensions-leaderboard-3' ).textContent;
 		endingMessage =
@@ -362,6 +478,7 @@ function endCompetitionTimer() {
 			'</strong> was <strong>' +
 			answerArray[ vocabDeclension ] +
 			'</strong>.';
+		checkIncorrectAnswerGrammar();
 	} else {
 		leaderboardId = document.getElementById( 'vocabulary-leaderboard-9' ).textContent;
 		endingMessage =
@@ -1931,6 +2048,8 @@ function checkDeclensionOrConjugationAnswer( shouldReveal = false ) {
 		);
 	} else {
 		document.getElementById( 'wrong-answer' ).style.display = isAnswerCorrect ? 'none' : 'block';
+		document.getElementById( 'grammar-info' ).classList.remove( 'is-active' );
+		document.getElementById( 'grammar-info-competition' ).classList.remove( 'is-active' );
 
 		if ( isAnswerCorrect ) {
 			answerInput.value = '';
@@ -1950,6 +2069,10 @@ function checkDeclensionOrConjugationAnswer( shouldReveal = false ) {
 			answerInput.focus();
 			toggleWordTable( false );
 			return buildDeclensionOrConjugationTest( isTestingConjugations );
+		}
+
+		if ( ! isAnswerCorrect ) {
+			checkIncorrectAnswerGrammar();
 		}
 
 		if ( ! mute ) {

@@ -50,6 +50,11 @@
 				<img src="./assets/dictionary.svg" alt="" />
 				<div class="progress-bar">
 					<div class="inner-progress"></div>
+					<noscript>
+						<p class="no-script-message">
+							You need to enable JavaScript to use the Latin Vocabulary Tester
+						</p>
+					</noscript>
 				</div>
 			</div>
 		</div>
@@ -587,6 +592,13 @@
 					<p id="leaderboard-valid-name-warning" class="valid-name-warning">
 						Error: please enter a valid name which you would like to appear on the Leaderboard.
 					</p>
+					<div id="grammar-info-competition" class="submitted-grammar-info">
+						<img src="./assets/gladiator.svg" alt="" />
+						<p>
+							Tip: you entered the <strong><span id="grammar-form-competition"></span></strong> of
+							this <span id="grammar-type-competition"></span>!
+						</p>
+					</div>
 				</div>
 				<div id="vocab-tester" class="vocab-tester-wrapper">
 					<strong><p id="vocab-question"></p></strong>
@@ -628,6 +640,13 @@
 								value="Submit"
 								onclick="checkAnswer(false)"
 							/>
+						</div>
+						<div id="grammar-info" class="submitted-grammar-info">
+							<img src="./assets/gladiator.svg" alt="" />
+							<p>
+								Tip: you entered the <strong><span id="grammar-form"></span></strong> of this
+								<span id="grammar-type"></span>!
+							</p>
 						</div>
 						<p id="vocab-times-wrong" class="times-wrong">
 							Incorrectly answered: <span id="vocab-incorrect-count">0</span> times

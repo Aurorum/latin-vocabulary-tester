@@ -49,8 +49,6 @@ Practice Mode is the common way that the tool is used, but Competitive Mode can 
 
 | <img alt="Competitive mode - starting screen" src="./assets/screenshots/screenshot-2.png"> | <img alt="Competitive mode - answer screen" src="./assets/screenshots/screenshot-4.png"> |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-     
-If there is any desire to use it, I'm happy to ensure it functions better with additional features. Feel free to let me know if there are any issues or requests, including if it involves adding new vocabulary!
 
 ## Acknowledgements
 

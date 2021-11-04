@@ -145,6 +145,7 @@ window.onload = function () {
 
 	if ( new URLSearchParams( window.location.search ).get( 'ovid' ) ) {
 		changeOption( 'literature', false );
+		collectData( 'Loaded Ovid' );
 	}
 
 	if (

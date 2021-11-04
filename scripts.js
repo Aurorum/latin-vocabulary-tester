@@ -143,6 +143,10 @@ window.onload = function () {
 		changeOption( 'alevelocr', false );
 	}
 
+	if ( new URLSearchParams( window.location.search ).get( 'ovid' ) ) {
+		changeOption( 'literature', false );
+	}
+
 	if (
 		localStorage.getItem( 'defaultAudio' ) &&
 		localStorage.getItem( 'defaultAudio' ) === 'Muted'
@@ -203,7 +207,7 @@ window.onload = function () {
 };
 
 function changeOption( option, manualChange = true ) {
-	let allOptions = [ 'alevelocr', 'gcseeduqas', 'gcseocr', 'clc', 'custom-list' ];
+	let allOptions = [ 'alevelocr', 'gcseeduqas', 'gcseocr', 'clc', 'custom-list', 'literature' ];
 
 	allOptions.forEach( ( option ) => {
 		document.body.classList.remove( 'is-' + option );
@@ -229,6 +233,8 @@ function changeOption( option, manualChange = true ) {
 			break;
 		case 'custom-list':
 			type = vocabCustomList;
+		case 'literature':
+			type = vocabLiterature;
 	}
 	selectAll( 'change-option' );
 	selectedOption = option;
@@ -237,8 +243,21 @@ function changeOption( option, manualChange = true ) {
 	vocab = type;
 	localStorage.setItem( 'defaultOption', selectedOption );
 
+	document.getElementById( 'switch-literature' ).innerHTML = 'Switch to literature vocabulary';
+	document.getElementById( 'switch-literature' ).onclick = function () {
+		changeOption( 'literature' );
+	};
+
 	if ( selectedOption === 'custom-list' && localStorage.getItem( 'customList' ) ) {
 		handleCustomList( localStorage.getItem( 'customList' ) );
+	}
+
+	if ( selectedOption === 'literature' ) {
+		document.getElementById( 'switch-literature' ).innerHTML = 'Switch to prescribed vocabulary';
+
+		document.getElementById( 'switch-literature' ).onclick = function () {
+			changeOption( 'alevelocr' );
+		};
 	}
 
 	if ( ! mute && manualChange ) {
@@ -566,6 +585,10 @@ function startCompetitionTimer() {
 
 function switchMode() {
 	var currentMode = document.getElementById( 'current-mode' );
+
+	if ( selectedOption === 'literature' ) {
+		changeOption( 'alevelocr' );
+	}
 
 	if ( currentMode.textContent === 'Practice' ) {
 		document.body.classList.add( 'is-competitive-mode' );
@@ -1989,6 +2012,12 @@ function selectAll( context ) {
 			.forEach( ( list ) => allOptions.push( list.id ) );
 	}
 
+	if ( selectedOption === 'literature' ) {
+		for ( let i = 0; i < 9; i++ ) {
+			allOptions.push( 'ovid-list-' + i );
+		}
+	}
+
 	var isPreviouslyMuted = mute;
 	mute = true;
 
@@ -2483,9 +2512,10 @@ function formAcceptableVocab( receivedCategory ) {
 				maxVocabOptions = 40;
 				break;
 			case 'custom-list':
-				maxVocabOptions = document
-					.querySelector( '.custom-lists' )
-					.querySelectorAll( '.vocab-type' ).length;
+				maxVocabOptions = document.querySelectorAll( '.custom-lists .vocab-type' ).length;
+				break;
+			case 'literature':
+				maxVocabOptions = 9;
 				break;
 		}
 

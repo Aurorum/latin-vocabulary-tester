@@ -492,6 +492,7 @@ li {
 	float: right;
 	padding: 8px 12px;
 	border-radius: 8px;
+	margin-left: 24px;
 }
 
 .select-all-option-mobile {
@@ -503,6 +504,7 @@ li {
 }
 
 .is-alevelocr .alevelocrlink,
+.is-literature .alevelocrlink,
 .is-gcseeduqas .gcseeduqaslink,
 .is-gcseocr .gcseocrlink,
 .is-clc .clclink,
@@ -512,20 +514,29 @@ li {
 }
 
 .customlistlink,
+.select-all-option.literature-option,
 .stages,
+.literature-vocabulary,
 .is-gcseeduqas .categories,
 .is-clc .categories,
 .is-custom-list .categories,
+.is-literature .categories,
 .custom-lists {
 	display: none;
 }
 
 .is-gcseeduqas .stages,
 .is-clc .stages,
-.is-custom-list .custom-lists {
+.is-custom-list .custom-lists,
+.is-literature .literature-vocabulary {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+}
+
+.is-alevelocr .select-all-option.literature-option,
+.is-literature .select-all-option.literature-option {
+	display: inline-block;
 }
 
 .stages button {
@@ -655,6 +666,32 @@ a:hover {
 	border-bottom-left-radius: 18px;
 	border-bottom-right-radius: 18px;
 	flex: 1;
+}
+
+.literature-vocabulary .button-group {
+	border-radius: 12px;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	width: auto;
+}
+
+.literature-vocabulary .button-group .vocab-type:first-of-type.has-selected {
+	border-radius: 0;
+	border-top-left-radius: 12px;
+	border-bottom-left-radius: 12px;
+}
+
+.literature-vocabulary .button-group .vocab-type:last-of-type.has-selected {
+	border-radius: 0;
+	border-top-right-radius: 12px;
+	border-bottom-right-radius: 12px;
+}
+
+.literature-heading {
+	background: #e9eaf1;
+	border: 2px solid #455ea0;
+	padding: 0 16px;
+	margin-bottom: 14px;
 }
 
 .progress-bar,
@@ -1943,6 +1980,22 @@ button.verb-table-option-button:hover {
 	.option-button img {
 		max-width: 50%;
 	}
+
+	.literature-vocabulary .button-group {
+		flex-wrap: wrap;
+	}
+
+	.literature-vocabulary .button-group .vocab-type:last-of-type.has-selected {
+		border-radius: 0;
+		border-bottom-right-radius: 12px;
+		border-bottom-left-radius: 12px;
+	}
+
+	.literature-vocabulary .button-group .vocab-type:first-of-type.has-selected {
+		border-radius: 0;
+		border-top-left-radius: 12px;
+		border-top-right-radius: 12px;
+	}
 }
 
 @media only screen and ( max-width: 600px ) {
@@ -1965,8 +2018,8 @@ button.verb-table-option-button:hover {
 		margin-left: 0;
 	}
 
-	.select-all-option:nth-of-type( 2 ) {
-		display: none;
+	.select-all-option:last-of-type {
+		margin-bottom: 12px;
 	}
 
 	.options-menu {

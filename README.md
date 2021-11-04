@@ -1,10 +1,10 @@
 # Latin Vocabulary Tester
 
-Provides a way to test your knowledge of Latin vocabulary lists based on different exam specifications, while also containing a Latin Noun Declension & Verb Conjugation Tester. 
+Provides a way to test your knowledge of Latin vocabulary lists based on different exam specifications, while also containing a Latin Noun Declension & Verb Conjugation Tester.
 
 Link: https://latinvocabularytester.com
 
-I mainly created this tool during the lockdown and my holidays to assist with my own learning as a Latin A-Level student. I've found it invaluable for becoming more comfortable with my vocabulary and grammar, and I hope that it will help other students too. It's brought me great joy to hear of other schools across the UK using it, and I'm always open to making changes based on feedback from others, so please get in touch if you have any! 
+I mainly created this tool during the lockdown and my holidays to assist with my own learning as a Latin A-Level student. I've found it invaluable for becoming more comfortable with my vocabulary and grammar, and I hope that it will help other students too. It's brought me great joy to hear of other schools across the UK using it, and I'm always open to making changes based on feedback from others, so please get in touch if you have any!
 
 ## Features
 
@@ -21,13 +21,13 @@ Covers the main indicative and subjunctive verb tenses, with some other common f
 There are numerous features to assist users with learning these conjugations; for example, the user will be notified if they enter an incorrect form of the verb which matches another form, and they can see tables comparing the different forms of the verb. It should be noted that irregular verbs are also accurately covered with this tool.
 
 | <img alt="Normal mode" src="./assets/screenshots/screenshot-5.png"> | <img alt="Table Mode" src="./assets/screenshots/screenshot-6.png"> |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------ |
 
 ### Vocabulary Tester
 
-There are four different lists included with the Latin Vocabulary Tester, with the top two split into categories and the bottom two split into stages: 
+There are four different lists included with the Latin Vocabulary Tester, with the top two split into categories and the bottom two split into stages:
 
-- AS Level list (OCR)
+- AS Level list (OCR), including some common verse vocabulary from Mathew Owen's "Ovid Unseens"
 - GCSE (OCR)
 - GCSE (Eduqas)
 - Cambridge Latin Course (Stages 1 to 40)
@@ -36,19 +36,19 @@ _Note: I would be delighted to add further lists, and it's also possible to uplo
 
 Although there are a wide range of vocabulary testers online, there are some features which I always wished for them to contain, so I've added them to this tool. This isn't an extensive list, but they include:
 
-- **English to Latin and vice versa**: users can opt for whether they want to attempt English to Latin, vice versa, or a combination of both. When an English to Latin question appears, the user will be asked for either the nominative or genitive singular form of nouns, or for verbs, the first-person active present/perfect or present infinitive form. In other words, the user will be asked what a Latin dictionary would typically contain for that entry. 
+- **English to Latin and vice versa**: users can opt for whether they want to attempt English to Latin, vice versa, or a combination of both. When an English to Latin question appears, the user will be asked for either the nominative or genitive singular form of nouns, or for verbs, the first-person active present/perfect or present infinitive form. In other words, the user will be asked what a Latin dictionary would typically contain for that entry.
 - **CSV exports:** these can be used with a service such as Google Sheets or Excel to provide a spreadsheet of words answered incorrectly. This is particularly useful for focusing on words which a user isn't familiar with rather than learning from a longer list.
 - **Focus on incorrectly answered vocabulary:** at the end of a session, users can restart the test while only answering words which they initially answered incorrectly. In addition, they can upload their CSV export (see above) to try this at a later point too.
-- **Filter by starting letter:** this is particularly helpful when practising for classroom assessments, where it's common for part of a list to be covered. Individual words can also be removed from the preview modal by clicking "View selected words" underneath the Start button. 
+- **Filter by starting letter:** this is particularly helpful when practising for classroom assessments, where it's common for part of a list to be covered. Individual words can also be removed from the preview modal by clicking "View selected words" underneath the Start button.
 
 <img alt="Loading screen of Vocabulary Tester" src="./assets/screenshots/screenshot-1.png">
 
 ### Competitive Mode
 
-Practice Mode is the common way that the tool is used, but Competitive Mode can also be engaging and a great way of testing your knowledge under timed pressure! This involves trying to answers as many questions as possible in two minutes, and your time ends as soon as you answer one incorrectly. There's also a Leaderboard for those who are particularly competitive! Those within the top three can opt to have their name added, subject to manual verification that ensures its an appropriate name. 
+Practice Mode is the common way that the tool is used, but Competitive Mode can also be engaging and a great way of testing your knowledge under timed pressure! This involves trying to answers as many questions as possible in two minutes, and your time ends as soon as you answer one incorrectly. There's also a Leaderboard for those who are particularly competitive! Those within the top three can opt to have their name added, subject to manual verification that ensures its an appropriate name.
 
 | <img alt="Competitive mode - starting screen" src="./assets/screenshots/screenshot-2.png"> | <img alt="Competitive mode - answer screen" src="./assets/screenshots/screenshot-4.png"> |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
 
 ## Acknowledgements
 

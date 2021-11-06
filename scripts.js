@@ -2014,7 +2014,7 @@ function selectAll( context ) {
 	}
 
 	if ( selectedOption === 'literature' ) {
-		for ( let i = 0; i < 9; i++ ) {
+		for ( let i = 0; i < 11; i++ ) {
 			allOptions.push( 'ovid-list-' + i );
 		}
 	}
@@ -2516,7 +2516,7 @@ function formAcceptableVocab( receivedCategory ) {
 				maxVocabOptions = document.querySelectorAll( '.custom-lists .vocab-type' ).length;
 				break;
 			case 'literature':
-				maxVocabOptions = 9;
+				maxVocabOptions = 11;
 				break;
 		}
 

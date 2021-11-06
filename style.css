@@ -672,6 +672,7 @@ a:hover {
 	border-radius: 12px;
 	flex-direction: row;
 	flex-wrap: nowrap;
+	margin-right: 0;
 	width: auto;
 }
 

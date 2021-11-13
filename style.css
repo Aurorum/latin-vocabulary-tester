@@ -351,6 +351,11 @@ li {
 	outline-color: #6a4ca7;
 }
 
+.start-vocab-options {
+	display: flex;
+	justify-content: space-between;
+}
+
 .vocab-type {
 	background: 0;
 	border: 0;
@@ -751,8 +756,8 @@ a:hover {
 	display: none;
 }
 
-.export-prompt,
-.export-prompt:hover {
+.sidebar-prompt,
+.sidebar-prompt:hover {
 	color: #fff;
 	cursor: pointer;
 	text-decoration: underline;
@@ -1633,6 +1638,179 @@ a:hover {
 	margin-right: 8px;
 }
 
+.vocab-flashcards-wrapper,
+.is-displaying-flashcards .vocab-tester-wrapper,
+.is-displaying-flashcards #no-words-wrong,
+.flashcard-settings {
+	display: none;
+}
+
+.is-displaying-flashcards .flashcard-settings {
+	display: block;
+}
+
+.is-displaying-flashcards .wrong-vocab-list a {
+	cursor: pointer;
+}
+
+.is-displaying-flashcards .vocab-flashcards-wrapper {
+	display: flex;
+	flex-direction: column;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.is-displaying-flashcards #vocab-tester-wrapper .left-content {
+	font-size: 14px;
+	text-align: left;
+}
+
+.flashcard-container,
+.front-flashcard,
+.back-flashcard {
+	width: 600px;
+	height: 350px;
+	cursor: pointer;
+}
+
+.front-flashcard,
+.back-flashcard {
+	background: #fff;
+	border-radius: 4px;
+	box-shadow: 0 16px 32px rgba( 0, 0, 0, 0.25 );
+	color: black;
+	text-align: center;
+	font-size: 32px;
+}
+
+.flashcard-container {
+	position: relative;
+	margin: auto;
+}
+.front-flashcard,
+.back-flashcard {
+	display: flex;
+	padding: 0 24px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	backface-visibility: hidden;
+	overflow: hidden;
+	transition: transform 0.8s ease;
+}
+
+.flashcard-container p {
+	margin: auto;
+}
+
+.front-flashcard {
+	border-bottom: 4px solid #d66043;
+}
+.back-flashcard {
+	transform: rotateY( 180deg );
+}
+.flashcard-container.is-flipped .front-flashcard {
+	transform: rotateY( -180deg );
+}
+.flashcard-container.is-flipped .back-flashcard {
+	transform: rotateY( 0deg );
+}
+
+.flashcard-settings-wrapper {
+	display: flex;
+	margin: 52px 14px 0;
+}
+
+.previous-list-flashcard-message {
+	display: none;
+	margin-top: 52px;
+	font-size: 18px;
+	text-align: center;
+}
+
+.previous-list-flashcard-message a {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.vocab-flashcards-wrapper.is-saved-flashcard .previous-list-flashcard-message {
+	display: block;
+}
+
+.vocab-flashcards-wrapper.is-saved-flashcard .flashcard-settings-wrapper {
+	display: none;
+}
+
+.flashcard-counter {
+	margin: auto 0;
+}
+
+.flashcard-arrows {
+	margin-left: auto;
+}
+
+.flashcard-option-button {
+	width: 32px;
+	height: 32px;
+	fill: #000;
+	background: #fff;
+	border-radius: 50%;
+	margin-left: 14px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.flashcard-option-button.is-inactive {
+	opacity: 0.4;
+	pointer-events: none;
+}
+
+.flashcard-option-button:hover {
+	background: #d7d7d7;
+}
+
+.flashcard-star-button {
+	align-self: flex-end;
+	cursor: pointer;
+}
+
+.flashcard-star-button svg {
+	height: 42px;
+	width: 42px;
+	fill: #f0c930;
+}
+
+.flashcard-star-button.is-filled .star-gridicon,
+.filled-star-gridicon {
+	display: none;
+}
+
+.flashcard-star-button.is-filled .filled-star-gridicon {
+	display: block;
+}
+
+.clear-sidebar-prompt-wrapper {
+	display: none;
+	margin: auto;
+	text-align: center;
+}
+
+.flashcard-keyboard-shortcuts-guide.is-inactive {
+	display: none;
+}
+
+.shortcut-guide-toggle {
+	cursor: pointer;
+	font-size: 12px;
+	margin-top: 18px;
+	text-align: right;
+	text-decoration: underline;
+}
+
 /* Switch styles mainly from w3schools */
 .switch {
 	position: relative;
@@ -1996,6 +2174,12 @@ button.verb-table-option-button:hover {
 		border-radius: 0;
 		border-top-left-radius: 12px;
 		border-top-right-radius: 12px;
+	}
+
+	.flashcard-container,
+	.front-flashcard,
+	.back-flashcard {
+		width: 80%;
 	}
 }
 

@@ -4468,7 +4468,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'divus, divi',
-		translation: 'goddess',
+		translation: 'god',
 		category: 'ovid-list-4',
 		asked: false,
 		noms: 'divus',

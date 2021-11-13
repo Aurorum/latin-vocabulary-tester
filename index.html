@@ -107,9 +107,46 @@
 						<li id="first-conjugations-leaderboard-14">Loading...</li>
 					</ol>
 				</div>
+
+				<div class="flashcard-settings">
+					<h3>Flashcard settings</h3>
+					<div class="toggle">
+						<p class="difficulty-text">Display Latin word first</p>
+						<label class="switch">
+							<input
+								id="flashcard-setting-switch"
+								onclick="buildFlashcard()"
+								type="checkbox"
+								checked
+							/>
+							<span class="slider round"></span>
+						</label>
+					</div>
+					<p class="shortcut-guide-toggle">
+						<a id="flashcard-keyboard-shortcut-prompt" onclick="toggleFlashcardShortcutsGuide()"
+							>View keyboard shortcuts</a
+						>
+					</p>
+
+					<div
+						id="flashcard-keyboard-shortcuts"
+						class="flashcard-keyboard-shortcuts-guide is-inactive"
+					>
+						<h3>Keyboard Shortcuts</h3>
+						<ul>
+							<li>Enter key: flip flashcard</li>
+							<li>Right arrow key: next flashcard</li>
+							<li>Left arrow key: previous flashcard</li>
+							<li>S key: star or unstar flashcard</li>
+						</ul>
+					</div>
+				</div>
+
 				<div class="incorrect-words">
-					<h3>Words to focus on</h3>
-					<p>A list of words either entered incorrectly or for which the answer was revealed:</p>
+					<h3 id="focus-on-title">Words to focus on</h3>
+					<p id="focus-on-description">
+						A list of words either entered incorrectly or for which the answer was revealed:
+					</p>
 					<ul id="wrong-vocab" class="wrong-vocab-list">
 						<li id="no-words-wrong">None so far - well done!</li>
 					</ul>
@@ -118,10 +155,13 @@
 							id="export-sidebar-prompt"
 							download="latin-incorrect-vocabulary"
 							onclick="exportIncorrectVocab()"
-							class="export-prompt"
+							class="sidebar-prompt"
 						>
 							Export incorrect words.
 						</a>
+					</p>
+					<p id="clear-saved-vocab-sidebar" class="clear-sidebar-prompt-wrapper">
+						<a class="sidebar-prompt" onclick="clearSavedFlashcards()"> Clear all starred words </a>
 					</p>
 				</div>
 
@@ -599,6 +639,53 @@
 							Tip: you entered the <strong><span id="grammar-form-competition"></span></strong> of
 							this <span id="grammar-type-competition"></span>!
 						</p>
+					</div>
+				</div>
+				<div id="vocab-flashcards" class="vocab-flashcards-wrapper">
+					<a id="star-flashcard" onclick="starFlashcard()" class="flashcard-star-button">
+						<svg viewBox="0 0 24 24" class="star-gridicon">
+							<g>
+								<path
+									d="M12,6.308l1.176,3.167l0.347,0.936l0.997,0.041l3.374,0.139l-2.647,2.092l-0.784,0.62l0.27,0.962l0.911,3.249l-2.814-1.871
+							L12,15.09l-0.83,0.552l-2.814,1.871l0.911-3.249l0.27-0.962l-0.784-0.62L6.105,10.59l3.374-0.139l0.997-0.041l0.347-0.936L12,6.308
+							 M12,2L9.418,8.953L2,9.257l5.822,4.602L5.82,21L12,16.891L18.18,21l-2.002-7.141L22,9.257l-7.418-0.305L12,2L12,2z"
+								></path>
+							</g>
+						</svg>
+						<svg viewBox="0 0 24 24" class="filled-star-gridicon">
+							<g>
+								<polygon
+									points="12,2 14.582,8.953 22,9.257 16.178,13.859 18.18,21 12,16.891 5.82,21 7.822,13.859 2,9.257 9.418,8.953"
+								></polygon>
+							</g>
+						</svg>
+					</a>
+					<div id="flashcard" class="flashcard-container" number="0" onclick="flipFlashcard()">
+						<div class="front-flashcard"><p id="front-flashcard">Front Side</p></div>
+						<div class="back-flashcard"><p id="back-flashcard">Back Side</p></div>
+					</div>
+					<p class="previous-list-flashcard-message">
+						This is a saved card from a previous list.
+						<a onclick="buildFlashcard()">Return to current list.</a>
+					</p>
+					<div class="flashcard-settings-wrapper">
+						<p id="flashcard-count" class="flashcard-counter">0/10</p>
+						<div class="flashcard-arrows">
+							<a
+								id="left-flashcard-button"
+								onclick="buildFlashcard('previous')"
+								class="flashcard-option-button"
+								><svg viewBox="0 0 24 24" class="arrow-gridicon">
+									<g><path d="M14 20l-8-8 8-8 1.414 1.414L8.828 12l6.586 6.586"></path></g></svg
+							></a>
+							<a
+								id="right-flashcard-button"
+								onclick="buildFlashcard('next')"
+								class="flashcard-option-button"
+								><svg viewBox="0 0 24 24" class="arrow-gridicon">
+									<g><path d="M10 20l8-8-8-8-1.414 1.414L15.172 12l-6.586 6.586"></path></g></svg
+							></a>
+						</div>
 					</div>
 				</div>
 				<div id="vocab-tester" class="vocab-tester-wrapper">
@@ -2411,9 +2498,14 @@
 				<h3 class="start-button-wrapper-text">Begin vocabulary test</h3>
 				<div id="start-button" class="start-button-wrapper is-inactive">
 					<img onclick="startTest()" src="./assets/start.svg" alt="" />
-					<a class="selected-words-prompt" onclick="toggleVocabSelectionTable(true)"
-						>View selected words</a
-					>
+					<div class="start-vocab-options">
+						<a class="selected-words-prompt" onclick="startFlashcards()"
+							>Practice with flashcards</a
+						>
+						<a class="selected-words-prompt" onclick="toggleVocabSelectionTable(true)"
+							>View selected words</a
+						>
+					</div>
 				</div>
 				<p class="starting-warning">
 					You need to select some categories before beginning the test!

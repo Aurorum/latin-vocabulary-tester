@@ -43,6 +43,14 @@ Although there are a wide range of vocabulary testers online, there are some fea
 
 <img alt="Loading screen of Vocabulary Tester" src="./assets/screenshots/screenshot-1.png">
 
+### Vocabulary Flashcards
+
+For each of the lists available, the user can choose to practice their vocabulary through a flashcard system before attempting the Vocabulary Tester. Each card contains the Latin word on one "side", and the translation on the other - it's up to the user's prefer to decide which one should appear first.
+
+In addition, users can "star" flashcards which they're struggling with. These will be saved in a list their, meaning that they can re-visit those words at a loser point. Please note that wiping your browser's saved storage will clear this list.
+
+<img alt="Flashcards" src="./assets/screenshots/screenshot-7.png">
+
 ### Competitive Mode
 
 Practice Mode is the common way that the tool is used, but Competitive Mode can also be engaging and a great way of testing your knowledge under timed pressure! This involves trying to answers as many questions as possible in two minutes, and your time ends as soon as you answer one incorrectly. There's also a Leaderboard for those who are particularly competitive! Those within the top three can opt to have their name added, subject to manual verification that ensures its an appropriate name.

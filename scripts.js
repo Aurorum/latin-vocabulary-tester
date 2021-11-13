@@ -2367,6 +2367,208 @@ function exportIncorrectVocab() {
 	document.getElementById( 'export-sidebar-prompt' ).href = window.URL.createObjectURL( dataBlob );
 }
 
+function startFlashcards() {
+	startTest();
+	document.body.classList.add( 'is-displaying-flashcards' );
+	document.getElementById( 'focus-on-title' ).innerHTML = 'Starred words';
+	document.getElementById( 'focus-on-description' ).innerHTML =
+		'Press the star on the top right, then click the word below to jump to its flashcard.';
+
+	if ( localStorage.getItem( 'savedFlashcards' ) ) {
+		let savedFlashcards = JSON.parse( localStorage.getItem( 'savedFlashcards' ) );
+		savedFlashcards.forEach( ( item ) => {
+			vocabToFocusOn.push( item.word );
+		} );
+	}
+
+	collectData( 'Started flashcards', 'started_flashcards' );
+	buildFlashcard();
+	starFlashcard( true );
+
+	document.body.addEventListener( 'keyup', function ( event ) {
+		event.preventDefault();
+
+		if ( event.keyCode === 13 ) {
+			flipFlashcard();
+		}
+
+		if ( event.keyCode === 83 ) {
+			starFlashcard();
+		}
+
+		if (
+			event.keyCode === 39 &&
+			! document.getElementById( 'right-flashcard-button' ).classList.contains( 'is-inactive' )
+		) {
+			buildFlashcard( 'next' );
+		}
+
+		if (
+			event.keyCode === 37 &&
+			! document.getElementById( 'left-flashcard-button' ).classList.contains( 'is-inactive' )
+		) {
+			buildFlashcard( 'previous' );
+		}
+	} );
+}
+
+function buildFlashcard( context, starred = false ) {
+	if ( document.getElementById( 'flashcard' ).classList.contains( 'is-flipped' ) ) {
+		flipFlashcard();
+	}
+
+	let number = parseInt( document.getElementById( 'flashcard' ).getAttribute( 'number' ) );
+
+	if ( context === 'next' ) {
+		number = number + 1;
+	} else if ( context === 'previous' ) {
+		number = number - 1;
+	}
+
+	if ( starred ) {
+		number = allVocab.findIndex( ( item ) => item.word === context.textContent );
+	}
+
+	let isSavedFlashcard = number === -1;
+
+	if ( context && isSavedFlashcard ) {
+		let savedFlashcards = JSON.parse( localStorage.getItem( 'savedFlashcards' ) );
+		let savedIndex = savedFlashcards.findIndex( ( item ) => item.word === context.textContent );
+
+		document.getElementById( 'front-flashcard' ).innerHTML = document.getElementById(
+			'flashcard-setting-switch'
+		).checked
+			? savedFlashcards[ savedIndex ].word
+			: savedFlashcards[ savedIndex ].translation;
+		document.getElementById( 'back-flashcard' ).innerHTML = document.getElementById(
+			'flashcard-setting-switch'
+		).checked
+			? savedFlashcards[ savedIndex ].translation
+			: savedFlashcards[ savedIndex ].word;
+
+		document.getElementById( 'star-flashcard' ).classList.add( 'is-filled' );
+		document.getElementById( 'vocab-flashcards' ).classList.add( 'is-saved-flashcard' );
+		return;
+	}
+
+	document.getElementById( 'vocab-flashcards' ).classList.remove( 'is-saved-flashcard' );
+	document.getElementById( 'star-flashcard' ).classList.remove( 'is-filled' );
+
+	if ( !! vocabToFocusOn.includes( finalVocab[ number ].word ) ) {
+		document.getElementById( 'star-flashcard' ).classList.add( 'is-filled' );
+	}
+
+	document.getElementById( 'front-flashcard' ).innerHTML = document.getElementById(
+		'flashcard-setting-switch'
+	).checked
+		? finalVocab[ number ].word
+		: finalVocab[ number ].translation;
+	document.getElementById( 'back-flashcard' ).innerHTML = document.getElementById(
+		'flashcard-setting-switch'
+	).checked
+		? finalVocab[ number ].translation
+		: finalVocab[ number ].word;
+
+	document.getElementById( 'flashcard-count' ).innerHTML = number + 1 + '/' + allVocab.length;
+	document.getElementById( 'flashcard' ).setAttribute( 'number', number );
+
+	let updatedNumber = parseInt( document.getElementById( 'flashcard' ).getAttribute( 'number' ) );
+
+	if ( updatedNumber === 0 ) {
+		document.getElementById( 'left-flashcard-button' ).classList.add( 'is-inactive' );
+	} else if ( updatedNumber === allVocab.length - 1 ) {
+		document.getElementById( 'right-flashcard-button' ).classList.add( 'is-inactive' );
+	} else {
+		document.getElementById( 'left-flashcard-button' ).classList.remove( 'is-inactive' );
+		document.getElementById( 'right-flashcard-button' ).classList.remove( 'is-inactive' );
+	}
+	collectData(
+		'Built flashcard with ' + document.getElementById( 'front-flashcard' ).textContent,
+		'built_flashcard'
+	);
+}
+
+function flipFlashcard() {
+	let flashcard = document.getElementById( 'flashcard' );
+	collectData(
+		'Flipped flashcard with ' + document.getElementById( 'front-flashcard' ).textContent,
+		'flip_flashcard'
+	);
+	flashcard.classList.toggle( 'is-flipped' );
+}
+
+function starFlashcard( auto ) {
+	let questionArray = document.getElementById( 'flashcard-setting-switch' ).checked
+		? findWord( document.getElementById( 'front-flashcard' ).textContent )[ 0 ]
+		: findWord( document.getElementById( 'back-flashcard' ).textContent )[ 0 ];
+	let index = vocabToFocusOn.indexOf( questionArray.word );
+
+	if ( ! auto ) {
+		index !== -1 ? vocabToFocusOn.splice( index, 1 ) : vocabToFocusOn.push( questionArray.word );
+	}
+
+	document.getElementById( 'wrong-vocab' ).innerHTML = '';
+
+	vocabToFocusOn.forEach( function ( item ) {
+		var a = document.createElement( 'a' );
+		var newItem = document.createElement( 'li' );
+
+		a.textContent = item;
+		a.setAttribute( 'onclick', 'buildFlashcard(this, true)' );
+		newItem.appendChild( a );
+		document.getElementById( 'wrong-vocab' ).appendChild( newItem );
+	} );
+
+	document.getElementById( 'clear-saved-vocab-sidebar' ).style.display = 'none';
+	if ( vocabToFocusOn.length ) {
+		document.getElementById( 'clear-saved-vocab-sidebar' ).style.display = 'block';
+	}
+
+	if ( auto ) {
+		return;
+	}
+
+	collectData(
+		'Toggled starring of flashcard with ' +
+			document.getElementById( 'front-flashcard' ).textContent,
+		'starred_flashcard'
+	);
+	document.getElementById( 'star-flashcard' ).classList.toggle( 'is-filled' );
+
+	let savedFlashcards = [];
+	vocabToFocusOn.forEach( function ( item ) {
+		savedFlashcards.push( {
+			word: item,
+			translation: item.translation ? item.translation : findWord( item )[ 0 ].translation,
+		} );
+	} );
+	localStorage.setItem( 'savedFlashcards', JSON.stringify( savedFlashcards ) );
+}
+
+function clearSavedFlashcards() {
+	vocabToFocusOn = [];
+	document.getElementById( 'clear-saved-vocab-sidebar' ).style.display = 'none';
+	document.getElementById( 'wrong-vocab' ).innerHTML = '';
+	document.getElementById( 'star-flashcard' ).classList.remove( 'is-filled' );
+	localStorage.setItem( 'savedFlashcards', JSON.stringify( vocabToFocusOn ) );
+	collectData( 'Cleared save flashcards', 'cleared_saved_flashcards' );
+}
+
+function toggleFlashcardShortcutsGuide() {
+	document.getElementById( 'flashcard-keyboard-shortcuts' ).classList.toggle( 'is-inactive' );
+	collectData( 'Toggled keyboard flashcard shortcuts guide', 'toggled_flashcard_shortcuts_guide' );
+
+	if (
+		document.getElementById( 'flashcard-keyboard-shortcuts' ).classList.contains( 'is-inactive' )
+	) {
+		document.getElementById( 'flashcard-keyboard-shortcut-prompt' ).innerHTML =
+			'View keyboard shortcuts';
+	} else {
+		document.getElementById( 'flashcard-keyboard-shortcut-prompt' ).innerHTML =
+			'Hide keyboard shortcuts';
+	}
+}
+
 function convertToCSV( arr ) {
 	let array = [ Object.keys( arr[ 0 ] ) ].concat( arr );
 	return array

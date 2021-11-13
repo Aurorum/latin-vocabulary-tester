@@ -6948,7 +6948,7 @@ var vocabALevelOCR = [
 		ablp: 'facinoribus',
 	},
 	{
-		word: 'facio, facere, feci, factus (in compounds -ficio',
+		word: 'facio, facere, feci, factus (in compounds -ficio)',
 		category: 'verb 3',
 		translation: 'make, do',
 		asked: false,

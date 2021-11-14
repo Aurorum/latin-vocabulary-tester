@@ -122,7 +122,8 @@
 							<span class="slider round"></span>
 						</label>
 					</div>
-					<p class="shortcut-guide-toggle">
+					<p class="flashcard-links">
+						<a onclick="shuffleFlashcards()">Shuffle flashcards</a>
 						<a id="flashcard-keyboard-shortcut-prompt" onclick="toggleFlashcardShortcutsGuide()"
 							>View keyboard shortcuts</a
 						>
@@ -2542,9 +2543,21 @@
 					<div class="toggle">
 						<p>Filter words based on their starting character in Latin</p>
 						<div class="configure-values">
-							<input type="text" id="min-vocab-value" value="a" placeholder="a" />
+							<input
+								onkeypress="updateLetterLimit()"
+								type="text"
+								id="min-vocab-value"
+								value="a"
+								placeholder="a"
+							/>
 							<span>to</span>
-							<input type="text" id="max-vocab-value" value="z" placeholder="z" />
+							<input
+								onkeypress="updateLetterLimit()"
+								type="text"
+								id="max-vocab-value"
+								value="z"
+								placeholder="z"
+							/>
 						</div>
 					</div>
 				</div>
@@ -2594,10 +2607,7 @@
 					<div class="literature-vocabulary">
 						<div class="row-wrapper ovid-vocabulary">
 							<div class="literature-heading">
-								<p>
-									The lists below are based on Mathew Owen's "Ovid Unseens" book - they intend to
-									cover the vocabulary most frequently used in Ovid's verse works.
-								</p>
+								<p>The lists below are based on Mathew Owen's "Ovid Unseens" book.</p>
 							</div>
 							<div class="button-group">
 								<button
@@ -2676,6 +2686,100 @@
 									onclick="formAcceptableVocab('ovid-list-10')"
 								>
 									<p>List 10</p>
+								</button>
+							</div>
+						</div>
+
+						<div class="row-wrapper prose-vocabulary">
+							<div class="literature-heading">
+								<p>
+									The lists below are based on Mathew Owen's "Prose Unseens for A-Level Latin" book.
+								</p>
+							</div>
+							<div class="button-group">
+								<button
+									class="vocab-type"
+									id="prose-list-0"
+									onclick="formAcceptableVocab('prose-list-0')"
+								>
+									<p>Starter Words</p>
+								</button>
+								<button
+									class="vocab-type"
+									id="prose-list-1"
+									onclick="formAcceptableVocab('prose-list-1')"
+								>
+									<p>List 1</p>
+								</button>
+								<button
+									class="vocab-type"
+									id="prose-list-2"
+									onclick="formAcceptableVocab('prose-list-2')"
+								>
+									<p>List 2</p>
+								</button>
+								<button
+									class="vocab-type"
+									id="prose-list-3"
+									onclick="formAcceptableVocab('prose-list-3')"
+								>
+									<p>List 3</p>
+								</button>
+								<button
+									class="vocab-type"
+									id="prose-list-4"
+									onclick="formAcceptableVocab('prose-list-4')"
+								>
+									<p>List 4</p>
+								</button>
+								<button
+									class="vocab-type"
+									id="prose-list-5"
+									onclick="formAcceptableVocab('prose-list-5')"
+								>
+									<p>List 5</p>
+								</button>
+								<button
+									class="vocab-type"
+									id="prose-list-6"
+									onclick="formAcceptableVocab('prose-list-6')"
+								>
+									<p>List 6</p>
+								</button>
+								<button
+									class="vocab-type"
+									id="prose-list-7"
+									onclick="formAcceptableVocab('prose-list-7')"
+								>
+									<p>List 7</p>
+								</button>
+								<button
+									class="vocab-type"
+									id="prose-list-8"
+									onclick="formAcceptableVocab('prose-list-8')"
+								>
+									<p>List 8</p>
+								</button>
+								<button
+									class="vocab-type"
+									id="prose-list-9"
+									onclick="formAcceptableVocab('prose-list-9')"
+								>
+									<p>List 9</p>
+								</button>
+								<button
+									class="vocab-type"
+									id="prose-list-10"
+									onclick="formAcceptableVocab('prose-list-10')"
+								>
+									<p>List 10</p>
+								</button>
+								<button
+									class="vocab-type"
+									id="prose-list-datives"
+									onclick="formAcceptableVocab('prose-list-datives')"
+								>
+									<p>Predicative datives</p>
 								</button>
 							</div>
 						</div>

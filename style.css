@@ -544,6 +544,19 @@ li {
 	display: inline-block;
 }
 
+.literature-vocabulary {
+	max-width: 920px;
+}
+
+.literature-vocabulary .row-wrapper {
+	margin-bottom: 32px;
+	width: 100%;
+}
+
+.literature-vocabulary .row-wrapper:last-of-type {
+	margin-bottom: 0;
+}
+
 .stages button {
 	padding: 0 18px;
 }
@@ -697,7 +710,7 @@ a:hover {
 	background: #e9eaf1;
 	border: 2px solid #455ea0;
 	padding: 0 16px;
-	margin-bottom: 14px;
+	margin-bottom: 4px;
 }
 
 .progress-bar,
@@ -1803,9 +1816,11 @@ a:hover {
 	display: none;
 }
 
-.shortcut-guide-toggle {
+.flashcard-links {
 	cursor: pointer;
+	display: flex;
 	font-size: 12px;
+	justify-content: space-evenly;
 	margin-top: 18px;
 	text-align: right;
 	text-decoration: underline;

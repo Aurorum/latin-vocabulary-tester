@@ -1642,6 +1642,7 @@ function discardVocabSelection( id ) {
 
 	allVocab.splice( parseInt( id ), 1 );
 	constructVocabSelectionTable();
+	document.getElementById( 'vocabulary-selection-error' ).style.display = 'none';
 	collectData( 'Answer discarded in vocabulary selection', 'discarded_vocabulary_section' );
 }
 
@@ -2016,7 +2017,9 @@ function selectAll( context ) {
 	if ( selectedOption === 'literature' ) {
 		for ( let i = 0; i < 11; i++ ) {
 			allOptions.push( 'ovid-list-' + i );
+			allOptions.push( 'prose-list-' + i );
 		}
+		allOptions.push( 'prose-list-datives' );
 	}
 
 	var isPreviouslyMuted = mute;
@@ -2370,6 +2373,7 @@ function exportIncorrectVocab() {
 function startFlashcards() {
 	startTest();
 	document.body.classList.add( 'is-displaying-flashcards' );
+	document.getElementById( 'option' ).innerHTML = '<a onclick="resetTest()">Reset</a>';
 	document.getElementById( 'focus-on-title' ).innerHTML = 'Starred words';
 	document.getElementById( 'focus-on-description' ).innerHTML =
 		'Press the star on the top right, then click the word below to jump to its flashcard.';
@@ -2426,7 +2430,7 @@ function buildFlashcard( context, starred = false ) {
 	}
 
 	if ( starred ) {
-		number = allVocab.findIndex( ( item ) => item.word === context.textContent );
+		number = finalVocab.findIndex( ( item ) => item.word === context.textContent );
 	}
 
 	let isSavedFlashcard = number === -1;
@@ -2543,6 +2547,13 @@ function starFlashcard( auto ) {
 		} );
 	} );
 	localStorage.setItem( 'savedFlashcards', JSON.stringify( savedFlashcards ) );
+}
+
+function shuffleFlashcards() {
+	collectData( 'Shuffled flashcards', 'shuffled_flashcards' );
+	finalVocab.sort( () => 0.5 - Math.random() );
+	document.getElementById( 'flashcard' ).setAttribute( 'number', '0' );
+	buildFlashcard();
 }
 
 function clearSavedFlashcards() {
@@ -2718,7 +2729,7 @@ function formAcceptableVocab( receivedCategory ) {
 				maxVocabOptions = document.querySelectorAll( '.custom-lists .vocab-type' ).length;
 				break;
 			case 'literature':
-				maxVocabOptions = 11;
+				maxVocabOptions = 23;
 				break;
 		}
 
@@ -2746,6 +2757,20 @@ function formAcceptableVocab( receivedCategory ) {
 	}
 
 	allVocab = vocabToTest.concat( findAllVocab() );
+}
+
+function updateLetterLimit() {
+	setTimeout( function () {
+		allVocab = vocabToTest.concat( findAllVocab() );
+	}, 150 );
+
+	collectData(
+		'Updated letter limit from ' +
+			document.getElementById( 'min-vocab-value' ).value +
+			' to ' +
+			document.getElementById( 'max-vocab-value' ).value,
+		'updated_letter_limit'
+	);
 }
 
 function collectData( content, analyticsID ) {

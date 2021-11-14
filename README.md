@@ -27,7 +27,7 @@ There are numerous features to assist users with learning these conjugations; fo
 
 There are four different lists included with the Latin Vocabulary Tester, with the top two split into categories and the bottom two split into stages:
 
-- AS Level list (OCR), including some common verse vocabulary from Mathew Owen's "Ovid Unseens"
+- AS Level list (OCR), including the vocabulary from Mathew Owen's "Ovid Unseens" and "Prose Unseens" books
 - GCSE (OCR)
 - GCSE (Eduqas)
 - Cambridge Latin Course (Stages 1 to 40)

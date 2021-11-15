@@ -166,13 +166,6 @@ window.onload = function () {
 	}
 	document.getElementById( 'max-word-select' ).selectedIndex = 19;
 
-	if ( window.innerWidth < 480 ) {
-		let rowWrapper = document.querySelectorAll( '.row-wrapper' );
-		for ( let i = 0; i < rowWrapper.length; i++ ) {
-			rowWrapper[ i ].classList.add( 'is-collapsed' );
-		}
-	}
-
 	var fileInput = document.getElementById( 'fileupload' ),
 		readFile = function () {
 			var reader = new FileReader();

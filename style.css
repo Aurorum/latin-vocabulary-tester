@@ -2175,6 +2175,14 @@ button.verb-table-option-button:hover {
 		max-width: 50%;
 	}
 
+	.right-content .literature-vocabulary {
+		flex-wrap: nowrap;
+	}
+
+	.literature-vocabulary .row-wrapper {
+		margin-right: 14px;
+	}
+
 	.literature-vocabulary .button-group {
 		flex-wrap: wrap;
 	}

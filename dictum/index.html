@@ -1,0 +1,401 @@
+<html>
+	<head>
+		<title>Dictum - Latin Wordle</title>
+		<link rel="icon" href="../assets/favicon.png" type="image/png" />
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="author" content="Aurorum" />
+		<meta name="keywords" content="Latin, Latin Wordle, Wordle, Dictum, Latin Vocabulary Tester" />
+		<meta
+			name="description"
+			content="Based on Wordle, Dictum is a game to find the Latin word within six tries!"
+		/>
+		<meta property="og:title" content="Dictum - Latin Wordle" />
+		<meta property="og:type" content="website" />
+		<meta
+			property="og:description"
+			content="Based on Wordle, Dictum is a game to find the Latin word within six tries!"
+		/>
+		<meta property="og:url" content="https://latinvocabularytester.com/dictum" />
+		<meta
+			property="og:image"
+			content="https://latinvocabularytester.com/assets/screenshots/dictum.png"
+		/>
+
+		<script type="text/javascript" src="./vocab-lists/all.js"></script>
+		<script type="text/javascript" src="./vocab-lists/as-level.js"></script>
+		<script type="text/javascript" src="./vocab-lists/gcse.js"></script>
+		<script type="text/javascript" src="./vocab-lists/valid.js"></script>
+		<script type="text/javascript" src="./scripts.js"></script>
+		<link rel="stylesheet" type="text/css" href="./style.css" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&amp;family=Montserrat&amp;display=swap"
+			rel="stylesheet"
+		/>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-1QZXG1GX8M"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push( arguments );
+			}
+			gtag( 'js', new Date() );
+			gtag( 'config', 'G-1QZXG1GX8M' );
+		</script>
+	</head>
+
+	<body class="is-displaying-modal" onkeyup="return keyPress(event)">
+		<div class="heading">
+			<div>
+				<a onclick="toggleStats()" class="stats-icon">
+					<img src="../assets/stats.svg" alt="View stats" />
+				</a>
+				<a onclick="toggleInstructions()" class="stats-icon">
+					<img src="../assets/help.svg" alt="View instructions" />
+				</a>
+			</div>
+			<h1 class="main-heading">Dictum</h1>
+		</div>
+
+		<div id="modal" class="modal-wrapper">
+			<div class="modal-content">
+				<div id="statistics-screen">
+					<img src="../assets/close.svg" class="close-icon" alt="Close" onclick="toggleStats()" />
+					<h2 class="option-heading">Statistics</h2>
+
+					<p>The following stats apply to the Daily Word puzzles:</p>
+
+					<div class="daily-stats">
+						<img class="stats-image" src="../assets/owl.png" alt="" />
+						<div class="stats-number-wrapper">
+							<div class="stats-box">
+								<p id="daily-games-played" class="number-text">0</p>
+								<p class="number-explanation">Games played</p>
+							</div>
+							<div class="stats-box">
+								<p id="daily-answers-correct" class="number-text">0%</p>
+								<p class="number-explanation">correct</p>
+							</div>
+							<div class="stats-box">
+								<p id="daily-streak-count" class="number-text">0</p>
+								<p class="number-explanation">Daily Streak</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="stats-graph">
+						<div class="stats-graph-inner">
+							<div class="stats-graph-row">
+								<p class="stats-graph-digit">1</p>
+								<div id="daily-bar-1" class="stats-graph-bar"></div>
+							</div>
+							<div class="stats-graph-row">
+								<p class="stats-graph-digit">2</p>
+								<div id="daily-bar-2" class="stats-graph-bar"></div>
+							</div>
+							<div class="stats-graph-row">
+								<p class="stats-graph-digit">3</p>
+								<div id="daily-bar-3" class="stats-graph-bar"></div>
+							</div>
+							<div class="stats-graph-row">
+								<p class="stats-graph-digit">4</p>
+								<div id="daily-bar-4" class="stats-graph-bar"></div>
+							</div>
+							<div class="stats-graph-row">
+								<p class="stats-graph-digit">5</p>
+								<div id="daily-bar-5" class="stats-graph-bar"></div>
+							</div>
+							<div class="stats-graph-row">
+								<p class="stats-graph-digit">6</p>
+								<div id="daily-bar-6" class="stats-graph-bar"></div>
+							</div>
+							<div class="stats-graph-row">
+								<p class="stats-graph-digit">F</p>
+								<div id="daily-bar-7" class="stats-graph-bar"></div>
+							</div>
+						</div>
+					</div>
+
+					<p>The following stats apply to the Streaks puzzles:</p>
+
+					<div class="daily-stats">
+						<img class="stats-image" src="../assets/parchment.png" alt="" />
+						<div class="stats-number-wrapper">
+							<div class="stats-box">
+								<p id="streaks-games-played" class="number-text">0</p>
+								<p class="number-explanation">Games played</p>
+							</div>
+							<div class="stats-box">
+								<p id="streaks-answers-correct" class="number-text">0%</p>
+								<p class="number-explanation">correct</p>
+							</div>
+							<div class="stats-box">
+								<p id="streaks-highest" class="number-text">0</p>
+								<p class="number-explanation">Highest Streak</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="stats-graph-inner">
+						<div class="stats-graph-row">
+							<p class="stats-graph-digit">1</p>
+							<div id="streaks-bar-1" class="stats-graph-bar"></div>
+						</div>
+						<div class="stats-graph-row">
+							<p class="stats-graph-digit">2</p>
+							<div id="streaks-bar-2" class="stats-graph-bar"></div>
+						</div>
+						<div class="stats-graph-row">
+							<p class="stats-graph-digit">3</p>
+							<div id="streaks-bar-3" class="stats-graph-bar"></div>
+						</div>
+						<div class="stats-graph-row">
+							<p class="stats-graph-digit">4</p>
+							<div id="streaks-bar-4" class="stats-graph-bar"></div>
+						</div>
+						<div class="stats-graph-row">
+							<p class="stats-graph-digit">5</p>
+							<div id="streaks-bar-5" class="stats-graph-bar"></div>
+						</div>
+						<div class="stats-graph-row">
+							<p class="stats-graph-digit">6</p>
+							<div id="streaks-bar-6" class="stats-graph-bar"></div>
+						</div>
+						<div class="stats-graph-row">
+							<p class="stats-graph-digit">F</p>
+							<div id="streaks-bar-7" class="stats-graph-bar"></div>
+						</div>
+					</div>
+				</div>
+
+				<div id="instructions-screen">
+					<img
+						src="../assets/close.svg"
+						class="close-icon"
+						alt="Close"
+						onclick="toggleInstructions()"
+					/>
+					<h2 class="option-heading">Instructions</h2>
+					<p>
+						The aim of the game is to guess a Latin word within six attempts. The answer could be an
+						inflection of any word, and you can submit any valid Latin word.
+					</p>
+					<p>After each guess, the colour of the tiles will change according to your guess:</p>
+					<ul>
+						<li>Green: correct letter in the correct location</li>
+						<li>Yellow: letter contained in the word, but wrong location</li>
+						<li>Grey: letter not contained in the word</li>
+					</ul>
+					<p>
+						The Daily Word changes at midnight (GMT) everyday, but you can keep going on Streaks for
+						as long as you please. Enjoy!
+					</p>
+				</div>
+
+				<div id="option-screen">
+					<h2 class="option-heading">Select Option</h2>
+
+					<div class="game-option">
+						<button onclick="startGame('daily')" class="option-wrapper">
+							<img class="option-image" src="../assets/owl.png" alt="" />
+							<p class="option-title">Daily word</p>
+							<p>Attempt to find a word that changes every 24 hours</p>
+						</button>
+						<button onclick="startGame('streaks')" class="option-wrapper">
+							<img class="option-image" src="../assets/parchment.png" alt="" />
+							<p class="option-title">Streaks</p>
+							<p>Keep going until you fail - endless Latin fun!</p>
+						</button>
+					</div>
+
+					<p class="option-subtext">
+						The Daily Word, which changes at midnight GMT each day, will always draw on the OCR
+						AS-Level list. You can use the selection below to change the word list for Streaks - no
+						obscure words will appear, and all valid Latin words can be submitted.
+					</p>
+
+					<div class="list-options">
+						<button onclick="changeOption('gcse-list')" id="gcse-list" class="option-button">
+							GCSE (Eduqas) list
+						</button>
+						<button onclick="changeOption('as-list')" id="as-list" class="option-button">
+							AS-level (OCR) list
+						</button>
+						<button onclick="changeOption('any-list')" id="any-list" class="option-button">
+							Any word
+						</button>
+					</div>
+
+					<p class="option-subtext">Enjoy!</p>
+				</div>
+			</div>
+		</div>
+
+		<div id="game">
+			<div class="game-board" id="game-board">
+				<div id="game-notice" class="game-notice is-hidden">
+					<p id="game-notice-text">Invalid word</p>
+				</div>
+
+				<div class="game-row is-not-completed" id="row1">
+					<div class="game-tile">
+						<p id="row1tile0" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row1tile1" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row1tile2" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row1tile3" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row1tile4" class="game-tile-letter"></p>
+					</div>
+				</div>
+				<div class="game-row is-not-completed" id="row2">
+					<div class="game-tile">
+						<p id="row2tile0" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row2tile1" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row2tile2" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row2tile3" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row2tile4" class="game-tile-letter"></p>
+					</div>
+				</div>
+				<div class="game-row is-not-completed" id="row3">
+					<div class="game-tile">
+						<p id="row3tile0" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row3tile1" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row3tile2" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row3tile3" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row3tile4" class="game-tile-letter"></p>
+					</div>
+				</div>
+				<div class="game-row is-not-completed" id="row4">
+					<div class="game-tile">
+						<p id="row4tile0" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row4tile1" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row4tile2" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row4tile3" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row4tile4" class="game-tile-letter"></p>
+					</div>
+				</div>
+				<div class="game-row is-not-completed" id="row5">
+					<div class="game-tile">
+						<p id="row5tile0" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row5tile1" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row5tile2" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row5tile3" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row5tile4" class="game-tile-letter"></p>
+					</div>
+				</div>
+				<div class="game-row is-not-completed" id="row6">
+					<div class="game-tile">
+						<p id="row6tile0" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row6tile1" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row6tile2" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row6tile3" class="game-tile-letter"></p>
+					</div>
+					<div class="game-tile">
+						<p id="row6tile4" class="game-tile-letter"></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="streak-stats">
+				<p>Streak: <span id="current-streak">0</span></p>
+				<p id="next-streak"><a id="next-word-link" onclick="resetGame()">Next word</a></p>
+			</div>
+
+			<div id="copy-stats" class="copy-stats">
+				<a id="copy-stats-link" onclick="copyDailyStat()">Copy score to clipboard</a>
+			</div>
+
+			<div id="word-meaning" class="word-meaning is-hidden">
+				<p id="word-definition"></p>
+				<p id="word-root"></p>
+				<p id="word-inflection"></p>
+			</div>
+
+			<div class="keyboard">
+				<div class="keyboard-row">
+					<button onclick="keyPress('q', true)" id="q-key">q</button>
+					<button onclick="keyPress('w', true)" id="w-key">w</button>
+					<button onclick="keyPress('e', true)" id="e-key">e</button>
+					<button onclick="keyPress('r', true)" id="r-key">r</button>
+					<button onclick="keyPress('t', true)" id="t-key">t</button>
+					<button onclick="keyPress('y', true)" id="y-key">y</button>
+					<button onclick="keyPress('u', true)" id="u-key">u</button>
+					<button onclick="keyPress('i', true)" id="i-key">i</button>
+					<button onclick="keyPress('o', true)" id="o-key">o</button>
+					<button onclick="keyPress('p', true)" id="p-key">p</button>
+				</div>
+				<div class="keyboard-row">
+					<button onclick="keyPress('a', true)" id="a-key">a</button>
+					<button onclick="keyPress('s', true)" id="s-key">s</button>
+					<button onclick="keyPress('d', true)" id="d-key">d</button>
+					<button onclick="keyPress('f', true)" id="f-key">f</button>
+					<button onclick="keyPress('g', true)" id="g-key">g</button>
+					<button onclick="keyPress('h', true)" id="h-key">h</button>
+					<button onclick="keyPress('j', true)" id="j-key">j</button>
+					<button onclick="keyPress('k', true)" id="k-key">k</button>
+					<button onclick="keyPress('l', true)" id="l-key">l</button>
+				</div>
+				<div class="keyboard-row">
+					<button onclick="keyPress('z', true)" id="z-key">z</button>
+					<button onclick="keyPress('x', true)" id="x-key">x</button>
+					<button onclick="keyPress('c', true)" id="c-key">c</button>
+					<button onclick="keyPress('v', true)" id="v-key">v</button>
+					<button onclick="keyPress('b', true)" id="b-key">b</button>
+					<button onclick="keyPress('n', true)" id="n-key">n</button>
+					<button onclick="keyPress('m', true)" id="m-key">m</button>
+					<button onclick="removeLetter()">&#9003;</button>
+					<button onclick="checkAnswer()">&#8617;</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer">
+			<p><a href="https://latinvocabularytester.com">latinvocabularytester.com</a></p>
+			<p>An open-source project by Aurorum</p>
+		</div>
+	</body>
+</html>

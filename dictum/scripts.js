@@ -429,12 +429,11 @@ function copyDailyStat( string ) {
 	} );
 
 	let digit = isDailyWord ? parseInt( timeDifference( Date.now(), unix ) ) + ' ' : '';
+	let int = document.querySelectorAll( '.game-row.is-answer' ).length
+		? parseInt( document.querySelectorAll( '.game-row.is-answer' )[ 0 ].id.substring( 3, 4 ) )
+		: 'X';
 
-	let boardString =
-		'Latin Dictum (Wordle) ' +
-		digit +
-		parseInt( document.querySelectorAll( '.game-row.is-answer' )[ 0 ].id.substring( 3, 4 ) ) +
-		'/6\n';
+	let boardString = 'Latin Dictum (Wordle) ' + digit + int + '/6\n';
 	for ( let i = 0; i < board.length; i++ ) {
 		boardString += board[ i ];
 

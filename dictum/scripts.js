@@ -15,6 +15,7 @@ window.onload = function () {
 		'Loaded site with data ' + navigator.userAgent + ' at ' + new Date(),
 		'dictum_load'
 	);
+
 	changeOption( 'any-list' );
 	buildStats();
 

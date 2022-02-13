@@ -84,7 +84,7 @@ function findWord() {
 				max = 861;
 				break;
 			case 'any-list':
-				max = 829;
+				max = 1609;
 		}
 
 		let chosenWord = selectedList[ 0 ][ Math.floor( Math.random() * max ) ];
@@ -430,7 +430,7 @@ function copyDailyStat( string ) {
 	let digit = isDailyWord ? parseInt( timeDifference( Date.now(), unix ) ) + ' ' : '';
 
 	let boardString =
-		'Latin Wordle ' +
+		'Latin Dictum (Wordle) ' +
 		digit +
 		parseInt( document.querySelectorAll( '.game-row.is-answer' )[ 0 ].id.substring( 3, 4 ) ) +
 		'/6\n';

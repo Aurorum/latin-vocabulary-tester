@@ -3,7 +3,10 @@
 		<title>Dictum - Latin Wordle</title>
 		<link rel="icon" href="../assets/favicon.png" type="image/png" />
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
 		<meta name="author" content="Aurorum" />
 		<meta name="keywords" content="Latin, Latin Wordle, Wordle, Dictum, Latin Vocabulary Tester" />
 		<meta
@@ -357,38 +360,42 @@
 
 			<div class="keyboard">
 				<div class="keyboard-row">
-					<button onclick="keyPress('q', true)" id="q-key">q</button>
-					<button onclick="keyPress('w', true)" id="w-key">w</button>
-					<button onclick="keyPress('e', true)" id="e-key">e</button>
-					<button onclick="keyPress('r', true)" id="r-key">r</button>
-					<button onclick="keyPress('t', true)" id="t-key">t</button>
-					<button onclick="keyPress('y', true)" id="y-key">y</button>
-					<button onclick="keyPress('u', true)" id="u-key">u</button>
-					<button onclick="keyPress('i', true)" id="i-key">i</button>
-					<button onclick="keyPress('o', true)" id="o-key">o</button>
-					<button onclick="keyPress('p', true)" id="p-key">p</button>
+					<button onclick="keyPress('q', true)" id="q-key"><span>q</span></button>
+					<button onclick="keyPress('w', true)" id="w-key"><span>w</span></button>
+					<button onclick="keyPress('e', true)" id="e-key"><span>e</span></button>
+					<button onclick="keyPress('r', true)" id="r-key"><span>r</span></button>
+					<button onclick="keyPress('t', true)" id="t-key"><span>t</span></button>
+					<button onclick="keyPress('y', true)" id="y-key"><span>y</span></button>
+					<button onclick="keyPress('u', true)" id="u-key"><span>u</span></button>
+					<button onclick="keyPress('i', true)" id="i-key"><span>i</span></button>
+					<button onclick="keyPress('o', true)" id="o-key"><span>o</span></button>
+					<button onclick="keyPress('p', true)" id="p-key"><span>p</span></button>
 				</div>
 				<div class="keyboard-row">
-					<button onclick="keyPress('a', true)" id="a-key">a</button>
-					<button onclick="keyPress('s', true)" id="s-key">s</button>
-					<button onclick="keyPress('d', true)" id="d-key">d</button>
-					<button onclick="keyPress('f', true)" id="f-key">f</button>
-					<button onclick="keyPress('g', true)" id="g-key">g</button>
-					<button onclick="keyPress('h', true)" id="h-key">h</button>
-					<button onclick="keyPress('j', true)" id="j-key">j</button>
-					<button onclick="keyPress('k', true)" id="k-key">k</button>
-					<button onclick="keyPress('l', true)" id="l-key">l</button>
+					<button onclick="keyPress('a', true)" id="a-key"><span>a</span></button>
+					<button onclick="keyPress('s', true)" id="s-key"><span>s</span></button>
+					<button onclick="keyPress('d', true)" id="d-key"><span>d</span></button>
+					<button onclick="keyPress('f', true)" id="f-key"><span>f</span></button>
+					<button onclick="keyPress('g', true)" id="g-key"><span>g</span></button>
+					<button onclick="keyPress('h', true)" id="h-key"><span>h</span></button>
+					<button onclick="keyPress('j', true)" id="j-key"><span>j</span></button>
+					<button onclick="keyPress('k', true)" id="k-key"><span>k</span></button>
+					<button onclick="keyPress('l', true)" id="l-key"><span>l</span></button>
 				</div>
 				<div class="keyboard-row">
-					<button onclick="keyPress('z', true)" id="z-key">z</button>
-					<button onclick="keyPress('x', true)" id="x-key">x</button>
-					<button onclick="keyPress('c', true)" id="c-key">c</button>
-					<button onclick="keyPress('v', true)" id="v-key">v</button>
-					<button onclick="keyPress('b', true)" id="b-key">b</button>
-					<button onclick="keyPress('n', true)" id="n-key">n</button>
-					<button onclick="keyPress('m', true)" id="m-key">m</button>
-					<button onclick="removeLetter()">&#9003;</button>
-					<button onclick="checkAnswer()">&#8617;</button>
+					<button onclick="keyPress('z', true)" id="z-key"><span>z</span></button>
+					<button onclick="keyPress('x', true)" id="x-key"><span>x</span></button>
+					<button onclick="keyPress('c', true)" id="c-key"><span>c</span></button>
+					<button onclick="keyPress('v', true)" id="v-key"><span>v</span></button>
+					<button onclick="keyPress('b', true)" id="b-key"><span>b</span></button>
+					<button onclick="keyPress('n', true)" id="n-key"><span>n</span></button>
+					<button onclick="keyPress('m', true)" id="m-key"><span>m</span></button>
+					<button onclick="removeLetter()" class="large-key">
+						<img src="../assets/back.svg" alt="Backspace" />
+					</button>
+					<button onclick="checkAnswer()" class="large-key">
+						<img src="../assets/checkmark.svg" alt="Enter" />
+					</button>
 				</div>
 			</div>
 		</div>

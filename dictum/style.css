@@ -3,6 +3,7 @@ html {
 	-webkit-text-size-adjust: 100%;
 }
 body {
+	color: #000;
 	margin: 0;
 	font-family: 'Montserrat', sans-serif;
 }
@@ -24,6 +25,7 @@ pre {
 }
 a {
 	background-color: transparent;
+	color: #000;
 	text-decoration: none;
 }
 abbr[title] {
@@ -148,6 +150,10 @@ template {
 	display: none;
 }
 
+#game {
+	margin: 0 20px;
+}
+
 .game-board {
 	max-width: 375px;
 	margin: auto;
@@ -207,11 +213,13 @@ template {
 
 .keyboard-row {
 	margin-bottom: 12px;
+	display: flex;
 }
 
 .keyboard-row button {
 	color: black;
 	cursor: pointer;
+	display: flex;
 	height: 58px;
 	width: 45px;
 	text-transform: uppercase;
@@ -220,6 +228,22 @@ template {
 	border: 0;
 	font-weight: 700;
 	background: #dcdcde;
+	margin-right: 6px;
+}
+
+.keyboard-row button span {
+	margin: auto;
+}
+
+.keyboard-row button img {
+	margin: auto;
+	width: 24px;
+	max-width: 100%;
+}
+
+.keyboard-row .large-key {
+	height: 60px;
+	width: 60px;
 }
 
 .keyboard-row button:hover {
@@ -251,7 +275,7 @@ template {
 }
 
 .game-tile.animate {
-	animation: FlipIn 1.2s;
+	animation: FlipIn 0.8s;
 }
 
 .game-row.shake-animation {
@@ -347,6 +371,7 @@ template {
 	padding: 32px;
 	margin: auto;
 	margin-bottom: 80px;
+	max-height: calc( 100% - 120px );
 	width: 35%;
 	box-shadow: 0 2px 4px rgb( 0 0 0 / 30% );
 	background-color: white;
@@ -354,6 +379,7 @@ template {
 	left: 50%;
 	top: 50%;
 	transform: translate( -50%, -50% );
+	overflow-y: auto;
 }
 
 @keyframes slideIn {
@@ -678,9 +704,17 @@ template {
 		flex-direction: column;
 	}
 
-	.keyboard-row button {
-		height: 32px;
+	.number-explanation,
+	.modal-content p {
+		font-size: 12px;
+	}
+
+	.keyboard-row button,
+	.keyboard-row .large-key {
+		height: 54px;
 		width: 28px;
+		font-size: 12px;
+		border-radius: 4px;
 	}
 
 	.option-wrapper {
@@ -701,5 +735,17 @@ template {
 
 	.stats-box {
 		margin: 8px;
+	}
+
+	.footer {
+		margin-top: 24px;
+		flex-direction: column-reverse;
+		text-align: center;
+	}
+
+	.footer p:nth-of-type( n ) {
+		text-align: center;
+		margin: auto;
+		margin-bottom: 16px;
 	}
 }

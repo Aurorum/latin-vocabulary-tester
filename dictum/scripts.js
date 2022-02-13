@@ -402,8 +402,9 @@ function streakCalculation( isCorrect ) {
 		return;
 	}
 
+	let currentStreak = parseInt( document.getElementById( 'current-streak' ).textContent );
+
 	if ( isCorrect ) {
-		let currentStreak = parseInt( document.getElementById( 'current-streak' ).textContent );
 		document.getElementById( 'current-streak' ).innerHTML = currentStreak + 1;
 		collectData( 'Streak continued at ' + currentStreak, 'dictum_streak_continued' );
 		document.getElementById( 'next-streak' ).innerHTML =

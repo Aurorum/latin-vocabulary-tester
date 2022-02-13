@@ -446,7 +446,7 @@ function copyDailyStat( string ) {
 		return boardString;
 	}
 
-	boardString += '\nhttps://latinvocabularytester.com';
+	boardString += '\nhttps://latinvocabularytester.com/dictum/';
 
 	navigator.clipboard.writeText( boardString );
 

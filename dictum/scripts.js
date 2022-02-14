@@ -386,7 +386,7 @@ function checkAnswer() {
 			if ( isDailyWord ) {
 				localStorage.setItem( 'dailyWord', document.getElementById( 'game' ).innerHTML );
 			}
-		}, i * 800 );
+		}, i * 600 );
 	}
 
 	document.getElementById( gameBoardId ).classList.add( 'is-completed' );
@@ -433,7 +433,7 @@ function copyDailyStat( string ) {
 		? parseInt( document.querySelectorAll( '.game-row.is-answer' )[ 0 ].id.substring( 3, 4 ) )
 		: 'X';
 
-	let boardString = 'Latin Dictum (Wordle) ' + digit + int + '/6\n';
+	let boardString = 'Dictum (Latin Wordle) ' + digit + int + '/6\n';
 	for ( let i = 0; i < board.length; i++ ) {
 		boardString += board[ i ];
 
@@ -525,6 +525,7 @@ function resetGame() {
 	document.getElementById( 'copy-stats' ).style.display = 'none';
 	document.getElementById( 'next-streak' ).style.display = 'none';
 	document.getElementById( 'word-meaning' ).classList.add( 'is-hidden' );
+	document.getElementById( 'copy-stats-link' ).innerHTML = 'Copy score to clipboard';
 	canType = true;
 	selectedWord = findWord();
 }

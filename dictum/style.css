@@ -25,7 +25,7 @@ pre {
 }
 a {
 	background-color: transparent;
-	color: #000;
+	color: #000 !important;
 	text-decoration: none;
 }
 abbr[title] {
@@ -67,6 +67,7 @@ input,
 optgroup,
 select,
 textarea {
+	color: #000 !important;
 	font-family: inherit;
 	font-size: 100%;
 	line-height: 1.15;
@@ -149,6 +150,9 @@ template {
 [hidden] {
 	display: none;
 }
+.button p {
+	color: #000 !important;
+}
 
 #game {
 	margin: 0 20px;
@@ -193,6 +197,7 @@ template {
 	width: 54px;
 	margin: 0 4px;
 	display: flex;
+	user-select: none;
 }
 
 .game-tile-letter {
@@ -209,11 +214,16 @@ template {
 	flex-direction: column;
 	align-items: center;
 	margin-top: 32px;
+	margin-bottom: 18px;
+	user-select: none;
 }
 
 .keyboard-row {
 	margin-bottom: 12px;
 	display: flex;
+	justify-content: center;
+	touch-action: manipulation;
+	width: 100%;
 }
 
 .keyboard-row button {
@@ -229,6 +239,8 @@ template {
 	font-weight: 700;
 	background: #dcdcde;
 	margin-right: 6px;
+	margin-top: auto;
+	margin-bottom: auto;
 }
 
 .keyboard-row button span {
@@ -239,6 +251,8 @@ template {
 	margin: auto;
 	width: 24px;
 	max-width: 100%;
+	min-width: 18px;
+	min-height: 18px;
 }
 
 .keyboard-row .large-key {
@@ -255,7 +269,7 @@ template {
 .keyboard-row .is-not-contained:hover {
 	background: #86888a;
 	border-color: transparent;
-	color: #fff;
+	color: #fff !important;
 }
 
 .game-tile.is-contained,
@@ -263,7 +277,7 @@ template {
 .keyboard-row .is-contained:hover {
 	background: #c9b458;
 	border-color: transparent;
-	color: #fff;
+	color: #fff !important;
 }
 
 .game-tile.is-correct-place,
@@ -271,7 +285,7 @@ template {
 .keyboard-row .is-correct-place:hover {
 	background: #6aaa64;
 	border-color: transparent;
-	color: #fff;
+	color: #fff !important;
 }
 
 .game-tile.animate {
@@ -711,8 +725,6 @@ template {
 
 	.keyboard-row button,
 	.keyboard-row .large-key {
-		height: 54px;
-		width: 28px;
 		font-size: 12px;
 		border-radius: 4px;
 	}

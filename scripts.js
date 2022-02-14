@@ -2413,7 +2413,10 @@ function buildFlashcard( context, starred = false ) {
 	if ( document.getElementById( 'flashcard' ).classList.contains( 'is-flipped' ) ) {
 		flipFlashcard();
 	}
+	setTimeout(buildAfterFlip.bind(null,context,starred),800)
+}
 
+function buildAfterFlip(context,starred) {
 	let number = parseInt( document.getElementById( 'flashcard' ).getAttribute( 'number' ) );
 
 	if ( context === 'next' ) {

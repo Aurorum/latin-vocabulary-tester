@@ -327,10 +327,39 @@ function checkAnswer() {
 		setTimeout( function timer() {
 			let tile = document.getElementById( gameBoardId + 'tile' + i );
 
+			let duplicateLetterCount = fullSubmission.filter( ( x ) => x == tile.textContent ).length;
+			let isLetterContained = wordSplit.includes( tile.textContent );
+
+			if ( duplicateLetterCount > 1 ) {
+				let answerPlaces = wordSplit
+					.map( ( e, i ) => ( e === tile.textContent ? i : '' ) )
+					.filter( String );
+				let options = fullSubmission
+					.map( ( e, i ) => ( e === tile.textContent ? i : '' ) )
+					.filter( String );
+				let overrideLetterContained = false;
+				options.forEach( ( number ) => {
+					if ( wordSplit[ number ] === fullSubmission[ number ] ) {
+						overrideLetterContained = true;
+					}
+				} );
+
+				if (
+					answerPlaces.length === options.length &&
+					JSON.stringify( answerPlaces ) !== JSON.stringify( options )
+				) {
+					overrideLetterContained = false;
+				}
+
+				if ( overrideLetterContained ) {
+					isLetterContained = false;
+				}
+			}
+
 			if ( tile.textContent === wordSplit[ i ] ) {
 				tile.parentNode.classList.add( 'is-correct-place' );
 				document.getElementById( tile.textContent + '-key' ).classList.add( 'is-correct-place' );
-			} else if ( wordSplit.includes( tile.textContent ) ) {
+			} else if ( isLetterContained ) {
 				tile.parentNode.classList.add( 'is-contained' );
 
 				if (

@@ -2412,9 +2412,9 @@ function startFlashcards() {
 function buildFlashcard( context, starred = false ) {
 	if ( document.getElementById( 'flashcard' ).classList.contains( 'is-flipped' ) ) {
 		flipFlashcard();
-	}
-	if ( context === 'next' || context === 'previous' ) {
-		setTimeout( buildAfterFlip.bind( null, context, starred ), 800 );
+		if ( context === 'next' || context === 'previous' ) {
+			setTimeout( buildAfterFlip.bind( null, context, starred ), 800 );
+		}	
 	}
 	else {
 		buildAfterFlip(context, starred );

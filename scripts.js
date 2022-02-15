@@ -2536,16 +2536,19 @@ function starFlashcard( auto ) {
 	collectData(
 		'Toggled starring of flashcard with ' +
 			document.getElementById( 'front-flashcard' ).textContent,
-		'starred_flashcard'
+		'starred_flashcard'	
 	);
 	document.getElementById( 'star-flashcard' ).classList.toggle( 'is-filled' );
 
-	let savedFlashcards = [];
+	let savedFlashcards = JSON.parse(localStorage.getItem( 'savedFlashcards'));
 	vocabToFocusOn.forEach( function ( item ) {
-		savedFlashcards.push( {
-			word: item,
-			translation: item.translation ? item.translation : findWord( item )[ 0 ].translation,
-		} );
+		foundWord = findWord(item)[ 0 ]
+		if (foundWord != undefined) {
+			savedFlashcards.push( {
+				word: item,
+				translation: item.translation ? item.translation : foundWord.translation,
+			} );
+		}
 	} );
 	localStorage.setItem( 'savedFlashcards', JSON.stringify( savedFlashcards ) );
 }

@@ -553,6 +553,29 @@ li {
 	width: 100%;
 }
 
+.john-taylor-vocabulary {
+	display: flex;
+	flex-direction: row;
+}
+
+.john-taylor-vocabulary .literature-heading {
+	margin-right: 16px;
+	width: 70%;
+}
+
+.john-taylor-vocabulary .button-group {
+	margin: auto;
+	height: 80%;
+}
+
+.john-taylor-vocabulary .vocab-type {
+	text-align: center;
+}
+
+.john-taylor-vocabulary .button-group p {
+	margin: auto;
+}
+
 .literature-vocabulary .row-wrapper:last-of-type {
 	margin-bottom: 0;
 }
@@ -704,6 +727,10 @@ a:hover {
 	border-radius: 0;
 	border-top-right-radius: 12px;
 	border-bottom-right-radius: 12px;
+}
+
+.literature-vocabulary .john-taylor-vocabulary .vocab-type:nth-of-type( n ).has-selected {
+	border-radius: 12px;
 }
 
 .literature-heading {
@@ -2197,6 +2224,11 @@ button.verb-table-option-button:hover {
 		border-radius: 0;
 		border-top-left-radius: 12px;
 		border-top-right-radius: 12px;
+	}
+
+	/* This is a temporary quick-solution to be re-visited */
+	.john-taylor-vocabulary {
+		display: none;
 	}
 
 	.flashcard-container,

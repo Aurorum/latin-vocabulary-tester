@@ -2372,7 +2372,7 @@ function startFlashcards() {
 		'Press the star on the top right, then click the word below to jump to its flashcard.';
 
 	if ( localStorage.getItem( 'savedFlashcards' ) ) {
-		let savedFlashcards = JSON.parse( localStorage.getItem( 'savedFlashcards' ) );
+		let savedFlashcards = JSON.parse( localStorage.getItem( 'savedFlashcards' )) ? JSON.parse( localStorage.getItem( 'savedFlashcards' )) : [];
 		savedFlashcards.forEach( ( item ) => {
 			vocabToFocusOn.push( item.word );
 		} );
@@ -2439,7 +2439,7 @@ function buildAfterFlip( context, starred ) {
 	let isSavedFlashcard = number === -1;
 
 	if ( context && isSavedFlashcard ) {
-		let savedFlashcards = JSON.parse( localStorage.getItem( 'savedFlashcards' ) );
+		let savedFlashcards = JSON.parse( localStorage.getItem( 'savedFlashcards' )) ? JSON.parse( localStorage.getItem( 'savedFlashcards' )) : [];
 		let savedIndex = savedFlashcards.findIndex( ( item ) => item.word === context.textContent );
 
 		document.getElementById( 'front-flashcard' ).innerHTML = document.getElementById(
@@ -2542,16 +2542,37 @@ function starFlashcard( auto ) {
 	);
 	document.getElementById( 'star-flashcard' ).classList.toggle( 'is-filled' );
 
-	let savedFlashcards = JSON.parse(localStorage.getItem( 'savedFlashcards'));
-	vocabToFocusOn.forEach( function ( item ) {
-		foundWord = findWord(item)[ 0 ]
-		if (foundWord != undefined) {
-			savedFlashcards.push( {
-				word: item,
-				translation: item.translation ? item.translation : foundWord.translation,
-			} );
+
+	//We need to synchronise the local storage with the vocabToFocusOn
+	
+	//sort both arrays for efficiency
+	let savedFlashcards = (JSON.parse( localStorage.getItem( 'savedFlashcards' )) ? JSON.parse( localStorage.getItem( 'savedFlashcards' )) : []).sort((a, b) => (a.word > b.word) ? 1 : -1);
+	vocabToFocusOn = vocabToFocusOn.sort();
+	let oldLength = savedFlashcards.length
+	//counter variables for the following loop
+	let k1 = 0;
+	let k2 = 0;
+	
+	while (k2 < vocabToFocusOn.length) { //while we haven't reached the end of the up to date starred list,
+		while (k1 < oldLength && vocabToFocusOn[k2] > savedFlashcards[k1].word) { //the next vocab that needs to be in the local storage comes after the previously saved current one.
+			savedFlashcards.splice(k1,1); //delete the next saved vocab as it has been unstarred
+			oldLength--;
 		}
-	} );
+		if (k1 < oldLength && vocabToFocusOn[k2] == savedFlashcards[k1].word) { //if the saved matches the up to date list then we skip and move to the next vocabs
+			++k1; ++k2;
+		} else { //there is a word in the up to date list which was previously not starred.
+			savedFlashcards.push( { 
+				word: vocabToFocusOn[k2],
+				translation: vocabToFocusOn[k2].translation ? vocabToFocusOn[k2].translation : findWord(vocabToFocusOn[k2])[ 0 ].translation,
+			} );
+			++k2;
+		}
+	}
+	while (k1 < oldLength) {
+		savedFlashcards.splice(k1,1); //delete the next saved vocab as it has been unstarred
+		k1++;
+	}
+
 	localStorage.setItem( 'savedFlashcards', JSON.stringify( savedFlashcards ) );
 }
 

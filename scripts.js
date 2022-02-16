@@ -2414,6 +2414,8 @@ function buildFlashcard( context, starred = false ) {
 		flipFlashcard();
 		if ( context === 'next' || context === 'previous' ) {
 			setTimeout( buildAfterFlip.bind( null, context, starred ), 800 );
+		} else {
+			buildAfterFlip(context, starred );
 		}	
 	}
 	else {

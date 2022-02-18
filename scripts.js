@@ -2372,7 +2372,9 @@ function startFlashcards() {
 		'Press the star on the top right, then click the word below to jump to its flashcard.';
 
 	if ( localStorage.getItem( 'savedFlashcards' ) ) {
-		let savedFlashcards = JSON.parse( localStorage.getItem( 'savedFlashcards' )) ? JSON.parse( localStorage.getItem( 'savedFlashcards' )) : [];
+		let savedFlashcards = JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
+			? JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
+			: [];
 		savedFlashcards.forEach( ( item ) => {
 			vocabToFocusOn.push( item.word );
 		} );
@@ -2415,11 +2417,10 @@ function buildFlashcard( context, starred = false ) {
 		if ( context === 'next' || context === 'previous' ) {
 			setTimeout( buildAfterFlip.bind( null, context, starred ), 800 );
 		} else {
-			buildAfterFlip(context, starred );
-		}	
-	}
-	else {
-		buildAfterFlip(context, starred );
+			buildAfterFlip( context, starred );
+		}
+	} else {
+		buildAfterFlip( context, starred );
 	}
 }
 
@@ -2439,7 +2440,9 @@ function buildAfterFlip( context, starred ) {
 	let isSavedFlashcard = number === -1;
 
 	if ( context && isSavedFlashcard ) {
-		let savedFlashcards = JSON.parse( localStorage.getItem( 'savedFlashcards' )) ? JSON.parse( localStorage.getItem( 'savedFlashcards' )) : [];
+		let savedFlashcards = JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
+			? JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
+			: [];
 		let savedIndex = savedFlashcards.findIndex( ( item ) => item.word === context.textContent );
 
 		document.getElementById( 'front-flashcard' ).innerHTML = document.getElementById(
@@ -2538,38 +2541,39 @@ function starFlashcard( auto ) {
 	collectData(
 		'Toggled starring of flashcard with ' +
 			document.getElementById( 'front-flashcard' ).textContent,
-		'starred_flashcard'	
+		'starred_flashcard'
 	);
 	document.getElementById( 'star-flashcard' ).classList.toggle( 'is-filled' );
 
-
-	//We need to synchronise the local storage with the vocabToFocusOn
-	
-	//sort both arrays for efficiency
-	let savedFlashcards = (JSON.parse( localStorage.getItem( 'savedFlashcards' )) ? JSON.parse( localStorage.getItem( 'savedFlashcards' )) : []).sort((a, b) => (a.word > b.word) ? 1 : -1);
+	let savedFlashcards = ( JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
+		? JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
+		: []
+	).sort( ( a, b ) => ( a.word > b.word ? 1 : -1 ) );
 	vocabToFocusOn = vocabToFocusOn.sort();
-	let oldLength = savedFlashcards.length
-	//counter variables for the following loop
+	let oldLength = savedFlashcards.length;
 	let k1 = 0;
 	let k2 = 0;
-	
-	while (k2 < vocabToFocusOn.length) { //while we haven't reached the end of the up to date starred list,
-		while (k1 < oldLength && vocabToFocusOn[k2] > savedFlashcards[k1].word) { //the next vocab that needs to be in the local storage comes after the previously saved current one.
-			savedFlashcards.splice(k1,1); //delete the next saved vocab as it has been unstarred
+
+	while ( k2 < vocabToFocusOn.length ) {
+		while ( k1 < oldLength && vocabToFocusOn[ k2 ] > savedFlashcards[ k1 ].word ) {
+			savedFlashcards.splice( k1, 1 );
 			oldLength--;
 		}
-		if (k1 < oldLength && vocabToFocusOn[k2] == savedFlashcards[k1].word) { //if the saved matches the up to date list then we skip and move to the next vocabs
-			++k1; ++k2;
-		} else { //there is a word in the up to date list which was previously not starred.
-			savedFlashcards.push( { 
-				word: vocabToFocusOn[k2],
-				translation: vocabToFocusOn[k2].translation ? vocabToFocusOn[k2].translation : findWord(vocabToFocusOn[k2])[ 0 ].translation,
+		if ( k1 < oldLength && vocabToFocusOn[ k2 ] == savedFlashcards[ k1 ].word ) {
+			++k1;
+			++k2;
+		} else {
+			savedFlashcards.push( {
+				word: vocabToFocusOn[ k2 ],
+				translation: vocabToFocusOn[ k2 ].translation
+					? vocabToFocusOn[ k2 ].translation
+					: findWord( vocabToFocusOn[ k2 ] )[ 0 ].translation,
 			} );
 			++k2;
 		}
 	}
-	while (k1 < oldLength) {
-		savedFlashcards.splice(k1,1); //delete the next saved vocab as it has been unstarred
+	while ( k1 < oldLength ) {
+		savedFlashcards.splice( k1, 1 );
 		k1++;
 	}
 

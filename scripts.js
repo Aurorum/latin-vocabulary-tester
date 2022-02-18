@@ -2372,7 +2372,9 @@ function startFlashcards() {
 		'Press the star on the top right, then click the word below to jump to its flashcard.';
 
 	if ( localStorage.getItem( 'savedFlashcards' ) ) {
-		let savedFlashcards = JSON.parse( localStorage.getItem( 'savedFlashcards' ) );
+		let savedFlashcards = JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
+			? JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
+			: [];
 		savedFlashcards.forEach( ( item ) => {
 			vocabToFocusOn.push( item.word );
 		} );
@@ -2412,8 +2414,17 @@ function startFlashcards() {
 function buildFlashcard( context, starred = false ) {
 	if ( document.getElementById( 'flashcard' ).classList.contains( 'is-flipped' ) ) {
 		flipFlashcard();
+		if ( context === 'next' || context === 'previous' ) {
+			setTimeout( buildAfterFlip.bind( null, context, starred ), 800 );
+		} else {
+			buildAfterFlip( context, starred );
+		}
+	} else {
+		buildAfterFlip( context, starred );
 	}
+}
 
+function buildAfterFlip( context, starred ) {
 	let number = parseInt( document.getElementById( 'flashcard' ).getAttribute( 'number' ) );
 
 	if ( context === 'next' ) {
@@ -2429,7 +2440,9 @@ function buildFlashcard( context, starred = false ) {
 	let isSavedFlashcard = number === -1;
 
 	if ( context && isSavedFlashcard ) {
-		let savedFlashcards = JSON.parse( localStorage.getItem( 'savedFlashcards' ) );
+		let savedFlashcards = JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
+			? JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
+			: [];
 		let savedIndex = savedFlashcards.findIndex( ( item ) => item.word === context.textContent );
 
 		document.getElementById( 'front-flashcard' ).innerHTML = document.getElementById(
@@ -2532,13 +2545,38 @@ function starFlashcard( auto ) {
 	);
 	document.getElementById( 'star-flashcard' ).classList.toggle( 'is-filled' );
 
-	let savedFlashcards = [];
-	vocabToFocusOn.forEach( function ( item ) {
-		savedFlashcards.push( {
-			word: item,
-			translation: item.translation ? item.translation : findWord( item )[ 0 ].translation,
-		} );
-	} );
+	let savedFlashcards = ( JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
+		? JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
+		: []
+	).sort( ( a, b ) => ( a.word > b.word ? 1 : -1 ) );
+	vocabToFocusOn = vocabToFocusOn.sort();
+	let oldLength = savedFlashcards.length;
+	let k1 = 0;
+	let k2 = 0;
+
+	while ( k2 < vocabToFocusOn.length ) {
+		while ( k1 < oldLength && vocabToFocusOn[ k2 ] > savedFlashcards[ k1 ].word ) {
+			savedFlashcards.splice( k1, 1 );
+			oldLength--;
+		}
+		if ( k1 < oldLength && vocabToFocusOn[ k2 ] == savedFlashcards[ k1 ].word ) {
+			++k1;
+			++k2;
+		} else {
+			savedFlashcards.push( {
+				word: vocabToFocusOn[ k2 ],
+				translation: vocabToFocusOn[ k2 ].translation
+					? vocabToFocusOn[ k2 ].translation
+					: findWord( vocabToFocusOn[ k2 ] )[ 0 ].translation,
+			} );
+			++k2;
+		}
+	}
+	while ( k1 < oldLength ) {
+		savedFlashcards.splice( k1, 1 );
+		k1++;
+	}
+
 	localStorage.setItem( 'savedFlashcards', JSON.stringify( savedFlashcards ) );
 }
 

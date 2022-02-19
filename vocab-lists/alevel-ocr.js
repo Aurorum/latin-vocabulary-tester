@@ -23047,7 +23047,7 @@ var vocabALevelOCR = [
 	{
 		word: 'veto, vetare, vetui, vetitus',
 		category: 'verb 1',
-		translation: 'forbid, order...not, ordeer not',
+		translation: 'forbid, order...not, order not',
 		asked: false,
 	},
 	{

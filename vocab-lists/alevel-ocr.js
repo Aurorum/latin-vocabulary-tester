@@ -6007,7 +6007,7 @@ var vocabALevelOCR = [
 	},
 	{
 		word: 'domina, dominae, f',
-		category: 'noun 2',
+		category: 'noun 1',
 		translation: 'mistress',
 		asked: false,
 	},

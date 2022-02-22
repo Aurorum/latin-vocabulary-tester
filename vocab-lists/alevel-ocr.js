@@ -16771,7 +16771,7 @@ var vocabALevelOCR = [
 	},
 	{
 		word: 'potior, potiri, potitus sum + gen or abl',
-		category: 'verb 4',
+		category: 'verb 4 dep',
 		translation: 'seize, get possession of',
 		asked: false,
 	},

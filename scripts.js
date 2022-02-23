@@ -2013,7 +2013,7 @@ function selectAll( context ) {
 			allOptions.push( 'prose-list-' + i );
 		}
 		allOptions.push( 'prose-list-datives' );
-		allOptions.push( 'john-taylor-verse' ).
+		allOptions.push( 'john-taylor-verse' );
 	}
 
 	var isPreviouslyMuted = mute;

@@ -2013,6 +2013,7 @@ function selectAll( context ) {
 			allOptions.push( 'prose-list-' + i );
 		}
 		allOptions.push( 'prose-list-datives' );
+		allOptions.push( 'john-taylor-verse' ).
 	}
 
 	var isPreviouslyMuted = mute;
@@ -2760,7 +2761,7 @@ function formAcceptableVocab( receivedCategory ) {
 				maxVocabOptions = document.querySelectorAll( '.custom-lists .vocab-type' ).length;
 				break;
 			case 'literature':
-				maxVocabOptions = 23;
+				maxVocabOptions = 24;
 				break;
 		}
 

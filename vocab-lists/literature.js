@@ -1311,7 +1311,7 @@ var vocabLiterature = [
 		asked: false,
 	},
 	{
-		word: 'gelidus, gelida, geldium',
+		word: 'gelidus, gelida, gelidum',
 		translation: 'icy, cold, frozen',
 		category: 'ovid-list-1',
 		asked: false,

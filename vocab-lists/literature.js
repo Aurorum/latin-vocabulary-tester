@@ -318,7 +318,7 @@ var vocabLiterature = [
 		asked: false,
 	},
 	{
-		word: 'ferio, ferirem, ferii',
+		word: 'ferio, ferire, ferii',
 		translation: 'strike, hit',
 		category: 'ovid-list-0',
 		asked: false,

@@ -3525,7 +3525,7 @@ var vocabLiterature = [
 		ppp: 'dilectus',
 	},
 	{
-		word: 'fidus, fida, fiduum',
+		word: 'fidus, fida, fidum',
 		translation: 'trusty',
 		category: 'ovid-list-3',
 		asked: false,

@@ -4018,7 +4018,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'tener, tenera, tenerum',
-		translation: 'soft, delicare, tender',
+		translation: 'soft, delicate, tender',
 		category: 'ovid-list-3',
 		asked: false,
 	},

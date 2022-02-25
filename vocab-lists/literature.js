@@ -3321,7 +3321,7 @@ var vocabLiterature = [
 		asked: false,
 	},
 	{
-		word: 'aptus, apta, aptuum',
+		word: 'aptus, apta, aptum',
 		translation: 'suitable, appropriate',
 		category: 'ovid-list-3',
 		asked: false,

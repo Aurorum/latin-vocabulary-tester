@@ -4887,7 +4887,7 @@ var vocabLiterature = [
 		ablp: 'nebulis',
 	},
 	{
-		word: 'niger, nigera, nigerum',
+		word: 'niger, nigra, nigrum',
 		translation: 'black',
 		category: 'ovid-list-4',
 		asked: false,

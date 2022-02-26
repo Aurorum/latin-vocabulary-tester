@@ -4983,7 +4983,7 @@ var vocabLiterature = [
 		asked: false,
 	},
 	{
-		word: 'spiculum, spiculi',
+		word: 'spiculum, spiculi, n',
 		translation: 'arrow, dart',
 		category: 'ovid-list-4',
 		asked: false,

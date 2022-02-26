@@ -1,7 +1,7 @@
 var vocabLiterature = [
 	{
 		word: 'aequor, aequoris, n',
-		translation: 'sea',
+		translation: 'sea, level surface, plain',
 		category: 'ovid-list-0',
 		asked: false,
 		noms: 'aequor',
@@ -73,7 +73,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'aura, aurae, f',
-		translation: 'breeze, air',
+		translation: 'breeze, air, wind',
 		category: 'ovid-list-0',
 		asked: false,
 	},
@@ -91,7 +91,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'candidus, candida, candidum',
-		translation: 'white, bright',
+		translation: 'white, bright, clear, frank',
 		category: 'ovid-list-0',
 		asked: false,
 	},
@@ -271,7 +271,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'dictum, dicti, n',
-		translation: 'word',
+		translation: 'word, saying, speech',
 		category: 'ovid-list-0',
 		asked: false,
 		noms: 'dictum',
@@ -313,7 +313,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'exiguus, exigua, exiguum',
-		translation: 'small',
+		translation: 'small, scanty, poor',
 		category: 'ovid-list-0',
 		asked: false,
 	},
@@ -325,7 +325,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'fretum, freti, n',
-		translation: 'strait, sea',
+		translation: 'strait, sea, channel',
 		category: 'ovid-list-0',
 		asked: false,
 		noms: 'fretum',
@@ -523,13 +523,13 @@ var vocabLiterature = [
 	},
 	{
 		word: 'Mars, Martis, m',
-		translation: 'Mars, war, god of war',
+		translation: 'Mars, war, god of war, Mars (god of war)',
 		category: 'ovid-list-0',
 		asked: false,
 	},
 	{
 		word: 'mirus, mira, mirum',
-		translation: 'wonderful, marvelous, marvellous, amazing',
+		translation: 'wonderful, marvelous, marvellous, amazing, strange',
 		category: 'ovid-list-0',
 		asked: false,
 	},
@@ -582,7 +582,7 @@ var vocabLiterature = [
 		ablp: 'natis',
 	},
 	{
-		word: 'nubes, nubis',
+		word: 'nubes, nubis, f',
 		translation: 'cloud',
 		category: 'ovid-list-0',
 		asked: false,
@@ -600,7 +600,7 @@ var vocabLiterature = [
 		ablp: 'nubibus',
 	},
 	{
-		word: 'orbis, orbis',
+		word: 'orbis, orbis, m',
 		translation: 'sphere, world, country, eye',
 		category: 'ovid-list-0',
 		asked: false,
@@ -619,8 +619,9 @@ var vocabLiterature = [
 	},
 	{
 		word: 'Pallas, Palladis, f',
-		translation: 'Pallas Athene, Athena, Athene',
+		translation: 'Pallas Athene, Athena, Athene, Pallas Athena (goddess of wisdom)',
 		category: 'ovid-list-0',
+		asked: false,
 	},
 	{
 		word: 'pavidus, pavida, pavidum',
@@ -630,7 +631,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'pectus, pectoris, n',
-		translation: 'breast, chest, heart',
+		translation: 'breast, chest, heart, hurt',
 		category: 'ovid-list-0',
 		asked: false,
 		noms: 'pectus',
@@ -666,7 +667,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'pietas, pietatis, f',
-		translation: 'devotion, piety',
+		translation: 'devotion, piety, duty, loyalty',
 		category: 'ovid-list-0',
 		asked: false,
 		noms: 'pietas',
@@ -684,7 +685,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'protinus',
-		translation: 'on the spot, immediately',
+		translation: 'on the spot, immediately, forward, on/from the spot',
 		category: 'ovid-list-0',
 		asked: false,
 	},
@@ -710,6 +711,7 @@ var vocabLiterature = [
 		word: 'quid?',
 		translation: 'what?, why?',
 		category: 'ovid-list-0',
+		asked: false,
 	},
 	{
 		word: 'saucius, saucia, saucium',
@@ -719,7 +721,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'stupeo, stupere, stupui',
-		translation: 'be amazed, dumbstruck, amazed',
+		translation: 'be amazed, dumbstruck, amazed, am amazed, am dumbstruck',
 		category: 'ovid-list-0',
 		asked: false,
 	},
@@ -743,7 +745,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'tellus, telluris, f',
-		translation: 'land, earth',
+		translation: 'land, earth, ground',
 		category: 'ovid-list-0',
 		asked: false,
 		noms: 'tellus',
@@ -761,7 +763,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'tenuis, tenue',
-		translation: 'thin, slender, weak',
+		translation: 'thin, slender, weak, fine, slight',
 		category: 'ovid-list-0',
 		asked: false,
 	},
@@ -775,6 +777,7 @@ var vocabLiterature = [
 		word: 'ter',
 		translation: 'three times',
 		category: 'ovid-list-0',
+		asked: false,
 	},
 	{
 		word: 'tremo, tremere, tremui',
@@ -790,7 +793,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'virgo, virginis, f',
-		translation: 'girl, maiden',
+		translation: 'girl, maiden, young woman, virgin',
 		category: 'ovid-list-0',
 		asked: false,
 	},
@@ -856,7 +859,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'auctor, auctoris, m',
-		translation: 'author, originator, father',
+		translation: 'author, originator, father, initiator, giver',
 		category: 'ovid-list-1',
 		asked: false,
 		noms: 'auctor',
@@ -874,7 +877,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'axis, axis, m',
-		translation: 'vault of heaven, axle, chariot',
+		translation: 'vault of heaven, axle, chariot, axis, sky, heaven',
 		category: 'ovid-list-1',
 		asked: false,
 		noms: 'axis',
@@ -1060,7 +1063,7 @@ var vocabLiterature = [
 	},
 	{
 		word: '-cutio, -cutiere, -cussi, -cussum',
-		translation: 'shake, strike (in compounds)',
+		translation: 'shake, strike (in compounds), dash, strike',
 		category: 'ovid-list-1',
 		asked: false,
 	},
@@ -1306,7 +1309,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'furo, furere',
-		translation: 'rage, be frenzied, rush',
+		translation: 'rage, be frenzied, rush, am mad',
 		category: 'ovid-list-1',
 		asked: false,
 	},
@@ -1396,7 +1399,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'pariter',
-		translation: 'together, at the same time',
+		translation: 'together, at the same time, equally',
 		category: 'ovid-list-1',
 		asked: false,
 	},
@@ -1534,7 +1537,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'purpureus, purpurea, purpureum',
-		translation: 'purple, radiant',
+		translation: 'purple, radiant, glowing',
 		category: 'ovid-list-1',
 		asked: false,
 	},
@@ -1660,13 +1663,13 @@ var vocabLiterature = [
 	},
 	{
 		word: 'sanguineus, sanguinea, sanguineum',
-		translation: 'bloody, blood-red',
+		translation: 'bloody, blood-red, of blood',
 		category: 'ovid-list-1',
 		asked: false,
 	},
 	{
 		word: 'seges, segetis, f',
-		translation: 'corn, crop',
+		translation: 'corn, crop, (corn) field',
 		category: 'ovid-list-1',
 		asked: false,
 		noms: 'seges',
@@ -1702,7 +1705,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'sinus, sinus, m',
-		translation: 'bosom, lap, bay, fold',
+		translation: 'bosom, lap, bay, fold, curve, gulf',
 		category: 'ovid-list-1',
 		asked: false,
 	},
@@ -2218,7 +2221,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'torus, tori, m',
-		translation: 'bed, couch, marriage',
+		translation: 'bed, couch, marriage, marriage-bed',
 		category: 'ovid-list-1',
 		asked: false,
 		noms: 'torus',
@@ -2374,7 +2377,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'aestus, aestus, m',
-		translation: 'heat, sea, passion',
+		translation: 'heat, sea, passion, boiling, surging sea',
 		category: 'ovid-list-2',
 		asked: false,
 		noms: 'aestus',
@@ -2542,7 +2545,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'carina, carinae, f',
-		translation: 'boat, ship',
+		translation: 'boat, ship, keel',
 		category: 'ovid-list-2',
 		asked: false,
 		noms: 'carina',
@@ -2686,7 +2689,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'citius',
-		translation: 'more quickly',
+		translation: 'more quickly, quicker',
 		category: 'ovid-list-2',
 		asked: false,
 	},
@@ -2704,7 +2707,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'fatum, fati, n',
-		translation: 'fate',
+		translation: 'fate, destiny, death',
 		category: 'ovid-list-2',
 		asked: false,
 		noms: 'fatum',
@@ -2848,7 +2851,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'liquidus, liquida, liquidum',
-		translation: 'clear',
+		translation: 'clear, transparent, pure, fluid',
 		category: 'ovid-list-2',
 		asked: false,
 	},
@@ -2877,7 +2880,7 @@ var vocabLiterature = [
 		ablp: 'meritis',
 	},
 	{
-		word: 'monstrum, monstri',
+		word: 'monstrum, monstri, n',
 		translation: 'monster',
 		category: 'ovid-list-2',
 		asked: false,
@@ -4486,7 +4489,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'en!',
-		translation: 'lo!, look!',
+		translation: 'lo!, look!, lo, look',
 		category: 'ovid-list-4',
 		asked: false,
 	},
@@ -5740,7 +5743,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'iuvat',
-		translation: 'it is pleasing',
+		translation: 'it is pleasing, it pleases',
 		category: 'ovid-list-5',
 		asked: false,
 	},
@@ -6525,10 +6528,22 @@ var vocabLiterature = [
 		asked: false,
 	},
 	{
-		word: 'milita, militae, f',
+		word: 'militia, militiae, f',
 		translation: 'military service',
 		category: 'ovid-list-6',
 		asked: false,
+		noms: 'militia',
+		nomp: 'militiae',
+		gens: 'militiae',
+		genp: 'militiarum',
+		dats: 'militiae',
+		datp: 'militiis',
+		accs: 'militiam',
+		accp: 'militias',
+		vocs: 'militia',
+		vocp: 'militiae',
+		abls: 'militia',
+		ablp: 'militiis',
 	},
 	{
 		word: 'naufragus, naufragi, m',
@@ -7510,7 +7525,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'concito, concitare, concitavi, concitatus',
-		translation: 'stir up, arouse',
+		translation: 'rouse, excite, stir up',
 		category: 'ovid-list-7',
 		asked: false,
 		pracind1s: 'concito',
@@ -7690,7 +7705,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'excito, excitare, excitavi, excitatus',
-		translation: 'stir up, arouse',
+		translation: 'rouse, excite, appeal to, stir up',
 		category: 'ovid-list-7',
 		asked: false,
 		pracind1s: 'excito',
@@ -12136,7 +12151,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'excito, excitare, excitavi, excitatus',
-		translation: 'rouse, excite, appeal to',
+		translation: 'rouse, excite, appeal to, stir up',
 		category: 'prose-list-0',
 		asked: false,
 		pracind1s: 'excito',
@@ -19594,7 +19609,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'auctor, auctoris, m',
-		translation: 'author, initiator',
+		translation: 'author, originator, father, initiator, giver',
 		category: 'prose-list-2',
 		asked: false,
 		noms: 'auctor',
@@ -20686,7 +20701,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'pariter',
-		translation: 'equally, together',
+		translation: 'together, at the same time, equally',
 		category: 'prose-list-2',
 		asked: false,
 	},
@@ -20704,7 +20719,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'pectus, pectoris, n',
-		translation: 'chest, breast, hurt',
+		translation: 'breast, chest, heart, hurt',
 		category: 'prose-list-2',
 		asked: false,
 		noms: 'pectus',
@@ -21082,7 +21097,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'salio, salire, salui, saltus',
-		translation: 'jump',
+		translation: 'jump, leap',
 		category: 'prose-list-2',
 		asked: false,
 		pracind1s: 'salio',
@@ -21730,7 +21745,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'arduus, ardua, arduum',
-		translation: 'steep, difficult',
+		translation: 'high, steep, difficult',
 		category: 'prose-list-3',
 		asked: false,
 	},
@@ -21844,7 +21859,7 @@ var vocabLiterature = [
 	},
 	{
 		word: '-cutio, -cutiere, -cussi, -cussum',
-		translation: 'shake, dash, strike',
+		translation: 'shake, strike (in compounds), dash, strike',
 		category: 'prose-list-3',
 		asked: false,
 	},
@@ -22066,7 +22081,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'exiguus, exigua, exiguum',
-		translation: 'scanty, small, poor',
+		translation: 'small, scanty, poor',
 		category: 'prose-list-3',
 		asked: false,
 	},
@@ -22450,7 +22465,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'horreo, horrere, horrui',
-		translation: 'bristle, shudder at',
+		translation: 'shudder at, fear, bristle',
 		category: 'prose-list-3',
 		asked: false,
 	},
@@ -24388,7 +24403,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'citus, cita, citum',
-		translation: 'quick',
+		translation: 'quick, swift, rapid',
 		category: 'prose-list-4',
 		asked: false,
 	},
@@ -26458,7 +26473,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'tenuis, tenue',
-		translation: 'thin, slender',
+		translation: 'thin, slender, weak, fine, slight',
 		category: 'prose-list-4',
 		asked: false,
 	},
@@ -28900,7 +28915,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'nefandus, nefanda, nefandum',
-		translation: 'wicked',
+		translation: 'accursed, evil, wicked',
 		category: 'prose-list-5',
 		asked: false,
 	},
@@ -29698,7 +29713,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'protinus',
-		translation: 'immediately, forward',
+		translation: 'on the spot, immediately, forward, on/from the spot',
 		category: 'prose-list-5',
 		asked: false,
 	},
@@ -31030,7 +31045,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'candidus, candida, candidum',
-		translation: 'white, clear, frank',
+		translation: 'white, bright, clear, frank',
 		category: 'prose-list-6',
 		asked: false,
 	},
@@ -31582,7 +31597,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'fatum, fati, n',
-		translation: 'fate',
+		translation: 'fate, destiny, death',
 		category: 'prose-list-6',
 		asked: false,
 		noms: 'fatum',
@@ -35458,7 +35473,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'pateo, patere, patui',
-		translation: 'lie open',
+		translation: 'lie open, am clear',
 		category: 'prose-list-7',
 		asked: false,
 	},
@@ -36064,7 +36079,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'seges, segetis, f',
-		translation: 'crop, (corn) field',
+		translation: 'corn, crop, (corn) field',
 		category: 'prose-list-7',
 		asked: false,
 		noms: 'seges',
@@ -36082,7 +36097,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'sinus, sinus, m',
-		translation: 'curve, fold, bay, lap, bosom',
+		translation: 'bosom, lap, bay, fold, curve, gulf',
 		category: 'prose-list-7',
 		asked: false,
 	},
@@ -36970,7 +36985,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'amens, amentis',
-		translation: "out of one's mind, mad, frantic",
+		translation: "out of one's mind, mad",
 		category: 'prose-list-8',
 		asked: false,
 	},
@@ -39034,7 +39049,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'pietas, pietatis, f',
-		translation: 'duty, devotion, loyalty',
+		translation: 'devotion, piety, duty, loyalty',
 		category: 'prose-list-8',
 		asked: false,
 		noms: 'pietas',
@@ -39760,7 +39775,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'virgo, virginis, f',
-		translation: 'young woman, virgin, maiden',
+		translation: 'girl, maiden, young woman, virgin',
 		category: 'prose-list-8',
 		asked: false,
 	},
@@ -39922,7 +39937,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'aura, aurae, f',
-		translation: 'air, breeze, wind',
+		translation: 'breeze, air, wind',
 		category: 'prose-list-9',
 		asked: false,
 	},
@@ -43450,7 +43465,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'fateor, fateri, fassus sum',
-		translation: 'confess',
+		translation: 'confess, acknowledge',
 		category: 'prose-list-10',
 		asked: false,
 	},
@@ -43744,7 +43759,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'mirus, mira, mirum',
-		translation: 'wonderful, amazing, strange',
+		translation: 'wonderful, marvelous, marvellous, amazing, strange',
 		category: 'prose-list-10',
 		asked: false,
 	},
@@ -45201,7 +45216,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'aequor, aequoris, n',
-		translation: 'level surface, plain, sea',
+		translation: 'sea, level surface, plain',
 		category: 'john-taylor-verse',
 		asked: false,
 		noms: 'aequor',
@@ -45255,7 +45270,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'aestus, aestus, m',
-		translation: 'boiling, heat, surging sea, passion',
+		translation: 'heat, sea, passion, boiling, surging sea',
 		category: 'john-taylor-verse',
 		asked: false,
 		noms: 'aestus',
@@ -45549,7 +45564,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'auctor, auctoris, m/f',
-		translation: 'originator, giver, author',
+		translation: 'author, originator, father, initiator, giver',
 		category: 'john-taylor-verse',
 		asked: false,
 		noms: 'auctor',
@@ -45567,7 +45582,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'aura, aurae, f',
-		translation: 'breeze, air',
+		translation: 'breeze, air, wind',
 		category: 'john-taylor-verse',
 		asked: false,
 	},
@@ -45603,7 +45618,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'axis, axis, m',
-		translation: 'axis, axle, chariot, sky, heaven',
+		translation: 'vault of heaven, axle, chariot, axis, sky, heaven',
 		category: 'john-taylor-verse',
 		asked: false,
 		noms: 'axis',
@@ -45675,7 +45690,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'candidus, candida, candidum',
-		translation: 'white',
+		translation: 'white, bright, clear, frank',
 		category: 'john-taylor-verse',
 		asked: false,
 	},
@@ -45687,7 +45702,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'capillus, capilli, m',
-		translation: 'hair (usually pl.)',
+		translation: 'hair, hair (usually pl.)',
 		category: 'john-taylor-verse',
 		asked: false,
 		noms: 'capillus',
@@ -45825,7 +45840,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'carina, carinae, f',
-		translation: 'keel, boat, ship',
+		translation: 'boat, ship, keel',
 		category: 'john-taylor-verse',
 		asked: false,
 		noms: 'carina',
@@ -46286,7 +46301,7 @@ var vocabLiterature = [
 		ablp: 'citharis',
 	},
 	{
-		word: 'cito, adv.',
+		word: 'cito',
 		translation: 'quickly',
 		category: 'john-taylor-verse',
 		asked: false,
@@ -46521,7 +46536,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'cresco, crescere, crevi, cretum',
-		translation: 'increase, grow, arise',
+		translation: 'grow, increase, arise',
 		category: 'john-taylor-verse',
 		asked: false,
 		pracind1s: 'cresco',
@@ -46983,7 +46998,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'dictum, dicti, n',
-		translation: 'saying, speech, (pl.) words',
+		translation: 'word, saying, speech',
 		category: 'john-taylor-verse',
 		asked: false,
 		noms: 'dictum',
@@ -47283,7 +47298,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'exiguus, exigua, exiguum',
-		translation: 'small',
+		translation: 'small, scanty, poor',
 		category: 'john-taylor-verse',
 		asked: false,
 	},
@@ -47757,7 +47772,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'fretum, freti, n',
-		translation: 'strait, channel, sea',
+		translation: 'strait, sea, channel',
 		category: 'john-taylor-verse',
 		asked: false,
 		noms: 'fretum',
@@ -47847,7 +47862,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'furo, furere',
-		translation: 'rage, am mad, rush',
+		translation: 'rage, be frenzied, rush, am mad',
 		category: 'john-taylor-verse',
 		asked: false,
 	},
@@ -47865,7 +47880,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'geminus, gemina, geminum',
-		translation: 'twin, double, (pl.) both',
+		translation: 'twin, double, both',
 		category: 'john-taylor-verse',
 		asked: false,
 	},
@@ -48687,7 +48702,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'Mars, Martis, m',
-		translation: 'Mars (god of war), war',
+		translation: 'Mars, war, god of war, Mars (god of war)',
 		category: 'john-taylor-verse',
 		asked: false,
 	},
@@ -48717,7 +48732,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'mirus, mira, mirum',
-		translation: 'wonderful, marvellous, amazing',
+		translation: 'wonderful, marvelous, marvellous, amazing, strange',
 		category: 'john-taylor-verse',
 		asked: false,
 	},
@@ -49071,7 +49086,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'orbis, orbis, m',
-		translation: 'world, eye',
+		translation: 'sphere, world, country, eye',
 		category: 'john-taylor-verse',
 		asked: false,
 		noms: 'orbis',
@@ -49143,13 +49158,13 @@ var vocabLiterature = [
 	},
 	{
 		word: 'Pallas, Palladis, f',
-		translation: 'Pallas Athena (goddess of wisdom), Athena',
+		translation: 'Pallas Athene, Athena, Athene, Pallas Athena (goddess of wisdom)',
 		category: 'john-taylor-verse',
 		asked: false,
 	},
 	{
 		word: 'pariter',
-		translation: 'together, at the same time',
+		translation: 'together, at the same time, equally',
 		category: 'john-taylor-verse',
 		asked: false,
 	},
@@ -49977,7 +49992,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'protinus',
-		translation: 'on/from the spot, immediately',
+		translation: 'on the spot, immediately, forward, on/from the spot',
 		category: 'john-taylor-verse',
 		asked: false,
 	},
@@ -50217,7 +50232,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'sanguineus, sanguinea, sanguineum',
-		translation: 'bloody, of blood, blood-red',
+		translation: 'bloody, blood-red, of blood',
 		category: 'john-taylor-verse',
 		asked: false,
 	},
@@ -50235,7 +50250,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'seges, segetis, f',
-		translation: 'corn, crop',
+		translation: 'corn, crop, (corn) field',
 		category: 'john-taylor-verse',
 		asked: false,
 		noms: 'seges',
@@ -50331,7 +50346,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'sinus, sinus, m',
-		translation: 'fold, bosom, gulf, bay',
+		translation: 'bosom, lap, bay, fold, curve, gulf',
 		category: 'john-taylor-verse',
 		asked: false,
 	},
@@ -50733,7 +50748,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'stupeo, stupere, stupui',
-		translation: 'am amazed, am dumbstruck',
+		translation: 'be amazed, dumbstruck, amazed, am amazed, am dumbstruck',
 		category: 'john-taylor-verse',
 		asked: false,
 	},
@@ -50775,7 +50790,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'tellus, telluris, f',
-		translation: 'earth, land',
+		translation: 'land, earth, ground',
 		category: 'john-taylor-verse',
 		asked: false,
 		noms: 'tellus',
@@ -50805,7 +50820,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'tenuis, tenue',
-		translation: 'thin, fine, slight',
+		translation: 'thin, slender, weak, fine, slight',
 		category: 'john-taylor-verse',
 		asked: false,
 	},
@@ -50829,7 +50844,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'torus, tori, m',
-		translation: 'couch, bed, marriage-bed',
+		translation: 'bed, couch, marriage, marriage-bed',
 		category: 'john-taylor-verse',
 		asked: false,
 		noms: 'torus',
@@ -51225,7 +51240,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'virgo, virginis, f',
-		translation: 'girl, maiden',
+		translation: 'girl, maiden, young woman, virgin',
 		category: 'john-taylor-verse',
 		asked: false,
 	},

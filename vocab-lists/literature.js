@@ -21702,7 +21702,7 @@ var vocabLiterature = [
 		asked: false,
 	},
 	{
-		word: 'aedes, aedium, fpl.',
+		word: 'aedes, aedium, f pl',
 		translation: 'house',
 		category: 'prose-list-3',
 		asked: false,
@@ -23239,7 +23239,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'seu...seu...',
-		translation: 'whether...or...',
+		translation: 'whether...or..., whether...or, whether, or',
 		category: 'prose-list-3',
 		asked: false,
 	},
@@ -25639,7 +25639,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'iumentum, iumenti, n',
-		translation: 'baggage animal',
+		translation: 'baggage animal, animal',
 		category: 'prose-list-4',
 		asked: false,
 		noms: 'iumentum',
@@ -25669,7 +25669,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'latebrae, latebrarum, fpl.',
-		translation: 'hiding-place',
+		translation: 'hiding place, hiding-place',
 		category: 'prose-list-4',
 		asked: false,
 	},
@@ -26137,7 +26137,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'patefacio, patefacere, patefeci, patefactum',
-		translation: 'reveal, lay open',
+		translation: 'reveal, lay open, lie open',
 		category: 'prose-list-4',
 		asked: false,
 		pracind1s: 'patefacio',
@@ -26418,7 +26418,7 @@ var vocabLiterature = [
 		ablp: 'subsidiis',
 	},
 	{
-		word: 'subsidia, subsidiorum, npl.',
+		word: 'subsidia, subsidiorum, n pl',
 		translation: 'reserve, reserve troops',
 		category: 'prose-list-4',
 		asked: false,
@@ -35293,7 +35293,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'modo...modo...',
-		translation: 'at one time...at another...',
+		translation: 'at one time...at another..., at one time...at another',
 		category: 'prose-list-7',
 		asked: false,
 	},
@@ -35443,7 +35443,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'orbis terrarum, orbis terrarum, m',
-		translation: 'the world',
+		translation: 'the world, world',
 		category: 'prose-list-7',
 		asked: false,
 	},
@@ -39925,13 +39925,13 @@ var vocabLiterature = [
 	},
 	{
 		word: 'assiduus, assidua, assiduum',
-		translation: 'continual',
+		translation: 'continual, continuous',
 		category: 'prose-list-9',
 		asked: false,
 	},
 	{
 		word: 'assidue',
-		translation: 'continually',
+		translation: 'continually, continuously',
 		category: 'prose-list-9',
 		asked: false,
 	},
@@ -39979,7 +39979,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'beneficium, beneficii, n',
-		translation: 'kindness, favour',
+		translation: 'kindness, favour, favour',
 		category: 'prose-list-9',
 		asked: false,
 		noms: 'beneficium',
@@ -39997,7 +39997,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'censeo, censere, censui, censum',
-		translation: 'fight, compete',
+		translation: 'think, reckon',
 		category: 'prose-list-9',
 		asked: false,
 		pracind1s: 'censeo',
@@ -40117,7 +40117,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'certamen, certaminis, n',
-		translation: 'fight, contest',
+		translation: 'fight, contest, struggle, battle',
 		category: 'prose-list-9',
 		asked: false,
 		noms: 'certamen',
@@ -40578,7 +40578,7 @@ var vocabLiterature = [
 		ppp: 'duratus',
 	},
 	{
-		word: 'epulorm epulari, epulatus sum',
+		word: 'epulor, epulari, epulatus sum',
 		translation: 'feast',
 		category: 'prose-list-9',
 		asked: false,
@@ -40729,7 +40729,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'fores, forum, f pl',
-		translation: 'doors',
+		translation: 'doors, door',
 		category: 'prose-list-9',
 		asked: false,
 	},
@@ -40789,7 +40789,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'fugo, fugare, fugavi, fugatum',
-		translation: 'fruit, crops',
+		translation: 'rout',
 		category: 'prose-list-9',
 		asked: false,
 		pracind1s: 'fugo',
@@ -41329,7 +41329,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'mentior, mentiri, mentitus sum',
-		translation: '(tell a) lie',
+		translation: '(tell a) lie, lie',
 		category: 'prose-list-9',
 		asked: false,
 	},
@@ -41341,7 +41341,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'miseret, misere, miseruit',
-		translation: 'it distresses, x pities, it distresses x',
+		translation: 'it distresses, x pities, it distresses x, pities',
 		category: 'prose-list-9',
 		asked: false,
 	},
@@ -41376,7 +41376,7 @@ var vocabLiterature = [
 		ablp: 'nemoribus',
 	},
 	{
-		word: 'nimbus, numbi, m',
+		word: 'nimbus, nimbi, m',
 		translation: 'cloud',
 		category: 'prose-list-9',
 		asked: false,
@@ -42247,7 +42247,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'valeo, valere, valui',
-		translation: 'be healthy, be strong, be powerful',
+		translation: 'be healthy, be strong, be powerful, am healthy, am strong, am powerful',
 		category: 'prose-list-9',
 		asked: false,
 	},
@@ -43807,7 +43807,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'pluit, pluere, pluvit',
-		translation: 'it rains',
+		translation: 'it rains, it is raining',
 		category: 'prose-list-10',
 		asked: false,
 	},
@@ -45347,7 +45347,7 @@ var vocabLiterature = [
 		asked: false,
 	},
 	{
-		word: 'ait, pl. aiunt',
+		word: 'ait',
 		translation: 'say, speak, said',
 		category: 'john-taylor-verse',
 		asked: false,

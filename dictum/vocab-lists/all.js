@@ -3956,8 +3956,8 @@ var anyList = [
 		},
 		660: {
 			word: 'dedit',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'pfacind3s',
 		},
 		661: {
@@ -5060,14 +5060,14 @@ var anyList = [
 		},
 		844: {
 			word: 'datur',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'prpaind3s',
 		},
 		845: {
 			word: 'demus',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'pracsuj1pl',
 		},
 		846: {
@@ -5222,8 +5222,8 @@ var anyList = [
 		},
 		871: {
 			word: 'darer',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'imppasuj1s',
 		},
 		872: {
@@ -5234,8 +5234,8 @@ var anyList = [
 		},
 		873: {
 			word: 'daret',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'impacsuj3s',
 		},
 		874: {
@@ -5372,8 +5372,8 @@ var anyList = [
 		},
 		896: {
 			word: 'dabit',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'ftacind3s',
 		},
 		897: {
@@ -5480,8 +5480,8 @@ var anyList = [
 		},
 		914: {
 			word: 'damur',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'prpaind1pl',
 		},
 		915: {
@@ -5678,8 +5678,8 @@ var anyList = [
 		},
 		947: {
 			word: 'demur',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'prpasuj1pl',
 		},
 		948: {
@@ -5906,8 +5906,8 @@ var anyList = [
 		},
 		985: {
 			word: 'dares',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'impacsuj2s',
 		},
 		986: {
@@ -5996,8 +5996,8 @@ var anyList = [
 		},
 		1000: {
 			word: 'datus',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'ppp',
 		},
 		1001: {
@@ -6506,8 +6506,8 @@ var anyList = [
 		},
 		1085: {
 			word: 'datis',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'pracind2pl',
 		},
 		1086: {
@@ -6908,8 +6908,8 @@ var anyList = [
 		},
 		1152: {
 			word: 'dabas',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'impacind2s',
 		},
 		1153: {
@@ -7244,8 +7244,8 @@ var anyList = [
 		},
 		1208: {
 			word: 'darem',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'impacsuj1s',
 		},
 		1209: {
@@ -7436,8 +7436,8 @@ var anyList = [
 		},
 		1240: {
 			word: 'detis',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'pracsuj2pl',
 		},
 		1241: {
@@ -7856,8 +7856,8 @@ var anyList = [
 		},
 		1310: {
 			word: 'dabor',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'ftpaind1s',
 		},
 		1311: {
@@ -8060,8 +8060,8 @@ var anyList = [
 		},
 		1344: {
 			word: 'damus',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'pracind1pl',
 		},
 		1345: {
@@ -8234,8 +8234,8 @@ var anyList = [
 		},
 		1373: {
 			word: 'dabat',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'impacind3s',
 		},
 		1374: {
@@ -8336,8 +8336,8 @@ var anyList = [
 		},
 		1390: {
 			word: 'dabis',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'ftacind2s',
 		},
 		1391: {
@@ -8396,8 +8396,8 @@ var anyList = [
 		},
 		1400: {
 			word: 'daris',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'prpaind2s',
 		},
 		1401: {
@@ -8660,8 +8660,8 @@ var anyList = [
 		},
 		1444: {
 			word: 'deris',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'prpasuj2s',
 		},
 		1445: {
@@ -8684,8 +8684,8 @@ var anyList = [
 		},
 		1448: {
 			word: 'dabar',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'imppaind1s',
 		},
 		1449: {
@@ -8720,8 +8720,8 @@ var anyList = [
 		},
 		1454: {
 			word: 'dabam',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'impacind1s',
 		},
 		1455: {
@@ -9086,8 +9086,8 @@ var anyList = [
 		},
 		1515: {
 			word: 'detur',
-			full: 'poenas do, dare, dedi, datus',
-			translation: 'pay the penalty, be punished',
+			full: 'do, dare, dedi, datus',
+			translation: 'give',
 			type: 'prpasuj3s',
 		},
 		1516: {

@@ -8650,7 +8650,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'supplex, supplicis',
-		translation: 'beggining, as a suppliant, suppliant',
+		translation: 'begging, as a suppliant, suppliant',
 		category: 'ovid-list-7',
 		asked: false,
 		noms: 'supplex',

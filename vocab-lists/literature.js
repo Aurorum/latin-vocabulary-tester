@@ -318,7 +318,7 @@ var vocabLiterature = [
 		asked: false,
 	},
 	{
-		word: 'ferio, ferirem, ferii',
+		word: 'ferio, ferire, ferii',
 		translation: 'strike, hit',
 		category: 'ovid-list-0',
 		asked: false,
@@ -1314,7 +1314,7 @@ var vocabLiterature = [
 		asked: false,
 	},
 	{
-		word: 'gelidus, gelida, geldium',
+		word: 'gelidus, gelida, gelidum',
 		translation: 'icy, cold, frozen',
 		category: 'ovid-list-1',
 		asked: false,
@@ -3324,7 +3324,7 @@ var vocabLiterature = [
 		asked: false,
 	},
 	{
-		word: 'aptus, apta, aptuum',
+		word: 'aptus, apta, aptum',
 		translation: 'suitable, appropriate',
 		category: 'ovid-list-3',
 		asked: false,
@@ -3528,7 +3528,7 @@ var vocabLiterature = [
 		ppp: 'dilectus',
 	},
 	{
-		word: 'fidus, fida, fiduum',
+		word: 'fidus, fida, fidum',
 		translation: 'trusty',
 		category: 'ovid-list-3',
 		asked: false,
@@ -4021,7 +4021,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'tener, tenera, tenerum',
-		translation: 'soft, delicare, tender',
+		translation: 'soft, delicate, tender',
 		category: 'ovid-list-3',
 		asked: false,
 	},
@@ -4890,7 +4890,7 @@ var vocabLiterature = [
 		ablp: 'nebulis',
 	},
 	{
-		word: 'niger, nigera, nigerum',
+		word: 'niger, nigra, nigrum',
 		translation: 'black',
 		category: 'ovid-list-4',
 		asked: false,
@@ -4986,7 +4986,7 @@ var vocabLiterature = [
 		asked: false,
 	},
 	{
-		word: 'spiculum, spiculi',
+		word: 'spiculum, spiculi, n',
 		translation: 'arrow, dart',
 		category: 'ovid-list-4',
 		asked: false,
@@ -8665,7 +8665,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'supplex, supplicis',
-		translation: 'beggining, as a suppliant, suppliant',
+		translation: 'begging, as a suppliant, suppliant',
 		category: 'ovid-list-7',
 		asked: false,
 		noms: 'supplex',

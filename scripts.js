@@ -1311,7 +1311,7 @@ function handleVerbConjugations() {
 			break;
 		case 115:
 			verbForm = 'perfect passive infinitive';
-			vocabConjugation = 'infpf';
+			vocabConjugation = 'infpfpa';
 			break;
 		case 116:
 			verbForm = 'future passive infinitive';

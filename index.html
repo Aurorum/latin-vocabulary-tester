@@ -212,6 +212,13 @@
 						<button
 							onclick="handleWordTableSelection(this)"
 							class="verb-table-option-button"
+							id="fpind-button"
+						>
+							Future perfect indicative
+						</button>
+						<button
+							onclick="handleWordTableSelection(this)"
+							class="verb-table-option-button"
 							id="prsuj-button"
 						>
 							Present subjunctive
@@ -303,6 +310,15 @@
 										id="verbs-ftacind"
 									/>
 								</div>
+								<div class="toggle">
+									<p>Future perfect active</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-fpacind"
+									/>
+								</div>
 								<div class="toggle verb-division">
 									<p>Imperatives</p>
 									<input
@@ -364,6 +380,15 @@
 										checked
 										onclick="handleVerbSelection(this)"
 										id="verbs-ftpaind"
+									/>
+								</div>
+								<div class="toggle">
+									<p>Future perfect passive</p>
+									<input
+										type="checkbox"
+										checked
+										onclick="handleVerbSelection(this)"
+										id="verbs-fppaind"
 									/>
 								</div>
 								<div class="toggle">
@@ -836,6 +861,7 @@
 							<option value="pfind-table">Perfect indicative</option>
 							<option value="plind-table">Pluperfect indicative</option>
 							<option value="ftind-table">Future indicative</option>
+							<option value="fpind-table">Future perfect indicative</option>
 							<option value="prsuj-table">Present subjunctive</option>
 							<option value="imsuj-table">Imperfect subjunctive</option>
 							<option value="pfsuj-table">Perfect subjunctive</option>
@@ -1663,6 +1689,172 @@
 										<p></p>
 									</td>
 									<td id="ftpaind3pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div id="fpind-table" class="verb-table">
+						<p class="table-mode-prompt">
+							Conjugate the <strong>future perfect indicative</strong> in the table below
+						</p>
+						<p class="verb-table-title">Future perfect indicative</p>
+						<table>
+							<thead>
+								<tr>
+									<th></th>
+									<th>Active</th>
+									<th>Passive</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Sing.</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1st</td>
+									<td id="fpacind1s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="fppaind1s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+								</tr>
+								<tr>
+									<td>2nd</td>
+									<td id="fpacind2s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="fppaind2s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+								</tr>
+								<tr>
+									<td>3rd</td>
+									<td id="fpacind3s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="fppaind3s-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+								</tr>
+								<tr>
+									<td>Pl.</td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1st</td>
+									<td id="fpacind1pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="fppaind1pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+								</tr>
+								<tr>
+									<td>2nd</td>
+									<td id="fpacind2pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="fppaind2pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+								</tr>
+								<tr>
+									<td>3rd</td>
+									<td id="fpacind3pl-slot">
+										<input
+											type="text"
+											spellcheck="false"
+											autocapitalize="off"
+											autocorrect="off"
+											autocomplete="off"
+										/>
+										<p></p>
+									</td>
+									<td id="fppaind3pl-slot">
 										<input
 											type="text"
 											spellcheck="false"

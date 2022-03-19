@@ -155,7 +155,7 @@ window.onload = function () {
 		muteAudio();
 	}
 
-	for ( let i = 0; i < 114; i++ ) {
+	for ( let i = 0; i < 128; i++ ) {
 		acceptableVerbs.push( i );
 	}
 
@@ -408,6 +408,8 @@ function checkIncorrectAnswerGrammar() {
 				fullForm += ' imperfect';
 			} else if ( form.startsWith( 'ft' ) ) {
 				fullForm += ' future';
+			} else if ( form.startsWith( 'fp' ) ) {
+				fullForm += ' future perfect';
 			} else if ( form.startsWith( 'pf' ) ) {
 				fullForm += ' perfect';
 			} else if ( form.startsWith( 'pl' ) ) {
@@ -704,6 +706,9 @@ function handleVerbSelection( e, manualChange = true ) {
 		case 'verbs-ftacind':
 			verbNumber = [ 48, 50, 52, 54, 56, 58 ];
 			break;
+		case 'verbs-fpacind':
+			verbNumber = [ 117, 119, 121, 123, 125, 127 ];
+			break;
 		case 'verbs-pfacind':
 			verbNumber = [ 24, 26, 28, 30, 32, 34 ];
 			break;
@@ -714,7 +719,7 @@ function handleVerbSelection( e, manualChange = true ) {
 			verbNumber = [ 62, 63 ];
 			break;
 		case 'verbs-inf':
-			verbNumber = [ 112, 113 ];
+			verbNumber = [ 112, 113, 114, 115, 116 ];
 			break;
 		case 'verbs-par':
 			verbNumber = [ 60, 61 ];
@@ -733,6 +738,9 @@ function handleVerbSelection( e, manualChange = true ) {
 			break;
 		case 'verbs-ftpaind':
 			verbNumber = [ 49, 51, 53, 55, 57, 59 ];
+			break;
+		case 'verbs-fppaind':
+			verbNumber = [ 118, 120, 122, 124, 126, 128 ];
 			break;
 		case 'verbs-pracsuj':
 			verbNumber = [ 64, 66, 68, 70, 72, 74 ];
@@ -803,6 +811,8 @@ function handleVerbConjugations() {
 			101,
 			112,
 			113,
+			117,
+			118,
 		];
 		filteredAcceptableVerbs = acceptableVerbs.filter( function ( id ) {
 			return firstPersonSingular.indexOf( id ) > -1;
@@ -813,7 +823,7 @@ function handleVerbConjugations() {
 		filteredAcceptableVerbs[ Math.floor( Math.random() * filteredAcceptableVerbs.length ) ];
 
 	// Remove subjunctives from GCSE tests.
-	let conjugationNumber = selectedOption === 'alevelocr' ? 114 : 64;
+	let conjugationNumber = selectedOption === 'alevelocr' ? 128 : 64;
 
 	switch (
 		competitiveMode ? Math.floor( Math.random() * conjugationNumber ) : randomVerbsInteger
@@ -1288,12 +1298,74 @@ function handleVerbConjugations() {
 
 		// Infinitives.
 		case 112:
-			verbForm = 'present infinitive';
+			verbForm = 'present active infinitive';
 			vocabConjugation = 'infpr';
 			break;
 		case 113:
-			verbForm = 'perfect infinitive';
+			verbForm = 'perfect active infinitive';
 			vocabConjugation = 'infpf';
+			break;
+		case 114:
+			verbForm = 'future active infinitive';
+			vocabConjugation = 'infft';
+			break;
+		case 115:
+			verbForm = 'perfect passive infinitive';
+			vocabConjugation = 'infpf';
+			break;
+		case 116:
+			verbForm = 'future passive infinitive';
+			vocabConjugation = 'infftpa';
+			break;
+
+		// Future perfect.
+		case 117:
+			verbForm = 'first-person singular future perfect active indicative';
+			vocabConjugation = 'fpacind1s';
+			break;
+		case 118:
+			verbForm = 'first-person singular future perfect passive indicative';
+			vocabConjugation = 'fppaind1s';
+			break;
+		case 119:
+			verbForm = 'second-person singular future perfect active indicative';
+			vocabConjugation = 'fpacind2s';
+			break;
+		case 120:
+			verbForm = 'second-person singular future perfect passive indicative';
+			vocabConjugation = 'fppaind2s';
+			break;
+		case 121:
+			verbForm = 'third-person singular future perfect active indicative';
+			vocabConjugation = 'fpacind3s';
+			break;
+		case 122:
+			verbForm = 'third-person singular future perfect passive indicative';
+			vocabConjugation = 'fppaind3s';
+			break;
+		case 123:
+			verbForm = 'first-person plural future perfect active indicative';
+			vocabConjugation = 'fpacind1pl';
+			break;
+		case 124:
+			verbForm = 'first-person plural future perfect passive indicative';
+			vocabConjugation = 'fppaind1pl';
+			break;
+		case 125:
+			verbForm = 'second-person plural future perfect active indicative';
+			vocabConjugation = 'fpacind2pl';
+			break;
+		case 126:
+			verbForm = 'second-person plural future perfect passive indicative';
+			vocabConjugation = 'fppaind2pl';
+			break;
+		case 127:
+			verbForm = 'third-person plural future perfect active indicative';
+			vocabConjugation = 'fpacind3pl';
+			break;
+		case 128:
+			verbForm = 'third-person plural future perfect passive indicative';
+			vocabConjugation = 'fppaind3pl';
 			break;
 	}
 

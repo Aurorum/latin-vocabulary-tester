@@ -3465,7 +3465,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'antiquus, antiqua, antiquum',
-		translation: 'ancient, previous',
+		translation: 'ancient, previous, old',
 		category: 'ovid-list-3',
 		asked: false,
 	},
@@ -3689,7 +3689,7 @@ var vocabLiterature = [
 		fppaind2pl: 'dilecti eritis',
 		fppaind3pl: 'dilecti erunt',
 	},
-	{ word: 'fidus, fida, fidum', translation: 'trusty', category: 'ovid-list-3', asked: false },
+	{ word: 'fidus, fida, fidum', translation: 'trusty, faithful, loyal', category: 'ovid-list-3', asked: false },
 	{
 		word: 'forma, formae, f',
 		translation: 'shape, form, beauty',
@@ -4524,7 +4524,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'cerno, cernere, crevi, cretus',
-		translation: 'look at, see, decide',
+		translation: 'look at, see, decide, perceive',
 		category: 'ovid-list-4',
 		asked: false,
 		pracind1s: 'cerno',
@@ -9269,7 +9269,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'dono, donare, donavi, donatus',
-		translation: 'present, give',
+		translation: 'present, give, gift, bestow',
 		category: 'ovid-list-8',
 		asked: false,
 		pracind1s: 'dono',
@@ -11732,7 +11732,7 @@ var vocabLiterature = [
 	{ word: 'ait', translation: 'said, say', category: 'prose-list-0', asked: false },
 	{
 		word: 'antiquus, antiqua, antiquum',
-		translation: 'ancient, old',
+		translation: 'ancient, old, previous',
 		category: 'prose-list-0',
 		asked: false,
 	},
@@ -12094,7 +12094,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'cerno, cernere, crevi, cretus',
-		translation: 'perceive, deceive',
+		translation: 'perceive, deceive, look at, see',
 		category: 'prose-list-0',
 		asked: false,
 		pracind1s: 'cerno',
@@ -13652,7 +13652,7 @@ var vocabLiterature = [
 	{ word: 'donec', translation: 'until', category: 'prose-list-0', asked: false },
 	{
 		word: 'dono, donare, donavi, donatus',
-		translation: 'present, gift, bestow',
+		translation: 'present, gift, bestow, give',
 		category: 'prose-list-0',
 		asked: false,
 		pracind1s: 'dono',
@@ -13822,7 +13822,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'fidus, fida, fidum',
-		translation: 'loyal, faithful',
+		translation: 'loyal, faithful, trusty',
 		category: 'prose-list-0',
 		asked: false,
 	},
@@ -14124,7 +14124,7 @@ var vocabLiterature = [
 		category: 'prose-list-0',
 		asked: false,
 	},
-	{ word: 'Graecus, Graeci, m', translation: 'Greek', category: 'prose-list-0', asked: false },
+	{ word: 'Graecus, Graeci, m', translation: 'Greek, a Greek', category: 'prose-list-0', asked: false },
 	{
 		word: 'hiberna, hibernorum, n pl',
 		translation: 'winter quarters, winter',
@@ -14139,7 +14139,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'ignotus, ignota, ignotum',
-		translation: 'unknown',
+		translation: 'unknown, unfamiliar',
 		category: 'prose-list-0',
 		asked: false,
 	},
@@ -14737,7 +14737,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'opus est, opus esse, opus fuit ( + abl.)',
-		translation: 'there is need of',
+		translation: 'there is need of, there is a need',
 		category: 'prose-list-0',
 		asked: false,
 	},
@@ -16213,7 +16213,7 @@ var vocabLiterature = [
 	{ word: 'tantum', translation: 'only', category: 'prose-list-0', asked: false },
 	{
 		word: 'tendo, tendere, tetendi, tensus',
-		translation: 'stretch, extend, aim for, march',
+		translation: 'stretch, stretch out, extend, aim for, march',
 		category: 'prose-list-0',
 		asked: false,
 		pracind1s: 'tendo',
@@ -16355,7 +16355,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'trepido, trepidare, trepidavi, trepidatus',
-		translation: 'panic, tremble, be afraid, be afraid',
+		translation: 'panic, tremble, be afraid, am afraid, be frightened, am frightened',
 		category: 'prose-list-0',
 		asked: false,
 		pracind1s: 'trepido',
@@ -17381,7 +17381,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'recludo, recludere, reclusi, reclusus',
-		translation: 'reveal, unclover',
+		translation: 'reveal, uncover',
 		category: 'prose-list-1',
 		asked: false,
 		pracind1s: 'recludo',
@@ -17547,7 +17547,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'consero, consere, conserui, consertus',
-		translation: 'join together, engage (in battle)',
+		translation: 'join together, engage (in battle), join',
 		category: 'prose-list-1',
 		asked: false,
 	},
@@ -17745,7 +17745,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'cursus, cursus, m',
-		translation: 'course, running',
+		translation: 'course, running, track',
 		category: 'prose-list-1',
 		asked: false,
 		noms: 'cursus',
@@ -17781,7 +17781,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'demo, demere, dempsi, demptus',
-		translation: 'take away',
+		translation: 'take away, remove',
 		category: 'prose-list-1',
 		asked: false,
 	},
@@ -18391,7 +18391,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'exitus, exitus, m',
-		translation: 'way out, end, death',
+		translation: 'way out, end, death, exit',
 		category: 'prose-list-1',
 		asked: false,
 		noms: 'exitus',
@@ -19081,7 +19081,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'iungo, iungere, iunxi, iunctus',
-		translation: 'join (often in compounds)',
+		translation: 'join (often in compounds), join together',
 		category: 'prose-list-1',
 		asked: false,
 		pracind1s: 'iungo',
@@ -19215,10 +19215,10 @@ var vocabLiterature = [
 		fppaind2pl: 'iuncti eritis',
 		fppaind3pl: 'iuncti erunt',
 	},
-	{ word: 'ius, iuris, n', translation: 'justice, right', category: 'prose-list-1', asked: false },
-	{ word: 'iure', translation: 'rightfully, rightly', category: 'prose-list-1', asked: false },
-	{ word: 'iussu', translation: 'by order of', category: 'prose-list-1', asked: false },
-	{ word: 'iniussu', translation: 'without the order of', category: 'prose-list-1', asked: false },
+	{ word: 'ius, iuris, n', translation: 'justice, right, law', category: 'prose-list-1', asked: false },
+	{ word: 'iure', translation: 'rightfully, rightly, justly', category: 'prose-list-1', asked: false },
+	{ word: 'iussu', translation: 'by order of, by the order of', category: 'prose-list-1', asked: false },
+	{ word: 'iniussu', translation: 'without the order of, without order of', category: 'prose-list-1', asked: false },
 	{
 		word: 'iuventus, iuventutis, f',
 		translation: 'youth',
@@ -19726,7 +19726,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'praesum, praesse, praefui (+ dat.)',
-		translation: 'command, be in charge of',
+		translation: 'command, be in charge of, am in charge of',
 		category: 'prose-list-1',
 		asked: false,
 	},
@@ -19744,7 +19744,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'pro se quisque',
-		translation: 'each for his own part',
+		translation: 'each for his own part, each for her own part',
 		category: 'prose-list-1',
 		asked: false,
 	},
@@ -20281,7 +20281,7 @@ var vocabLiterature = [
 	{ word: 'una', translation: 'together', category: 'prose-list-1', asked: false },
 	{
 		word: 'uro, urere, ussi, ustus',
-		translation: 'burning, heart, love, passion',
+		translation: 'burn',
 		category: 'prose-list-1',
 		asked: false,
 		pracind1s: 'uro',
@@ -20417,7 +20417,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'venenum, veneni, n',
-		translation: 'poision',
+		translation: 'poison',
 		category: 'prose-list-1',
 		asked: false,
 		noms: 'venenum',
@@ -20435,7 +20435,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'vestigium, vestigii, n',
-		translation: 'footprint, track, trace',
+		translation: 'footprint, footstep, track, trace',
 		category: 'prose-list-1',
 		asked: false,
 		noms: 'vestigium',
@@ -39242,7 +39242,7 @@ var vocabLiterature = [
 	{ word: 'velum do', translation: 'set sail', category: 'prose-list-7', asked: false },
 	{
 		word: 'vincio, vincire, vinxi, vinctum',
-		translation: 'tie up, bind',
+		translation: 'tie up, bind, tie, fasten',
 		category: 'prose-list-7',
 		asked: false,
 		pracind1s: 'vincio',
@@ -39378,7 +39378,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'vinculum, vinculi, n',
-		translation: 'bond, chain',
+		translation: 'bond, chain, fastening, rope',
 		category: 'prose-list-7',
 		asked: false,
 		noms: 'vinculum',
@@ -48548,7 +48548,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'antiquus, antiqua, antiquum',
-		translation: 'ancient, previous',
+		translation: 'ancient, previous, old',
 		category: 'john-taylor-verse',
 		asked: false,
 	},
@@ -50374,7 +50374,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'dono, donare, donavi, donatum',
-		translation: 'present, give',
+		translation: 'present, give, gift, bestow',
 		category: 'john-taylor-verse',
 		asked: false,
 		pracind1s: 'dono',
@@ -50998,7 +50998,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'fores, forum, f',
-		translation: 'door (of house)',
+		translation: 'door (of house), doors',
 		category: 'john-taylor-verse',
 		asked: false,
 	},
@@ -51143,7 +51143,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'furo, furere',
-		translation: 'rage, be frenzied, rush, am mad',
+		translation: 'rage, be frenzied, rush, am mad, be mad, am frenzied',
 		category: 'john-taylor-verse',
 		asked: false,
 	},
@@ -51292,7 +51292,7 @@ var vocabLiterature = [
 		category: 'john-taylor-verse',
 		asked: false,
 	},
-	{ word: 'heu!', translation: 'alas!', category: 'john-taylor-verse', asked: false },
+	{ word: 'heu!', translation: 'alas!, alas', category: 'john-taylor-verse', asked: false },
 	{
 		word: 'iacto, iactare, iactavi, iactatum',
 		translation: 'throw, hurl, cast',

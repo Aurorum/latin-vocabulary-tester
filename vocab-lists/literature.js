@@ -1413,7 +1413,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'nequeo, nequire, nequivi',
-		translation: 'I am unable, be unable, am unable',
+		translation: 'be unable, am unable',
 		category: 'ovid-list-1',
 		asked: false,
 	},
@@ -1899,7 +1899,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'spiro, spirare, spiravi, spiratus',
-		translation: 'breathe, blow, be alive',
+		translation: 'breathe, blow, be alive, am alive',
 		category: 'ovid-list-1',
 		asked: false,
 		pracind1s: 'spiro',
@@ -3465,7 +3465,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'antiquus, antiqua, antiquum',
-		translation: 'ancient, previous, old',
+		translation: 'ancient, previous, old, former',
 		category: 'ovid-list-3',
 		asked: false,
 	},
@@ -5146,7 +5146,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'pelagus, pelagi, n',
-		translation: 'open sea',
+		translation: 'open sea, sea',
 		category: 'ovid-list-4',
 		asked: false,
 		noms: 'pelagus',
@@ -5789,7 +5789,7 @@ var vocabLiterature = [
 		abls: 'figura',
 		ablp: 'figuris',
 	},
-	{ word: 'fores, forium, f pl', translation: 'door', category: 'ovid-list-5', asked: false },
+	{ word: 'fores, forum, f pl', translation: 'door, doors', category: 'ovid-list-5', asked: false },
 	{
 		word: 'funus, funeris, n',
 		translation: 'funeral, death',
@@ -10058,7 +10058,7 @@ var vocabLiterature = [
 	},
 	{ word: 'acutus, acuta, acutum', translation: 'sharp', category: 'ovid-list-9', asked: false },
 	{ word: 'albus, alba, album', translation: 'white', category: 'ovid-list-9', asked: false },
-	{ word: 'amans, amantis, m or f', translation: 'lover', category: 'ovid-list-9', asked: false },
+	{ word: 'amans, amantis, m/f', translation: 'lover', category: 'ovid-list-9', asked: false },
 	{
 		word: 'apto, aptare, aptavi, aptatus',
 		translation: 'fit, adjust',
@@ -10833,7 +10833,7 @@ var vocabLiterature = [
 	{ word: 'viaor, viatoris, m', translation: 'traveller', category: 'ovid-list-9', asked: false },
 	{
 		word: 'acerbus, acerba, acerbum',
-		translation: 'bitter',
+		translation: 'bitter, severe',
 		category: 'ovid-list-10',
 		asked: false,
 	},
@@ -11732,7 +11732,7 @@ var vocabLiterature = [
 	{ word: 'ait', translation: 'said, say', category: 'prose-list-0', asked: false },
 	{
 		word: 'antiquus, antiqua, antiquum',
-		translation: 'ancient, old, previous',
+		translation: 'ancient, old, previous, former',
 		category: 'prose-list-0',
 		asked: false,
 	},
@@ -13812,7 +13812,7 @@ var vocabLiterature = [
 		abls: 'facto',
 		ablp: 'factis',
 	},
-	{ word: 'ferunt', translation: 'they say that', category: 'prose-list-0', asked: false },
+	{ word: 'ferunt', translation: 'they say (that)', category: 'prose-list-0', asked: false },
 	{ word: 'fessus, fessa, fessum', translation: 'tired', category: 'prose-list-0', asked: false },
 	{
 		word: 'defessus, defessa, defessum',
@@ -25921,7 +25921,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'avidus, avida, avidum (+ gen)',
-		translation: 'hungry for, greedy for',
+		translation: 'hungry (for), greedy (for)',
 		category: 'prose-list-4',
 		asked: false,
 	},
@@ -42040,7 +42040,7 @@ var vocabLiterature = [
 	},
 	{ word: 'propere', translation: 'quickly, hurriedly', category: 'prose-list-8', asked: false },
 	{
-		word: 'prosperus, prospera, proserum',
+		word: 'prosperus, prospera, prosperum',
 		translation: 'prosperous, favourable',
 		category: 'prose-list-8',
 		asked: false,
@@ -48180,7 +48180,7 @@ var vocabLiterature = [
 	{ word: 'usui esse', translation: 'to be of use', category: 'prose-list-datives', asked: false },
 	{
 		word: 'acerbus, acerba, acerbum',
-		translation: 'bitter',
+		translation: 'bitter, severe',
 		category: 'john-taylor-verse',
 		asked: false,
 	},
@@ -48418,7 +48418,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'antiquus, antiqua, antiquum',
-		translation: 'ancient, previous, old',
+		translation: 'ancient, previous, old, former',
 		category: 'john-taylor-verse',
 		asked: false,
 	},
@@ -49954,7 +49954,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'desilio, desilire, desilui, desultum',
-		translation: 'leap down',
+		translation: 'leap down, jump down',
 		category: 'john-taylor-verse',
 		asked: false,
 		pracind1s: 'desilio',
@@ -52373,7 +52373,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'pelagus, pelagi, n',
-		translation: 'sea',
+		translation: 'open sea, sea',
 		category: 'john-taylor-verse',
 		asked: false,
 		noms: 'pelagus',
@@ -53766,7 +53766,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'spiro, spirare, spiravi, spiratum',
-		translation: 'breathe, blow, am alive',
+		translation: 'breathe, blow, am alive, be alive',
 		category: 'john-taylor-verse',
 		asked: false,
 		pracind1s: 'spiro',

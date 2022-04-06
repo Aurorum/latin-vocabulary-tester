@@ -3420,7 +3420,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'aeger, aegra, aegrum',
-		translation: 'sick, weary, love-sick',
+		translation: 'sick, weary, love-sick, ill',
 		category: 'ovid-list-3',
 		asked: false,
 	},
@@ -3925,7 +3925,7 @@ var vocabLiterature = [
 	{ word: 'nudus, nuda, nudum', translation: 'naked, bare', category: 'ovid-list-3', asked: false },
 	{
 		word: 'pendo, pendere, pependi, pensus',
-		translation: 'hang, suspend, weigh',
+		translation: 'hang, suspend, weigh, pay',
 		category: 'ovid-list-3',
 		asked: false,
 	},
@@ -4105,7 +4105,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'requies, requietis, f',
-		translation: 'rest, respite',
+		translation: 'rest, respite, relaxation',
 		category: 'ovid-list-3',
 		asked: false,
 	},
@@ -10618,7 +10618,7 @@ var vocabLiterature = [
 		abls: 'pastore',
 		ablp: 'pastoribus',
 	},
-	{ word: 'pecus, pecoris, n', translation: 'cattle, herd', category: 'ovid-list-9', asked: false },
+	{ word: 'pecus, pecoris, n', translation: 'cattle, herd (of cattle)', category: 'ovid-list-9', asked: false },
 	{ word: 'pecus, pecudis, f', translation: 'cattle, herd', category: 'ovid-list-9', asked: false },
 	{
 		word: 'piscis, piscis, m',
@@ -21578,7 +21578,7 @@ var vocabLiterature = [
 		ablp: 'exsulibus',
 	},
 	{
-		word: 'facies, faciei',
+		word: 'facies, faciei, f',
 		translation: 'appearance, face',
 		category: 'prose-list-2',
 		asked: false,
@@ -21623,11 +21623,10 @@ var vocabLiterature = [
 	},
 	{
 		word: 'impunis, impune',
-		translation: 'without punishment',
+		translation: 'without punishment, with impunity',
 		category: 'prose-list-2',
 		asked: false,
 	},
-	{ word: 'impune', translation: 'with impunity', category: 'prose-list-2', asked: false },
 	{
 		word: 'incolumnis, incolume',
 		translation: 'safe, unharmed',
@@ -21905,13 +21904,7 @@ var vocabLiterature = [
 		fppaind2pl: 'obruti eritis',
 		fppaind3pl: 'obruti erunt',
 	},
-	{
-		word: 'obivus, obvia, obvium (+ dat.)',
-		translation: 'in the way of, meet, to meet',
-		category: 'prose-list-2',
-		asked: false,
-	},
-	{ word: 'obvibe eo (+ dat.)', translation: 'go to meet', category: 'prose-list-2', asked: false },
+	{ word: 'obviam eo (+ dat.)', translation: 'go to meet', category: 'prose-list-2', asked: false },
 	{
 		word: 'obvius fio (+ dat.)',
 		translation: 'happen to meet',
@@ -21962,7 +21955,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'paenitet, paenitere, paenituit',
-		translation: 'displeases, make, sorry',
+		translation: 'make x repent, it makes x repent, make sorry, make repent',
 		category: 'prose-list-2',
 		asked: false,
 	},
@@ -21980,13 +21973,13 @@ var vocabLiterature = [
 	},
 	{
 		word: 'paveo, pavere, pavi',
-		translation: 'be afraid, panic, be afraid',
+		translation: 'be afraid, panic, am afraid',
 		category: 'prose-list-2',
 		asked: false,
 	},
 	{
 		word: 'pectus, pectoris, n',
-		translation: 'breast, chest, heart, hurt',
+		translation: 'breast, chest, heart',
 		category: 'prose-list-2',
 		asked: false,
 		noms: 'pectus',
@@ -22004,7 +21997,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'pendo, pendere, pependi, pensus',
-		translation: 'pay, weigh',
+		translation: 'hang, suspend, weigh, pay',
 		category: 'prose-list-2',
 		asked: false,
 	},
@@ -25636,7 +25629,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'aeger, aegra, aegrum',
-		translation: 'sick, ill',
+		translation: 'sick, ill, weary, love-sick',
 		category: 'prose-list-4',
 		asked: false,
 	},
@@ -27934,7 +27927,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'pecus, pecoris, n',
-		translation: 'herd of cattle',
+		translation: 'cattle, herd (of cattle)',
 		category: 'prose-list-4',
 		asked: false,
 	},
@@ -28007,7 +28000,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'requies, requietis, f',
-		translation: 'rest, relaxation',
+		translation: 'rest, relaxation, respite',
 		category: 'prose-list-4',
 		asked: false,
 	},
@@ -52367,7 +52360,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'pecus, pecoris, n',
-		translation: 'cattle, herd',
+		translation: 'cattle, herd (of cattle)',
 		category: 'john-taylor-verse',
 		asked: false,
 	},

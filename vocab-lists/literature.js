@@ -3931,7 +3931,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'pondus, ponderis, n',
-		translation: 'weight',
+		translation: 'weight, importance',
 		category: 'ovid-list-3',
 		asked: false,
 		noms: 'pondus',
@@ -5812,7 +5812,7 @@ var vocabLiterature = [
 	{ word: 'glacies, glacei, f', translation: 'ice', category: 'ovid-list-5', asked: false },
 	{
 		word: 'gratus, grata, gratum',
-		translation: 'welcome, pleasing',
+		translation: 'welcome, pleasing, popular, thankful',
 		category: 'ovid-list-5',
 		asked: false,
 	},
@@ -14688,7 +14688,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'navis oneraria, navis onerariae, f',
-		translation: 'cargo ship',
+		translation: 'cargo ship, merchant ship',
 		category: 'prose-list-0',
 		asked: false,
 	},
@@ -15668,7 +15668,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'respicio, respicere, respexi, respectus',
-		translation: 'look back at',
+		translation: 'look back (at)',
 		category: 'prose-list-0',
 		asked: false,
 		pracind1s: 'respicio',
@@ -16355,7 +16355,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'trepido, trepidare, trepidavi, trepidatus',
-		translation: 'panic, tremble, be afraid, am afraid, be frightened, am frightened',
+		translation: 'panic, tremble, fear, be afraid, am afraid, be frightened, am frightened',
 		category: 'prose-list-0',
 		asked: false,
 		pracind1s: 'trepido',
@@ -17019,7 +17019,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'ardor, ardoris, m',
-		translation: 'burning, heart, love, passion',
+		translation: 'burning, blazing, heart, love, passion',
 		category: 'prose-list-1',
 		asked: false,
 		noms: 'ardor',
@@ -22545,18 +22545,6 @@ var vocabLiterature = [
 		ablp: 'servitutibus',
 	},
 	{
-		word: 'singuli, singulae, singul',
-		translation: 'individual, one by one',
-		category: 'prose-list-2',
-		asked: false,
-	},
-	{
-		word: 'in singulos',
-		translation: 'each, to each individual',
-		category: 'prose-list-2',
-		asked: false,
-	},
-	{
 		word: 'solacium, solacii, n',
 		translation: 'consolation',
 		category: 'prose-list-2',
@@ -26076,7 +26064,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'consulo, consulere, consului, consultus (+ dat.)',
-		translation: 'deliberate, look out for, consider what is best for',
+		translation: 'deliberate, look out for, consider (what is best for), consult, advise',
 		category: 'prose-list-4',
 		asked: false,
 		pracind1s: 'consulo',
@@ -26230,7 +26218,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'curia, curiae, f',
-		translation: 'senate house',
+		translation: 'senate house, (royal) court',
 		category: 'prose-list-4',
 		asked: false,
 		noms: 'curia',
@@ -27193,7 +27181,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'gratus, grata, gratum',
-		translation: 'pleasing, popular, thankful',
+		translation: 'pleasing, popular, thankful, welcome',
 		category: 'prose-list-4',
 		asked: false,
 	},
@@ -27283,7 +27271,7 @@ var vocabLiterature = [
 		asked: false,
 	},
 	{
-		word: 'latebrae, latebrarum, fpl.',
+		word: 'latebrae, latebrarum, f pl',
 		translation: 'hiding place, hiding-place',
 		category: 'prose-list-4',
 		asked: false,
@@ -27639,7 +27627,7 @@ var vocabLiterature = [
 		category: 'prose-list-4',
 		asked: false,
 	},
-	{ word: 'in occulto', translation: 'secretly', category: 'prose-list-4', asked: false },
+	{ word: 'in occulto', translation: 'secretly, in secret', category: 'prose-list-4', asked: false },
 	{
 		word: 'omnino',
 		translation: 'altogether, at all, entirely',
@@ -27994,7 +27982,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'religio, religionis, f',
-		translation: 'piety, sense of religious duty',
+		translation: 'piety, sense of religious duty, rite, religion',
 		category: 'prose-list-4',
 		asked: false,
 	},
@@ -28108,7 +28096,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'tabula, tabulae, f',
-		translation: 'writing tablet, letter',
+		translation: 'writing tablet, wax tablet, letter',
 		category: 'prose-list-4',
 		asked: false,
 		noms: 'tabula',
@@ -28125,7 +28113,7 @@ var vocabLiterature = [
 		ablp: 'tabulis',
 	},
 	{
-		word: 'tabula picta, pictae, f',
+		word: 'tabula picta, tabula pictae, f',
 		translation: 'painting',
 		category: 'prose-list-4',
 		asked: false,
@@ -29299,7 +29287,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'consuesco, consuescere, consuevi, consuetum',
-		translation: 'be accustomed',
+		translation: 'be accustomed (to)',
 		category: 'prose-list-5',
 		asked: false,
 		pracind1s: 'consuesco',
@@ -31710,7 +31698,7 @@ var vocabLiterature = [
 	{ word: 'repente', translation: 'suddenly', category: 'prose-list-5', asked: false },
 	{
 		word: 'reservo, reservare, reservavi, reservatum',
-		translation: 'keep back, save',
+		translation: 'keep back, hold back, save',
 		category: 'prose-list-5',
 		asked: false,
 		pracind1s: 'reservo',
@@ -33112,7 +33100,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'calamitas, calamitatis, f',
-		translation: 'disaster, ruin, defeat',
+		translation: 'disaster, ruin, destruction, defeat',
 		category: 'prose-list-6',
 		asked: false,
 		noms: 'calamitas',
@@ -33752,7 +33740,7 @@ var vocabLiterature = [
 		abls: 'fato',
 		ablp: 'fatis',
 	},
-	{ word: 'fidem do', translation: 'I promise', category: 'prose-list-6', asked: false },
+	{ word: 'fidem do', translation: 'promise', category: 'prose-list-6', asked: false },
 	{
 		word: 'flagito, flagitare, flagitavi, flagitatum',
 		translation: 'demand, keep asking for',
@@ -34399,10 +34387,22 @@ var vocabLiterature = [
 		asked: false,
 	},
 	{
-		word: 'pondus, pnderis n',
+		word: 'pondus, ponderis, n',
 		translation: 'weight, importance',
 		category: 'prose-list-6',
 		asked: false,
+		noms: 'pondus',
+		nomp: 'pondera',
+		gens: 'ponderis',
+		genp: 'ponderum',
+		dats: 'ponderi',
+		datp: 'ponderibus',
+		accs: 'pondus',
+		accp: 'pondera',
+		vocs: 'pondus',
+		vocp: 'pondera',
+		abls: 'pondere',
+		ablp: 'ponderibus',
 	},
 	{
 		word: 'praecipio, praecipere, praecepi, praeceptum',
@@ -34876,7 +34876,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'reus, rei, m',
-		translation: 'defendent, guilty party',
+		translation: 'defendant, guilty party',
 		category: 'prose-list-6',
 		asked: false,
 		noms: 'reus',
@@ -36953,7 +36953,7 @@ var vocabLiterature = [
 	{ word: 'illinc', translation: 'from there', category: 'prose-list-7', asked: false },
 	{
 		word: 'immotus, immota, immotum',
-		translation: 'still, motionless',
+		translation: 'still, motionless, unmoved',
 		category: 'prose-list-7',
 		asked: false,
 	},
@@ -38931,7 +38931,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'trado, tradere, tradidi, traditum',
-		translation: 'hand over, record',
+		translation: 'hand over, record, surrender',
 		category: 'prose-list-7',
 		asked: false,
 		pracind1s: 'trado',
@@ -40496,7 +40496,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'horridus, horrida, horridum',
-		translation: 'rough, horrible',
+		translation: 'rough, horrible, dreadful, terrible',
 		category: 'prose-list-8',
 		asked: false,
 	},
@@ -42426,7 +42426,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'trepidus, trepida, trepidum',
-		translation: 'anxious, terrified, frightened, hurried',
+		translation: 'anxious, terrified, fearful, frightened, hurried',
 		category: 'prose-list-8',
 		asked: false,
 	},
@@ -54164,7 +54164,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'trepido, trepidare, trepidavi, trepidatum',
-		translation: 'panic, tremble, be afraid, am afraid, be frightened, am frightened',
+		translation: 'panic, tremble, fear, be afraid, am afraid, be frightened, am frightened',
 		category: 'john-taylor-verse',
 		asked: false,
 		pracind1s: 'trepido',

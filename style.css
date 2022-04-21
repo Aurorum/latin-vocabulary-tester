@@ -1007,6 +1007,10 @@ a:hover {
 	margin-left: 8px;
 }
 
+.select-declensions .toggle.inset {
+	margin-left: 12px;
+}
+
 .select-verbs .toggle input {
 	margin-left: 10px;
 }
@@ -1020,6 +1024,20 @@ a:hover {
 }
 
 .select-verbs p {
+	font-size: 12px;
+}
+
+.select-declensions .toggle.inset p {
+	font-size: 12px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+.select-declensions .toggle.neuter {
+	margin-top: 24px;
+}
+
+.select-declensions .toggle.neuter p {
 	font-size: 12px;
 }
 
@@ -2224,6 +2242,10 @@ button.verb-table-option-button:hover {
 		border-radius: 0;
 		border-top-left-radius: 12px;
 		border-top-right-radius: 12px;
+	}
+
+	.select-declensions .toggle.neuter {
+		margin-top: 4px;
 	}
 
 	/* This is a temporary quick-solution to be re-visited */

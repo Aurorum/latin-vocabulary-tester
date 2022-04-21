@@ -1375,7 +1375,14 @@ function handleVerbConjugations() {
 }
 
 function handleNounSelection( e ) {
-	if ( ! document.querySelectorAll( '.noun-types input[type="checkbox"]:checked' ).length ) {
+	if ( ! e.checked && e.id === 'declensions-noun-2' ) {
+		document.getElementById( 'declensions-noun-2-remove-er' ).checked = false;
+	}
+
+	if (
+		! document.querySelectorAll( '.noun-types .toggle:not(.other) input[type="checkbox"]:checked' )
+			.length
+	) {
 		e.checked = true;
 		return ( document.getElementById( 'declensions-warning' ).style.display = 'block' );
 	}
@@ -2895,12 +2902,12 @@ function findConjugationVocab() {
 }
 
 function findDeclensionVocab() {
-	return vocab.filter( function ( vocab ) {
+	let declensionList = vocab.filter( function ( vocab ) {
 		if ( competitiveMode ) {
 			return typeof vocab.noms === 'string' && ! vocab.asked;
 		}
 
-		// This isn't pretty, but Eduqas doesn't split words into categories, so it must be done manually.
+		// Distinguish declensions separately - messy!
 		return (
 			typeof vocab.noms === 'string' &&
 			( ( document.getElementById( 'declensions-noun-1' ).checked &&
@@ -2922,6 +2929,20 @@ function findDeclensionVocab() {
 					vocab.noms !== vocab.accs ) )
 		);
 	} );
+
+	if ( document.getElementById( 'declensions-neuter' ).checked ) {
+		declensionList = declensionList.filter( function ( vocab ) {
+			return vocab.accs !== vocab.noms;
+		} );
+	}
+
+	if ( document.getElementById( 'declensions-noun-2-remove-er' ).checked ) {
+		declensionList = declensionList.filter( function ( vocab ) {
+			return ! vocab.noms.endsWith( 'er' );
+		} );
+	}
+
+	return declensionList;
 }
 
 function findWord( word ) {

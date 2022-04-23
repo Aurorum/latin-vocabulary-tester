@@ -481,7 +481,7 @@ var vocabGCSEOCR = [
 		translation: 'the other, another, one (of two), the second (of two)',
 		asked: false,
 	},
-	{ word: 'altus, alta, altum', category: 'adjective', translation: 'high, deep', asked: false },
+	{ word: 'altus, alta, altum', category: 'adj', translation: 'high, deep', asked: false },
 	{
 		word: 'ambulo, ambulare, ambulavi',
 		category: 'verb 1',
@@ -1041,7 +1041,7 @@ var vocabGCSEOCR = [
 		fppaind2pl: 'ascensi eritis',
 		fppaind3pl: 'ascensi erunt',
 	},
-	{ word: 'audax, audacis', category: 'adjective', translation: 'bold, daring', asked: false },
+	{ word: 'audax, audacis', category: 'adj', translation: 'bold, daring', asked: false },
 	{ word: 'audeo, audere, ausus sum', category: 'verb 2', translation: 'dare', asked: false },
 	{
 		word: 'audio, audire, audivi, auditus',
@@ -1223,8 +1223,8 @@ var vocabGCSEOCR = [
 	},
 	{ word: 'bene', category: 'adverb', translation: 'well', asked: false },
 	{ word: 'bibo, bibere, bibi', category: 'verb 3', translation: 'drink', asked: false },
-	{ word: 'bonus, bona, bonum', category: 'adjective', translation: 'good', asked: false },
-	{ word: 'brevis, breve', category: 'adjective', translation: 'short, brief', asked: false },
+	{ word: 'bonus, bona, bonum', category: 'adj', translation: 'good', asked: false },
+	{ word: 'brevis, breve', category: 'adj', translation: 'short, brief', asked: false },
 	{
 		word: 'cado, cadere, cecidi, casus',
 		category: 'verb 3',
@@ -1571,7 +1571,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'celer, celeris, celere',
-		category: 'adjective',
+		category: 'adj',
 		translation: 'quick, fast',
 		asked: false,
 	},
@@ -1731,7 +1731,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'ceteri, ceterae, cetera',
-		category: 'adjective',
+		category: 'adj',
 		translation: 'the rest, the others',
 		asked: false,
 	},
@@ -1928,7 +1928,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'clarus, clara, clarum',
-		category: 'adjective',
+		category: 'adj',
 		translation: 'famous, clear',
 		asked: false,
 	},
@@ -2730,7 +2730,7 @@ var vocabGCSEOCR = [
 		fppaind2pl: 'crediti eritis',
 		fppaind3pl: 'crediti erunt',
 	},
-	{ word: 'crudelis, crudele', category: 'adjective', translation: 'cruel', asked: false },
+	{ word: 'crudelis, crudele', category: 'adj', translation: 'cruel', asked: false },
 	{ word: 'cum + ablative', category: 'prep', translation: 'with', asked: false },
 	{ word: 'cum', category: 'conjunction', translation: 'when, since', asked: false },
 	{
@@ -3524,9 +3524,9 @@ var vocabGCSEOCR = [
 		abls: 'die',
 		ablp: 'diebus',
 	},
-	{ word: 'difficilis, difficile', category: 'adjective', translation: 'difficult', asked: false },
-	{ word: 'diligens, diligentis', category: 'adjective', translation: 'careful', asked: false },
-	{ word: 'dirus, dira, dirum', category: 'adjective', translation: 'dreadful', asked: false },
+	{ word: 'difficilis, difficile', category: 'adj', translation: 'difficult', asked: false },
+	{ word: 'diligens, diligentis', category: 'adj', translation: 'careful', asked: false },
+	{ word: 'dirus, dira, dirum', category: 'adj', translation: 'dreadful', asked: false },
 	{
 		word: 'discedo, discedere, discessi',
 		category: 'verb 3',
@@ -4508,7 +4508,7 @@ var vocabGCSEOCR = [
 		translation: 'wait for, expect',
 		asked: false,
 	},
-	{ word: 'facilis, facile', category: 'adjective', translation: 'easy', asked: false },
+	{ word: 'facilis, facile', category: 'adj', translation: 'easy', asked: false },
 	{
 		word: 'facio, facere, feci, factus',
 		category: 'verb 3',
@@ -4781,7 +4781,7 @@ var vocabGCSEOCR = [
 		fppaind2pl: 'fauti eritis',
 		fppaind3pl: 'fauti erunt',
 	},
-	{ word: 'felix, felicis', category: 'adjective', translation: 'fortunate, happy', asked: false },
+	{ word: 'felix, felicis', category: 'adj', translation: 'fortunate, happy', asked: false },
 	{
 		word: 'femina, feminae, f',
 		category: 'noun 1',
@@ -4806,7 +4806,7 @@ var vocabGCSEOCR = [
 		translation: 'bring, carry, bear',
 		asked: false,
 	},
-	{ word: 'ferox, ferocis', category: 'adjective', translation: 'fierce, ferocious', asked: false },
+	{ word: 'ferox, ferocis', category: 'adj', translation: 'fierce, ferocious', asked: false },
 	{
 		word: 'festino, festinare, festinavi',
 		category: 'verb 1',
@@ -4943,7 +4943,7 @@ var vocabGCSEOCR = [
 		fppaind2pl: 'festinati eritis',
 		fppaind3pl: 'festinati erunt',
 	},
-	{ word: 'fidelis, fidele', category: 'adjective', translation: 'faithful, loyal', asked: false },
+	{ word: 'fidelis, fidele', category: 'adj', translation: 'faithful, loyal', asked: false },
 	{
 		word: 'filia, filiae, f',
 		category: 'noun 1',
@@ -4999,7 +4999,7 @@ var vocabGCSEOCR = [
 		ablp: 'fluminibus',
 	},
 	{ word: 'forte', category: 'adverb', translation: 'by chance', asked: false },
-	{ word: 'fortis, forte', category: 'adjective', translation: 'brave', asked: false },
+	{ word: 'fortis, forte', category: 'adj', translation: 'brave', asked: false },
 	{
 		word: 'forum, fori, n',
 		category: 'noun 2',
@@ -5357,7 +5357,7 @@ var vocabGCSEOCR = [
 		abls: 'gladio',
 		ablp: 'gladiis',
 	},
-	{ word: 'gravis, grave', category: 'adjective', translation: 'heavy, serious', asked: false },
+	{ word: 'gravis, grave', category: 'adj', translation: 'heavy, serious', asked: false },
 	{
 		word: 'habeo, habere, habui, habitus',
 		category: 'verb 2',
@@ -6193,11 +6193,11 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'infelix, infelicis',
-		category: 'adjective',
+		category: 'adj',
 		translation: 'unlucky, unhappy',
 		asked: false,
 	},
-	{ word: 'ingens, ingentis', category: 'adjective', translation: 'huge', asked: false },
+	{ word: 'ingens, ingentis', category: 'adj', translation: 'huge', asked: false },
 	{
 		word: 'ingredior, ingredi, ingressus sum',
 		category: 'verb 3 dep',
@@ -6687,7 +6687,7 @@ var vocabGCSEOCR = [
 		abls: 'ira',
 		ablp: 'iris',
 	},
-	{ word: 'iratus, irata, iratum', category: 'adjective', translation: 'angry', asked: false },
+	{ word: 'iratus, irata, iratum', category: 'adj', translation: 'angry', asked: false },
 	{
 		word: 'is, ea, id',
 		category: 'pron',
@@ -7164,7 +7164,7 @@ var vocabGCSEOCR = [
 		fppaind2pl: 'lacrimati eritis',
 		fppaind3pl: 'lacrimati erunt',
 	},
-	{ word: 'laetus, laeta, laetum', category: 'adjective', translation: 'happy', asked: false },
+	{ word: 'laetus, laeta, laetum', category: 'adj', translation: 'happy', asked: false },
 	{
 		word: 'laudo, laudare, laudavi, laudatus',
 		category: 'verb 1',
@@ -7455,7 +7455,7 @@ var vocabGCSEOCR = [
 		fppaind2pl: 'lecti eritis',
 		fppaind3pl: 'lecti erunt',
 	},
-	{ word: 'lentus, lenta, lentum', category: 'adjective', translation: 'slow', asked: false },
+	{ word: 'lentus, lenta, lentum', category: 'adj', translation: 'slow', asked: false },
 	{ word: 'libenter', category: 'adverb', translation: 'willingly, gladly', asked: false },
 	{
 		word: 'liber, libri, m',
@@ -7665,7 +7665,7 @@ var vocabGCSEOCR = [
 		abls: 'loco',
 		ablp: 'locis',
 	},
-	{ word: 'longus, longa, longum', category: 'adjective', translation: 'long', asked: false },
+	{ word: 'longus, longa, longum', category: 'adj', translation: 'long', asked: false },
 	{
 		word: 'loquor, loqui, locutus sum',
 		category: 'verb 3 dep',
@@ -7692,12 +7692,12 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'magnus, magna, magnum',
-		category: 'adjective',
+		category: 'adj',
 		translation: 'big, large, great',
 		asked: false,
 	},
 	{ word: 'malo, malle, malui', category: 'verb irreg', translation: 'prefer', asked: false },
-	{ word: 'malus, mala, malum', category: 'adjective', translation: 'evil, bad', asked: false },
+	{ word: 'malus, mala, malum', category: 'adj', translation: 'evil, bad', asked: false },
 	{
 		word: 'maneo, manere, mansi',
 		category: 'verb 2',
@@ -7907,7 +7907,7 @@ var vocabGCSEOCR = [
 		ablp: 'matribus',
 	},
 	{ word: 'maxime', category: 'adverb', translation: 'very greatly', asked: false },
-	{ word: 'medius, media, medium', category: 'adjective', translation: 'middle', asked: false },
+	{ word: 'medius, media, medium', category: 'adj', translation: 'middle', asked: false },
 	{ word: 'meus, mea, meum', category: 'pron', translation: 'my', asked: false },
 	{
 		word: 'miles, militis, m',
@@ -7936,7 +7936,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'miser, misera, miserum',
-		category: 'adjective',
+		category: 'adj',
 		translation: 'miserable, wretched, sad',
 		asked: false,
 	},
@@ -8405,7 +8405,7 @@ var vocabGCSEOCR = [
 	},
 	{ word: 'mox', category: 'adverb', translation: 'soon', asked: false },
 	{ word: 'multo', category: 'adverb', translation: 'much', asked: false },
-	{ word: 'multus, multa, multum', category: 'adjective', translation: 'much, many', asked: false },
+	{ word: 'multus, multa, multum', category: 'adj', translation: 'much, many', asked: false },
 	{
 		word: 'murus, muri, m',
 		category: 'noun 2',
@@ -9032,13 +9032,13 @@ var vocabGCSEOCR = [
 	{ word: 'nonne?', category: 'adverb', translation: 'surely, surely?, surely...?', asked: false },
 	{
 		word: 'nonnulli, nonnullae, nonnulla',
-		category: 'adjective',
+		category: 'adj',
 		translation: 'some, several',
 		asked: false,
 	},
 	{ word: 'nos, nostrum', category: 'pron', translation: 'we, us', asked: false },
 	{ word: 'noster, nostra, nostrum', category: 'pron', translation: 'our', asked: false },
-	{ word: 'novus, nova, novum', category: 'adjective', translation: 'new', asked: false },
+	{ word: 'novus, nova, novum', category: 'adj', translation: 'new', asked: false },
 	{
 		word: 'nox, noctis, f',
 		category: 'noun 3',
@@ -9059,7 +9059,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'nullus, nulla, nullum',
-		category: 'adjective',
+		category: 'adj',
 		translation: 'not any, no',
 		asked: false,
 	},
@@ -9239,7 +9239,7 @@ var vocabGCSEOCR = [
 		asked: false,
 	},
 	{ word: 'olim', category: 'adverb', translation: 'once, some time ago', asked: false },
-	{ word: 'omnis, omne', category: 'adjective', translation: 'all, every', asked: false },
+	{ word: 'omnis, omne', category: 'adj', translation: 'all, every', asked: false },
 	{
 		word: 'opprimo, opprimere, oppressi, oppressus',
 		category: 'verb 3',
@@ -9939,7 +9939,7 @@ var vocabGCSEOCR = [
 		abls: 'parte',
 		ablp: 'partibus',
 	},
-	{ word: 'parvus, parva, parvum', category: 'adjective', translation: 'small', asked: false },
+	{ word: 'parvus, parva, parvum', category: 'adj', translation: 'small', asked: false },
 	{
 		word: 'pater, patris, m',
 		category: 'noun 3',
@@ -9984,7 +9984,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'pauci, paucae, pauca',
-		category: 'adjective plural',
+		category: 'adj plural',
 		translation: 'few, a few',
 		asked: false,
 	},
@@ -10193,7 +10193,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'perterritus, perterrita, perterritum',
-		category: 'adjective',
+		category: 'adj',
 		translation: 'terrified',
 		asked: false,
 	},
@@ -10694,7 +10694,7 @@ var vocabGCSEOCR = [
 		ablp: 'praemiis',
 	},
 	{ word: 'primo', category: 'adverb', translation: 'at first', asked: false },
-	{ word: 'primus, prima, primum', category: 'adjective', translation: 'first', asked: false },
+	{ word: 'primus, prima, primum', category: 'adj', translation: 'first', asked: false },
 	{
 		word: 'princeps, principis, m',
 		category: 'noun 3',
@@ -11030,7 +11030,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'proximus, proxima, proximum',
-		category: 'adjective',
+		category: 'adj',
 		translation: 'nearest, next to',
 		asked: false,
 	},
@@ -11208,7 +11208,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'pulcher, pulchra, pulchrum',
-		category: 'adjective',
+		category: 'adj',
 		translation: 'beautiful, handsome',
 		asked: false,
 	},
@@ -11490,7 +11490,7 @@ var vocabGCSEOCR = [
 		fppaind2pl: 'quaesiti eritis',
 		fppaind3pl: 'quaesiti erunt',
 	},
-	{ word: 'qualis?, quale', category: 'adjective', translation: 'what sort of?', asked: false },
+	{ word: 'qualis?, quale', category: 'adj', translation: 'what sort of?', asked: false },
 	{
 		word: 'quam + superlative adverb',
 		category: 'conjunction',
@@ -11502,7 +11502,7 @@ var vocabGCSEOCR = [
 	{ word: 'quando?', category: 'adverb', translation: 'when?', asked: false },
 	{
 		word: 'quantus?, quanta?, quantum?',
-		category: 'adjective',
+		category: 'adj',
 		translation: 'how big?, how much?',
 		asked: false,
 	},
@@ -11519,7 +11519,7 @@ var vocabGCSEOCR = [
 	{ word: 'quod', category: 'conjunction', translation: 'because', asked: false },
 	{ word: 'quomodo?', category: 'adverb', translation: 'how?', asked: false },
 	{ word: 'quoque', category: 'conjunction', translation: 'also, too', asked: false },
-	{ word: 'quot?', category: 'adjective', translation: 'how many?', asked: false },
+	{ word: 'quot?', category: 'adj', translation: 'how many?', asked: false },
 	{
 		word: 'rapio, rapere, rapui, raptus',
 		category: 'verb 3',
@@ -12440,12 +12440,12 @@ var vocabGCSEOCR = [
 		fppaind3pl: 'rogati erunt',
 	},
 	{ word: 'Roma, Romae, f', category: 'noun 1', translation: 'Rome', asked: false },
-	{ word: 'Romanus, Romana, Romanum', category: 'adjective', translation: 'Roman', asked: false },
-	{ word: 'sacer, sacra, sacrum', category: 'adjective', translation: 'sacred', asked: false },
+	{ word: 'Romanus, Romana, Romanum', category: 'adj', translation: 'Roman', asked: false },
+	{ word: 'sacer, sacra, sacrum', category: 'adj', translation: 'sacred', asked: false },
 	{ word: 'saepe', category: 'adverb', translation: 'often', asked: false },
 	{
 		word: 'saevus, saeva, saevum',
-		category: 'adjective',
+		category: 'adj',
 		translation: 'savage, cruel',
 		asked: false,
 	},
@@ -12475,7 +12475,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'scelestus, scelesta, scelestum',
-		category: 'adjective',
+		category: 'adj',
 		translation: 'wicked',
 		asked: false,
 	},
@@ -13129,7 +13129,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'solus, sola, solum',
-		category: 'adjective',
+		category: 'adj',
 		translation: "alone, lonely, only, on one's own",
 		asked: false,
 	},
@@ -13562,7 +13562,7 @@ var vocabGCSEOCR = [
 	},
 	{
 		word: 'stultus, stulta, stultum',
-		category: 'adjective',
+		category: 'adj',
 		translation: 'stupid, foolish',
 		asked: false,
 	},
@@ -13576,7 +13576,7 @@ var vocabGCSEOCR = [
 	{ word: 'sum, esse, fui', category: 'verb irreg', translation: 'be', asked: false },
 	{
 		word: 'summus, summa, summum',
-		category: 'adjective',
+		category: 'adj',
 		translation: 'highest, greatest, top (of)',
 		asked: false,
 	},
@@ -13882,13 +13882,13 @@ var vocabGCSEOCR = [
 		fppaind2pl: 'taciti eritis',
 		fppaind3pl: 'taciti erunt',
 	},
-	{ word: 'talis, tale', category: 'adjective', translation: 'such, of such a kind', asked: false },
+	{ word: 'talis, tale', category: 'adj', translation: 'such, of such a kind', asked: false },
 	{ word: 'tam', category: 'adverb', translation: 'so', asked: false },
 	{ word: 'tamen', category: 'adverb', translation: 'however', asked: false },
 	{ word: 'tandem', category: 'adverb', translation: 'at last, finally', asked: false },
 	{
 		word: 'tantus, tanta, tantum',
-		category: 'adjective',
+		category: 'adj',
 		translation: 'so great, such a great',
 		asked: false,
 	},
@@ -14248,8 +14248,8 @@ var vocabGCSEOCR = [
 		fppaind2pl: 'sublati eritis',
 		fppaind3pl: 'sublati erunt',
 	},
-	{ word: 'tot', category: 'adjective', translation: 'so many', asked: false },
-	{ word: 'totus, tota, totum', category: 'adjective', translation: 'whole', asked: false },
+	{ word: 'tot', category: 'adj', translation: 'so many', asked: false },
+	{ word: 'totus, tota, totum', category: 'adj', translation: 'whole', asked: false },
 	{
 		word: 'trado, tradere, tradidi, traditus',
 		category: 'verb 3',
@@ -14528,7 +14528,7 @@ var vocabGCSEOCR = [
 		translation: 'across',
 		asked: false,
 	},
-	{ word: 'tristis, triste', category: 'adjective', translation: 'sad', asked: false },
+	{ word: 'tristis, triste', category: 'adj', translation: 'sad', asked: false },
 	{ word: 'tu, tui', category: 'pron', translation: 'you (singular)', asked: false },
 	{ word: 'tum', category: 'adverb', translation: 'then', asked: false },
 	{
@@ -14606,7 +14606,7 @@ var vocabGCSEOCR = [
 		abls: 'uxore',
 		ablp: 'uxoribus',
 	},
-	{ word: 'validus, valida, validum', category: 'adjective', translation: 'strong', asked: false },
+	{ word: 'validus, valida, validum', category: 'adj', translation: 'strong', asked: false },
 	{ word: 'vehementer', category: 'adverb', translation: 'violently, loudly', asked: false },
 	{
 		word: 'vendo, vendere, vendidi, venditus',

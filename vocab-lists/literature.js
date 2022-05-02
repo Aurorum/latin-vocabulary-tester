@@ -37611,7 +37611,7 @@ var vocabLiterature = [
 		asked: false,
 	},
 	{
-		word: 'necessitas, necessitati, f',
+		word: 'necessitas, necessitatis, f',
 		translation: 'necessity, friendship',
 		category: 'prose-list-7',
 		asked: false,

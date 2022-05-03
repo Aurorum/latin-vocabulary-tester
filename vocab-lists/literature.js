@@ -23455,7 +23455,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'ferreus, ferrea, ferreum',
-		translation: '(made of) iron',
+		translation: 'made of iron, iron',
 		category: 'prose-list-3',
 		asked: false,
 	},
@@ -24147,10 +24147,10 @@ var vocabLiterature = [
 		abls: 'natione',
 		ablp: 'nationibus',
 	},
-	{ word: 'nequaqube', translation: 'in no way', category: 'prose-list-3', asked: false },
+	{ word: 'nequaquam', translation: 'in no way', category: 'prose-list-3', asked: false },
 	{
 		word: 'obicio, obicere, obieci, obiectus',
-		translation: 'throw in the way of, expose',
+		translation: 'throw in the way (of), expose',
 		category: 'prose-list-3',
 		asked: false,
 		pracind1s: 'obicio',
@@ -24632,7 +24632,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'simulo, simulare, simulavi, simulatus',
-		translation: 'pretend',
+		translation: 'pretend, feign',
 		category: 'prose-list-3',
 		asked: false,
 		pracind1s: 'simulo',
@@ -34561,7 +34561,7 @@ var vocabLiterature = [
 	{ word: 'praesertim', translation: 'especially', category: 'prose-list-6', asked: false },
 	{
 		word: 'priscus, prisca, priscum',
-		translation: 'ancient, former, old-fashioned',
+		translation: 'ancient, former, previous, old-fashioned',
 		category: 'prose-list-6',
 		asked: false,
 	},
@@ -44180,7 +44180,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'mentior, mentiri, mentitus sum',
-		translation: '(tell a) lie, lie',
+		translation: 'tell a lie, lie',
 		category: 'prose-list-9',
 		asked: false,
 	},
@@ -53072,7 +53072,7 @@ var vocabLiterature = [
 	},
 	{
 		word: 'priscus, prisca, priscum',
-		translation: 'old, former, ancient',
+		translation: 'old, former, previous, ancient',
 		category: 'john-taylor-verse',
 		asked: false,
 	},

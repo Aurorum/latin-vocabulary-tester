@@ -2321,7 +2321,7 @@ function checkAnswer( shouldReveal = false ) {
 			}
 		}
 
-		if ( answer.length === 1 && answer !== 'a' && answer !== 'e' ) {
+		if ( answer.length === 1 && answer !== 'a' && answer !== 'e' && answer !== 'i' ) {
 			isAnswerCorrect = false;
 		}
 

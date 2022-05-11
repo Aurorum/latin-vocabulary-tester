@@ -46177,7 +46177,7 @@ var vocabLiterature = [
 		fppaind3pl: 'considsessi erunt',
 	},
 	{
-		word: 'contumelia, contumaliae, f',
+		word: 'contumelia, contumeliae, f',
 		translation: 'insult',
 		category: 'prose-list-10',
 		asked: false,

@@ -10648,13 +10648,13 @@ var vocabALevelOCR = [
 	{
 		word: 'invitus, invita, invitum',
 		category: 'adj',
-		translation: 'unwillling, reluctant',
+		translation: 'unwilling, reluctant',
 		asked: false,
 	},
 	{
 		word: 'ipse, ipsa, ipsum',
 		category: 'pron',
-		translation: '-self, himself, herself, themself',
+		translation: 'himself, herself, themself, themselves, -self',
 		asked: false,
 	},
 	{

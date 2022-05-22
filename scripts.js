@@ -273,6 +273,8 @@ function startTest( startDeclensionTest = false, startConjugationTest = false ) 
 		'started_test'
 	);
 
+	collectData( 'Test categories of ' + acceptableVocab.join(', ') );
+
 	let wordTablePrompt = competitiveMode ? 'word-table-prompt-competitive' : 'word-table-prompt';
 
 	if ( startDeclensionTest ) {

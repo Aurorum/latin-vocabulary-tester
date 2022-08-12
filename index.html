@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Latin Vocabulary Tester</title>
@@ -24,6 +25,8 @@
 			property="og:image"
 			content="https://latinvocabularytester.com/assets/screenshots/screenshot-1.png"
 		/>
+
+
 		<script type="text/javascript" src="./vocab-lists/alevel-ocr.js"></script>
 		<script type="text/javascript" src="./vocab-lists/gcse-eduqas.js"></script>
 		<script type="text/javascript" src="./vocab-lists/gcse-ocr.js"></script>
@@ -44,6 +47,8 @@
 			gtag( 'js', new Date() );
 			gtag( 'config', 'G-1QZXG1GX8M' );
 		</script>
+
+
 	</head>
 	<body>
 		<div class="loading-screen" id="loading">
@@ -3484,5 +3489,17 @@
 				<img src="https://www.gravatar.com/avatar/581e9719c44732a58a27b872f282c053.jpg?s=60" />
 			</div>
 		</div>
+
+		<!-- Register service worker-->
+		<script> 
+			if ('serviceWorker' in navigator && navigator.onLine) {
+				navigator.serviceWorker.register('/serviceWorker.js').then((reg) => {
+					console.log('Successfully registered service worker', reg);
+				}).catch( (err) => {
+					console.warn('Error whilst registering service worker', err);
+				});
+			}
+		</script>
+				
 	</body>
 </html>

@@ -1,0 +1,54 @@
+{
+    "short_name": "Latin Vocab Tester",
+    "name": "Latin Vocabulary Tester",
+    "icons": [
+        {
+            "src": "assets/512x512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        },
+        {
+            "src": "assets/favicon.png",
+            "type": "image/png",
+            "sizes": "128x128"
+        },
+        {
+            "src": "assets/maskable_icon_x192.png",
+            "type": "image/png",
+            "sizes": "192x192",
+            "purpose": "maskable"
+        }
+    ],
+    "start_url": "/",
+    "background_color": "#ee6c4d",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#ee6c4d",
+    "shortcuts": [
+        {
+            "name": "Home",
+            "short_name": "Home",
+            "description": "Learn some Latin!",
+            "url": "/",
+            "icons": [
+                {
+                    "src": "assets/favicon.png",
+                    "sizes": "128x128"
+                }
+            ]
+        },
+        {
+            "name": "Dictum",
+            "short_name": "Dictum",
+            "description": "Let's play Latin Wordle!",
+            "url": "/",
+            "icons": [
+                {
+                    "src": "assets/parchment.png",
+                    "sizes": "512x512"
+                }
+            ]
+        }
+    ],
+    "description": "Provides a way to test your knowledge of Latin vocabulary, noun declensions, and verb conjugations based on the A-Level and GCSE syllabus, while also containing a Latin version of Wordle."
+}

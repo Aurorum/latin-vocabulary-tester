@@ -73,12 +73,14 @@ window.onload = function () {
 			}
 		}
 	};
-	xmlhttp.open(
-		'GET',
-		'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/leaderboard',
-		true
-	);
-	xmlhttp.send();
+	if (navigator.onLine) {
+		xmlhttp.open(
+			'GET',
+			'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/leaderboard',
+			true
+		);
+		xmlhttp.send();
+	}
 
 	if ( new URLSearchParams( window.location.search ).get( 'competitive' ) ) {
 		switchMode();
@@ -3054,9 +3056,11 @@ function collectData( content, analyticsID ) {
 	}
 
 	var request = new XMLHttpRequest();
-	request.open( 'POST', 'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/data' );
-	request.setRequestHeader( 'Content-type', 'text/plain' );
-	request.send( content + ' with ID of ' + userId );
+	if (navigator.onLine) {
+		request.open( 'POST', 'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/data' );
+		request.setRequestHeader( 'Content-type', 'text/plain' );
+		request.send( content + ' with ID of ' + userId );
+	};
 }
 
 function muteAudio() {

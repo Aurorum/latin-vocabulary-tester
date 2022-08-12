@@ -3499,7 +3499,7 @@
 		<!-- Register service worker-->
 		<script> 
 			if ('serviceWorker' in navigator && navigator.onLine) {
-				navigator.serviceWorker.register('/serviceWorker.js').then((reg) => {
+				navigator.serviceWorker.register('serviceWorker.js').then((reg) => {
 					console.log('Successfully registered service worker', reg);
 				}).catch( (err) => {
 					console.warn('Error whilst registering service worker', err);

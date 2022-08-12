@@ -27,7 +27,6 @@ const URLS_TO_CACHE = [
     "https://www.gravatar.com/avatar/581e9719c44732a58a27b872f282c053.jpg?s=60",
     "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap",   
     "https://fonts.gstatic.com/s/montserrat/v25/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2",
-    "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap"
 ]
 
 self.addEventListener("install", (event) => {

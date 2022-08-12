@@ -1,6 +1,5 @@
 const OFFLINE_VERSION = 2;
 const CACHE_NAME = "offline";
-const OFFLINE_IGNORE = /.*clubpenguinmountains.*|.*click.mp3.*/;
 
 const URLS_TO_CACHE = [
     "manifest.json",
@@ -28,7 +27,7 @@ const URLS_TO_CACHE = [
     "https://www.gravatar.com/avatar/581e9719c44732a58a27b872f282c053.jpg?s=60",
     "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap",   
     "https://fonts.gstatic.com/s/montserrat/v25/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2",
-
+    "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto&display=swap"
 ]
 
 self.addEventListener("install", (event) => {
@@ -87,24 +86,13 @@ self.addEventListener("fetch", (event) => {
           // If fetch() returns a valid HTTP response with a response code in
           // the 4xx or 5xx range, the catch() will NOT be called.
         
-          console.log(event.request.url);
-
-          if (event.request.url.match(OFFLINE_IGNORE)) {
-            console.log("Ignore")
-            const myBlob = new Blob();
-            const myOptions = { status: 404, statusText: 'SuperSmashingGreat!' };
-            const myResponse = new Response(myBlob, myOptions);        
-            return myResponse;
-          }
-
-          console.log("Fetch failed; returning offline page instead.", error);
+//          console.log(event.request.url);
+//          console.log("Fetch failed; returning offline page instead.", error);
 
           const cache = await caches.open(CACHE_NAME);
-          //console.log(event.request.url)
           const cachedResponse = await cache.match(event.request.url);
-          console.log(cachedResponse)
-          
-          cachedResponse.headers.append("Warning","ReturnedFromServiceWorker")
+//          console.log(cachedResponse)
+          //cachedResponse.headers.append("Warning","ReturnedFromServiceWorker")
           return cachedResponse;
 
 

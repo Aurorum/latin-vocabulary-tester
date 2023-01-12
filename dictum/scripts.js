@@ -287,12 +287,13 @@ function removeLetter() {
 }
 
 function checkAnswer() {
-	let word = selectedWord.word;
-	let wordSplit = word.split( '' );
+	let targetWord = selectedWord.word;
+	let wordSplit = targetWord.split( '' );
 
 	let gameBoardId = document.querySelectorAll( '.game-row.is-not-completed' )[ 0 ].id;
 	let fullSubmission = [];
 
+	// Get the user's guessed word
 	for ( let i = 0; i < 5; i++ ) {
 		let tile = document.getElementById( gameBoardId + 'tile' + i );
 		if ( tile.textContent.length ) {
@@ -305,10 +306,12 @@ function checkAnswer() {
 		'dictum_checked_answer'
 	);
 
+	// Word needs to be complete in order to be guessed
 	if ( fullSubmission.length !== 5 ) {
 		return;
 	}
 
+	// Word needs to be in the dictionary in order to be guessed
 	if ( ! validGuesses.includes( fullSubmission.join( '' ) ) ) {
 		document.getElementById( 'game-notice-text' ).innerHTML = 'Invalid word';
 		document.getElementById( 'game-notice' ).classList.remove( 'is-hidden' );
@@ -320,73 +323,64 @@ function checkAnswer() {
 		return;
 	}
 
+	// Prevent interaction
 	canType = false;
 	document.getElementById( 'game-notice' ).classList.add( 'is-hidden' );
 
+	// Check word
+	// 'is-correct-place'
+	// 'is-contained'
+	// 'is-not-contained'
+
+	let correctionClasses = Array( 5 );
+	let letterCounts = new Map(); // Acts as a multiset of letters in the
+	//  target word
+
+	// First pass - find letters in correct place and save those that aren't
+	for ( let i = 0; i < 5; ++i ) {
+		if ( targetWord[ i ] == fullSubmission[ i ] ) {
+			// can immediately credit
+			correctionClasses[ i ] = 'is-correct-place';
+		}
+		// simultaneously build up set of target word letters
+		else if ( letterCounts.has( targetWord[ i ] ) ) {
+			letterCounts.set( targetWord[ i ], letterCounts.get( targetWord[ i ] ) + 1 );
+		} else {
+			letterCounts.set( targetWord[ i ], 1 );
+		}
+	}
+
+	// Second pass - assign colours to other letters
+	for ( let i = 0; i < 5; ++i ) {
+		if ( correctionClasses[ i ] != 'is-correct-place' ) {
+			// if we haven't
+			// already credited
+			// this letter
+			if ( letterCounts.get( fullSubmission[ i ] ) > 0 ) {
+				// this letter still
+				// exists
+				correctionClasses[ i ] = 'is-contained';
+
+				// remove one occurrence which has been matched
+				letterCounts.set( fullSubmission[ i ], letterCounts.get( fullSubmission[ i ] ) - 1 );
+			} else {
+				// doesn't exist; no credit.
+				correctionClasses[ i ] = 'is-not-contained';
+			}
+		}
+	}
+
+	// Set up animations to change the colours
 	for ( let i = 0; i < 5; i++ ) {
 		setTimeout( function timer() {
 			let tile = document.getElementById( gameBoardId + 'tile' + i );
-
-			let duplicateLetterCount = fullSubmission.filter( ( x ) => x == tile.textContent ).length;
-			let isLetterContained = wordSplit.includes( tile.textContent );
-
-			if ( duplicateLetterCount > 1 ) {
-				let answerPlaces = wordSplit
-					.map( ( e, i ) => ( e === tile.textContent ? i : '' ) )
-					.filter( String );
-				let options = fullSubmission
-					.map( ( e, i ) => ( e === tile.textContent ? i : '' ) )
-					.filter( String );
-				let overrideLetterContained = false;
-				options.forEach( ( number ) => {
-					if ( wordSplit[ number ] === fullSubmission[ number ] ) {
-						overrideLetterContained = true;
-					}
-				} );
-
-				if (
-					answerPlaces.length === options.length &&
-					JSON.stringify( answerPlaces ) !== JSON.stringify( options )
-				) {
-					overrideLetterContained = false;
-				}
-
-				if ( overrideLetterContained ) {
-					isLetterContained = false;
-				}
-			}
-
-			if ( tile.textContent === wordSplit[ i ] ) {
-				tile.parentNode.classList.add( 'is-correct-place' );
-				document.getElementById( tile.textContent + '-key' ).classList.add( 'is-correct-place' );
-			} else if ( isLetterContained ) {
-				tile.parentNode.classList.add( 'is-contained' );
-
-				if (
-					! document
-						.getElementById( tile.textContent + '-key' )
-						.classList.contains( 'is-correct-place' )
-				) {
-					document.getElementById( tile.textContent + '-key' ).classList.add( 'is-contained' );
-				}
-			} else {
-				tile.parentNode.classList.add( 'is-not-contained' );
-				if (
-					! document
-						.getElementById( tile.textContent + '-key' )
-						.classList.contains( 'is-correct-place' ) &&
-					! document
-						.getElementById( tile.textContent + '-key' )
-						.classList.contains( 'is-contained' )
-				) {
-					document.getElementById( tile.textContent + '-key' ).classList.add( 'is-not-contained' );
-				}
-			}
+			tile.parentNode.classList.add( correctionClasses[ i ] );
+			document.getElementById( tile.textContent + '-key' ).classList.add( correctionClasses[ i ] );
 			tile.parentNode.classList.add( 'animate' );
 
 			if ( i === 4 ) {
 				canType = true;
-				if ( fullSubmission.join( '' ) === word ) {
+				if ( fullSubmission.join( '' ) === targetWord ) {
 					document.getElementById( 'copy-stats' ).style.display = 'flex';
 					document.getElementById( gameBoardId ).classList.add( 'is-answer' );
 					finishAnswer( 'correct' );
@@ -406,7 +400,7 @@ function checkAnswer() {
 						'dictum_failed_to_answer'
 					);
 					collectData( copyDailyStat( true ) );
-					document.getElementById( 'game-notice-text' ).innerHTML = word.toUpperCase();
+					document.getElementById( 'game-notice-text' ).innerHTML = targetWord.toUpperCase();
 					document.getElementById( 'game-notice' ).classList.remove( 'is-hidden' );
 					document.getElementById( 'next-streak' ).style.display = 'block';
 				}
@@ -418,6 +412,7 @@ function checkAnswer() {
 		}, i * 600 );
 	}
 
+	// Move onto the next row
 	document.getElementById( gameBoardId ).classList.add( 'is-completed' );
 	document.getElementById( gameBoardId ).classList.remove( 'is-not-completed' );
 

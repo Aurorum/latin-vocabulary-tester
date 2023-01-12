@@ -336,19 +336,25 @@ function checkAnswer() {
 	let letterCounts = new Map(); // Acts as a multiset of letters in the
 	//  target word
 
+	console.log("1st Pass")
 	// First pass - find letters in correct place and save those that aren't
 	for ( let i = 0; i < 5; ++i ) {
+		console.log( letterCounts );
 		if ( targetWord[ i ] == fullSubmission[ i ] ) {
 			// can immediately credit
 			correctionClasses[ i ] = 'is-correct-place';
 		}
 		// simultaneously build up set of target word letters
-		else if ( targetWord[ i ] in letterCounts ) {
-			letterCounts.set( targetWord[ i ], letterCounts.get( [ targetWord[ i ] ] ) + 1 );
+		else if ( letterCounts.has(targetWord[ i ]) ) {
+			console.log(letterCounts.get(targetWord[ i ]));
+			letterCounts.set( targetWord[ i ], letterCounts.get(targetWord[ i ]) + 1 );
 		} else {
 			letterCounts.set( targetWord[ i ], 1 );
 		}
 	}
+	console.log( letterCounts );
+
+	console.log("2nd Pass")
 
 	// Second pass - assign colours to other letters
 	for ( let i = 0; i < 5; ++i ) {

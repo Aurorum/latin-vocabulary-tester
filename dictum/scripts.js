@@ -343,8 +343,8 @@ function checkAnswer() {
 			correctionClasses[ i ] = 'is-correct-place';
 		}
 		// simultaneously build up set of target word letters
-		else if ( letterCounts.has(targetWord[ i ]) ) {
-			letterCounts.set( targetWord[ i ], letterCounts.get(targetWord[ i ]) + 1 );
+		else if ( letterCounts.has( targetWord[ i ] ) ) {
+			letterCounts.set( targetWord[ i ], letterCounts.get( targetWord[ i ] ) + 1 );
 		} else {
 			letterCounts.set( targetWord[ i ], 1 );
 		}

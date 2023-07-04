@@ -71,9 +71,11 @@ window.onload = function () {
 					i
 				].replace( /\[|\]|\"/gi, '' );
 			}
+		} else if ( this.readyState == 4 ) {
+			collectData( 'Failed to load from endpoint' );
 		}
 	};
-	if (navigator.onLine) {
+	if ( navigator.onLine ) {
 		xmlhttp.open(
 			'GET',
 			'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/leaderboard',

@@ -1,0 +1,376 @@
+<html>
+	<head>
+		<title>Latin Word Bites</title>
+		<link rel="icon" href="../assets/favicon.png" type="image/png" />
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
+		<meta name="author" content="Aurorum" />
+		<meta
+			name="keywords"
+			content="Latin, Latin Word Bites, Latin word games, Latin games, Latin Vocabulary Tester"
+		/>
+		<meta
+			name="description"
+			content="Combine tiles to form as many Latin words as possible, then challenge your friends to beat you!"
+		/>
+		<meta property="og:title" content="Latin Word Bites" />
+		<meta property="og:type" content="website" />
+		<meta
+			property="og:description"
+			content="Combine tiles to form as many Latin words as possible, then challenge your friends to beat you!"
+		/>
+		<meta property="og:url" content="https://latinvocabularytester.com/word-bites" />
+		<meta
+			property="og:image"
+			content="https://latinvocabularytester.com/assets/word-bites-sample.png"
+		/>
+
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Mono:wght@500&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" type="text/css" href="./style.css" />
+		<script type="text/javascript" src="./vocab-list.js"></script>
+		<script type="text/javascript" src="./scripts.js"></script>
+
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-1QZXG1GX8M"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push( arguments );
+			}
+			gtag( 'js', new Date() );
+			gtag( 'config', 'G-1QZXG1GX8M' );
+		</script>
+	</head>
+
+	<body class="is-welcome" translate="no">
+		<h1 class="game-title">Word Bites</h1>
+		<div class="player-details-wrapper">
+			<div class="player-details">
+				<div class="player-avatar">
+					<img src="../assets/gladiator.svg" alt="" />
+				</div>
+				<div class="player-inner-details">
+					<p class="word-label">
+						Words: <span id="word-count">0</span
+						><span class="total-label" id="total-count"> / 0</span>
+					</p>
+					<p class="score-label">Score: <span id="score-count">0</span></p>
+				</div>
+			</div>
+		</div>
+		<div class="bubble-wrapper">
+			<div class="timer">
+				<p id="timer">01:30</p>
+			</div>
+		</div>
+
+		<div id="modal" class="modal-wrapper">
+			<div class="modal-content">
+				<div id="welcome-screen">
+					<h3 id="welcome-title">Latin Word Bites</h3>
+					<p>
+						Combine tiles together horizontally or vertically to form as many Latin words as
+						possible in 90 seconds! You are rewarded for the length of each word.
+					</p>
+
+					<div class="cover-image">
+						<img src="../assets/word-bites-sample.png" alt="Word Bites demonstration" />
+					</div>
+
+					<button onclick="startGame()" class="option-wrapper start-game-button">
+						<p class="option-title">Start game</p>
+					</button>
+
+					<p id="loading" class="loading-line">Loading</p>
+				</div>
+
+				<div id="instruction-screen">
+					<h3>Instructions</h3>
+					<p>
+						The aim of the game is to score the highest number of points through making as many
+						Latin words as possible. Besides proper nouns, any word can be used, and multiple
+						inflections of the same base word are permitted.
+					</p>
+					<p>
+						To move a tile, click it and press a new location on the grid. Please note that for
+						tiles with two letters, it is always the top (for vertical) or left (for horizontal)
+						part which marks the start of a tile. You have 90 seconds to create as many words as
+						possible, and you are rewarded for the length of the word.
+					</p>
+
+					<p>
+						Once your time is over, you can generate a link to challenge a friend in beating your
+						score! They will have access to the exact same tiles as you. Remember though, it's not
+						about the number of words created - it's about the overall score.
+					</p>
+
+					<button onclick="modalChange('game')" class="option-wrapper start-game-button">
+						<p class="option-title">Close</p>
+					</button>
+				</div>
+
+				<div id="error-screen">
+					<h3 id="welcome-title">Sorry, there was an error</h3>
+					<p>Your friend's score and tiles couldn't be retrieved from our server.</p>
+					<p>
+						It's possible that there was a temporary error with our server. If the error persists,
+						your network might be blocking requests it. This is especially likely if you are using a
+						shared network, such as in a school.
+					</p>
+
+					<p>You can still play with a random set of tiles.</p>
+
+					<p>
+						<a
+							onclick="collectData('Played with random tiles', 'word_bites_play_random_tiles')"
+							href="https://latinvocabularytester.com/word-bites"
+							>Play with random tiles</a
+						>
+					</p>
+				</div>
+
+				<div id="game-over-screen">
+					<h3>You scored a total of <span id="final-score">0</span> points - euge!</h3>
+					<p>Feeling bold? Challenge a friend to beat your score with the same tiles as you.</p>
+
+					<div class="game-option">
+						<div class="buttons-wrapper">
+							<button onclick="modalChange('all-words')" class="option-wrapper">
+								<img class="option-image" src="../assets/book.png" alt="" />
+
+								<p>View all words</p>
+							</button>
+
+							<button onclick="modalChange('challenge-friend')" class="option-wrapper">
+								<img class="option-image" src="../assets/swords.png" alt="" />
+								<p class="option-title">Challenge a friend</p>
+							</button>
+						</div>
+					</div>
+					<p>
+						<a
+							onclick="collectData('Played again', 'word_bites_play_again')"
+							href="https://latinvocabularytester.com/word-bites"
+							>Play again</a
+						>
+					</p>
+				</div>
+
+				<div id="game-over-challenger-screen">
+					<h3 id="game-over-title"></h3>
+
+					<p id="game-over-scores">
+						You scored a total of <span id="challenger-score"></span> points, whereas
+						<span id="opponent-name"></span> scored <span id="opponent-points"></span> points.
+					</p>
+
+					<div class="words-list-wrapper">
+						<div class="word-list">
+							<p id="challenger-name-list">Your words</p>
+							<ul id="challenger-words"></ul>
+							<p class="total-count challenger">Total: <span id="challenger-count"></span></p>
+						</div>
+
+						<div class="word-list">
+							<p id="opponent-name-list"></p>
+							<ul id="opponent-words"></ul>
+							<p class="total-count">Total: <span id="opponent-count"></span></p>
+						</div>
+					</div>
+
+					<div class="challenger-links">
+						<p><a onclick="viewAllWordsChallenger()">View all words</a></p>
+						<p>
+							<a
+								onclick="collectData('Played with new tiles', 'word_bites_play_new_tiles')"
+								href="https://latinvocabularytester.com/word-bites"
+								>Play with new tiles</a
+							>
+						</p>
+					</div>
+
+					<p id="multiplayer-error" class="error-message">
+						Error submitting data to server. Your score has not been saved.
+					</p>
+				</div>
+
+				<div id="challenge-friend-screen">
+					<h3>Challenge a friend</h3>
+					<p>Enter your name to generate a link that you can send to a friend!</p>
+
+					<div class="game-option">
+						<div class="buttons-wrapper">
+							<input
+								maxlength="12"
+								class="name-input"
+								type="text"
+								id="name"
+								placeholder="Caecilius"
+							/>
+
+							<button onclick="generateLink()" id="generate-link" class="option-wrapper">
+								<p id="generate-label" class="option-title">Generate link</p>
+							</button>
+						</div>
+					</div>
+					<p id="submit-api" class="submit-message">Submitting...</p>
+					<p id="success" class="success-message">
+						Success! The link has been copied to your clipboard.
+					</p>
+					<p id="error" class="error-message"></p>
+
+					<p><a onclick="modalChange('game-over')">Go back</a></p>
+				</div>
+
+				<div id="all-words-screen">
+					<h3>All words</h3>
+					<p>
+						You found <span id="final-word-count"></span> out of
+						<span id="all-word-count"></span> words.
+					</p>
+
+					<div class="words-list-wrapper">
+						<div class="word-list">
+							<p>Your words</p>
+							<ul id="user-words"></ul>
+						</div>
+
+						<div class="word-list">
+							<p>Missed words</p>
+							<ul id="missed-words"></ul>
+						</div>
+					</div>
+
+					<p><a onclick="modalChange('game-over')">Go back</a></p>
+				</div>
+
+				<div id="all-words-challenger-screen">
+					<h3>All words</h3>
+
+					<div class="words-list-wrapper">
+						<div class="word-list">
+							<p>There were <span id="all-words-count"></span> possible words.</p>
+							<ul id="all-words"></ul>
+						</div>
+					</div>
+
+					<p><a onclick="modalChange('game-over-challenger')">Go back</a></p>
+				</div>
+			</div>
+		</div>
+
+		<div class="wrapper">
+			<div class="board-wrapper">
+				<table id="board" class="">
+					<tbody>
+						<tr id="row1" data-row="1">
+							<td onclick="handleTileClick(this)" data-column="1"></td>
+							<td onclick="handleTileClick(this)" data-column="2"></td>
+							<td onclick="handleTileClick(this)" data-column="3"></td>
+							<td onclick="handleTileClick(this)" data-column="4"></td>
+							<td onclick="handleTileClick(this)" data-column="5"></td>
+							<td onclick="handleTileClick(this)" data-column="6"></td>
+							<td onclick="handleTileClick(this)" data-column="7"></td>
+							<td onclick="handleTileClick(this)" data-column="8"></td>
+						</tr>
+						<tr id="row2" data-row="2">
+							<td onclick="handleTileClick(this)" class="" data-column="1"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="2"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="3"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="4"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="5"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="6"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="7"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="8"></td>
+						</tr>
+						<tr id="row3" data-row="3">
+							<td onclick="handleTileClick(this)" class="" data-column="1"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="2"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="3"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="4"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="5"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="6"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="7"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="8"></td>
+						</tr>
+						<tr id="row4" data-row="4">
+							<td onclick="handleTileClick(this)" class="" data-column="1"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="2"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="3"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="4"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="5"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="6"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="7"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="8"></td>
+						</tr>
+						<tr id="row5" data-row="5">
+							<td onclick="handleTileClick(this)" class="" data-column="1"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="2"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="3"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="4"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="5"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="6"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="7"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="8"></td>
+						</tr>
+						<tr id="row6" data-row="6">
+							<td onclick="handleTileClick(this)" class="" data-column="1"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="2"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="3"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="4"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="5"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="6"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="7"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="8"></td>
+						</tr>
+						<tr id="row7" data-row="7">
+							<td onclick="handleTileClick(this)" class="" data-column="1"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="2"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="3"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="4"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="5"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="6"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="7"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="8"></td>
+						</tr>
+						<tr id="row8" data-row="8">
+							<td onclick="handleTileClick(this)" class="" data-column="1"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="2"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="3"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="4"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="5"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="6"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="7"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="8"></td>
+						</tr>
+						<tr id="row9" data-row="9">
+							<td onclick="handleTileClick(this)" class="" data-column="1"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="2"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="3"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="4"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="5"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="6"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="7"></td>
+							<td onclick="handleTileClick(this)" class="" data-column="8"></td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div id="bubble" class="new-word-wrapper">
+					<div class="new-word-inner-wrapper">
+						<p id="added-word" class="new-word"></p>
+						<p id="added-score" class="new-score"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a onclick="modalChange('instruction')" class="icon">
+			<img src="../assets/help.svg" alt="View instructions" />
+		</a>
+	</body>
+</html>

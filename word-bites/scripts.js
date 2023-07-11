@@ -74,8 +74,6 @@ function generateBoardFromId() {
 				handleCompleteGame();
 				return;
 			}
-
-			console.log( data );
 		} )
 		.catch( ( error ) => {
 			document.body.classList.remove( 'is-welcome' );
@@ -283,7 +281,6 @@ function solveGrid() {
 		vertical,
 		single,
 	};
-	console.log( tiles );
 
 	let grid = validGuesses.filter( ( word ) => can_make_word( word, tiles ) );
 	isLoaded = true;
@@ -420,6 +417,7 @@ function handleTileClick( item ) {
 	if ( document.body.classList.contains( 'is-tile-active' ) ) {
 		document.querySelectorAll( '#board td[data-active="true"]' ).forEach( ( item ) => {
 			item.removeAttribute( 'data-active' );
+			item.removeAttribute( 'data-active-grouped' );
 		} );
 
 		document.body.classList.remove( 'is-tile-active' );
@@ -433,6 +431,8 @@ function handleTileClick( item ) {
 				'data-active',
 				true
 			);
+
+			item.setAttribute( 'data-active-grouped', true );
 		}
 
 		document.body.classList.add( 'is-tile-active' );
@@ -451,11 +451,13 @@ function transferTileAttributes( oldItem, newItem ) {
 		}
 	} );
 	oldItem.removeAttribute( 'data-active' );
+	oldItem.removeAttribute( 'data-active-grouped' );
 }
 
 function moveTile( newItem ) {
 	let oldItem = document.querySelector( '#board td[data-active="true"]' );
 	let oldSecondItem;
+	let integer = 1;
 
 	if ( ! oldItem ) {
 		return;
@@ -465,10 +467,14 @@ function moveTile( newItem ) {
 		oldSecondItem = getGroupedTile( oldItem, oldItem.getAttribute( 'grouped' ) );
 	}
 
+	if ( oldSecondItem === document.querySelector( '#board td[data-active-grouped="true"]' ) ) {
+		integer = -1;
+	}
+
 	if ( oldSecondItem ) {
 		let vertical = document.querySelector(
 			'#row' +
-				( parseInt( newItem.parentElement.getAttribute( 'data-row' ) ) + 1 ) +
+				( parseInt( newItem.parentElement.getAttribute( 'data-row' ) ) + integer ) +
 				' td[data-column="' +
 				newItem.getAttribute( 'data-column' ) +
 				'"]'
@@ -477,7 +483,7 @@ function moveTile( newItem ) {
 			'#row' +
 				newItem.parentElement.getAttribute( 'data-row' ) +
 				' td[data-column="' +
-				( parseInt( newItem.getAttribute( 'data-column' ) ) + 1 ) +
+				( parseInt( newItem.getAttribute( 'data-column' ) ) + integer ) +
 				'"]'
 		);
 		let newSecondItem =
@@ -491,6 +497,17 @@ function moveTile( newItem ) {
 		if ( newSecondItem === oldItem ) {
 			transferTileAttributes( oldItem, newItem );
 			transferTileAttributes( oldSecondItem, oldItem );
+			checkBoard();
+			return;
+		}
+
+		if ( integer === -1 ) {
+			if ( newSecondItem.hasAttribute( 'data-letter' ) && newSecondItem !== oldSecondItem ) {
+				return;
+			}
+
+			transferTileAttributes( oldSecondItem, newItem );
+			transferTileAttributes( oldItem, newSecondItem );
 			checkBoard();
 			return;
 		}
@@ -667,11 +684,11 @@ function endMultiplayerGame() {
 		collectData( 'Multiplayer game: draw', 'word_bites_draw' );
 	} else if ( multiplayerData.score > score ) {
 		title = 'eheu! ' + multiplayerData.name + ' has won!';
-		collectData( 'Multiplayer game: ' + +multiplayerData.name + ' wins', 'word_bites_victory' );
+		collectData( 'Multiplayer game: ' + multiplayerData.name + ' wins', 'word_bites_victory' );
 	} else {
 		title = 'euge! You beat ' + multiplayerData.name + '!';
 		collectData(
-			'Multiplayer game: ' + +multiplayerData.name + "'s opponent wins",
+			'Multiplayer game: ' + multiplayerData.name + "'s opponent wins",
 			'word_bites_defeat'
 		);
 	}
@@ -904,7 +921,7 @@ function generateLink() {
 	};
 
 	collectData(
-		'Submitted board to server with data ' + data.toString(),
+		'Submitted board to server with data ' + JSON.stringify( data ),
 		'word_bites_submitted_board'
 	);
 
@@ -920,7 +937,7 @@ function generateLink() {
 	)
 		.then( ( response ) => {
 			if ( response.ok ) {
-				let link = 'https://latinvocabularytester.com/word-bites?game=' + result;
+				let link = 'https://latinvocabularytester.com/word-bites/?game=' + result;
 				input.value = link;
 				input.disabled = true;
 

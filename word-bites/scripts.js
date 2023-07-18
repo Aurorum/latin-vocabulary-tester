@@ -25,6 +25,15 @@ window.onload = function () {
 		generateBoard();
 	}
 
+	if ( new URLSearchParams( window.location.search ).get( 'ref' ) ) {
+		collectData(
+			'Loaded site with ref ' +
+				new URLSearchParams( window.location.search ).get( 'ref' ) +
+				' and data ' +
+				navigator.userAgent
+		);
+	}
+
 	document.getElementById( 'name' ).addEventListener( 'keyup', function ( event ) {
 		if ( event.keyCode === 13 ) {
 			event.preventDefault();

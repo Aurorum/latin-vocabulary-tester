@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="icon" href="../assets/favicon.png" type="image/png" />
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
+		<meta name="author" content="Aurorum" />
+		<meta
+			name="keywords"
+			content="Latin, Latin Scrabble, Latin word games, Latin games, Latin Vocabulary Tester"
+		/>
+		<meta
+			name="description"
+			content="Challenge opponents to a game of Latin Scrabble!"
+		/>
+		<meta property="og:title" content="Latin Scrabble" />
+		<meta property="og:type" content="website" />
+		<meta
+			property="og:description"
+			content="Challenge opponents to a game of Latin Scrabble!"
+		/>
+		<meta property="og:url" content="https://latinvocabularytester.com/scrabble" />
+		<meta
+			property="og:image"
+			content="https://latinvocabularytester.com/assets/scrabble-sample.png"
+		/>
+		<link rel="stylesheet" type="text/css" href="./style.css" />
+		<script type="text/javascript" src="./vocab-list.js"></script>
+		<script type="text/javascript" src="./scripts.js"></script>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Mono:wght@300;500&display=swap"
+			rel="stylesheet"
+		/>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-1QZXG1GX8M"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push( arguments );
+			}
+			gtag( 'js', new Date() );
+			gtag( 'config', 'G-1QZXG1GX8M' );
+		</script>
+	</head>
+
+	<body class="is-displaying-modal is-game-start" translate="no">
+		<div id="modal" class="modal-wrapper">
+			<div class="modal-content">
+				<img src="../assets/close.svg" class="close-icon" alt="Close" onclick="closeModal()" />
+
+				<div id="option-screen">
+					<h3>Select option</h3>
+					<div class="option-subtitle-wrapper">
+						<p class="option-subtitle">Select names:</p>
+						<p class="option-right-tagline">Game currently only supports two players</p>
+					</div>
+					<div id="setup-name-options" class="name-options">
+						<div class="name-wrapper">
+							<label id="p1namelabel" for="p1name">Enter Player 1's name</label>
+							<input maxlength="16" type="text" id="p1name" name="p1name" placeholder="Caecilius" />
+						</div>
+						<div class="name-wrapper player2-name-wrapper">
+							<label for="p2name">Enter Player 2's name</label>
+							<input maxlength="16" type="text" id="p2name" name="p2name" placeholder="Metella" />
+						</div>
+					</div>
+					<p class="device-option option-subtitle">One or two devices:</p>
+					<div class="list-options">
+						<button
+							onclick="changeGameOption('screen-option')"
+							id="screen-option"
+							class="list-option-button is-selected"
+						>
+							Play on this device
+						</button>
+						<button
+							onclick="changeGameOption('online-option')"
+							id="online-option"
+							class="list-option-button"
+						>
+							Play a friend online
+						</button>
+					</div>
+					<p id="option-tagline" class="option-subtext">
+						Challenge another opponent on the same device
+					</p>
+					<p class="start-button"><a onclick="startGame()">Start Latin Scrabble</a></p>
+				</div>
+
+				<div id="invite-screen">
+					<h3>Invite opponent</h3>
+					<p>Send the link below to your opponent for them to play against you</p>
+					<div class="input-wrapper">
+						<input disabled id="link-input" />
+
+						<button onclick="copyInviteLink()" id="invite-link-copy" class="copy-wrapper">
+							<p id="copy-label">Copy</p>
+						</button>
+					</div>
+				</div>
+
+				<div id="error-screen">
+					<h3>Sorry, there was an error</h3>
+					<p>Data could not be retrieved from our server.</p>
+					<p>
+						It's possible that there was a temporary error with our server. If the error persists,
+						your network might be blocking requests to it. This is especially likely if you are
+						using a shared network, such as in a school.
+					</p>
+					<p>You can still play an opponent on the same device as you.</p>
+					<p class="error-link">
+						<a href="https://latinvocabularytester.com/latin-scrabble">Play on one device</a>
+					</p>
+				</div>
+
+				<div id="multiplayer-name-screen">
+					<h3 id="multiplayer-name-title">Latin Scrabble</h3>
+					<div class="multiplayer-name-wrapper name-wrapper">
+						<p>Enter your name</p>
+						<input
+							maxlength="16"
+							type="text"
+							id="inputtedname"
+							name="inputtedname"
+							placeholder="Metella"
+						/>
+					</div>
+					<p class="start-button"><a onclick="startGameAsPlayerTwo()">Start Latin Scrabble</a></p>
+				</div>
+
+				<div id="inventory-screen">
+					<h3>Tile Bag</h3>
+
+					<div class="inventory-screen-wrapper">
+						<div class="inventory-inner-wrapper">
+							<p>A</p>
+							<p id="a-count">0</p>
+						</div>
+						<div class="inventory-inner-wrapper">
+							<p>B</p>
+							<p id="b-count">0</p>
+						</div>
+						<div class="inventory-inner-wrapper">
+							<p>C</p>
+							<p id="c-count">0</p>
+						</div>
+						<div class="inventory-inner-wrapper">
+							<p>D</p>
+							<p id="d-count">0</p>
+						</div>
+						<div class="inventory-inner-wrapper">
+							<p>E</p>
+							<p id="e-count">0</p>
+						</div>
+						<div class="inventory-inner-wrapper">
+							<p>F</p>
+							<p id="f-count">0</p>
+						</div>
+						<div class="inventory-inner-wrapper">
+							<p>G</p>
+							<p id="g-count">0</p>
+						</div>
+					</div>
+
+					<div class="inventory-screen-wrapper">
+						<div class="inventory-inner-wrapper">
+							<p>H</p>
+							<p id="h-count">0</p>
+						</div>
+						<div class="inventory-inner-wrapper">
+							<p>I</p>
+							<p id="i-count">0</p>
+						</div>
+						<div class="inventory-inner-wrapper">
+							<p>L</p>
+							<p id="l-count">0</p>
+						</div>
+						<div class="inventory-inner-wrapper">
+							<p>M</p>
+							<p id="m-count">0</p>
+						</div>
+						<div class="inventory-inner-wrapper">
+							<p>N</p>
+							<p id="n-count">0</p>
+						</div>
+						<div class="inventory-inner-wrapper">
+							<p>O</p>
+							<p id="o-count">0</p>
+						</div>
+						<div class="inventory-inner-wrapper">
+							<p>P</p>
+							<p id="p-count">0</p>
+						</div>
+					</div>
+
+					<div class="inventory-screen-wrapper">
+						<div class="inventory-inner-wrapper">
+							<p>Q</p>
+							<p id="q-count">0</p>
+						</div>
+						<div class="inventory-inner-wrapper">
+							<p>R</p>
+							<p id="r-count">0</p>
+						</div>
+						<div class="inventory-inner-wrapper">
+							<p>S</p>
+							<p id="s-count">0</p>
+						</div>
+						<div class="inventory-inner-wrapper">
+							<p>T</p>
+							<p id="t-count">0</p>
+						</div>
+						<div class="inventory-inner-wrapper">
+							<p>U</p>
+							<p id="u-count">0</p>
+						</div>
+						<div class="inventory-inner-wrapper">
+							<p>V</p>
+							<p id="v-count">0</p>
+						</div>
+						<div class="inventory-inner-wrapper">
+							<p>X</p>
+							<p id="x-count">0</p>
+						</div>
+						<div class="inventory-inner-wrapper">
+							<p>?</p>
+							<p id="?-count">0</p>
+						</div>
+					</div>
+					<p class="remaining-tile-count-wrapper">
+						<span id="remaining-tile-count">X</span> tiles left in the bag
+					</p>
+				</div>
+
+				<div id="game-over-screen">
+					<h3>Game over</h3>
+					<p id="winner-text">
+						<span id="winner-name">Player X</span> wins by
+						<span id="final-point-calculation">0</span> points!
+					</p>
+					<div class="laurel">
+						<img src="../assets/laurel.svg" alt="" />
+					</div>
+					<div class="end-scores-wrapper">
+						<div class="end-scores player-1">
+							<p id="end-name-player1">Player 1</p>
+							<p class="end-points" id="end-score-player1">0 points</p>
+							<p class="score-calculation" id="end-score-calc-player1"></p>
+						</div>
+						<div class="end-scores player-2">
+							<p id="end-name-player2">Player 2</p>
+							<p class="end-points" id="end-score-player2">0 points</p>
+							<p class="score-calculation" id="end-score-calc-player2"></p>
+						</div>
+					</div>
+					<div class="end-score-options">
+						<p><a onclick="closeModal()">View the board</a></p>
+						<p><a>Play again</a></p>
+					</div>
+				</div>
+
+				<div id="blank-tile-screen">
+					<h3>Select a tile</h3>
+
+					<div class="inventory-screen-wrapper">
+						<div class="inventory-inner-wrapper" onclick="handleBlankTile('a')">
+							<p>A</p>
+						</div>
+						<div class="inventory-inner-wrapper" onclick="handleBlankTile('b')">
+							<p>B</p>
+						</div>
+						<div class="inventory-inner-wrapper" onclick="handleBlankTile('c')">
+							<p>C</p>
+						</div>
+						<div class="inventory-inner-wrapper" onclick="handleBlankTile('d')">
+							<p>D</p>
+						</div>
+						<div class="inventory-inner-wrapper" onclick="handleBlankTile('e')">
+							<p>E</p>
+						</div>
+						<div class="inventory-inner-wrapper" onclick="handleBlankTile('f')">
+							<p>F</p>
+						</div>
+						<div class="inventory-inner-wrapper" onclick="handleBlankTile('g')">
+							<p>G</p>
+						</div>
+					</div>
+
+					<div class="inventory-screen-wrapper">
+						<div class="inventory-inner-wrapper" onclick="handleBlankTile('h')">
+							<p>H</p>
+						</div>
+						<div class="inventory-inner-wrapper" onclick="handleBlankTile('i')">
+							<p>I</p>
+						</div>
+						<div class="inventory-inner-wrapper" onclick="handleBlankTile('l')">
+							<p>L</p>
+						</div>
+						<div class="inventory-inner-wrapper" onclick="handleBlankTile('m')">
+							<p>M</p>
+						</div>
+						<div class="inventory-inner-wrapper" onclick="handleBlankTile('n')">
+							<p>N</p>
+						</div>
+						<div class="inventory-inner-wrapper" onclick="handleBlankTile('o')">
+							<p>O</p>
+						</div>
+						<div class="inventory-inner-wrapper" onclick="handleBlankTile('p')">
+							<p>P</p>
+						</div>
+					</div>
+
+					<div class="inventory-screen-wrapper">
+						<div class="inventory-inner-wrapper" onclick="handleBlankTile('q')">
+							<p>Q</p>
+						</div>
+						<div class="inventory-inner-wrapper" onclick="handleBlankTile('r')">
+							<p>R</p>
+						</div>
+						<div class="inventory-inner-wrapper" onclick="handleBlankTile('s')">
+							<p>S</p>
+						</div>
+						<div class="inventory-inner-wrapper" onclick="handleBlankTile('t')">
+							<p>T</p>
+						</div>
+						<div class="inventory-inner-wrapper" onclick="handleBlankTile('u')">
+							<p>U</p>
+						</div>
+						<div class="inventory-inner-wrapper" onclick="handleBlankTile('v')">
+							<p>V</p>
+						</div>
+						<div class="inventory-inner-wrapper" onclick="handleBlankTile('x')">
+							<p>X</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="game-wrapper">
+			<div class="left-column">
+				<div class="card current-player">
+					<p class="card-title">Current Turn</p>
+					<p id="player-turn">Setting up game</p>
+				</div>
+
+				<div id="player-details" class="player-details-wrapper card">
+					<p class="card-title">Players</p>
+					<div class="player-details player-one">
+						<p class="player-name" id="player1-name">Player 1</p>
+						<p class="points-count">Points: <span id="score1">0</span></p>
+					</div>
+					<div class="player-details player-two">
+						<p class="player-name" id="player2-name">Player 2</p>
+						<p class="points-count">Points: <span id="score2">0</span></p>
+					</div>
+					<p class="invite-link">
+						<a id="second-copy-label" onclick="copyInviteLink()">Copy invite link</a>
+					</p>
+				</div>
+
+				<div id="turn-history" class="card turn-history is-zero-turn is-first-turn no-other-turns">
+					<p class="card-title">Turn History</p>
+					<p id="turn-history-count" class="turn-history-name">Turn #1</p>
+					<p class="turn-history-details">
+						<span id="turn-history-name">X</span> ·
+						<span id="turn-history-word-count">0 words</span> ·
+						<span id="turn-history-score">0 points</span> ·
+						<span id="turn-history-time">00:00am</span>
+					</p>
+					<p class="turn-history-details-initial">Waiting for first turn...</p>
+
+					<ul class="turn-history-list" id="turn-history-words"></ul>
+
+					<div class="option-arrows">
+						<a onclick="buildTurnHistory('previous')" class="left-option-button option-button"
+							><svg viewBox="0 0 24 24" class="arrow-gridicon">
+								<g><path d="M14 20l-8-8 8-8 1.414 1.414L8.828 12l6.586 6.586"></path></g></svg
+						></a>
+						<a onclick="buildTurnHistory('next')" class="right-option-button option-button"
+							><svg viewBox="0 0 24 24" class="arrow-gridicon">
+								<g><path d="M10 20l8-8-8-8-1.414 1.414L15.172 12l-6.586 6.586"></path></g></svg
+						></a>
+					</div>
+				</div>
+
+				<div class="card">
+					<p class="card-title">Tile Bag</p>
+					<a onclick="displayTileBag()" class="tile-bag">
+						<div class="tile-bag-wrapper">
+							<span id="remaining-tile-count-icon">86</span>
+							<img src="../assets/sack.png" alt="View tile bag" />
+						</div>
+					</a>
+				</div>
+			</div>
+
+			<div class="right-column">
+				<div class="inventory-wrapper">
+					<div class="points-wrapper">
+						<p id="turn-score">0</p>
+						<p class="points-label">Points</p>
+					</div>
+
+					<table id="inventory" class="inventory">
+						<tr id="inventory-row">
+							<td onclick="handleInventoryClick(this)" data-tile="1"></td>
+							<td onclick="handleInventoryClick(this)" data-tile="2"></td>
+							<td onclick="handleInventoryClick(this)" data-tile="3"></td>
+							<td onclick="handleInventoryClick(this)" data-tile="4"></td>
+							<td onclick="handleInventoryClick(this)" data-tile="5"></td>
+							<td onclick="handleInventoryClick(this)" data-tile="6"></td>
+							<td onclick="handleInventoryClick(this)" data-tile="7"></td>
+						</tr>
+					</table>
+
+					<h1 class="game-title">Scrabble</h1>
+				</div>
+
+				<div id="invalid-word" class="invalid-word-wrapper">
+					<p id="invalid-word-list">Invalid word</p>
+				</div>
+
+				<div id="inventory-actions" class="buttons-wrapper">
+					<button
+						id="skip-button"
+						class="inventory-button skip-button"
+						onclick="submitTurn(true, true)"
+					>
+						Pass
+					</button>
+					<div class="main-buttons-wrapper">
+						<button
+							id="swap-button"
+							class="inventory-button main-swap-button"
+							onclick="swapTiles()"
+						>
+							Swap
+						</button>
+						<button class="inventory-button cancel-swap-button" onclick="cancelTileSwap()">
+							Cancel
+						</button>
+						<button
+							id="swap-confirm-button"
+							class="inventory-button swap-confirm-button is-invalid"
+							onclick="swapTiles()"
+						>
+							Swap
+						</button>
+						<button
+							id="confirm-button"
+							class="inventory-button confirm-button is-invalid"
+							onclick="playTurn()"
+						>
+							Play
+						</button>
+						<button class="inventory-button shuffle-button" onclick="shuffleTiles()">
+							Shuffle
+						</button>
+					</div>
+				</div>
+
+				<div class="wrapper">
+					<div class="board-wrapper">
+						<table id="board">
+							<tr id="row1" data-row="1">
+								<td onclick="handleTileClick(this)" data-column="1" class="w3"></td>
+								<td onclick="handleTileClick(this)" data-column="2"></td>
+								<td onclick="handleTileClick(this)" data-column="3"></td>
+								<td onclick="handleTileClick(this)" data-column="4" class="l2"></td>
+								<td onclick="handleTileClick(this)" data-column="5"></td>
+								<td onclick="handleTileClick(this)" data-column="6"></td>
+								<td onclick="handleTileClick(this)" data-column="7"></td>
+								<td onclick="handleTileClick(this)" data-column="8" class="w3"></td>
+								<td onclick="handleTileClick(this)" data-column="9"></td>
+								<td onclick="handleTileClick(this)" data-column="10"></td>
+								<td onclick="handleTileClick(this)" data-column="11"></td>
+								<td onclick="handleTileClick(this)" data-column="12" class="l2"></td>
+								<td onclick="handleTileClick(this)" data-column="13"></td>
+								<td onclick="handleTileClick(this)" data-column="14"></td>
+								<td onclick="handleTileClick(this)" data-column="15" class="w3"></td>
+							</tr>
+							<tr id="row2" data-row="2">
+								<td onclick="handleTileClick(this)" class="" data-column="1"></td>
+								<td onclick="handleTileClick(this)" class="w2" data-column="2"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="3"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="4"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="5"></td>
+								<td onclick="handleTileClick(this)" class="l3" data-column="6"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="7"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="8"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="9"></td>
+								<td onclick="handleTileClick(this)" class="l3" data-column="10"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="11"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="12"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="13"></td>
+								<td onclick="handleTileClick(this)" class="w2" data-column="14"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="15"></td>
+							</tr>
+							<tr id="row3" data-row="3">
+								<td onclick="handleTileClick(this)" class="" data-column="1"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="2"></td>
+								<td onclick="handleTileClick(this)" class="w2" data-column="3"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="4"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="5"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="6"></td>
+								<td onclick="handleTileClick(this)" class="l2" data-column="7"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="8"></td>
+								<td onclick="handleTileClick(this)" class="l2" data-column="9"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="10"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="11"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="12"></td>
+								<td onclick="handleTileClick(this)" class="w2" data-column="13"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="14"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="15"></td>
+							</tr>
+							<tr id="row4" data-row="4">
+								<td onclick="handleTileClick(this)" class="l2" data-column="1"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="2"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="3"></td>
+								<td onclick="handleTileClick(this)" class="w2" data-column="4"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="5"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="6"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="7"></td>
+								<td onclick="handleTileClick(this)" class="l2" data-column="8"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="9"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="10"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="11"></td>
+								<td onclick="handleTileClick(this)" class="w2" data-column="12"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="13"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="14"></td>
+								<td onclick="handleTileClick(this)" class="l2" data-column="15"></td>
+							</tr>
+							<tr id="row5" data-row="5">
+								<td onclick="handleTileClick(this)" class="" data-column="1"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="2"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="3"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="4"></td>
+								<td onclick="handleTileClick(this)" class="w2" data-column="5"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="6"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="7"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="8"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="9"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="10"></td>
+								<td onclick="handleTileClick(this)" class="w2" data-column="11"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="12"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="13"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="14"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="15"></td>
+							</tr>
+							<tr id="row6" data-row="6">
+								<td onclick="handleTileClick(this)" class="" data-column="1"></td>
+								<td onclick="handleTileClick(this)" class="l3" data-column="2"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="3"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="4"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="5"></td>
+								<td onclick="handleTileClick(this)" class="l3" data-column="6"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="7"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="8"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="9"></td>
+								<td onclick="handleTileClick(this)" class="l3" data-column="10"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="11"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="12"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="13"></td>
+								<td onclick="handleTileClick(this)" class="l3" data-column="14"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="15"></td>
+							</tr>
+							<tr id="row7" data-row="7">
+								<td onclick="handleTileClick(this)" class="" data-column="1"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="2"></td>
+								<td onclick="handleTileClick(this)" class="l2" data-column="3"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="4"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="5"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="6"></td>
+								<td onclick="handleTileClick(this)" class="l2" data-column="7"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="8"></td>
+								<td onclick="handleTileClick(this)" class="l2" data-column="9"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="10"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="11"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="12"></td>
+								<td onclick="handleTileClick(this)" class="l2" data-column="13"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="14"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="15"></td>
+							</tr>
+							<tr id="row8" data-row="8">
+								<td onclick="handleTileClick(this)" class="w3" data-column="1"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="2"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="3"></td>
+								<td onclick="handleTileClick(this)" class="l2" data-column="4"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="5"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="6"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="7"></td>
+								<td onclick="handleTileClick(this)" class="star" data-column="8"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="9"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="10"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="11"></td>
+								<td onclick="handleTileClick(this)" class="l2" data-column="12"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="13"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="14"></td>
+								<td onclick="handleTileClick(this)" class="w3" data-column="15"></td>
+							</tr>
+							<tr id="row9" data-row="9">
+								<td onclick="handleTileClick(this)" class="" data-column="1"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="2"></td>
+								<td onclick="handleTileClick(this)" class="l2" data-column="3"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="4"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="5"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="6"></td>
+								<td onclick="handleTileClick(this)" class="l2" data-column="7"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="8"></td>
+								<td onclick="handleTileClick(this)" class="l2" data-column="9"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="10"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="11"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="12"></td>
+								<td onclick="handleTileClick(this)" class="l2" data-column="13"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="14"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="15"></td>
+							</tr>
+							<tr id="row10" data-row="10">
+								<td onclick="handleTileClick(this)" class="" data-column="1"></td>
+								<td onclick="handleTileClick(this)" class="l3" data-column="2"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="3"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="4"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="5"></td>
+								<td onclick="handleTileClick(this)" class="l3" data-column="6"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="7"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="8"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="9"></td>
+								<td onclick="handleTileClick(this)" class="l3" data-column="10"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="11"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="12"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="13"></td>
+								<td onclick="handleTileClick(this)" class="l3" data-column="14"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="15"></td>
+							</tr>
+							<tr id="row11" data-row="11">
+								<td onclick="handleTileClick(this)" class="" data-column="1"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="2"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="3"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="4"></td>
+								<td onclick="handleTileClick(this)" class="w2" data-column="5"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="6"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="7"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="8"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="9"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="10"></td>
+								<td onclick="handleTileClick(this)" class="w2" data-column="11"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="12"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="13"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="14"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="15"></td>
+							</tr>
+							<tr id="row12" data-row="12">
+								<td onclick="handleTileClick(this)" class="l2" data-column="1"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="2"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="3"></td>
+								<td onclick="handleTileClick(this)" class="w2" data-column="4"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="5"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="6"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="7"></td>
+								<td onclick="handleTileClick(this)" class="l2" data-column="8"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="9"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="10"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="11"></td>
+								<td onclick="handleTileClick(this)" class="w2" data-column="12"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="13"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="14"></td>
+								<td onclick="handleTileClick(this)" class="l2" data-column="15"></td>
+							</tr>
+							<tr id="row13" data-row="13">
+								<td onclick="handleTileClick(this)" class="" data-column="1"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="2"></td>
+								<td onclick="handleTileClick(this)" class="w2" data-column="3"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="4"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="5"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="6"></td>
+								<td onclick="handleTileClick(this)" class="l2" data-column="7"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="8"></td>
+								<td onclick="handleTileClick(this)" class="l2" data-column="9"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="10"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="11"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="12"></td>
+								<td onclick="handleTileClick(this)" class="w2" data-column="13"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="14"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="15"></td>
+							</tr>
+							<tr id="row14" data-row="14">
+								<td onclick="handleTileClick(this)" class="" data-column="1"></td>
+								<td onclick="handleTileClick(this)" class="w2" data-column="2"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="3"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="4"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="5"></td>
+								<td onclick="handleTileClick(this)" class="l3" data-column="6"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="7"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="8"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="9"></td>
+								<td onclick="handleTileClick(this)" class="l3" data-column="10"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="11"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="12"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="13"></td>
+								<td onclick="handleTileClick(this)" class="w2" data-column="14"></td>
+								<td onclick="handleTileClick(this)" class="" data-column="15"></td>
+							</tr>
+							<tr id="row15" data-row="15">
+								<td onclick="handleTileClick(this)" data-column="1" class="w3"></td>
+								<td onclick="handleTileClick(this)" data-column="2"></td>
+								<td onclick="handleTileClick(this)" data-column="3"></td>
+								<td onclick="handleTileClick(this)" data-column="4" class="l2"></td>
+								<td onclick="handleTileClick(this)" data-column="5"></td>
+								<td onclick="handleTileClick(this)" data-column="6"></td>
+								<td onclick="handleTileClick(this)" data-column="7"></td>
+								<td onclick="handleTileClick(this)" data-column="8" class="w3"></td>
+								<td onclick="handleTileClick(this)" data-column="9"></td>
+								<td onclick="handleTileClick(this)" data-column="10"></td>
+								<td onclick="handleTileClick(this)" data-column="11"></td>
+								<td onclick="handleTileClick(this)" data-column="12" class="l2"></td>
+								<td onclick="handleTileClick(this)" data-column="13"></td>
+								<td onclick="handleTileClick(this)" data-column="14"></td>
+								<td onclick="handleTileClick(this)" data-column="15" class="w3"></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

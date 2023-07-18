@@ -648,6 +648,8 @@ function submitTurn( isSkip = false, isPass = false, tilesSwapped = 0, multiplay
 		document.body.classList.add( currentTurnPlayer + '-turn' );
 		document.getElementById( 'confirm-button' ).classList.add( 'is-invalid' );
 
+		turnEstimatedScore = 0;
+
 		if ( player1FinalPass === 'final' && player2FinalPass === 'final' ) {
 			endGame( multiplayer );
 		}

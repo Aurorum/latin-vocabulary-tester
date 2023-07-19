@@ -288,6 +288,10 @@ body {
 	margin: 0;
 }
 
+#challenge-friend-screen span {
+	text-decoration: underline;
+}
+
 .start-game-button.option-wrapper {
 	display: flex;
 	margin: auto;
@@ -692,7 +696,7 @@ table td[data-active][data-letter]:before {
 
 .player-inner-details {
 	margin: 6px 12px;
-	width: 185px;
+	width: 200px;
 	text-align: center;
 }
 

@@ -59,6 +59,14 @@ function generateBoardFromId() {
 			}
 		} )
 		.then( ( response ) => {
+			if ( response === 404 ) {
+				document.getElementById( 'error-explanation' ).innerHTML =
+					"<p>Your friend's score and tiles couldn't be found in our database. There is likely a typo in the link which you've used.</p>";
+				document.body.classList.remove( 'is-welcome' );
+				document.body.classList.add( 'is-error' );
+				collectData( 'Game not found', 'word_bites_game_not_found' );
+				return;
+			}
 			let data = JSON.parse( response );
 			multiplayerData = data;
 
@@ -639,7 +647,11 @@ function animateValue( obj, start, end, duration ) {
 	const step = ( timestamp ) => {
 		if ( ! startTimestamp ) startTimestamp = timestamp;
 		const progress = Math.min( ( timestamp - startTimestamp ) / duration, 1 );
-		obj.innerHTML = Math.floor( progress * ( end - start ) + start );
+		const value = Math.floor( progress * ( end - start ) + start );
+
+		const formattedValue = value >= 10000 ? value.toLocaleString() : value;
+		obj.innerHTML = formattedValue;
+
 		if ( progress < 1 ) {
 			window.requestAnimationFrame( step );
 		}
@@ -648,6 +660,7 @@ function animateValue( obj, start, end, duration ) {
 }
 
 function isWordValid( word ) {
+	collectData( 'Checked valid word for ' + word, 'word_bites_valid_word_check' );
 	return validGuesses.includes( word );
 }
 
@@ -675,7 +688,8 @@ function endGame() {
 		endMultiplayerGame();
 	}
 
-	document.getElementById( 'final-score' ).innerHTML = score;
+	document.getElementById( 'final-score' ).innerHTML =
+		score >= 10000 ? score.toLocaleString() : score;
 	document.getElementById( 'final-word-count' ).innerHTML = validWords.length;
 	document.getElementById( 'all-word-count' ).innerHTML = solvedGrid.length;
 
@@ -707,8 +721,10 @@ function endMultiplayerGame() {
 	document.getElementById( 'challenger-count' ).innerHTML = validWords.length;
 	document.getElementById( 'opponent-count' ).innerHTML = multiplayerData.foundWords.length;
 	document.getElementById( 'opponent-name' ).innerHTML = multiplayerData.name;
-	document.getElementById( 'challenger-score' ).innerHTML = score;
-	document.getElementById( 'opponent-points' ).innerHTML = multiplayerData.score;
+	document.getElementById( 'challenger-score' ).innerHTML =
+		score >= 10000 ? score.toLocaleString() : score;
+	document.getElementById( 'opponent-points' ).innerHTML =
+		multiplayerData.score >= 10000 ? multiplayerData.score.toLocaleString() : multiplayerData.score;
 	document.getElementById( 'opponent-name-list' ).innerHTML = multiplayerData.name + "'s words";
 
 	if ( multiplayerData.score === score ) {
@@ -923,7 +939,7 @@ function generateLink() {
 
 	let data = {
 		id: result,
-		name: input.value,
+		name: input.value.trim(),
 		score,
 		grid,
 		foundWords: validWords,

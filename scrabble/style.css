@@ -659,6 +659,7 @@ table td[data-active] {
 }
 
 .is-game-over .buttons-wrapper,
+.is-spectator .buttons-wrapper,
 .player2-turn.is-player1.is-multiplayer-game .buttons-wrapper,
 .player1-turn.is-player2.is-multiplayer-game .buttons-wrapper {
 	visibility: hidden;
@@ -765,13 +766,36 @@ table td[data-active] {
 	color: #b7266a;
 }
 
+.player1-turn .player-details.player-one .last-seen {
+	color: #992053;
+}
+
 .player2-turn .player-details.player-two {
 	color: #144b9b;
+}
+
+.player2-turn .player-details.player-two .last-seen {
+	color: #183780;
 }
 
 .points-count {
 	font-size: 0.9em;
 	margin-top: 0;
+}
+
+.last-seen {
+	font-size: 0.7em;
+	color: #50575e;
+	display: none;
+	margin-top: 8px;
+}
+
+.is-multiplayer-game .last-seen {
+	display: block;
+}
+
+.is-multiplayer-game .points-count {
+	margin-bottom: 4px;
 }
 
 .player-details.player-two {
@@ -1231,6 +1255,17 @@ p.option-right-tagline {
 	text-decoration: underline;
 }
 
+.enter-name-prompt {
+	color: #b32d2e;
+	display: none;
+	font-size: 12px;
+	margin-top: 18px;
+}
+
+.enter-name-prompt.is-active {
+	display: block;
+}
+
 @media only screen and ( max-width: 1000px ) {
 	.game-wrapper {
 		flex-wrap: wrap;
@@ -1330,6 +1365,10 @@ p.option-right-tagline {
 
 	.card p {
 		font-size: 0.8em;
+	}
+
+	.buttons-wrapper .inventory-button {
+		margin-right: 2px;
 	}
 
 	.inventory-inner-wrapper p:first-of-type {

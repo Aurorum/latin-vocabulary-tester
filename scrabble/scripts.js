@@ -188,6 +188,7 @@ function assignInventory( player, display ) {
 		player2Inventory = mockInventory;
 	}
 
+	document.getElementById( 'inventory-row' ).setAttribute( 'data-player', player );
 	document.getElementById( 'remaining-tile-count-icon' ).innerHTML = gameInventory.length;
 
 	// Display inventory in tiles.
@@ -212,6 +213,22 @@ function handleInventoryClick( tile ) {
 
 		return;
 	}
+
+	if ( document.querySelector( '#inventory td.is-active' ) ) {
+		let oldLetter = document
+			.querySelector( '#inventory td.is-active' )
+			.getAttribute( 'data-letter' );
+		lockedTile.setAttribute( 'data-letter', tile.getAttribute( 'data-letter' ) );
+		tile.setAttribute( 'data-letter', oldLetter );
+		lockedTile = null;
+		document.getElementById( 'board' ).classList.remove( 'is-placing-tile' );
+
+		document.querySelector( '#inventory td.is-active' ).classList.remove( 'is-active' );
+		collectData( 'Rearranged tile', 'scrabble_rearranged_tile' );
+
+		return;
+	}
+
 	resetInventory();
 	lockedTile = tile;
 	tile.classList.add( 'is-active' );
@@ -359,6 +376,7 @@ function handleTileClick( tile, isBlankTile = false ) {
 		tile.removeAttribute( 'data-letter' );
 		tile.removeAttribute( 'data-active' );
 		tile.classList.remove( 'blank-tile' );
+		document.getElementById( 'invalid-word' ).classList.remove( 'is-visible' );
 		updateScore();
 
 		if ( ! checkInvalidTileConnections() ) {
@@ -647,8 +665,12 @@ function submitTurn( isSkip = false, isPass = false, tilesSwapped = 0, multiplay
 
 		document.body.classList.add( currentTurnPlayer + '-turn' );
 		document.getElementById( 'confirm-button' ).classList.add( 'is-invalid' );
-
 		turnEstimatedScore = 0;
+
+		if ( isMultiplayerGame ) {
+			document.title = 'Latin Scrabble';
+			pollOnlineStatus();
+		}
 
 		if ( player1FinalPass === 'final' && player2FinalPass === 'final' ) {
 			endGame( multiplayer );
@@ -1166,6 +1188,16 @@ function fetchData( id ) {
 			}
 		} )
 		.then( ( response ) => {
+			if ( response === 404 ) {
+				document.body.classList.add( 'is-error-screen' );
+				document.body.classList.remove( 'is-game-start' );
+				document.getElementById( 'error-explanation' ).innerHTML =
+					"<p>This game couldn't be found in our database. Please check the link you've used for typos or alternatively create a new game.</p>";
+				collectData( 'Game not found', 'scrabble_game_not_found' );
+				return;
+			}
+
+			collectData( 'Fetched data for ' + id, 'scrabble_fetch_data' );
 			buildGameWithData( JSON.parse( response ) );
 
 			let receivedPlayerId = new URLSearchParams( window.location.search )
@@ -1178,6 +1210,7 @@ function fetchData( id ) {
 			if ( receivedPlayerId === player1MultiplayerId ) {
 				document.getElementById( 'player1-name' ).innerHTML = player1Name + ' (You)';
 				document.body.classList.add( 'is-player1' );
+				document.getElementById( 'last-seen-player1' ).innerHTML = 'Online';
 				assignInventory( 'player1', true );
 			}
 
@@ -1189,6 +1222,15 @@ function fetchData( id ) {
 				document.getElementById( 'multiplayer-name-title' ).innerHTML =
 					player1Name + ' challenges you to Latin Scrabble';
 				collectData( 'Player 2 opened challenge', 'scrabble_player_two_opens' );
+				document.getElementById( 'last-seen-player2' ).innerHTML = 'Online';
+			}
+
+			if (
+				receivedPlayerId !== player1MultiplayerId &&
+				receivedPlayerId !== player2MultiplayerId
+			) {
+				document.body.classList.add( 'is-spectator' );
+				collectData( 'Spectator opened game', 'scrabble_spectator_opened' );
 			}
 
 			document.body.classList.add( 'is-multiplayer-game' );
@@ -1201,9 +1243,13 @@ function fetchData( id ) {
 				document.body.classList.remove( 'is-multiplayer-name-selection' );
 			}
 
+			pollOnlineStatus();
 			setInterval( function () {
 				pollData( multiplayerId );
 			}, 1000 );
+			setInterval( function () {
+				pollOnlineStatus();
+			}, 30000 );
 		} )
 		.catch( ( error ) => {
 			handleMultiplayerError();
@@ -1220,6 +1266,7 @@ function canUseMultiplayerCheck() {
 		} )
 		.catch( ( error ) => {
 			handleMultiplayerError();
+			collectData( error );
 			return;
 		} );
 
@@ -1238,6 +1285,7 @@ function canUseMultiplayerCheck() {
 		} )
 		.catch( ( e ) => {
 			handleMultiplayerError();
+			collectData( e );
 			return;
 		} );
 
@@ -1256,6 +1304,70 @@ function handleMultiplayerError() {
 	}
 }
 
+function pollOnlineStatus() {
+	if ( ceasePolling ) {
+		return;
+	}
+
+	let selfId = null;
+	let opponentId = null;
+	if ( document.body.classList.contains( 'is-player1' ) ) {
+		selfId = player1MultiplayerId;
+		opponentId = player2MultiplayerId;
+	}
+
+	if ( document.body.classList.contains( 'is-player2' ) ) {
+		selfId = player2MultiplayerId;
+		opponentId = player1MultiplayerId;
+	}
+
+	if ( ! selfId ) {
+		return;
+	}
+
+	fetch(
+		'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/scrabble-online?game=' +
+			multiplayerId +
+			'&self=' +
+			selfId +
+			'&opponent=' +
+			opponentId +
+			'&unix=' +
+			Date.now()
+	)
+		.then( ( response ) => {
+			if ( response.ok ) {
+				return response.json();
+			}
+		} )
+		.then( ( response ) => {
+			if ( response === 404 ) {
+				return;
+			}
+
+			let difference = Date.now() - parseInt( response );
+			let text = 'Online';
+
+			if ( difference > 90000 ) {
+				text = 'Last seen: ' + formatTime( difference ) + ' ago';
+			}
+
+			if ( selfId === player1MultiplayerId ) {
+				document.getElementById( 'last-seen-player2' ).innerHTML = text;
+			}
+
+			if ( selfId === player2MultiplayerId ) {
+				document.getElementById( 'last-seen-player1' ).innerHTML = text;
+			}
+
+			collectData( 'Player last seen returned: ' + text, 'scrabble_last_seen' );
+		} )
+		.catch( ( error ) => {
+			handleMultiplayerError();
+			collectData( error );
+		} );
+}
+
 function pollData( id ) {
 	if ( ceasePolling ) {
 		return;
@@ -1272,7 +1384,6 @@ function pollData( id ) {
 		.then( ( response ) => {
 			if ( response.ok ) {
 				return response.json();
-			} else {
 			}
 		} )
 		.then( ( response ) => {
@@ -1297,6 +1408,16 @@ function pollData( id ) {
 				document.body.classList.add( 'is-player2' );
 			}
 
+			let isYourTurn =
+				( currentTurnPlayer === 'player1' && document.body.classList.contains( 'is-player1' ) ) ||
+				( currentTurnPlayer === 'player2' && document.body.classList.contains( 'is-player2' ) );
+
+			if ( isYourTurn ) {
+				document.title = 'Your turn - Latin Scrabble';
+			} else {
+				document.title = 'Latin Scrabble';
+			}
+
 			if ( ! hasName ) {
 				document.getElementById( 'player2-name' ).innerHTML = player2Name;
 
@@ -1307,9 +1428,25 @@ function pollData( id ) {
 				document.body.classList.remove( 'is-invite-screen' );
 				document.body.classList.remove( 'is-displaying-modal' );
 			}
+
+			let inventory = document.getElementById( 'inventory-row' );
+			if (
+				inventory.getAttribute( 'data-player' ) === 'player1' &&
+				document.body.classList.contains( 'is-player2' )
+			) {
+				assignInventory( 'player2', true );
+			}
+
+			if (
+				inventory.getAttribute( 'data-player' ) === 'player2' &&
+				document.body.classList.contains( 'is-player1' )
+			) {
+				assignInventory( 'player1', true );
+			}
 		} )
 		.catch( ( error ) => {
 			handleMultiplayerError();
+			collectData( error );
 		} );
 }
 
@@ -1325,6 +1462,28 @@ function collectData( content, analyticsID ) {
 	);
 	request.setRequestHeader( 'Content-type', 'text/plain' );
 	request.send( content + ' with ID of ' + userId );
+}
+
+function formatTime( milliseconds ) {
+	let minutes = Math.floor( milliseconds / 60000 );
+
+	if ( minutes < 60 ) {
+		return minutes + ' minutes';
+	} else if ( minutes < 1440 ) {
+		let hours = Math.floor( minutes / 60 );
+		if ( hours === 1 ) {
+			return '1 hour';
+		} else {
+			return hours + ' hours';
+		}
+	} else {
+		let days = Math.floor( minutes / 1440 );
+		if ( days === 1 ) {
+			return '1 day';
+		} else {
+			return days + ' days';
+		}
+	}
 }
 
 function changeGameOption( chosenOption ) {
@@ -1380,10 +1539,17 @@ function startGame() {
 		document.body.classList.add( 'is-multiplayer-game' );
 		document.body.classList.add( 'is-invite-screen' );
 		sendData( generateGameData(), multiplayerId );
+		document.body.classList.add( 'player1-turn' );
+		document.getElementById( 'last-seen-player1' ).innerHTML = 'Online';
+		pollOnlineStatus();
 		collectData( 'Started multiplayer game', 'scrabble_started_multiplayer_game' );
 		setInterval( function () {
 			pollData( multiplayerId );
 		}, 1000 );
+
+		setInterval( function () {
+			pollOnlineStatus();
+		}, 30000 );
 		return;
 	}
 
@@ -1405,11 +1571,18 @@ function copyInviteLink() {
 
 function startGameAsPlayerTwo() {
 	player2Name = document.getElementById( 'inputtedname' ).value.trim();
+
+	if ( ! player2Name ) {
+		document.getElementById( 'error-name' ).classList.add( 'is-active' );
+		return;
+	}
+
+	document.getElementById( 'error-name' ).classList.remove( 'is-active' );
 	sendData( generateGameData(), multiplayerId );
 
 	document.getElementById( 'player2-name' ).innerHTML = player2Name + ' (You)';
 
-	if ( ( document.getElementById( 'player-turn' ).innerHTML = "Player 2's turn" ) ) {
+	if ( document.getElementById( 'player-turn' ).innerHTML === "Player 2's turn" ) {
 		document.getElementById( 'player-turn' ).innerHTML = player2Name + "'s turn";
 	}
 

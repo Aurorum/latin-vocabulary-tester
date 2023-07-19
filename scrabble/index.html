@@ -13,16 +13,10 @@
 			name="keywords"
 			content="Latin, Latin Scrabble, Latin word games, Latin games, Latin Vocabulary Tester"
 		/>
-		<meta
-			name="description"
-			content="Challenge opponents to a game of Latin Scrabble!"
-		/>
+		<meta name="description" content="Challenge opponents to a game of Latin Scrabble!" />
 		<meta property="og:title" content="Latin Scrabble" />
 		<meta property="og:type" content="website" />
-		<meta
-			property="og:description"
-			content="Challenge opponents to a game of Latin Scrabble!"
-		/>
+		<meta property="og:description" content="Challenge opponents to a game of Latin Scrabble!" />
 		<meta property="og:url" content="https://latinvocabularytester.com/scrabble" />
 		<meta
 			property="og:image"
@@ -104,12 +98,14 @@
 
 				<div id="error-screen">
 					<h3>Sorry, there was an error</h3>
-					<p>Data could not be retrieved from our server.</p>
-					<p>
-						It's possible that there was a temporary error with our server. If the error persists,
-						your network might be blocking requests to it. This is especially likely if you are
-						using a shared network, such as in a school.
-					</p>
+					<div id="error-explanation">
+						<p>Data could not be retrieved from our server.</p>
+						<p>
+							It's possible that there was a temporary error with our server. If the error persists,
+							your network might be blocking requests to it. This is especially likely if you are
+							using a shared network, such as in a school.
+						</p>
+					</div>
 					<p>You can still play an opponent on the same device as you.</p>
 					<p class="error-link">
 						<a href="https://latinvocabularytester.com/latin-scrabble">Play on one device</a>
@@ -128,6 +124,10 @@
 							placeholder="Metella"
 						/>
 					</div>
+					<p id="error-name" class="enter-name-prompt">
+						Error: name not included. This is only used to distinguish you from your opponent -
+						that's all!
+					</p>
 					<p class="start-button"><a onclick="startGameAsPlayerTwo()">Start Latin Scrabble</a></p>
 				</div>
 
@@ -352,10 +352,12 @@
 					<div class="player-details player-one">
 						<p class="player-name" id="player1-name">Player 1</p>
 						<p class="points-count">Points: <span id="score1">0</span></p>
+						<p id="last-seen-player1" class="last-seen">Waiting...</p>
 					</div>
 					<div class="player-details player-two">
 						<p class="player-name" id="player2-name">Player 2</p>
 						<p class="points-count">Points: <span id="score2">0</span></p>
+						<p id="last-seen-player2" class="last-seen">Waiting...</p>
 					</div>
 					<p class="invite-link">
 						<a id="second-copy-label" onclick="copyInviteLink()">Copy invite link</a>

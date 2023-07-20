@@ -168,10 +168,13 @@ function assignInventory( player, display ) {
 			mockInventory.push( gameInventory[ randomTile ] );
 			gameInventory.splice( randomTile, 1 );
 		} else {
-			// Out of game inventory tiles.
-			outOfTiles = true;
 			break;
 		}
+	}
+
+	// Start a little early to allow "Final turn" message.
+	if ( gameInventory.length < 5 ) {
+		outOfTiles = true;
 	}
 
 	if ( gameInventory.length < 7 ) {
@@ -586,24 +589,22 @@ function submitTurn( isSkip = false, isPass = false, tilesSwapped = 0, multiplay
 		buildTurnHistory();
 
 		document.querySelectorAll( 'td[data-letter][data-active]' ).forEach( ( tile ) => {
-			tile.removeAttribute( 'class' );
-			tile.classList.add( 'colour-' + currentTurnPlayer.replace( 'player', '' ) );
 			tile.removeAttribute( 'data-active' );
 			tile.setAttribute( 'data-locked', true );
+			let tileLetter = tile.classList.contains( 'blank-tile' )
+				? '?'
+				: tile.getAttribute( 'data-letter' );
 
 			if ( currentTurnPlayer === 'player1' ) {
-				player1Inventory.splice(
-					player1Inventory.indexOf( tile.getAttribute( 'data-letter' ) ),
-					1
-				);
+				player1Inventory.splice( player1Inventory.indexOf( tileLetter ), 1 );
 			}
 
 			if ( currentTurnPlayer === 'player2' ) {
-				player2Inventory.splice(
-					player2Inventory.indexOf( tile.getAttribute( 'data-letter' ) ),
-					1
-				);
+				player2Inventory.splice( player2Inventory.indexOf( tileLetter ), 1 );
 			}
+
+			tile.removeAttribute( 'class' );
+			tile.classList.add( 'colour-' + currentTurnPlayer.replace( 'player', '' ) );
 		} );
 
 		// Make sure Player 2 does not miss out on a final turn.

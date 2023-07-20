@@ -625,6 +625,7 @@ li {
 	display: flex;
 	margin: auto;
 	margin-left: 12px;
+	height: 80px;
 }
 
 .footer-links a {
@@ -633,20 +634,15 @@ li {
 	margin-right: 24px;
 }
 
-.footer img {
-	border: 2px solid #fff;
-	border-radius: 50%;
-	margin: 12px 24px;
-}
-
-.gravatar {
-	display: flex;
-}
-
-.gravatar p {
-	font-size: 12px;
+.view-games-link {
 	margin: auto;
-	color: #fff;
+	margin-right: 24px;
+	font-size: 18px;
+	color: white;
+}
+
+.view-games-link a {
+	cursor: pointer;
 }
 
 a:hover {
@@ -1597,6 +1593,70 @@ a:hover {
 	transform: scale( 1.1 );
 }
 
+.modal-wrapper.games-modal {
+	background: rgba( 0, 0, 0, 0.15 );
+	display: flex;
+	padding-top: 0;
+}
+
+.modal-wrapper.games-modal .modal-content {
+	margin: auto;
+	width: 50%;
+}
+
+.game-wrapper {
+	display: flex;
+	flex-direction: column;
+	margin-right: 14px;
+	background: #f6f7f7;
+	padding: 8px;
+	padding-top: 0;
+	border-radius: 20px;
+	margin-top: 16px;
+}
+
+.game-wrapper img {
+	max-width: 100%;
+}
+
+.word-games {
+	display: flex;
+}
+
+.game-title {
+	text-align: center;
+	font-size: 14px;
+	margin-bottom: 8px;
+	font-weight: 500;
+}
+
+.game-description {
+	font-size: 12px;
+	text-align: center;
+	color: #3c434a;
+}
+
+.game-description-wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.game-description-wrapper .game-link {
+	color: #1d2327;
+	cursor: pointer;
+	margin: auto;
+	font-size: 14px;
+	font-weight: 500;
+	margin-bottom: 8px;
+}
+
+.game-subnote {
+	margin: 0;
+	margin-top: 20px;
+	text-align: center;
+	font-size: 14px;
+}
+
 .vocabulary-selection-table th {
 	text-align: left;
 }
@@ -2220,6 +2280,10 @@ button.verb-table-option-button:hover {
 		max-width: 50%;
 	}
 
+	.modal-wrapper.games-modal .modal-content {
+		width: 80%;
+	}
+
 	.right-content .literature-vocabulary {
 		flex-wrap: nowrap;
 	}
@@ -2310,10 +2374,6 @@ button.verb-table-option-button:hover {
 	.introductary-text,
 	.gravatar p {
 		display: none;
-	}
-
-	.gravatar img {
-		height: 48px;
 	}
 
 	.footer-links a {

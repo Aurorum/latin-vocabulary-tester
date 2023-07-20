@@ -27,6 +27,14 @@ window.onload = function () {
 		localStorage.setItem( 'userID', userId );
 	}
 
+	if ( localStorage.getItem( 'hasViewedGamesModal' ) ) {
+		closeGamesModal();
+	}
+
+	if ( 'serviceWorker' in navigator && navigator.onLine ) {
+		navigator.serviceWorker.register( 'serviceWorker.js' );
+	}
+
 	// This is an arbitrary figure, but it ensures parameters can take effect without a jump on the screen.
 	setTimeout( function () {
 		document.getElementById( 'loading' ).style.display = 'none';
@@ -46,27 +54,24 @@ window.onload = function () {
 		if ( this.readyState == 4 && this.status == 200 ) {
 			let response = this.response.split( ',' );
 			for ( let i = 1; i < 4; i++ ) {
-				document.getElementById(
-					'first-declensions-leaderboard-' + i.toString()
-				).innerHTML = response[ i ].replace( /\[|\]|\"/gi, '' );
+				document.getElementById( 'first-declensions-leaderboard-' + i.toString() ).innerHTML =
+					response[ i ].replace( /\[|\]|\"/gi, '' );
 				document.getElementById( 'declensions-leaderboard-' + i.toString() ).innerHTML = response[
 					i
 				].replace( /\[|\]|\"/gi, '' );
 			}
 
 			for ( let i = 7; i < 10; i++ ) {
-				document.getElementById(
-					'first-vocabulary-leaderboard-' + i.toString()
-				).innerHTML = response[ i ].replace( /\[|\]|\"/gi, '' );
+				document.getElementById( 'first-vocabulary-leaderboard-' + i.toString() ).innerHTML =
+					response[ i ].replace( /\[|\]|\"/gi, '' );
 				document.getElementById( 'vocabulary-leaderboard-' + i.toString() ).innerHTML = response[
 					i
 				].replace( /\[|\]|\"/gi, '' );
 			}
 
 			for ( let i = 12; i < 15; i++ ) {
-				document.getElementById(
-					'first-conjugations-leaderboard-' + i.toString()
-				).innerHTML = response[ i ].replace( /\[|\]|\"/gi, '' );
+				document.getElementById( 'first-conjugations-leaderboard-' + i.toString() ).innerHTML =
+					response[ i ].replace( /\[|\]|\"/gi, '' );
 				document.getElementById( 'conjugations-leaderboard-' + i.toString() ).innerHTML = response[
 					i
 				].replace( /\[|\]|\"/gi, '' );
@@ -277,7 +282,7 @@ function startTest( startDeclensionTest = false, startConjugationTest = false ) 
 		'started_test'
 	);
 
-	collectData( 'Test categories of ' + acceptableVocab.join(', ') );
+	collectData( 'Test categories of ' + acceptableVocab.join( ', ' ) );
 
 	let wordTablePrompt = competitiveMode ? 'word-table-prompt-competitive' : 'word-table-prompt';
 
@@ -794,31 +799,8 @@ function handleVerbConjugations() {
 
 	if ( document.getElementById( 'verbs-fps-option' ).checked ) {
 		let firstPersonSingular = [
-			0,
-			1,
-			12,
-			13,
-			24,
-			25,
-			36,
-			37,
-			48,
-			49,
-			60,
-			61,
-			62,
-			64,
-			65,
-			76,
-			77,
-			88,
-			89,
-			100,
-			101,
-			112,
-			113,
-			117,
-			118,
+			0, 1, 12, 13, 24, 25, 36, 37, 48, 49, 60, 61, 62, 64, 65, 76, 77, 88, 89, 100, 101, 112, 113,
+			117, 118,
 		];
 		filteredAcceptableVerbs = acceptableVerbs.filter( function ( id ) {
 			return firstPersonSingular.indexOf( id ) > -1;
@@ -1741,7 +1723,21 @@ window.onclick = function ( event ) {
 	if ( event.target === document.getElementById( 'modal' ) ) {
 		toggleVocabSelectionTable( false );
 	}
+	if ( event.target === document.getElementById( 'games-modal' ) ) {
+		closeGamesModal();
+	}
 };
+
+function openGamesModal() {
+	document.getElementById( 'games-modal' ).style.display = 'flex';
+	collectData( 'Opened games modal', 'opened_games_model' );
+}
+
+function closeGamesModal() {
+	document.getElementById( 'games-modal' ).style.display = 'none';
+	collectData( 'Closed games modal', 'closed_games_model' );
+	localStorage.setItem( 'hasViewedGamesModal', true );
+}
 
 function sortVocabSelectionTable( column ) {
 	allVocab
@@ -2268,9 +2264,8 @@ function checkAnswer( shouldReveal = false ) {
 		questionArray.didReveal = false;
 	}
 
-	document.getElementById( 'wrong-vocab' ).scrollTop = document.getElementById(
-		'wrong-vocab'
-	).scrollHeight;
+	document.getElementById( 'wrong-vocab' ).scrollTop =
+		document.getElementById( 'wrong-vocab' ).scrollHeight;
 
 	if ( shouldReveal ) {
 		if ( ! vocabToFocusOn.includes( questionArray.word ) ) {
@@ -2422,9 +2417,8 @@ function startRetryTest() {
 	} );
 
 	let vocabRetestCorrectAnswerCount = 0;
-	document.getElementById(
-		'progress-indicator-changing'
-	).innerHTML = vocabRetestCorrectAnswerCount;
+	document.getElementById( 'progress-indicator-changing' ).innerHTML =
+		vocabRetestCorrectAnswerCount;
 	document.getElementById( 'progress-indicator-set' ).innerHTML = vocabToFocusOn.length;
 
 	collectData( 'Retried test with ' + vocabToFocusOn.length + ' incorrect words', 'retried_test' );
@@ -2779,9 +2773,10 @@ function starFlashcard( auto ) {
 	);
 	document.getElementById( 'star-flashcard' ).classList.toggle( 'is-filled' );
 
-	let savedFlashcards = ( JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
-		? JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
-		: []
+	let savedFlashcards = (
+		JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
+			? JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
+			: []
 	).sort( ( a, b ) => ( a.word > b.word ? 1 : -1 ) );
 	vocabToFocusOn = vocabToFocusOn.sort();
 	let oldLength = savedFlashcards.length;
@@ -3058,11 +3053,11 @@ function collectData( content, analyticsID ) {
 	}
 
 	var request = new XMLHttpRequest();
-	if (navigator.onLine) {
+	if ( navigator.onLine ) {
 		request.open( 'POST', 'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/data' );
 		request.setRequestHeader( 'Content-type', 'text/plain' );
 		request.send( content + ' with ID of ' + userId );
-	};
+	}
 }
 
 function muteAudio() {

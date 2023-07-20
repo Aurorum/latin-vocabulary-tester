@@ -32,8 +32,6 @@ There are four different lists included with the Latin Vocabulary Tester, with t
 - GCSE (Eduqas)
 - Cambridge Latin Course (Stages 1 to 40)
 
-_Note: I would be delighted to add further lists, and it's also possible to upload custom lists which a user has created themselves. If you would be interested in this, please get in touch!_
-
 Although there are a wide range of vocabulary testers online, there are some features which I always wished for them to contain, so I've added them to this tool. This isn't an extensive list, but they include:
 
 - **English to Latin and vice versa**: users can opt for whether they want to attempt English to Latin, vice versa, or a combination of both. When an English to Latin question appears, the user will be asked for either the nominative or genitive singular form of nouns, or for verbs, the first-person active present/perfect or present infinitive form. In other words, the user will be asked what a Latin dictionary would typically contain for that entry.
@@ -57,6 +55,20 @@ Practice Mode is the common way that the tool is used, but Competitive Mode can 
 
 | <img alt="Competitive mode - starting screen" src="./assets/screenshots/screenshot-2.png"> | <img alt="Competitive mode - answer screen" src="./assets/screenshots/screenshot-4.png"> |
 | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+
+## Other Latin word games
+
+Alongside the main Vocabulary Tester, the website includes three Latin word games which I've created.
+
+- Wordle: guess a new Latin word each day within six tries, or keep going for as long as you can in Streaks mode
+- Word Bites: combine tiles to form as many Latin words as possible in 90 seconds, then challenge your friends to beat you
+- Scrabble: based on the classic board game, play against your friends in Scrabble using exclusively Latin words
+
+Each game contains their own features and challenges, so I hope people will find them an enjoyable and entertaining way of deploying Latin knowledge.
+
+| Wordle | Word Bites | Scrabble |
+|---------|---------|---------|
+| <img alt="Wordle" src="./assets/screenshots/wordle.png"> | <img alt="Word Bites" src="./assets/screenshots/word-bites.png"> | <img alt="Scrabble" src="./assets/screenshots/scrabble.png"> |
 
 ## Acknowledgements
 

@@ -26,7 +26,6 @@
 			content="https://latinvocabularytester.com/assets/screenshots/screenshot-1.png"
 		/>
 
-
 		<script type="text/javascript" src="./vocab-lists/alevel-ocr.js"></script>
 		<script type="text/javascript" src="./vocab-lists/gcse-eduqas.js"></script>
 		<script type="text/javascript" src="./vocab-lists/gcse-ocr.js"></script>
@@ -35,7 +34,7 @@
 		<script type="text/javascript" src="./scripts.js"></script>
 		<link rel="stylesheet" type="text/css" href="./style.css" />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;family=Roboto&amp;display=swap"
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&amp;family=Roboto&amp;display=swap"
 			rel="stylesheet"
 		/>
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-1QZXG1GX8M"></script>
@@ -50,11 +49,9 @@
 
 		<!-- PWA -->
 		<!-- App Manifest -->
-		<link rel="apple-touch-icon" href="assets/appleIcon.png">
+		<link rel="apple-touch-icon" href="assets/appleIcon.png" />
 		<meta name="theme-color" content="#1b2b63" />
-		<link rel="manifest" href="manifest.json">		
-
-
+		<link rel="manifest" href="manifest.json" />
 	</head>
 	<body>
 		<div class="loading-screen" id="loading">
@@ -675,7 +672,7 @@
 				</div>
 				<div id="vocab-test-end-competition" class="competition-conclusion">
 					<div id="submit-name" class="leaderboard-submit-name">
-						<input type="text" id="leaderboard-name-input" maxlength="24" placeholder="Caecilius" />
+						<input type="text" id="leaderboard-name-input" maxlength="20" placeholder="Caecilius" />
 						<div class="options-wrapper compact-options">
 							<button class="option-button" onclick="leaderboardSubmitName()">
 								<img class="laurel-image" src="./assets/laurel.svg" alt="" />
@@ -3470,6 +3467,70 @@
 			</div>
 		</div>
 
+		<div id="games-modal" class="modal-wrapper games-modal">
+			<div class="modal-content">
+				<img src="./assets/close.svg" class="close-icon" alt="Close" onclick="closeGamesModal()" />
+				<h3>New Latin word games!</h3>
+				<div class="word-games">
+					<div class="game-wrapper">
+						<p class="game-title">Wordle</p>
+						<img src="./assets/screenshots/wordle.png" />
+						<div class="game-description-wrapper">
+							<p class="game-description">
+								Guess a new Latin word each day within six tries, or keep going for as long as you
+								can in Streaks mode!
+							</p>
+							<a
+								onclick="collectData('Opened Latin Wordle', 'opened_latin_wordle')"
+								href="https://latinvocabularytester.com/dictum"
+								class="game-link"
+							>
+								Play
+							</a>
+						</div>
+					</div>
+					<div class="game-wrapper">
+						<p class="game-title">Word Bites (new!)</p>
+						<img src="./assets/screenshots/word-bites.png" />
+						<div class="game-description-wrapper">
+							<p class="game-description">
+								Combine tiles to form as many Latin words as possible in 90 seconds, then challenge
+								your friends to beat you!
+							</p>
+							<a
+								onclick="collectData('Opened Latin Word Bites', 'opened_latin_word_bites')"
+								href="https://latinvocabularytester.com/word-bites"
+								class="game-link"
+							>
+								Play
+							</a>
+						</div>
+					</div>
+					<div class="game-wrapper">
+						<p class="game-title">Scrabble (new!)</p>
+						<img src="./assets/screenshots/scrabble.png" />
+						<div class="game-description-wrapper">
+							<p class="game-description">
+								Based on the classic board game, play against your friends in Scrabble using
+								exclusively Latin words!
+							</p>
+							<a
+								onclick="collectData('Opened Latin Scrabble', 'opened_latin_scrabble')"
+								href="https://latinvocabularytester.com/scrabble"
+								class="game-link"
+							>
+								Play
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<p class="game-subnote">
+					Please give them a try and email any feedback, thank you! ‎ -Aurorum
+				</p>
+			</div>
+		</div>
+
 		<div id="footer" class="footer">
 			<div class="footer-links">
 				<a
@@ -3484,28 +3545,10 @@
 				>
 				<a class="collapse-footer" onclick="toggleFooter(false)">Collapse footer</a>
 				<a id="mute-audio" onclick="muteAudio()">Mute sound effects</a>
-				<a
-					onclick="collectData('Opened Wordle', 'opened_wordle')"
-					href="https://latinvocabularytester.com/dictum"
-					>Wordle</a
-				>
 			</div>
-			<div class="gravatar">
-				<p>An open-source project by Aurorum</p>
-				<img src="https://www.gravatar.com/avatar/581e9719c44732a58a27b872f282c053.jpg?s=60" />
+			<div class="view-games-link">
+				<a onclick="openGamesModal()">View Latin word games</a>
 			</div>
 		</div>
-
-		<!-- Register service worker-->
-		<script> 
-			if ('serviceWorker' in navigator && navigator.onLine) {
-				navigator.serviceWorker.register('serviceWorker.js').then((reg) => {
-					console.log('Successfully registered service worker', reg);
-				}).catch( (err) => {
-					console.warn('Error whilst registering service worker', err);
-				});
-			}
-		</script>
-				
 	</body>
 </html>

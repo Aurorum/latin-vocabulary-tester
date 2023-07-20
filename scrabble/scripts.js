@@ -1359,10 +1359,9 @@ function pollOnlineStatus() {
 			if ( selfId === player2MultiplayerId ) {
 				document.getElementById( 'last-seen-player1' ).innerHTML = text;
 			}
-
-			collectData( 'Player last seen returned: ' + text, 'scrabble_last_seen' );
 		} )
 		.catch( ( error ) => {
+			collectData( 'Last seen error', 'scrabble_last_seen_error' );
 			handleMultiplayerError();
 			collectData( error );
 		} );

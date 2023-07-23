@@ -948,11 +948,11 @@ function calculateScore( wordsArray ) {
 					score = 0;
 				}
 
-				if ( bonus === 'w2' || bonus === 'star' ) {
+				if ( bonus.includes( 'w2' ) || bonus.includes( 'star' ) ) {
 					doubleWord = true;
 				}
 
-				if ( bonus === 'w3' ) {
+				if ( bonus.includes( 'w3' ) ) {
 					tripleWord = true;
 				}
 			}

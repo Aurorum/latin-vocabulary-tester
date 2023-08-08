@@ -1595,7 +1595,7 @@ a:hover {
 
 .modal-wrapper.games-modal {
 	background: rgba( 0, 0, 0, 0.15 );
-	display: flex;
+	display: none;
 	padding-top: 0;
 }
 

@@ -27,10 +27,6 @@ window.onload = function () {
 		localStorage.setItem( 'userID', userId );
 	}
 
-	if ( localStorage.getItem( 'hasViewedGamesModal' ) ) {
-		closeGamesModal();
-	}
-
 	if ( 'serviceWorker' in navigator && navigator.onLine ) {
 		navigator.serviceWorker.register( 'serviceWorker.js' );
 	}
@@ -1736,7 +1732,6 @@ function openGamesModal() {
 function closeGamesModal() {
 	document.getElementById( 'games-modal' ).style.display = 'none';
 	collectData( 'Closed games modal', 'closed_games_model' );
-	localStorage.setItem( 'hasViewedGamesModal', true );
 }
 
 function sortVocabSelectionTable( column ) {

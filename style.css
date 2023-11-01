@@ -1958,7 +1958,8 @@ a:hover {
 	transition: 0.4s;
 }
 
-.slider:before {
+.slider:before,
+.slider:after {
 	border-radius: 50%;
 	position: absolute;
 	content: '';
@@ -1979,10 +1980,9 @@ input:focus + .slider {
 	box-shadow: 0 0 1px #ee6c4d;
 }
 
-input:checked + .slider:before {
-	-webkit-transform: translateX( 26px );
-	-ms-transform: translateX( 26px );
-	transform: translateX( 26px );
+input:checked + .slider:before,
+input:checked + .slider:after {
+	left: calc( 100% - 30px );
 }
 
 .table-mode-menu {

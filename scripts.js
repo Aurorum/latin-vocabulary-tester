@@ -1547,7 +1547,16 @@ function constructWordTable( changingVerbTable = false ) {
 			.classList.add( 'is-active' );
 	}
 
-	document.getElementById( optionType + '-slot' ).classList.add( 'is-highlighted' );
+	let highlightedSlot = document.querySelector( 'td.is-higlighted' );
+	let slot = document.getElementById( optionType + '-slot' );
+
+	if ( highlightedSlot ) {
+		highlightedSlot.classList.remove( 'is-highlighted' );
+	}
+
+	if ( slot ) {
+		slot.classList.add( 'is-highlighted' );
+	}
 }
 
 function toggleTableMode() {

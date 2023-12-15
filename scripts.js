@@ -14,13 +14,14 @@ let isTestingParticipleParts = false;
 let mute = false;
 let selectedOption;
 let userId = localStorage.getItem( 'userID' ) || Math.floor( Math.random() * 9999999 ) + 1;
-let vocab = vocabGCSEOCR;
 let vocabAnswered = [];
 let vocabConjugation;
 let vocabCustomList = [];
 let vocabDeclension;
 let vocabToFocusOn = [];
 let vocabToTest = [];
+
+loadAllVocabFiles();
 
 window.onload = function () {
 	if ( ! localStorage.getItem( 'userID' ) ) {
@@ -35,56 +36,135 @@ window.onload = function () {
 	setTimeout( function () {
 		document.getElementById( 'loading' ).style.display = 'none';
 	}, 1200 );
-
 	changeOption( localStorage.getItem( 'defaultOption' ) || 'alevelocr', false );
+
 	document.getElementById( 'vocab-answer' ).addEventListener( 'keyup', function ( event ) {
-		if ( event.keyCode === 13 ) {
+		if ( event.key === 'Enter' ) {
 			event.preventDefault();
 			checkAnswer();
 		}
 	} );
 	collectData( 'Loaded site with data ' + navigator.userAgent + ' at ' + new Date(), 'load' );
 
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function () {
-		if ( this.readyState == 4 && this.status == 200 ) {
-			let response = this.response.split( ',' );
-			for ( let i = 1; i < 4; i++ ) {
-				document.getElementById( 'first-declensions-leaderboard-' + i.toString() ).innerHTML =
-					response[ i ].replace( /\[|\]|\"/gi, '' );
-				document.getElementById( 'declensions-leaderboard-' + i.toString() ).innerHTML = response[
-					i
-				].replace( /\[|\]|\"/gi, '' );
+	// Create leaderboard.
+	const fetchLeaderboard = async () => {
+		try {
+			let response = await fetch(
+				'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/leaderboard'
+			);
+			if ( ! response.ok ) {
+				collectData( 'Failed to call Leaderboard' );
 			}
 
-			for ( let i = 7; i < 10; i++ ) {
-				document.getElementById( 'first-vocabulary-leaderboard-' + i.toString() ).innerHTML =
-					response[ i ].replace( /\[|\]|\"/gi, '' );
-				document.getElementById( 'vocabulary-leaderboard-' + i.toString() ).innerHTML = response[
-					i
-				].replace( /\[|\]|\"/gi, '' );
-			}
+			let data = await response.json();
 
-			for ( let i = 12; i < 15; i++ ) {
-				document.getElementById( 'first-conjugations-leaderboard-' + i.toString() ).innerHTML =
-					response[ i ].replace( /\[|\]|\"/gi, '' );
-				document.getElementById( 'conjugations-leaderboard-' + i.toString() ).innerHTML = response[
-					i
-				].replace( /\[|\]|\"/gi, '' );
-			}
-		} else if ( this.readyState == 4 ) {
-			collectData( 'Failed to load from endpoint' );
+			updateLeaderboard( 'declensions', data, 1, 4 );
+			updateLeaderboard( 'vocabulary', data, 7, 10 );
+			updateLeaderboard( 'conjugations', data, 12, 15 );
+		} catch ( error ) {
+			collectData( error.message );
 		}
 	};
+
+	let updateLeaderboard = ( prefix, data, start, end ) => {
+		for ( let i = start; i < end; i++ ) {
+			let elementId = `${ prefix }-leaderboard-${ i.toString() }`;
+			document.getElementById( elementId ).innerHTML = data[ i ];
+			document.getElementById( `first-${ elementId }` ).innerHTML = data[ i ];
+		}
+	};
+
 	if ( navigator.onLine ) {
-		xmlhttp.open(
-			'GET',
-			'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/leaderboard',
-			true
-		);
-		xmlhttp.send();
+		fetchLeaderboard();
 	}
 
+	// Handle parameters in URL.
+	handleParameters();
+
+	// Mute audio.
+	let defaultAudioSetting = localStorage.getItem( 'defaultAudio' );
+	if ( defaultAudioSetting && defaultAudioSetting === 'Muted' ) {
+		muteAudio();
+	}
+
+	// Default at testing all words.
+	acceptableVerbs = Array.from( { length: 128 }, ( _, i ) => i );
+
+	let maxWordSelect = document.getElementById( 'max-word-select' );
+	for ( let i = 1; i <= 300; i++ ) {
+		let option = new Option( i, i );
+		maxWordSelect.add( option );
+	}
+	maxWordSelect.selectedIndex = 19;
+
+	// Configure uploading files.
+	let fileInput = document.getElementById( 'fileupload' );
+	let advancedFileInput = document.getElementById( 'advancedfileupload' );
+
+	let readFile = ( reader, callback ) => {
+		reader.onload = () => {
+			let result = reader.result;
+			result.split( /\r\n|\r|\n/ ).forEach( line => {
+				let str = line.split( '"', 2 ).join( '"' ).replace( '"', '' );
+				let wordArray = findWord( str )[ 0 ];
+				if ( wordArray ) {
+					wordArray.category = 'uploaded';
+					document.getElementById( 'start-button' ).classList.remove( 'is-inactive' );
+				}
+			} );
+			collectData( callback, 'CSV file uploaded', 'csv_upload' );
+			formAcceptableVocab( 'uploaded' );
+		};
+	};
+
+	let handleCustomFileUpload = () => {
+		let advancedReader = new FileReader();
+		readFile( advancedReader, 'Custom file uploaded in advanced mode' );
+		advancedReader.readAsText( advancedFileInput.files[ 0 ] );
+	};
+
+	let handleRegularFileUpload = () => {
+		let reader = new FileReader();
+		readFile( reader, 'CSV file uploaded' );
+		reader.readAsBinaryString( fileInput.files[ 0 ] );
+	};
+
+	fileInput.addEventListener( 'change', handleRegularFileUpload );
+	advancedFileInput.addEventListener( 'change', handleCustomFileUpload );
+};
+
+/* Initialisation functions */
+function fetchVocabFile( filename ) {
+	return fetch( filename ).then( response => {
+		if ( ! response.ok ) {
+			throw new Error(
+				`Error loading ${ filename }: ${ response.status } ${ response.statusText }`
+			);
+		}
+		return response.json();
+	} );
+}
+
+function loadAllVocabFiles() {
+	let fileVariableMapping = {
+		'alevel-ocr.json': 'vocabALevelOCR',
+		'cambridge-latin-course.json': 'vocabCLC',
+		'gcse-eduqas.json': 'vocabGCSEEduqas',
+		'gcse-ocr.json': 'vocabGCSEOCR',
+		'literature.json': 'vocabLiterature',
+	};
+
+	let promises = Object.entries( fileVariableMapping ).map( ( [ fileName, variableName ] ) => {
+		let filePath = `./vocab-lists/${ fileName }`;
+		return fetchVocabFile( filePath ).then( data => {
+			window[ variableName ] = data;
+		} );
+	} );
+
+	return Promise.all( promises );
+}
+
+function handleParameters() {
 	if ( new URLSearchParams( window.location.search ).get( 'competitive' ) ) {
 		switchMode();
 	}
@@ -152,63 +232,12 @@ window.onload = function () {
 		changeOption( 'literature', false );
 		collectData( 'Loaded Ovid' );
 	}
-
-	if (
-		localStorage.getItem( 'defaultAudio' ) &&
-		localStorage.getItem( 'defaultAudio' ) === 'Muted'
-	) {
-		muteAudio();
-	}
-
-	for ( let i = 0; i < 128; i++ ) {
-		acceptableVerbs.push( i );
-	}
-
-	for ( let i = 1; i < 301; i++ ) {
-		var option = document.createElement( 'option' );
-		option.text = i;
-		document.getElementById( 'max-word-select' ).add( option );
-	}
-	document.getElementById( 'max-word-select' ).selectedIndex = 19;
-
-	var fileInput = document.getElementById( 'fileupload' ),
-		readFile = function () {
-			var reader = new FileReader();
-			reader.onload = function () {
-				var result = reader.result;
-				for ( let i = 0; i < result.split( /\r\n|\r|\n/ ).length; i++ ) {
-					var str = result.split( '\n' )[ i ];
-					var wordArray = findWord( str.split( '"', 2 ).join( '"' ).replace( '"', '' ) )[ 0 ];
-					if ( wordArray ) {
-						wordArray.category = 'uploaded';
-						document.getElementById( 'start-button' ).classList.remove( 'is-inactive' );
-					}
-				}
-				collectData( 'CSV file uploaded', 'csv_upload' );
-				formAcceptableVocab( 'uploaded' );
-			};
-			reader.readAsBinaryString( fileInput.files[ 0 ] );
-		};
-
-	fileInput.addEventListener( 'change', readFile );
-
-	var advancedFileInput = document.getElementById( 'advancedfileupload' ),
-		advancedReadFile = function () {
-			var advancedReader = new FileReader();
-			advancedReader.onload = function () {
-				handleCustomList( advancedReader.result );
-				collectData( 'Custom file uploaded in advanced mode', 'custom_file_uploaded' );
-			};
-			advancedReader.readAsText( advancedFileInput.files[ 0 ] );
-		};
-
-	advancedFileInput.addEventListener( 'change', advancedReadFile );
-};
+}
 
 function changeOption( option, manualChange = true ) {
 	let allOptions = [ 'alevelocr', 'gcseeduqas', 'gcseocr', 'clc', 'custom-list', 'literature' ];
 
-	allOptions.forEach( ( option ) => {
+	allOptions.forEach( option => {
 		document.body.classList.remove( 'is-' + option );
 	} );
 
@@ -216,30 +245,19 @@ function changeOption( option, manualChange = true ) {
 		collectData( 'Changed option from ' + selectedOption + ' to ' + option, 'changed_option' );
 	}
 
-	let type;
-	switch ( option ) {
-		case 'alevelocr':
-			type = vocabALevelOCR;
-			break;
-		case 'gcseeduqas':
-			type = vocabGCSEEduqas;
-			break;
-		case 'gcseocr':
-			type = vocabGCSEOCR;
-			break;
-		case 'clc':
-			type = vocabCLC;
-			break;
-		case 'custom-list':
-			type = vocabCustomList;
-		case 'literature':
-			type = vocabLiterature;
-	}
+	let optionMap = {
+		alevelocr: vocabALevelOCR,
+		gcseeduqas: vocabGCSEEduqas,
+		gcseocr: vocabGCSEOCR,
+		clc: vocabCLC,
+		'custom-list': vocabCustomList,
+		literature: vocabLiterature,
+	};
+
 	selectAll( 'change-option' );
 	selectedOption = option;
-
+	vocab = optionMap[ option ];
 	document.body.classList.add( 'is-' + selectedOption );
-	vocab = type;
 	localStorage.setItem( 'defaultOption', selectedOption );
 
 	document.getElementById( 'switch-literature' ).innerHTML = 'Switch to literature vocabulary';
@@ -265,8 +283,9 @@ function changeOption( option, manualChange = true ) {
 }
 
 function startTest( startDeclensionTest = false, startConjugationTest = false ) {
-	document.getElementById( 'curtain' ).classList.remove( 'is-not-triggered' );
-	document.getElementById( 'curtain' ).classList.add( 'is-triggered' );
+	let curtain = document.getElementById( 'curtain' );
+	curtain.classList.remove( 'is-not-triggered' );
+	curtain.classList.add( 'is-triggered' );
 	document.body.classList.add( 'has-begun-vocab-test' );
 	hardDifficulty = true;
 
@@ -281,7 +300,6 @@ function startTest( startDeclensionTest = false, startConjugationTest = false ) 
 	collectData( 'Test categories of ' + acceptableVocab.join( ', ' ) );
 
 	let wordTablePrompt = competitiveMode ? 'word-table-prompt-competitive' : 'word-table-prompt';
-
 	if ( startDeclensionTest ) {
 		document.body.classList.add( 'has-begun-declension-test' );
 		document.getElementById( 'progress-indicator-slash' ).innerHTML = ' declined correctly';
@@ -292,7 +310,7 @@ function startTest( startDeclensionTest = false, startConjugationTest = false ) 
 	}
 
 	if ( startConjugationTest ) {
-		if ( selectedOption !== 'alevelocr' ) {
+		if ( [ 'alevelocr', 'literature' ].includes( selectedOption ) ) {
 			let subjunctiveCheckboxes = document.querySelectorAll(
 				'.select-verbs .subjunctive .subjunctive-toggle-wrapper .toggle input[type="checkbox"]'
 			);
@@ -311,8 +329,8 @@ function startTest( startDeclensionTest = false, startConjugationTest = false ) 
 	}
 
 	let maxWordSelect = document.getElementById( 'max-word-select' );
-	if ( document.getElementById( 'wordLimitCheckbox' ).checked === false ) {
-		var option = document.createElement( 'option' );
+	if ( ! document.getElementById( 'wordLimitCheckbox' ).checked ) {
+		let option = document.createElement( 'option' );
 		option.text = 9999;
 		maxWordSelect.add( option );
 		maxWordSelect.text = '9999';
@@ -347,8 +365,8 @@ function startCompetition( test ) {
 	startTest( test === 'declension', test === 'conjugation' );
 	collectData( 'Started competition of ' + test, 'started_competition' );
 
-	var timeleft = 5;
-	var timer = setInterval( function () {
+	let timeleft = 5;
+	let timer = setInterval( function () {
 		if ( timeleft <= 0 ) {
 			clearInterval( timer );
 			document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'time-started' );
@@ -367,7 +385,7 @@ function checkIncorrectAnswerGrammar() {
 	);
 	let possibleForms = [];
 
-	grammarForm.forEach( ( form ) => {
+	grammarForm.forEach( form => {
 		let fullForm = '';
 
 		if ( isTestingDeclensions ) {
@@ -470,7 +488,7 @@ function checkIncorrectAnswerGrammar() {
 }
 
 function getKeysInObject( object, value ) {
-	return Object.keys( object ).filter( ( key ) => object[ key ] === value );
+	return Object.keys( object ).filter( key => object[ key ] === value );
 }
 
 function endCompetitionTimer() {
@@ -539,7 +557,7 @@ function endCompetitionTimer() {
 		return;
 	}
 
-	var neededScore = leaderboardId.substring(
+	let neededScore = leaderboardId.substring(
 		leaderboardId.lastIndexOf( '-' ) + 1,
 		leaderboardId.lastIndexOf( 'words' )
 	);
@@ -557,8 +575,8 @@ function endCompetitionTimer() {
 }
 
 function startCompetitionTimer() {
-	var timeleft = 120;
-	var timer = setInterval( function () {
+	let timeleft = 120;
+	let timer = setInterval( function () {
 		if ( document.getElementById( 'vocab-tester-wrapper' ).classList.contains( 'time-ended' ) ) {
 			return clearInterval( timer );
 		}
@@ -587,7 +605,7 @@ function startCompetitionTimer() {
 }
 
 function switchMode() {
-	var currentMode = document.getElementById( 'current-mode' );
+	let currentMode = document.getElementById( 'current-mode' );
 
 	if ( selectedOption === 'literature' ) {
 		changeOption( 'alevelocr' );
@@ -775,7 +793,7 @@ function handleVerbSelection( e, manualChange = true ) {
 			break;
 	}
 
-	verbNumber.forEach( ( number ) => {
+	verbNumber.forEach( number => {
 		e.checked
 			? acceptableVerbs.push( number )
 			: acceptableVerbs.splice( acceptableVerbs.indexOf( number ), 1 );
@@ -1408,7 +1426,7 @@ function handleCaseSelection( e ) {
 			break;
 	}
 
-	caseNumber.forEach( ( number ) =>
+	caseNumber.forEach( number =>
 		e.checked
 			? acceptableCases.push( number )
 			: acceptableCases.splice( acceptableCases.indexOf( number ), 1 )
@@ -1808,15 +1826,15 @@ function handleSubjunctiveTableSelection( e ) {
 function csvToJSON( string, headers, quoteChar = '"', delimiter = ',' ) {
 	// Credit: csvToJSON function by matthew-e-brown on Stack Overflow.
 	const regex = new RegExp( `\\s*(${ quoteChar })?(.*?)\\1\\s*(?:${ delimiter }|$)`, 'gs' );
-	const match = ( string ) =>
+	const match = string =>
 		[ ...string.matchAll( regex ) ]
-			.map( ( match ) => match[ 2 ] )
+			.map( match => match[ 2 ] )
 			.filter( ( _, i, a ) => i < a.length - 1 );
 
 	const lines = string.split( '\n' );
 	const heads = headers || match( lines.splice( 0, 1 )[ 0 ] );
 
-	return lines.map( ( line ) =>
+	return lines.map( line =>
 		match( line ).reduce(
 			( acc, cur, i ) => ( {
 				...acc,
@@ -1833,7 +1851,7 @@ function handleCustomList( list ) {
 	vocabCustomListExistingCategories = [];
 	vocabCustomListCategories = [];
 
-	document.querySelectorAll( '.custom-category p' ).forEach( ( word ) => {
+	document.querySelectorAll( '.custom-category p' ).forEach( word => {
 		vocabCustomListExistingCategories.push( word.textContent );
 	} );
 
@@ -1850,9 +1868,8 @@ function handleCustomList( list ) {
 
 		if (
 			savedList &&
-			savedList.findIndex(
-				( item ) => item.word === word.word && item.category === word.category
-			) === -1
+			savedList.findIndex( item => item.word === word.word && item.category === word.category ) ===
+				-1
 		) {
 			savedList.push( word );
 		}
@@ -1865,10 +1882,10 @@ function handleCustomList( list ) {
 	localStorage.setItem( 'customList', JSON.stringify( savedList ) );
 	vocab = vocabCustomList;
 	let categoriesList = vocabCustomListCategories.filter(
-		( item ) => ! vocabCustomListExistingCategories.includes( item )
+		item => ! vocabCustomListExistingCategories.includes( item )
 	);
 
-	categoriesList.forEach( ( category ) => {
+	categoriesList.forEach( category => {
 		let button = document.createElement( 'button' );
 		button.id = category;
 		button.className = 'vocab-type';
@@ -1901,13 +1918,13 @@ function removeCustomCategory( category ) {
 		return vocab.category === category;
 	} );
 
-	wordsInCategory.forEach( ( word ) => {
+	wordsInCategory.forEach( word => {
 		vocabCustomList.splice(
-			vocabCustomList.findIndex( ( item ) => item.word === word.word ),
+			vocabCustomList.findIndex( item => item.word === word.word ),
 			1
 		);
 
-		let savedListIndex = savedList.findIndex( ( item ) => item.word === word.word );
+		let savedListIndex = savedList.findIndex( item => item.word === word.word );
 
 		if ( savedListIndex !== -1 ) {
 			savedList.splice( savedListIndex, 1 );
@@ -1916,15 +1933,15 @@ function removeCustomCategory( category ) {
 
 	localStorage.setItem( 'customList', JSON.stringify( savedList ) );
 
-	var categoryButton = document.getElementById( category );
+	let categoryButton = document.getElementById( category );
 	categoryButton.parentNode.removeChild( categoryButton );
 }
 
 function buildTest() {
 	finalVocab = vocabToTest.concat( findVocab() );
 
-	var select = document.getElementById( 'max-word-select' );
-	var trimmedWordSelection = parseInt( select.options[ select.selectedIndex ].text );
+	let select = document.getElementById( 'max-word-select' );
+	let trimmedWordSelection = parseInt( select.options[ select.selectedIndex ].text );
 
 	if (
 		! document.getElementById( 'extremeCheckbox' ).checked &&
@@ -1941,7 +1958,7 @@ function buildTest() {
 
 	let randomNumber = Math.floor( Math.random() * finalVocab.length );
 
-	var vocabwithNumber = finalVocab[ randomNumber ];
+	let vocabwithNumber = finalVocab[ randomNumber ];
 
 	let allVocabLength = allVocab.length;
 
@@ -1966,7 +1983,7 @@ function buildTest() {
 			document.getElementById( 'vocab-question' ).innerHTML = vocabwithNumber.translation;
 		}
 
-		var verbsWithParticiples = [
+		let verbsWithParticiples = [
 			'verb 1',
 			'verb 2',
 			'verb 3',
@@ -2089,7 +2106,7 @@ function selectAll( context ) {
 		document
 			.querySelector( '.custom-lists' )
 			.querySelectorAll( '.vocab-type' )
-			.forEach( ( list ) => allOptions.push( list.id ) );
+			.forEach( list => allOptions.push( list.id ) );
 	}
 
 	if ( selectedOption === 'literature' ) {
@@ -2101,12 +2118,12 @@ function selectAll( context ) {
 		allOptions.push( 'john-taylor-verse' );
 	}
 
-	var isPreviouslyMuted = mute;
+	let isPreviouslyMuted = mute;
 	mute = true;
 
 	let deselect = context === 'change-option' || context === 'deselect-all';
 
-	allOptions.forEach( ( option ) => {
+	allOptions.forEach( option => {
 		if (
 			( ! acceptableVocab.includes( option ) && ! deselect ) ||
 			( acceptableVocab.includes( option ) && deselect )
@@ -2132,16 +2149,18 @@ function selectAll( context ) {
 }
 
 function checkDeclensionOrConjugationAnswer( shouldReveal = false ) {
-	var question = document.getElementById( 'vocab-submit-word-form' ).textContent;
-	var answerInput = document.getElementById( 'vocab-answer' );
-	var enteredAnswer = answerInput.value.toLowerCase().trim();
-	var progressIndicator = document.getElementById( 'progress-indicator-changing' );
-	var actualAnswerArray = findWord( document.getElementById( 'vocab-question' ).textContent )[ 0 ];
-	var actualAnswer = isTestingConjugations
+	let question = document.getElementById( 'vocab-submit-word-form' ).textContent;
+	let answerInput = document.getElementById( 'vocab-answer' );
+	let enteredAnswer = answerInput.value.toLowerCase().trim();
+	let progressIndicator = document.getElementById( 'progress-indicator-changing' );
+	let actualAnswerArray = findWord(
+		document.getElementById( 'vocab-question' ).textContent
+	)[ 0 ];
+	let actualAnswer = isTestingConjugations
 		? actualAnswerArray[ vocabConjugation ]
 		: actualAnswerArray[ vocabDeclension ];
-	var isAnswerCorrect = enteredAnswer === actualAnswer;
-	var testType = isTestingConjugations ? 'conjugation' : 'declension';
+	let isAnswerCorrect = enteredAnswer === actualAnswer;
+	let testType = isTestingConjugations ? 'conjugation' : 'declension';
 
 	if ( ! shouldReveal && enteredAnswer === '' ) {
 		return;
@@ -2275,7 +2294,7 @@ function checkAnswer( shouldReveal = false ) {
 		if ( ! vocabToFocusOn.includes( questionArray.word ) ) {
 			vocabToFocusOn.push( questionArray.word );
 
-			var node = document.createElement( 'LI' );
+			let node = document.createElement( 'LI' );
 			node.appendChild( document.createTextNode( question ) );
 			document.getElementById( 'wrong-vocab' ).appendChild( node );
 		}
@@ -2356,7 +2375,7 @@ function checkAnswer( shouldReveal = false ) {
 
 			if ( ! vocabToFocusOn.includes( questionArray.word ) ) {
 				vocabToFocusOn.push( questionArray.word );
-				var node = document.createElement( 'LI' );
+				let node = document.createElement( 'LI' );
 				node.appendChild( document.createTextNode( question ) );
 				document.getElementById( 'wrong-vocab' ).appendChild( node );
 				document.getElementById( 'no-words-wrong' ).style.display = 'none';
@@ -2391,8 +2410,8 @@ function checkAnswer( shouldReveal = false ) {
 			'correct_vocabulary_answer'
 		);
 
-		var select = document.getElementById( 'max-word-select' );
-		var trimmedWordSelection = parseInt( select.options[ select.selectedIndex ].text );
+		let select = document.getElementById( 'max-word-select' );
+		let trimmedWordSelection = parseInt( select.options[ select.selectedIndex ].text );
 
 		let progress = vocabAnswered.length / Math.min( trimmedWordSelection, allVocab.length );
 
@@ -2413,7 +2432,7 @@ function startRetryTest() {
 	allVocab = [];
 	vocabAnswered = [];
 
-	vocabToFocusOn.forEach( ( word ) => {
+	vocabToFocusOn.forEach( word => {
 		let findWordArray = findWord( word )[ 0 ];
 		allVocab.push( findWordArray );
 		findWordArray.asked = false;
@@ -2584,13 +2603,13 @@ function exportIncorrectVocab() {
 	for ( let i = 0; i < vocabToFocusOn.length; i++ ) {
 		exportArray.push( findWord( vocabToFocusOn[ i ] )[ 0 ] );
 
-		labels.forEach( ( heading ) => {
+		labels.forEach( heading => {
 			delete exportArray[ i ][ heading ];
 		} );
 	}
 	collectData( 'CSV exported with ' + vocabToFocusOn.length + ' words', 'csv_export' );
 	csvData = convertToCSV( exportArray );
-	var dataBlob = new Blob( [ csvData ], { type: 'text/csv;charset=utf-8' } );
+	let dataBlob = new Blob( [ csvData ], { type: 'text/csv;charset=utf-8' } );
 	document.getElementById( 'export-prompt' ).href = window.URL.createObjectURL( dataBlob );
 	document.getElementById( 'export-sidebar-prompt' ).href = window.URL.createObjectURL( dataBlob );
 }
@@ -2607,7 +2626,7 @@ function startFlashcards() {
 		let savedFlashcards = JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
 			? JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
 			: [];
-		savedFlashcards.forEach( ( item ) => {
+		savedFlashcards.forEach( item => {
 			vocabToFocusOn.push( item.word );
 		} );
 	}
@@ -2666,7 +2685,7 @@ function buildAfterFlip( context, starred ) {
 	}
 
 	if ( starred ) {
-		number = finalVocab.findIndex( ( item ) => item.word === context.textContent );
+		number = finalVocab.findIndex( item => item.word === context.textContent );
 	}
 
 	let isSavedFlashcard = number === -1;
@@ -2675,7 +2694,7 @@ function buildAfterFlip( context, starred ) {
 		let savedFlashcards = JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
 			? JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
 			: [];
-		let savedIndex = savedFlashcards.findIndex( ( item ) => item.word === context.textContent );
+		let savedIndex = savedFlashcards.findIndex( item => item.word === context.textContent );
 
 		document.getElementById( 'front-flashcard' ).innerHTML = document.getElementById(
 			'flashcard-setting-switch'
@@ -2752,8 +2771,8 @@ function starFlashcard( auto ) {
 	document.getElementById( 'wrong-vocab' ).innerHTML = '';
 
 	vocabToFocusOn.forEach( function ( item ) {
-		var a = document.createElement( 'a' );
-		var newItem = document.createElement( 'li' );
+		let a = document.createElement( 'a' );
+		let newItem = document.createElement( 'li' );
 
 		a.textContent = item;
 		a.setAttribute( 'onclick', 'buildFlashcard(this, true)' );
@@ -2847,9 +2866,9 @@ function toggleFlashcardShortcutsGuide() {
 function convertToCSV( arr ) {
 	let array = [ Object.keys( arr[ 0 ] ) ].concat( arr );
 	return array
-		.map( ( row ) => {
+		.map( row => {
 			return Object.values( row )
-				.map( ( value ) => {
+				.map( value => {
 					return typeof value === 'string' ? JSON.stringify( value ) : value;
 				} )
 				.toString();
@@ -2966,7 +2985,7 @@ function formAcceptableVocab( receivedCategory ) {
 	let category = receivedCategory.toString();
 
 	if ( category !== 'redo' && category !== 'uploaded' ) {
-		var button = document.getElementById( category );
+		let button = document.getElementById( category );
 
 		if ( ! button ) {
 			return;
@@ -3056,7 +3075,7 @@ function collectData( content, analyticsID ) {
 		gtag( 'event', analyticsID );
 	}
 
-	var request = new XMLHttpRequest();
+	let request = new XMLHttpRequest();
 	if ( navigator.onLine ) {
 		request.open( 'POST', 'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/data' );
 		request.setRequestHeader( 'Content-type', 'text/plain' );
@@ -3065,7 +3084,7 @@ function collectData( content, analyticsID ) {
 }
 
 function muteAudio() {
-	var muteAudioLink = document.getElementById( 'mute-audio' );
+	let muteAudioLink = document.getElementById( 'mute-audio' );
 
 	if ( muteAudioLink.textContent.includes( 'Unmute' ) ) {
 		muteAudioLink.textContent = 'Mute sound effects';
@@ -3089,8 +3108,8 @@ function toggleFooter( show ) {
 }
 
 function changeDifficulty() {
-	var hardCheckbox = document.getElementById( 'hardCheckbox' );
-	var extremeCheckbox = document.getElementById( 'extremeCheckbox' );
+	let hardCheckbox = document.getElementById( 'hardCheckbox' );
+	let extremeCheckbox = document.getElementById( 'extremeCheckbox' );
 
 	if ( hardCheckbox.checked === false ) {
 		extremeCheckbox.disabled = true;

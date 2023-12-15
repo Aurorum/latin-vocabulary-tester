@@ -66,8 +66,8 @@ Alongside the main Vocabulary Tester, the website includes three Latin word game
 
 Each game contains their own features and challenges, so I hope people will find them an enjoyable and entertaining way of deploying Latin knowledge.
 
-| Wordle | Word Bites | Scrabble |
-|---------|---------|---------|
+| Wordle                                                   | Word Bites                                                       | Scrabble                                                     |
+| -------------------------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------ |
 | <img alt="Wordle" src="./assets/screenshots/wordle.png"> | <img alt="Word Bites" src="./assets/screenshots/word-bites.png"> | <img alt="Scrabble" src="./assets/screenshots/scrabble.png"> |
 
 ## Acknowledgements

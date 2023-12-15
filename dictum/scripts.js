@@ -442,7 +442,7 @@ function streakCalculation( isCorrect ) {
 
 function copyDailyStat( string ) {
 	let board = [];
-	document.querySelectorAll( '.game-row.is-completed .game-tile' ).forEach( ( tile ) => {
+	document.querySelectorAll( '.game-row.is-completed .game-tile' ).forEach( tile => {
 		if ( tile.classList.contains( 'is-correct-place' ) ) {
 			board.push( '🟩' );
 		} else if ( tile.classList.contains( 'is-contained' ) ) {
@@ -521,27 +521,27 @@ function resetStreak() {
 }
 
 function resetGame() {
-	document.querySelectorAll( '.game-row' ).forEach( ( tile ) => {
+	document.querySelectorAll( '.game-row' ).forEach( tile => {
 		tile.classList.remove( 'is-completed' );
 		tile.classList.remove( 'is-answer' );
 		tile.classList.remove( 'bounce-animation' );
 		tile.classList.add( 'is-not-completed' );
 	} );
 
-	document.querySelectorAll( '.game-tile' ).forEach( ( tile ) => {
+	document.querySelectorAll( '.game-tile' ).forEach( tile => {
 		tile.classList.remove( 'is-contained' );
 		tile.classList.remove( 'is-not-contained' );
 		tile.classList.remove( 'is-correct-place' );
 		tile.classList.remove( 'animate' );
 	} );
 
-	document.querySelectorAll( '.keyboard button' ).forEach( ( tile ) => {
+	document.querySelectorAll( '.keyboard button' ).forEach( tile => {
 		tile.classList.remove( 'is-contained' );
 		tile.classList.remove( 'is-not-contained' );
 		tile.classList.remove( 'is-correct-place' );
 	} );
 
-	document.querySelectorAll( '.game-tile-letter' ).forEach( ( tile ) => {
+	document.querySelectorAll( '.game-tile-letter' ).forEach( tile => {
 		tile.innerHTML = '';
 	} );
 

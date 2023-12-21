@@ -310,7 +310,7 @@ function startTest( startDeclensionTest = false, startConjugationTest = false ) 
 	}
 
 	if ( startConjugationTest ) {
-		if ( [ 'alevelocr', 'literature' ].includes( selectedOption ) ) {
+		if ( ! [ 'alevelocr', 'literature' ].includes( selectedOption ) ) {
 			let subjunctiveCheckboxes = document.querySelectorAll(
 				'.select-verbs .subjunctive .subjunctive-toggle-wrapper .toggle input[type="checkbox"]'
 			);

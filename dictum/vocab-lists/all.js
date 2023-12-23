@@ -4035,7 +4035,7 @@ var anyList = [
 		673: {
 			word: 'fugat',
 			full: 'fugo, fugare, fugavi, fugatum',
-			translation: 'fruit, crops',
+			translation: 'rout, make flee',
 			type: 'pracind3s',
 		},
 		674: {
@@ -4173,7 +4173,7 @@ var anyList = [
 		696: {
 			word: 'fugem',
 			full: 'fugo, fugare, fugavi, fugatum',
-			translation: 'fruit, crops',
+			translation: 'rout, make flee',
 			type: 'pracsuj1s',
 		},
 		697: {
@@ -4353,7 +4353,7 @@ var anyList = [
 		726: {
 			word: 'fuges',
 			full: 'fugo, fugare, fugavi, fugatum',
-			translation: 'fruit, crops',
+			translation: 'rout, make flee',
 			type: 'pracsuj2s',
 		},
 		727: {
@@ -4575,7 +4575,7 @@ var anyList = [
 		763: {
 			word: 'fuget',
 			full: 'fugo, fugare, fugavi, fugatum',
-			translation: 'fruit, crops',
+			translation: 'rout, make flee',
 			type: 'pracsuj3s',
 		},
 		764: {
@@ -4761,7 +4761,7 @@ var anyList = [
 		794: {
 			word: 'fugor',
 			full: 'fugo, fugare, fugavi, fugatum',
-			translation: 'fruit, crops',
+			translation: 'rout, make flee',
 			type: 'prpaind1s',
 		},
 		795: {
@@ -4905,7 +4905,7 @@ var anyList = [
 		818: {
 			word: 'fuger',
 			full: 'fugo, fugare, fugavi, fugatum',
-			translation: 'fruit, crops',
+			translation: 'rout, make flee',
 			type: 'prpasuj1s',
 		},
 		819: {

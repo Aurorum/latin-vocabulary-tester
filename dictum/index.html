@@ -194,7 +194,7 @@
 
 				<div id="option-screen">
 					<h2 class="option-heading">Select Option</h2>
-
+					<p id="loading-warning" class="loading-message">Just a second - still loading</p>
 					<div class="game-option">
 						<button onclick="startGame('daily')" class="option-wrapper">
 							<img class="option-image" src="../assets/owl.png" alt="" />
@@ -221,7 +221,11 @@
 						<button onclick="changeOption('as-list')" id="as-list" class="option-button">
 							AS-level (OCR) list
 						</button>
-						<button onclick="changeOption('any-list')" id="any-list" class="option-button">
+						<button
+							onclick="changeOption('any-list')"
+							id="any-list"
+							class="option-button is-selected"
+						>
 							Any word
 						</button>
 					</div>

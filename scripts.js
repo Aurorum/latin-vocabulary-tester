@@ -19,6 +19,7 @@ let vocabAnswered = [];
 let vocabConjugation;
 let vocabCustomList = [];
 let vocabDeclension;
+let vocabFilesLoaded = false;
 let vocabToFocusOn = [];
 let vocabToTest = [];
 
@@ -33,11 +34,17 @@ window.onload = function () {
 		navigator.serviceWorker.register( 'serviceWorker.js' );
 	}
 
-	// This is an arbitrary figure, but it ensures parameters can take effect without a jump on the screen.
 	setTimeout( function () {
-		document.getElementById( 'loading' ).style.display = 'none';
+		function checkCondition() {
+			if ( vocabFilesLoaded ) {
+				changeOption( localStorage.getItem( 'defaultOption' ) || 'alevelocr', false );
+				document.getElementById( 'loading' ).style.display = 'none';
+			} else {
+				setTimeout( checkCondition, 100 );
+			}
+		}
+		checkCondition();
 	}, 1200 );
-	changeOption( localStorage.getItem( 'defaultOption' ) || 'alevelocr', false );
 
 	document.getElementById( 'vocab-answer' ).addEventListener( 'keyup', function ( event ) {
 		if ( event.key === 'Enter' ) {
@@ -168,7 +175,9 @@ function loadAllVocabFiles() {
 			} );
 	} );
 
-	return Promise.all( promises );
+	return Promise.all( promises ).then( () => {
+		vocabFilesLoaded = true;
+	} );
 }
 
 function handleParameters() {

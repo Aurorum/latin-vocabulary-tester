@@ -18,7 +18,6 @@ window.onload = function () {
 		'dictum_load'
 	);
 
-	changeOption( 'any-list' );
 	buildStats();
 
 	if ( localStorage.getItem( 'dailyWordLastTime' ) ) {
@@ -87,8 +86,10 @@ function loadAllVocabFiles() {
 }
 
 function startGame( type ) {
-	if ( anyList === null || validGuesses === null ) {
+	if ( typeof anyList === 'undefined' || typeof validGuesses === 'undefined' ) {
+		document.getElementById( 'loading-warning' ).style.display = 'block';
 		collectData( 'Started before initialisation', 'dictum_initialisation_error' );
+		checkVocabLoaded( type );
 		return;
 	}
 
@@ -112,6 +113,16 @@ function startGame( type ) {
 	document.body.classList.add( 'is-daily-word' );
 	document.body.classList.remove( 'is-displaying-modal' );
 	selectedWord = findWord();
+}
+
+function checkVocabLoaded( type ) {
+	if ( typeof anyList !== 'undefined' && typeof validGuesses !== 'undefined' ) {
+		startGame( type );
+	} else {
+		setTimeout( function () {
+			checkVocabLoaded( type );
+		}, 100 );
+	}
 }
 
 function findWord() {
@@ -333,7 +344,6 @@ function checkAnswer() {
 	let gameBoardId = document.querySelectorAll( '.game-row.is-not-completed' )[ 0 ].id;
 	let fullSubmission = [];
 
-	// Get the user's guessed word
 	for ( let i = 0; i < 5; i++ ) {
 		let tile = document.getElementById( gameBoardId + 'tile' + i );
 		if ( tile.textContent.length ) {
@@ -346,12 +356,10 @@ function checkAnswer() {
 		'dictum_checked_answer'
 	);
 
-	// Word needs to be complete in order to be guessed
 	if ( fullSubmission.length !== 5 ) {
 		return;
 	}
 
-	// Word needs to be in the dictionary in order to be guessed
 	if ( ! validGuesses.includes( fullSubmission.join( '' ) ) ) {
 		document.getElementById( 'game-notice-text' ).innerHTML = 'Invalid word';
 		document.getElementById( 'game-notice' ).classList.remove( 'is-hidden' );
@@ -363,54 +371,33 @@ function checkAnswer() {
 		return;
 	}
 
-	// Prevent interaction
 	canType = false;
 	document.getElementById( 'game-notice' ).classList.add( 'is-hidden' );
 
-	// Check word
-	// 'is-correct-place'
-	// 'is-contained'
-	// 'is-not-contained'
-
 	let correctionClasses = Array( 5 );
-	let letterCounts = new Map(); // Acts as a multiset of letters in the
-	//  target word
+	let letterCounts = new Map();
 
-	// First pass - find letters in correct place and save those that aren't
 	for ( let i = 0; i < 5; ++i ) {
 		if ( targetWord[ i ] == fullSubmission[ i ] ) {
-			// can immediately credit
 			correctionClasses[ i ] = 'is-correct-place';
-		}
-		// simultaneously build up set of target word letters
-		else if ( letterCounts.has( targetWord[ i ] ) ) {
+		} else if ( letterCounts.has( targetWord[ i ] ) ) {
 			letterCounts.set( targetWord[ i ], letterCounts.get( targetWord[ i ] ) + 1 );
 		} else {
 			letterCounts.set( targetWord[ i ], 1 );
 		}
 	}
 
-	// Second pass - assign colours to other letters
 	for ( let i = 0; i < 5; ++i ) {
 		if ( correctionClasses[ i ] != 'is-correct-place' ) {
-			// if we haven't
-			// already credited
-			// this letter
 			if ( letterCounts.get( fullSubmission[ i ] ) > 0 ) {
-				// this letter still
-				// exists
 				correctionClasses[ i ] = 'is-contained';
-
-				// remove one occurrence which has been matched
 				letterCounts.set( fullSubmission[ i ], letterCounts.get( fullSubmission[ i ] ) - 1 );
 			} else {
-				// doesn't exist; no credit.
 				correctionClasses[ i ] = 'is-not-contained';
 			}
 		}
 	}
 
-	// Set up animations to change the colours
 	for ( let i = 0; i < 5; i++ ) {
 		setTimeout( function timer() {
 			let tile = document.getElementById( gameBoardId + 'tile' + i );
@@ -452,7 +439,6 @@ function checkAnswer() {
 		}, i * 600 );
 	}
 
-	// Move onto the next row
 	document.getElementById( gameBoardId ).classList.add( 'is-completed' );
 	document.getElementById( gameBoardId ).classList.remove( 'is-not-completed' );
 

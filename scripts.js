@@ -14,6 +14,7 @@ let isTestingParticipleParts = false;
 let mute = false;
 let selectedOption;
 let userId = localStorage.getItem( 'userID' ) || Math.floor( Math.random() * 9999999 ) + 1;
+let vocab = [];
 let vocabAnswered = [];
 let vocabConjugation;
 let vocabCustomList = [];
@@ -134,17 +135,6 @@ window.onload = function () {
 };
 
 /* Initialisation functions */
-function fetchVocabFile( filename ) {
-	return fetch( filename ).then( response => {
-		if ( ! response.ok ) {
-			throw new Error(
-				`Error loading ${ filename }: ${ response.status } ${ response.statusText }`
-			);
-		}
-		return response.json();
-	} );
-}
-
 function loadAllVocabFiles() {
 	let fileVariableMapping = {
 		'alevel-ocr.json': 'vocabALevelOCR',
@@ -156,9 +146,26 @@ function loadAllVocabFiles() {
 
 	let promises = Object.entries( fileVariableMapping ).map( ( [ fileName, variableName ] ) => {
 		let filePath = `./vocab-lists/${ fileName }`;
-		return fetchVocabFile( filePath ).then( data => {
-			window[ variableName ] = data;
-		} );
+
+		return fetch( filePath )
+			.then( response => {
+				if ( ! response.ok ) {
+					collectData( 'Vocabulary lists failed to load', 'initialisation_error' );
+					collectData( error.message || error );
+				}
+				return response.json();
+			} )
+			.then( data => {
+				window[ variableName ] = data;
+
+				if ( variableName === 'vocabGCSEOCR' ) {
+					vocab = vocabGCSEOCR;
+				}
+			} )
+			.catch( error => {
+				collectData( 'Vocabulary lists failed to load', 'initialisation_error' );
+				collectData( error.message || error );
+			} );
 	} );
 
 	return Promise.all( promises );
@@ -2153,9 +2160,7 @@ function checkDeclensionOrConjugationAnswer( shouldReveal = false ) {
 	let answerInput = document.getElementById( 'vocab-answer' );
 	let enteredAnswer = answerInput.value.toLowerCase().trim();
 	let progressIndicator = document.getElementById( 'progress-indicator-changing' );
-	let actualAnswerArray = findWord(
-		document.getElementById( 'vocab-question' ).textContent
-	)[ 0 ];
+	let actualAnswerArray = findWord( document.getElementById( 'vocab-question' ).textContent )[ 0 ];
 	let actualAnswer = isTestingConjugations
 		? actualAnswerArray[ vocabConjugation ]
 		: actualAnswerArray[ vocabDeclension ];

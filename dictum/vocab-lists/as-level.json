@@ -1,0 +1,5138 @@
+{
+	"1": {
+		"word": "aciem",
+		"full": "acies, aciei, f",
+		"translation": "line, battle line, army",
+		"type": "accs"
+	},
+	"2": {
+		"word": "moras",
+		"full": "mora, morae, f",
+		"translation": "delay",
+		"type": "accp"
+	},
+	"3": {
+		"word": "curre",
+		"full": "curro, currere, cucurri, cursus",
+		"translation": "run",
+		"type": "imps"
+	},
+	"4": {
+		"word": "colat",
+		"full": "colo, colere, colui, cultus",
+		"translation": "cultivate, worship, honour",
+		"type": "pracsuj3s"
+	},
+	"5": {
+		"word": "eques",
+		"full": "eques, equitis, m",
+		"translation": "knight, horseman, (pl) cavalry",
+		"type": "vocs"
+	},
+	"6": {
+		"word": "pedem",
+		"full": "pes, pedis, m",
+		"translation": "foot",
+		"type": "accs"
+	},
+	"7": {
+		"word": "cenae",
+		"full": "cena, cenae, f",
+		"translation": "dinner, meal",
+		"type": "vocp"
+	},
+	"8": {
+		"word": "viris",
+		"full": "vir, viri, m",
+		"translation": "man, husband",
+		"type": "datp"
+	},
+	"9": {
+		"word": "locos",
+		"full": "locus, loci, m",
+		"translation": "place, position, situation, opportunity",
+		"type": "accp"
+	},
+	"10": {
+		"word": "ponet",
+		"full": "pono, ponere, posui, positus",
+		"translation": "put, place, set up (camp)",
+		"type": "ftacind3s"
+	},
+	"11": {
+		"word": "nocti",
+		"full": "nox, noctis, f",
+		"translation": "night",
+		"type": "dats"
+	},
+	"12": {
+		"word": "spera",
+		"full": "spero, sperare, speravi, speratus",
+		"translation": "hope, expect",
+		"type": "imps"
+	},
+	"13": {
+		"word": "humos",
+		"full": "humus, humi, f",
+		"translation": "ground, earth",
+		"type": "accp"
+	},
+	"14": {
+		"word": "audis",
+		"full": "audio, audire, audivi, auditus",
+		"translation": "hear, listen to",
+		"type": "pracind2s"
+	},
+	"15": {
+		"word": "debes",
+		"full": "debeo, debere, debui, debitus",
+		"translation": "owe, ought",
+		"type": "pracind2s"
+	},
+	"16": {
+		"word": "datur",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "prpaind3s"
+	},
+	"17": {
+		"word": "demus",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "pracsuj1pl"
+	},
+	"18": {
+		"word": "deles",
+		"full": "deleo, delere, delevi, deletus",
+		"translation": "destroy",
+		"type": "pracind2s"
+	},
+	"19": {
+		"word": "monte",
+		"full": "mons, montis, m",
+		"translation": "mountain",
+		"type": "abls"
+	},
+	"20": {
+		"word": "amici",
+		"full": "amicus, amici, m",
+		"translation": "friend",
+		"type": "vocp"
+	},
+	"21": {
+		"word": "petit",
+		"full": "peto, petere, petivi, petitus",
+		"translation": "seek, ask for, make for, attack",
+		"type": "pracind3s"
+	},
+	"22": {
+		"word": "vocor",
+		"full": "voco, vocare, vocavi, vocatus",
+		"translation": "call, summon, invite, name",
+		"type": "prpaind1s"
+	},
+	"23": {
+		"word": "iubet",
+		"full": "iubeo, iubere, iussi, iussus",
+		"translation": "order, command",
+		"type": "pracind3s"
+	},
+	"24": {
+		"word": "sinat",
+		"full": "sino, sinere, sivi, situs",
+		"translation": "allow, permit",
+		"type": "pracsuj3s"
+	},
+	"25": {
+		"word": "coges",
+		"full": "cogo, cogere, coegi, coactus",
+		"translation": "force, compel, drive, assemble",
+		"type": "ftacind2s"
+	},
+	"26": {
+		"word": "vidit",
+		"full": "video, videre, vidi, visus",
+		"translation": "see",
+		"type": "pfacind3s"
+	},
+	"27": {
+		"word": "movit",
+		"full": "moveo, movere, movi, motus",
+		"translation": "move",
+		"type": "pfacind3s"
+	},
+	"28": {
+		"word": "metui",
+		"full": "metus, metus, m",
+		"translation": "fear",
+		"type": "dats"
+	},
+	"29": {
+		"word": "metum",
+		"full": "metus, metus, m",
+		"translation": "fear",
+		"type": "accs"
+	},
+	"30": {
+		"word": "rexit",
+		"full": "rego, regere, rexi, rectus",
+		"translation": "rule, direct",
+		"type": "pfacind3s"
+	},
+	"31": {
+		"word": "geror",
+		"full": "gero, gerere, gessi, gestus",
+		"translation": "bear, wear, wage war, manage",
+		"type": "prpaind1s"
+	},
+	"32": {
+		"word": "vitae",
+		"full": "vita, vitae, f",
+		"translation": "life",
+		"type": "vocp"
+	},
+	"33": {
+		"word": "telum",
+		"full": "telum, teli, n",
+		"translation": "weapon, javelin, missile",
+		"type": "vocs"
+	},
+	"34": {
+		"word": "morbi",
+		"full": "morbus, morbi, m",
+		"translation": "sickness, disease",
+		"type": "vocp"
+	},
+	"35": {
+		"word": "pacum",
+		"full": "pax, pacis, f",
+		"translation": "peace",
+		"type": "genp"
+	},
+	"36": {
+		"word": "gerar",
+		"full": "gero, gerere, gessi, gestus",
+		"translation": "bear, wear, wage war, manage",
+		"type": "prpasuj1s"
+	},
+	"37": {
+		"word": "bello",
+		"full": "bellum, belli, n",
+		"translation": "war",
+		"type": "dats"
+	},
+	"38": {
+		"word": "legor",
+		"full": "lego, legere, legi, lectus",
+		"translation": "read, choose",
+		"type": "prpaind1s"
+	},
+	"39": {
+		"word": "sumet",
+		"full": "sumo, sumere, sumpsi, sumptus",
+		"translation": "take, take up",
+		"type": "ftacind3s"
+	},
+	"40": {
+		"word": "sumat",
+		"full": "sumo, sumere, sumpsi, sumptus",
+		"translation": "take, take up",
+		"type": "pracsuj3s"
+	},
+	"41": {
+		"word": "moene",
+		"full": "moenia, moenium, n pl",
+		"translation": "city walls, city",
+		"type": "vocs"
+	},
+	"42": {
+		"word": "delet",
+		"full": "deleo, delere, delevi, deletus",
+		"translation": "destroy",
+		"type": "pracind3s"
+	},
+	"43": {
+		"word": "canam",
+		"full": "cano, canere, cecini, cantus",
+		"translation": "sing, sound, play (of trumpets etc.)",
+		"type": "pracsuj1s"
+	},
+	"44": {
+		"word": "darer",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "imppasuj1s"
+	},
+	"45": {
+		"word": "iuver",
+		"full": "iuvo, iuvare, iuvi, iutus",
+		"translation": "help, please",
+		"type": "prpasuj1s"
+	},
+	"46": {
+		"word": "annos",
+		"full": "annus, anni, m",
+		"translation": "year",
+		"type": "accp"
+	},
+	"47": {
+		"word": "daret",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "impacsuj3s"
+	},
+	"48": {
+		"word": "moveo",
+		"full": "moveo, movere, movi, motus",
+		"translation": "move",
+		"type": "pracind1s"
+	},
+	"49": {
+		"word": "pugno",
+		"full": "pugno, pugnare, pugnavi",
+		"translation": "fight",
+		"type": "pracind1s"
+	},
+	"50": {
+		"word": "punit",
+		"full": "punio, punire, punivi, punitus",
+		"translation": "punish",
+		"type": "pracind3s"
+	},
+	"51": {
+		"word": "villa",
+		"full": "villa, villae, f",
+		"translation": "country-house, estate, farm",
+		"type": "vocs"
+	},
+	"52": {
+		"word": "canat",
+		"full": "cano, canere, cecini, cantus",
+		"translation": "sing, sound, play (of trumpets etc.)",
+		"type": "pracsuj3s"
+	},
+	"53": {
+		"word": "emant",
+		"full": "emo, emere, emi, emptus",
+		"translation": "buy",
+		"type": "pracsuj3pl"
+	},
+	"54": {
+		"word": "pedes",
+		"full": "pedes, peditis, m",
+		"translation": "infantry",
+		"type": "vocs"
+	},
+	"55": {
+		"word": "ducis",
+		"full": "duco, ducere, duxi, ductus",
+		"translation": "lead, take, marry, consider",
+		"type": "pracind2s"
+	},
+	"56": {
+		"word": "cibum",
+		"full": "cibus, cibi, m",
+		"translation": "food",
+		"type": "accs"
+	},
+	"57": {
+		"word": "senes",
+		"full": "senex, senis, m",
+		"translation": "old man",
+		"type": "vocp"
+	},
+	"58": {
+		"word": "curam",
+		"full": "cura, curae, f",
+		"translation": "care, charge, anxiety",
+		"type": "accs"
+	},
+	"59": {
+		"word": "artis",
+		"full": "ars, artis, f",
+		"translation": "art, skill",
+		"type": "gens"
+	},
+	"60": {
+		"word": "aquae",
+		"full": "aqua, aquae, f",
+		"translation": "water",
+		"type": "vocp"
+	},
+	"61": {
+		"word": "tegas",
+		"full": "tego, tegere, texi, tectus",
+		"translation": "cover, protect, hide",
+		"type": "pracsuj2s"
+	},
+	"62": {
+		"word": "feram",
+		"full": "fero, ferre, tuli, latus",
+		"translation": "bear, carry, bring, say",
+		"type": "pracsuj1s"
+	},
+	"63": {
+		"word": "coget",
+		"full": "cogo, cogere, coegi, coactus",
+		"translation": "force, compel, drive, assemble",
+		"type": "ftacind3s"
+	},
+	"64": {
+		"word": "solem",
+		"full": "sol, solis, m",
+		"translation": "sun, sunlight",
+		"type": "accs"
+	},
+	"65": {
+		"word": "humis",
+		"full": "humus, humi, f",
+		"translation": "ground, earth",
+		"type": "datp"
+	},
+	"66": {
+		"word": "pilum",
+		"full": "pilum, pili, n",
+		"translation": "javelin",
+		"type": "vocs"
+	},
+	"67": {
+		"word": "geret",
+		"full": "gero, gerere, gessi, gestus",
+		"translation": "bear, wear, wage war, manage",
+		"type": "ftacind3s"
+	},
+	"68": {
+		"word": "colas",
+		"full": "colo, colere, colui, cultus",
+		"translation": "cultivate, worship, honour",
+		"type": "pracsuj2s"
+	},
+	"69": {
+		"word": "sedum",
+		"full": "sedes, sedis, f",
+		"translation": "seat, temple, home",
+		"type": "genp"
+	},
+	"70": {
+		"word": "ferra",
+		"full": "ferrum, ferri, n",
+		"translation": "iron, sword",
+		"type": "vocp"
+	},
+	"71": {
+		"word": "tenui",
+		"full": "teneo, tenere, tenui, tentus",
+		"translation": "hold, keep, maintain",
+		"type": "pfacind1s"
+	},
+	"72": {
+		"word": "dabit",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "ftacind3s"
+	},
+	"73": {
+		"word": "doleo",
+		"full": "doleo, dolere, dolui",
+		"translation": "hurt, be in pain, lament",
+		"type": "pracind1s"
+	},
+	"74": {
+		"word": "vehat",
+		"full": "veho, vehere, vexi, vectus",
+		"translation": "carry, bear, convey",
+		"type": "pracsuj3s"
+	},
+	"75": {
+		"word": "tecta",
+		"full": "tectum, tecti, n",
+		"translation": "roof, house",
+		"type": "vocp"
+	},
+	"76": {
+		"word": "tegar",
+		"full": "tego, tegere, texi, tectus",
+		"translation": "cover, protect, hide",
+		"type": "prpasuj1s"
+	},
+	"77": {
+		"word": "amabo",
+		"full": "amo, amare, amavi, amatus",
+		"translation": "love, like",
+		"type": "ftacind1s"
+	},
+	"78": {
+		"word": "prode",
+		"full": "prodo, prodere, prodidi, proditus",
+		"translation": "betray, surrender",
+		"type": "imps"
+	},
+	"79": {
+		"word": "neges",
+		"full": "nego, negare, negavi, negatus",
+		"translation": "say no, deny, refuse, say that ...not",
+		"type": "pracsuj2s"
+	},
+	"80": {
+		"word": "dolos",
+		"full": "dolus, doli, m",
+		"translation": "trick, fraud",
+		"type": "accp"
+	},
+	"81": {
+		"word": "facis",
+		"full": "facio, facere, feci, factus (in compounds -ficio",
+		"translation": "make, do",
+		"type": "pracind2s"
+	},
+	"82": {
+		"word": "iunge",
+		"full": "iungo, iungere, iunxi, iunctus",
+		"translation": "join, unite, fasten",
+		"type": "imps"
+	},
+	"83": {
+		"word": "iuvat",
+		"full": "iuvo, iuvare, iuvi, iutus",
+		"translation": "help, please",
+		"type": "pracind3s"
+	},
+	"84": {
+		"word": "cibos",
+		"full": "cibus, cibi, m",
+		"translation": "food",
+		"type": "accp"
+	},
+	"85": {
+		"word": "munis",
+		"full": "munio, munire, munivi, munitus",
+		"translation": "fortify, defend, guard",
+		"type": "pracind2s"
+	},
+	"86": {
+		"word": "ademi",
+		"full": "adimo, adimere, ademi, ademptus",
+		"translation": "take away, remove",
+		"type": "pfacind1s"
+	},
+	"87": {
+		"word": "mutat",
+		"full": "muto, mutare, mutavi, mutatus",
+		"translation": "change, alter",
+		"type": "pracind3s"
+	},
+	"88": {
+		"word": "addat",
+		"full": "addo, addere, addidi, additus",
+		"translation": "add, join",
+		"type": "pracsuj3s"
+	},
+	"89": {
+		"word": "culpa",
+		"full": "culpa, culpae, f",
+		"translation": "fault, blame",
+		"type": "vocs"
+	},
+	"90": {
+		"word": "sumes",
+		"full": "sumo, sumere, sumpsi, sumptus",
+		"translation": "take, take up",
+		"type": "ftacind2s"
+	},
+	"91": {
+		"word": "sumas",
+		"full": "sumo, sumere, sumpsi, sumptus",
+		"translation": "take, take up",
+		"type": "pracsuj2s"
+	},
+	"92": {
+		"word": "curat",
+		"full": "curo, curare, curavi, curatus",
+		"translation": "care for, cure; with gerundive = get something done",
+		"type": "pracind3s"
+	},
+	"93": {
+		"word": "scias",
+		"full": "scio, scire, scivi, scitus",
+		"translation": "know",
+		"type": "pracsuj2s"
+	},
+	"94": {
+		"word": "leges",
+		"full": "lex, legis, f",
+		"translation": "law",
+		"type": "vocp"
+	},
+	"95": {
+		"word": "cedet",
+		"full": "cedo, cedere, cessi, cessus",
+		"translation": "yield, give up, go",
+		"type": "ftacind3s"
+	},
+	"96": {
+		"word": "damur",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "prpaind1pl"
+	},
+	"97": {
+		"word": "faves",
+		"full": "faveo, favere, favi, + dat",
+		"translation": "favour, support",
+		"type": "pracind2s"
+	},
+	"98": {
+		"word": "manda",
+		"full": "mando, mandare, mandavi, mandatus",
+		"translation": "commit, entrust, command",
+		"type": "imps"
+	},
+	"99": {
+		"word": "celer",
+		"full": "celo, celare, celavi, celatus",
+		"translation": "hide, conceal",
+		"type": "prpasuj1s"
+	},
+	"100": {
+		"word": "tegam",
+		"full": "tego, tegere, texi, tectus",
+		"translation": "cover, protect, hide",
+		"type": "pracsuj1s"
+	},
+	"101": {
+		"word": "paces",
+		"full": "pax, pacis, f",
+		"translation": "peace",
+		"type": "vocp"
+	},
+	"102": {
+		"word": "regum",
+		"full": "rex, regis, m",
+		"translation": "king",
+		"type": "genp"
+	},
+	"103": {
+		"word": "artes",
+		"full": "ars, artis, f",
+		"translation": "art, skill",
+		"type": "vocp"
+	},
+	"104": {
+		"word": "ducar",
+		"full": "duco, ducere, duxi, ductus",
+		"translation": "lead, take, marry, consider",
+		"type": "prpasuj1s"
+	},
+	"105": {
+		"word": "vehes",
+		"full": "veho, vehere, vexi, vectus",
+		"translation": "carry, bear, convey",
+		"type": "ftacind2s"
+	},
+	"106": {
+		"word": "socio",
+		"full": "socius, socii, m",
+		"translation": "ally, comrade, companion",
+		"type": "dats"
+	},
+	"107": {
+		"word": "usuum",
+		"full": "usus, usus, m",
+		"translation": "use, experience, practice",
+		"type": "genp"
+	},
+	"108": {
+		"word": "odiis",
+		"full": "odium, odii, n",
+		"translation": "hatred",
+		"type": "datp"
+	},
+	"109": {
+		"word": "putes",
+		"full": "puto, putare, putavi, putatus",
+		"translation": "think, consider, reckon",
+		"type": "pracsuj2s"
+	},
+	"110": {
+		"word": "vehit",
+		"full": "veho, vehere, vexi, vectus",
+		"translation": "carry, bear, convey",
+		"type": "pracind3s"
+	},
+	"111": {
+		"word": "vocer",
+		"full": "voco, vocare, vocavi, vocatus",
+		"translation": "call, summon, invite, name",
+		"type": "prpasuj1s"
+	},
+	"112": {
+		"word": "leget",
+		"full": "lego, legere, legi, lectus",
+		"translation": "read, choose",
+		"type": "ftacind3s"
+	},
+	"113": {
+		"word": "regat",
+		"full": "rego, regere, rexi, rectus",
+		"translation": "rule, direct",
+		"type": "pracsuj3s"
+	},
+	"114": {
+		"word": "parte",
+		"full": "pars, partis, f",
+		"translation": "part, some, direction",
+		"type": "abls"
+	},
+	"115": {
+		"word": "regem",
+		"full": "rex, regis, m",
+		"translation": "king",
+		"type": "accs"
+	},
+	"116": {
+		"word": "petes",
+		"full": "peto, petere, petivi, petitus",
+		"translation": "seek, ask for, make for, attack",
+		"type": "ftacind2s"
+	},
+	"117": {
+		"word": "aquis",
+		"full": "aqua, aquae, f",
+		"translation": "water",
+		"type": "datp"
+	},
+	"118": {
+		"word": "cogas",
+		"full": "cogo, cogere, coegi, coactus",
+		"translation": "force, compel, drive, assemble",
+		"type": "pracsuj2s"
+	},
+	"119": {
+		"word": "rapio",
+		"full": "rapio, rapere, rapui, raptus",
+		"translation": "seize, grab, carry off, plunder",
+		"type": "pracind1s"
+	},
+	"120": {
+		"word": "senti",
+		"full": "sentio, sentire, sensi, sensus",
+		"translation": "feel, notice, hear, judge",
+		"type": "imps"
+	},
+	"121": {
+		"word": "morbe",
+		"full": "morbus, morbi, m",
+		"translation": "sickness, disease",
+		"type": "vocs"
+	},
+	"122": {
+		"word": "orate",
+		"full": "oro, orare, oravi, oratus",
+		"translation": "beg",
+		"type": "imppl"
+	},
+	"123": {
+		"word": "iuvem",
+		"full": "iuvo, iuvare, iuvi, iutus",
+		"translation": "help, please",
+		"type": "pracsuj1s"
+	},
+	"124": {
+		"word": "ducet",
+		"full": "duco, ducere, duxi, ductus",
+		"translation": "lead, take, marry, consider",
+		"type": "ftacind3s"
+	},
+	"125": {
+		"word": "menti",
+		"full": "mens, mentis, f",
+		"translation": "mind",
+		"type": "dats"
+	},
+	"126": {
+		"word": "legio",
+		"full": "legio, legionis, f",
+		"translation": "legion",
+		"type": "vocs"
+	},
+	"127": {
+		"word": "dicat",
+		"full": "dico, dicere, dixi, dictus",
+		"translation": "say, speak, tell",
+		"type": "pracsuj3s"
+	},
+	"128": {
+		"word": "domum",
+		"full": "domus, domus, f",
+		"translation": "house, home",
+		"type": "accs"
+	},
+	"129": {
+		"word": "necet",
+		"full": "neco, necare, necavi, necatus",
+		"translation": "kill",
+		"type": "pracsuj3s"
+	},
+	"130": {
+		"word": "negat",
+		"full": "nego, negare, negavi, negatus",
+		"translation": "say no, deny, refuse, say that ...not",
+		"type": "pracind3s"
+	},
+	"131": {
+		"word": "canes",
+		"full": "canis, canis, m and f",
+		"translation": "dog",
+		"type": "vocp"
+	},
+	"132": {
+		"word": "operi",
+		"full": "opus, operis, n",
+		"translation": "work, toil, construction",
+		"type": "dats"
+	},
+	"133": {
+		"word": "demur",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "prpasuj1pl"
+	},
+	"134": {
+		"word": "cadis",
+		"full": "cado, cadere, cecidi, casus",
+		"translation": "fall, perish",
+		"type": "pracind2s"
+	},
+	"135": {
+		"word": "artem",
+		"full": "ars, artis, f",
+		"translation": "art, skill",
+		"type": "accs"
+	},
+	"136": {
+		"word": "miles",
+		"full": "miles, militis, m",
+		"translation": "soldier",
+		"type": "vocs"
+	},
+	"137": {
+		"word": "iubeo",
+		"full": "iubeo, iubere, iussi, iussus",
+		"translation": "order, command",
+		"type": "pracind1s"
+	},
+	"138": {
+		"word": "horis",
+		"full": "hora, horae, f",
+		"translation": "hour",
+		"type": "datp"
+	},
+	"139": {
+		"word": "otium",
+		"full": "otium, otii, n",
+		"translation": "leisure, idleness, peace",
+		"type": "vocs"
+	},
+	"140": {
+		"word": "ponte",
+		"full": "pons, pontis, m",
+		"translation": "bridge",
+		"type": "abls"
+	},
+	"141": {
+		"word": "urbem",
+		"full": "urbs, urbis, f",
+		"translation": "city, town, Rome",
+		"type": "accs"
+	},
+	"142": {
+		"word": "putet",
+		"full": "puto, putare, putavi, putatus",
+		"translation": "think, consider, reckon",
+		"type": "pracsuj3s"
+	},
+	"143": {
+		"word": "ornem",
+		"full": "orno, ornare, ornavi, ornatus",
+		"translation": "adorn, decorate, provide, equip",
+		"type": "pracsuj1s"
+	},
+	"144": {
+		"word": "solis",
+		"full": "sol, solis, m",
+		"translation": "sun, sunlight",
+		"type": "gens"
+	},
+	"145": {
+		"word": "rumpo",
+		"full": "rumpo, rumpere, rupi, ruptus",
+		"translation": "break, burst, break through",
+		"type": "pracind1s"
+	},
+	"146": {
+		"word": "veham",
+		"full": "veho, vehere, vexi, vectus",
+		"translation": "carry, bear, convey",
+		"type": "pracsuj1s"
+	},
+	"147": {
+		"word": "vocem",
+		"full": "voco, vocare, vocavi, vocatus",
+		"translation": "call, summon, invite, name",
+		"type": "pracsuj1s"
+	},
+	"148": {
+		"word": "celor",
+		"full": "celo, celare, celavi, celatus",
+		"translation": "hide, conceal",
+		"type": "prpaind1s"
+	},
+	"149": {
+		"word": "sivit",
+		"full": "sino, sinere, sivi, situs",
+		"translation": "allow, permit",
+		"type": "pfacind3s"
+	},
+	"150": {
+		"word": "tulit",
+		"full": "fero, ferre, tuli, latus",
+		"translation": "bear, carry, bring, say",
+		"type": "pfacind3s"
+	},
+	"151": {
+		"word": "errem",
+		"full": "erro, errare, erravi, erratus",
+		"translation": "wander, make a mistake",
+		"type": "pracsuj1s"
+	},
+	"152": {
+		"word": "traxi",
+		"full": "traho, trahere, traxi, tractus",
+		"translation": "pull, drag, draw",
+		"type": "pfacind1s"
+	},
+	"153": {
+		"word": "annum",
+		"full": "annus, anni, m",
+		"translation": "year",
+		"type": "accs"
+	},
+	"154": {
+		"word": "sumar",
+		"full": "sumo, sumere, sumpsi, sumptus",
+		"translation": "take, take up",
+		"type": "prpasuj1s"
+	},
+	"155": {
+		"word": "ducit",
+		"full": "duco, ducere, duxi, ductus",
+		"translation": "lead, take, marry, consider",
+		"type": "pracind3s"
+	},
+	"156": {
+		"word": "fugas",
+		"full": "fuga, fugae, f",
+		"translation": "flight, escape",
+		"type": "accp"
+	},
+	"157": {
+		"word": "tergo",
+		"full": "tergum, tergi, n",
+		"translation": "back, rear",
+		"type": "dats"
+	},
+	"158": {
+		"word": "somne",
+		"full": "somnus, somni, m",
+		"translation": "sleep",
+		"type": "vocs"
+	},
+	"159": {
+		"word": "morem",
+		"full": "mos, moris, m",
+		"translation": "habit, custom, (pl) character, morals",
+		"type": "accs"
+	},
+	"160": {
+		"word": "curor",
+		"full": "curo, curare, curavi, curatus",
+		"translation": "care for, cure; with gerundive = get something done",
+		"type": "prpaind1s"
+	},
+	"161": {
+		"word": "soror",
+		"full": "soror, sororis, f",
+		"translation": "sister",
+		"type": "vocs"
+	},
+	"162": {
+		"word": "curis",
+		"full": "cura, curae, f",
+		"translation": "care, charge, anxiety",
+		"type": "datp"
+	},
+	"163": {
+		"word": "venti",
+		"full": "ventus, venti, m",
+		"translation": "wind",
+		"type": "vocp"
+	},
+	"164": {
+		"word": "agmen",
+		"full": "agmen, agminis, n",
+		"translation": "column of men, army",
+		"type": "vocs"
+	},
+	"165": {
+		"word": "sinis",
+		"full": "sino, sinere, sivi, situs",
+		"translation": "allow, permit",
+		"type": "pracind2s"
+	},
+	"166": {
+		"word": "ignis",
+		"full": "ignis, ignis, m",
+		"translation": "fire",
+		"type": "vocs"
+	},
+	"167": {
+		"word": "cadas",
+		"full": "cado, cadere, cecidi, casus",
+		"translation": "fall, perish",
+		"type": "pracsuj2s"
+	},
+	"168": {
+		"word": "laudo",
+		"full": "laudo, laudare, laudavi, laudatus",
+		"translation": "praise",
+		"type": "pracind1s"
+	},
+	"169": {
+		"word": "favit",
+		"full": "faveo, favere, favi, + dat",
+		"translation": "favour, support",
+		"type": "pfacind3s"
+	},
+	"170": {
+		"word": "plebs",
+		"full": "plebs, plebis, f",
+		"translation": "the people, common people",
+		"type": "vocs"
+	},
+	"171": {
+		"word": "morae",
+		"full": "mora, morae, f",
+		"translation": "delay",
+		"type": "vocp"
+	},
+	"172": {
+		"word": "ponam",
+		"full": "pono, ponere, posui, positus",
+		"translation": "put, place, set up (camp)",
+		"type": "pracsuj1s"
+	},
+	"173": {
+		"word": "domui",
+		"full": "domus, domus, f",
+		"translation": "house, home",
+		"type": "dats"
+	},
+	"174": {
+		"word": "dares",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "impacsuj2s"
+	},
+	"175": {
+		"word": "tecto",
+		"full": "tectum, tecti, n",
+		"translation": "roof, house",
+		"type": "dats"
+	},
+	"176": {
+		"word": "signo",
+		"full": "signum, signi, n",
+		"translation": "sign, signal, standard",
+		"type": "dats"
+	},
+	"177": {
+		"word": "neget",
+		"full": "nego, negare, negavi, negatus",
+		"translation": "say no, deny, refuse, say that ...not",
+		"type": "pracsuj3s"
+	},
+	"178": {
+		"word": "senis",
+		"full": "senex, senis, m",
+		"translation": "old man",
+		"type": "gens"
+	},
+	"179": {
+		"word": "domus",
+		"full": "domus, domus, f",
+		"translation": "house, home",
+		"type": "vocs"
+	},
+	"180": {
+		"word": "scuti",
+		"full": "scutum, scuti, n",
+		"translation": "shield",
+		"type": "gens"
+	},
+	"181": {
+		"word": "cades",
+		"full": "cado, cadere, cecidi, casus",
+		"translation": "fall, perish",
+		"type": "ftacind2s"
+	},
+	"182": {
+		"word": "ponis",
+		"full": "pono, ponere, posui, positus",
+		"translation": "put, place, set up (camp)",
+		"type": "pracind2s"
+	},
+	"183": {
+		"word": "celat",
+		"full": "celo, celare, celavi, celatus",
+		"translation": "hide, conceal",
+		"type": "pracind3s"
+	},
+	"184": {
+		"word": "stabo",
+		"full": "sto, stare, steti",
+		"translation": "stand, stand firm",
+		"type": "ftacind1s"
+	},
+	"185": {
+		"word": "addas",
+		"full": "addo, addere, addidi, additus",
+		"translation": "add, join",
+		"type": "pracsuj2s"
+	},
+	"186": {
+		"word": "iutus",
+		"full": "iuvo, iuvare, iuvi, iutus",
+		"translation": "help, please",
+		"type": "ppp"
+	},
+	"187": {
+		"word": "canar",
+		"full": "cano, canere, cecini, cantus",
+		"translation": "sing, sound, play (of trumpets etc.)",
+		"type": "prpasuj1s"
+	},
+	"188": {
+		"word": "favet",
+		"full": "faveo, favere, favi, + dat",
+		"translation": "favour, support",
+		"type": "pracind3s"
+	},
+	"189": {
+		"word": "stans",
+		"full": "sto, stare, steti",
+		"translation": "stand, stand firm",
+		"type": "pap"
+	},
+	"190": {
+		"word": "datus",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "ppp"
+	},
+	"191": {
+		"word": "facit",
+		"full": "facio, facere, feci, factus (in compounds -ficio",
+		"translation": "make, do",
+		"type": "pracind3s"
+	},
+	"192": {
+		"word": "agens",
+		"full": "ago, agere, egi, actus",
+		"translation": "do, act, drive",
+		"type": "pap"
+	},
+	"193": {
+		"word": "horto",
+		"full": "hortus, horti, m",
+		"translation": "garden",
+		"type": "dats"
+	},
+	"194": {
+		"word": "horae",
+		"full": "hora, horae, f",
+		"translation": "hour",
+		"type": "vocp"
+	},
+	"195": {
+		"word": "curas",
+		"full": "curo, curare, curavi, curatus",
+		"translation": "care for, cure; with gerundive = get something done",
+		"type": "pracind2s"
+	},
+	"196": {
+		"word": "senex",
+		"full": "senex, senis, m",
+		"translation": "old man",
+		"type": "vocs"
+	},
+	"197": {
+		"word": "addet",
+		"full": "addo, addere, addidi, additus",
+		"translation": "add, join",
+		"type": "ftacind3s"
+	},
+	"198": {
+		"word": "signi",
+		"full": "signum, signi, n",
+		"translation": "sign, signal, standard",
+		"type": "gens"
+	},
+	"199": {
+		"word": "noces",
+		"full": "noceo, nocere, nocui + dat",
+		"translation": "hurt, harm",
+		"type": "pracind2s"
+	},
+	"200": {
+		"word": "ornor",
+		"full": "orno, ornare, ornavi, ornatus",
+		"translation": "adorn, decorate, provide, equip",
+		"type": "prpaind1s"
+	},
+	"201": {
+		"word": "capit",
+		"full": "capio, capere, cepi, captus (in compounds -icio)",
+		"translation": "take, catch, capture",
+		"type": "pracind3s"
+	},
+	"202": {
+		"word": "vocet",
+		"full": "voco, vocare, vocavi, vocatus",
+		"translation": "call, summon, invite, name",
+		"type": "pracsuj3s"
+	},
+	"203": {
+		"word": "onera",
+		"full": "onus, oneris, n",
+		"translation": "burden, load",
+		"type": "vocp"
+	},
+	"204": {
+		"word": "vivit",
+		"full": "vivo, vivere, vixi",
+		"translation": "live, be alive, live on",
+		"type": "pracind3s"
+	},
+	"205": {
+		"word": "agite",
+		"full": "ago, agere, egi, actus",
+		"translation": "do, act, drive",
+		"type": "imppl"
+	},
+	"206": {
+		"word": "serva",
+		"full": "servo, servare, servavi, servatus",
+		"translation": "save, protect, keep",
+		"type": "imps"
+	},
+	"207": {
+		"word": "fiunt",
+		"full": "facio, facere, feci, factus (in compounds -ficio",
+		"translation": "make, do",
+		"type": "prpaind3pl"
+	},
+	"208": {
+		"word": "vicit",
+		"full": "vinco, vincere, vici, victus",
+		"translation": "conquer, defeat, win, be victorious",
+		"type": "pfacind3s"
+	},
+	"209": {
+		"word": "sonum",
+		"full": "sonus, soni, m",
+		"translation": "noise, sound",
+		"type": "accs"
+	},
+	"210": {
+		"word": "augeo",
+		"full": "augeo, augere, auxi, auctus",
+		"translation": "increase, exaggerate",
+		"type": "pracind1s"
+	},
+	"211": {
+		"word": "ducam",
+		"full": "duco, ducere, duxi, ductus",
+		"translation": "lead, take, marry, consider",
+		"type": "pracsuj1s"
+	},
+	"212": {
+		"word": "vitis",
+		"full": "vita, vitae, f",
+		"translation": "life",
+		"type": "datp"
+	},
+	"213": {
+		"word": "telis",
+		"full": "telum, teli, n",
+		"translation": "weapon, javelin, missile",
+		"type": "datp"
+	},
+	"214": {
+		"word": "nocui",
+		"full": "noceo, nocere, nocui + dat",
+		"translation": "hurt, harm",
+		"type": "pfacind1s"
+	},
+	"215": {
+		"word": "feror",
+		"full": "fero, ferre, tuli, latus",
+		"translation": "bear, carry, bring, say",
+		"type": "prpaind1s"
+	},
+	"216": {
+		"word": "docet",
+		"full": "doceo, docere, docui, doctus",
+		"translation": "teach, inform",
+		"type": "pracind3s"
+	},
+	"217": {
+		"word": "agros",
+		"full": "ager, agri, m",
+		"translation": "field, land, territory",
+		"type": "accp"
+	},
+	"218": {
+		"word": "regit",
+		"full": "rego, regere, rexi, rectus",
+		"translation": "rule, direct",
+		"type": "pracind3s"
+	},
+	"219": {
+		"word": "rogem",
+		"full": "rogo, rogare, rogavi, rogatus",
+		"translation": "ask, ask for",
+		"type": "pracsuj1s"
+	},
+	"220": {
+		"word": "crede",
+		"full": "credo, credere, credidi, creditus + dat",
+		"translation": "believe, trust, entrust",
+		"type": "imps"
+	},
+	"221": {
+		"word": "necer",
+		"full": "neco, necare, necavi, necatus",
+		"translation": "kill",
+		"type": "prpasuj1s"
+	},
+	"222": {
+		"word": "fidei",
+		"full": "fides, fidei, f",
+		"translation": "trust, faith, confidence, loyalty",
+		"type": "gens"
+	},
+	"223": {
+		"word": "tango",
+		"full": "tango, tangere, tetigi, tactus",
+		"translation": "touch",
+		"type": "pracind1s"
+	},
+	"224": {
+		"word": "navis",
+		"full": "navis, navis, f",
+		"translation": "ship",
+		"type": "vocs"
+	},
+	"225": {
+		"word": "salus",
+		"full": "salus, salutis, f",
+		"translation": "health, safety, greeting",
+		"type": "vocs"
+	},
+	"226": {
+		"word": "amavi",
+		"full": "amo, amare, amavi, amatus",
+		"translation": "love, like",
+		"type": "pfacind1s"
+	},
+	"227": {
+		"word": "cupis",
+		"full": "cupio, cupere, cupivi, cupitus",
+		"translation": "desire, wish, want",
+		"type": "pracind2s"
+	},
+	"228": {
+		"word": "rogat",
+		"full": "rogo, rogare, rogavi, rogatus",
+		"translation": "ask, ask for",
+		"type": "pracind3s"
+	},
+	"229": {
+		"word": "parer",
+		"full": "paro, parare, paravi, paratus",
+		"translation": "prepare, provide",
+		"type": "prpasuj1s"
+	},
+	"230": {
+		"word": "celet",
+		"full": "celo, celare, celavi, celatus",
+		"translation": "hide, conceal",
+		"type": "pracsuj3s"
+	},
+	"231": {
+		"word": "iacio",
+		"full": "iacio, iacere, ieci, iactus (in compounds -icio)",
+		"translation": "throw",
+		"type": "pracind1s"
+	},
+	"232": {
+		"word": "traho",
+		"full": "traho, trahere, traxi, tractus",
+		"translation": "pull, drag, draw",
+		"type": "pracind1s"
+	},
+	"233": {
+		"word": "signa",
+		"full": "signum, signi, n",
+		"translation": "sign, signal, standard",
+		"type": "vocp"
+	},
+	"234": {
+		"word": "fient",
+		"full": "facio, facere, feci, factus (in compounds -ficio",
+		"translation": "make, do",
+		"type": "ftpaind3pl"
+	},
+	"235": {
+		"word": "oculo",
+		"full": "oculus, oculi, m",
+		"translation": "eye",
+		"type": "dats"
+	},
+	"236": {
+		"word": "agent",
+		"full": "ago, agere, egi, actus",
+		"translation": "do, act, drive",
+		"type": "ftacind3pl"
+	},
+	"237": {
+		"word": "sumit",
+		"full": "sumo, sumere, sumpsi, sumptus",
+		"translation": "take, take up",
+		"type": "pracind3s"
+	},
+	"238": {
+		"word": "ferte",
+		"full": "fero, ferre, tuli, latus",
+		"translation": "bear, carry, bring, say",
+		"type": "imppl"
+	},
+	"239": {
+		"word": "dices",
+		"full": "dico, dicere, dixi, dictus",
+		"translation": "say, speak, tell",
+		"type": "ftacind2s"
+	},
+	"240": {
+		"word": "regni",
+		"full": "regnum, regni, n",
+		"translation": "kingdom, reign, rule",
+		"type": "gens"
+	},
+	"241": {
+		"word": "metus",
+		"full": "metus, metus, m",
+		"translation": "fear",
+		"type": "vocs"
+	},
+	"242": {
+		"word": "maria",
+		"full": "mare, maris, n",
+		"translation": "sea",
+		"type": "vocp"
+	},
+	"243": {
+		"word": "narra",
+		"full": "narro, narrare, narravi, narratus",
+		"translation": "tell, relate",
+		"type": "imps"
+	},
+	"244": {
+		"word": "dicas",
+		"full": "dico, dicere, dixi, dictus",
+		"translation": "say, speak, tell",
+		"type": "pracsuj2s"
+	},
+	"245": {
+		"word": "mater",
+		"full": "mater, matris, f",
+		"translation": "mother",
+		"type": "vocs"
+	},
+	"246": {
+		"word": "vetor",
+		"full": "veto, vetare, vetui, vetitus",
+		"translation": "forbid, order...not, ordeer not",
+		"type": "prpaind1s"
+	},
+	"247": {
+		"word": "scuta",
+		"full": "scutum, scuti, n",
+		"translation": "shield",
+		"type": "vocp"
+	},
+	"248": {
+		"word": "somni",
+		"full": "somnus, somni, m",
+		"translation": "sleep",
+		"type": "vocp"
+	},
+	"249": {
+		"word": "iungo",
+		"full": "iungo, iungere, iunxi, iunctus",
+		"translation": "join, unite, fasten",
+		"type": "pracind1s"
+	},
+	"250": {
+		"word": "falle",
+		"full": "fallo, fallere, fefelli, falsus",
+		"translation": "deceive, cheat",
+		"type": "imps"
+	},
+	"251": {
+		"word": "muris",
+		"full": "murus, muri, m",
+		"translation": "wall, rampart",
+		"type": "datp"
+	},
+	"252": {
+		"word": "putem",
+		"full": "puto, putare, putavi, putatus",
+		"translation": "think, consider, reckon",
+		"type": "pracsuj1s"
+	},
+	"253": {
+		"word": "ignes",
+		"full": "ignis, ignis, m",
+		"translation": "fire",
+		"type": "vocp"
+	},
+	"254": {
+		"word": "ponti",
+		"full": "pons, pontis, m",
+		"translation": "bridge",
+		"type": "dats"
+	},
+	"255": {
+		"word": "socie",
+		"full": "socius, socii, m",
+		"translation": "ally, comrade, companion",
+		"type": "vocs"
+	},
+	"256": {
+		"word": "patri",
+		"full": "pater, patris, m",
+		"translation": "father",
+		"type": "dats"
+	},
+	"257": {
+		"word": "dolet",
+		"full": "doleo, dolere, dolui",
+		"translation": "hurt, be in pain, lament",
+		"type": "pracind3s"
+	},
+	"258": {
+		"word": "iubes",
+		"full": "iubeo, iubere, iussi, iussus",
+		"translation": "order, command",
+		"type": "pracind2s"
+	},
+	"259": {
+		"word": "pueri",
+		"full": "puer, pueri, m",
+		"translation": "boy",
+		"type": "vocp"
+	},
+	"260": {
+		"word": "veter",
+		"full": "veto, vetare, vetui, vetitus",
+		"translation": "forbid, order...not, ordeer not",
+		"type": "prpasuj1s"
+	},
+	"261": {
+		"word": "legar",
+		"full": "lego, legere, legi, lectus",
+		"translation": "read, choose",
+		"type": "prpasuj1s"
+	},
+	"262": {
+		"word": "fiant",
+		"full": "facio, facere, feci, factus (in compounds -ficio",
+		"translation": "make, do",
+		"type": "prpasuj3pl"
+	},
+	"263": {
+		"word": "porta",
+		"full": "porta, portae, f",
+		"translation": "gate",
+		"type": "vocs"
+	},
+	"264": {
+		"word": "stent",
+		"full": "sto, stare, steti",
+		"translation": "stand, stand firm",
+		"type": "pracsuj3pl"
+	},
+	"265": {
+		"word": "hieme",
+		"full": "hiems, hiemis, f",
+		"translation": "winter, storm",
+		"type": "abls"
+	},
+	"266": {
+		"word": "gerat",
+		"full": "gero, gerere, gessi, gestus",
+		"translation": "bear, wear, wage war, manage",
+		"type": "pracsuj3s"
+	},
+	"267": {
+		"word": "dicar",
+		"full": "dico, dicere, dixi, dictus",
+		"translation": "say, speak, tell",
+		"type": "prpasuj1s"
+	},
+	"268": {
+		"word": "mutor",
+		"full": "muto, mutare, mutavi, mutatus",
+		"translation": "change, alter",
+		"type": "prpaind1s"
+	},
+	"269": {
+		"word": "cadit",
+		"full": "cado, cadere, cecidi, casus",
+		"translation": "fall, perish",
+		"type": "pracind3s"
+	},
+	"270": {
+		"word": "lucum",
+		"full": "lux, lucis, f",
+		"translation": "light, daylight",
+		"type": "genp"
+	},
+	"271": {
+		"word": "mores",
+		"full": "mos, moris, m",
+		"translation": "habit, custom, (pl) character, morals",
+		"type": "vocp"
+	},
+	"272": {
+		"word": "orare",
+		"full": "oro, orare, oravi, oratus",
+		"translation": "beg",
+		"type": "infpr"
+	},
+	"273": {
+		"word": "ducor",
+		"full": "duco, ducere, duxi, ductus",
+		"translation": "lead, take, marry, consider",
+		"type": "prpaind1s"
+	},
+	"274": {
+		"word": "cadet",
+		"full": "cado, cadere, cecidi, casus",
+		"translation": "fall, perish",
+		"type": "ftacind3s"
+	},
+	"275": {
+		"word": "vehor",
+		"full": "veho, vehere, vexi, vectus",
+		"translation": "carry, bear, convey",
+		"type": "prpaind1s"
+	},
+	"276": {
+		"word": "agris",
+		"full": "ager, agri, m",
+		"translation": "field, land, territory",
+		"type": "datp"
+	},
+	"277": {
+		"word": "amate",
+		"full": "amo, amare, amavi, amatus",
+		"translation": "love, like",
+		"type": "imppl"
+	},
+	"278": {
+		"word": "datis",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "pracind2pl"
+	},
+	"279": {
+		"word": "otiis",
+		"full": "otium, otii, n",
+		"translation": "leisure, idleness, peace",
+		"type": "datp"
+	},
+	"280": {
+		"word": "sensi",
+		"full": "sentio, sentire, sensi, sensus",
+		"translation": "feel, notice, hear, judge",
+		"type": "pfacind1s"
+	},
+	"281": {
+		"word": "sedes",
+		"full": "sedes, sedis, f",
+		"translation": "seat, temple, home",
+		"type": "vocs"
+	},
+	"282": {
+		"word": "feres",
+		"full": "fero, ferre, tuli, latus",
+		"translation": "bear, carry, bring, say",
+		"type": "ftacind2s"
+	},
+	"283": {
+		"word": "honor",
+		"full": "honor, honoris, m",
+		"translation": "honour, esteem, glory",
+		"type": "vocs"
+	},
+	"284": {
+		"word": "fundo",
+		"full": "fundo, fundere, fudi, fusus",
+		"translation": "pour, shed, rout",
+		"type": "pracind1s"
+	},
+	"285": {
+		"word": "copia",
+		"full": "copiae, copiarum, f pl",
+		"translation": "troops, forces, supplies",
+		"type": "vocs"
+	},
+	"286": {
+		"word": "dolum",
+		"full": "dolus, doli, m",
+		"translation": "trick, fraud",
+		"type": "accs"
+	},
+	"287": {
+		"word": "vivat",
+		"full": "vivo, vivere, vixi",
+		"translation": "live, be alive, live on",
+		"type": "pracsuj3s"
+	},
+	"288": {
+		"word": "ripae",
+		"full": "ripa, ripae, f",
+		"translation": "bank",
+		"type": "vocp"
+	},
+	"289": {
+		"word": "amare",
+		"full": "amo, amare, amavi, amatus",
+		"translation": "love, like",
+		"type": "infpr"
+	},
+	"290": {
+		"word": "rapis",
+		"full": "rapio, rapere, rapui, raptus",
+		"translation": "seize, grab, carry off, plunder",
+		"type": "pracind2s"
+	},
+	"291": {
+		"word": "vehis",
+		"full": "veho, vehere, vexi, vectus",
+		"translation": "carry, bear, convey",
+		"type": "pracind2s"
+	},
+	"292": {
+		"word": "texit",
+		"full": "tego, tegere, texi, tectus",
+		"translation": "cover, protect, hide",
+		"type": "pfacind3s"
+	},
+	"293": {
+		"word": "comes",
+		"full": "comes, comitis, m and f",
+		"translation": "comrade, companion",
+		"type": "vocs"
+	},
+	"294": {
+		"word": "equum",
+		"full": "equus, equi, m",
+		"translation": "horse",
+		"type": "accs"
+	},
+	"295": {
+		"word": "fugis",
+		"full": "fugio, fugere, fugi",
+		"translation": "flee, run away (from), avoid",
+		"type": "pracind2s"
+	},
+	"296": {
+		"word": "fudit",
+		"full": "fundo, fundere, fudi, fusus",
+		"translation": "pour, shed, rout",
+		"type": "pfacind3s"
+	},
+	"297": {
+		"word": "ignem",
+		"full": "ignis, ignis, m",
+		"translation": "fire",
+		"type": "accs"
+	},
+	"298": {
+		"word": "dicis",
+		"full": "dico, dicere, dixi, dictus",
+		"translation": "say, speak, tell",
+		"type": "pracind2s"
+	},
+	"299": {
+		"word": "hiemi",
+		"full": "hiems, hiemis, f",
+		"translation": "winter, storm",
+		"type": "dats"
+	},
+	"300": {
+		"word": "tegor",
+		"full": "tego, tegere, texi, tectus",
+		"translation": "cover, protect, hide",
+		"type": "prpaind1s"
+	},
+	"301": {
+		"word": "luces",
+		"full": "lux, lucis, f",
+		"translation": "light, daylight",
+		"type": "vocp"
+	},
+	"302": {
+		"word": "agere",
+		"full": "ago, agere, egi, actus",
+		"translation": "do, act, drive",
+		"type": "infpr"
+	},
+	"303": {
+		"word": "vetat",
+		"full": "veto, vetare, vetui, vetitus",
+		"translation": "forbid, order...not, ordeer not",
+		"type": "pracind3s"
+	},
+	"304": {
+		"word": "mitto",
+		"full": "mitto, mittere, misi, missus",
+		"translation": "send, throw, let go",
+		"type": "pracind1s"
+	},
+	"305": {
+		"word": "quies",
+		"full": "quies, quietis, f",
+		"translation": "rest, peace, quiet",
+		"type": "vocs"
+	},
+	"306": {
+		"word": "vitat",
+		"full": "vito, vitare, vitavi, vitatus",
+		"translation": "avoid",
+		"type": "pracind3s"
+	},
+	"307": {
+		"word": "amant",
+		"full": "amo, amare, amavi, amatus",
+		"translation": "love, like",
+		"type": "pracind3pl"
+	},
+	"308": {
+		"word": "audit",
+		"full": "audio, audire, audivi, auditus",
+		"translation": "hear, listen to",
+		"type": "pracind3s"
+	},
+	"309": {
+		"word": "negem",
+		"full": "nego, negare, negavi, negatus",
+		"translation": "say no, deny, refuse, say that ...not",
+		"type": "pracsuj1s"
+	},
+	"310": {
+		"word": "vento",
+		"full": "ventus, venti, m",
+		"translation": "wind",
+		"type": "dats"
+	},
+	"311": {
+		"word": "vetem",
+		"full": "veto, vetare, vetui, vetitus",
+		"translation": "forbid, order...not, ordeer not",
+		"type": "pracsuj1s"
+	},
+	"312": {
+		"word": "vetes",
+		"full": "veto, vetare, vetui, vetitus",
+		"translation": "forbid, order...not, ordeer not",
+		"type": "pracsuj2s"
+	},
+	"313": {
+		"word": "iecit",
+		"full": "iacio, iacere, ieci, iactus (in compounds -icio)",
+		"translation": "throw",
+		"type": "pfacind3s"
+	},
+	"314": {
+		"word": "iuvor",
+		"full": "iuvo, iuvare, iuvi, iutus",
+		"translation": "help, please",
+		"type": "prpaind1s"
+	},
+	"315": {
+		"word": "monet",
+		"full": "moneo, monere, monui, monitus",
+		"translation": "warn, advise, teach",
+		"type": "pracind3s"
+	},
+	"316": {
+		"word": "viter",
+		"full": "vito, vitare, vitavi, vitatus",
+		"translation": "avoid",
+		"type": "prpasuj1s"
+	},
+	"317": {
+		"word": "clama",
+		"full": "clamo, clamare, clamavi, clamatus",
+		"translation": "shout, exclaim, proclaim",
+		"type": "imps"
+	},
+	"318": {
+		"word": "mutem",
+		"full": "muto, mutare, mutavi, mutatus",
+		"translation": "change, alter",
+		"type": "pracsuj1s"
+	},
+	"319": {
+		"word": "maneo",
+		"full": "maneo, manere, mansi",
+		"translation": "remain, stay",
+		"type": "pracind1s"
+	},
+	"320": {
+		"word": "addor",
+		"full": "addo, addere, addidi, additus",
+		"translation": "add, join",
+		"type": "prpaind1s"
+	},
+	"321": {
+		"word": "filio",
+		"full": "filius, filii, m",
+		"translation": "son",
+		"type": "dats"
+	},
+	"322": {
+		"word": "lucis",
+		"full": "lux, lucis, f",
+		"translation": "light, daylight",
+		"type": "gens"
+	},
+	"323": {
+		"word": "aufer",
+		"full": "aufero, auferre, abstuli, ablatus",
+		"translation": "take away, carry off, steal",
+		"type": "imps"
+	},
+	"324": {
+		"word": "rogas",
+		"full": "rogo, rogare, rogavi, rogatus",
+		"translation": "ask, ask for",
+		"type": "pracind2s"
+	},
+	"325": {
+		"word": "hoste",
+		"full": "hostis, hostis, m",
+		"translation": "enemy",
+		"type": "abls"
+	},
+	"326": {
+		"word": "cogor",
+		"full": "cogo, cogere, coegi, coactus",
+		"translation": "force, compel, drive, assemble",
+		"type": "prpaind1s"
+	},
+	"327": {
+		"word": "iuvet",
+		"full": "iuvo, iuvare, iuvi, iutus",
+		"translation": "help, please",
+		"type": "pracsuj3s"
+	},
+	"328": {
+		"word": "onere",
+		"full": "onus, oneris, n",
+		"translation": "burden, load",
+		"type": "abls"
+	},
+	"329": {
+		"word": "arbor",
+		"full": "arbor, arboris, f",
+		"translation": "tree",
+		"type": "vocs"
+	},
+	"330": {
+		"word": "legat",
+		"full": "lego, legere, legi, lectus",
+		"translation": "read, choose",
+		"type": "pracsuj3s"
+	},
+	"331": {
+		"word": "neces",
+		"full": "neco, necare, necavi, necatus",
+		"translation": "kill",
+		"type": "pracsuj2s"
+	},
+	"332": {
+		"word": "oneri",
+		"full": "onus, oneris, n",
+		"translation": "burden, load",
+		"type": "dats"
+	},
+	"333": {
+		"word": "cepit",
+		"full": "capio, capere, cepi, captus (in compounds -icio)",
+		"translation": "take, catch, capture",
+		"type": "pfacind3s"
+	},
+	"334": {
+		"word": "teneo",
+		"full": "teneo, tenere, tenui, tentus",
+		"translation": "hold, keep, maintain",
+		"type": "pracind1s"
+	},
+	"335": {
+		"word": "ripas",
+		"full": "ripa, ripae, f",
+		"translation": "bank",
+		"type": "accp"
+	},
+	"336": {
+		"word": "cedes",
+		"full": "cedo, cedere, cessi, cessus",
+		"translation": "yield, give up, go",
+		"type": "ftacind2s"
+	},
+	"337": {
+		"word": "matri",
+		"full": "mater, matris, f",
+		"translation": "mother",
+		"type": "dats"
+	},
+	"338": {
+		"word": "debui",
+		"full": "debeo, debere, debui, debitus",
+		"translation": "owe, ought",
+		"type": "pfacind1s"
+	},
+	"339": {
+		"word": "regor",
+		"full": "rego, regere, rexi, rectus",
+		"translation": "rule, direct",
+		"type": "prpaind1s"
+	},
+	"340": {
+		"word": "armum",
+		"full": "arma, armorum, n pl",
+		"translation": "arms, weapons, armour",
+		"type": "vocs"
+	},
+	"341": {
+		"word": "doces",
+		"full": "doceo, docere, docui, doctus",
+		"translation": "teach, inform",
+		"type": "pracind2s"
+	},
+	"342": {
+		"word": "habui",
+		"full": "habeo, habere, habui, habitus",
+		"translation": "have, hold, consider",
+		"type": "pfacind1s"
+	},
+	"343": {
+		"word": "addam",
+		"full": "addo, addere, addidi, additus",
+		"translation": "add, join",
+		"type": "pracsuj1s"
+	},
+	"344": {
+		"word": "ferre",
+		"full": "fero, ferre, tuli, latus",
+		"translation": "bear, carry, bring, say",
+		"type": "infpr"
+	},
+	"345": {
+		"word": "mitte",
+		"full": "mitto, mittere, misi, missus",
+		"translation": "send, throw, let go",
+		"type": "imps"
+	},
+	"346": {
+		"word": "iacis",
+		"full": "iacio, iacere, ieci, iactus (in compounds -icio)",
+		"translation": "throw",
+		"type": "pracind2s"
+	},
+	"347": {
+		"word": "video",
+		"full": "video, videre, vidi, visus",
+		"translation": "see",
+		"type": "pracind1s"
+	},
+	"348": {
+		"word": "regam",
+		"full": "rego, regere, rexi, rectus",
+		"translation": "rule, direct",
+		"type": "pracsuj1s"
+	},
+	"349": {
+		"word": "trado",
+		"full": "trado, tradere, tradidi, traditus",
+		"translation": "hand over, entrust, hand down, surrender",
+		"type": "pracind1s"
+	},
+	"350": {
+		"word": "pugna",
+		"full": "pugna, pugnae, f",
+		"translation": "fight, battle",
+		"type": "vocs"
+	},
+	"351": {
+		"word": "famae",
+		"full": "fama, famae, f",
+		"translation": "rumour, fame, glory",
+		"type": "vocp"
+	},
+	"352": {
+		"word": "verti",
+		"full": "verto, vertere, verti, versus",
+		"translation": "turn",
+		"type": "pfacind1s"
+	},
+	"353": {
+		"word": "iussi",
+		"full": "iubeo, iubere, iussi, iussus",
+		"translation": "order, command",
+		"type": "pfacind1s"
+	},
+	"354": {
+		"word": "misit",
+		"full": "mitto, mittere, misi, missus",
+		"translation": "send, throw, let go",
+		"type": "pfacind3s"
+	},
+	"355": {
+		"word": "odium",
+		"full": "odium, odii, n",
+		"translation": "hatred",
+		"type": "vocs"
+	},
+	"356": {
+		"word": "dabas",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "impacind2s"
+	},
+	"357": {
+		"word": "redde",
+		"full": "reddo, reddere, reddidi, redditus",
+		"translation": "give back, restore, hand over, make",
+		"type": "imps"
+	},
+	"358": {
+		"word": "sumis",
+		"full": "sumo, sumere, sumpsi, sumptus",
+		"translation": "take, take up",
+		"type": "pracind2s"
+	},
+	"359": {
+		"word": "motus",
+		"full": "moveo, movere, movi, motus",
+		"translation": "move",
+		"type": "ppp"
+	},
+	"360": {
+		"word": "urbis",
+		"full": "urbs, urbis, f",
+		"translation": "city, town, Rome",
+		"type": "gens"
+	},
+	"361": {
+		"word": "doles",
+		"full": "doleo, dolere, dolui",
+		"translation": "hurt, be in pain, lament",
+		"type": "pracind2s"
+	},
+	"362": {
+		"word": "orner",
+		"full": "orno, ornare, ornavi, ornatus",
+		"translation": "adorn, decorate, provide, equip",
+		"type": "prpasuj1s"
+	},
+	"363": {
+		"word": "plebe",
+		"full": "plebs, plebis, f",
+		"translation": "the people, common people",
+		"type": "abls"
+	},
+	"364": {
+		"word": "petet",
+		"full": "peto, petere, petivi, petitus",
+		"translation": "seek, ask for, make for, attack",
+		"type": "ftacind3s"
+	},
+	"365": {
+		"word": "famis",
+		"full": "fama, famae, f",
+		"translation": "rumour, fame, glory",
+		"type": "datp"
+	},
+	"366": {
+		"word": "humus",
+		"full": "humus, humi, f",
+		"translation": "ground, earth",
+		"type": "noms"
+	},
+	"367": {
+		"word": "verto",
+		"full": "verto, vertere, verti, versus",
+		"translation": "turn",
+		"type": "pracind1s"
+	},
+	"368": {
+		"word": "vides",
+		"full": "video, videre, vidi, visus",
+		"translation": "see",
+		"type": "pracind2s"
+	},
+	"369": {
+		"word": "vetas",
+		"full": "veto, vetare, vetui, vetitus",
+		"translation": "forbid, order...not, ordeer not",
+		"type": "pracind2s"
+	},
+	"370": {
+		"word": "amori",
+		"full": "amor, amoris, m",
+		"translation": "love",
+		"type": "dats"
+	},
+	"371": {
+		"word": "coles",
+		"full": "colo, colere, colui, cultus",
+		"translation": "cultivate, worship, honour",
+		"type": "ftacind2s"
+	},
+	"372": {
+		"word": "casus",
+		"full": "cado, cadere, cecidi, casus",
+		"translation": "fall, perish",
+		"type": "ppp"
+	},
+	"373": {
+		"word": "civis",
+		"full": "civis, civis, m and f",
+		"translation": "citizen",
+		"type": "vocs"
+	},
+	"374": {
+		"word": "ferro",
+		"full": "ferrum, ferri, n",
+		"translation": "iron, sword",
+		"type": "dats"
+	},
+	"375": {
+		"word": "canor",
+		"full": "cano, canere, cecini, cantus",
+		"translation": "sing, sound, play (of trumpets etc.)",
+		"type": "prpaind1s"
+	},
+	"376": {
+		"word": "colui",
+		"full": "colo, colere, colui, cultus",
+		"translation": "cultivate, worship, honour",
+		"type": "pfacind1s"
+	},
+	"377": {
+		"word": "plebi",
+		"full": "plebs, plebis, f",
+		"translation": "the people, common people",
+		"type": "dats"
+	},
+	"378": {
+		"word": "trade",
+		"full": "trado, tradere, tradidi, traditus",
+		"translation": "hand over, entrust, hand down, surrender",
+		"type": "imps"
+	},
+	"379": {
+		"word": "legas",
+		"full": "lego, legere, legi, lectus",
+		"translation": "read, choose",
+		"type": "pracsuj2s"
+	},
+	"380": {
+		"word": "petat",
+		"full": "peto, petere, petivi, petitus",
+		"translation": "seek, ask for, make for, attack",
+		"type": "pracsuj3s"
+	},
+	"381": {
+		"word": "sinet",
+		"full": "sino, sinere, sivi, situs",
+		"translation": "allow, permit",
+		"type": "ftacind3s"
+	},
+	"382": {
+		"word": "mansi",
+		"full": "maneo, manere, mansi",
+		"translation": "remain, stay",
+		"type": "pfacind1s"
+	},
+	"383": {
+		"word": "necor",
+		"full": "neco, necare, necavi, necatus",
+		"translation": "kill",
+		"type": "prpaind1s"
+	},
+	"384": {
+		"word": "faveo",
+		"full": "faveo, favere, favi, + dat",
+		"translation": "favour, support",
+		"type": "pracind1s"
+	},
+	"385": {
+		"word": "sonis",
+		"full": "sonus, soni, m",
+		"translation": "noise, sound",
+		"type": "datp"
+	},
+	"386": {
+		"word": "urbes",
+		"full": "urbs, urbis, f",
+		"translation": "city, town, Rome",
+		"type": "vocp"
+	},
+	"387": {
+		"word": "cladi",
+		"full": "clades, cladis, f",
+		"translation": "disaster, loss, defeat",
+		"type": "dats"
+	},
+	"388": {
+		"word": "intro",
+		"full": "intro, intrare, intravi, intratus",
+		"translation": "enter",
+		"type": "pracind1s"
+	},
+	"389": {
+		"word": "monti",
+		"full": "mons, montis, m",
+		"translation": "mountain",
+		"type": "dats"
+	},
+	"390": {
+		"word": "nocte",
+		"full": "nox, noctis, f",
+		"translation": "night",
+		"type": "abls"
+	},
+	"391": {
+		"word": "sciat",
+		"full": "scio, scire, scivi, scitus",
+		"translation": "know",
+		"type": "pracsuj3s"
+	},
+	"392": {
+		"word": "mutas",
+		"full": "muto, mutare, mutavi, mutatus",
+		"translation": "change, alter",
+		"type": "pracind2s"
+	},
+	"393": {
+		"word": "uxori",
+		"full": "uxor, uxoris, f",
+		"translation": "wife",
+		"type": "dats"
+	},
+	"394": {
+		"word": "venio",
+		"full": "venio, venire, veni",
+		"translation": "come",
+		"type": "pracind1s"
+	},
+	"395": {
+		"word": "emere",
+		"full": "emo, emere, emi, emptus",
+		"translation": "buy",
+		"type": "infpr"
+	},
+	"396": {
+		"word": "dicor",
+		"full": "dico, dicere, dixi, dictus",
+		"translation": "say, speak, tell",
+		"type": "prpaind1s"
+	},
+	"397": {
+		"word": "geris",
+		"full": "gero, gerere, gessi, gestus",
+		"translation": "bear, wear, wage war, manage",
+		"type": "pracind2s"
+	},
+	"398": {
+		"word": "opere",
+		"full": "opus, operis, n",
+		"translation": "work, toil, construction",
+		"type": "abls"
+	},
+	"399": {
+		"word": "sedis",
+		"full": "sedes, sedis, f",
+		"translation": "seat, temple, home",
+		"type": "gens"
+	},
+	"400": {
+		"word": "muros",
+		"full": "murus, muri, m",
+		"translation": "wall, rampart",
+		"type": "accp"
+	},
+	"401": {
+		"word": "sonos",
+		"full": "sonus, soni, m",
+		"translation": "noise, sound",
+		"type": "accp"
+	},
+	"402": {
+		"word": "vince",
+		"full": "vinco, vincere, vici, victus",
+		"translation": "conquer, defeat, win, be victorious",
+		"type": "imps"
+	},
+	"403": {
+		"word": "feret",
+		"full": "fero, ferre, tuli, latus",
+		"translation": "bear, carry, bring, say",
+		"type": "ftacind3s"
+	},
+	"404": {
+		"word": "moram",
+		"full": "mora, morae, f",
+		"translation": "delay",
+		"type": "accs"
+	},
+	"405": {
+		"word": "valui",
+		"full": "valeo, valere, valui",
+		"translation": "be strong, have influence",
+		"type": "pfacind1s"
+	},
+	"406": {
+		"word": "ponit",
+		"full": "pono, ponere, posui, positus",
+		"translation": "put, place, set up (camp)",
+		"type": "pracind3s"
+	},
+	"407": {
+		"word": "amico",
+		"full": "amicus, amici, m",
+		"translation": "friend",
+		"type": "dats"
+	},
+	"408": {
+		"word": "portu",
+		"full": "portus, portus, m",
+		"translation": "harbour, port",
+		"type": "abls"
+	},
+	"409": {
+		"word": "addis",
+		"full": "addo, addere, addidi, additus",
+		"translation": "add, join",
+		"type": "pracind2s"
+	},
+	"410": {
+		"word": "litus",
+		"full": "litus, litoris, n",
+		"translation": "sea-shore, beach",
+		"type": "vocs"
+	},
+	"411": {
+		"word": "aquas",
+		"full": "aqua, aquae, f",
+		"translation": "water",
+		"type": "accp"
+	},
+	"412": {
+		"word": "emens",
+		"full": "emo, emere, emi, emptus",
+		"translation": "buy",
+		"type": "pap"
+	},
+	"413": {
+		"word": "oculi",
+		"full": "oculus, oculi, m",
+		"translation": "eye",
+		"type": "vocp"
+	},
+	"414": {
+		"word": "cedar",
+		"full": "cedo, cedere, cessi, cessus",
+		"translation": "yield, give up, go",
+		"type": "prpasuj1s"
+	},
+	"415": {
+		"word": "putas",
+		"full": "puto, putare, putavi, putatus",
+		"translation": "think, consider, reckon",
+		"type": "pracind2s"
+	},
+	"416": {
+		"word": "dolis",
+		"full": "dolus, doli, m",
+		"translation": "trick, fraud",
+		"type": "datp"
+	},
+	"417": {
+		"word": "vehar",
+		"full": "veho, vehere, vexi, vectus",
+		"translation": "carry, bear, convey",
+		"type": "prpasuj1s"
+	},
+	"418": {
+		"word": "vivis",
+		"full": "vivo, vivere, vixi",
+		"translation": "live, be alive, live on",
+		"type": "pracind2s"
+	},
+	"419": {
+		"word": "iunxi",
+		"full": "iungo, iungere, iunxi, iunctus",
+		"translation": "join, unite, fasten",
+		"type": "pfacind1s"
+	},
+	"420": {
+		"word": "darem",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "impacsuj1s"
+	},
+	"421": {
+		"word": "vetet",
+		"full": "veto, vetare, vetui, vetitus",
+		"translation": "forbid, order...not, ordeer not",
+		"type": "pracsuj3s"
+	},
+	"422": {
+		"word": "fecit",
+		"full": "facio, facere, feci, factus (in compounds -ficio",
+		"translation": "make, do",
+		"type": "pfacind3s"
+	},
+	"423": {
+		"word": "habes",
+		"full": "habeo, habere, habui, habitus",
+		"translation": "have, hold, consider",
+		"type": "pracind2s"
+	},
+	"424": {
+		"word": "ducat",
+		"full": "duco, ducere, duxi, ductus",
+		"translation": "lead, take, marry, consider",
+		"type": "pracsuj3s"
+	},
+	"425": {
+		"word": "pilis",
+		"full": "pilum, pili, n",
+		"translation": "javelin",
+		"type": "datp"
+	},
+	"426": {
+		"word": "vixit",
+		"full": "vivo, vivere, vixi",
+		"translation": "live, be alive, live on",
+		"type": "pfacind3s"
+	},
+	"427": {
+		"word": "campe",
+		"full": "campus, campi, m",
+		"translation": "plain, field",
+		"type": "vocs"
+	},
+	"428": {
+		"word": "caeli",
+		"full": "caelum, caeli, n",
+		"translation": "sky, heaven",
+		"type": "gens"
+	},
+	"429": {
+		"word": "ferat",
+		"full": "fero, ferre, tuli, latus",
+		"translation": "bear, carry, bring, say",
+		"type": "pracsuj3s"
+	},
+	"430": {
+		"word": "dicam",
+		"full": "dico, dicere, dixi, dictus",
+		"translation": "say, speak, tell",
+		"type": "pracsuj1s"
+	},
+	"431": {
+		"word": "auget",
+		"full": "augeo, augere, auxi, auctus",
+		"translation": "increase, exaggerate",
+		"type": "pracind3s"
+	},
+	"432": {
+		"word": "debet",
+		"full": "debeo, debere, debui, debitus",
+		"translation": "owe, ought",
+		"type": "pracind3s"
+	},
+	"433": {
+		"word": "vivas",
+		"full": "vivo, vivere, vixi",
+		"translation": "live, be alive, live on",
+		"type": "pracsuj2s"
+	},
+	"434": {
+		"word": "cadam",
+		"full": "cado, cadere, cecidi, casus",
+		"translation": "fall, perish",
+		"type": "pracsuj1s"
+	},
+	"435": {
+		"word": "geras",
+		"full": "gero, gerere, gessi, gestus",
+		"translation": "bear, wear, wage war, manage",
+		"type": "pracsuj2s"
+	},
+	"436": {
+		"word": "agrum",
+		"full": "ager, agri, m",
+		"translation": "field, land, territory",
+		"type": "accs"
+	},
+	"437": {
+		"word": "ornat",
+		"full": "orno, ornare, ornavi, ornatus",
+		"translation": "adorn, decorate, provide, equip",
+		"type": "pracind3s"
+	},
+	"438": {
+		"word": "sciar",
+		"full": "scio, scire, scivi, scitus",
+		"translation": "know",
+		"type": "prpasuj1s"
+	},
+	"439": {
+		"word": "matre",
+		"full": "mater, matris, f",
+		"translation": "mother",
+		"type": "abls"
+	},
+	"440": {
+		"word": "crevi",
+		"full": "cerno, cernere, crevi, cretus",
+		"translation": "see, perceive, decree",
+		"type": "pfacind1s"
+	},
+	"441": {
+		"word": "vocas",
+		"full": "voco, vocare, vocavi, vocatus",
+		"translation": "call, summon, invite, name",
+		"type": "pracind2s"
+	},
+	"442": {
+		"word": "morti",
+		"full": "mors, mortis, f",
+		"translation": "death",
+		"type": "dats"
+	},
+	"443": {
+		"word": "soles",
+		"full": "sol, solis, m",
+		"translation": "sun, sunlight",
+		"type": "vocp"
+	},
+	"444": {
+		"word": "sines",
+		"full": "sino, sinere, sivi, situs",
+		"translation": "allow, permit",
+		"type": "ftacind2s"
+	},
+	"445": {
+		"word": "erret",
+		"full": "erro, errare, erravi, erratus",
+		"translation": "wander, make a mistake",
+		"type": "pracsuj3s"
+	},
+	"446": {
+		"word": "trahe",
+		"full": "traho, trahere, traxi, tractus",
+		"translation": "pull, drag, draw",
+		"type": "imps"
+	},
+	"447": {
+		"word": "morte",
+		"full": "mors, mortis, f",
+		"translation": "death",
+		"type": "abls"
+	},
+	"448": {
+		"word": "dedit",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "pfacind3s"
+	},
+	"449": {
+		"word": "horti",
+		"full": "hortus, horti, m",
+		"translation": "garden",
+		"type": "vocp"
+	},
+	"450": {
+		"word": "caveo",
+		"full": "caveo, cavere, cavi, cautus",
+		"translation": "beware (of), take care, beware",
+		"type": "pracind1s"
+	},
+	"451": {
+		"word": "tecti",
+		"full": "tectum, tecti, n",
+		"translation": "roof, house",
+		"type": "gens"
+	},
+	"452": {
+		"word": "cupio",
+		"full": "cupio, cupere, cupivi, cupitus",
+		"translation": "desire, wish, want",
+		"type": "pracind1s"
+	},
+	"453": {
+		"word": "cadat",
+		"full": "cado, cadere, cecidi, casus",
+		"translation": "fall, perish",
+		"type": "pracsuj3s"
+	},
+	"454": {
+		"word": "laedo",
+		"full": "laedo, laedere, laesi, laesus",
+		"translation": "hurt, injure, harm",
+		"type": "pracind1s"
+	},
+	"455": {
+		"word": "detis",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "pracsuj2pl"
+	},
+	"456": {
+		"word": "coegi",
+		"full": "cogo, cogere, coegi, coactus",
+		"translation": "force, compel, drive, assemble",
+		"type": "pfacind1s"
+	},
+	"457": {
+		"word": "stant",
+		"full": "sto, stare, steti",
+		"translation": "stand, stand firm",
+		"type": "pracind3pl"
+	},
+	"458": {
+		"word": "sinam",
+		"full": "sino, sinere, sivi, situs",
+		"translation": "allow, permit",
+		"type": "pracsuj1s"
+	},
+	"459": {
+		"word": "ripis",
+		"full": "ripa, ripae, f",
+		"translation": "bank",
+		"type": "datp"
+	},
+	"460": {
+		"word": "parui",
+		"full": "pario, parere, peperi, partus",
+		"translation": "bear (a child), win, acquire, gain, secure",
+		"type": "pfacind1s"
+	},
+	"461": {
+		"word": "mando",
+		"full": "mando, mandare, mandavi, mandatus",
+		"translation": "commit, entrust, command",
+		"type": "pracind1s"
+	},
+	"462": {
+		"word": "funde",
+		"full": "fundo, fundere, fudi, fusus",
+		"translation": "pour, shed, rout",
+		"type": "imps"
+	},
+	"463": {
+		"word": "perde",
+		"full": "perdo, perdere, perdidi, perditus",
+		"translation": "destroy, lose",
+		"type": "imps"
+	},
+	"464": {
+		"word": "iacit",
+		"full": "iacio, iacere, ieci, iactus (in compounds -icio)",
+		"translation": "throw",
+		"type": "pracind3s"
+	},
+	"465": {
+		"word": "pelle",
+		"full": "pello, pellere, pepuli, pulsus",
+		"translation": "push, drive, rout",
+		"type": "imps"
+	},
+	"466": {
+		"word": "silva",
+		"full": "silva, silvae, f",
+		"translation": "wood, forest",
+		"type": "vocs"
+	},
+	"467": {
+		"word": "caela",
+		"full": "caelum, caeli, n",
+		"translation": "sky, heaven",
+		"type": "vocp"
+	},
+	"468": {
+		"word": "ornas",
+		"full": "orno, ornare, ornavi, ornatus",
+		"translation": "adorn, decorate, provide, equip",
+		"type": "pracind2s"
+	},
+	"469": {
+		"word": "patre",
+		"full": "pater, patris, m",
+		"translation": "father",
+		"type": "abls"
+	},
+	"470": {
+		"word": "colet",
+		"full": "colo, colere, colui, cultus",
+		"translation": "cultivate, worship, honour",
+		"type": "ftacind3s"
+	},
+	"471": {
+		"word": "cedis",
+		"full": "cedo, cedere, cessi, cessus",
+		"translation": "yield, give up, go",
+		"type": "pracind2s"
+	},
+	"472": {
+		"word": "fusus",
+		"full": "fundo, fundere, fudi, fusus",
+		"translation": "pour, shed, rout",
+		"type": "ppp"
+	},
+	"473": {
+		"word": "cenis",
+		"full": "cena, cenae, f",
+		"translation": "dinner, meal",
+		"type": "datp"
+	},
+	"474": {
+		"word": "civem",
+		"full": "civis, civis, m and f",
+		"translation": "citizen",
+		"type": "accs"
+	},
+	"475": {
+		"word": "videt",
+		"full": "video, videre, vidi, visus",
+		"translation": "see",
+		"type": "pracind3s"
+	},
+	"476": {
+		"word": "servi",
+		"full": "servus, servi, m",
+		"translation": "slave",
+		"type": "vocp"
+	},
+	"477": {
+		"word": "monui",
+		"full": "moneo, monere, monui, monitus",
+		"translation": "warn, advise, teach",
+		"type": "pfacind1s"
+	},
+	"478": {
+		"word": "ocule",
+		"full": "oculus, oculi, m",
+		"translation": "eye",
+		"type": "vocs"
+	},
+	"479": {
+		"word": "fitis",
+		"full": "facio, facere, feci, factus (in compounds -ficio",
+		"translation": "make, do",
+		"type": "prpaind2pl"
+	},
+	"480": {
+		"word": "situs",
+		"full": "sino, sinere, sivi, situs",
+		"translation": "allow, permit",
+		"type": "ppp"
+	},
+	"481": {
+		"word": "color",
+		"full": "colo, colere, colui, cultus",
+		"translation": "cultivate, worship, honour",
+		"type": "prpaind1s"
+	},
+	"482": {
+		"word": "celas",
+		"full": "celo, celare, celavi, celatus",
+		"translation": "hide, conceal",
+		"type": "pracind2s"
+	},
+	"483": {
+		"word": "verbi",
+		"full": "verbum, verbi, n",
+		"translation": "word",
+		"type": "gens"
+	},
+	"484": {
+		"word": "latus",
+		"full": "latus, lateris, n",
+		"translation": "side, wing",
+		"type": "vocs"
+	},
+	"485": {
+		"word": "socii",
+		"full": "socius, socii, m",
+		"translation": "ally, comrade, companion",
+		"type": "vocp"
+	},
+	"486": {
+		"word": "cogar",
+		"full": "cogo, cogere, coegi, coactus",
+		"translation": "force, compel, drive, assemble",
+		"type": "prpasuj1s"
+	},
+	"487": {
+		"word": "visus",
+		"full": "video, videre, vidi, visus",
+		"translation": "see",
+		"type": "ppp"
+	},
+	"488": {
+		"word": "modis",
+		"full": "modus, modi, m",
+		"translation": "manner, way, kind",
+		"type": "datp"
+	},
+	"489": {
+		"word": "famam",
+		"full": "fama, famae, f",
+		"translation": "rumour, fame, glory",
+		"type": "accs"
+	},
+	"490": {
+		"word": "ruris",
+		"full": "rus, ruris, n",
+		"translation": "country, countryside",
+		"type": "gens"
+	},
+	"491": {
+		"word": "auges",
+		"full": "augeo, augere, auxi, auctus",
+		"translation": "increase, exaggerate",
+		"type": "pracind2s"
+	},
+	"492": {
+		"word": "cingo",
+		"full": "cingo, cingere, cinxi, cinctus",
+		"translation": "surround, enclose, gird",
+		"type": "pracind1s"
+	},
+	"493": {
+		"word": "nesci",
+		"full": "nescio, nescire, nescivi",
+		"translation": "not know",
+		"type": "imps"
+	},
+	"494": {
+		"word": "docui",
+		"full": "doceo, docere, docui, doctus",
+		"translation": "teach, inform",
+		"type": "pfacind1s"
+	},
+	"495": {
+		"word": "timor",
+		"full": "timor, timoris, m",
+		"translation": "fear, anxiety",
+		"type": "vocs"
+	},
+	"496": {
+		"word": "errer",
+		"full": "erro, errare, erravi, erratus",
+		"translation": "wander, make a mistake",
+		"type": "prpasuj1s"
+	},
+	"497": {
+		"word": "erras",
+		"full": "erro, errare, erravi, erratus",
+		"translation": "wander, make a mistake",
+		"type": "pracind2s"
+	},
+	"498": {
+		"word": "horte",
+		"full": "hortus, horti, m",
+		"translation": "garden",
+		"type": "vocs"
+	},
+	"499": {
+		"word": "vocat",
+		"full": "voco, vocare, vocavi, vocatus",
+		"translation": "call, summon, invite, name",
+		"type": "pracind3s"
+	},
+	"500": {
+		"word": "emunt",
+		"full": "emo, emere, emi, emptus",
+		"translation": "buy",
+		"type": "pracind3pl"
+	},
+	"501": {
+		"word": "mutes",
+		"full": "muto, mutare, mutavi, mutatus",
+		"translation": "change, alter",
+		"type": "pracsuj2s"
+	},
+	"502": {
+		"word": "errat",
+		"full": "erro, errare, erravi, erratus",
+		"translation": "wander, make a mistake",
+		"type": "pracind3s"
+	},
+	"503": {
+		"word": "vites",
+		"full": "vito, vitare, vitavi, vitatus",
+		"translation": "avoid",
+		"type": "pracsuj2s"
+	},
+	"504": {
+		"word": "modum",
+		"full": "modus, modi, m",
+		"translation": "manner, way, kind",
+		"type": "accs"
+	},
+	"505": {
+		"word": "reget",
+		"full": "rego, regere, rexi, rectus",
+		"translation": "rule, direct",
+		"type": "ftacind3s"
+	},
+	"506": {
+		"word": "negas",
+		"full": "nego, negare, negavi, negatus",
+		"translation": "say no, deny, refuse, say that ...not",
+		"type": "pracind2s"
+	},
+	"507": {
+		"word": "vivet",
+		"full": "vivo, vivere, vixi",
+		"translation": "live, be alive, live on",
+		"type": "ftacind3s"
+	},
+	"508": {
+		"word": "desii",
+		"full": "desino, desinere, desii, desitus",
+		"translation": "cease",
+		"type": "pfacind1s"
+	},
+	"509": {
+		"word": "iudex",
+		"full": "iudex, iudicis, m and f",
+		"translation": "judge, juror",
+		"type": "vocs"
+	},
+	"510": {
+		"word": "debeo",
+		"full": "debeo, debere, debui, debitus",
+		"translation": "owe, ought",
+		"type": "pracind1s"
+	},
+	"511": {
+		"word": "vales",
+		"full": "valeo, valere, valui",
+		"translation": "be strong, have influence",
+		"type": "pracind2s"
+	},
+	"512": {
+		"word": "cedit",
+		"full": "cedo, cedere, cessi, cessus",
+		"translation": "yield, give up, go",
+		"type": "pracind3s"
+	},
+	"513": {
+		"word": "manus",
+		"full": "manus, manus, f",
+		"translation": "hand, band",
+		"type": "vocs"
+	},
+	"514": {
+		"word": "filii",
+		"full": "filius, filii, m",
+		"translation": "son",
+		"type": "vocp"
+	},
+	"515": {
+		"word": "curem",
+		"full": "curo, curare, curavi, curatus",
+		"translation": "care for, cure; with gerundive = get something done",
+		"type": "pracsuj1s"
+	},
+	"516": {
+		"word": "addit",
+		"full": "addo, addere, addidi, additus",
+		"translation": "add, join",
+		"type": "pracind3s"
+	},
+	"517": {
+		"word": "scire",
+		"full": "scio, scire, scivi, scitus",
+		"translation": "know",
+		"type": "infpr"
+	},
+	"518": {
+		"word": "labor",
+		"full": "labor, laboris, m",
+		"translation": "work, toil, trouble",
+		"type": "vocs"
+	},
+	"519": {
+		"word": "orans",
+		"full": "oro, orare, oravi, oratus",
+		"translation": "beg",
+		"type": "pap"
+	},
+	"520": {
+		"word": "ponor",
+		"full": "pono, ponere, posui, positus",
+		"translation": "put, place, set up (camp)",
+		"type": "prpaind1s"
+	},
+	"521": {
+		"word": "sinor",
+		"full": "sino, sinere, sivi, situs",
+		"translation": "allow, permit",
+		"type": "prpaind1s"
+	},
+	"522": {
+		"word": "tegis",
+		"full": "tego, tegere, texi, tectus",
+		"translation": "cover, protect, hide",
+		"type": "pracind2s"
+	},
+	"523": {
+		"word": "error",
+		"full": "erro, errare, erravi, erratus",
+		"translation": "wander, make a mistake",
+		"type": "prpaind1s"
+	},
+	"524": {
+		"word": "scior",
+		"full": "scio, scire, scivi, scitus",
+		"translation": "know",
+		"type": "prpaind1s"
+	},
+	"525": {
+		"word": "cedor",
+		"full": "cedo, cedere, cessi, cessus",
+		"translation": "yield, give up, go",
+		"type": "prpaind1s"
+	},
+	"526": {
+		"word": "pares",
+		"full": "paro, parare, paravi, paratus",
+		"translation": "prepare, provide",
+		"type": "pracsuj2s"
+	},
+	"527": {
+		"word": "finis",
+		"full": "finis, finis, m",
+		"translation": "end, boundary, pl territory",
+		"type": "vocs"
+	},
+	"528": {
+		"word": "campo",
+		"full": "campus, campi, m",
+		"translation": "plain, field",
+		"type": "dats"
+	},
+	"529": {
+		"word": "parem",
+		"full": "paro, parare, paravi, paratus",
+		"translation": "prepare, provide",
+		"type": "pracsuj1s"
+	},
+	"530": {
+		"word": "orent",
+		"full": "oro, orare, oravi, oratus",
+		"translation": "beg",
+		"type": "pracsuj3pl"
+	},
+	"531": {
+		"word": "duces",
+		"full": "dux, ducis, m",
+		"translation": "leader, general, ruler",
+		"type": "vocp"
+	},
+	"532": {
+		"word": "pacis",
+		"full": "pax, pacis, f",
+		"translation": "peace",
+		"type": "gens"
+	},
+	"533": {
+		"word": "servo",
+		"full": "servo, servare, servavi, servatus",
+		"translation": "save, protect, keep",
+		"type": "pracind1s"
+	},
+	"534": {
+		"word": "sinar",
+		"full": "sino, sinere, sivi, situs",
+		"translation": "allow, permit",
+		"type": "prpasuj1s"
+	},
+	"535": {
+		"word": "tolle",
+		"full": "tollo, tollere, sustuli, sublatus",
+		"translation": "raise, lift up, remove, destroy",
+		"type": "imps"
+	},
+	"536": {
+		"word": "dabor",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "ftpaind1s"
+	},
+	"537": {
+		"word": "veste",
+		"full": "vestis, vestis, f",
+		"translation": "clothes",
+		"type": "abls"
+	},
+	"538": {
+		"word": "cogat",
+		"full": "cogo, cogere, coegi, coactus",
+		"translation": "force, compel, drive, assemble",
+		"type": "pracsuj3s"
+	},
+	"539": {
+		"word": "roges",
+		"full": "rogo, rogare, rogavi, rogatus",
+		"translation": "ask, ask for",
+		"type": "pracsuj2s"
+	},
+	"540": {
+		"word": "navem",
+		"full": "navis, navis, f",
+		"translation": "ship",
+		"type": "accs"
+	},
+	"541": {
+		"word": "cenam",
+		"full": "cena, cenae, f",
+		"translation": "dinner, meal",
+		"type": "accs"
+	},
+	"542": {
+		"word": "pacem",
+		"full": "pax, pacis, f",
+		"translation": "peace",
+		"type": "accs"
+	},
+	"543": {
+		"word": "sciam",
+		"full": "scio, scire, scivi, scitus",
+		"translation": "know",
+		"type": "pracsuj1s"
+	},
+	"544": {
+		"word": "cavet",
+		"full": "caveo, cavere, cavi, cautus",
+		"translation": "beware (of), take care, beware",
+		"type": "pracind3s"
+	},
+	"545": {
+		"word": "tergi",
+		"full": "tergum, tergi, n",
+		"translation": "back, rear",
+		"type": "gens"
+	},
+	"546": {
+		"word": "emite",
+		"full": "emo, emere, emi, emptus",
+		"translation": "buy",
+		"type": "imppl"
+	},
+	"547": {
+		"word": "aquam",
+		"full": "aqua, aquae, f",
+		"translation": "water",
+		"type": "accs"
+	},
+	"548": {
+		"word": "fides",
+		"full": "fides, fidei, f",
+		"translation": "trust, faith, confidence, loyalty",
+		"type": "vocs"
+	},
+	"549": {
+		"word": "puero",
+		"full": "puer, pueri, m",
+		"translation": "boy",
+		"type": "dats"
+	},
+	"550": {
+		"word": "teget",
+		"full": "tego, tegere, texi, tectus",
+		"translation": "cover, protect, hide",
+		"type": "ftacind3s"
+	},
+	"551": {
+		"word": "uxore",
+		"full": "uxor, uxoris, f",
+		"translation": "wife",
+		"type": "abls"
+	},
+	"552": {
+		"word": "scite",
+		"full": "scio, scire, scivi, scitus",
+		"translation": "know",
+		"type": "imppl"
+	},
+	"553": {
+		"word": "erres",
+		"full": "erro, errare, erravi, erratus",
+		"translation": "wander, make a mistake",
+		"type": "pracsuj2s"
+	},
+	"554": {
+		"word": "vitor",
+		"full": "vito, vitare, vitavi, vitatus",
+		"translation": "avoid",
+		"type": "prpaind1s"
+	},
+	"555": {
+		"word": "laede",
+		"full": "laedo, laedere, laesi, laesus",
+		"translation": "hurt, injure, harm",
+		"type": "imps"
+	},
+	"556": {
+		"word": "roget",
+		"full": "rogo, rogare, rogavi, rogatus",
+		"translation": "ask, ask for",
+		"type": "pracsuj3s"
+	},
+	"557": {
+		"word": "pedis",
+		"full": "pes, pedis, m",
+		"translation": "foot",
+		"type": "gens"
+	},
+	"558": {
+		"word": "causa",
+		"full": "causa, causae, f",
+		"translation": "cause, reason, case",
+		"type": "vocs"
+	},
+	"559": {
+		"word": "hasta",
+		"full": "hasta, hastae, f",
+		"translation": "spear",
+		"type": "vocs"
+	},
+	"560": {
+		"word": "horas",
+		"full": "hora, horae, f",
+		"translation": "hour",
+		"type": "accp"
+	},
+	"561": {
+		"word": "regno",
+		"full": "regnum, regni, n",
+		"translation": "kingdom, reign, rule",
+		"type": "dats"
+	},
+	"562": {
+		"word": "perdo",
+		"full": "perdo, perdere, perdidi, perditus",
+		"translation": "destroy, lose",
+		"type": "pracind1s"
+	},
+	"563": {
+		"word": "tenes",
+		"full": "teneo, tenere, tenui, tentus",
+		"translation": "hold, keep, maintain",
+		"type": "pracind2s"
+	},
+	"564": {
+		"word": "sinit",
+		"full": "sino, sinere, sivi, situs",
+		"translation": "allow, permit",
+		"type": "pracind3s"
+	},
+	"565": {
+		"word": "conde",
+		"full": "condo, condere, condidi, conditus",
+		"translation": "found, establish, hide",
+		"type": "imps"
+	},
+	"566": {
+		"word": "deleo",
+		"full": "deleo, delere, delevi, deletus",
+		"translation": "destroy",
+		"type": "pracind1s"
+	},
+	"567": {
+		"word": "narro",
+		"full": "narro, narrare, narravi, narratus",
+		"translation": "tell, relate",
+		"type": "pracind1s"
+	},
+	"568": {
+		"word": "celes",
+		"full": "celo, celare, celavi, celatus",
+		"translation": "hide, conceal",
+		"type": "pracsuj2s"
+	},
+	"569": {
+		"word": "undam",
+		"full": "unda, undae, f",
+		"translation": "wave",
+		"type": "accs"
+	},
+	"570": {
+		"word": "somno",
+		"full": "somnus, somni, m",
+		"translation": "sleep",
+		"type": "dats"
+	},
+	"571": {
+		"word": "pedum",
+		"full": "pes, pedis, m",
+		"translation": "foot",
+		"type": "genp"
+	},
+	"572": {
+		"word": "caput",
+		"full": "caput, capitis, n",
+		"translation": "head, person, life, capital",
+		"type": "vocs"
+	},
+	"573": {
+		"word": "petas",
+		"full": "peto, petere, petivi, petitus",
+		"translation": "seek, ask for, make for, attack",
+		"type": "pracsuj2s"
+	},
+	"574": {
+		"word": "damus",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "pracind1pl"
+	},
+	"575": {
+		"word": "filia",
+		"full": "filia, filiae, f",
+		"translation": "daughter",
+		"type": "vocs"
+	},
+	"576": {
+		"word": "locis",
+		"full": "locus, loci, m",
+		"translation": "place, position, situation, opportunity",
+		"type": "datp"
+	},
+	"577": {
+		"word": "dolor",
+		"full": "dolor, doloris, m",
+		"translation": "pain, sorrow, anger",
+		"type": "vocs"
+	},
+	"578": {
+		"word": "duxit",
+		"full": "duco, ducere, duxi, ductus",
+		"translation": "lead, take, marry, consider",
+		"type": "pfacind3s"
+	},
+	"579": {
+		"word": "ponas",
+		"full": "pono, ponere, posui, positus",
+		"translation": "put, place, set up (camp)",
+		"type": "pracsuj2s"
+	},
+	"580": {
+		"word": "capio",
+		"full": "capio, capere, cepi, captus (in compounds -icio)",
+		"translation": "take, catch, capture",
+		"type": "pracind1s"
+	},
+	"581": {
+		"word": "rapit",
+		"full": "rapio, rapere, rapui, raptus",
+		"translation": "seize, grab, carry off, plunder",
+		"type": "pracind3s"
+	},
+	"582": {
+		"word": "parce",
+		"full": "parco, parcere, peperci + dat",
+		"translation": "spare",
+		"type": "imps"
+	},
+	"583": {
+		"word": "vitas",
+		"full": "vito, vitare, vitavi, vitatus",
+		"translation": "avoid",
+		"type": "pracind2s"
+	},
+	"584": {
+		"word": "anime",
+		"full": "animus, animi, m",
+		"translation": "spirit, soul, mind, courage",
+		"type": "vocs"
+	},
+	"585": {
+		"word": "orant",
+		"full": "oro, orare, oravi, oratus",
+		"translation": "beg",
+		"type": "pracind3pl"
+	},
+	"586": {
+		"word": "obses",
+		"full": "obses, obsidis m and f",
+		"translation": "hostage",
+		"type": "vocs"
+	},
+	"587": {
+		"word": "valet",
+		"full": "valeo, valere, valui",
+		"translation": "be strong, have influence",
+		"type": "pracind3s"
+	},
+	"588": {
+		"word": "valeo",
+		"full": "valeo, valere, valui",
+		"translation": "be strong, have influence",
+		"type": "pracind1s"
+	},
+	"589": {
+		"word": "cinxi",
+		"full": "cingo, cingere, cinxi, cinctus",
+		"translation": "surround, enclose, gird",
+		"type": "pfacind1s"
+	},
+	"590": {
+		"word": "canis",
+		"full": "canis, canis, m and f",
+		"translation": "dog",
+		"type": "vocs"
+	},
+	"591": {
+		"word": "pello",
+		"full": "pello, pellere, pepuli, pulsus",
+		"translation": "push, drive, rout",
+		"type": "pracind1s"
+	},
+	"592": {
+		"word": "senum",
+		"full": "senex, senis, m",
+		"translation": "old man",
+		"type": "genp"
+	},
+	"593": {
+		"word": "munio",
+		"full": "munio, munire, munivi, munitus",
+		"translation": "fortify, defend, guard",
+		"type": "pracind1s"
+	},
+	"594": {
+		"word": "pones",
+		"full": "pono, ponere, posui, positus",
+		"translation": "put, place, set up (camp)",
+		"type": "ftacind2s"
+	},
+	"595": {
+		"word": "tegit",
+		"full": "tego, tegere, texi, tectus",
+		"translation": "cover, protect, hide",
+		"type": "pracind3s"
+	},
+	"596": {
+		"word": "bella",
+		"full": "bellum, belli, n",
+		"translation": "war",
+		"type": "vocp"
+	},
+	"597": {
+		"word": "intra",
+		"full": "intro, intrare, intravi, intratus",
+		"translation": "enter",
+		"type": "imps"
+	},
+	"598": {
+		"word": "puter",
+		"full": "puto, putare, putavi, putatus",
+		"translation": "think, consider, reckon",
+		"type": "prpasuj1s"
+	},
+	"599": {
+		"word": "animi",
+		"full": "animus, animi, m",
+		"translation": "spirit, soul, mind, courage",
+		"type": "vocp"
+	},
+	"600": {
+		"word": "iuvas",
+		"full": "iuvo, iuvare, iuvi, iutus",
+		"translation": "help, please",
+		"type": "pracind2s"
+	},
+	"601": {
+		"word": "hiems",
+		"full": "hiems, hiemis, f",
+		"translation": "winter, storm",
+		"type": "vocs"
+	},
+	"602": {
+		"word": "legem",
+		"full": "lex, legis, f",
+		"translation": "law",
+		"type": "accs"
+	},
+	"603": {
+		"word": "legis",
+		"full": "lego, legere, legi, lectus",
+		"translation": "read, choose",
+		"type": "pracind2s"
+	},
+	"604": {
+		"word": "lucem",
+		"full": "lux, lucis, f",
+		"translation": "light, daylight",
+		"type": "accs"
+	},
+	"605": {
+		"word": "paret",
+		"full": "paro, parare, paravi, paratus",
+		"translation": "prepare, provide",
+		"type": "pracsuj3s"
+	},
+	"606": {
+		"word": "tollo",
+		"full": "tollo, tollere, sustuli, sublatus",
+		"translation": "raise, lift up, remove, destroy",
+		"type": "pracind1s"
+	},
+	"607": {
+		"word": "dabat",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "impacind3s"
+	},
+	"608": {
+		"word": "auxit",
+		"full": "augeo, augere, auxi, auctus",
+		"translation": "increase, exaggerate",
+		"type": "pfacind3s"
+	},
+	"609": {
+		"word": "negor",
+		"full": "nego, negare, negavi, negatus",
+		"translation": "say no, deny, refuse, say that ...not",
+		"type": "prpaind1s"
+	},
+	"610": {
+		"word": "laude",
+		"full": "laus, laudis, f",
+		"translation": "praise, honour, credit",
+		"type": "abls"
+	},
+	"611": {
+		"word": "donum",
+		"full": "donum, doni, n",
+		"translation": "gift, present",
+		"type": "vocs"
+	},
+	"612": {
+		"word": "ducas",
+		"full": "duco, ducere, duxi, ductus",
+		"translation": "lead, take, marry, consider",
+		"type": "pracsuj2s"
+	},
+	"613": {
+		"word": "modos",
+		"full": "modus, modi, m",
+		"translation": "manner, way, kind",
+		"type": "accp"
+	},
+	"614": {
+		"word": "celem",
+		"full": "celo, celare, celavi, celatus",
+		"translation": "hide, conceal",
+		"type": "pracsuj1s"
+	},
+	"615": {
+		"word": "rapui",
+		"full": "rapio, rapere, rapui, raptus",
+		"translation": "seize, grab, carry off, plunder",
+		"type": "pfacind1s"
+	},
+	"616": {
+		"word": "vehas",
+		"full": "veho, vehere, vexi, vectus",
+		"translation": "carry, bear, convey",
+		"type": "pracsuj2s"
+	},
+	"617": {
+		"word": "amans",
+		"full": "amo, amare, amavi, amatus",
+		"translation": "love, like",
+		"type": "pap"
+	},
+	"618": {
+		"word": "munit",
+		"full": "munio, munire, munivi, munitus",
+		"translation": "fortify, defend, guard",
+		"type": "pracind3s"
+	},
+	"619": {
+		"word": "condo",
+		"full": "condo, condere, condidi, conditus",
+		"translation": "found, establish, hide",
+		"type": "pracind1s"
+	},
+	"620": {
+		"word": "colis",
+		"full": "colo, colere, colui, cultus",
+		"translation": "cultivate, worship, honour",
+		"type": "pracind2s"
+	},
+	"621": {
+		"word": "cogam",
+		"full": "cogo, cogere, coegi, coactus",
+		"translation": "force, compel, drive, assemble",
+		"type": "pracsuj1s"
+	},
+	"622": {
+		"word": "roger",
+		"full": "rogo, rogare, rogavi, rogatus",
+		"translation": "ask, ask for",
+		"type": "prpasuj1s"
+	},
+	"623": {
+		"word": "famas",
+		"full": "fama, famae, f",
+		"translation": "rumour, fame, glory",
+		"type": "accp"
+	},
+	"624": {
+		"word": "necem",
+		"full": "neco, necare, necavi, necatus",
+		"translation": "kill",
+		"type": "pracsuj1s"
+	},
+	"625": {
+		"word": "vesti",
+		"full": "vestis, vestis, f",
+		"translation": "clothes",
+		"type": "dats"
+	},
+	"626": {
+		"word": "furor",
+		"full": "furor, furoris, m",
+		"translation": "rage, fury, madness, passion",
+		"type": "vocs"
+	},
+	"627": {
+		"word": "cerno",
+		"full": "cerno, cernere, crevi, cretus",
+		"translation": "see, perceive, decree",
+		"type": "pracind1s"
+	},
+	"628": {
+		"word": "dabis",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "ftacind2s"
+	},
+	"629": {
+		"word": "vitam",
+		"full": "vita, vitae, f",
+		"translation": "life",
+		"type": "accs"
+	},
+	"630": {
+		"word": "sonus",
+		"full": "sonus, soni, m",
+		"translation": "noise, sound",
+		"type": "noms"
+	},
+	"631": {
+		"word": "iuves",
+		"full": "iuvo, iuvare, iuvi, iutus",
+		"translation": "help, please",
+		"type": "pracsuj2s"
+	},
+	"632": {
+		"word": "annis",
+		"full": "annus, anni, m",
+		"translation": "year",
+		"type": "datp"
+	},
+	"633": {
+		"word": "fidem",
+		"full": "fides, fidei, f",
+		"translation": "trust, faith, confidence, loyalty",
+		"type": "accs"
+	},
+	"634": {
+		"word": "viros",
+		"full": "vir, viri, m",
+		"translation": "man, husband",
+		"type": "accp"
+	},
+	"635": {
+		"word": "capis",
+		"full": "capio, capere, cepi, captus (in compounds -icio)",
+		"translation": "take, catch, capture",
+		"type": "pracind2s"
+	},
+	"636": {
+		"word": "curet",
+		"full": "curo, curare, curavi, curatus",
+		"translation": "care for, cure; with gerundive = get something done",
+		"type": "pracsuj3s"
+	},
+	"637": {
+		"word": "fugam",
+		"full": "fuga, fugae, f",
+		"translation": "flight, escape",
+		"type": "accs"
+	},
+	"638": {
+		"word": "actus",
+		"full": "ago, agere, egi, actus",
+		"translation": "do, act, drive",
+		"type": "ppp"
+	},
+	"639": {
+		"word": "daris",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "prpaind2s"
+	},
+	"640": {
+		"word": "mones",
+		"full": "moneo, monere, monui, monitus",
+		"translation": "warn, advise, teach",
+		"type": "pracind2s"
+	},
+	"641": {
+		"word": "fallo",
+		"full": "fallo, fallere, fefelli, falsus",
+		"translation": "deceive, cheat",
+		"type": "pracind1s"
+	},
+	"642": {
+		"word": "nocet",
+		"full": "noceo, nocere, nocui + dat",
+		"translation": "hurt, harm",
+		"type": "pracind3s"
+	},
+	"643": {
+		"word": "forum",
+		"full": "forum, fori, n",
+		"translation": "forum, market place",
+		"type": "vocs"
+	},
+	"644": {
+		"word": "regas",
+		"full": "rego, regere, rexi, rectus",
+		"translation": "rule, direct",
+		"type": "pracsuj2s"
+	},
+	"645": {
+		"word": "tange",
+		"full": "tango, tangere, tetigi, tactus",
+		"translation": "touch",
+		"type": "imps"
+	},
+	"646": {
+		"word": "spero",
+		"full": "spero, sperare, speravi, speratus",
+		"translation": "hope, expect",
+		"type": "pracind1s"
+	},
+	"647": {
+		"word": "cogis",
+		"full": "cogo, cogere, coegi, coactus",
+		"translation": "force, compel, drive, assemble",
+		"type": "pracind2s"
+	},
+	"648": {
+		"word": "agant",
+		"full": "ago, agere, egi, actus",
+		"translation": "do, act, drive",
+		"type": "pracsuj3pl"
+	},
+	"649": {
+		"word": "vives",
+		"full": "vivo, vivere, vixi",
+		"translation": "live, be alive, live on",
+		"type": "ftacind2s"
+	},
+	"650": {
+		"word": "sciet",
+		"full": "scio, scire, scivi, scitus",
+		"translation": "know",
+		"type": "ftacind3s"
+	},
+	"651": {
+		"word": "fugio",
+		"full": "fugio, fugere, fugi",
+		"translation": "flee, run away (from), avoid",
+		"type": "pracind1s"
+	},
+	"652": {
+		"word": "facio",
+		"full": "facio, facere, feci, factus (in compounds -ficio",
+		"translation": "make, do",
+		"type": "pracind1s"
+	},
+	"653": {
+		"word": "posui",
+		"full": "pono, ponere, posui, positus",
+		"translation": "put, place, set up (camp)",
+		"type": "pfacind1s"
+	},
+	"654": {
+		"word": "laesi",
+		"full": "laedo, laedere, laesi, laesus",
+		"translation": "hurt, injure, harm",
+		"type": "pfacind1s"
+	},
+	"655": {
+		"word": "ferri",
+		"full": "ferrum, ferri, n",
+		"translation": "iron, sword",
+		"type": "gens"
+	},
+	"656": {
+		"word": "cessi",
+		"full": "cedo, cedere, cessi, cessus",
+		"translation": "yield, give up, go",
+		"type": "pfacind1s"
+	},
+	"657": {
+		"word": "petar",
+		"full": "peto, petere, petivi, petitus",
+		"translation": "seek, ask for, make for, attack",
+		"type": "prpasuj1s"
+	},
+	"658": {
+		"word": "horam",
+		"full": "hora, horae, f",
+		"translation": "hour",
+		"type": "accs"
+	},
+	"659": {
+		"word": "caelo",
+		"full": "caelum, caeli, n",
+		"translation": "sky, heaven",
+		"type": "dats"
+	},
+	"660": {
+		"word": "cibus",
+		"full": "cibus, cibi, m",
+		"translation": "food",
+		"type": "noms"
+	},
+	"661": {
+		"word": "paras",
+		"full": "paro, parare, paravi, paratus",
+		"translation": "prepare, provide",
+		"type": "pracind2s"
+	},
+	"662": {
+		"word": "clade",
+		"full": "clades, cladis, f",
+		"translation": "disaster, loss, defeat",
+		"type": "abls"
+	},
+	"663": {
+		"word": "manum",
+		"full": "manus, manus, f",
+		"translation": "hand, band",
+		"type": "accs"
+	},
+	"664": {
+		"word": "venis",
+		"full": "venio, venire, veni",
+		"translation": "come",
+		"type": "pracind2s"
+	},
+	"665": {
+		"word": "ferar",
+		"full": "fero, ferre, tuli, latus",
+		"translation": "bear, carry, bring, say",
+		"type": "prpasuj1s"
+	},
+	"666": {
+		"word": "pareo",
+		"full": "pario, parere, peperi, partus",
+		"translation": "bear (a child), win, acquire, gain, secure",
+		"type": "pracind1s"
+	},
+	"667": {
+		"word": "serve",
+		"full": "servus, servi, m",
+		"translation": "slave",
+		"type": "vocs"
+	},
+	"668": {
+		"word": "ducum",
+		"full": "dux, ducis, m",
+		"translation": "leader, general, ruler",
+		"type": "genp"
+	},
+	"669": {
+		"word": "mente",
+		"full": "mens, mentis, f",
+		"translation": "mind",
+		"type": "abls"
+	},
+	"670": {
+		"word": "scuto",
+		"full": "scutum, scuti, n",
+		"translation": "shield",
+		"type": "dats"
+	},
+	"671": {
+		"word": "manet",
+		"full": "maneo, manere, mansi",
+		"translation": "remain, stay",
+		"type": "pracind3s"
+	},
+	"672": {
+		"word": "legum",
+		"full": "lex, legis, f",
+		"translation": "law",
+		"type": "genp"
+	},
+	"673": {
+		"word": "locum",
+		"full": "locus, loci, m",
+		"translation": "place, position, situation, opportunity",
+		"type": "accs"
+	},
+	"674": {
+		"word": "equis",
+		"full": "equus, equi, m",
+		"translation": "horse",
+		"type": "datp"
+	},
+	"675": {
+		"word": "parco",
+		"full": "parco, parcere, peperci + dat",
+		"translation": "spare",
+		"type": "pracind1s"
+	},
+	"676": {
+		"word": "ducem",
+		"full": "dux, ducis, m",
+		"translation": "leader, general, ruler",
+		"type": "vocs"
+	},
+	"677": {
+		"word": "rogor",
+		"full": "rogo, rogare, rogavi, rogatus",
+		"translation": "ask, ask for",
+		"type": "prpaind1s"
+	},
+	"678": {
+		"word": "adimo",
+		"full": "adimo, adimere, ademi, ademptus",
+		"translation": "take away, remove",
+		"type": "pracind1s"
+	},
+	"679": {
+		"word": "rurum",
+		"full": "rus, ruris, n",
+		"translation": "country, countryside",
+		"type": "genp"
+	},
+	"680": {
+		"word": "ornes",
+		"full": "orno, ornare, ornavi, ornatus",
+		"translation": "adorn, decorate, provide, equip",
+		"type": "pracsuj2s"
+	},
+	"681": {
+		"word": "rupit",
+		"full": "rumpo, rumpere, rupi, ruptus",
+		"translation": "break, burst, break through",
+		"type": "pfacind3s"
+	},
+	"682": {
+		"word": "turba",
+		"full": "turba, turbae, f",
+		"translation": "crowd, mob, disturbance, multitude",
+		"type": "vocs"
+	},
+	"683": {
+		"word": "solvi",
+		"full": "solvo, solvere, solvi, solutus",
+		"translation": "loose, pay",
+		"type": "pfacind1s"
+	},
+	"684": {
+		"word": "rumpe",
+		"full": "rumpo, rumpere, rupi, ruptus",
+		"translation": "break, burst, break through",
+		"type": "imps"
+	},
+	"685": {
+		"word": "poena",
+		"full": "poena, poenae, f",
+		"translation": "punishment, penalty",
+		"type": "vocs"
+	},
+	"686": {
+		"word": "nauta",
+		"full": "nauta, nautae, m",
+		"translation": "sailor",
+		"type": "vocs"
+	},
+	"687": {
+		"word": "vinco",
+		"full": "vinco, vincere, vici, victus",
+		"translation": "conquer, defeat, win, be victorious",
+		"type": "pracind1s"
+	},
+	"688": {
+		"word": "deris",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "prpasuj2s"
+	},
+	"689": {
+		"word": "munus",
+		"full": "munus, muneris, n",
+		"translation": "service, duty, present",
+		"type": "vocs"
+	},
+	"690": {
+		"word": "amore",
+		"full": "amor, amoris, m",
+		"translation": "love",
+		"type": "abls"
+	},
+	"691": {
+		"word": "pater",
+		"full": "pater, patris, m",
+		"translation": "father",
+		"type": "vocs"
+	},
+	"692": {
+		"word": "terra",
+		"full": "terra, terrae, f",
+		"translation": "ground, land, earth",
+		"type": "vocs"
+	},
+	"693": {
+		"word": "dabar",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "imppaind1s"
+	},
+	"694": {
+		"word": "clamo",
+		"full": "clamo, clamare, clamavi, clamatus",
+		"translation": "shout, exclaim, proclaim",
+		"type": "pracind1s"
+	},
+	"695": {
+		"word": "stare",
+		"full": "sto, stare, steti",
+		"translation": "stand, stand firm",
+		"type": "infpr"
+	},
+	"696": {
+		"word": "offer",
+		"full": "offero, offerre, obtuli, oblatus",
+		"translation": "present, offer",
+		"type": "imps"
+	},
+	"697": {
+		"word": "voces",
+		"full": "voco, vocare, vocavi, vocatus",
+		"translation": "call, summon, invite, name",
+		"type": "pracsuj2s"
+	},
+	"698": {
+		"word": "curae",
+		"full": "cura, curae, f",
+		"translation": "care, charge, anxiety",
+		"type": "vocp"
+	},
+	"699": {
+		"word": "dabam",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "impacind1s"
+	},
+	"700": {
+		"word": "dicet",
+		"full": "dico, dicere, dixi, dictus",
+		"translation": "say, speak, tell",
+		"type": "ftacind3s"
+	},
+	"701": {
+		"word": "solvo",
+		"full": "solvo, solvere, solvi, solutus",
+		"translation": "loose, pay",
+		"type": "pracind1s"
+	},
+	"702": {
+		"word": "reges",
+		"full": "rex, regis, m",
+		"translation": "king",
+		"type": "vocp"
+	},
+	"703": {
+		"word": "curer",
+		"full": "curo, curare, curavi, curatus",
+		"translation": "care for, cure; with gerundive = get something done",
+		"type": "prpasuj1s"
+	},
+	"704": {
+		"word": "fregi",
+		"full": "frango, frangere, fregi, fractus",
+		"translation": "break, crush",
+		"type": "pfacind1s"
+	},
+	"705": {
+		"word": "senem",
+		"full": "senex, senis, m",
+		"translation": "old man",
+		"type": "accs"
+	},
+	"706": {
+		"word": "acies",
+		"full": "acies, aciei, f",
+		"translation": "line, battle line, army",
+		"type": "vocs"
+	},
+	"707": {
+		"word": "ripam",
+		"full": "ripa, ripae, f",
+		"translation": "bank",
+		"type": "accs"
+	},
+	"708": {
+		"word": "credo",
+		"full": "credo, credere, credidi, creditus + dat",
+		"translation": "believe, trust, entrust",
+		"type": "pracind1s"
+	},
+	"709": {
+		"word": "legam",
+		"full": "lego, legere, legi, lectus",
+		"translation": "read, choose",
+		"type": "pracsuj1s"
+	},
+	"710": {
+		"word": "sumam",
+		"full": "sumo, sumere, sumpsi, sumptus",
+		"translation": "take, take up",
+		"type": "pracsuj1s"
+	},
+	"711": {
+		"word": "donis",
+		"full": "donum, doni, n",
+		"translation": "gift, present",
+		"type": "datp"
+	},
+	"712": {
+		"word": "geres",
+		"full": "gero, gerere, gessi, gestus",
+		"translation": "bear, wear, wage war, manage",
+		"type": "ftacind2s"
+	},
+	"713": {
+		"word": "petam",
+		"full": "peto, petere, petivi, petitus",
+		"translation": "seek, ask for, make for, attack",
+		"type": "pracsuj1s"
+	},
+	"714": {
+		"word": "amice",
+		"full": "amicus, amici, m",
+		"translation": "friend",
+		"type": "vocs"
+	},
+	"715": {
+		"word": "cedam",
+		"full": "cedo, cedere, cessi, cessus",
+		"translation": "yield, give up, go",
+		"type": "pracsuj1s"
+	},
+	"716": {
+		"word": "fines",
+		"full": "finis, finis, m",
+		"translation": "end, boundary, pl territory",
+		"type": "vocp"
+	},
+	"717": {
+		"word": "aperi",
+		"full": "aperio, aperire, aperui, apertus",
+		"translation": "open, reveal, disclose",
+		"type": "imps"
+	},
+	"718": {
+		"word": "undae",
+		"full": "unda, undae, f",
+		"translation": "wave",
+		"type": "vocp"
+	},
+	"719": {
+		"word": "neger",
+		"full": "nego, negare, negavi, negatus",
+		"translation": "say no, deny, refuse, say that ...not",
+		"type": "prpasuj1s"
+	},
+	"720": {
+		"word": "gerit",
+		"full": "gero, gerere, gessi, gestus",
+		"translation": "bear, wear, wage war, manage",
+		"type": "pracind3s"
+	},
+	"721": {
+		"word": "caves",
+		"full": "caveo, cavere, cavi, cautus",
+		"translation": "beware (of), take care, beware",
+		"type": "pracind2s"
+	},
+	"722": {
+		"word": "campi",
+		"full": "campus, campi, m",
+		"translation": "plain, field",
+		"type": "vocp"
+	},
+	"723": {
+		"word": "cavit",
+		"full": "caveo, cavere, cavi, cautus",
+		"translation": "beware (of), take care, beware",
+		"type": "pfacind3s"
+	},
+	"724": {
+		"word": "hosti",
+		"full": "hostis, hostis, m",
+		"translation": "enemy",
+		"type": "dats"
+	},
+	"725": {
+		"word": "cogit",
+		"full": "cogo, cogere, coegi, coactus",
+		"translation": "force, compel, drive, assemble",
+		"type": "pracind3s"
+	},
+	"726": {
+		"word": "verba",
+		"full": "verbum, verbi, n",
+		"translation": "word",
+		"type": "vocp"
+	},
+	"727": {
+		"word": "ponat",
+		"full": "pono, ponere, posui, positus",
+		"translation": "put, place, set up (camp)",
+		"type": "pracsuj3s"
+	},
+	"728": {
+		"word": "prodo",
+		"full": "prodo, prodere, prodidi, proditus",
+		"translation": "betray, surrender",
+		"type": "pracind1s"
+	},
+	"729": {
+		"word": "ponar",
+		"full": "pono, ponere, posui, positus",
+		"translation": "put, place, set up (camp)",
+		"type": "prpasuj1s"
+	},
+	"730": {
+		"word": "necat",
+		"full": "neco, necare, necavi, necatus",
+		"translation": "kill",
+		"type": "pracind3s"
+	},
+	"731": {
+		"word": "vexit",
+		"full": "veho, vehere, vexi, vectus",
+		"translation": "carry, bear, convey",
+		"type": "pfacind3s"
+	},
+	"732": {
+		"word": "orabo",
+		"full": "oro, orare, oravi, oratus",
+		"translation": "beg",
+		"type": "ftacind1s"
+	},
+	"733": {
+		"word": "vultu",
+		"full": "vultus, vultus, m",
+		"translation": "face, expression",
+		"type": "abls"
+	},
+	"734": {
+		"word": "equus",
+		"full": "equus, equi, m",
+		"translation": "horse",
+		"type": "noms"
+	},
+	"735": {
+		"word": "doceo",
+		"full": "doceo, docere, docui, doctus",
+		"translation": "teach, inform",
+		"type": "pracind1s"
+	},
+	"736": {
+		"word": "legit",
+		"full": "lego, legere, legi, lectus",
+		"translation": "read, choose",
+		"type": "pracind3s"
+	},
+	"737": {
+		"word": "cedas",
+		"full": "cedo, cedere, cessi, cessus",
+		"translation": "yield, give up, go",
+		"type": "pracsuj2s"
+	},
+	"738": {
+		"word": "mense",
+		"full": "mensis, mensis, m",
+		"translation": "month",
+		"type": "abls"
+	},
+	"739": {
+		"word": "amisi",
+		"full": "amitto, amittere, amisi, amissus",
+		"translation": "lose",
+		"type": "pfacind1s"
+	},
+	"740": {
+		"word": "sumor",
+		"full": "sumo, sumere, sumpsi, sumptus",
+		"translation": "take, take up",
+		"type": "prpaind1s"
+	},
+	"741": {
+		"word": "scivi",
+		"full": "scio, scire, scivi, scitus",
+		"translation": "know",
+		"type": "pfacind1s"
+	},
+	"742": {
+		"word": "mensi",
+		"full": "mensis, mensis, m",
+		"translation": "month",
+		"type": "dats"
+	},
+	"743": {
+		"word": "naves",
+		"full": "navis, navis, f",
+		"translation": "ship",
+		"type": "vocp"
+	},
+	"744": {
+		"word": "steti",
+		"full": "sto, stare, steti",
+		"translation": "stand, stand firm",
+		"type": "pfacind1s"
+	},
+	"745": {
+		"word": "fugit",
+		"full": "fugio, fugere, fugi",
+		"translation": "flee, run away (from), avoid",
+		"type": "pracind3s"
+	},
+	"746": {
+		"word": "verte",
+		"full": "verto, vertere, verti, versus",
+		"translation": "turn",
+		"type": "imps"
+	},
+	"747": {
+		"word": "pudor",
+		"full": "pudor, pudoris, m",
+		"translation": "shame, modesty, honour, disgrace",
+		"type": "vocs"
+	},
+	"748": {
+		"word": "sedem",
+		"full": "sedes, sedis, f",
+		"translation": "seat, temple, home",
+		"type": "accs"
+	},
+	"749": {
+		"word": "equos",
+		"full": "equus, equi, m",
+		"translation": "horse",
+		"type": "accp"
+	},
+	"750": {
+		"word": "cedat",
+		"full": "cedo, cedere, cessi, cessus",
+		"translation": "yield, give up, go",
+		"type": "pracsuj3s"
+	},
+	"751": {
+		"word": "feras",
+		"full": "fero, ferre, tuli, latus",
+		"translation": "bear, carry, bring, say",
+		"type": "pracsuj2s"
+	},
+	"752": {
+		"word": "colam",
+		"full": "colo, colere, colui, cultus",
+		"translation": "cultivate, worship, honour",
+		"type": "pracsuj1s"
+	},
+	"753": {
+		"word": "cures",
+		"full": "curo, curare, curavi, curatus",
+		"translation": "care for, cure; with gerundive = get something done",
+		"type": "pracsuj2s"
+	},
+	"754": {
+		"word": "putor",
+		"full": "puto, putare, putavi, putatus",
+		"translation": "think, consider, reckon",
+		"type": "prpaind1s"
+	},
+	"755": {
+		"word": "foris",
+		"full": "forum, fori, n",
+		"translation": "forum, market place",
+		"type": "datp"
+	},
+	"756": {
+		"word": "vitem",
+		"full": "vito, vitare, vitavi, vitatus",
+		"translation": "avoid",
+		"type": "pracsuj1s"
+	},
+	"757": {
+		"word": "morum",
+		"full": "mos, moris, m",
+		"translation": "habit, custom, (pl) character, morals",
+		"type": "genp"
+	},
+	"758": {
+		"word": "vivam",
+		"full": "vivo, vivere, vixi",
+		"translation": "live, be alive, live on",
+		"type": "pracsuj1s"
+	},
+	"759": {
+		"word": "armis",
+		"full": "arma, armorum, n pl",
+		"translation": "arms, weapons, armour",
+		"type": "datp"
+	},
+	"760": {
+		"word": "addes",
+		"full": "addo, addere, addidi, additus",
+		"translation": "add, join",
+		"type": "ftacind2s"
+	},
+	"761": {
+		"word": "animo",
+		"full": "animus, animi, m",
+		"translation": "spirit, soul, mind, courage",
+		"type": "dats"
+	},
+	"762": {
+		"word": "sinas",
+		"full": "sino, sinere, sivi, situs",
+		"translation": "allow, permit",
+		"type": "pracsuj2s"
+	},
+	"763": {
+		"word": "manui",
+		"full": "manus, manus, f",
+		"translation": "hand, band",
+		"type": "dats"
+	},
+	"764": {
+		"word": "omisi",
+		"full": "omitto, omittere, omisi, omissus",
+		"translation": "neglect, disregard, make no mention of",
+		"type": "pfacind1s"
+	},
+	"765": {
+		"word": "canem",
+		"full": "canis, canis, m and f",
+		"translation": "dog",
+		"type": "accs"
+	},
+	"766": {
+		"word": "cerne",
+		"full": "cerno, cernere, crevi, cretus",
+		"translation": "see, perceive, decree",
+		"type": "imps"
+	},
+	"767": {
+		"word": "morbo",
+		"full": "morbus, morbi, m",
+		"translation": "sickness, disease",
+		"type": "dats"
+	},
+	"768": {
+		"word": "vitet",
+		"full": "vito, vitare, vitavi, vitatus",
+		"translation": "avoid",
+		"type": "pracsuj3s"
+	},
+	"769": {
+		"word": "habet",
+		"full": "habeo, habere, habui, habitus",
+		"translation": "have, hold, consider",
+		"type": "pracind3s"
+	},
+	"770": {
+		"word": "detur",
+		"full": "do, dare, dedi, datus",
+		"translation": "give",
+		"type": "prpasuj3s"
+	},
+	"771": {
+		"word": "modus",
+		"full": "modus, modi, m",
+		"translation": "manner, way, kind",
+		"type": "noms"
+	},
+	"772": {
+		"word": "dormi",
+		"full": "dormio, dormire, dormivi",
+		"translation": "sleep",
+		"type": "imps"
+	},
+	"773": {
+		"word": "annus",
+		"full": "annus, anni, m",
+		"translation": "year",
+		"type": "noms"
+	},
+	"774": {
+		"word": "gessi",
+		"full": "gero, gerere, gessi, gestus",
+		"translation": "bear, wear, wage war, manage",
+		"type": "pfacind1s"
+	},
+	"775": {
+		"word": "oravi",
+		"full": "oro, orare, oravi, oratus",
+		"translation": "beg",
+		"type": "pfacind1s"
+	},
+	"776": {
+		"word": "laudi",
+		"full": "laus, laudis, f",
+		"translation": "praise, honour, credit",
+		"type": "dats"
+	},
+	"777": {
+		"word": "ratio",
+		"full": "ratio, rationis, f",
+		"translation": "account, reckoning, manner, reason",
+		"type": "vocs"
+	},
+	"778": {
+		"word": "humum",
+		"full": "humus, humi, f",
+		"translation": "ground, earth",
+		"type": "accs"
+	},
+	"779": {
+		"word": "regna",
+		"full": "regnum, regni, n",
+		"translation": "kingdom, reign, rule",
+		"type": "vocp"
+	},
+	"780": {
+		"word": "geram",
+		"full": "gero, gerere, gessi, gestus",
+		"translation": "bear, wear, wage war, manage",
+		"type": "pracsuj1s"
+	},
+	"781": {
+		"word": "putat",
+		"full": "puto, putare, putavi, putatus",
+		"translation": "think, consider, reckon",
+		"type": "pracind3s"
+	},
+	"782": {
+		"word": "maris",
+		"full": "mare, maris, n",
+		"translation": "sea",
+		"type": "gens"
+	},
+	"783": {
+		"word": "fugae",
+		"full": "fuga, fugae, f",
+		"translation": "flight, escape",
+		"type": "vocp"
+	},
+	"784": {
+		"word": "moneo",
+		"full": "moneo, monere, monui, monitus",
+		"translation": "warn, advise, teach",
+		"type": "pracind1s"
+	},
+	"785": {
+		"word": "parat",
+		"full": "paro, parare, paravi, paratus",
+		"translation": "prepare, provide",
+		"type": "pracind3s"
+	},
+	"786": {
+		"word": "lauda",
+		"full": "laudo, laudare, laudavi, laudatus",
+		"translation": "praise",
+		"type": "imps"
+	},
+	"787": {
+		"word": "dixit",
+		"full": "dico, dicere, dixi, dictus",
+		"translation": "say, speak, tell",
+		"type": "pfacind3s"
+	},
+	"788": {
+		"word": "solve",
+		"full": "solvo, solvere, solvi, solutus",
+		"translation": "loose, pay",
+		"type": "imps"
+	},
+	"789": {
+		"word": "movet",
+		"full": "moveo, movere, movi, motus",
+		"translation": "move",
+		"type": "pracind3s"
+	},
+	"790": {
+		"word": "cibis",
+		"full": "cibus, cibi, m",
+		"translation": "food",
+		"type": "datp"
+	},
+	"791": {
+		"word": "petis",
+		"full": "peto, petere, petivi, petitus",
+		"translation": "seek, ask for, make for, attack",
+		"type": "pracind2s"
+	},
+	"792": {
+		"word": "cenas",
+		"full": "cena, cenae, f",
+		"translation": "dinner, meal",
+		"type": "accp"
+	},
+	"793": {
+		"word": "habeo",
+		"full": "habeo, habere, habui, habitus",
+		"translation": "have, hold, consider",
+		"type": "pracind1s"
+	},
+	"794": {
+		"word": "paror",
+		"full": "paro, parare, paravi, paratus",
+		"translation": "prepare, provide",
+		"type": "prpaind1s"
+	},
+	"795": {
+		"word": "verbo",
+		"full": "verbum, verbi, n",
+		"translation": "word",
+		"type": "dats"
+	},
+	"796": {
+		"word": "canet",
+		"full": "cano, canere, cecini, cantus",
+		"translation": "sing, sound, play (of trumpets etc.)",
+		"type": "ftacind3s"
+	},
+	"797": {
+		"word": "cives",
+		"full": "civis, civis, m and f",
+		"translation": "citizen",
+		"type": "vocp"
+	},
+	"798": {
+		"word": "adime",
+		"full": "adimo, adimere, ademi, ademptus",
+		"translation": "take away, remove",
+		"type": "imps"
+	},
+	"799": {
+		"word": "vehet",
+		"full": "veho, vehere, vexi, vectus",
+		"translation": "carry, bear, convey",
+		"type": "ftacind3s"
+	},
+	"800": {
+		"word": "audio",
+		"full": "audio, audire, audivi, auditus",
+		"translation": "hear, listen to",
+		"type": "pracind1s"
+	},
+	"801": {
+		"word": "colit",
+		"full": "colo, colere, colui, cultus",
+		"translation": "cultivate, worship, honour",
+		"type": "pracind3s"
+	},
+	"802": {
+		"word": "punio",
+		"full": "punio, punire, punivi, punitus",
+		"translation": "punish",
+		"type": "pracind1s"
+	},
+	"803": {
+		"word": "moris",
+		"full": "mos, moris, m",
+		"translation": "habit, custom, (pl) character, morals",
+		"type": "gens"
+	},
+	"804": {
+		"word": "canas",
+		"full": "cano, canere, cecini, cantus",
+		"translation": "sing, sound, play (of trumpets etc.)",
+		"type": "pracsuj2s"
+	},
+	"805": {
+		"word": "dicit",
+		"full": "dico, dicere, dixi, dictus",
+		"translation": "say, speak, tell",
+		"type": "pracind3s"
+	},
+	"806": {
+		"word": "mutet",
+		"full": "muto, mutare, mutavi, mutatus",
+		"translation": "change, alter",
+		"type": "pracsuj3s"
+	},
+	"807": {
+		"word": "scies",
+		"full": "scio, scire, scivi, scitus",
+		"translation": "know",
+		"type": "ftacind2s"
+	},
+	"808": {
+		"word": "nunti",
+		"full": "nuntius, nuntii, m",
+		"translation": "messenger, message, news",
+		"type": "vocs"
+	},
+	"809": {
+		"word": "terre",
+		"full": "terreo, terrere, terrui, territus",
+		"translation": "frighten",
+		"type": "imps"
+	},
+	"810": {
+		"word": "fimus",
+		"full": "facio, facere, feci, factus (in compounds -ficio",
+		"translation": "make, do",
+		"type": "prpaind1pl"
+	},
+	"811": {
+		"word": "dolus",
+		"full": "dolus, doli, m",
+		"translation": "trick, fraud",
+		"type": "noms"
+	},
+	"812": {
+		"word": "dolui",
+		"full": "doleo, dolere, dolui",
+		"translation": "hurt, be in pain, lament",
+		"type": "pfacind1s"
+	},
+	"813": {
+		"word": "porto",
+		"full": "porto, portare, portavi, portatus",
+		"translation": "carry, bear, take",
+		"type": "pracind1s"
+	},
+	"814": {
+		"word": "vente",
+		"full": "ventus, venti, m",
+		"translation": "wind",
+		"type": "vocs"
+	},
+	"815": {
+		"word": "colar",
+		"full": "colo, colere, colui, cultus",
+		"translation": "cultivate, worship, honour",
+		"type": "prpasuj1s"
+	},
+	"816": {
+		"word": "ament",
+		"full": "amo, amare, amavi, amatus",
+		"translation": "love, like",
+		"type": "pracsuj3pl"
+	},
+	"817": {
+		"word": "manes",
+		"full": "maneo, manere, mansi",
+		"translation": "remain, stay",
+		"type": "pracind2s"
+	},
+	"818": {
+		"word": "state",
+		"full": "sto, stare, steti",
+		"translation": "stand, stand firm",
+		"type": "imppl"
+	},
+	"819": {
+		"word": "parti",
+		"full": "pars, partis, f",
+		"translation": "part, some, direction",
+		"type": "dats"
+	},
+	"820": {
+		"word": "iuvit",
+		"full": "iuvo, iuvare, iuvi, iutus",
+		"translation": "help, please",
+		"type": "pfacind3s"
+	},
+	"821": {
+		"word": "canit",
+		"full": "cano, canere, cecini, cantus",
+		"translation": "sing, sound, play (of trumpets etc.)",
+		"type": "pracind3s"
+	},
+	"822": {
+		"word": "agunt",
+		"full": "ago, agere, egi, actus",
+		"translation": "do, act, drive",
+		"type": "pracind3pl"
+	},
+	"823": {
+		"word": "tegat",
+		"full": "tego, tegere, texi, tectus",
+		"translation": "cover, protect, hide",
+		"type": "pracsuj3s"
+	},
+	"824": {
+		"word": "petor",
+		"full": "peto, petere, petivi, petitus",
+		"translation": "seek, ask for, make for, attack",
+		"type": "prpaind1s"
+	},
+	"825": {
+		"word": "terga",
+		"full": "tergum, tergi, n",
+		"translation": "back, rear",
+		"type": "vocp"
+	},
+	"826": {
+		"word": "finem",
+		"full": "finis, finis, m",
+		"translation": "end, boundary, pl territory",
+		"type": "accs"
+	},
+	"827": {
+		"word": "undis",
+		"full": "unda, undae, f",
+		"translation": "wave",
+		"type": "datp"
+	},
+	"828": {
+		"word": "rebus",
+		"full": "res, rei, f",
+		"translation": "thing, affair, matter, business",
+		"type": "datp"
+	},
+	"829": {
+		"word": "tenet",
+		"full": "teneo, tenere, tenui, tentus",
+		"translation": "hold, keep, maintain",
+		"type": "pracind3s"
+	},
+	"830": {
+		"word": "regar",
+		"full": "rego, regere, rexi, rectus",
+		"translation": "rule, direct",
+		"type": "prpasuj1s"
+	},
+	"831": {
+		"word": "amica",
+		"full": "amica, amicae, f",
+		"translation": "girl-friend, friend, girlfriend",
+		"type": "vocs"
+	},
+	"832": {
+		"word": "regis",
+		"full": "rego, regere, rexi, rectus",
+		"translation": "rule, direct",
+		"type": "pracind2s"
+	},
+	"833": {
+		"word": "moves",
+		"full": "moveo, movere, movi, motus",
+		"translation": "move",
+		"type": "pracind2s"
+	},
+	"834": {
+		"word": "teges",
+		"full": "tego, tegere, texi, tectus",
+		"translation": "cover, protect, hide",
+		"type": "ftacind2s"
+	},
+	"835": {
+		"word": "punis",
+		"full": "punio, punire, punivi, punitus",
+		"translation": "punish",
+		"type": "pracind2s"
+	},
+	"836": {
+		"word": "opera",
+		"full": "opera, operae, f",
+		"translation": "work, effort, attention, trouble",
+		"type": "vocs"
+	},
+	"837": {
+		"word": "ement",
+		"full": "emo, emere, emi, emptus",
+		"translation": "buy",
+		"type": "ftacind3pl"
+	},
+	"838": {
+		"word": "canum",
+		"full": "canis, canis, m and f",
+		"translation": "dog",
+		"type": "genp"
+	},
+	"839": {
+		"word": "cinge",
+		"full": "cingo, cingere, cinxi, cinctus",
+		"translation": "surround, enclose, gird",
+		"type": "imps"
+	},
+	"840": {
+		"word": "undas",
+		"full": "unda, undae, f",
+		"translation": "wave",
+		"type": "accp"
+	},
+	"841": {
+		"word": "belli",
+		"full": "bellum, belli, n",
+		"translation": "war",
+		"type": "gens"
+	},
+	"842": {
+		"word": "addar",
+		"full": "addo, addere, addidi, additus",
+		"translation": "add, join",
+		"type": "prpasuj1s"
+	},
+	"843": {
+		"word": "ornet",
+		"full": "orno, ornare, ornavi, ornatus",
+		"translation": "adorn, decorate, provide, equip",
+		"type": "pracsuj3s"
+	},
+	"844": {
+		"word": "murum",
+		"full": "murus, muri, m",
+		"translation": "wall, rampart",
+		"type": "accs"
+	},
+	"845": {
+		"word": "locus",
+		"full": "locus, loci, m",
+		"translation": "place, position, situation, opportunity",
+		"type": "noms"
+	},
+	"846": {
+		"word": "reddo",
+		"full": "reddo, reddere, reddidi, redditus",
+		"translation": "give back, restore, hand over, make",
+		"type": "pracind1s"
+	},
+	"847": {
+		"word": "solum",
+		"full": "sol, solis, m",
+		"translation": "sun, sunlight",
+		"type": "genp"
+	},
+	"848": {
+		"word": "curro",
+		"full": "curro, currere, cucurri, cursus",
+		"translation": "run",
+		"type": "pracind1s"
+	},
+	"849": {
+		"word": "virum",
+		"full": "vir, viri, m",
+		"translation": "man, husband",
+		"type": "accs"
+	},
+	"850": {
+		"word": "necas",
+		"full": "neco, necare, necavi, necatus",
+		"translation": "kill",
+		"type": "pracind2s"
+	},
+	"851": {
+		"word": "muter",
+		"full": "muto, mutare, mutavi, mutatus",
+		"translation": "change, alter",
+		"type": "prpasuj1s"
+	},
+	"852": {
+		"word": "murus",
+		"full": "murus, muri, m",
+		"translation": "wall, rampart",
+		"type": "noms"
+	},
+	"853": {
+		"word": "cupit",
+		"full": "cupio, cupere, cupivi, cupitus",
+		"translation": "desire, wish, want",
+		"type": "pracind3s"
+	},
+	"854": {
+		"word": "venit",
+		"full": "venio, venire, veni",
+		"translation": "come",
+		"type": "pracind3s"
+	},
+	"855": {
+		"word": "noceo",
+		"full": "noceo, nocere, nocui + dat",
+		"translation": "hurt, harm",
+		"type": "pracind1s"
+	},
+	"856": {
+		"word": "rerum",
+		"full": "res, rei, f",
+		"translation": "thing, affair, matter, business",
+		"type": "genp"
+	}
+}

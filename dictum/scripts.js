@@ -1,10 +1,12 @@
 let canType = true;
 let isDailyWord = true;
 let selectedOption = 'any-list';
-let selectedList = anyList;
+let selectedList;
 let selectedWord;
 let unix = 1644624000000;
 let userId = localStorage.getItem( 'userID' ) || Math.floor( Math.random() * 9999999 ) + 1;
+
+loadAllVocabFiles();
 
 window.onload = function () {
 	if ( ! localStorage.getItem( 'userID' ) ) {
@@ -49,7 +51,47 @@ window.onload = function () {
 	}
 };
 
+function loadAllVocabFiles() {
+	let fileVariableMapping = {
+		'all.json': 'anyList',
+		'as-level.json': 'asLevelList',
+		'gcse.json': 'gcseList',
+		'valid.json': 'validGuesses',
+	};
+
+	let promises = Object.entries( fileVariableMapping ).map( ( [ fileName, variableName ] ) => {
+		let filePath = `./vocab-lists/${ fileName }`;
+
+		return fetch( filePath )
+			.then( response => {
+				if ( ! response.ok ) {
+					collectData( 'Dictum files failed to load' );
+					collectData( error.message || error );
+				}
+				return response.json();
+			} )
+			.then( data => {
+				window[ variableName ] = data;
+
+				if ( variableName === 'anyList' ) {
+					selectedList = anyList;
+				}
+			} )
+			.catch( error => {
+				collectData( 'Dictum files failed to load' );
+				collectData( error.message || error );
+			} );
+	} );
+
+	return Promise.all( promises );
+}
+
 function startGame( type ) {
+	if ( anyList === null || validGuesses === null ) {
+		collectData( 'Started before initialisation', 'dictum_initialisation_error' );
+		return;
+	}
+
 	if ( type === 'streaks' ) {
 		isDailyWord = false;
 		document.body.classList.add( 'is-streaks' );
@@ -78,21 +120,21 @@ function findWord() {
 
 		switch ( selectedOption ) {
 			case 'gcse-list':
-				max = 476;
+				max = 471;
 				break;
 			case 'as-list':
-				max = 861;
+				max = 856;
 				break;
 			case 'any-list':
-				max = 1609;
+				max = 1592;
 		}
 
-		let chosenWord = selectedList[ 0 ][ Math.floor( Math.random() * max ) ];
+		let chosenWord = selectedList[ Math.floor( Math.random() * max ) ];
 		return chosenWord;
 	}
 
 	let day = parseInt( timeDifference( Date.now(), unix ) );
-	let chosenWord = selectedList[ 0 ][ day ];
+	let chosenWord = selectedList[ day ];
 	collectData( 'Selected word: ' + chosenWord.word );
 	return chosenWord;
 }
@@ -174,10 +216,8 @@ function buildStats() {
 			JSON.stringify( streaksScoreArray )
 	);
 
-	for ( let i = 1; i < 7; i++ ) {
-		streaksScoreTotal += streaksScoreArray[ i ];
-		dailyScoreTotal += dailyScoreArray[ i ];
-	}
+	streaksScoreTotal = Object.values( streaksScoreArray ).reduce( ( acc, score ) => acc + score, 0 );
+	dailyScoreTotal = Object.values( dailyScoreArray ).reduce( ( acc, score ) => acc + score, 0 );
 
 	for ( let i = 1; i < 7; i++ ) {
 		document.getElementById( 'streaks-bar-' + i ).style.width =

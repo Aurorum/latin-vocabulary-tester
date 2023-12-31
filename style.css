@@ -851,6 +851,32 @@ a:hover {
 	margin: 0;
 }
 
+.leaderboard-heading-wrapper {
+	display: flex;
+	margin-top: 12px;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.leaderboard-heading-wrapper h4 {
+	margin: 0;
+	margin-right: 12px;
+}
+
+.starting-leaderboard p {
+	font-size: 14px;
+}
+
+.starting-leaderboard li {
+	font-size: 15px;
+}
+
+.leaderboard-heading-wrapper select {
+	border-radius: 6px;
+	margin-right: 6px;
+	font-size: 14px;
+}
+
 #competition-warning a {
 	cursor: pointer;
 	text-decoration: underline;

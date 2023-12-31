@@ -55,35 +55,22 @@ window.onload = function () {
 	collectData( 'Loaded site with data ' + navigator.userAgent + ' at ' + new Date(), 'load' );
 
 	// Create leaderboard.
-	const fetchLeaderboard = async () => {
-		try {
-			let response = await fetch(
-				'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/leaderboard'
-			);
-			if ( ! response.ok ) {
-				collectData( 'Failed to call Leaderboard' );
-			}
-
-			let data = await response.json();
-
-			updateLeaderboard( 'declensions', data, 1, 4 );
-			updateLeaderboard( 'vocabulary', data, 7, 10 );
-			updateLeaderboard( 'conjugations', data, 12, 15 );
-		} catch ( error ) {
-			collectData( error.message );
-		}
-	};
-
-	let updateLeaderboard = ( prefix, data, start, end ) => {
-		for ( let i = start; i < end; i++ ) {
-			let elementId = `${ prefix }-leaderboard-${ i.toString() }`;
-			document.getElementById( elementId ).innerHTML = data[ i ];
-			document.getElementById( `first-${ elementId }` ).innerHTML = data[ i ];
-		}
-	};
-
 	if ( navigator.onLine ) {
-		fetchLeaderboard();
+		fetch( 'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/leaderboard' )
+			.then( response => {
+				if ( ! response.ok ) {
+					collectData( 'Failed to load from endpoint' );
+				}
+				return response.json();
+			} )
+			.then( data => {
+				leaderboardData = data;
+				updateLeaderboard( data.currentData, true );
+			} )
+			.catch( error => {
+				collectData( 'Failed to load from endpoint' );
+				collectData( error.message );
+			} );
 	}
 
 	// Handle parameters in URL.
@@ -514,7 +501,7 @@ function endCompetitionTimer() {
 	let score = parseInt( document.getElementById( 'progress-indicator-changing' ).textContent );
 
 	if ( isTestingConjugations ) {
-		leaderboardId = document.getElementById( 'conjugations-leaderboard-14' ).textContent;
+		leaderboardId = document.getElementById( 'first-conjugations-leaderboard-2' ).textContent;
 		endingMessage =
 			"Time's up! The <strong>" +
 			document.getElementById( 'vocab-submit-word-form' ).textContent +
@@ -525,7 +512,7 @@ function endCompetitionTimer() {
 			'</strong>.';
 		checkIncorrectAnswerGrammar();
 	} else if ( isTestingDeclensions ) {
-		leaderboardId = document.getElementById( 'declensions-leaderboard-3' ).textContent;
+		leaderboardId = document.getElementById( 'first-declensions-leaderboard-2' ).textContent;
 		endingMessage =
 			"Time's up! The <strong>" +
 			document.getElementById( 'vocab-submit-word-form' ).textContent +
@@ -536,7 +523,7 @@ function endCompetitionTimer() {
 			'</strong>.';
 		checkIncorrectAnswerGrammar();
 	} else {
-		leaderboardId = document.getElementById( 'vocabulary-leaderboard-9' ).textContent;
+		leaderboardId = document.getElementById( 'first-vocabulary-leaderboard-2' ).textContent;
 		endingMessage =
 			"Time's up! The acceptable meanings for <strong>" +
 			answerArray.word +
@@ -656,7 +643,7 @@ function leaderboardSubmitName() {
 	xhttp.onreadystatechange = function () {
 		if ( this.readyState == 4 && this.status == 200 ) {
 			document.getElementById( 'submit-name' ).innerHTML =
-				'<p>Your name has been submitted! It will be verified to ensure it is appropriate, then it will be added to the Leaderboard.</p>';
+				"<p>Your name has been successfully submitted! It will be verified to ensure it's appropriate, then it will be added to the Leaderboard.</p>";
 		}
 	};
 
@@ -675,6 +662,38 @@ function leaderboardSubmitName() {
 		true
 	);
 	xhttp.send();
+}
+
+function changeLeaderboardYear() {
+	let data = leaderboardData.currentData;
+	let yearSelect = document.getElementById( 'leaderboard-year' ).value;
+
+	collectData( 'Changed leaderboard year to ' + yearSelect, 'changed_leaderboard_year' );
+
+	if ( yearSelect === '2024' ) {
+		updateLeaderboard( data, false );
+		return;
+	}
+
+	data = leaderboardData.historicData[ yearSelect ];
+	updateLeaderboard( data, false );
+}
+
+function updateLeaderboard( data, duplicate ) {
+	updateLeaderboardSection( data, 'declensions', duplicate );
+	updateLeaderboardSection( data, 'vocabulary', duplicate );
+	updateLeaderboardSection( data, 'conjugations', duplicate );
+}
+
+function updateLeaderboardSection( data, type, duplicate ) {
+	let prefix = type + '-leaderboard-';
+	for ( let i = 0; i < 3; i++ ) {
+		document.getElementById( prefix + i ).innerHTML = data[ type ][ i ];
+
+		if ( duplicate ) {
+			document.getElementById( 'first-' + prefix + i ).innerHTML = data[ type ][ i ];
+		}
+	}
 }
 
 function buildDeclensionOrConjugationTest(

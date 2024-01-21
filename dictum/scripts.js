@@ -1,4 +1,4 @@
-let canType = true;
+let canType = false;
 let isDailyWord = true;
 let selectedOption = 'any-list';
 let selectedList;
@@ -113,6 +113,7 @@ function startGame( type ) {
 	document.body.classList.add( 'is-daily-word' );
 	document.body.classList.remove( 'is-displaying-modal' );
 	selectedWord = findWord();
+	canType = true;
 }
 
 function checkVocabLoaded( type ) {

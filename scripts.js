@@ -597,13 +597,10 @@ function endCompetitionTimer() {
 		return;
 	}
 
-	let neededScore =
-		2 > 1
-			? 0
-			: leaderboardId.substring(
-					leaderboardId.lastIndexOf( '-' ) + 1,
-					leaderboardId.lastIndexOf( 'words' )
-			  );
+	let neededScore = leaderboardId.substring(
+		leaderboardId.lastIndexOf( '-' ) + 1,
+		leaderboardId.lastIndexOf( 'words' )
+	);
 
 	if ( parseInt( neededScore ) >= score ) {
 		document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'leaderboard-ineligible' );

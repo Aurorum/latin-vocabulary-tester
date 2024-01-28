@@ -151,6 +151,22 @@ window.onload = function () {
 	canUseMultiplayerCheck();
 };
 
+window.onerror = function ( message, source, line, col, error ) {
+	collectData( 'Scrabble console error logged', 'scrabble_console_error_logged' );
+	collectData(
+		'Error message: ' +
+			message +
+			'\nSource: ' +
+			source +
+			'\nLine number: ' +
+			line +
+			'\nColumn number: ' +
+			col +
+			'\nError object: ' +
+			error
+	);
+};
+
 // Scrabble inventory.
 function assignInventory( player, display ) {
 	if ( display ) {

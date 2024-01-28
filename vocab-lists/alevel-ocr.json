@@ -2,32 +2,27 @@
 	{
 		"word": "a, ab + abl",
 		"category": "prep",
-		"translation": "from, by",
-		"asked": false
+		"translation": "from, by"
 	},
 	{
 		"word": "absum, abesse, afui",
 		"category": "verb irreg",
-		"translation": "be absent, be away, be distant",
-		"asked": false
+		"translation": "be absent, be away, be distant"
 	},
 	{
 		"word": "ac, atque",
 		"category": "conjunction",
-		"translation": "and",
-		"asked": false
+		"translation": "and"
 	},
 	{
 		"word": "accido, accidere, accidi",
 		"category": "verb 3",
-		"translation": "happen",
-		"asked": false
+		"translation": "happen"
 	},
 	{
 		"word": "accipio, accipere, accepi, acceptus",
 		"category": "verb 3",
 		"translation": "accept, take in, receive, hear",
-		"asked": false,
 		"pracind1s": "accipio",
 		"pracsuj1s": "accipiam",
 		"prpaind1s": "accipior",
@@ -162,14 +157,12 @@
 	{
 		"word": "acer, acris, acre",
 		"category": "adj",
-		"translation": "keen, sharp, fierce",
-		"asked": false
+		"translation": "keen, sharp, fierce"
 	},
 	{
 		"word": "acies, aciei, f",
 		"category": "noun 5",
 		"translation": "line, battle line, army",
-		"asked": false,
 		"noms": "acies",
 		"nomp": "acies",
 		"gens": "aciei",
@@ -186,44 +179,37 @@
 	{
 		"word": "ad + acc",
 		"category": "prep",
-		"translation": "to, towards, at, about, near",
-		"asked": false
+		"translation": "to, towards, at, about, near"
 	},
 	{
 		"word": "addo, addere, addidi, additus",
 		"category": "verb 3",
-		"translation": "add, join",
-		"asked": false
+		"translation": "add, join"
 	},
 	{
 		"word": "adeo",
 		"category": "adverb",
-		"translation": "so much, so greatly, to such an extent",
-		"asked": false
+		"translation": "so much, so greatly, to such an extent"
 	},
 	{
 		"word": "adhuc",
 		"category": "adverb",
-		"translation": "till now, still",
-		"asked": false
+		"translation": "till now, still"
 	},
 	{
 		"word": "adimo, adimere, ademi, ademptus",
 		"category": "verb 3",
-		"translation": "take away, remove",
-		"asked": false
+		"translation": "take away, remove"
 	},
 	{
 		"word": "adipiscor, adipisci, adeptus sum",
 		"category": "verb 3 dep",
-		"translation": "obtain",
-		"asked": false
+		"translation": "obtain"
 	},
 	{
 		"word": "adiuvo, adiuvare, adiuvi, adiutus",
 		"category": "verb 1",
 		"translation": "help",
-		"asked": false,
 		"pracind1s": "adiuvo",
 		"pracsuj1s": "adiuvem",
 		"prpaind1s": "adiuvor",
@@ -358,14 +344,12 @@
 	{
 		"word": "adsum, adesse, adfui",
 		"category": "verb irreg",
-		"translation": "be here, be present",
-		"asked": false
+		"translation": "be here, be present"
 	},
 	{
 		"word": "adulescens, adulescentis, m",
 		"category": "noun 3",
 		"translation": "youth, young man",
-		"asked": false,
 		"noms": "adulescens",
 		"nomp": "adulescentes",
 		"gens": "adulescentis",
@@ -383,7 +367,6 @@
 		"word": "advenio, advenire, adveni",
 		"category": "verb 4",
 		"translation": "arrive",
-		"asked": false,
 		"pracind1s": "advenio",
 		"pracsuj1s": "adveniam",
 		"prpaind1s": "advenior",
@@ -518,20 +501,17 @@
 	{
 		"word": "adversus + acc",
 		"category": "prep",
-		"translation": "against, towards",
-		"asked": false
+		"translation": "against, towards"
 	},
 	{
 		"word": "adversus",
 		"category": "adverb",
-		"translation": "against, opposite",
-		"asked": false
+		"translation": "against, opposite"
 	},
 	{
 		"word": "aedificium, aedificii, n",
 		"category": "noun 2",
 		"translation": "building",
-		"asked": false,
 		"noms": "aedificium",
 		"nomp": "aedificia",
 		"gens": "aedificii",
@@ -548,20 +528,17 @@
 	{
 		"word": "aedifico, aedificare, aedificavi, aedificatus",
 		"category": "verb 1",
-		"translation": "build",
-		"asked": false
+		"translation": "build"
 	},
 	{
 		"word": "aequus, aequa, aequum",
 		"category": "adj",
-		"translation": "equal, fair, favourable, calm",
-		"asked": false
+		"translation": "equal, fair, favourable, calm"
 	},
 	{
 		"word": "ager, agri, m",
 		"category": "noun 2",
 		"translation": "field, land, territory",
-		"asked": false,
 		"noms": "ager",
 		"nomp": "agri",
 		"gens": "agri",
@@ -578,14 +555,12 @@
 	{
 		"word": "aggredior, aggredi, aggressus sum",
 		"category": "verb 3 dep",
-		"translation": "attack, approach",
-		"asked": false
+		"translation": "attack, approach"
 	},
 	{
 		"word": "agmen, agminis, n",
 		"category": "noun 3",
 		"translation": "column of men, army",
-		"asked": false,
 		"noms": "agmen",
 		"nomp": "agmina",
 		"gens": "agminis",
@@ -603,7 +578,6 @@
 		"word": "ago, agere, egi, actus",
 		"category": "verb 3",
 		"translation": "do, act, drive",
-		"asked": false,
 		"pracind1s": "ago",
 		"pracsuj1s": "agam",
 		"prpaind1s": "agor",
@@ -738,32 +712,27 @@
 	{
 		"word": "aliquis, aliquid",
 		"category": "pron",
-		"translation": "someone, something, anyone, anything",
-		"asked": false
+		"translation": "someone, something, anyone, anything"
 	},
 	{
 		"word": "alius, alia, aliud",
 		"category": "pron and adj",
-		"translation": "other, one, another, else",
-		"asked": false
+		"translation": "other, one, another, else"
 	},
 	{
 		"word": "alter, altera, alterum",
 		"category": "pron and adj",
-		"translation": "the other, one (of two), another, a second",
-		"asked": false
+		"translation": "the other, one (of two), another, a second"
 	},
 	{
 		"word": "altus, alta, altum",
 		"category": "adj",
-		"translation": "high, deep",
-		"asked": false
+		"translation": "high, deep"
 	},
 	{
 		"word": "ambulo, ambulare, ambulavi",
 		"category": "verb 1",
 		"translation": "walk",
-		"asked": false,
 		"pracind1s": "ambulo",
 		"pracsuj1s": "ambulem",
 		"prpaind1s": "ambulor",
@@ -899,7 +868,6 @@
 		"word": "amica, amicae, f",
 		"category": "noun 1",
 		"translation": "girl-friend, friend, girlfriend",
-		"asked": false,
 		"noms": "amica",
 		"nomp": "amicae",
 		"gens": "amicae",
@@ -917,7 +885,6 @@
 		"word": "amicus, amici, m",
 		"category": "noun 2",
 		"translation": "friend",
-		"asked": false,
 		"noms": "amicus",
 		"nomp": "amici",
 		"gens": "amici",
@@ -934,14 +901,12 @@
 	{
 		"word": "amitto, amittere, amisi, amissus",
 		"category": "verb 3",
-		"translation": "lose",
-		"asked": false
+		"translation": "lose"
 	},
 	{
 		"word": "amo, amare, amavi, amatus",
 		"category": "verb 1",
 		"translation": "love, like",
-		"asked": false,
 		"pracind1s": "amo",
 		"pracsuj1s": "amem",
 		"prpaind1s": "amor",
@@ -1077,7 +1042,6 @@
 		"word": "amor, amoris, m",
 		"category": "noun 3",
 		"translation": "love",
-		"asked": false,
 		"noms": "amor",
 		"nomp": "amores",
 		"gens": "amoris",
@@ -1094,14 +1058,12 @@
 	{
 		"word": "an",
 		"category": "conjunction",
-		"translation": "or",
-		"asked": false
+		"translation": "or"
 	},
 	{
 		"word": "ancilla, ancillae, f",
 		"category": "noun 1",
 		"translation": "slave-girl, slave-woman, maid",
-		"asked": false,
 		"noms": "ancilla",
 		"nomp": "ancillae",
 		"gens": "ancillae",
@@ -1118,20 +1080,17 @@
 	{
 		"word": "angustus, angusta, angustum",
 		"category": "adj",
-		"translation": "narrow, confined",
-		"asked": false
+		"translation": "narrow, confined"
 	},
 	{
 		"word": "animadverto, animadvertere, animadverti, animadversus",
 		"category": "verb 3",
-		"translation": "notice, observe",
-		"asked": false
+		"translation": "notice, observe"
 	},
 	{
 		"word": "animus, animi, m",
 		"category": "noun 2",
 		"translation": "spirit, soul, mind, courage",
-		"asked": false,
 		"noms": "animus",
 		"nomp": "animi",
 		"gens": "animi",
@@ -1149,7 +1108,6 @@
 		"word": "annus, anni, m",
 		"category": "noun 2",
 		"translation": "year",
-		"asked": false,
 		"noms": "annus",
 		"nomp": "anni",
 		"gens": "anni",
@@ -1166,26 +1124,22 @@
 	{
 		"word": "ante + acc",
 		"category": "prep",
-		"translation": "before, in front of",
-		"asked": false
+		"translation": "before, in front of"
 	},
 	{
 		"word": "antea",
 		"category": "adverb",
-		"translation": "before, previously",
-		"asked": false
+		"translation": "before, previously"
 	},
 	{
 		"word": "antequam",
 		"category": "conjunction",
-		"translation": "before",
-		"asked": false
+		"translation": "before"
 	},
 	{
 		"word": "aperio, aperire, aperui, apertus",
 		"category": "verb 4",
 		"translation": "open, reveal, disclose",
-		"asked": false,
 		"pracind1s": "aperio",
 		"pracsuj1s": "aperiam",
 		"prpaind1s": "aperior",
@@ -1320,26 +1274,22 @@
 	{
 		"word": "appareo, apparere, apparui",
 		"category": "verb 2",
-		"translation": "appear",
-		"asked": false
+		"translation": "appear"
 	},
 	{
 		"word": "appropinquo, appropinquare, appropinquavi",
 		"category": "verb 1",
-		"translation": "approach, come near to",
-		"asked": false
+		"translation": "approach, come near to"
 	},
 	{
 		"word": "apud + acc",
 		"category": "prep",
-		"translation": "among, at the house of, according to, in the opinion of",
-		"asked": false
+		"translation": "among, at the house of, according to, in the opinion of"
 	},
 	{
 		"word": "aqua, aquae, f",
 		"category": "noun 1",
 		"translation": "water",
-		"asked": false,
 		"noms": "aqua",
 		"nomp": "aquae",
 		"gens": "aquae",
@@ -1357,7 +1307,6 @@
 		"word": "aquila, aquilae, f",
 		"category": "noun 1",
 		"translation": "eagle, standard",
-		"asked": false,
 		"noms": "aquila",
 		"nomp": "aquilae",
 		"gens": "aquilae",
@@ -1375,7 +1324,6 @@
 		"word": "ara, arae, f",
 		"category": "noun 1",
 		"translation": "altar",
-		"asked": false,
 		"noms": "ara",
 		"nomp": "arae",
 		"gens": "arae",
@@ -1393,7 +1341,6 @@
 		"word": "arbor, arboris, f",
 		"category": "noun 3",
 		"translation": "tree",
-		"asked": false,
 		"noms": "arbor",
 		"nomp": "arbores",
 		"gens": "arboris",
@@ -1411,7 +1358,6 @@
 		"word": "arcesso, arcessere, arcessivi, arcessitus",
 		"category": "verb 3",
 		"translation": "summon, send for",
-		"asked": false,
 		"pracind1s": "arcesso",
 		"pracsuj1s": "arcessam",
 		"prpaind1s": "arcessor",
@@ -1546,14 +1492,12 @@
 	{
 		"word": "argentum, argenti, n",
 		"category": "noun 2",
-		"translation": "silver, money",
-		"asked": false
+		"translation": "silver, money"
 	},
 	{
 		"word": "arma, armorum, n pl",
 		"category": "noun 2",
 		"translation": "arms, weapons, armour",
-		"asked": false,
 		"noms": "armum",
 		"nomp": "arma",
 		"gens": "armi",
@@ -1571,7 +1515,6 @@
 		"word": "ars, artis, f",
 		"category": "noun 3",
 		"translation": "art, skill",
-		"asked": false,
 		"noms": "ars",
 		"nomp": "artes",
 		"gens": "artis",
@@ -1589,7 +1532,6 @@
 		"word": "ascendo, ascendere, ascendi, ascensus",
 		"category": "verb 3",
 		"translation": "climb, go up",
-		"asked": false,
 		"pracind1s": "ascendo",
 		"pracsuj1s": "ascendam",
 		"prpaind1s": "ascendor",
@@ -1724,32 +1666,27 @@
 	{
 		"word": "at",
 		"category": "conjunction",
-		"translation": "but",
-		"asked": false
+		"translation": "but"
 	},
 	{
 		"word": "attonitus, attonita, attonitum",
 		"category": "adj",
-		"translation": "astonished, thunder-struck",
-		"asked": false
+		"translation": "astonished, thunder-struck"
 	},
 	{
 		"word": "audax, audacis",
 		"category": "adj",
-		"translation": "bold, daring",
-		"asked": false
+		"translation": "bold, daring"
 	},
 	{
 		"word": "audeo, audere, ausus sum",
 		"category": "verb semi-dep.",
-		"translation": "dare",
-		"asked": false
+		"translation": "dare"
 	},
 	{
 		"word": "audio, audire, audivi, auditus",
 		"category": "verb 4",
 		"translation": "hear, listen to",
-		"asked": false,
 		"pracind1s": "audio",
 		"pracsuj1s": "audiam",
 		"prpaind1s": "audior",
@@ -1885,7 +1822,6 @@
 		"word": "aufero, auferre, abstuli, ablatus",
 		"category": "verb 3",
 		"translation": "take away, carry off, steal",
-		"asked": false,
 		"pracind1s": "aufero",
 		"pracsuj1s": "auferam",
 		"prpaind1s": "auferor",
@@ -2021,7 +1957,6 @@
 		"word": "augeo, augere, auxi, auctus",
 		"category": "verb 2",
 		"translation": "increase, exaggerate",
-		"asked": false,
 		"pracind1s": "augeo",
 		"pracsuj1s": "augeam",
 		"prpaind1s": "augeor",
@@ -2156,20 +2091,17 @@
 	{
 		"word": "aut",
 		"category": "conjunction",
-		"translation": "or, either",
-		"asked": false
+		"translation": "or, either"
 	},
 	{
 		"word": "autem",
 		"category": "conjunction",
-		"translation": "but, however",
-		"asked": false
+		"translation": "but, however"
 	},
 	{
 		"word": "auxilium, auxilii, n",
 		"category": "noun 2",
 		"translation": "help, troops",
-		"asked": false,
 		"noms": "auxilium",
 		"nomp": "auxilia",
 		"gens": "auxilii",
@@ -2187,7 +2119,6 @@
 		"word": "bellum, belli, n",
 		"category": "noun 2",
 		"translation": "war",
-		"asked": false,
 		"noms": "bellum",
 		"nomp": "bella",
 		"gens": "belli",
@@ -2204,14 +2135,12 @@
 	{
 		"word": "bene",
 		"category": "adverb",
-		"translation": "well",
-		"asked": false
+		"translation": "well"
 	},
 	{
 		"word": "beneficium, beneficii, n",
 		"category": "noun 2",
 		"translation": "kindness, service, favour",
-		"asked": false,
 		"noms": "beneficium",
 		"nomp": "beneficia",
 		"gens": "beneficii",
@@ -2228,20 +2157,17 @@
 	{
 		"word": "bibo, bibere, bibi",
 		"category": "verb 3",
-		"translation": "drink",
-		"asked": false
+		"translation": "drink"
 	},
 	{
 		"word": "bis",
 		"category": "adverb",
-		"translation": "twice",
-		"asked": false
+		"translation": "twice"
 	},
 	{
 		"word": "bona, bonorum, n pl",
 		"category": "noun 2",
 		"translation": "goods, possessions, property",
-		"asked": false,
 		"noms": "bonum",
 		"nomp": "bona",
 		"gens": "boni",
@@ -2258,20 +2184,17 @@
 	{
 		"word": "bonus, bona, bonum",
 		"category": "adj",
-		"translation": "good",
-		"asked": false
+		"translation": "good"
 	},
 	{
 		"word": "brevis, breve",
 		"category": "adj",
-		"translation": "short, brief",
-		"asked": false
+		"translation": "short, brief"
 	},
 	{
 		"word": "cado, cadere, cecidi, casus",
 		"category": "verb 3",
 		"translation": "fall, perish",
-		"asked": false,
 		"pracind1s": "cado",
 		"pracsuj1s": "cadam",
 		"prpaind1s": "cador",
@@ -2407,7 +2330,6 @@
 		"word": "caedes, caedis, f",
 		"category": "noun 3",
 		"translation": "slaughter, killing, murder",
-		"asked": false,
 		"noms": "caedes",
 		"nomp": "caedes",
 		"gens": "caedis",
@@ -2425,7 +2347,6 @@
 		"word": "caelum, caeli, n",
 		"category": "noun 2",
 		"translation": "sky, heaven",
-		"asked": false,
 		"noms": "caelum",
 		"nomp": "caela",
 		"gens": "caeli",
@@ -2443,7 +2364,6 @@
 		"word": "campus, campi, m",
 		"category": "noun 2",
 		"translation": "plain, field",
-		"asked": false,
 		"noms": "campus",
 		"nomp": "campi",
 		"gens": "campi",
@@ -2461,7 +2381,6 @@
 		"word": "canis, canis, m and f",
 		"category": "noun 3",
 		"translation": "dog",
-		"asked": false,
 		"noms": "canis",
 		"nomp": "canes",
 		"gens": "canis",
@@ -2478,14 +2397,12 @@
 	{
 		"word": "cano, canere, cecini, cantus",
 		"category": "verb 3",
-		"translation": "sing, sound, play (of trumpets etc.)",
-		"asked": false
+		"translation": "sing, sound, play (of trumpets etc.)"
 	},
 	{
 		"word": "capio, capere, cepi, captus (in compounds -icio)",
 		"category": "verb 3",
 		"translation": "take, catch, capture",
-		"asked": false,
 		"pracind1s": "capio",
 		"pracsuj1s": "capiam",
 		"prpaind1s": "capior",
@@ -2621,7 +2538,6 @@
 		"word": "captivus, captivi, m",
 		"category": "noun 2",
 		"translation": "captive, prisoner",
-		"asked": false,
 		"noms": "captivus",
 		"nomp": "captivi",
 		"gens": "captivi",
@@ -2639,7 +2555,6 @@
 		"word": "caput, capitis, n",
 		"category": "noun 3",
 		"translation": "head, person, life, capital",
-		"asked": false,
 		"noms": "caput",
 		"nomp": "capita",
 		"gens": "capitis",
@@ -2656,14 +2571,12 @@
 	{
 		"word": "carus, cara, carum",
 		"category": "adj",
-		"translation": "dear",
-		"asked": false
+		"translation": "dear"
 	},
 	{
 		"word": "castra, castrorum, n pl",
 		"category": "noun 2",
 		"translation": "camp",
-		"asked": false,
 		"noms": "castrum",
 		"nomp": "castra",
 		"gens": "castri",
@@ -2681,7 +2594,6 @@
 		"word": "causa, causae, f",
 		"category": "noun 1",
 		"translation": "cause, reason, case",
-		"asked": false,
 		"noms": "causa",
 		"nomp": "causae",
 		"gens": "causae",
@@ -2698,14 +2610,12 @@
 	{
 		"word": "causa + gen",
 		"category": "noun 1",
-		"translation": "for the sake of",
-		"asked": false
+		"translation": "for the sake of"
 	},
 	{
 		"word": "caveo, cavere, cavi, cautus",
 		"category": "verb 2",
 		"translation": "beware (of), take care, beware",
-		"asked": false,
 		"pracind1s": "caveo",
 		"pracsuj1s": "caveam",
 		"prpaind1s": "caveor",
@@ -2841,7 +2751,6 @@
 		"word": "cedo, cedere, cessi, cessus",
 		"category": "verb 3",
 		"translation": "yield, give up, go",
-		"asked": false,
 		"pracind1s": "cedo",
 		"pracsuj1s": "cedam",
 		"prpaind1s": "cedor",
@@ -2976,14 +2885,12 @@
 	{
 		"word": "celer, celeris, celere",
 		"category": "adj",
-		"translation": "quick",
-		"asked": false
+		"translation": "quick"
 	},
 	{
 		"word": "celo, celare, celavi, celatus",
 		"category": "verb 1",
 		"translation": "hide, conceal",
-		"asked": false,
 		"pracind1s": "celo",
 		"pracsuj1s": "celem",
 		"prpaind1s": "celor",
@@ -3119,7 +3026,6 @@
 		"word": "cena, cenae, f",
 		"category": "noun 1",
 		"translation": "dinner, meal",
-		"asked": false,
 		"noms": "cena",
 		"nomp": "cenae",
 		"gens": "cenae",
@@ -3137,7 +3043,6 @@
 		"word": "centurio, centurionis, m",
 		"category": "noun 3",
 		"translation": "centurion",
-		"asked": false,
 		"noms": "centurio",
 		"nomp": "centuriones",
 		"gens": "centurionis",
@@ -3154,14 +3059,12 @@
 	{
 		"word": "cerno, cernere, crevi, cretus",
 		"category": "verb 3",
-		"translation": "see, perceive, decree",
-		"asked": false
+		"translation": "see, perceive, decree"
 	},
 	{
 		"word": "certamen, certaminis, n",
 		"category": "noun 3",
 		"translation": "contest, battle, struggle",
-		"asked": false,
 		"noms": "certamen",
 		"nomp": "certamina",
 		"gens": "certaminis",
@@ -3178,26 +3081,22 @@
 	{
 		"word": "certus, certa, certum",
 		"category": "adj",
-		"translation": "certain, sure, fixed",
-		"asked": false
+		"translation": "certain, sure, fixed"
 	},
 	{
 		"word": "certiorem facere",
 		"category": "verb phrase",
-		"translation": "inform",
-		"asked": false
+		"translation": "inform"
 	},
 	{
 		"word": "ceteri, ceterae, cetera",
 		"category": "adj",
-		"translation": "the rest, the other",
-		"asked": false
+		"translation": "the rest, the other"
 	},
 	{
 		"word": "cibus, cibi, m",
 		"category": "noun 2",
 		"translation": "food",
-		"asked": false,
 		"noms": "cibus",
 		"nomp": "cibi",
 		"gens": "cibi",
@@ -3214,20 +3113,17 @@
 	{
 		"word": "cingo, cingere, cinxi, cinctus",
 		"category": "verb 3",
-		"translation": "surround, enclose, gird",
-		"asked": false
+		"translation": "surround, enclose, gird"
 	},
 	{
 		"word": "circum, circa + acc",
 		"category": "prep",
-		"translation": "around, about",
-		"asked": false
+		"translation": "around, about"
 	},
 	{
 		"word": "civis, civis, m and f",
 		"category": "noun 3",
 		"translation": "citizen",
-		"asked": false,
 		"noms": "civis",
 		"nomp": "cives",
 		"gens": "civis",
@@ -3245,7 +3141,6 @@
 		"word": "civitas, civitatis, f",
 		"category": "noun 3",
 		"translation": "citizenship, state, city, tribe",
-		"asked": false,
 		"noms": "civitas",
 		"nomp": "civitates",
 		"gens": "civitatis",
@@ -3263,7 +3158,6 @@
 		"word": "clades, cladis, f",
 		"category": "noun 3",
 		"translation": "disaster, loss, defeat",
-		"asked": false,
 		"noms": "clades",
 		"nomp": "clades",
 		"gens": "cladis",
@@ -3280,14 +3174,12 @@
 	{
 		"word": "clam",
 		"category": "adverb",
-		"translation": "secretly",
-		"asked": false
+		"translation": "secretly"
 	},
 	{
 		"word": "clamo, clamare, clamavi, clamatus",
 		"category": "verb 1",
 		"translation": "shout, exclaim, proclaim",
-		"asked": false,
 		"pracind1s": "clamo",
 		"pracsuj1s": "clamem",
 		"prpaind1s": "clamor",
@@ -3423,7 +3315,6 @@
 		"word": "clamor, clamoris, m",
 		"category": "noun 3",
 		"translation": "shout, uproar, noise",
-		"asked": false,
 		"noms": "clamor",
 		"nomp": "clamores",
 		"gens": "clamoris",
@@ -3440,20 +3331,17 @@
 	{
 		"word": "clarus, clara, clarum",
 		"category": "adj",
-		"translation": "clear, famous, distinguished",
-		"asked": false
+		"translation": "clear, famous, distinguished"
 	},
 	{
 		"word": "coepi, coepisse, coeptus",
 		"category": "verb defective",
-		"translation": "began",
-		"asked": false
+		"translation": "began"
 	},
 	{
 		"word": "cogito, cogitare, cogitavi, cogitatus",
 		"category": "verb 1",
 		"translation": "think, consider",
-		"asked": false,
 		"pracind1s": "cogito",
 		"pracsuj1s": "cogitem",
 		"prpaind1s": "cogitor",
@@ -3589,7 +3477,6 @@
 		"word": "cognosco, cognoscere, cognovi, cognitus",
 		"category": "verb 3",
 		"translation": "get to know, find out, learn",
-		"asked": false,
 		"pracind1s": "cognosco",
 		"pracsuj1s": "cognoscam",
 		"prpaind1s": "cognoscor",
@@ -3725,7 +3612,6 @@
 		"word": "cogo, cogere, coegi, coactus",
 		"category": "verb 3",
 		"translation": "force, compel, drive, assemble",
-		"asked": false,
 		"pracind1s": "cogo",
 		"pracsuj1s": "cogam",
 		"prpaind1s": "cogor",
@@ -3861,7 +3747,6 @@
 		"word": "cohors, cohortis, f",
 		"category": "noun 3",
 		"translation": "cohort, company",
-		"asked": false,
 		"noms": "cohors",
 		"nomp": "cohortes",
 		"gens": "cohortis",
@@ -3879,7 +3764,6 @@
 		"word": "colo, colere, colui, cultus",
 		"category": "verb 3",
 		"translation": "cultivate, worship, honour",
-		"asked": false,
 		"pracind1s": "colo",
 		"pracsuj1s": "colam",
 		"prpaind1s": "color",
@@ -4015,7 +3899,6 @@
 		"word": "comes, comitis, m and f",
 		"category": "noun 3",
 		"translation": "comrade, companion",
-		"asked": false,
 		"noms": "comes",
 		"nomp": "comites",
 		"gens": "comitis",
@@ -4032,50 +3915,42 @@
 	{
 		"word": "committo, committere, commisi, commissus",
 		"category": "verb 3",
-		"translation": "commit, fight, begin (battle)",
-		"asked": false
+		"translation": "commit, fight, begin (battle)"
 	},
 	{
 		"word": "comparo, comparare, comparavi, comparatus",
 		"category": "verb 1",
-		"translation": "prepare, provide, obtain, compare",
-		"asked": false
+		"translation": "prepare, provide, obtain, compare"
 	},
 	{
 		"word": "condemno, condemnare, condemnavi, condemnatus",
 		"category": "verb 1",
-		"translation": "convict, condemn",
-		"asked": false
+		"translation": "convict, condemn"
 	},
 	{
 		"word": "condo, condere, condidi, conditus",
 		"category": "verb 3",
-		"translation": "found, establish, hide",
-		"asked": false
+		"translation": "found, establish, hide"
 	},
 	{
 		"word": "confero, conferre, contuli, conlatus",
 		"category": "verb irreg",
-		"translation": "collect, compare, contribute, bestow",
-		"asked": false
+		"translation": "collect, compare, contribute, bestow"
 	},
 	{
 		"word": "conficio, conficere, confeci, confectus",
 		"category": "verb 3",
-		"translation": "complete, wear out",
-		"asked": false
+		"translation": "complete, wear out"
 	},
 	{
 		"word": "confido, confidere, confisus sum + dat",
 		"category": "verb semi-dep",
-		"translation": "trust, believe, have confidence (in)",
-		"asked": false
+		"translation": "trust, believe, have confidence (in)"
 	},
 	{
 		"word": "coniunx, coniugis, m and f",
 		"category": "noun 3",
 		"translation": "husband, wife, spouse",
-		"asked": false,
 		"noms": "coniunx",
 		"nomp": "coniuges",
 		"gens": "coniugis",
@@ -4092,14 +3967,12 @@
 	{
 		"word": "conor, conari, conatus sum",
 		"category": "verb 1 dep",
-		"translation": "try",
-		"asked": false
+		"translation": "try"
 	},
 	{
 		"word": "consilium, consilii, n",
 		"category": "noun 2",
 		"translation": "council, plan, advice, prudence",
-		"asked": false,
 		"noms": "consilium",
 		"nomp": "consilia",
 		"gens": "consilii",
@@ -4116,26 +3989,22 @@
 	{
 		"word": "consisto, consistere, constiti, constitus",
 		"category": "verb 3",
-		"translation": "halt, stand, stand firm",
-		"asked": false
+		"translation": "halt, stand, stand firm"
 	},
 	{
 		"word": "conspicio, conspicere, conspexi, conspectus",
 		"category": "verb 3",
-		"translation": "notice, observe, see",
-		"asked": false
+		"translation": "notice, observe, see"
 	},
 	{
 		"word": "constituo, constituere, constitui, constitutus",
 		"category": "verb 3",
-		"translation": "decide, establish",
-		"asked": false
+		"translation": "decide, establish"
 	},
 	{
 		"word": "consul, consulis, m",
 		"category": "noun 3",
 		"translation": "consul",
-		"asked": false,
 		"noms": "consul",
 		"nomp": "consules",
 		"gens": "consulis",
@@ -4152,14 +4021,12 @@
 	{
 		"word": "consulo, consulere, consului, consultus",
 		"category": "verb 3",
-		"translation": "consult, consider, advise",
-		"asked": false
+		"translation": "consult, consider, advise"
 	},
 	{
 		"word": "consumo, consumere, consumpsi, consumptus",
 		"category": "verb 3",
 		"translation": "eat, consume, spend",
-		"asked": false,
 		"pracind1s": "consumo",
 		"pracsuj1s": "consumam",
 		"prpaind1s": "consumor",
@@ -4295,7 +4162,6 @@
 		"word": "contendo, contendere, contendi, contentus",
 		"category": "verb 3",
 		"translation": "hurry, march, contend, fight",
-		"asked": false,
 		"pracind1s": "contendo",
 		"pracsuj1s": "contendam",
 		"prpaind1s": "contendor",
@@ -4430,14 +4296,12 @@
 	{
 		"word": "contra",
 		"category": "prep",
-		"translation": "against",
-		"asked": false
+		"translation": "against"
 	},
 	{
 		"word": "copiae, copiarum, f pl",
 		"category": "noun 1",
 		"translation": "troops, forces, supplies",
-		"asked": false,
 		"noms": "copia",
 		"nomp": "copiae",
 		"gens": "copiae",
@@ -4455,7 +4319,6 @@
 		"word": "corpus, corporis, n",
 		"category": "noun 3",
 		"translation": "body",
-		"asked": false,
 		"noms": "corpus",
 		"nomp": "corpora",
 		"gens": "corporis",
@@ -4473,7 +4336,6 @@
 		"word": "corripio, corripere, corripui, correptus",
 		"category": "verb 3",
 		"translation": "seize, carry off",
-		"asked": false,
 		"pracind1s": "corripio",
 		"pracsuj1s": "corripiam",
 		"prpaind1s": "corripior",
@@ -4608,20 +4470,17 @@
 	{
 		"word": "cotidie",
 		"category": "adverb",
-		"translation": "every day, daily",
-		"asked": false
+		"translation": "every day, daily"
 	},
 	{
 		"word": "cras",
 		"category": "adverb",
-		"translation": "tomorrow",
-		"asked": false
+		"translation": "tomorrow"
 	},
 	{
 		"word": "credo, credere, credidi, creditus + dat",
 		"category": "verb 3",
 		"translation": "believe, trust, entrust",
-		"asked": false,
 		"pracind1s": "credo",
 		"pracsuj1s": "credam",
 		"prpaind1s": "credor",
@@ -4757,7 +4616,6 @@
 		"word": "crimen, criminis, n",
 		"category": "noun 3",
 		"translation": "accusation, charge, crime",
-		"asked": false,
 		"noms": "crimen",
 		"nomp": "crimina",
 		"gens": "criminis",
@@ -4774,14 +4632,12 @@
 	{
 		"word": "crudelis, crudele",
 		"category": "adj",
-		"translation": "cruel",
-		"asked": false
+		"translation": "cruel"
 	},
 	{
 		"word": "culpa, culpae, f",
 		"category": "noun 1",
 		"translation": "fault, blame",
-		"asked": false,
 		"noms": "culpa",
 		"nomp": "culpae",
 		"gens": "culpae",
@@ -4798,32 +4654,27 @@
 	{
 		"word": "cum",
 		"category": "conjunction",
-		"translation": "when, since, although",
-		"asked": false
+		"translation": "when, since, although"
 	},
 	{
 		"word": "cum + abl",
 		"category": "prep",
-		"translation": "with",
-		"asked": false
+		"translation": "with"
 	},
 	{
 		"word": "cunctus, cuncta, cunctum",
 		"category": "adj",
-		"translation": "all, whole",
-		"asked": false
+		"translation": "all, whole"
 	},
 	{
 		"word": "cupidus, cupida, cupidum + gen",
 		"category": "adj",
-		"translation": "eager (for), greedy, eager for",
-		"asked": false
+		"translation": "eager (for), greedy, eager for"
 	},
 	{
 		"word": "cupio, cupere, cupivi, cupitus",
 		"category": "verb 3",
 		"translation": "desire, wish, want",
-		"asked": false,
 		"pracind1s": "cupio",
 		"pracsuj1s": "cupiam",
 		"prpaind1s": "cupior",
@@ -4958,14 +4809,12 @@
 	{
 		"word": "cur?",
 		"category": "adverb",
-		"translation": "why?",
-		"asked": false
+		"translation": "why?"
 	},
 	{
 		"word": "cura, curae, f",
 		"category": "noun 1",
 		"translation": "care, charge, anxiety",
-		"asked": false,
 		"noms": "cura",
 		"nomp": "curae",
 		"gens": "curae",
@@ -4982,14 +4831,12 @@
 	{
 		"word": "curo, curare, curavi, curatus",
 		"category": "verb 1",
-		"translation": "care for, cure; with gerundive = get something done",
-		"asked": false
+		"translation": "care for, cure; with gerundive = get something done"
 	},
 	{
 		"word": "curro, currere, cucurri, cursus",
 		"category": "verb 3",
 		"translation": "run",
-		"asked": false,
 		"pracind1s": "curro",
 		"pracsuj1s": "curram",
 		"prpaind1s": "curror",
@@ -5125,7 +4972,6 @@
 		"word": "custodio, custodire, custodivi, custoditus",
 		"category": "verb 4",
 		"translation": "guard",
-		"asked": false,
 		"pracind1s": "custodio",
 		"pracsuj1s": "custodiam",
 		"prpaind1s": "custodior",
@@ -5261,7 +5107,6 @@
 		"word": "custos, custodis, m and f",
 		"category": "noun 3",
 		"translation": "guard",
-		"asked": false,
 		"noms": "custos",
 		"nomp": "custodes",
 		"gens": "custodis",
@@ -5278,62 +5123,52 @@
 	{
 		"word": "de + abl",
 		"category": "prep",
-		"translation": "about, from, down from",
-		"asked": false
+		"translation": "about, from, down from"
 	},
 	{
 		"word": "dea, deae, f",
 		"category": "noun 1",
-		"translation": "goddess",
-		"asked": false
+		"translation": "goddess"
 	},
 	{
 		"word": "debeo, debere, debui, debitus",
 		"category": "verb 2",
-		"translation": "owe, ought",
-		"asked": false
+		"translation": "owe, ought"
 	},
 	{
 		"word": "decipio, decipere, decepi, deceptus",
 		"category": "verb 3",
-		"translation": "deceive",
-		"asked": false
+		"translation": "deceive"
 	},
 	{
 		"word": "defendo, defendere, defendi, defensus",
 		"category": "verb 3",
-		"translation": "defend",
-		"asked": false
+		"translation": "defend"
 	},
 	{
 		"word": "defessus, defessa, defessum",
 		"category": "adj",
-		"translation": "tired",
-		"asked": false
+		"translation": "tired"
 	},
 	{
 		"word": "deinde, dein",
 		"category": "adverb",
-		"translation": "then, next, afterwards",
-		"asked": false
+		"translation": "then, next, afterwards"
 	},
 	{
 		"word": "deleo, delere, delevi, deletus",
 		"category": "verb 2",
-		"translation": "destroy",
-		"asked": false
+		"translation": "destroy"
 	},
 	{
 		"word": "denique",
 		"category": "adverb",
-		"translation": "at last, finally, in short",
-		"asked": false
+		"translation": "at last, finally, in short"
 	},
 	{
 		"word": "descendo, descendere, descendi, descensus",
 		"category": "verb 3",
 		"translation": "descend, come down",
-		"asked": false,
 		"pracind1s": "descendo",
 		"pracsuj1s": "descendam",
 		"prpaind1s": "descendor",
@@ -5469,7 +5304,6 @@
 		"word": "desino, desinere, desii, desitus",
 		"category": "verb 3",
 		"translation": "cease",
-		"asked": false,
 		"pracind1s": "desino",
 		"pracsuj1s": "desinam",
 		"prpaind1s": "desinor",
@@ -5604,26 +5438,22 @@
 	{
 		"word": "despero, desperare, desperavi, desperatus",
 		"category": "verb 1",
-		"translation": "despair",
-		"asked": false
+		"translation": "despair"
 	},
 	{
 		"word": "deus, dei, m",
 		"category": "noun 2",
-		"translation": "god",
-		"asked": false
+		"translation": "god"
 	},
 	{
 		"word": "dexter, dextra, dextrum",
 		"category": "adj",
-		"translation": "right, on the right, right hand",
-		"asked": false
+		"translation": "right, on the right, right hand"
 	},
 	{
 		"word": "dextra, dextrae, f",
 		"category": "noun 1",
 		"translation": "right hand, right side",
-		"asked": false,
 		"noms": "dextra",
 		"nomp": "dextrae",
 		"gens": "dextrae",
@@ -5641,7 +5471,6 @@
 		"word": "dico, dicere, dixi, dictus",
 		"category": "verb 3",
 		"translation": "say, speak, tell",
-		"asked": false,
 		"pracind1s": "dico",
 		"pracsuj1s": "dicam",
 		"prpaind1s": "dicor",
@@ -5777,7 +5606,6 @@
 		"word": "dies, diei, m, occasionally f",
 		"category": "noun 5",
 		"translation": "day",
-		"asked": false,
 		"noms": "dies",
 		"nomp": "dies",
 		"gens": "diei",
@@ -5794,14 +5622,12 @@
 	{
 		"word": "difficilis, difficile",
 		"category": "adj",
-		"translation": "difficult",
-		"asked": false
+		"translation": "difficult"
 	},
 	{
 		"word": "dignitas, dignitatis, f",
 		"category": "noun 3",
 		"translation": "rank, dignity, importance, honour",
-		"asked": false,
 		"noms": "dignitas",
 		"nomp": "dignitates",
 		"gens": "dignitatis",
@@ -5818,20 +5644,17 @@
 	{
 		"word": "dignus, digna, dignum + abl",
 		"category": "adj",
-		"translation": "worthy (of), deserving (of)",
-		"asked": false
+		"translation": "worthy (of), deserving (of)"
 	},
 	{
 		"word": "diligens, diligentis",
 		"category": "adj",
-		"translation": "careful, diligent",
-		"asked": false
+		"translation": "careful, diligent"
 	},
 	{
 		"word": "dimitto, dimittere, dimisi, dimissus",
 		"category": "verb 3",
 		"translation": "dismiss, scatter",
-		"asked": false,
 		"pracind1s": "dimitto",
 		"pracsuj1s": "dimittam",
 		"prpaind1s": "dimittor",
@@ -5966,44 +5789,37 @@
 	{
 		"word": "dirus, dira, dirum",
 		"category": "adj",
-		"translation": "dreadful",
-		"asked": false
+		"translation": "dreadful"
 	},
 	{
 		"word": "discedo, discedere, discessi",
 		"category": "verb 3",
-		"translation": "depart, leave",
-		"asked": false
+		"translation": "depart, leave"
 	},
 	{
 		"word": "disco, discere, didici",
 		"category": "verb 3",
-		"translation": "learn",
-		"asked": false
+		"translation": "learn"
 	},
 	{
 		"word": "dissimilis, dissimile",
 		"category": "adj",
-		"translation": "different",
-		"asked": false
+		"translation": "different"
 	},
 	{
 		"word": "diu",
 		"category": "adverb",
-		"translation": "for a long time",
-		"asked": false
+		"translation": "for a long time"
 	},
 	{
 		"word": "dives, divitis",
 		"category": "adj",
-		"translation": "rich",
-		"asked": false
+		"translation": "rich"
 	},
 	{
 		"word": "divitiae, divitiarum, f pl",
 		"category": "noun 1",
 		"translation": "riches, wealth",
-		"asked": false,
 		"noms": "divitia",
 		"nomp": "divitiae",
 		"gens": "divitiae",
@@ -6021,7 +5837,6 @@
 		"word": "divido, dividere, divisi, divisus",
 		"category": "verb 3",
 		"translation": "divide, separate",
-		"asked": false,
 		"pracind1s": "divido",
 		"pracsuj1s": "dividam",
 		"prpaind1s": "dividor",
@@ -6157,7 +5972,6 @@
 		"word": "do, dare, dedi, datus",
 		"category": "verb 1",
 		"translation": "give",
-		"asked": false,
 		"pracind1s": "do",
 		"pracsuj1s": "dem",
 		"prpaind1s": "dor",
@@ -6293,7 +6107,6 @@
 		"word": "doceo, docere, docui, doctus",
 		"category": "verb 2",
 		"translation": "teach, inform",
-		"asked": false,
 		"pracind1s": "doceo",
 		"pracsuj1s": "doceam",
 		"prpaind1s": "doceor",
@@ -6429,7 +6242,6 @@
 		"word": "doleo, dolere, dolui",
 		"category": "verb 2",
 		"translation": "hurt, be in pain, lament",
-		"asked": false,
 		"pracind1s": "doleo",
 		"pracsuj1s": "doleam",
 		"prpaind1s": "doleor",
@@ -6565,7 +6377,6 @@
 		"word": "dolor, doloris, m",
 		"category": "noun 3",
 		"translation": "pain, sorrow, anger",
-		"asked": false,
 		"noms": "dolor",
 		"nomp": "dolores",
 		"gens": "doloris",
@@ -6583,7 +6394,6 @@
 		"word": "dolus, doli, m",
 		"category": "noun 2",
 		"translation": "trick, fraud",
-		"asked": false,
 		"noms": "dolus",
 		"nomp": "doli",
 		"gens": "doli",
@@ -6600,14 +6410,12 @@
 	{
 		"word": "domina, dominae, f",
 		"category": "noun 1",
-		"translation": "mistress",
-		"asked": false
+		"translation": "mistress"
 	},
 	{
 		"word": "dominus, domini, m",
 		"category": "noun 2",
 		"translation": "master",
-		"asked": false,
 		"noms": "dominus",
 		"nomp": "domini",
 		"gens": "domini",
@@ -6624,14 +6432,12 @@
 	{
 		"word": "domus, domus, f",
 		"category": "noun 4",
-		"translation": "house, home",
-		"asked": false
+		"translation": "house, home"
 	},
 	{
 		"word": "donum, doni, n",
 		"category": "noun 2",
 		"translation": "gift, present",
-		"asked": false,
 		"noms": "donum",
 		"nomp": "dona",
 		"gens": "doni",
@@ -6649,7 +6455,6 @@
 		"word": "dormio, dormire, dormivi",
 		"category": "verb 4",
 		"translation": "sleep",
-		"asked": false,
 		"pracind1s": "dormio",
 		"pracsuj1s": "dormiam",
 		"prpaind1s": "dormior",
@@ -6784,20 +6589,17 @@
 	{
 		"word": "dubito, dubitare, dubitavi, dubitatus",
 		"category": "verb 1",
-		"translation": "doubt, hesitate",
-		"asked": false
+		"translation": "doubt, hesitate"
 	},
 	{
 		"word": "dubius, dubia, dubium",
 		"category": "adj",
-		"translation": "doubtful, wavering, uncertain",
-		"asked": false
+		"translation": "doubtful, wavering, uncertain"
 	},
 	{
 		"word": "duco, ducere, duxi, ductus",
 		"category": "verb 3",
 		"translation": "lead, take, marry, consider",
-		"asked": false,
 		"pracind1s": "duco",
 		"pracsuj1s": "ducam",
 		"prpaind1s": "ducor",
@@ -6932,20 +6734,17 @@
 	{
 		"word": "dum",
 		"category": "conjunction",
-		"translation": "while, until, provided that",
-		"asked": false
+		"translation": "while, until, provided that"
 	},
 	{
 		"word": "durus, dura, durum",
 		"category": "adj",
-		"translation": "hard, harsh, rough",
-		"asked": false
+		"translation": "hard, harsh, rough"
 	},
 	{
 		"word": "dux, ducis, m",
 		"category": "noun 3",
 		"translation": "leader, general, ruler",
-		"asked": false,
 		"noms": "dux",
 		"nomp": "duces",
 		"gens": "ducis",
@@ -6962,20 +6761,17 @@
 	{
 		"word": "e, ex + abl",
 		"category": "prep",
-		"translation": "from, out of, out",
-		"asked": false
+		"translation": "from, out of, out"
 	},
 	{
 		"word": "efficio, efficere, effeci, effectus",
 		"category": "verb 3",
-		"translation": "carry out, accomplish",
-		"asked": false
+		"translation": "carry out, accomplish"
 	},
 	{
 		"word": "effugio, effugere, effugi",
 		"category": "verb 3",
 		"translation": "escape",
-		"asked": false,
 		"pracind1s": "effugio",
 		"pracsuj1s": "effugiam",
 		"prpaind1s": "effugior",
@@ -7110,26 +6906,22 @@
 	{
 		"word": "egeo, egere, egui + gen or abl",
 		"category": "verb 2",
-		"translation": "need, be in want of, lack",
-		"asked": false
+		"translation": "need, be in want of, lack"
 	},
 	{
 		"word": "ego, mei",
 		"category": "pron",
-		"translation": "I, me",
-		"asked": false
+		"translation": "I, me"
 	},
 	{
 		"word": "egredior, egredi, egressus sum",
 		"category": "verb 3 dep",
-		"translation": "go out, come out",
-		"asked": false
+		"translation": "go out, come out"
 	},
 	{
 		"word": "emo, emere, emi, emptus",
 		"category": "verb 3",
 		"translation": "buy",
-		"asked": false,
 		"pracind1s": "emo",
 		"pracsuj1s": "emam",
 		"prpaind1s": "emor",
@@ -7264,26 +7056,22 @@
 	{
 		"word": "enim",
 		"category": "conjunction",
-		"translation": "for",
-		"asked": false
+		"translation": "for"
 	},
 	{
 		"word": "eo",
 		"category": "adverb",
-		"translation": "thither",
-		"asked": false
+		"translation": "thither"
 	},
 	{
 		"word": "eo, ire, i(v)i",
 		"category": "verb irreg",
-		"translation": "go",
-		"asked": false
+		"translation": "go"
 	},
 	{
 		"word": "epistula, epistulae, f",
 		"category": "noun 1",
 		"translation": "letter",
-		"asked": false,
 		"noms": "epistula",
 		"nomp": "epistulae",
 		"gens": "epistulae",
@@ -7301,7 +7089,6 @@
 		"word": "eques, equitis, m",
 		"category": "noun 3",
 		"translation": "knight, horseman, (pl) cavalry",
-		"asked": false,
 		"noms": "eques",
 		"nomp": "equites",
 		"gens": "equitis",
@@ -7319,7 +7106,6 @@
 		"word": "equus, equi, m",
 		"category": "noun 2",
 		"translation": "horse",
-		"asked": false,
 		"noms": "equus",
 		"nomp": "equi",
 		"gens": "equi",
@@ -7336,20 +7122,17 @@
 	{
 		"word": "erga + acc",
 		"category": "prep",
-		"translation": "towards",
-		"asked": false
+		"translation": "towards"
 	},
 	{
 		"word": "ergo",
 		"category": "adverb",
-		"translation": "therefore",
-		"asked": false
+		"translation": "therefore"
 	},
 	{
 		"word": "erro, errare, erravi, erratus",
 		"category": "verb 1",
 		"translation": "wander, make a mistake",
-		"asked": false,
 		"pracind1s": "erro",
 		"pracsuj1s": "errem",
 		"prpaind1s": "error",
@@ -7484,38 +7267,32 @@
 	{
 		"word": "et",
 		"category": "conjunction",
-		"translation": "and, both",
-		"asked": false
+		"translation": "and, both"
 	},
 	{
 		"word": "etiam",
 		"category": "adverb",
-		"translation": "also, even, still",
-		"asked": false
+		"translation": "also, even, still"
 	},
 	{
 		"word": "etsi",
 		"category": "conjunction",
-		"translation": "although",
-		"asked": false
+		"translation": "although"
 	},
 	{
 		"word": "excipio, excipere, excepi, exceptus",
 		"category": "verb 3",
-		"translation": "receive, take, welcome",
-		"asked": false
+		"translation": "receive, take, welcome"
 	},
 	{
 		"word": "excito, excitare, excitavi, excitatus",
 		"category": "verb 1",
-		"translation": "wake, rouse, excite",
-		"asked": false
+		"translation": "wake, rouse, excite"
 	},
 	{
 		"word": "exemplum, exempli, n",
 		"category": "noun 2",
 		"translation": "example, precedent",
-		"asked": false,
 		"noms": "exemplum",
 		"nomp": "exempla",
 		"gens": "exempli",
@@ -7533,7 +7310,6 @@
 		"word": "exercitus, exercitus, m",
 		"category": "noun 4",
 		"translation": "army",
-		"asked": false,
 		"noms": "exercitus",
 		"nomp": "exercitus",
 		"gens": "exercitus",
@@ -7551,7 +7327,6 @@
 		"word": "exilium, exilii, n",
 		"category": "noun 2",
 		"translation": "exile",
-		"asked": false,
 		"noms": "exilium",
 		"nomp": "exilia",
 		"gens": "exilii",
@@ -7569,7 +7344,6 @@
 		"word": "exitium, exitii, n",
 		"category": "noun 2",
 		"translation": "ruin, destruction",
-		"asked": false,
 		"noms": "exitium",
 		"nomp": "exitia",
 		"gens": "exitii",
@@ -7586,26 +7360,22 @@
 	{
 		"word": "exspecto, exspectare, exspectavi, exspectatus",
 		"category": "verb 1",
-		"translation": "wait for, expect",
-		"asked": false
+		"translation": "wait for, expect"
 	},
 	{
 		"word": "extra + acc",
 		"category": "prep & adverb",
-		"translation": "outside, beyond",
-		"asked": false
+		"translation": "outside, beyond"
 	},
 	{
 		"word": "facilis, facile",
 		"category": "adj",
-		"translation": "easy",
-		"asked": false
+		"translation": "easy"
 	},
 	{
 		"word": "facinus, facinoris, n",
 		"category": "noun 3",
 		"translation": "crime, outrage, deed",
-		"asked": false,
 		"noms": "facinus",
 		"nomp": "facinora",
 		"gens": "facinoris",
@@ -7623,7 +7393,6 @@
 		"word": "facio, facere, feci, factus (in compounds -ficio)",
 		"category": "verb 3",
 		"translation": "make, do",
-		"asked": false,
 		"pracind1s": "facio",
 		"pracsuj1s": "faciam",
 		"prpaind1s": "fio",
@@ -7759,7 +7528,6 @@
 		"word": "fallo, fallere, fefelli, falsus",
 		"category": "verb 3",
 		"translation": "deceive, cheat",
-		"asked": false,
 		"pracind1s": "fallo",
 		"pracsuj1s": "fallam",
 		"prpaind1s": "fallor",
@@ -7895,7 +7663,6 @@
 		"word": "fama, famae, f",
 		"category": "noun 1",
 		"translation": "rumour, fame, glory",
-		"asked": false,
 		"noms": "fama",
 		"nomp": "famae",
 		"gens": "famae",
@@ -7913,7 +7680,6 @@
 		"word": "familia, familiae, f",
 		"category": "noun 1",
 		"translation": "family, household",
-		"asked": false,
 		"noms": "familia",
 		"nomp": "familiae",
 		"gens": "familiae",
@@ -7931,7 +7697,6 @@
 		"word": "faveo, favere, favi, + dat",
 		"category": "verb 2",
 		"translation": "favour, support",
-		"asked": false,
 		"pracind1s": "faveo",
 		"pracsuj1s": "faveam",
 		"prpaind1s": "faveor",
@@ -8066,14 +7831,12 @@
 	{
 		"word": "felix, felicis",
 		"category": "adj",
-		"translation": "fortunate, happy, prosperous",
-		"asked": false
+		"translation": "fortunate, happy, prosperous"
 	},
 	{
 		"word": "femina, feminae, f",
 		"category": "noun 1",
 		"translation": "woman",
-		"asked": false,
 		"noms": "femina",
 		"nomp": "feminae",
 		"gens": "feminae",
@@ -8090,26 +7853,22 @@
 	{
 		"word": "fere",
 		"category": "adverb",
-		"translation": "nearly, about",
-		"asked": false
+		"translation": "nearly, about"
 	},
 	{
 		"word": "fero, ferre, tuli, latus",
 		"category": "verb irreg",
-		"translation": "bear, carry, bring, say",
-		"asked": false
+		"translation": "bear, carry, bring, say"
 	},
 	{
 		"word": "ferox, ferocis",
 		"category": "adj",
-		"translation": "fierce, cruel, brave",
-		"asked": false
+		"translation": "fierce, cruel, brave"
 	},
 	{
 		"word": "ferrum, ferri, n",
 		"category": "noun 2",
 		"translation": "iron, sword",
-		"asked": false,
 		"noms": "ferrum",
 		"nomp": "ferra",
 		"gens": "ferri",
@@ -8127,7 +7886,6 @@
 		"word": "festino, festinare, festinavi",
 		"category": "verb 1",
 		"translation": "hurry",
-		"asked": false,
 		"pracind1s": "festino",
 		"pracsuj1s": "festinem",
 		"prpaind1s": "festinor",
@@ -8262,14 +8020,12 @@
 	{
 		"word": "fidelis, fidele",
 		"category": "adj",
-		"translation": "trustworthy, faithful, loyal",
-		"asked": false
+		"translation": "trustworthy, faithful, loyal"
 	},
 	{
 		"word": "fides, fidei, f",
 		"category": "noun 5",
 		"translation": "trust, faith, confidence, loyalty",
-		"asked": false,
 		"noms": "fides",
 		"nomp": "fides",
 		"gens": "fidei",
@@ -8286,14 +8042,12 @@
 	{
 		"word": "fido, fidere, fisus sum + dat or abl",
 		"category": "verb 3 semi-dep",
-		"translation": "trust, rely upon",
-		"asked": false
+		"translation": "trust, rely upon"
 	},
 	{
 		"word": "filia, filiae, f",
 		"category": "noun 1",
 		"translation": "daughter",
-		"asked": false,
 		"noms": "filia",
 		"nomp": "filiae",
 		"gens": "filiae",
@@ -8311,7 +8065,6 @@
 		"word": "filius, filii, m",
 		"category": "noun 2",
 		"translation": "son",
-		"asked": false,
 		"noms": "filius",
 		"nomp": "filii",
 		"gens": "filii",
@@ -8329,7 +8082,6 @@
 		"word": "finis, finis, m",
 		"category": "noun 3",
 		"translation": "end, boundary, pl territory",
-		"asked": false,
 		"noms": "finis",
 		"nomp": "fines",
 		"gens": "finis",
@@ -8346,14 +8098,12 @@
 	{
 		"word": "fio, fieri, factus sum",
 		"category": "verb irreg",
-		"translation": "become, be made, happen",
-		"asked": false
+		"translation": "become, be made, happen"
 	},
 	{
 		"word": "flamma, flammae, f",
 		"category": "noun 1",
 		"translation": "blaze, flame, passion",
-		"asked": false,
 		"noms": "flamma",
 		"nomp": "flammae",
 		"gens": "flammae",
@@ -8371,7 +8121,6 @@
 		"word": "flumen, fluminis, n",
 		"category": "noun 3",
 		"translation": "river",
-		"asked": false,
 		"noms": "flumen",
 		"nomp": "flumina",
 		"gens": "fluminis",
@@ -8389,7 +8138,6 @@
 		"word": "foedus, foederis, n",
 		"category": "noun 3",
 		"translation": "treaty, agreement",
-		"asked": false,
 		"noms": "foedus",
 		"nomp": "foedera",
 		"gens": "foederis",
@@ -8406,26 +8154,22 @@
 	{
 		"word": "fortasse",
 		"category": "adverb",
-		"translation": "perhaps",
-		"asked": false
+		"translation": "perhaps"
 	},
 	{
 		"word": "forte",
 		"category": "adverb",
-		"translation": "by chance",
-		"asked": false
+		"translation": "by chance"
 	},
 	{
 		"word": "fortis, forte",
 		"category": "adj",
-		"translation": "brave, strong, bold",
-		"asked": false
+		"translation": "brave, strong, bold"
 	},
 	{
 		"word": "fortuna, fortunae, f",
 		"category": "noun 1",
 		"translation": "fate, luck, fortune (good or bad)",
-		"asked": false,
 		"noms": "fortuna",
 		"nomp": "fortunae",
 		"gens": "fortunae",
@@ -8443,7 +8187,6 @@
 		"word": "forum, fori, n",
 		"category": "noun 2",
 		"translation": "forum, market place",
-		"asked": false,
 		"noms": "forum",
 		"nomp": "fora",
 		"gens": "fori",
@@ -8461,7 +8204,6 @@
 		"word": "frango, frangere, fregi, fractus",
 		"category": "verb 3",
 		"translation": "break, crush",
-		"asked": false,
 		"pracind1s": "frango",
 		"pracsuj1s": "frangam",
 		"prpaind1s": "frangor",
@@ -8597,7 +8339,6 @@
 		"word": "frater, fratris, m",
 		"category": "noun 3",
 		"translation": "brother",
-		"asked": false,
 		"noms": "frater",
 		"nomp": "fratres",
 		"gens": "fratris",
@@ -8615,7 +8356,6 @@
 		"word": "frigus, frigoris, n",
 		"category": "noun 3",
 		"translation": "cold",
-		"asked": false,
 		"noms": "frigus",
 		"nomp": "frigora",
 		"gens": "frigoris",
@@ -8633,7 +8373,6 @@
 		"word": "frumentum, frumenti, n",
 		"category": "noun 2",
 		"translation": "corn, grain",
-		"asked": false,
 		"noms": "frumentum",
 		"nomp": "frumenta",
 		"gens": "frumenti",
@@ -8650,14 +8389,12 @@
 	{
 		"word": "frustra",
 		"category": "adverb",
-		"translation": "in vain",
-		"asked": false
+		"translation": "in vain"
 	},
 	{
 		"word": "fuga, fugae, f",
 		"category": "noun 1",
 		"translation": "flight, escape",
-		"asked": false,
 		"noms": "fuga",
 		"nomp": "fugae",
 		"gens": "fugae",
@@ -8675,7 +8412,6 @@
 		"word": "fugio, fugere, fugi",
 		"category": "verb 3",
 		"translation": "flee, run away (from), avoid",
-		"asked": false,
 		"pracind1s": "fugio",
 		"pracsuj1s": "fugiam",
 		"prpaind1s": "fugior",
@@ -8810,14 +8546,12 @@
 	{
 		"word": "fundo, fundere, fudi, fusus",
 		"category": "verb 3",
-		"translation": "pour, shed, rout",
-		"asked": false
+		"translation": "pour, shed, rout"
 	},
 	{
 		"word": "furor, furoris, m",
 		"category": "noun 3",
 		"translation": "rage, fury, madness, passion",
-		"asked": false,
 		"noms": "furor",
 		"nomp": "furores",
 		"gens": "furoris",
@@ -8834,14 +8568,12 @@
 	{
 		"word": "gaudeo, gaudere, gavisus sum",
 		"category": "verb 2 semi-dep",
-		"translation": "rejoice",
-		"asked": false
+		"translation": "rejoice"
 	},
 	{
 		"word": "gaudium, gaudii, n",
 		"category": "noun 2",
 		"translation": "joy, delight",
-		"asked": false,
 		"noms": "gaudium",
 		"nomp": "gaudia",
 		"gens": "gaudii",
@@ -8858,20 +8590,17 @@
 	{
 		"word": "gens, gentis, f",
 		"category": "noun 3",
-		"translation": "race, people, family, tribe, nation",
-		"asked": false
+		"translation": "race, people, family, tribe, nation"
 	},
 	{
 		"word": "genus, generis, n",
 		"category": "noun 3",
-		"translation": "race, descent, birth, kind",
-		"asked": false
+		"translation": "race, descent, birth, kind"
 	},
 	{
 		"word": "gero, gerere, gessi, gestus",
 		"category": "verb 3",
 		"translation": "bear, wear, wage war, manage",
-		"asked": false,
 		"pracind1s": "gero",
 		"pracsuj1s": "geram",
 		"prpaind1s": "geror",
@@ -9007,7 +8736,6 @@
 		"word": "gladius, gladii, m",
 		"category": "noun 2",
 		"translation": "sword",
-		"asked": false,
 		"noms": "gladius",
 		"nomp": "gladii",
 		"gens": "gladii",
@@ -9025,7 +8753,6 @@
 		"word": "gratia, gratiae, f",
 		"category": "noun 1",
 		"translation": "favour, thanks, esteem",
-		"asked": false,
 		"noms": "gratia",
 		"nomp": "gratiae",
 		"gens": "gratiae",
@@ -9042,20 +8769,17 @@
 	{
 		"word": "gratias ago",
 		"category": "verb phrase",
-		"translation": "thank, give thanks",
-		"asked": false
+		"translation": "thank, give thanks"
 	},
 	{
 		"word": "gravis, grave",
 		"category": "adj",
-		"translation": "heavy, serious, painful, important",
-		"asked": false
+		"translation": "heavy, serious, painful, important"
 	},
 	{
 		"word": "habeo, habere, habui, habitus",
 		"category": "verb 2",
 		"translation": "have, hold, consider",
-		"asked": false,
 		"pracind1s": "habeo",
 		"pracsuj1s": "habeam",
 		"prpaind1s": "habeor",
@@ -9191,7 +8915,6 @@
 		"word": "habito, habitare, habitavi, habitatus",
 		"category": "verb 1",
 		"translation": "live, dwell",
-		"asked": false,
 		"pracind1s": "habito",
 		"pracsuj1s": "habitem",
 		"prpaind1s": "habitor",
@@ -9327,7 +9050,6 @@
 		"word": "hasta, hastae, f",
 		"category": "noun 1",
 		"translation": "spear",
-		"asked": false,
 		"noms": "hasta",
 		"nomp": "hastae",
 		"gens": "hastae",
@@ -9344,32 +9066,27 @@
 	{
 		"word": "haud",
 		"category": "adverb",
-		"translation": "not",
-		"asked": false
+		"translation": "not"
 	},
 	{
 		"word": "heri",
 		"category": "adverb",
-		"translation": "yesterday",
-		"asked": false
+		"translation": "yesterday"
 	},
 	{
 		"word": "hic, haec, hoc",
 		"category": "pron",
-		"translation": "this",
-		"asked": false
+		"translation": "this"
 	},
 	{
 		"word": "hic",
 		"category": "adverb",
-		"translation": "here",
-		"asked": false
+		"translation": "here"
 	},
 	{
 		"word": "hiems, hiemis, f",
 		"category": "noun 3",
 		"translation": "winter, storm",
-		"asked": false,
 		"noms": "hiems",
 		"nomp": "hiemes",
 		"gens": "hiemis",
@@ -9386,20 +9103,17 @@
 	{
 		"word": "hinc",
 		"category": "adverb",
-		"translation": "from here, hence, henceforth",
-		"asked": false
+		"translation": "from here, hence, henceforth"
 	},
 	{
 		"word": "hodie",
 		"category": "adverb",
-		"translation": "today",
-		"asked": false
+		"translation": "today"
 	},
 	{
 		"word": "homo, hominis, m",
 		"category": "noun 3",
 		"translation": "man, person",
-		"asked": false,
 		"noms": "homo",
 		"nomp": "homines",
 		"gens": "hominis",
@@ -9417,7 +9131,6 @@
 		"word": "honor, honoris, m",
 		"category": "noun 3",
 		"translation": "honour, esteem, glory",
-		"asked": false,
 		"noms": "honor",
 		"nomp": "honores",
 		"gens": "honoris",
@@ -9435,7 +9148,6 @@
 		"word": "hora, horae, f",
 		"category": "noun 1",
 		"translation": "hour",
-		"asked": false,
 		"noms": "hora",
 		"nomp": "horae",
 		"gens": "horae",
@@ -9452,14 +9164,12 @@
 	{
 		"word": "hortor, hortari, hortatus sum",
 		"category": "verb 1 dep",
-		"translation": "urge, encourage",
-		"asked": false
+		"translation": "urge, encourage"
 	},
 	{
 		"word": "hortus, horti, m",
 		"category": "noun 2",
 		"translation": "garden",
-		"asked": false,
 		"noms": "hortus",
 		"nomp": "horti",
 		"gens": "horti",
@@ -9477,7 +9187,6 @@
 		"word": "hospes, hospitis, m",
 		"category": "noun 3",
 		"translation": "guest, host",
-		"asked": false,
 		"noms": "hospes",
 		"nomp": "hospites",
 		"gens": "hospitis",
@@ -9495,7 +9204,6 @@
 		"word": "hostis, hostis, m",
 		"category": "noun 3",
 		"translation": "enemy",
-		"asked": false,
 		"noms": "hostis",
 		"nomp": "hostes",
 		"gens": "hostis",
@@ -9512,14 +9220,12 @@
 	{
 		"word": "huc",
 		"category": "adverb",
-		"translation": "here, to this place",
-		"asked": false
+		"translation": "here, to this place"
 	},
 	{
 		"word": "humus, humi, f",
 		"category": "noun 2",
 		"translation": "ground, earth",
-		"asked": false,
 		"noms": "humus",
 		"nomp": "humi",
 		"gens": "humi",
@@ -9536,14 +9242,12 @@
 	{
 		"word": "iaceo, iacere, iacui",
 		"category": "verb 2",
-		"translation": "lie (down)",
-		"asked": false
+		"translation": "lie (down)"
 	},
 	{
 		"word": "iacio, iacere, ieci, iactus (in compounds -icio)",
 		"category": "verb 3",
 		"translation": "throw",
-		"asked": false,
 		"pracind1s": "iacio",
 		"pracsuj1s": "iaciam",
 		"prpaind1s": "iacior",
@@ -9678,44 +9382,37 @@
 	{
 		"word": "iam",
 		"category": "adverb",
-		"translation": "now, already",
-		"asked": false
+		"translation": "now, already"
 	},
 	{
 		"word": "non iam (indeclinable)",
 		"category": "adverb",
-		"translation": "no longer",
-		"asked": false
+		"translation": "no longer"
 	},
 	{
 		"word": "ibi",
 		"category": "adverb",
-		"translation": "there, then",
-		"asked": false
+		"translation": "there, then"
 	},
 	{
 		"word": "idem, eadem, idem",
 		"category": "pron",
-		"translation": "the same",
-		"asked": false
+		"translation": "the same"
 	},
 	{
 		"word": "idoneus, idonea, idoneum",
 		"category": "adj",
-		"translation": "suitable, convenient",
-		"asked": false
+		"translation": "suitable, convenient"
 	},
 	{
 		"word": "igitur",
 		"category": "adverb",
-		"translation": "therefore, and so",
-		"asked": false
+		"translation": "therefore, and so"
 	},
 	{
 		"word": "ignis, ignis, m",
 		"category": "noun 3",
 		"translation": "fire",
-		"asked": false,
 		"noms": "ignis",
 		"nomp": "ignes",
 		"gens": "ignis",
@@ -9732,26 +9429,22 @@
 	{
 		"word": "ignoro, ignorare, ignoravi, ignoratus",
 		"category": "verb 1",
-		"translation": "do not know, be ignorant, misunderstand",
-		"asked": false
+		"translation": "do not know, be ignorant, misunderstand"
 	},
 	{
 		"word": "ille, illa, illud",
 		"category": "pron",
-		"translation": "that, he, she, it",
-		"asked": false
+		"translation": "that, he, she, it"
 	},
 	{
 		"word": "illic",
 		"category": "adverb",
-		"translation": "there",
-		"asked": false
+		"translation": "there"
 	},
 	{
 		"word": "impedio, impedire, impedivi, impeditus",
 		"category": "verb 4",
 		"translation": "delay, hinder, prevent, hamper",
-		"asked": false,
 		"pracind1s": "impedio",
 		"pracsuj1s": "impediam",
 		"prpaind1s": "impedior",
@@ -9887,7 +9580,6 @@
 		"word": "imperator, imperatoris, m",
 		"category": "noun 3",
 		"translation": "emperor, general, leader",
-		"asked": false,
 		"noms": "imperator",
 		"nomp": "imperatores",
 		"gens": "imperatoris",
@@ -9905,7 +9597,6 @@
 		"word": "imperium, imperii, n",
 		"category": "noun 2",
 		"translation": "command, power, empire",
-		"asked": false,
 		"noms": "imperium",
 		"nomp": "imperia",
 		"gens": "imperii",
@@ -9923,7 +9614,6 @@
 		"word": "impero, imperare, imperavi, imperatus +dat",
 		"category": "verb 1",
 		"translation": "order, command",
-		"asked": false,
 		"pracind1s": "impero",
 		"pracsuj1s": "imperem",
 		"prpaind1s": "imperor",
@@ -10059,7 +9749,6 @@
 		"word": "impetus, impetus, m",
 		"category": "noun 4",
 		"translation": "attack, impulse",
-		"asked": false,
 		"noms": "impetus",
 		"nomp": "impetus",
 		"gens": "impetus",
@@ -10076,20 +9765,17 @@
 	{
 		"word": "in + abl",
 		"category": "prep",
-		"translation": "in, on",
-		"asked": false
+		"translation": "in, on"
 	},
 	{
 		"word": "in + acc",
 		"category": "prep",
-		"translation": "into, onto, against, towards",
-		"asked": false
+		"translation": "into, onto, against, towards"
 	},
 	{
 		"word": "incendium, incendii, n",
 		"category": "noun 2",
 		"translation": "fire",
-		"asked": false,
 		"noms": "incendium",
 		"nomp": "incendia",
 		"gens": "incendii",
@@ -10107,7 +9793,6 @@
 		"word": "incendo, incendere, incendi, incensus",
 		"category": "verb 3",
 		"translation": "burn, set on fire, inflame, rouse",
-		"asked": false,
 		"pracind1s": "incendo",
 		"pracsuj1s": "incendam",
 		"prpaind1s": "incendor",
@@ -10242,14 +9927,12 @@
 	{
 		"word": "incipio, incipere, incepi, inceptus",
 		"category": "verb 3",
-		"translation": "begin",
-		"asked": false
+		"translation": "begin"
 	},
 	{
 		"word": "incito, incitare, incitavi, incitatus",
 		"category": "verb 1",
 		"translation": "urge on, arouse, encourage",
-		"asked": false,
 		"pracind1s": "incito",
 		"pracsuj1s": "incitem",
 		"prpaind1s": "incitor",
@@ -10384,56 +10067,47 @@
 	{
 		"word": "inde",
 		"category": "adverb",
-		"translation": "from there, thereupon, next",
-		"asked": false
+		"translation": "from there, thereupon, next"
 	},
 	{
 		"word": "infero, inferre, intuli, illatus/inlatus",
 		"category": "verb irreg",
-		"translation": "inflict, bring to, cause, carry against",
-		"asked": false
+		"translation": "inflict, bring to, cause, carry against"
 	},
 	{
 		"word": "signa inferre",
 		"category": "verb phrase",
-		"translation": "attack, charge",
-		"asked": false
+		"translation": "attack, charge"
 	},
 	{
 		"word": "bellum inferre + dat",
 		"category": "verb phrase",
-		"translation": "make war on",
-		"asked": false
+		"translation": "make war on"
 	},
 	{
 		"word": "infra + acc",
 		"category": "prep & adverb",
-		"translation": "below, beneath",
-		"asked": false
+		"translation": "below, beneath"
 	},
 	{
 		"word": "ingenium, ingenii, n",
 		"category": "noun 2",
-		"translation": "character, ability",
-		"asked": false
+		"translation": "character, ability"
 	},
 	{
 		"word": "ingens, ingentis",
 		"category": "adj",
-		"translation": "huge",
-		"asked": false
+		"translation": "huge"
 	},
 	{
 		"word": "ingredior, ingredi, ingressus sum",
 		"category": "verb 3 dep",
-		"translation": "enter, undertake",
-		"asked": false
+		"translation": "enter, undertake"
 	},
 	{
 		"word": "inimicus, inimici, m",
 		"category": "noun 2",
 		"translation": "(personal) enemy",
-		"asked": false,
 		"noms": "inimicus",
 		"nomp": "inimici",
 		"gens": "inimici",
@@ -10450,14 +10124,12 @@
 	{
 		"word": "iniquus, iniqua, iniquum",
 		"category": "adj",
-		"translation": "unfair, unjust, unfavourable",
-		"asked": false
+		"translation": "unfair, unjust, unfavourable"
 	},
 	{
 		"word": "initium, initii, n",
 		"category": "noun 2",
 		"translation": "beginning",
-		"asked": false,
 		"noms": "initium",
 		"nomp": "initia",
 		"gens": "initii",
@@ -10475,7 +10147,6 @@
 		"word": "iniuria, iniuriae, f",
 		"category": "noun 1",
 		"translation": "injustice, injury, wrong",
-		"asked": false,
 		"noms": "iniuria",
 		"nomp": "iniuriae",
 		"gens": "iniuriae",
@@ -10493,7 +10164,6 @@
 		"word": "inopia, inopiae, f",
 		"category": "noun 1",
 		"translation": "shortage, lack, poverty",
-		"asked": false,
 		"noms": "inopia",
 		"nomp": "inopiae",
 		"gens": "inopiae",
@@ -10510,14 +10180,12 @@
 	{
 		"word": "inquam, inquit, inquiunt",
 		"category": "verb irreg",
-		"translation": "say",
-		"asked": false
+		"translation": "say"
 	},
 	{
 		"word": "insidiae, insidiarum, f pl",
 		"category": "noun 1",
 		"translation": "ambush, trap, trick",
-		"asked": false,
 		"noms": "insidia",
 		"nomp": "insidiae",
 		"gens": "insidiae",
@@ -10534,14 +10202,12 @@
 	{
 		"word": "insignis, insigne",
 		"category": "adj",
-		"translation": "distinguished, glorious",
-		"asked": false
+		"translation": "distinguished, glorious"
 	},
 	{
 		"word": "inspicio, inspicere, inspexi, inspectus",
 		"category": "verb 3",
 		"translation": "look at, inspect, examine",
-		"asked": false,
 		"pracind1s": "inspicio",
 		"pracsuj1s": "inspiciam",
 		"prpaind1s": "inspicior",
@@ -10676,14 +10342,12 @@
 	{
 		"word": "instruo, instruere, instruxi, instructus",
 		"category": "verb 3",
-		"translation": "draw up, prepare, equip, supply",
-		"asked": false
+		"translation": "draw up, prepare, equip, supply"
 	},
 	{
 		"word": "insula, insulae, f",
 		"category": "noun 1",
 		"translation": "island, block (of apartments)",
-		"asked": false,
 		"noms": "insula",
 		"nomp": "insulae",
 		"gens": "insulae",
@@ -10701,7 +10365,6 @@
 		"word": "intellego, intellegere, intellexi, intellectus",
 		"category": "verb 3",
 		"translation": "understand, perceive, realise",
-		"asked": false,
 		"pracind1s": "intellego",
 		"pracsuj1s": "intellegam",
 		"prpaind1s": "intellegor",
@@ -10836,20 +10499,17 @@
 	{
 		"word": "inter + acc",
 		"category": "prep",
-		"translation": "between, among",
-		"asked": false
+		"translation": "between, among"
 	},
 	{
 		"word": "interea, interim",
 		"category": "adverb",
-		"translation": "meanwhile, in the meantime",
-		"asked": false
+		"translation": "meanwhile, in the meantime"
 	},
 	{
 		"word": "interficio, interficere, interfeci, interfectus",
 		"category": "verb 3",
 		"translation": "kill",
-		"asked": false,
 		"pracind1s": "interficio",
 		"pracsuj1s": "interficiam",
 		"prpaind1s": "interficior",
@@ -10984,20 +10644,17 @@
 	{
 		"word": "intra + acc",
 		"category": "prep",
-		"translation": "inside, within",
-		"asked": false
+		"translation": "inside, within"
 	},
 	{
 		"word": "intro, intrare, intravi, intratus",
 		"category": "verb 1",
-		"translation": "enter",
-		"asked": false
+		"translation": "enter"
 	},
 	{
 		"word": "invenio, invenire, inveni, inventus",
 		"category": "verb 4",
 		"translation": "find, discover",
-		"asked": false,
 		"pracind1s": "invenio",
 		"pracsuj1s": "inveniam",
 		"prpaind1s": "invenior",
@@ -11132,26 +10789,22 @@
 	{
 		"word": "invito, invitare, invitavi, invitatus",
 		"category": "verb 1",
-		"translation": "invite",
-		"asked": false
+		"translation": "invite"
 	},
 	{
 		"word": "invitus, invita, invitum",
 		"category": "adj",
-		"translation": "unwilling, reluctant",
-		"asked": false
+		"translation": "unwilling, reluctant"
 	},
 	{
 		"word": "ipse, ipsa, ipsum",
 		"category": "pron",
-		"translation": "himself, herself, themself, themselves, -self",
-		"asked": false
+		"translation": "himself, herself, themself, themselves, -self"
 	},
 	{
 		"word": "ira, irae, f",
 		"category": "noun 1",
 		"translation": "anger",
-		"asked": false,
 		"noms": "ira",
 		"nomp": "irae",
 		"gens": "irae",
@@ -11168,38 +10821,32 @@
 	{
 		"word": "iratus, irata, iratum",
 		"category": "adj",
-		"translation": "angry",
-		"asked": false
+		"translation": "angry"
 	},
 	{
 		"word": "is, ea, id",
 		"category": "pron",
-		"translation": "this, that, he, she, it",
-		"asked": false
+		"translation": "this, that, he, she, it"
 	},
 	{
 		"word": "ita",
 		"category": "adverb",
-		"translation": "in this way, so, thus",
-		"asked": false
+		"translation": "in this way, so, thus"
 	},
 	{
 		"word": "ita vero",
 		"category": "adverb",
-		"translation": "yes",
-		"asked": false
+		"translation": "yes"
 	},
 	{
 		"word": "itaque",
 		"category": "adverb",
-		"translation": "and so, therefore",
-		"asked": false
+		"translation": "and so, therefore"
 	},
 	{
 		"word": "iter, itineris, n",
 		"category": "noun 3",
 		"translation": "journey, march, way",
-		"asked": false,
 		"noms": "iter",
 		"nomp": "itinera",
 		"gens": "itineris",
@@ -11216,14 +10863,12 @@
 	{
 		"word": "iterum",
 		"category": "adverb",
-		"translation": "again",
-		"asked": false
+		"translation": "again"
 	},
 	{
 		"word": "iubeo, iubere, iussi, iussus",
 		"category": "verb 2",
 		"translation": "order, command",
-		"asked": false,
 		"pracind1s": "iubeo",
 		"pracsuj1s": "iubeam",
 		"prpaind1s": "iubeor",
@@ -11359,7 +11004,6 @@
 		"word": "iudex, iudicis, m and f",
 		"category": "noun 3",
 		"translation": "judge, juror",
-		"asked": false,
 		"noms": "iudex",
 		"nomp": "iudices",
 		"gens": "iudicis",
@@ -11377,7 +11021,6 @@
 		"word": "iungo, iungere, iunxi, iunctus",
 		"category": "verb 3",
 		"translation": "join, unite, fasten",
-		"asked": false,
 		"pracind1s": "iungo",
 		"pracsuj1s": "iungam",
 		"prpaind1s": "iungor",
@@ -11512,20 +11155,17 @@
 	{
 		"word": "iustus, iusta, iustum",
 		"category": "adj",
-		"translation": "right, just, lawful, complete",
-		"asked": false
+		"translation": "right, just, lawful, complete"
 	},
 	{
 		"word": "iuvenis, iuvenis m or adj",
-		"category": "noun & adj",
-		"translation": "young man, young",
-		"asked": false
+		"category": "misc",
+		"translation": "young man, young, youth"
 	},
 	{
 		"word": "iuvo, iuvare, iuvi, iutus",
 		"category": "verb 1",
 		"translation": "help, please",
-		"asked": false,
 		"pracind1s": "iuvo",
 		"pracsuj1s": "iuvem",
 		"prpaind1s": "iuvor",
@@ -11660,14 +11300,12 @@
 	{
 		"word": "labor, labi, lapsus sum",
 		"category": "verb 3 dep",
-		"translation": "glide, slip, fall",
-		"asked": false
+		"translation": "glide, slip, fall"
 	},
 	{
 		"word": "labor, laboris, m",
 		"category": "noun 3",
 		"translation": "work, toil, trouble",
-		"asked": false,
 		"noms": "labor",
 		"nomp": "labores",
 		"gens": "laboris",
@@ -11685,7 +11323,6 @@
 		"word": "laboro, laborare, laboravi",
 		"category": "verb 1",
 		"translation": "work, toil, be in difficulty",
-		"asked": false,
 		"pracind1s": "laboro",
 		"pracsuj1s": "laborem",
 		"prpaind1s": "laboror",
@@ -11821,7 +11458,6 @@
 		"word": "laedo, laedere, laesi, laesus",
 		"category": "verb 3",
 		"translation": "hurt, injure, harm",
-		"asked": false,
 		"pracind1s": "laedo",
 		"pracsuj1s": "laedam",
 		"prpaind1s": "laedor",
@@ -11956,26 +11592,22 @@
 	{
 		"word": "laetus, laeta, laetum",
 		"category": "adj",
-		"translation": "happy, glad",
-		"asked": false
+		"translation": "happy, glad"
 	},
 	{
 		"word": "latus, lata, latum",
 		"category": "adj",
-		"translation": "wide, broad",
-		"asked": false
+		"translation": "wide, broad"
 	},
 	{
 		"word": "latus, lateris, n",
 		"category": "noun 3",
-		"translation": "side, wing",
-		"asked": false
+		"translation": "side, wing"
 	},
 	{
 		"word": "laudo, laudare, laudavi, laudatus",
 		"category": "verb 1",
 		"translation": "praise",
-		"asked": false,
 		"pracind1s": "laudo",
 		"pracsuj1s": "laudem",
 		"prpaind1s": "laudor",
@@ -12111,7 +11743,6 @@
 		"word": "laus, laudis, f",
 		"category": "noun 3",
 		"translation": "praise, honour, credit",
-		"asked": false,
 		"noms": "laus",
 		"nomp": "laudes",
 		"gens": "laudis",
@@ -12129,7 +11760,6 @@
 		"word": "legatus, legati, m",
 		"category": "noun 2",
 		"translation": "(legionary) commander, ambassador, envoy, commander",
-		"asked": false,
 		"noms": "legatus",
 		"nomp": "legati",
 		"gens": "legati",
@@ -12147,7 +11777,6 @@
 		"word": "legio, legionis, f",
 		"category": "noun 3",
 		"translation": "legion",
-		"asked": false,
 		"noms": "legio",
 		"nomp": "legiones",
 		"gens": "legionis",
@@ -12165,7 +11794,6 @@
 		"word": "lego, legere, legi, lectus",
 		"category": "verb 3",
 		"translation": "read, choose",
-		"asked": false,
 		"pracind1s": "lego",
 		"pracsuj1s": "legam",
 		"prpaind1s": "legor",
@@ -12300,20 +11928,17 @@
 	{
 		"word": "lentus, lenta, lentum",
 		"category": "adj",
-		"translation": "slow",
-		"asked": false
+		"translation": "slow"
 	},
 	{
 		"word": "levis, leve",
 		"category": "adj",
-		"translation": "light, slight",
-		"asked": false
+		"translation": "light, slight"
 	},
 	{
 		"word": "lex, legis, f",
 		"category": "noun 3",
 		"translation": "law",
-		"asked": false,
 		"noms": "lex",
 		"nomp": "leges",
 		"gens": "legis",
@@ -12330,20 +11955,17 @@
 	{
 		"word": "libens, libentis",
 		"category": "adj",
-		"translation": "willing, glad",
-		"asked": false
+		"translation": "willing, glad"
 	},
 	{
 		"word": "liber, libera, liberum",
 		"category": "adj",
-		"translation": "free",
-		"asked": false
+		"translation": "free"
 	},
 	{
 		"word": "liber, libri, m",
 		"category": "noun 2",
 		"translation": "book",
-		"asked": false,
 		"noms": "liber",
 		"nomp": "libri",
 		"gens": "libri",
@@ -12361,7 +11983,6 @@
 		"word": "liberi, liberorum, m pl",
 		"category": "noun 2",
 		"translation": "children",
-		"asked": false,
 		"noms": "liberus",
 		"nomp": "liberi",
 		"gens": "liberi",
@@ -12379,7 +12000,6 @@
 		"word": "libero, liberare, liberavi, liberatus",
 		"category": "verb 1",
 		"translation": "set free",
-		"asked": false,
 		"pracind1s": "libero",
 		"pracsuj1s": "liberem",
 		"prpaind1s": "liberor",
@@ -12515,7 +12135,6 @@
 		"word": "libertas, libertatis, f",
 		"category": "noun 3",
 		"translation": "freedom",
-		"asked": false,
 		"noms": "libertas",
 		"nomp": "libertates",
 		"gens": "libertatis",
@@ -12533,7 +12152,6 @@
 		"word": "libertus, liberti, m",
 		"category": "noun 2",
 		"translation": "freedman, ex-slave",
-		"asked": false,
 		"noms": "libertus",
 		"nomp": "liberti",
 		"gens": "liberti",
@@ -12550,14 +12168,12 @@
 	{
 		"word": "licet, licere, licuit + dat",
 		"category": "verb impersonal",
-		"translation": "it is allowed",
-		"asked": false
+		"translation": "it is allowed"
 	},
 	{
 		"word": "littera, litterae, f",
 		"category": "noun 1",
 		"translation": "letter",
-		"asked": false,
 		"noms": "littera",
 		"nomp": "litterae",
 		"gens": "litterae",
@@ -12575,7 +12191,6 @@
 		"word": "litus, litoris, n",
 		"category": "noun 3",
 		"translation": "sea-shore, beach",
-		"asked": false,
 		"noms": "litus",
 		"nomp": "litora",
 		"gens": "litoris",
@@ -12593,7 +12208,6 @@
 		"word": "locus, loci, m",
 		"category": "noun 2",
 		"translation": "place, position, situation, opportunity",
-		"asked": false,
 		"noms": "locus",
 		"nomp": "loci",
 		"gens": "loci",
@@ -12610,20 +12224,17 @@
 	{
 		"word": "longus, longa, longum",
 		"category": "adj",
-		"translation": "long",
-		"asked": false
+		"translation": "long"
 	},
 	{
 		"word": "loquor, loqui, locutus sum",
 		"category": "verb 3 dep",
-		"translation": "speak, talk",
-		"asked": false
+		"translation": "speak, talk"
 	},
 	{
 		"word": "lux, lucis, f",
 		"category": "noun 3",
 		"translation": "light, daylight",
-		"asked": false,
 		"noms": "lux",
 		"nomp": "luces",
 		"gens": "lucis",
@@ -12641,7 +12252,6 @@
 		"word": "magister, magistri, m",
 		"category": "noun 2",
 		"translation": "teacher, master",
-		"asked": false,
 		"noms": "magister",
 		"nomp": "magistri",
 		"gens": "magistri",
@@ -12658,50 +12268,42 @@
 	{
 		"word": "magnus, magna, magnum",
 		"category": "adj",
-		"translation": "big, large, great",
-		"asked": false
+		"translation": "big, large, great"
 	},
 	{
 		"word": "magnopere",
 		"category": "adverb",
-		"translation": "very much, greatly",
-		"asked": false
+		"translation": "very much, greatly"
 	},
 	{
 		"word": "magis",
 		"category": "adverb comp",
-		"translation": "more, rather",
-		"asked": false
+		"translation": "more, rather"
 	},
 	{
 		"word": "malo, malle, malui",
 		"category": "verb irreg",
-		"translation": "prefer",
-		"asked": false
+		"translation": "prefer"
 	},
 	{
 		"word": "malus, mala, malum",
 		"category": "adj",
-		"translation": "evil, bad",
-		"asked": false
+		"translation": "evil, bad"
 	},
 	{
 		"word": "mando, mandare, mandavi, mandatus",
 		"category": "verb 1",
-		"translation": "commit, entrust, command",
-		"asked": false
+		"translation": "commit, entrust, command"
 	},
 	{
 		"word": "mane",
 		"category": "adverb",
-		"translation": "in the morning, early",
-		"asked": false
+		"translation": "in the morning, early"
 	},
 	{
 		"word": "maneo, manere, mansi",
 		"category": "verb 2",
 		"translation": "remain, stay",
-		"asked": false,
 		"pracind1s": "maneo",
 		"pracsuj1s": "maneam",
 		"prpaind1s": "maneor",
@@ -12837,7 +12439,6 @@
 		"word": "manus, manus, f",
 		"category": "noun 4",
 		"translation": "hand, band",
-		"asked": false,
 		"noms": "manus",
 		"nomp": "manus",
 		"gens": "manus",
@@ -12855,7 +12456,6 @@
 		"word": "mare, maris, n",
 		"category": "noun 3",
 		"translation": "sea",
-		"asked": false,
 		"noms": "mare",
 		"nomp": "maria",
 		"gens": "maris",
@@ -12873,7 +12473,6 @@
 		"word": "maritus, mariti, m",
 		"category": "noun 2",
 		"translation": "husband",
-		"asked": false,
 		"noms": "maritus",
 		"nomp": "mariti",
 		"gens": "mariti",
@@ -12891,7 +12490,6 @@
 		"word": "mater, matris, f",
 		"category": "noun 3",
 		"translation": "mother",
-		"asked": false,
 		"noms": "mater",
 		"nomp": "matres",
 		"gens": "matris",
@@ -12908,14 +12506,12 @@
 	{
 		"word": "medius, media, medium",
 		"category": "adj",
-		"translation": "middle (of), middle",
-		"asked": false
+		"translation": "middle (of), middle"
 	},
 	{
 		"word": "mens, mentis, f",
 		"category": "noun 3",
 		"translation": "mind",
-		"asked": false,
 		"noms": "mens",
 		"nomp": "mentes",
 		"gens": "mentis",
@@ -12933,7 +12529,6 @@
 		"word": "mensis, mensis, m",
 		"category": "noun 3",
 		"translation": "month",
-		"asked": false,
 		"noms": "mensis",
 		"nomp": "menses",
 		"gens": "mensis",
@@ -12951,7 +12546,6 @@
 		"word": "mercator, mercatoris, m",
 		"category": "noun 3",
 		"translation": "merchant",
-		"asked": false,
 		"noms": "mercator",
 		"nomp": "mercatores",
 		"gens": "mercatoris",
@@ -12969,7 +12563,6 @@
 		"word": "metus, metus, m",
 		"category": "noun 4",
 		"translation": "fear",
-		"asked": false,
 		"noms": "metus",
 		"nomp": "metus",
 		"gens": "metus",
@@ -12986,14 +12579,12 @@
 	{
 		"word": "meus, mea, meum",
 		"category": "adj",
-		"translation": "my",
-		"asked": false
+		"translation": "my"
 	},
 	{
 		"word": "miles, militis, m",
 		"category": "noun 3",
 		"translation": "soldier",
-		"asked": false,
 		"noms": "miles",
 		"nomp": "milites",
 		"gens": "militis",
@@ -13010,32 +12601,27 @@
 	{
 		"word": "minor, minari, minatus sum + dat",
 		"category": "verb 1 dep",
-		"translation": "threaten",
-		"asked": false
+		"translation": "threaten"
 	},
 	{
 		"word": "mirabilis, mirabile",
 		"category": "adj",
-		"translation": "strange, wonderful",
-		"asked": false
+		"translation": "strange, wonderful"
 	},
 	{
 		"word": "miror, mirari, miratus sum",
 		"category": "verb 1 dep",
-		"translation": "wonder at, admire",
-		"asked": false
+		"translation": "wonder at, admire"
 	},
 	{
 		"word": "miser, misera, miserum",
 		"category": "adj",
-		"translation": "miserable, wretched, sad",
-		"asked": false
+		"translation": "miserable, wretched, sad"
 	},
 	{
 		"word": "mitto, mittere, misi, missus",
 		"category": "verb 3",
 		"translation": "send, throw, let go",
-		"asked": false,
 		"pracind1s": "mitto",
 		"pracsuj1s": "mittam",
 		"prpaind1s": "mittor",
@@ -13170,14 +12756,12 @@
 	{
 		"word": "modo",
 		"category": "adverb",
-		"translation": "just now, only",
-		"asked": false
+		"translation": "just now, only"
 	},
 	{
 		"word": "modus, modi, m",
 		"category": "noun 2",
 		"translation": "manner, way, kind",
-		"asked": false,
 		"noms": "modus",
 		"nomp": "modi",
 		"gens": "modi",
@@ -13195,7 +12779,6 @@
 		"word": "moenia, moenium, n pl",
 		"category": "noun 3",
 		"translation": "city walls, city",
-		"asked": false,
 		"noms": "moene",
 		"nomp": "moenia",
 		"gens": "moenis",
@@ -13213,7 +12796,6 @@
 		"word": "moneo, monere, monui, monitus",
 		"category": "verb 2",
 		"translation": "warn, advise, teach",
-		"asked": false,
 		"pracind1s": "moneo",
 		"pracsuj1s": "moneam",
 		"prpaind1s": "moneor",
@@ -13349,7 +12931,6 @@
 		"word": "mons, montis, m",
 		"category": "noun 3",
 		"translation": "mountain",
-		"asked": false,
 		"noms": "mons",
 		"nomp": "montes",
 		"gens": "montis",
@@ -13366,14 +12947,12 @@
 	{
 		"word": "monstro, monstrare, monstravi, monstratus",
 		"category": "verb 1",
-		"translation": "show, point out, indicate, instruct",
-		"asked": false
+		"translation": "show, point out, indicate, instruct"
 	},
 	{
 		"word": "morbus, morbi, m",
 		"category": "noun 2",
 		"translation": "sickness, disease",
-		"asked": false,
 		"noms": "morbus",
 		"nomp": "morbi",
 		"gens": "morbi",
@@ -13390,14 +12969,12 @@
 	{
 		"word": "morior, mori, mortuus sum",
 		"category": "verb 3 dep",
-		"translation": "die",
-		"asked": false
+		"translation": "die"
 	},
 	{
 		"word": "mors, mortis, f",
 		"category": "noun 3",
 		"translation": "death",
-		"asked": false,
 		"noms": "mors",
 		"nomp": "mortes",
 		"gens": "mortis",
@@ -13414,14 +12991,12 @@
 	{
 		"word": "moror, morari, moratus sum",
 		"category": "verb 1 dep",
-		"translation": "delay, linger",
-		"asked": false
+		"translation": "delay, linger"
 	},
 	{
 		"word": "mora, morae, f",
 		"category": "noun 1",
 		"translation": "delay",
-		"asked": false,
 		"noms": "mora",
 		"nomp": "morae",
 		"gens": "morae",
@@ -13439,7 +13014,6 @@
 		"word": "mos, moris, m",
 		"category": "noun 3",
 		"translation": "habit, custom, (pl) character, morals",
-		"asked": false,
 		"noms": "mos",
 		"nomp": "mores",
 		"gens": "moris",
@@ -13457,7 +13031,6 @@
 		"word": "moveo, movere, movi, motus",
 		"category": "verb 2",
 		"translation": "move",
-		"asked": false,
 		"pracind1s": "moveo",
 		"pracsuj1s": "moveam",
 		"prpaind1s": "moveor",
@@ -13592,14 +13165,12 @@
 	{
 		"word": "mox",
 		"category": "adverb",
-		"translation": "soon",
-		"asked": false
+		"translation": "soon"
 	},
 	{
 		"word": "mulier, mulieris, f",
 		"category": "noun 3",
 		"translation": "woman",
-		"asked": false,
 		"noms": "mulier",
 		"nomp": "mulieres",
 		"gens": "mulieris",
@@ -13617,7 +13188,6 @@
 		"word": "multitudo, multitudinis, f",
 		"category": "noun 3",
 		"translation": "crowd, multitude",
-		"asked": false,
 		"noms": "multitudo",
 		"nomp": "multitudines",
 		"gens": "multitudinis",
@@ -13634,14 +13204,12 @@
 	{
 		"word": "multus, multa, multum",
 		"category": "adj",
-		"translation": "much, many",
-		"asked": false
+		"translation": "much, many"
 	},
 	{
 		"word": "munio, munire, munivi, munitus",
 		"category": "verb 4",
 		"translation": "fortify, defend, guard",
-		"asked": false,
 		"pracind1s": "munio",
 		"pracsuj1s": "muniam",
 		"prpaind1s": "munior",
@@ -13777,7 +13345,6 @@
 		"word": "munus, muneris, n",
 		"category": "noun 3",
 		"translation": "service, duty, present",
-		"asked": false,
 		"noms": "munus",
 		"nomp": "munera",
 		"gens": "muneris",
@@ -13795,7 +13362,6 @@
 		"word": "murus, muri, m",
 		"category": "noun 2",
 		"translation": "wall, rampart",
-		"asked": false,
 		"noms": "murus",
 		"nomp": "muri",
 		"gens": "muri",
@@ -13812,20 +13378,17 @@
 	{
 		"word": "muto, mutare, mutavi, mutatus",
 		"category": "verb 1",
-		"translation": "change, alter",
-		"asked": false
+		"translation": "change, alter"
 	},
 	{
 		"word": "nam",
 		"category": "conjunction",
-		"translation": "for",
-		"asked": false
+		"translation": "for"
 	},
 	{
 		"word": "narro, narrare, narravi, narratus",
 		"category": "verb 1",
 		"translation": "tell, relate",
-		"asked": false,
 		"pracind1s": "narro",
 		"pracsuj1s": "narrem",
 		"prpaind1s": "narror",
@@ -13960,14 +13523,12 @@
 	{
 		"word": "nascor, nasci, natus sum",
 		"category": "verb 3 dep",
-		"translation": "am born",
-		"asked": false
+		"translation": "am born"
 	},
 	{
 		"word": "natura, naturae, f",
 		"category": "noun 1",
 		"translation": "nature",
-		"asked": false,
 		"noms": "natura",
 		"nomp": "naturae",
 		"gens": "naturae",
@@ -13985,7 +13546,6 @@
 		"word": "nauta, nautae, m",
 		"category": "noun 1",
 		"translation": "sailor",
-		"asked": false,
 		"noms": "nauta",
 		"nomp": "nautae",
 		"gens": "nautae",
@@ -14003,7 +13563,6 @@
 		"word": "navigo, navigare, navigavi",
 		"category": "verb 1",
 		"translation": "sail",
-		"asked": false,
 		"pracind1s": "navigo",
 		"pracsuj1s": "navigem",
 		"prpaind1s": "navigor",
@@ -14138,50 +13697,42 @@
 	{
 		"word": "navis, navis, f",
 		"category": "noun 3",
-		"translation": "ship",
-		"asked": false
+		"translation": "ship"
 	},
 	{
 		"word": "navis longa",
 		"category": "noun 3",
-		"translation": "warship",
-		"asked": false
+		"translation": "warship"
 	},
 	{
 		"word": "navis oneraria",
 		"category": "noun 3",
-		"translation": "merchant ship",
-		"asked": false
+		"translation": "merchant ship"
 	},
 	{
 		"word": "-ne",
 		"category": "particle",
-		"translation": "(introduces question)",
-		"asked": false
+		"translation": "(introduces question)"
 	},
 	{
 		"word": "ne",
 		"category": "conjunction",
-		"translation": "lest, that not",
-		"asked": false
+		"translation": "lest, that not"
 	},
 	{
 		"word": "nec, neque",
 		"category": "conjunction",
-		"translation": "and not, nor, neither",
-		"asked": false
+		"translation": "and not, nor, neither"
 	},
 	{
 		"word": "necesse",
 		"category": "adj",
-		"translation": "necessary",
-		"asked": false
+		"translation": "necessary"
 	},
 	{
 		"word": "neco, necare, necavi, necatus",
 		"category": "verb 1",
 		"translation": "kill",
-		"asked": false,
 		"pracind1s": "neco",
 		"pracsuj1s": "necem",
 		"prpaind1s": "necor",
@@ -14317,7 +13868,6 @@
 		"word": "neglego, neglegere, neglexi, neglectus",
 		"category": "verb 3",
 		"translation": "neglect, disregard",
-		"asked": false,
 		"pracind1s": "neglego",
 		"pracsuj1s": "neglegam",
 		"prpaind1s": "neglegor",
@@ -14453,7 +14003,6 @@
 		"word": "nego, negare, negavi, negatus",
 		"category": "verb 1",
 		"translation": "say no, deny, refuse, say that ...not",
-		"asked": false,
 		"pracind1s": "nego",
 		"pracsuj1s": "negem",
 		"prpaind1s": "negor",
@@ -14589,7 +14138,6 @@
 		"word": "negotium, negotii, n",
 		"category": "noun 2",
 		"translation": "business",
-		"asked": false,
 		"noms": "negotium",
 		"nomp": "negotia",
 		"gens": "negotii",
@@ -14605,15 +14153,13 @@
 	},
 	{
 		"word": "nemo, nullius",
-		"category": "noun irreg",
-		"translation": "no one, nobody",
-		"asked": false
+		"category": "misc",
+		"translation": "no one, nobody"
 	},
 	{
 		"word": "nescio, nescire, nescivi",
 		"category": "verb 4",
 		"translation": "not know",
-		"asked": false,
 		"pracind1s": "nescio",
 		"pracsuj1s": "nesciam",
 		"prpaind1s": "nescior",
@@ -14747,27 +14293,23 @@
 	},
 	{
 		"word": "nihil",
-		"category": "noun irreg",
-		"translation": "nothing",
-		"asked": false
+		"category": "misc",
+		"translation": "nothing"
 	},
 	{
 		"word": "nisi",
 		"category": "conjunction",
-		"translation": "unless, if not, except",
-		"asked": false
+		"translation": "unless, if not, except"
 	},
 	{
 		"word": "nobilis, nobile",
 		"category": "adj",
-		"translation": "noble, famous",
-		"asked": false
+		"translation": "noble, famous"
 	},
 	{
 		"word": "noceo, nocere, nocui + dat",
 		"category": "verb 2",
 		"translation": "hurt, harm",
-		"asked": false,
 		"pracind1s": "noceo",
 		"pracsuj1s": "noceam",
 		"prpaind1s": "noceor",
@@ -14902,74 +14444,62 @@
 	{
 		"word": "nolo, nolle, nolui",
 		"category": "verb irreg",
-		"translation": "not want, be unwilling, refuse",
-		"asked": false
+		"translation": "not want, be unwilling, refuse"
 	},
 	{
 		"word": "nomen, nominis, n",
 		"category": "noun 3",
-		"translation": "name",
-		"asked": false
+		"translation": "name"
 	},
 	{
 		"word": "non",
 		"category": "adverb",
-		"translation": "not",
-		"asked": false
+		"translation": "not"
 	},
 	{
 		"word": "nondum",
 		"category": "adverb",
-		"translation": "not yet",
-		"asked": false
+		"translation": "not yet"
 	},
 	{
 		"word": "nonne?",
 		"category": "adverb",
-		"translation": "surely?",
-		"asked": false
+		"translation": "surely?"
 	},
 	{
 		"word": "nonnulli, nonnullae, nonnulla",
 		"category": "adj",
-		"translation": "some, several",
-		"asked": false
+		"translation": "some, several"
 	},
 	{
 		"word": "nos, nostrum / nostri",
 		"category": "pron",
-		"translation": "we, us",
-		"asked": false
+		"translation": "we, us"
 	},
 	{
 		"word": "noster, nostra, nostrum",
 		"category": "pron",
-		"translation": "our",
-		"asked": false
+		"translation": "our"
 	},
 	{
 		"word": "notus, nota, notum",
 		"category": "adj",
-		"translation": "known, well-known, famous",
-		"asked": false
+		"translation": "known, well-known, famous"
 	},
 	{
 		"word": "novi, notus (perfect with present meaning)",
 		"category": "verb 3",
-		"translation": "know",
-		"asked": false
+		"translation": "know"
 	},
 	{
 		"word": "novus, nova, novum",
 		"category": "adj",
-		"translation": "new, fresh, recent",
-		"asked": false
+		"translation": "new, fresh, recent"
 	},
 	{
 		"word": "nox, noctis, f",
 		"category": "noun 3",
 		"translation": "night",
-		"asked": false,
 		"noms": "nox",
 		"nomp": "noctes",
 		"gens": "noctis",
@@ -14986,26 +14516,22 @@
 	{
 		"word": "noctu",
 		"category": "noun 3",
-		"translation": "by night",
-		"asked": false
+		"translation": "by night"
 	},
 	{
 		"word": "nullus, nulla, nullum",
 		"category": "adj",
-		"translation": "no, none, not any",
-		"asked": false
+		"translation": "no, none, not any"
 	},
 	{
 		"word": "num",
 		"category": "adverb",
-		"translation": "surely not, whether",
-		"asked": false
+		"translation": "surely not, whether"
 	},
 	{
 		"word": "numerus, numeri, m",
 		"category": "noun 2",
 		"translation": "number",
-		"asked": false,
 		"noms": "numerus",
 		"nomp": "numeri",
 		"gens": "numeri",
@@ -15022,50 +14548,42 @@
 	{
 		"word": "numquam",
 		"category": "adverb",
-		"translation": "never",
-		"asked": false
+		"translation": "never"
 	},
 	{
 		"word": "nunc",
 		"category": "adverb",
-		"translation": "now",
-		"asked": false
+		"translation": "now"
 	},
 	{
 		"word": "nuntio, nuntiare, nuntiavi, nuntiatus",
 		"category": "verb 1",
-		"translation": "announce, report",
-		"asked": false
+		"translation": "announce, report"
 	},
 	{
 		"word": "nuntius, nuntii, m",
 		"category": "noun 2",
-		"translation": "messenger, message, news",
-		"asked": false
+		"translation": "messenger, message, news"
 	},
 	{
 		"word": "ob + acc",
 		"category": "prep",
-		"translation": "because of, on account of",
-		"asked": false
+		"translation": "because of, on account of"
 	},
 	{
 		"word": "obliviscor, oblivisci, oblitus sum",
 		"category": "verb 3 dep",
-		"translation": "forget",
-		"asked": false
+		"translation": "forget"
 	},
 	{
 		"word": "obses, obsidis m and f",
 		"category": "noun 3",
-		"translation": "hostage",
-		"asked": false
+		"translation": "hostage"
 	},
 	{
 		"word": "obsideo, obsidere, obsedi, obsessus",
 		"category": "verb 2",
 		"translation": "besiege, blockade",
-		"asked": false,
 		"pracind1s": "obsideo",
 		"pracsuj1s": "obsideam",
 		"prpaind1s": "obsideor",
@@ -15200,14 +14718,12 @@
 	{
 		"word": "obviam eo, ire, i(v)i + dat",
 		"category": "verb phrase",
-		"translation": "meet, go to meet, oppose, resist",
-		"asked": false
+		"translation": "meet, go to meet, oppose, resist"
 	},
 	{
 		"word": "occasio, occasionis, f",
 		"category": "noun 3",
 		"translation": "opportunity, occasion",
-		"asked": false,
 		"noms": "occasio",
 		"nomp": "occasiones",
 		"gens": "occasionis",
@@ -15225,7 +14741,6 @@
 		"word": "occido, occidere, occidi, occisus",
 		"category": "verb 3",
 		"translation": "kill",
-		"asked": false,
 		"pracind1s": "occido",
 		"pracsuj1s": "occidam",
 		"prpaind1s": "occidor",
@@ -15361,7 +14876,6 @@
 		"word": "occupo, occupare, occupavi, occupatus",
 		"category": "verb 1",
 		"translation": "seize, take possession of, occupy",
-		"asked": false,
 		"pracind1s": "occupo",
 		"pracsuj1s": "occupem",
 		"prpaind1s": "occupor",
@@ -15497,7 +15011,6 @@
 		"word": "oculus, oculi, m",
 		"category": "noun 2",
 		"translation": "eye",
-		"asked": false,
 		"noms": "oculus",
 		"nomp": "oculi",
 		"gens": "oculi",
@@ -15514,14 +15027,12 @@
 	{
 		"word": "odi, odisse (perfect with present meaning)",
 		"category": "verb irreg",
-		"translation": "hate",
-		"asked": false
+		"translation": "hate"
 	},
 	{
 		"word": "odium, odii, n",
 		"category": "noun 2",
 		"translation": "hatred",
-		"asked": false,
 		"noms": "odium",
 		"nomp": "odia",
 		"gens": "odii",
@@ -15538,20 +15049,17 @@
 	{
 		"word": "odio est + dat",
 		"category": "verb phrase",
-		"translation": "be hated by",
-		"asked": false
+		"translation": "be hated by"
 	},
 	{
 		"word": "offero, offerre, obtuli, oblatus",
 		"category": "verb irreg",
-		"translation": "present, offer",
-		"asked": false
+		"translation": "present, offer"
 	},
 	{
 		"word": "officium, officii, n",
 		"category": "noun 2",
 		"translation": "duty, task, function",
-		"asked": false,
 		"noms": "officium",
 		"nomp": "officia",
 		"gens": "officii",
@@ -15568,32 +15076,27 @@
 	{
 		"word": "olim",
 		"category": "adverb",
-		"translation": "once, formerly, one day",
-		"asked": false
+		"translation": "once, formerly, one day"
 	},
 	{
 		"word": "omitto, omittere, omisi, omissus",
 		"category": "verb 3",
-		"translation": "neglect, disregard, make no mention of",
-		"asked": false
+		"translation": "neglect, disregard, make no mention of"
 	},
 	{
 		"word": "omnis, omne",
 		"category": "adj",
-		"translation": "all, every",
-		"asked": false
+		"translation": "all, every"
 	},
 	{
 		"word": "omnino",
 		"category": "adverb",
-		"translation": "altogether, at all, entirely",
-		"asked": false
+		"translation": "altogether, at all, entirely"
 	},
 	{
 		"word": "onus, oneris, n",
 		"category": "noun 3",
 		"translation": "burden, load",
-		"asked": false,
 		"noms": "onus",
 		"nomp": "onera",
 		"gens": "oneris",
@@ -15611,7 +15114,6 @@
 		"word": "opera, operae, f",
 		"category": "noun 1",
 		"translation": "work, effort, attention, trouble",
-		"asked": false,
 		"noms": "opera",
 		"nomp": "operae",
 		"gens": "operae",
@@ -15628,20 +15130,17 @@
 	{
 		"word": "operam do",
 		"category": "verb phrase",
-		"translation": "I take pains, give attention (to)",
-		"asked": false
+		"translation": "I take pains, give attention (to)"
 	},
 	{
 		"word": "oportet, oportere, oportuit",
 		"category": "verb 2 impersonal",
-		"translation": "be necessary, ought, must",
-		"asked": false
+		"translation": "be necessary, ought, must"
 	},
 	{
 		"word": "oppidum, oppidi, n",
 		"category": "noun 2",
 		"translation": "town",
-		"asked": false,
 		"noms": "oppidum",
 		"nomp": "oppida",
 		"gens": "oppidi",
@@ -15659,7 +15158,6 @@
 		"word": "opprimo, opprimere, oppressi, oppressus",
 		"category": "verb 3",
 		"translation": "overwhelm, crush, weigh down",
-		"asked": false,
 		"pracind1s": "opprimo",
 		"pracsuj1s": "opprimam",
 		"prpaind1s": "opprimor",
@@ -15795,7 +15293,6 @@
 		"word": "oppugno, oppugnare, oppugnavi, oppugnatus",
 		"category": "verb 1",
 		"translation": "attack",
-		"asked": false,
 		"pracind1s": "oppugno",
 		"pracsuj1s": "oppugnem",
 		"prpaind1s": "oppugnor",
@@ -15931,7 +15428,6 @@
 		"word": "ops, opis, f",
 		"category": "noun 3",
 		"translation": "help, resources, riches",
-		"asked": false,
 		"noms": "ops",
 		"nomp": "opes",
 		"gens": "opis",
@@ -15949,7 +15445,6 @@
 		"word": "opus, operis, n",
 		"category": "noun 3",
 		"translation": "work, toil, construction",
-		"asked": false,
 		"noms": "opus",
 		"nomp": "opera",
 		"gens": "operis",
@@ -15966,14 +15461,12 @@
 	{
 		"word": "opus est, esse, fuit + abl (impersonal)",
 		"category": "verb phrase",
-		"translation": "there is need (of)",
-		"asked": false
+		"translation": "there is need (of)"
 	},
 	{
 		"word": "ora, orae, f",
 		"category": "noun 1",
 		"translation": "coast",
-		"asked": false,
 		"noms": "ora",
 		"nomp": "orae",
 		"gens": "orae",
@@ -15990,14 +15483,12 @@
 	{
 		"word": "oratio, orationis, f",
 		"category": "noun 3",
-		"translation": "speech",
-		"asked": false
+		"translation": "speech"
 	},
 	{
 		"word": "ordo, ordinis, m",
 		"category": "noun 3",
 		"translation": "rank, order, line",
-		"asked": false,
 		"noms": "ordo",
 		"nomp": "ordines",
 		"gens": "ordinis",
@@ -16014,20 +15505,17 @@
 	{
 		"word": "orior, oriri, ortus sum",
 		"category": "verb 4 dep",
-		"translation": "rise, start, originate",
-		"asked": false
+		"translation": "rise, start, originate"
 	},
 	{
 		"word": "orno, ornare, ornavi, ornatus",
 		"category": "verb 1",
-		"translation": "adorn, decorate, provide, equip",
-		"asked": false
+		"translation": "adorn, decorate, provide, equip"
 	},
 	{
 		"word": "oro, orare, oravi, oratus",
 		"category": "verb 1",
 		"translation": "beg",
-		"asked": false,
 		"pracind1s": "oro",
 		"pracsuj1s": "orem",
 		"prpaind1s": "oror",
@@ -16163,7 +15651,6 @@
 		"word": "os, oris, n",
 		"category": "noun 3",
 		"translation": "mouth, face",
-		"asked": false,
 		"noms": "os",
 		"nomp": "ora",
 		"gens": "oris",
@@ -16181,7 +15668,6 @@
 		"word": "ostendo, ostendere, ostendi, ostentus",
 		"category": "verb 3",
 		"translation": "show, point out, indicate",
-		"asked": false,
 		"pracind1s": "ostendo",
 		"pracsuj1s": "ostendam",
 		"prpaind1s": "ostendor",
@@ -16317,7 +15803,6 @@
 		"word": "otium, otii, n",
 		"category": "noun 2",
 		"translation": "leisure, idleness, peace",
-		"asked": false,
 		"noms": "otium",
 		"nomp": "otia",
 		"gens": "otii",
@@ -16334,26 +15819,22 @@
 	{
 		"word": "paene",
 		"category": "adverb",
-		"translation": "almost, nearly",
-		"asked": false
+		"translation": "almost, nearly"
 	},
 	{
 		"word": "palam",
 		"category": "adverb",
-		"translation": "openly",
-		"asked": false
+		"translation": "openly"
 	},
 	{
 		"word": "par, paris",
 		"category": "adj",
-		"translation": "equal",
-		"asked": false
+		"translation": "equal"
 	},
 	{
 		"word": "parco, parcere, peperci + dat",
 		"category": "verb 3",
 		"translation": "spare",
-		"asked": false,
 		"pracind1s": "parco",
 		"pracsuj1s": "parcam",
 		"prpaind1s": "parcor",
@@ -16489,7 +15970,6 @@
 		"word": "parens, parentis, m and f",
 		"category": "noun 3",
 		"translation": "parent, (pl) relations",
-		"asked": false,
 		"noms": "parens",
 		"nomp": "parentes",
 		"gens": "parentis",
@@ -16507,7 +15987,6 @@
 		"word": "pareo, parere, parui + dat",
 		"category": "verb 2",
 		"translation": "obey",
-		"asked": false,
 		"pracind1s": "pareo",
 		"pracsuj1s": "paream",
 		"prpaind1s": "pareor",
@@ -16642,14 +16121,12 @@
 	{
 		"word": "pario, parere, peperi, partus",
 		"category": "verb 3",
-		"translation": "bear (a child), win, acquire, gain, secure",
-		"asked": false
+		"translation": "bear (a child), win, acquire, gain, secure"
 	},
 	{
 		"word": "paro, parare, paravi, paratus",
 		"category": "verb 1",
 		"translation": "prepare, provide",
-		"asked": false,
 		"pracind1s": "paro",
 		"pracsuj1s": "parem",
 		"prpaind1s": "paror",
@@ -16785,7 +16262,6 @@
 		"word": "pars, partis, f",
 		"category": "noun 3",
 		"translation": "part, some, direction",
-		"asked": false,
 		"noms": "pars",
 		"nomp": "partes",
 		"gens": "partis",
@@ -16802,32 +16278,27 @@
 	{
 		"word": "parvus, parva, parvum",
 		"category": "adj",
-		"translation": "small",
-		"asked": false
+		"translation": "small"
 	},
 	{
 		"word": "passim",
 		"category": "adverb",
-		"translation": "in all directions, far and wide, everywhere",
-		"asked": false
+		"translation": "in all directions, far and wide, everywhere"
 	},
 	{
 		"word": "passus, passus, m",
 		"category": "noun 4",
-		"translation": "pace",
-		"asked": false
+		"translation": "pace"
 	},
 	{
 		"word": "mille passus (pl milia passuum)",
 		"category": "noun 4",
-		"translation": "mile",
-		"asked": false
+		"translation": "mile"
 	},
 	{
 		"word": "pater, patris, m",
 		"category": "noun 3",
 		"translation": "father",
-		"asked": false,
 		"noms": "pater",
 		"nomp": "patres",
 		"gens": "patris",
@@ -16844,14 +16315,12 @@
 	{
 		"word": "patior, pati, passus sum",
 		"category": "verb 3 dep",
-		"translation": "suffer, endure, allow",
-		"asked": false
+		"translation": "suffer, endure, allow"
 	},
 	{
 		"word": "patria, patriae, f",
 		"category": "noun 1",
 		"translation": "homeland, native land",
-		"asked": false,
 		"noms": "patria",
 		"nomp": "patriae",
 		"gens": "patriae",
@@ -16868,38 +16337,32 @@
 	{
 		"word": "pauci, paucae, pauca",
 		"category": "adj plural",
-		"translation": "few, a few",
-		"asked": false
+		"translation": "few, a few"
 	},
 	{
 		"word": "paulatim",
 		"category": "adverb",
-		"translation": "gradually, little by little",
-		"asked": false
+		"translation": "gradually, little by little"
 	},
 	{
 		"word": "paulisper",
 		"category": "adverb",
-		"translation": "for a short time",
-		"asked": false
+		"translation": "for a short time"
 	},
 	{
 		"word": "paulum, paulo",
 		"category": "adverb",
-		"translation": "a little, somewhat",
-		"asked": false
+		"translation": "a little, somewhat"
 	},
 	{
 		"word": "pauper, pauperis",
 		"category": "adj",
-		"translation": "poor",
-		"asked": false
+		"translation": "poor"
 	},
 	{
 		"word": "pax, pacis, f",
 		"category": "noun 3",
 		"translation": "peace",
-		"asked": false,
 		"noms": "pax",
 		"nomp": "paces",
 		"gens": "pacis",
@@ -16917,7 +16380,6 @@
 		"word": "pecunia, pecuniae, f",
 		"category": "noun 1",
 		"translation": "money",
-		"asked": false,
 		"noms": "pecunia",
 		"nomp": "pecuniae",
 		"gens": "pecuniae",
@@ -16935,7 +16397,6 @@
 		"word": "pedes, peditis, m",
 		"category": "noun 3",
 		"translation": "infantry",
-		"asked": false,
 		"noms": "pedes",
 		"nomp": "pedites",
 		"gens": "peditis",
@@ -16953,7 +16414,6 @@
 		"word": "pello, pellere, pepuli, pulsus",
 		"category": "verb 3",
 		"translation": "push, drive, rout",
-		"asked": false,
 		"pracind1s": "pello",
 		"pracsuj1s": "pellam",
 		"prpaind1s": "pellor",
@@ -17088,14 +16548,12 @@
 	{
 		"word": "per + acc",
 		"category": "prep",
-		"translation": "through, throughout, along",
-		"asked": false
+		"translation": "through, throughout, along"
 	},
 	{
 		"word": "perdo, perdere, perdidi, perditus",
 		"category": "verb 3",
 		"translation": "destroy, lose",
-		"asked": false,
 		"pracind1s": "perdo",
 		"pracsuj1s": "perdam",
 		"prpaind1s": "perdor",
@@ -17230,14 +16688,12 @@
 	{
 		"word": "pereo, perire, perii",
 		"category": "verb irreg",
-		"translation": "die, perish, be ruined",
-		"asked": false
+		"translation": "die, perish, be ruined"
 	},
 	{
 		"word": "perficio, perficere, perfeci, perfectus",
 		"category": "verb 3",
 		"translation": "bring about, complete, perfect",
-		"asked": false,
 		"pracind1s": "perficio",
 		"pracsuj1s": "perficiam",
 		"prpaind1s": "perficior",
@@ -17373,7 +16829,6 @@
 		"word": "periculum, periculi, n",
 		"category": "noun 2",
 		"translation": "danger",
-		"asked": false,
 		"noms": "periculum",
 		"nomp": "pericula",
 		"gens": "periculi",
@@ -17390,20 +16845,17 @@
 	{
 		"word": "peritus, perita, peritum + gen or abl",
 		"category": "adj",
-		"translation": "skilled (in)",
-		"asked": false
+		"translation": "skilled (in)"
 	},
 	{
 		"word": "permitto, permittere, permisi, permissus",
 		"category": "verb 3",
-		"translation": "hand over, entrust, permit, allow",
-		"asked": false
+		"translation": "hand over, entrust, permit, allow"
 	},
 	{
 		"word": "persuadeo, persuadere, persuasi + dat",
 		"category": "verb 2",
 		"translation": "persuade, convince",
-		"asked": false,
 		"pracind1s": "persuadeo",
 		"pracsuj1s": "persuadeam",
 		"prpaind1s": "persuadeor",
@@ -17538,14 +16990,12 @@
 	{
 		"word": "perterritus, perterrita, perterritum",
 		"category": "adj",
-		"translation": "very frightened, terrified",
-		"asked": false
+		"translation": "very frightened, terrified"
 	},
 	{
 		"word": "pervenio, pervenire, perveni",
 		"category": "verb 4",
 		"translation": "reach, arrive",
-		"asked": false,
 		"pracind1s": "pervenio",
 		"pracsuj1s": "perveniam",
 		"prpaind1s": "pervenior",
@@ -17681,7 +17131,6 @@
 		"word": "pes, pedis, m",
 		"category": "noun 3",
 		"translation": "foot",
-		"asked": false,
 		"noms": "pes",
 		"nomp": "pedes",
 		"gens": "pedis",
@@ -17699,7 +17148,6 @@
 		"word": "peto, petere, petivi, petitus",
 		"category": "verb 3",
 		"translation": "seek, ask for, make for, attack",
-		"asked": false,
 		"pracind1s": "peto",
 		"pracsuj1s": "petam",
 		"prpaind1s": "petor",
@@ -17835,7 +17283,6 @@
 		"word": "pilum, pili, n",
 		"category": "noun 2",
 		"translation": "javelin",
-		"asked": false,
 		"noms": "pilum",
 		"nomp": "pila",
 		"gens": "pili",
@@ -17852,14 +17299,12 @@
 	{
 		"word": "placet, placere, placuit + dat",
 		"category": "verb 2 impersonal",
-		"translation": "it pleases, suits, it is resolved",
-		"asked": false
+		"translation": "it pleases, suits, it is resolved"
 	},
 	{
 		"word": "plebs, plebis, f",
 		"category": "noun 3",
 		"translation": "the people, common people",
-		"asked": false,
 		"noms": "plebs",
 		"nomp": "plebes",
 		"gens": "plebis",
@@ -17876,20 +17321,17 @@
 	{
 		"word": "plenus, plena, plenum",
 		"category": "adj",
-		"translation": "full, filled",
-		"asked": false
+		"translation": "full, filled"
 	},
 	{
 		"word": "plerique, pleraeque, pleraque",
 		"category": "adj",
-		"translation": "most, the majority",
-		"asked": false
+		"translation": "most, the majority"
 	},
 	{
 		"word": "poena, poenae, f",
 		"category": "noun 1",
 		"translation": "punishment, penalty",
-		"asked": false,
 		"noms": "poena",
 		"nomp": "poenae",
 		"gens": "poenae",
@@ -17906,20 +17348,17 @@
 	{
 		"word": "poenas do",
 		"category": "verb phrase",
-		"translation": "pay the penalty, am punished",
-		"asked": false
+		"translation": "pay the penalty, am punished"
 	},
 	{
 		"word": "polliceor, polliceri, pollicitus sum",
 		"category": "verb 2 dep",
-		"translation": "promise",
-		"asked": false
+		"translation": "promise"
 	},
 	{
 		"word": "pono, ponere, posui, positus",
 		"category": "verb 3",
 		"translation": "put, place, set up (camp)",
-		"asked": false,
 		"pracind1s": "pono",
 		"pracsuj1s": "ponam",
 		"prpaind1s": "ponor",
@@ -18055,7 +17494,6 @@
 		"word": "pons, pontis, m",
 		"category": "noun 3",
 		"translation": "bridge",
-		"asked": false,
 		"noms": "pons",
 		"nomp": "pontes",
 		"gens": "pontis",
@@ -18073,7 +17511,6 @@
 		"word": "populus, populi, m",
 		"category": "noun 2",
 		"translation": "people, nation",
-		"asked": false,
 		"noms": "populus",
 		"nomp": "populi",
 		"gens": "populi",
@@ -18091,7 +17528,6 @@
 		"word": "porta, portae, f",
 		"category": "noun 1",
 		"translation": "gate",
-		"asked": false,
 		"noms": "porta",
 		"nomp": "portae",
 		"gens": "portae",
@@ -18109,7 +17545,6 @@
 		"word": "porto, portare, portavi, portatus",
 		"category": "verb 1",
 		"translation": "carry, bear, take",
-		"asked": false,
 		"pracind1s": "porto",
 		"pracsuj1s": "portem",
 		"prpaind1s": "portor",
@@ -18245,7 +17680,6 @@
 		"word": "portus, portus, m",
 		"category": "noun 4",
 		"translation": "harbour, port",
-		"asked": false,
 		"noms": "portus",
 		"nomp": "portus",
 		"gens": "portus",
@@ -18262,68 +17696,57 @@
 	{
 		"word": "posco, poscere, poposci",
 		"category": "verb 3",
-		"translation": "demand, ask for",
-		"asked": false
+		"translation": "demand, ask for"
 	},
 	{
 		"word": "possum, posse, potui",
 		"category": "verb irreg",
-		"translation": "can, be able",
-		"asked": false
+		"translation": "can, be able"
 	},
 	{
 		"word": "post + acc",
 		"category": "prep",
-		"translation": "behind, after",
-		"asked": false
+		"translation": "behind, after"
 	},
 	{
 		"word": "post",
 		"category": "adverb",
-		"translation": "afterwards, next",
-		"asked": false
+		"translation": "afterwards, next"
 	},
 	{
 		"word": "postea",
 		"category": "adverb",
-		"translation": "afterwards, then",
-		"asked": false
+		"translation": "afterwards, then"
 	},
 	{
 		"word": "postquam",
 		"category": "conjunction",
-		"translation": "after, when",
-		"asked": false
+		"translation": "after, when"
 	},
 	{
 		"word": "postremus, postrema, postremum",
 		"category": "adj",
-		"translation": "last",
-		"asked": false
+		"translation": "last"
 	},
 	{
 		"word": "postridie",
 		"category": "adverb",
-		"translation": "on the next day",
-		"asked": false
+		"translation": "on the next day"
 	},
 	{
 		"word": "postulo, postulare, postulavi, postulatus",
 		"category": "verb 1",
-		"translation": "demand, ask",
-		"asked": false
+		"translation": "demand, ask"
 	},
 	{
 		"word": "potens, potentis",
 		"category": "adj",
-		"translation": "powerful",
-		"asked": false
+		"translation": "powerful"
 	},
 	{
 		"word": "potestas, potestatis, f",
 		"category": "noun 3",
 		"translation": "power, authority, opportunity",
-		"asked": false,
 		"noms": "potestas",
 		"nomp": "potestates",
 		"gens": "potestatis",
@@ -18340,20 +17763,17 @@
 	{
 		"word": "potior, potiri, potitus sum + gen or abl",
 		"category": "verb 4 dep",
-		"translation": "seize, get possession of",
-		"asked": false
+		"translation": "seize, get possession of"
 	},
 	{
 		"word": "potius",
 		"category": "adverb",
-		"translation": "rather, more",
-		"asked": false
+		"translation": "rather, more"
 	},
 	{
 		"word": "praebeo, praebere, praebui, praebitus",
 		"category": "verb 2",
 		"translation": "provide, give, show, offer",
-		"asked": false,
 		"pracind1s": "praebeo",
 		"pracsuj1s": "praebeam",
 		"prpaind1s": "praebeor",
@@ -18489,7 +17909,6 @@
 		"word": "praeda, praedae, f",
 		"category": "noun 1",
 		"translation": "booty, plunder",
-		"asked": false,
 		"noms": "praeda",
 		"nomp": "praedae",
 		"gens": "praedae",
@@ -18507,7 +17926,6 @@
 		"word": "praemium, praemii, n",
 		"category": "noun 2",
 		"translation": "prize, reward",
-		"asked": false,
 		"noms": "praemium",
 		"nomp": "praemia",
 		"gens": "praemii",
@@ -18525,7 +17943,6 @@
 		"word": "praeficio, praeficere, praefeci, praefectus",
 		"category": "verb 3",
 		"translation": "put in charge (of)",
-		"asked": false,
 		"pracind1s": "praeficio",
 		"pracsuj1s": "praeficiam",
 		"prpaind1s": "praeficior",
@@ -18661,7 +18078,6 @@
 		"word": "praesidium, praesidii, n",
 		"category": "noun 2",
 		"translation": "protection, garrison, fortification",
-		"asked": false,
 		"noms": "praesidium",
 		"nomp": "praesidia",
 		"gens": "praesidii",
@@ -18678,26 +18094,22 @@
 	{
 		"word": "praesum, praeesse, praefui + dat",
 		"category": "verb irreg",
-		"translation": "be in charge of",
-		"asked": false
+		"translation": "be in charge of"
 	},
 	{
 		"word": "praeter + acc",
 		"category": "prep",
-		"translation": "beyond, except, besides",
-		"asked": false
+		"translation": "beyond, except, besides"
 	},
 	{
 		"word": "praeterea",
 		"category": "adverb",
-		"translation": "besides, moreover, in addition",
-		"asked": false
+		"translation": "besides, moreover, in addition"
 	},
 	{
 		"word": "praetor, praetoris, m",
 		"category": "noun 3",
 		"translation": "praetor (acted as judge or governor)",
-		"asked": false,
 		"noms": "praetor",
 		"nomp": "praetores",
 		"gens": "praetoris",
@@ -18714,14 +18126,12 @@
 	{
 		"word": "precor, precari, precatus sum",
 		"category": "verb 1 dep",
-		"translation": "pray, pray to, beg",
-		"asked": false
+		"translation": "pray, pray to, beg"
 	},
 	{
 		"word": "pretium, pretii, n",
 		"category": "noun 2",
 		"translation": "price, value",
-		"asked": false,
 		"noms": "pretium",
 		"nomp": "pretia",
 		"gens": "pretii",
@@ -18738,14 +18148,12 @@
 	{
 		"word": "primus, prima, primum",
 		"category": "adj",
-		"translation": "first, chief",
-		"asked": false
+		"translation": "first, chief"
 	},
 	{
 		"word": "princeps, principis, m",
 		"category": "noun 3",
 		"translation": "emperor, chief, chieftain",
-		"asked": false,
 		"noms": "princeps",
 		"nomp": "principes",
 		"gens": "principis",
@@ -18762,32 +18170,27 @@
 	{
 		"word": "prior, prioris",
 		"category": "adj",
-		"translation": "previous, former",
-		"asked": false
+		"translation": "previous, former"
 	},
 	{
 		"word": "prius",
 		"category": "adverb",
-		"translation": "before, previously",
-		"asked": false
+		"translation": "before, previously"
 	},
 	{
 		"word": "priusquam",
 		"category": "conjunction",
-		"translation": "before, until",
-		"asked": false
+		"translation": "before, until"
 	},
 	{
 		"word": "pro + abl",
 		"category": "prep",
-		"translation": "in front of, for, on behalf of, in return for",
-		"asked": false
+		"translation": "in front of, for, on behalf of, in return for"
 	},
 	{
 		"word": "procedo, procedere, processi",
 		"category": "verb 3",
 		"translation": "advance, proceed",
-		"asked": false,
 		"pracind1s": "procedo",
 		"pracsuj1s": "procedam",
 		"prpaind1s": "procedor",
@@ -18922,20 +18325,17 @@
 	{
 		"word": "procul",
 		"category": "adverb",
-		"translation": "far away, distant",
-		"asked": false
+		"translation": "far away, distant"
 	},
 	{
 		"word": "prodo, prodere, prodidi, proditus",
 		"category": "verb 3",
-		"translation": "betray, surrender",
-		"asked": false
+		"translation": "betray, surrender"
 	},
 	{
 		"word": "proelium, proelii, n",
 		"category": "noun 2",
 		"translation": "battle",
-		"asked": false,
 		"noms": "proelium",
 		"nomp": "proelia",
 		"gens": "proelii",
@@ -18952,20 +18352,17 @@
 	{
 		"word": "proficiscor, proficisci, profectus sum",
 		"category": "verb 3 dep",
-		"translation": "set out, depart",
-		"asked": false
+		"translation": "set out, depart"
 	},
 	{
 		"word": "progredior, progredi, progressus sum",
 		"category": "verb 3 dep",
-		"translation": "advance, proceed",
-		"asked": false
+		"translation": "advance, proceed"
 	},
 	{
 		"word": "promitto, promittere, promisi, promissus",
 		"category": "verb 3",
 		"translation": "promise",
-		"asked": false,
 		"pracind1s": "promitto",
 		"pracsuj1s": "promittam",
 		"prpaind1s": "promittor",
@@ -19100,20 +18497,17 @@
 	{
 		"word": "prope + acc",
 		"category": "prep",
-		"translation": "near",
-		"asked": false
+		"translation": "near"
 	},
 	{
 		"word": "propter + acc",
 		"category": "prep",
-		"translation": "on account of, because of",
-		"asked": false
+		"translation": "on account of, because of"
 	},
 	{
 		"word": "provincia, provinciae, f",
 		"category": "noun 1",
 		"translation": "province",
-		"asked": false,
 		"noms": "provincia",
 		"nomp": "provinciae",
 		"gens": "provinciae",
@@ -19130,20 +18524,17 @@
 	{
 		"word": "proximus, proxima, proximum",
 		"category": "adj",
-		"translation": "nearest, next, last",
-		"asked": false
+		"translation": "nearest, next, last"
 	},
 	{
 		"word": "publicus, publica, publicum",
 		"category": "adj",
-		"translation": "public, common",
-		"asked": false
+		"translation": "public, common"
 	},
 	{
 		"word": "pudor, pudoris, m",
 		"category": "noun 3",
 		"translation": "shame, modesty, honour, disgrace",
-		"asked": false,
 		"noms": "pudor",
 		"nomp": "pudores",
 		"gens": "pudoris",
@@ -19161,7 +18552,6 @@
 		"word": "puella, puellae, f",
 		"category": "noun 1",
 		"translation": "girl",
-		"asked": false,
 		"noms": "puella",
 		"nomp": "puellae",
 		"gens": "puellae",
@@ -19179,7 +18569,6 @@
 		"word": "puer, pueri, m",
 		"category": "noun 2",
 		"translation": "boy",
-		"asked": false,
 		"noms": "puer",
 		"nomp": "pueri",
 		"gens": "pueri",
@@ -19197,7 +18586,6 @@
 		"word": "pugna, pugnae, f",
 		"category": "noun 1",
 		"translation": "fight, battle",
-		"asked": false,
 		"noms": "pugna",
 		"nomp": "pugnae",
 		"gens": "pugnae",
@@ -19215,7 +18603,6 @@
 		"word": "pugno, pugnare, pugnavi",
 		"category": "verb 1",
 		"translation": "fight",
-		"asked": false,
 		"pracind1s": "pugno",
 		"pracsuj1s": "pugnem",
 		"prpaind1s": "pugnor",
@@ -19350,14 +18737,12 @@
 	{
 		"word": "punio, punire, punivi, punitus",
 		"category": "verb 4",
-		"translation": "punish",
-		"asked": false
+		"translation": "punish"
 	},
 	{
 		"word": "puto, putare, putavi, putatus",
 		"category": "verb 1",
 		"translation": "think, consider, reckon",
-		"asked": false,
 		"pracind1s": "puto",
 		"pracsuj1s": "putem",
 		"prpaind1s": "putor",
@@ -19493,7 +18878,6 @@
 		"word": "quaero, quaerere, quaesivi, quaesitus",
 		"category": "verb 3",
 		"translation": "search for, ask for, ask, inquire",
-		"asked": false,
 		"pracind1s": "quaero",
 		"pracsuj1s": "quaeram",
 		"prpaind1s": "quaeror",
@@ -19628,92 +19012,77 @@
 	{
 		"word": "qualis?, quale",
 		"category": "adj",
-		"translation": "what sort of?",
-		"asked": false
+		"translation": "what sort of?"
 	},
 	{
 		"word": "quam",
 		"category": "adverb",
-		"translation": "how, than, as",
-		"asked": false
+		"translation": "how, than, as"
 	},
 	{
 		"word": "quam + superlative",
 		"category": "adverb",
-		"translation": "as...as possible, as possible",
-		"asked": false
+		"translation": "as...as possible, as possible"
 	},
 	{
 		"word": "quamquam",
 		"category": "conjunction",
-		"translation": "although",
-		"asked": false
+		"translation": "although"
 	},
 	{
 		"word": "quando?",
 		"category": "adverb",
-		"translation": "when?",
-		"asked": false
+		"translation": "when?"
 	},
 	{
 		"word": "quantus?, quanta, quantum",
 		"category": "adj",
-		"translation": "how big?, how much?",
-		"asked": false
+		"translation": "how big?, how much?"
 	},
 	{
 		"word": "quasi",
 		"category": "adverb",
-		"translation": "as if, just as, nearly",
-		"asked": false
+		"translation": "as if, just as, nearly"
 	},
 	{
 		"word": "-que",
 		"category": "conjunction",
-		"translation": "and",
-		"asked": false
+		"translation": "and"
 	},
 	{
 		"word": "queror, queri, questus sum",
 		"category": "verb 3 dep",
-		"translation": "complain",
-		"asked": false
+		"translation": "complain"
 	},
 	{
 		"word": "qui, quae, quod",
 		"category": "pron",
-		"translation": "who, which, that",
-		"asked": false
+		"translation": "who, which, that"
 	},
 	{
 		"word": "quia",
 		"category": "conjunction",
-		"translation": "because",
-		"asked": false
+		"translation": "because"
 	},
 	{
 		"word": "quidam, quaedam, quoddam",
 		"category": "pron",
-		"translation": "one, a certain, some",
-		"asked": false
+		"translation": "one, a certain, some"
 	},
 	{
 		"word": "quidem",
 		"category": "adverb",
-		"translation": "indeed, in fact, however",
-		"asked": false
+		"translation": "indeed, in fact, however"
 	},
 	{
 		"word": "ne ... quidem",
 		"category": "adverb",
-		"translation": "not...even, not even",
-		"asked": false
+		"translation": "not...even, not even"
 	},
 	{
 		"word": "quies, quietis, f",
 		"category": "noun 3",
 		"translation": "rest, peace, quiet",
-		"asked": false,
 		"noms": "quies",
 		"nomp": "quietes",
 		"gens": "quietis",
@@ -19730,86 +19099,72 @@
 	{
 		"word": "quis?, quid",
 		"category": "pron",
-		"translation": "who?, what?, any",
-		"asked": false
+		"translation": "who?, what?, any"
 	},
 	{
 		"word": "quisquam, quicquam",
 		"category": "pron",
-		"translation": "anyone, anything",
-		"asked": false
+		"translation": "anyone, anything"
 	},
 	{
 		"word": "quisque, quaeque, quidque",
 		"category": "pron",
-		"translation": "each, each one, every",
-		"asked": false
+		"translation": "each, each one, every"
 	},
 	{
 		"word": "quisquis, quicquid",
 		"category": "pron",
-		"translation": "whoever, whatever",
-		"asked": false
+		"translation": "whoever, whatever"
 	},
 	{
 		"word": "quo?",
 		"category": "adverb",
-		"translation": "where to?",
-		"asked": false
+		"translation": "where to?"
 	},
 	{
 		"word": "quoad",
 		"category": "conjunction",
-		"translation": "as long as, until",
-		"asked": false
+		"translation": "as long as, until"
 	},
 	{
 		"word": "quod",
 		"category": "conjunction",
-		"translation": "because, (as to) the fact that",
-		"asked": false
+		"translation": "because, (as to) the fact that"
 	},
 	{
 		"word": "quod si",
 		"category": "conjunction",
-		"translation": "but if",
-		"asked": false
+		"translation": "but if"
 	},
 	{
 		"word": "quomodo?",
 		"category": "adverb",
-		"translation": "how?, in what way?",
-		"asked": false
+		"translation": "how?, in what way?"
 	},
 	{
 		"word": "quoniam",
 		"category": "conjunction",
-		"translation": "since",
-		"asked": false
+		"translation": "since"
 	},
 	{
 		"word": "quoque",
 		"category": "conjunction",
-		"translation": "also, too",
-		"asked": false
+		"translation": "also, too"
 	},
 	{
 		"word": "quot?",
 		"category": "adj",
-		"translation": "how many?",
-		"asked": false
+		"translation": "how many?"
 	},
 	{
 		"word": "quotiens?",
 		"category": "adverb",
-		"translation": "how often?, as often as",
-		"asked": false
+		"translation": "how often?, as often as"
 	},
 	{
 		"word": "rapio, rapere, rapui, raptus",
 		"category": "verb 3",
 		"translation": "seize, grab, carry off, plunder",
-		"asked": false,
 		"pracind1s": "rapio",
 		"pracsuj1s": "rapiam",
 		"prpaind1s": "rapior",
@@ -19945,7 +19300,6 @@
 		"word": "ratio, rationis, f",
 		"category": "noun 3",
 		"translation": "account, reckoning, manner, reason",
-		"asked": false,
 		"noms": "ratio",
 		"nomp": "rationes",
 		"gens": "rationis",
@@ -19962,14 +19316,12 @@
 	{
 		"word": "recens, recentis",
 		"category": "adj",
-		"translation": "recent, fresh",
-		"asked": false
+		"translation": "recent, fresh"
 	},
 	{
 		"word": "recipio, recipere, recepi, receptus",
 		"category": "verb 3",
 		"translation": "regain, receive, welcome",
-		"asked": false,
 		"pracind1s": "recipio",
 		"pracsuj1s": "recipiam",
 		"prpaind1s": "recipior",
@@ -20104,26 +19456,22 @@
 	{
 		"word": "me recipio",
 		"category": "verb phrase",
-		"translation": "retreat, withdraw",
-		"asked": false
+		"translation": "retreat, withdraw"
 	},
 	{
 		"word": "recito, recitare, recitavi, recitatus",
 		"category": "verb 1",
-		"translation": "recite, read aloud",
-		"asked": false
+		"translation": "recite, read aloud"
 	},
 	{
 		"word": "rectus, recta, rectum",
 		"category": "adj",
-		"translation": "straight, direct, right, proper",
-		"asked": false
+		"translation": "straight, direct, right, proper"
 	},
 	{
 		"word": "reddo, reddere, reddidi, redditus",
 		"category": "verb 3",
 		"translation": "give back, restore, hand over, make",
-		"asked": false,
 		"pracind1s": "reddo",
 		"pracsuj1s": "reddam",
 		"prpaind1s": "reddor",
@@ -20258,32 +19606,27 @@
 	{
 		"word": "redeo, redire, redii",
 		"category": "verb irreg",
-		"translation": "return, go back, come back",
-		"asked": false
+		"translation": "return, go back, come back"
 	},
 	{
 		"word": "refero, referre, rettuli, relatus",
 		"category": "verb irreg",
-		"translation": "bring back, report, refer",
-		"asked": false
+		"translation": "bring back, report, refer"
 	},
 	{
 		"word": "pedem/me refero",
 		"category": "verb phrase",
-		"translation": "retreat",
-		"asked": false
+		"translation": "retreat"
 	},
 	{
 		"word": "reficio, reficere, refeci, refectus",
 		"category": "verb 3",
-		"translation": "repair, restore, refresh",
-		"asked": false
+		"translation": "repair, restore, refresh"
 	},
 	{
 		"word": "regina, reginae, f",
 		"category": "noun 1",
 		"translation": "queen",
-		"asked": false,
 		"noms": "regina",
 		"nomp": "reginae",
 		"gens": "reginae",
@@ -20301,7 +19644,6 @@
 		"word": "regnum, regni, n",
 		"category": "noun 2",
 		"translation": "kingdom, reign, rule",
-		"asked": false,
 		"noms": "regnum",
 		"nomp": "regna",
 		"gens": "regni",
@@ -20319,7 +19661,6 @@
 		"word": "rego, regere, rexi, rectus",
 		"category": "verb 3",
 		"translation": "rule, direct",
-		"asked": false,
 		"pracind1s": "rego",
 		"pracsuj1s": "regam",
 		"prpaind1s": "regor",
@@ -20454,14 +19795,12 @@
 	{
 		"word": "regredior, regredi, regressus sum",
 		"category": "verb 3 dep",
-		"translation": "go back, return",
-		"asked": false
+		"translation": "go back, return"
 	},
 	{
 		"word": "relinquo, relinquere, reliqui, relictus",
 		"category": "verb 3",
 		"translation": "leave, leave behind, abandon",
-		"asked": false,
 		"pracind1s": "relinquo",
 		"pracsuj1s": "relinquam",
 		"prpaind1s": "relinquor",
@@ -20596,20 +19935,17 @@
 	{
 		"word": "reliquus, reliqua, reliquum",
 		"category": "adj",
-		"translation": "the rest of, the other",
-		"asked": false
+		"translation": "the rest of, the other"
 	},
 	{
 		"word": "repente",
 		"category": "adverb",
-		"translation": "suddenly",
-		"asked": false
+		"translation": "suddenly"
 	},
 	{
 		"word": "res, rei, f",
 		"category": "noun 5",
 		"translation": "thing, affair, matter, business",
-		"asked": false,
 		"noms": "res",
 		"nomp": "res",
 		"gens": "rei",
@@ -20625,15 +19961,13 @@
 	},
 	{
 		"word": "res publica, rei publicae, f",
-		"category": "noun phrase",
-		"translation": "state, republic",
-		"asked": false
+		"category": "misc",
+		"translation": "state, republic"
 	},
 	{
 		"word": "resisto, resistere, restiti + dat",
 		"category": "verb 3",
 		"translation": "resist, oppose",
-		"asked": false,
 		"pracind1s": "resisto",
 		"pracsuj1s": "resistam",
 		"prpaind1s": "resistor",
@@ -20768,14 +20102,12 @@
 	{
 		"word": "respondeo, respondere, respondi, responsus",
 		"category": "verb 2",
-		"translation": "answer, reply",
-		"asked": false
+		"translation": "answer, reply"
 	},
 	{
 		"word": "responsum, responsi, n",
 		"category": "noun 2",
 		"translation": "answer, reply",
-		"asked": false,
 		"noms": "responsum",
 		"nomp": "responsa",
 		"gens": "responsi",
@@ -20793,7 +20125,6 @@
 		"word": "retineo, retinere, retinui, retentus",
 		"category": "verb 2",
 		"translation": "hold back, restrain, keep",
-		"asked": false,
 		"pracind1s": "retineo",
 		"pracsuj1s": "retineam",
 		"prpaind1s": "retineor",
@@ -20929,7 +20260,6 @@
 		"word": "rex, regis, m",
 		"category": "noun 3",
 		"translation": "king",
-		"asked": false,
 		"noms": "rex",
 		"nomp": "reges",
 		"gens": "regis",
@@ -20947,7 +20277,6 @@
 		"word": "ripa, ripae, f",
 		"category": "noun 1",
 		"translation": "bank",
-		"asked": false,
 		"noms": "ripa",
 		"nomp": "ripae",
 		"gens": "ripae",
@@ -20965,7 +20294,6 @@
 		"word": "rogo, rogare, rogavi, rogatus",
 		"category": "verb 1",
 		"translation": "ask, ask for",
-		"asked": false,
 		"pracind1s": "rogo",
 		"pracsuj1s": "rogem",
 		"prpaind1s": "rogor",
@@ -21101,7 +20429,6 @@
 		"word": "rumpo, rumpere, rupi, ruptus",
 		"category": "verb 3",
 		"translation": "break, burst, break through",
-		"asked": false,
 		"pracind1s": "rumpo",
 		"pracsuj1s": "rumpam",
 		"prpaind1s": "rumpor",
@@ -21236,14 +20563,12 @@
 	{
 		"word": "rursus",
 		"category": "adverb",
-		"translation": "back, again",
-		"asked": false
+		"translation": "back, again"
 	},
 	{
 		"word": "rus, ruris, n",
 		"category": "noun 3",
 		"translation": "country, countryside",
-		"asked": false,
 		"noms": "rus",
 		"nomp": "rura",
 		"gens": "ruris",
@@ -21261,7 +20586,6 @@
 		"word": "sacerdos, sacerdotis, m and f",
 		"category": "noun 3",
 		"translation": "priest, priestess",
-		"asked": false,
 		"noms": "sacerdos",
 		"nomp": "sacerdotes",
 		"gens": "sacerdotis",
@@ -21278,20 +20602,17 @@
 	{
 		"word": "saepe",
 		"category": "adverb",
-		"translation": "often",
-		"asked": false
+		"translation": "often"
 	},
 	{
 		"word": "saevus, saeva, saevum",
 		"category": "adj",
-		"translation": "savage, cruel",
-		"asked": false
+		"translation": "savage, cruel"
 	},
 	{
 		"word": "salus, salutis, f",
 		"category": "noun 3",
 		"translation": "health, safety, greeting",
-		"asked": false,
 		"noms": "salus",
 		"nomp": "salutes",
 		"gens": "salutis",
@@ -21308,14 +20629,12 @@
 	{
 		"word": "saluto, salutare, salutavi, salutatus",
 		"category": "verb 1",
-		"translation": "greet, salute",
-		"asked": false
+		"translation": "greet, salute"
 	},
 	{
 		"word": "sanguis, sanguinis, m",
 		"category": "noun 3",
 		"translation": "blood",
-		"asked": false,
 		"noms": "sanguis",
 		"nomp": "sanguines",
 		"gens": "sanguinis",
@@ -21332,14 +20651,12 @@
 	{
 		"word": "sapiens, sapientis",
 		"category": "adj",
-		"translation": "wise, sensible",
-		"asked": false
+		"translation": "wise, sensible"
 	},
 	{
 		"word": "sapientia, sapientiae, f",
 		"category": "noun 1",
 		"translation": "wisdom, good sense",
-		"asked": false,
 		"noms": "sapientia",
 		"nomp": "sapientiae",
 		"gens": "sapientiae",
@@ -21356,14 +20673,12 @@
 	{
 		"word": "satis",
 		"category": "adj",
-		"translation": "enough",
-		"asked": false
+		"translation": "enough"
 	},
 	{
 		"word": "scelus, sceleris, n",
 		"category": "noun 3",
 		"translation": "crime, wickedness",
-		"asked": false,
 		"noms": "scelus",
 		"nomp": "scelera",
 		"gens": "sceleris",
@@ -21381,7 +20696,6 @@
 		"word": "scio, scire, scivi, scitus",
 		"category": "verb 4",
 		"translation": "know",
-		"asked": false,
 		"pracind1s": "scio",
 		"pracsuj1s": "sciam",
 		"prpaind1s": "scior",
@@ -21517,7 +20831,6 @@
 		"word": "scribo, scribere, scripsi, scriptus",
 		"category": "verb 3",
 		"translation": "write",
-		"asked": false,
 		"pracind1s": "scribo",
 		"pracsuj1s": "scribam",
 		"prpaind1s": "scribor",
@@ -21653,7 +20966,6 @@
 		"word": "scutum, scuti, n",
 		"category": "noun 2",
 		"translation": "shield",
-		"asked": false,
 		"noms": "scutum",
 		"nomp": "scuta",
 		"gens": "scuti",
@@ -21670,26 +20982,22 @@
 	{
 		"word": "se, sui",
 		"category": "pron",
-		"translation": "himself, herself, itself, themselves",
-		"asked": false
+		"translation": "himself, herself, itself, themselves"
 	},
 	{
 		"word": "secundus, secunda, secundum",
 		"category": "adj",
-		"translation": "following, next, second, favourable",
-		"asked": false
+		"translation": "following, next, second, favourable"
 	},
 	{
 		"word": "sed",
 		"category": "conjunction",
-		"translation": "but",
-		"asked": false
+		"translation": "but"
 	},
 	{
 		"word": "sedes, sedis, f",
 		"category": "noun 3",
 		"translation": "seat, temple, home",
-		"asked": false,
 		"noms": "sedes",
 		"nomp": "sedes",
 		"gens": "sedis",
@@ -21706,20 +21014,17 @@
 	{
 		"word": "semel",
 		"category": "adverb",
-		"translation": "once",
-		"asked": false
+		"translation": "once"
 	},
 	{
 		"word": "semper",
 		"category": "adverb",
-		"translation": "always",
-		"asked": false
+		"translation": "always"
 	},
 	{
 		"word": "senator, senatoris, m",
 		"category": "noun 3",
 		"translation": "senator",
-		"asked": false,
 		"noms": "senator",
 		"nomp": "senatores",
 		"gens": "senatoris",
@@ -21737,7 +21042,6 @@
 		"word": "senatus, senatus, m",
 		"category": "noun 4",
 		"translation": "senate",
-		"asked": false,
 		"noms": "senatus",
 		"nomp": "senatus",
 		"gens": "senatus",
@@ -21755,7 +21059,6 @@
 		"word": "senex, senis, m",
 		"category": "noun 3",
 		"translation": "old man",
-		"asked": false,
 		"noms": "senex",
 		"nomp": "senes",
 		"gens": "senis",
@@ -21773,7 +21076,6 @@
 		"word": "sententia, sententiae, f",
 		"category": "noun 1",
 		"translation": "opinion, judgement, sentence",
-		"asked": false,
 		"noms": "sententia",
 		"nomp": "sententiae",
 		"gens": "sententiae",
@@ -21791,7 +21093,6 @@
 		"word": "sentio, sentire, sensi, sensus",
 		"category": "verb 4",
 		"translation": "feel, notice, hear, judge",
-		"asked": false,
 		"pracind1s": "sentio",
 		"pracsuj1s": "sentiam",
 		"prpaind1s": "sentior",
@@ -21926,20 +21227,17 @@
 	{
 		"word": "sequor, sequi, secutus sum",
 		"category": "verb 3 dep",
-		"translation": "follow, pursue, attend",
-		"asked": false
+		"translation": "follow, pursue, attend"
 	},
 	{
 		"word": "servo, servare, servavi, servatus",
 		"category": "verb 1",
-		"translation": "save, protect, keep",
-		"asked": false
+		"translation": "save, protect, keep"
 	},
 	{
 		"word": "servus, servi, m",
 		"category": "noun 2",
 		"translation": "slave",
-		"asked": false,
 		"noms": "servus",
 		"nomp": "servi",
 		"gens": "servi",
@@ -21956,26 +21254,22 @@
 	{
 		"word": "si",
 		"category": "conjunction",
-		"translation": "if",
-		"asked": false
+		"translation": "if"
 	},
 	{
 		"word": "sic",
 		"category": "adverb",
-		"translation": "thus, in this way",
-		"asked": false
+		"translation": "thus, in this way"
 	},
 	{
 		"word": "sicut",
 		"category": "adverb",
-		"translation": "just as, like, as, as if",
-		"asked": false
+		"translation": "just as, like, as, as if"
 	},
 	{
 		"word": "signum, signi, n",
 		"category": "noun 2",
 		"translation": "sign, signal, standard",
-		"asked": false,
 		"noms": "signum",
 		"nomp": "signa",
 		"gens": "signi",
@@ -21993,7 +21287,6 @@
 		"word": "silentium, silentii, n",
 		"category": "noun 2",
 		"translation": "silence",
-		"asked": false,
 		"noms": "silentium",
 		"nomp": "silentia",
 		"gens": "silentii",
@@ -22011,7 +21304,6 @@
 		"word": "silva, silvae, f",
 		"category": "noun 1",
 		"translation": "wood, forest",
-		"asked": false,
 		"noms": "silva",
 		"nomp": "silvae",
 		"gens": "silvae",
@@ -22028,38 +21320,32 @@
 	{
 		"word": "similis, simile",
 		"category": "adj",
-		"translation": "similar, like",
-		"asked": false
+		"translation": "similar, like"
 	},
 	{
 		"word": "simul",
 		"category": "adverb",
-		"translation": "at the same time, together",
-		"asked": false
+		"translation": "at the same time, together"
 	},
 	{
 		"word": "simulac, (simulatque) indeclinable",
 		"category": "conjunction",
-		"translation": "as soon as",
-		"asked": false
+		"translation": "as soon as"
 	},
 	{
 		"word": "sine + abl",
 		"category": "prep",
-		"translation": "without",
-		"asked": false
+		"translation": "without"
 	},
 	{
 		"word": "sinister, sinistra, sinistrum",
 		"category": "adj",
-		"translation": "left, on the left, unfavourable",
-		"asked": false
+		"translation": "left, on the left, unfavourable"
 	},
 	{
 		"word": "sinistra, sinistrae, f",
 		"category": "noun 1",
 		"translation": "left hand, left side",
-		"asked": false,
 		"noms": "sinistra",
 		"nomp": "sinistrae",
 		"gens": "sinistrae",
@@ -22077,7 +21363,6 @@
 		"word": "sino, sinere, sivi, situs",
 		"category": "verb 3",
 		"translation": "allow, permit",
-		"asked": false,
 		"pracind1s": "sino",
 		"pracsuj1s": "sinam",
 		"prpaind1s": "sinor",
@@ -22212,14 +21497,12 @@
 	{
 		"word": "sive, seu",
 		"category": "conjunction",
-		"translation": "or if, whether",
-		"asked": false
+		"translation": "or if, whether"
 	},
 	{
 		"word": "socius, socii, m",
 		"category": "noun 2",
 		"translation": "ally, comrade, companion",
-		"asked": false,
 		"noms": "socius",
 		"nomp": "socii",
 		"gens": "socii",
@@ -22237,7 +21520,6 @@
 		"word": "sol, solis, m",
 		"category": "noun 3",
 		"translation": "sun, sunlight",
-		"asked": false,
 		"noms": "sol",
 		"nomp": "soles",
 		"gens": "solis",
@@ -22254,26 +21536,22 @@
 	{
 		"word": "soleo, solere, solitus sum",
 		"category": "verb 2 semidep",
-		"translation": "be accustomed",
-		"asked": false
+		"translation": "be accustomed"
 	},
 	{
 		"word": "solum",
 		"category": "adverb",
-		"translation": "only",
-		"asked": false
+		"translation": "only"
 	},
 	{
 		"word": "solus, sola, solum",
 		"category": "adj",
-		"translation": "alone, only, lonely, single",
-		"asked": false
+		"translation": "alone, only, lonely, single"
 	},
 	{
 		"word": "solvo, solvere, solvi, solutus",
 		"category": "verb 3",
 		"translation": "loose, pay",
-		"asked": false,
 		"pracind1s": "solvo",
 		"pracsuj1s": "solvam",
 		"prpaind1s": "solvor",
@@ -22408,14 +21686,12 @@
 	{
 		"word": "navem solvo",
 		"category": "verb phrase",
-		"translation": "set sail",
-		"asked": false
+		"translation": "set sail"
 	},
 	{
 		"word": "somnus, somni, m",
 		"category": "noun 2",
 		"translation": "sleep",
-		"asked": false,
 		"noms": "somnus",
 		"nomp": "somni",
 		"gens": "somni",
@@ -22433,7 +21709,6 @@
 		"word": "sonus, soni, m",
 		"category": "noun 2",
 		"translation": "noise, sound",
-		"asked": false,
 		"noms": "sonus",
 		"nomp": "soni",
 		"gens": "soni",
@@ -22451,7 +21726,6 @@
 		"word": "soror, sororis, f",
 		"category": "noun 3",
 		"translation": "sister",
-		"asked": false,
 		"noms": "soror",
 		"nomp": "sorores",
 		"gens": "sororis",
@@ -22469,7 +21743,6 @@
 		"word": "spatium, spatii, n",
 		"category": "noun 2",
 		"translation": "interval, space, distance",
-		"asked": false,
 		"noms": "spatium",
 		"nomp": "spatia",
 		"gens": "spatii",
@@ -22487,7 +21760,6 @@
 		"word": "specto, spectare, spectavi, spectatus",
 		"category": "verb 1",
 		"translation": "look at, watch",
-		"asked": false,
 		"pracind1s": "specto",
 		"pracsuj1s": "spectem",
 		"prpaind1s": "spector",
@@ -22622,14 +21894,12 @@
 	{
 		"word": "sperno, spernere, sprevi, spretus",
 		"category": "verb 3",
-		"translation": "despise, reject, scorn",
-		"asked": false
+		"translation": "despise, reject, scorn"
 	},
 	{
 		"word": "spero, sperare, speravi, speratus",
 		"category": "verb 1",
 		"translation": "hope, expect",
-		"asked": false,
 		"pracind1s": "spero",
 		"pracsuj1s": "sperem",
 		"prpaind1s": "speror",
@@ -22765,7 +22035,6 @@
 		"word": "spes, spei, f",
 		"category": "noun 5",
 		"translation": "hope",
-		"asked": false,
 		"noms": "spes",
 		"nomp": "spes",
 		"gens": "spei",
@@ -22783,7 +22052,6 @@
 		"word": "spolium, spolii, n",
 		"category": "noun 2",
 		"translation": "booty, spoil(s)",
-		"asked": false,
 		"noms": "spolium",
 		"nomp": "spolia",
 		"gens": "spolii",
@@ -22800,20 +22068,17 @@
 	{
 		"word": "statim",
 		"category": "adverb",
-		"translation": "at once, immediately",
-		"asked": false
+		"translation": "at once, immediately"
 	},
 	{
 		"word": "statuo, statuere, statui, statutus",
 		"category": "verb 3",
-		"translation": "fix, determine, decide, arrange",
-		"asked": false
+		"translation": "fix, determine, decide, arrange"
 	},
 	{
 		"word": "sto, stare, steti",
 		"category": "verb 1",
 		"translation": "stand, stand firm",
-		"asked": false,
 		"pracind1s": "sto",
 		"pracsuj1s": "stem",
 		"prpaind1s": "stor",
@@ -22949,7 +22214,6 @@
 		"word": "studium, studii, n",
 		"category": "noun 2",
 		"translation": "eagerness, study, devotion",
-		"asked": false,
 		"noms": "studium",
 		"nomp": "studia",
 		"gens": "studii",
@@ -22966,38 +22230,32 @@
 	{
 		"word": "stultus, stulta, stultum",
 		"category": "adj",
-		"translation": "stupid, foolish",
-		"asked": false
+		"translation": "stupid, foolish"
 	},
 	{
 		"word": "sub + abl or + acc",
 		"category": "prep",
-		"translation": "under, beneath, up to",
-		"asked": false
+		"translation": "under, beneath, up to"
 	},
 	{
 		"word": "subito",
 		"category": "adverb",
-		"translation": "suddenly",
-		"asked": false
+		"translation": "suddenly"
 	},
 	{
 		"word": "sum, esse, fui",
 		"category": "verb irreg",
-		"translation": "be",
-		"asked": false
+		"translation": "be"
 	},
 	{
 		"word": "summus, summa, summum",
 		"category": "adj",
-		"translation": "highest, greatest, top (of)",
-		"asked": false
+		"translation": "highest, greatest, top (of)"
 	},
 	{
 		"word": "sumo, sumere, sumpsi, sumptus",
 		"category": "verb 3",
 		"translation": "take, take up",
-		"asked": false,
 		"pracind1s": "sumo",
 		"pracsuj1s": "sumam",
 		"prpaind1s": "sumor",
@@ -23133,7 +22391,6 @@
 		"word": "supero, superare, superavi, superatus",
 		"category": "verb 1",
 		"translation": "overcome, overpower",
-		"asked": false,
 		"pracind1s": "supero",
 		"pracsuj1s": "superem",
 		"prpaind1s": "superor",
@@ -23268,44 +22525,37 @@
 	{
 		"word": "supersum, superesse, superfui",
 		"category": "verb irreg",
-		"translation": "be left, remain, survive",
-		"asked": false
+		"translation": "be left, remain, survive"
 	},
 	{
 		"word": "superus, supera, superum",
 		"category": "adj",
-		"translation": "upper, higher",
-		"asked": false
+		"translation": "upper, higher"
 	},
 	{
 		"word": "surgo, surgere, surrexi",
 		"category": "verb 3",
-		"translation": "get up, stand up, rise",
-		"asked": false
+		"translation": "get up, stand up, rise"
 	},
 	{
 		"word": "suscipio, suscipere, suscepi, susceptus",
 		"category": "verb 3",
-		"translation": "take up, undertake, begin, bear",
-		"asked": false
+		"translation": "take up, undertake, begin, bear"
 	},
 	{
 		"word": "suspicor, suspicari, suspicatus sum",
 		"category": "verb 1 dep",
-		"translation": "mistrust, suspect",
-		"asked": false
+		"translation": "mistrust, suspect"
 	},
 	{
 		"word": "suus, sua, suum",
 		"category": "pron",
-		"translation": "his (own), her (own), its (own), their (own)",
-		"asked": false
+		"translation": "his (own), her (own), its (own), their (own)"
 	},
 	{
 		"word": "taberna, tabernae, f",
 		"category": "noun 1",
 		"translation": "shop, inn",
-		"asked": false,
 		"noms": "taberna",
 		"nomp": "tabernae",
 		"gens": "tabernae",
@@ -23322,56 +22572,47 @@
 	{
 		"word": "tacitus, tacita, tacitum",
 		"category": "adj",
-		"translation": "quiet, silent, in silence",
-		"asked": false
+		"translation": "quiet, silent, in silence"
 	},
 	{
 		"word": "talis, tale",
 		"category": "adj",
-		"translation": "such",
-		"asked": false
+		"translation": "such"
 	},
 	{
 		"word": "tam",
 		"category": "adverb",
-		"translation": "so",
-		"asked": false
+		"translation": "so"
 	},
 	{
 		"word": "tamen",
 		"category": "adverb",
-		"translation": "however, nevertheless, yet",
-		"asked": false
+		"translation": "however, nevertheless, yet"
 	},
 	{
 		"word": "tandem",
 		"category": "adverb",
-		"translation": "at last, finally",
-		"asked": false
+		"translation": "at last, finally"
 	},
 	{
 		"word": "tango, tangere, tetigi, tactus",
 		"category": "verb 3",
-		"translation": "touch",
-		"asked": false
+		"translation": "touch"
 	},
 	{
 		"word": "tantum",
 		"category": "adverb",
-		"translation": "only",
-		"asked": false
+		"translation": "only"
 	},
 	{
 		"word": "tantus, tanta, tantum",
 		"category": "adj",
-		"translation": "so great, such a great, so much",
-		"asked": false
+		"translation": "so great, such a great, so much"
 	},
 	{
 		"word": "tectum, tecti, n",
 		"category": "noun 2",
 		"translation": "roof, house",
-		"asked": false,
 		"noms": "tectum",
 		"nomp": "tecta",
 		"gens": "tecti",
@@ -23389,7 +22630,6 @@
 		"word": "tego, tegere, texi, tectus",
 		"category": "verb 3",
 		"translation": "cover, protect, hide",
-		"asked": false,
 		"pracind1s": "tego",
 		"pracsuj1s": "tegam",
 		"prpaind1s": "tegor",
@@ -23524,14 +22764,12 @@
 	{
 		"word": "telum, teli, n",
 		"category": "noun 2",
-		"translation": "weapon, javelin, missile",
-		"asked": false
+		"translation": "weapon, javelin, missile"
 	},
 	{
 		"word": "tempestas, tempestatis, f",
 		"category": "noun 3",
 		"translation": "weather, storm, time",
-		"asked": false,
 		"noms": "tempestas",
 		"nomp": "tempestates",
 		"gens": "tempestatis",
@@ -23549,7 +22787,6 @@
 		"word": "templum, templi, n",
 		"category": "noun 2",
 		"translation": "temple",
-		"asked": false,
 		"noms": "templum",
 		"nomp": "templa",
 		"gens": "templi",
@@ -23567,7 +22804,6 @@
 		"word": "tempus, temporis, n",
 		"category": "noun 3",
 		"translation": "time",
-		"asked": false,
 		"noms": "tempus",
 		"nomp": "tempora",
 		"gens": "temporis",
@@ -23585,7 +22821,6 @@
 		"word": "teneo, tenere, tenui, tentus",
 		"category": "verb 2",
 		"translation": "hold, keep, maintain",
-		"asked": false,
 		"pracind1s": "teneo",
 		"pracsuj1s": "teneam",
 		"prpaind1s": "teneor",
@@ -23721,7 +22956,6 @@
 		"word": "tergum, tergi, n",
 		"category": "noun 2",
 		"translation": "back, rear",
-		"asked": false,
 		"noms": "tergum",
 		"nomp": "terga",
 		"gens": "tergi",
@@ -23739,7 +22973,6 @@
 		"word": "terra, terrae, f",
 		"category": "noun 1",
 		"translation": "ground, land, earth",
-		"asked": false,
 		"noms": "terra",
 		"nomp": "terrae",
 		"gens": "terrae",
@@ -23756,14 +22989,12 @@
 	{
 		"word": "terreo, terrere, terrui, territus",
 		"category": "verb 2",
-		"translation": "frighten",
-		"asked": false
+		"translation": "frighten"
 	},
 	{
 		"word": "terror, terroris, m",
 		"category": "noun 3",
 		"translation": "terror, panic",
-		"asked": false,
 		"noms": "terror",
 		"nomp": "terrores",
 		"gens": "terroris",
@@ -23781,7 +23012,6 @@
 		"word": "timeo, timere, timui",
 		"category": "verb 2",
 		"translation": "fear, be afraid",
-		"asked": false,
 		"pracind1s": "timeo",
 		"prpaind1s": "timeor",
 		"pracind2s": "times",
@@ -23840,7 +23070,6 @@
 		"word": "timor, timoris, m",
 		"category": "noun 3",
 		"translation": "fear, anxiety",
-		"asked": false,
 		"noms": "timor",
 		"nomp": "timores",
 		"gens": "timoris",
@@ -23858,7 +23087,6 @@
 		"word": "tollo, tollere, sustuli, sublatus",
 		"category": "verb 3",
 		"translation": "raise, lift up, remove, destroy",
-		"asked": false,
 		"pracind1s": "tollo",
 		"pracsuj1s": "tollam",
 		"prpaind1s": "tollor",
@@ -23993,20 +23221,17 @@
 	{
 		"word": "tot",
 		"category": "adj",
-		"translation": "so many",
-		"asked": false
+		"translation": "so many"
 	},
 	{
 		"word": "totus, tota, totum",
 		"category": "adj",
-		"translation": "the whole, entire, all",
-		"asked": false
+		"translation": "the whole, entire, all"
 	},
 	{
 		"word": "trado, tradere, tradidi, traditus",
 		"category": "verb 3",
 		"translation": "hand over, entrust, hand down, surrender",
-		"asked": false,
 		"pracind1s": "trado",
 		"pracsuj1s": "tradam",
 		"prpaind1s": "trador",
@@ -24142,7 +23367,6 @@
 		"word": "traho, trahere, traxi, tractus",
 		"category": "verb 3",
 		"translation": "pull, drag, draw",
-		"asked": false,
 		"pracind1s": "traho",
 		"pracsuj1s": "traham",
 		"prpaind1s": "trahor",
@@ -24277,32 +23501,27 @@
 	{
 		"word": "trans + acc",
 		"category": "prep",
-		"translation": "across, over",
-		"asked": false
+		"translation": "across, over"
 	},
 	{
 		"word": "tristis, triste",
 		"category": "adj",
-		"translation": "sad, gloomy, grim",
-		"asked": false
+		"translation": "sad, gloomy, grim"
 	},
 	{
 		"word": "tu, tui",
 		"category": "pron",
-		"translation": "you (singular)",
-		"asked": false
+		"translation": "you (singular)"
 	},
 	{
 		"word": "tum",
 		"category": "adverb",
-		"translation": "then, next",
-		"asked": false
+		"translation": "then, next"
 	},
 	{
 		"word": "tumultus, tumultus, m",
 		"category": "noun 4",
 		"translation": "uproar, disturbance, civil war",
-		"asked": false,
 		"noms": "tumultus",
 		"nomp": "tumultus",
 		"gens": "tumultus",
@@ -24320,7 +23539,6 @@
 		"word": "turba, turbae, f",
 		"category": "noun 1",
 		"translation": "crowd, mob, disturbance, multitude",
-		"asked": false,
 		"noms": "turba",
 		"nomp": "turbae",
 		"gens": "turbae",
@@ -24337,56 +23555,47 @@
 	{
 		"word": "tutus, tuta, tutum",
 		"category": "adj",
-		"translation": "safe",
-		"asked": false
+		"translation": "safe"
 	},
 	{
 		"word": "tuus, tua, tuum",
 		"category": "pron",
-		"translation": "your (singular)",
-		"asked": false
+		"translation": "your (singular)"
 	},
 	{
 		"word": "ubi",
 		"category": "adverb",
-		"translation": "where?, where, when",
-		"asked": false
+		"translation": "where?, where, when"
 	},
 	{
 		"word": "ubique",
 		"category": "adverb",
-		"translation": "everywhere",
-		"asked": false
+		"translation": "everywhere"
 	},
 	{
 		"word": "ullus, ulla, ullum",
 		"category": "adj",
-		"translation": "any",
-		"asked": false
+		"translation": "any"
 	},
 	{
 		"word": "ultimus, ultima, ultimum",
 		"category": "adj",
-		"translation": "furthest, last, utmost",
-		"asked": false
+		"translation": "furthest, last, utmost"
 	},
 	{
 		"word": "umquam",
 		"category": "adverb",
-		"translation": "ever",
-		"asked": false
+		"translation": "ever"
 	},
 	{
 		"word": "una",
 		"category": "adverb",
-		"translation": "together",
-		"asked": false
+		"translation": "together"
 	},
 	{
 		"word": "unda, undae, f",
 		"category": "noun 1",
 		"translation": "wave",
-		"asked": false,
 		"noms": "unda",
 		"nomp": "undae",
 		"gens": "undae",
@@ -24403,20 +23612,17 @@
 	{
 		"word": "unde",
 		"category": "adverb",
-		"translation": "from where, whence",
-		"asked": false
+		"translation": "from where, whence"
 	},
 	{
 		"word": "undique",
 		"category": "adverb",
-		"translation": "from all sides, on all sides",
-		"asked": false
+		"translation": "from all sides, on all sides"
 	},
 	{
 		"word": "urbs, urbis, f",
 		"category": "noun 3",
 		"translation": "city, town, Rome",
-		"asked": false,
 		"noms": "urbs",
 		"nomp": "urbes",
 		"gens": "urbis",
@@ -24433,14 +23639,12 @@
 	{
 		"word": "usque",
 		"category": "adverb",
-		"translation": "all the way, right up to, continuously",
-		"asked": false
+		"translation": "all the way, right up to, continuously"
 	},
 	{
 		"word": "usus, usus, m",
 		"category": "noun 4",
 		"translation": "use, experience, practice",
-		"asked": false,
 		"noms": "usus",
 		"nomp": "usus",
 		"gens": "usus",
@@ -24457,50 +23661,42 @@
 	{
 		"word": "usui est",
 		"category": "verb phrase",
-		"translation": "it is useful",
-		"asked": false
+		"translation": "it is useful"
 	},
 	{
 		"word": "ut, indeclinable + indic.",
 		"category": "conjunction",
-		"translation": "as, where, when, how",
-		"asked": false
+		"translation": "as, where, when, how"
 	},
 	{
 		"word": "ut, indeclinable + subjunc.",
 		"category": "conjunction",
-		"translation": "that, so that, to",
-		"asked": false
+		"translation": "that, so that, to"
 	},
 	{
 		"word": "uter?, utra, utrum",
 		"category": "pron",
-		"translation": "which (of two)?",
-		"asked": false
+		"translation": "which (of two)?"
 	},
 	{
 		"word": "uterque, utraque, utrumque",
 		"category": "pron",
-		"translation": "each (of two), both",
-		"asked": false
+		"translation": "each (of two), both"
 	},
 	{
 		"word": "utrum",
 		"category": "adverb",
-		"translation": "whether",
-		"asked": false
+		"translation": "whether"
 	},
 	{
 		"word": "utor, uti, usus sum + abl",
 		"category": "verb 3 dep",
-		"translation": "use, enjoy",
-		"asked": false
+		"translation": "use, enjoy"
 	},
 	{
 		"word": "uxor, uxoris, f",
 		"category": "noun 3",
 		"translation": "wife",
-		"asked": false,
 		"noms": "uxor",
 		"nomp": "uxores",
 		"gens": "uxoris",
@@ -24518,7 +23714,6 @@
 		"word": "valeo, valere, valui",
 		"category": "verb 2",
 		"translation": "be strong, have influence",
-		"asked": false,
 		"pracind1s": "valeo",
 		"pracsuj1s": "valeam",
 		"prpaind1s": "valeor",
@@ -24653,26 +23848,22 @@
 	{
 		"word": "validus, valida, validum",
 		"category": "adj",
-		"translation": "strong, powerful",
-		"asked": false
+		"translation": "strong, powerful"
 	},
 	{
 		"word": "-ve",
 		"category": "conjunction",
-		"translation": "or",
-		"asked": false
+		"translation": "or"
 	},
 	{
 		"word": "vehementer",
 		"category": "adverb",
-		"translation": "violently, loudly, strongly",
-		"asked": false
+		"translation": "violently, loudly, strongly"
 	},
 	{
 		"word": "veho, vehere, vexi, vectus",
 		"category": "verb 3",
 		"translation": "carry, bear, convey",
-		"asked": false,
 		"pracind1s": "veho",
 		"pracsuj1s": "veham",
 		"prpaind1s": "vehor",
@@ -24807,20 +23998,17 @@
 	{
 		"word": "vel",
 		"category": "conjunction",
-		"translation": "or, either",
-		"asked": false
+		"translation": "or, either"
 	},
 	{
 		"word": "velut",
 		"category": "adverb",
-		"translation": "just as, like, as, as if",
-		"asked": false
+		"translation": "just as, like, as, as if"
 	},
 	{
 		"word": "venio, venire, veni",
 		"category": "verb 4",
 		"translation": "come",
-		"asked": false,
 		"pracind1s": "venio",
 		"pracsuj1s": "veniam",
 		"prpaind1s": "venior",
@@ -24956,7 +24144,6 @@
 		"word": "ventus, venti, m",
 		"category": "noun 2",
 		"translation": "wind",
-		"asked": false,
 		"noms": "ventus",
 		"nomp": "venti",
 		"gens": "venti",
@@ -24974,7 +24161,6 @@
 		"word": "verbum, verbi, n",
 		"category": "noun 2",
 		"translation": "word",
-		"asked": false,
 		"noms": "verbum",
 		"nomp": "verba",
 		"gens": "verbi",
@@ -24991,20 +24177,17 @@
 	{
 		"word": "vereor, vereri, veritus sum",
 		"category": "verb 2 dep",
-		"translation": "fear, be afraid",
-		"asked": false
+		"translation": "fear, be afraid"
 	},
 	{
 		"word": "vero",
 		"category": "adverb",
-		"translation": "indeed, in fact, however",
-		"asked": false
+		"translation": "indeed, in fact, however"
 	},
 	{
 		"word": "verto, vertere, verti, versus",
 		"category": "verb 3",
 		"translation": "turn",
-		"asked": false,
 		"pracind1s": "verto",
 		"pracsuj1s": "vertam",
 		"prpaind1s": "vertor",
@@ -25139,26 +24322,22 @@
 	{
 		"word": "verus, vera, verum",
 		"category": "adj",
-		"translation": "true, real",
-		"asked": false
+		"translation": "true, real"
 	},
 	{
 		"word": "vesper, vesperis or vesperi, m",
 		"category": "noun 3 or 2",
-		"translation": "evening",
-		"asked": false
+		"translation": "evening"
 	},
 	{
 		"word": "vester, vestra, vestrum",
 		"category": "pron",
-		"translation": "your (pl)",
-		"asked": false
+		"translation": "your (pl)"
 	},
 	{
 		"word": "vestis, vestis, f",
 		"category": "noun 3",
 		"translation": "clothes",
-		"asked": false,
 		"noms": "vestis",
 		"nomp": "vestes",
 		"gens": "vestis",
@@ -25175,20 +24354,17 @@
 	{
 		"word": "veto, vetare, vetui, vetitus",
 		"category": "verb 1",
-		"translation": "forbid, order...not, order not",
-		"asked": false
+		"translation": "forbid, order...not, order not"
 	},
 	{
 		"word": "vetus, veteris",
 		"category": "adj",
-		"translation": "old",
-		"asked": false
+		"translation": "old"
 	},
 	{
 		"word": "via, viae, f",
 		"category": "noun 1",
 		"translation": "street, road, way, path",
-		"asked": false,
 		"noms": "via",
 		"nomp": "viae",
 		"gens": "viae",
@@ -25206,7 +24382,6 @@
 		"word": "victor, victoris, m",
 		"category": "noun 3",
 		"translation": "victor, conqueror",
-		"asked": false,
 		"noms": "victor",
 		"nomp": "victores",
 		"gens": "victoris",
@@ -25224,7 +24399,6 @@
 		"word": "victoria, victoriae, f",
 		"category": "noun 1",
 		"translation": "victory",
-		"asked": false,
 		"noms": "victoria",
 		"nomp": "victoriae",
 		"gens": "victoriae",
@@ -25242,7 +24416,6 @@
 		"word": "video, videre, vidi, visus",
 		"category": "verb 2",
 		"translation": "see",
-		"asked": false,
 		"pracind1s": "video",
 		"pracsuj1s": "videam",
 		"prpaind1s": "videor",
@@ -25377,14 +24550,12 @@
 	{
 		"word": "videor, videri, visus sum",
 		"category": "verb 2 dep",
-		"translation": "seem, appear, be seen",
-		"asked": false
+		"translation": "seem, appear, be seen"
 	},
 	{
 		"word": "villa, villae, f",
 		"category": "noun 1",
 		"translation": "country-house, estate, farm",
-		"asked": false,
 		"noms": "villa",
 		"nomp": "villae",
 		"gens": "villae",
@@ -25402,7 +24573,6 @@
 		"word": "vinco, vincere, vici, victus",
 		"category": "verb 3",
 		"translation": "conquer, defeat, win, be victorious",
-		"asked": false,
 		"pracind1s": "vinco",
 		"pracsuj1s": "vincam",
 		"prpaind1s": "vincor",
@@ -25537,14 +24707,12 @@
 	{
 		"word": "vir, viri, m",
 		"category": "noun 2",
-		"translation": "man, husband",
-		"asked": false
+		"translation": "man, husband"
 	},
 	{
 		"word": "virtus, virtutis, f",
 		"category": "noun 3",
 		"translation": "courage, virtue",
-		"asked": false,
 		"noms": "virtus",
 		"nomp": "virtutes",
 		"gens": "virtutis",
@@ -25560,15 +24728,13 @@
 	},
 	{
 		"word": "vis, pl vires, f",
-		"category": "noun irreg",
-		"translation": "force, violence, (pl) strength, forces",
-		"asked": false
+		"category": "misc",
+		"translation": "force, violence, (pl) strength, forces"
 	},
 	{
 		"word": "vita, vitae, f",
 		"category": "noun 1",
 		"translation": "life",
-		"asked": false,
 		"noms": "vita",
 		"nomp": "vitae",
 		"gens": "vitae",
@@ -25585,14 +24751,12 @@
 	{
 		"word": "vito, vitare, vitavi, vitatus",
 		"category": "verb 1",
-		"translation": "avoid",
-		"asked": false
+		"translation": "avoid"
 	},
 	{
 		"word": "vivo, vivere, vixi",
 		"category": "verb 3",
 		"translation": "live, be alive, live on",
-		"asked": false,
 		"pracind1s": "vivo",
 		"pracsuj1s": "vivam",
 		"prpaind1s": "vivor",
@@ -25727,20 +24891,17 @@
 	{
 		"word": "vivus, viva, vivum",
 		"category": "adj",
-		"translation": "alive, living",
-		"asked": false
+		"translation": "alive, living"
 	},
 	{
 		"word": "vix",
 		"category": "adverb",
-		"translation": "hardly, scarcely, with difficulty",
-		"asked": false
+		"translation": "hardly, scarcely, with difficulty"
 	},
 	{
 		"word": "voco, vocare, vocavi, vocatus",
 		"category": "verb 1",
 		"translation": "call, summon, invite, name",
-		"asked": false,
 		"pracind1s": "voco",
 		"pracsuj1s": "vocem",
 		"prpaind1s": "vocor",
@@ -25875,20 +25036,17 @@
 	{
 		"word": "volo, velle, volui",
 		"category": "verb irreg",
-		"translation": "want, wish, be willing, intend",
-		"asked": false
+		"translation": "want, wish, be willing, intend"
 	},
 	{
 		"word": "vos, vestrum / vestri",
 		"category": "pron",
-		"translation": "you (plural)",
-		"asked": false
+		"translation": "you (plural)"
 	},
 	{
 		"word": "vulnero, vulnerare, vulneravi, vulneratus",
 		"category": "verb 1",
 		"translation": "wound, injure",
-		"asked": false,
 		"pracind1s": "vulnero",
 		"pracsuj1s": "vulnerem",
 		"prpaind1s": "vulneror",
@@ -26024,7 +25182,6 @@
 		"word": "vulnus, vulneris, n",
 		"category": "noun 3",
 		"translation": "wound, injury",
-		"asked": false,
 		"noms": "vulnus",
 		"nomp": "vulnera",
 		"gens": "vulneris",
@@ -26042,7 +25199,6 @@
 		"word": "vultus, vultus, m",
 		"category": "noun 4",
 		"translation": "face, expression",
-		"asked": false,
 		"noms": "vultus",
 		"nomp": "vultus",
 		"gens": "vultus",

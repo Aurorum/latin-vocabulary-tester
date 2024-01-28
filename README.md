@@ -1,10 +1,10 @@
 # Latin Vocabulary Tester
 
-Provides a way to test your knowledge of Latin vocabulary lists based on different exam specifications, while also containing a Latin Noun Declension & Verb Conjugation Tester.
+Provides a way to test your knowledge of Latin vocabulary lists based on different exam specifications, while also containing a Latin noun declension and verb conjugation tester.
 
 Link: https://latinvocabularytester.com
 
-I mainly created this tool during the lockdown and my holidays to assist with my own learning as a Latin A-Level student. I've found it invaluable for becoming more comfortable with my vocabulary and grammar, and I hope that it will help other students too. It's brought me great joy to hear of other schools across the UK using it, and I'm always open to making changes based on feedback from others, so please get in touch if you have any!
+I mainly created this tool during the lockdown and my holidays to assist with my own learning as a Latin A-level student. I've found it invaluable for becoming more comfortable with my vocabulary and grammar, and I hope that it will help other students too. It's brought me great joy to hear of other schools across the UK using it, and I'm always open to making changes based on feedback from others, so please get in touch if you have any!
 
 ## Features
 
@@ -20,8 +20,7 @@ Covers the main indicative and subjunctive verb tenses, with some other common f
 
 There are numerous features to assist users with learning these conjugations; for example, the user will be notified if they enter an incorrect form of the verb which matches another form, and they can see tables comparing the different forms of the verb. It should be noted that irregular verbs are also accurately covered with this tool.
 
-| <img alt="Normal mode" src="./assets/screenshots/screenshot-5.png"> | <img alt="Table Mode" src="./assets/screenshots/screenshot-6.png"> |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------ |
+<img alt="Table Mode" src="./assets/screenshots/screenshot-7.png"> |
 
 ### Vocabulary Tester
 
@@ -39,7 +38,8 @@ Although there are a wide range of vocabulary testers online, there are some fea
 - **Focus on incorrectly answered vocabulary:** at the end of a session, users can restart the test while only answering words which they initially answered incorrectly. In addition, they can upload their CSV export (see above) to try this at a later point too.
 - **Filter by starting letter:** this is particularly helpful when practising for classroom assessments, where it's common for part of a list to be covered. Individual words can also be removed from the preview modal by clicking "View selected words" underneath the Start button.
 
-<img alt="Loading screen of Vocabulary Tester" src="./assets/screenshots/screenshot-1.png">
+| <img alt="Loading screen of Vocabulary Tester" src="./assets/screenshots/screenshot-1.png"> | <img alt="Vocabulary test - answer screen" src="./assets/screenshots/screenshot-6.png"> |
+| ------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 
 ### Vocabulary Flashcards
 
@@ -47,7 +47,7 @@ For each of the lists available, the user can choose to practice their vocabular
 
 In addition, users can "star" flashcards which they're struggling with. These will be saved in a list their, meaning that they can re-visit those words at a loser point. Please note that wiping your browser's saved storage will clear this list.
 
-<img alt="Flashcards" src="./assets/screenshots/screenshot-7.png">
+<img alt="Flashcards" src="./assets/screenshots/screenshot-5.png">
 
 ### Competitive Mode
 
@@ -72,6 +72,6 @@ Each game contains their own features and challenges, so I hope people will find
 
 ## Acknowledgements
 
-The Latin Vocabulary Tester has taken me countless hours to develop, but it wouldn't have been possible without the work of many others. Special thanks must be given to The Latin Dictionary and Latin is Simple for their excellent dictionaries, from which I was able to compile vocabulary lists. The images on the site have been designed by Flaticon. As ever, I'm very grateful to Jess (@Ep8Script) for her help whenever my code mysteriously broke. Lastly, much appreciation must be expressed for my wonderful Latin teachers at school, all of whom have inspired my enthusiasm for the subject over the years!
+The Latin Vocabulary Tester has taken me countless hours to develop, but it wouldn't have been possible without the work of many others. Special thanks to The Latin Dictionary, Latin is Simple and Wiktionary for their excellent dictionaries, from which I was able to compile vocabulary lists. The images on the site have been designed by Flaticon. Lastly, much appreciation must be expressed for my wonderful Latin teachers at school, all of whom have inspired my enthusiasm for the subject over the years!
 
-If you have any feedback or recommendations, please get in touch - you can reach me through the email on the site, or on Discord or Twitter. I hope that you will find the Latin Vocabulary Tester helpful and enjoy using it - _vale_! 👋🏽
+If you have any feedback or recommendations, please get in touch - you can reach me through the email or via this GitHub repository. I'm also more than happy to accept any Issues and review Pull Requests here. I hope that you will find the Latin Vocabulary Tester helpful and enjoy using it - _vale_! 👋🏽

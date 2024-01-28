@@ -1,4 +1,4 @@
-let OFFLINE_VERSION = 2;
+let OFFLINE_VERSION = 3;
 let CACHE_NAME = 'offline';
 
 let URLS_TO_CACHE = [
@@ -27,22 +27,23 @@ let URLS_TO_CACHE = [
 	'./assets/screenshots/scrabble.png',
 	'./assets/screenshots/word-bites.png',
 	'./assets/screenshots/wordle.png',
-	'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto&display=swap',
+	'https://www.gravatar.com/avatar/581e9719c44732a58a27b872f282c053.jpg?s=360',
+	'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap',
 	'https://fonts.gstatic.com/s/montserrat/v25/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2',
 ];
 
-self.addEventListener( 'install', event => {
+self.addEventListener( 'install', ( event ) => {
 	event.waitUntil(
 		( async () => {
 			let cache = await caches.open( CACHE_NAME );
 			await cache.add( new Request( '/', { cache: 'reload' } ) );
-			URLS_TO_CACHE.map( url => cache.add( url ) );
+			URLS_TO_CACHE.map( ( url ) => cache.add( url ) );
 		} )()
 	);
 	self.skipWaiting();
 } );
 
-self.addEventListener( 'activate', event => {
+self.addEventListener( 'activate', ( event ) => {
 	event.waitUntil(
 		( async () => {
 			if ( 'navigationPreload' in self.registration ) {
@@ -54,7 +55,7 @@ self.addEventListener( 'activate', event => {
 	self.clients.claim();
 } );
 
-self.addEventListener( 'fetch', event => {
+self.addEventListener( 'fetch', ( event ) => {
 	event.respondWith(
 		( async () => {
 			try {

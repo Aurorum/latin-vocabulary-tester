@@ -42,6 +42,22 @@ window.onload = function () {
 	} );
 };
 
+window.onerror = function ( message, source, line, col, error ) {
+	collectData( 'Word Bites console error logged', 'word_bites_console_error_logged' );
+	collectData(
+		'Error message: ' +
+			message +
+			'\nSource: ' +
+			source +
+			'\nLine number: ' +
+			line +
+			'\nColumn number: ' +
+			col +
+			'\nError object: ' +
+			error
+	);
+};
+
 function generateBoardFromId() {
 	let id = new URLSearchParams( window.location.search ).get( 'game' );
 	collectData( 'Generated board from id ' + id, 'word_bites_generate_from_id' );

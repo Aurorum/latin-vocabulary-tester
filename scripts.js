@@ -2,9 +2,9 @@ let acceptableCases = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ];
 let acceptableVerbs = [];
 let acceptableVocab = [];
 let allVocab = [];
+let competitionCountdown;
 let competitiveMode = false;
 let competitiveTestType;
-let data = 0;
 let finalVocab = [];
 let hardDifficulty = false;
 let isTableMode = false;
@@ -13,6 +13,7 @@ let isTestingDeclensions = false;
 let isTestingParticipleParts = false;
 let mute = false;
 let selectedOption;
+let timer;
 let userId = localStorage.getItem( 'userID' ) || Math.floor( Math.random() * 9999999 ) + 1;
 let vocab = [];
 let vocabAnswered = [];
@@ -57,17 +58,17 @@ window.onload = function () {
 	// Create leaderboard.
 	if ( navigator.onLine ) {
 		fetch( 'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/leaderboard' )
-			.then( response => {
+			.then( ( response ) => {
 				if ( ! response.ok ) {
 					collectData( 'Failed to load from endpoint' );
 				}
 				return response.json();
 			} )
-			.then( data => {
+			.then( ( data ) => {
 				leaderboardData = data;
 				updateLeaderboard( data.currentData, true );
 			} )
-			.catch( error => {
+			.catch( ( error ) => {
 				collectData( 'Failed to load from endpoint' );
 				collectData( error.message );
 			} );
@@ -96,10 +97,10 @@ window.onload = function () {
 	let fileInput = document.getElementById( 'fileupload' );
 	let advancedFileInput = document.getElementById( 'advancedfileupload' );
 
-	let readFile = ( reader, callback ) => {
+	let readFile = ( reader, dataMessage ) => {
 		reader.onload = () => {
 			let result = reader.result;
-			result.split( /\r\n|\r|\n/ ).forEach( line => {
+			result.split( /\r\n|\r|\n/ ).forEach( ( line ) => {
 				let str = line.split( '"', 2 ).join( '"' ).replace( '"', '' );
 				let wordArray = findWord( str )[ 0 ];
 				if ( wordArray ) {
@@ -107,7 +108,7 @@ window.onload = function () {
 					document.getElementById( 'start-button' ).classList.remove( 'is-inactive' );
 				}
 			} );
-			collectData( callback, 'CSV file uploaded', 'csv_upload' );
+			collectData( dataMessage, 'csv_upload' );
 			formAcceptableVocab( 'uploaded' );
 		};
 	};
@@ -142,29 +143,57 @@ function loadAllVocabFiles() {
 		let filePath = `./vocab-lists/${ fileName }`;
 
 		return fetch( filePath )
-			.then( response => {
+			.then( ( response ) => {
 				if ( ! response.ok ) {
 					collectData( 'Vocabulary lists failed to load', 'initialisation_error' );
 					collectData( error.message || error );
 				}
 				return response.json();
 			} )
-			.then( data => {
+			.then( ( data ) => {
 				window[ variableName ] = data;
 
 				if ( variableName === 'vocabGCSEOCR' ) {
 					vocab = vocabGCSEOCR;
 				}
 			} )
-			.catch( error => {
+			.catch( ( error ) => {
 				collectData( 'Vocabulary lists failed to load', 'initialisation_error' );
 				collectData( error.message || error );
 			} );
 	} );
 
 	return Promise.all( promises ).then( () => {
+		Object.entries( fileVariableMapping ).map( ( [ _, variableName ] ) => {
+			window[ variableName ].forEach( ( word ) => {
+				word.asked = false;
+			} );
+		} );
 		vocabFilesLoaded = true;
 	} );
+}
+
+window.onerror = function ( message, source, line, col, error ) {
+	collectData( 'Console error logged', 'console_error_logged' );
+	collectData(
+		'Error message: ' +
+			message +
+			'\nSource: ' +
+			source +
+			'\nLine number: ' +
+			line +
+			'\nColumn number: ' +
+			col +
+			'\nError object: ' +
+			error
+	);
+};
+
+function playAudio( sound ) {
+	if ( ! mute ) {
+		let file = sound ? sound : 'click';
+		new Audio( './assets/audio/' + file + '.mp3' ).play();
+	}
 }
 
 function handleParameters() {
@@ -240,7 +269,7 @@ function handleParameters() {
 function changeOption( option, manualChange = true ) {
 	let allOptions = [ 'alevelocr', 'gcseeduqas', 'gcseocr', 'clc', 'custom-list', 'literature' ];
 
-	allOptions.forEach( option => {
+	allOptions.forEach( ( option ) => {
 		document.body.classList.remove( 'is-' + option );
 	} );
 
@@ -280,20 +309,30 @@ function changeOption( option, manualChange = true ) {
 		};
 	}
 
-	if ( ! mute && manualChange ) {
-		new Audio( './assets/audio/click.mp3' ).play();
+	if ( isTestingDeclensions || isTestingConjugations ) {
+		if ( ! isTableMode ) {
+			toggleWordTable( false );
+		}
+
+		buildDeclensionOrConjugationTest( isTestingConjugations, true );
+	}
+
+	if ( manualChange ) {
+		playAudio();
 	}
 }
 
 function startTest( startDeclensionTest = false, startConjugationTest = false ) {
-	let curtain = document.getElementById( 'curtain' );
-	curtain.classList.remove( 'is-not-triggered' );
-	curtain.classList.add( 'is-triggered' );
+	if ( competitiveMode || ( ! startDeclensionTest && ! startConjugationTest ) ) {
+		let curtain = document.getElementById( 'curtain' );
+		curtain.classList.remove( 'is-not-triggered' );
+		curtain.classList.add( 'is-triggered' );
+	}
+
 	document.body.classList.add( 'has-begun-vocab-test' );
 	hardDifficulty = true;
 
 	window.scrollTo( 0, 0 );
-	document.getElementById( 'option' ).innerHTML = '<a onclick="resetTest()">Reset test</a>';
 
 	collectData(
 		'Started test of ' + selectedOption + ' with competition mode set to ' + competitiveMode,
@@ -368,10 +407,12 @@ function startCompetition( test ) {
 	startTest( test === 'declension', test === 'conjugation' );
 	collectData( 'Started competition of ' + test, 'started_competition' );
 
+	clearInterval( competitionCountdown );
+
 	let timeleft = 5;
-	let timer = setInterval( function () {
+	competitionCountdown = setInterval( function () {
 		if ( timeleft <= 0 ) {
-			clearInterval( timer );
+			clearInterval( competitionCountdown );
 			document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'time-started' );
 			startCompetitionTimer();
 		} else {
@@ -388,7 +429,7 @@ function checkIncorrectAnswerGrammar() {
 	);
 	let possibleForms = [];
 
-	grammarForm.forEach( form => {
+	grammarForm.forEach( ( form ) => {
 		let fullForm = '';
 
 		if ( isTestingDeclensions ) {
@@ -491,7 +532,7 @@ function checkIncorrectAnswerGrammar() {
 }
 
 function getKeysInObject( object, value ) {
-	return Object.keys( object ).filter( key => object[ key ] === value );
+	return Object.keys( object ).filter( ( key ) => object[ key ] === value );
 }
 
 function endCompetitionTimer() {
@@ -544,42 +585,41 @@ function endCompetitionTimer() {
 	document.getElementById( 'countdown-clock-circle' ).style.strokeDashoffset = 0;
 	document.getElementById( 'countdown-clock-time-left' ).innerHTML = 0;
 	document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'time-ended' );
-	document.getElementById( 'competition-countdown' ).innerHTML =
-		'Score: ' + score + ' words completed';
 
-	if ( score === 1 ) {
-		document.getElementById( 'competition-countdown' ).innerHTML = document
-			.getElementById( 'competition-countdown' )
-			.innerHTML.replace( 'words', 'word' );
-	}
+	let wordsString = score === 1 ? ' word' : ' words';
+	document.getElementById( 'competition-countdown' ).innerHTML =
+		'Score: ' + score + wordsString + ' completed';
+
 	document.getElementById( 'vocab-tester-wrapper' ).classList.remove( 'time-started' );
 
 	if ( leaderboardId === 'Empty' || leaderboardId === 'Loading' ) {
-		document.getElementById( 'competition-warning' ).innerHTML =
-			'Congratulations! Enter your name below to be included on the Leaderboard - your name will only appear if you are in the top three.';
+		document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'leaderboard-eligible' );
 		return;
 	}
 
-	let neededScore = leaderboardId.substring(
-		leaderboardId.lastIndexOf( '-' ) + 1,
-		leaderboardId.lastIndexOf( 'words' )
-	);
+	let neededScore =
+		2 > 1
+			? 0
+			: leaderboardId.substring(
+					leaderboardId.lastIndexOf( '-' ) + 1,
+					leaderboardId.lastIndexOf( 'words' )
+			  );
 
 	if ( parseInt( neededScore ) >= score ) {
 		document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'leaderboard-ineligible' );
-		document.getElementById( 'competition-warning' ).innerHTML =
-			'Unfortunately, you need a score of <strong>' +
-			( parseInt( neededScore ) + 1 ) +
-			'</strong> to be added to the Leaderboard - good luck next time! You can <a onclick="resetTest()">try again</a>.';
+		document.getElementById( 'competition-leaderboard-text-score' ).innerHTML =
+			parseInt( neededScore ) + 1;
 	} else {
-		document.getElementById( 'competition-warning' ).innerHTML =
-			'Congratulations! Enter your name below to be included on the Leaderboard.';
+		document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'leaderboard-eligible' );
 	}
 }
 
 function startCompetitionTimer() {
 	let timeleft = 120;
-	let timer = setInterval( function () {
+
+	clearInterval( timer );
+
+	timer = setInterval( function () {
 		if ( document.getElementById( 'vocab-tester-wrapper' ).classList.contains( 'time-ended' ) ) {
 			return clearInterval( timer );
 		}
@@ -587,10 +627,9 @@ function startCompetitionTimer() {
 			clearInterval( timer );
 			endCompetitionTimer();
 			if (
-				! mute &&
 				! document.getElementById( 'vocab-tester-wrapper' ).classList.contains( 'time-ended' )
 			) {
-				new Audio( './assets/audio/complete.mp3' ).play();
+				playAudio( 'complete' );
 			}
 		} else {
 			if ( timeleft < 120 / 4 ) {
@@ -608,6 +647,10 @@ function startCompetitionTimer() {
 }
 
 function switchMode() {
+	if ( ! document.body.classList.contains( 'is-competitive-mode' ) ) {
+		changeMode( 'vocabulary' );
+	}
+
 	let currentMode = document.getElementById( 'current-mode' );
 
 	if ( selectedOption === 'literature' ) {
@@ -642,8 +685,7 @@ function leaderboardSubmitName() {
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function () {
 		if ( this.readyState == 4 && this.status == 200 ) {
-			document.getElementById( 'submit-name' ).innerHTML =
-				"<p>Your name has been successfully submitted! It will be verified to ensure it's appropriate, then it will be added to the Leaderboard.</p>";
+			document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'leaderboard-submitted' );
 		}
 	};
 
@@ -828,7 +870,7 @@ function handleVerbSelection( e, manualChange = true ) {
 			break;
 	}
 
-	verbNumber.forEach( number => {
+	verbNumber.forEach( ( number ) => {
 		e.checked
 			? acceptableVerbs.push( number )
 			: acceptableVerbs.splice( acceptableVerbs.indexOf( number ), 1 );
@@ -1461,7 +1503,7 @@ function handleCaseSelection( e ) {
 			break;
 	}
 
-	caseNumber.forEach( number =>
+	caseNumber.forEach( ( number ) =>
 		e.checked
 			? acceptableCases.push( number )
 			: acceptableCases.splice( acceptableCases.indexOf( number ), 1 )
@@ -1659,9 +1701,7 @@ function handleWordTableSelection( e ) {
 
 	e.classList.add( 'is-selected' );
 
-	if ( ! mute ) {
-		new Audio( './assets/audio/click.mp3' ).play();
-	}
+	playAudio();
 
 	collectData( 'Switched verb test to ' + e.id.replace( '-button', '' ), 'switch_verb_test' );
 
@@ -1669,11 +1709,30 @@ function handleWordTableSelection( e ) {
 }
 
 function generateNewTableWord() {
-	buildDeclensionOrConjugationTest( true );
+	playAudio();
 
-	if ( ! mute ) {
-		new Audio( './assets/audio/click.mp3' ).play();
+	const verbTables = document.querySelectorAll(
+		'.further-content .verb-tables .verb-table.is-active table td input'
+	);
+
+	const hasStartedTable = Array.from( verbTables ).some( ( input ) => {
+		return input.value;
+	} );
+
+	if (
+		hasStartedTable &&
+		! document
+			.querySelector( '.further-content .verb-tables .verb-table.is-active' )
+			.classList.contains( 'is-marked' )
+	) {
+		document.getElementById( 'warning-continue-action' ).onclick = function () {
+			buildDeclensionOrConjugationTest( true );
+			warningModalActioned();
+		};
+		return openWarningModal();
 	}
+
+	buildDeclensionOrConjugationTest( true );
 
 	collectData( 'Answer completed and generated new word', 'generate_new_table_word' );
 }
@@ -1703,8 +1762,9 @@ function checkTableModeAnswer() {
 				currentCount++;
 			} else {
 				verbTable[ i ].classList.add( 'answer-incorrect' );
-				verbTable[ i ].childNodes[ 3 ].innerHTML =
-					'<span>Entered: ' + enteredAnswer + '</span>' + realAnswer;
+				verbTable[ i ].childNodes[ 3 ].innerHTML = enteredAnswer.length
+					? '<span>Entered: ' + enteredAnswer + '</span><span>' + realAnswer + '</span>'
+					: realAnswer;
 			}
 		}
 	}
@@ -1717,9 +1777,7 @@ function checkTableModeAnswer() {
 		.querySelector( '.further-content .verb-tables .verb-table.is-active' )
 		.classList.add( 'is-marked' );
 
-	if ( ! mute ) {
-		new Audio( './assets/audio/click.mp3' ).play();
-	}
+	playAudio();
 }
 
 function constructVocabSelectionTable() {
@@ -1781,10 +1839,29 @@ window.onclick = function ( event ) {
 	if ( event.target === document.getElementById( 'modal' ) ) {
 		toggleVocabSelectionTable( false );
 	}
+
 	if ( event.target === document.getElementById( 'games-modal' ) ) {
 		closeGamesModal();
 	}
+
+	if ( event.target === document.getElementById( 'warning-modal' ) ) {
+		closeWarningModal();
+	}
+
+	if ( event.target === document.getElementById( 'about-modal' ) ) {
+		closeAboutModal();
+	}
 };
+
+function openAboutModal() {
+	document.getElementById( 'about-modal' ).style.display = 'flex';
+	collectData( 'Opened about modal', 'opened_about_modal' );
+}
+
+function closeAboutModal() {
+	document.getElementById( 'about-modal' ).style.display = 'none';
+	collectData( 'Closed about modal', 'closed_about_modal' );
+}
 
 function openGamesModal() {
 	document.getElementById( 'games-modal' ).style.display = 'flex';
@@ -1794,6 +1871,21 @@ function openGamesModal() {
 function closeGamesModal() {
 	document.getElementById( 'games-modal' ).style.display = 'none';
 	collectData( 'Closed games modal', 'closed_games_model' );
+}
+
+function openWarningModal() {
+	document.getElementById( 'warning-modal' ).style.display = 'flex';
+	collectData( 'Opened games modal', 'opened_games_model' );
+}
+
+function closeWarningModal() {
+	document.getElementById( 'warning-modal' ).style.display = 'none';
+	collectData( 'Closed warning modal', 'closed_warning_model' );
+}
+
+function warningModalActioned() {
+	document.getElementById( 'warning-modal' ).style.display = 'none';
+	collectData( 'Continued action despite warning modal', 'ignored_warning_model' );
 }
 
 function sortVocabSelectionTable( column ) {
@@ -1812,7 +1904,7 @@ function sortVocabSelectionTable( column ) {
 function toggleWordTable( show ) {
 	let wordTablePrompt = competitiveMode ? 'word-table-prompt-competitive' : 'word-table-prompt';
 	if ( ! show ) {
-		document.getElementById( 'word-table' ).style.display = 'none';
+		document.getElementById( 'word-table' ).classList.remove( 'is-active' );
 		document.getElementById( wordTablePrompt ).innerHTML = isTestingDeclensions
 			? 'Show declensions table'
 			: 'Show verb tables';
@@ -1824,7 +1916,7 @@ function toggleWordTable( show ) {
 		window.scrollTo( 0, 0 );
 	} else {
 		constructWordTable();
-		document.getElementById( 'word-table' ).style.display = 'block';
+		document.getElementById( 'word-table' ).classList.add( 'is-active' );
 		document.getElementById( wordTablePrompt ).innerHTML = isTestingDeclensions
 			? 'Hide declensions table'
 			: 'Hide verb tables';
@@ -1861,15 +1953,15 @@ function handleSubjunctiveTableSelection( e ) {
 function csvToJSON( string, headers, quoteChar = '"', delimiter = ',' ) {
 	// Credit: csvToJSON function by matthew-e-brown on Stack Overflow.
 	const regex = new RegExp( `\\s*(${ quoteChar })?(.*?)\\1\\s*(?:${ delimiter }|$)`, 'gs' );
-	const match = string =>
+	const match = ( string ) =>
 		[ ...string.matchAll( regex ) ]
-			.map( match => match[ 2 ] )
+			.map( ( match ) => match[ 2 ] )
 			.filter( ( _, i, a ) => i < a.length - 1 );
 
 	const lines = string.split( '\n' );
 	const heads = headers || match( lines.splice( 0, 1 )[ 0 ] );
 
-	return lines.map( line =>
+	return lines.map( ( line ) =>
 		match( line ).reduce(
 			( acc, cur, i ) => ( {
 				...acc,
@@ -1886,7 +1978,7 @@ function handleCustomList( list ) {
 	vocabCustomListExistingCategories = [];
 	vocabCustomListCategories = [];
 
-	document.querySelectorAll( '.custom-category p' ).forEach( word => {
+	document.querySelectorAll( '.custom-category p' ).forEach( ( word ) => {
 		vocabCustomListExistingCategories.push( word.textContent );
 	} );
 
@@ -1903,8 +1995,9 @@ function handleCustomList( list ) {
 
 		if (
 			savedList &&
-			savedList.findIndex( item => item.word === word.word && item.category === word.category ) ===
-				-1
+			savedList.findIndex(
+				( item ) => item.word === word.word && item.category === word.category
+			) === -1
 		) {
 			savedList.push( word );
 		}
@@ -1917,10 +2010,10 @@ function handleCustomList( list ) {
 	localStorage.setItem( 'customList', JSON.stringify( savedList ) );
 	vocab = vocabCustomList;
 	let categoriesList = vocabCustomListCategories.filter(
-		item => ! vocabCustomListExistingCategories.includes( item )
+		( item ) => ! vocabCustomListExistingCategories.includes( item )
 	);
 
-	categoriesList.forEach( category => {
+	categoriesList.forEach( ( category ) => {
 		let button = document.createElement( 'button' );
 		button.id = category;
 		button.className = 'vocab-type';
@@ -1953,13 +2046,13 @@ function removeCustomCategory( category ) {
 		return vocab.category === category;
 	} );
 
-	wordsInCategory.forEach( word => {
+	wordsInCategory.forEach( ( word ) => {
 		vocabCustomList.splice(
-			vocabCustomList.findIndex( item => item.word === word.word ),
+			vocabCustomList.findIndex( ( item ) => item.word === word.word ),
 			1
 		);
 
-		let savedListIndex = savedList.findIndex( item => item.word === word.word );
+		let savedListIndex = savedList.findIndex( ( item ) => item.word === word.word );
 
 		if ( savedListIndex !== -1 ) {
 			savedList.splice( savedListIndex, 1 );
@@ -2009,7 +2102,7 @@ function buildTest() {
 	if ( numberofWordsToAnswer > vocabAnswered.length ) {
 		finalVocab[ randomNumber ].asked = true;
 
-		data = vocabwithNumber;
+		let data = vocabwithNumber;
 
 		document.getElementById( 'vocab-question' ).innerHTML = vocabwithNumber.word;
 
@@ -2057,12 +2150,12 @@ function buildTest() {
 				}
 				isTestingParticipleParts = true;
 			} else {
-				wordForm = 'root meaning';
+				wordForm = 'Latin translation';
 				isTestingParticipleParts = false;
 			}
 		} else {
 			isTestingParticipleParts = false;
-			wordForm = 'root meaning';
+			wordForm = 'translation';
 		}
 
 		document.getElementById( 'vocab-submit-word-form' ).innerHTML = wordForm;
@@ -2071,22 +2164,12 @@ function buildTest() {
 	}
 
 	document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'is-complete' );
-	if ( ! mute ) {
-		new Audio( './assets/audio/complete.mp3' ).play();
-	}
+	playAudio( 'complete' );
 
 	if ( document.getElementById( 'wrong-vocab' ).childElementCount > 1 ) {
 		document.getElementById( 'retry-test-button' ).classList.remove( 'is-inactive' );
 		document.getElementById( 'retry-test-prompt' ).classList.remove( 'is-inactive' );
 	}
-}
-
-function resetTest() {
-	collectData( 'Reset test', 'reset_test' );
-	if ( competitiveMode ) {
-		sessionStorage.setItem( 'reset-mode', 'competitive' );
-	}
-	location.reload();
 }
 
 function selectAll( context ) {
@@ -2112,15 +2195,13 @@ function selectAll( context ) {
 			'conjunction',
 			'prep',
 			'pron',
-			'noun irreg',
-			'noun phrase',
-			'noun & adj',
+			'misc',
 			'verb 4 dep',
 		];
 	}
 
 	if ( selectedOption === 'gcseocr' ) {
-		allOptions.splice( 18, 4 );
+		allOptions.splice( 18, 2 );
 	}
 
 	if ( selectedOption === 'gcseeduqas' ) {
@@ -2141,7 +2222,7 @@ function selectAll( context ) {
 		document
 			.querySelector( '.custom-lists' )
 			.querySelectorAll( '.vocab-type' )
-			.forEach( list => allOptions.push( list.id ) );
+			.forEach( ( list ) => allOptions.push( list.id ) );
 	}
 
 	if ( selectedOption === 'literature' ) {
@@ -2158,7 +2239,7 @@ function selectAll( context ) {
 
 	let deselect = context === 'change-option' || context === 'deselect-all';
 
-	allOptions.forEach( option => {
+	allOptions.forEach( ( option ) => {
 		if (
 			( ! acceptableVocab.includes( option ) && ! deselect ) ||
 			( acceptableVocab.includes( option ) && deselect )
@@ -2218,9 +2299,7 @@ function checkDeclensionOrConjugationAnswer( shouldReveal = false ) {
 		if ( isAnswerCorrect ) {
 			answerInput.value = '';
 			progressIndicator.innerHTML = parseInt( progressIndicator.textContent ) + 1;
-			if ( ! mute ) {
-				new Audio( './assets/audio/correct.mp3' ).play();
-			}
+			playAudio( 'correct' );
 			collectData(
 				'Answered ' +
 					testType +
@@ -2239,9 +2318,7 @@ function checkDeclensionOrConjugationAnswer( shouldReveal = false ) {
 			checkIncorrectAnswerGrammar();
 		}
 
-		if ( ! mute ) {
-			new Audio( './assets/audio/wrong.mp3' ).play();
-		}
+		playAudio( 'wrong' );
 
 		collectData(
 			'Answered ' +
@@ -2263,7 +2340,7 @@ function checkDeclensionOrConjugationAnswer( shouldReveal = false ) {
 				question +
 				' for <strong>' +
 				actualAnswerArray.word +
-				'</strong> when it was actually <strong>' +
+				'</strong> instead of <strong>' +
 				actualAnswer +
 				'</strong>.';
 			return endCompetitionTimer();
@@ -2284,6 +2361,7 @@ function checkAnswer( shouldReveal = false ) {
 	let incorrectCountNumber = parseInt( incorrectCount.textContent );
 	let isAnswerCorrect = false;
 	let questionArray = hardDifficulty ? findTranslation( question )[ 0 ] : findWord( question )[ 0 ];
+	let data = questionArray;
 	let answerArray = hardDifficulty ? data.word.split( ',' ) : data.translation.split( ',' );
 
 	if ( ! shouldReveal && answer === '' ) {
@@ -2383,9 +2461,7 @@ function checkAnswer( shouldReveal = false ) {
 		}
 
 		if ( ! isAnswerCorrect ) {
-			if ( ! mute ) {
-				new Audio( './assets/audio/wrong.mp3' ).play();
-			}
+			playAudio( 'wrong' );
 
 			collectData(
 				'Answered vocabulary question incorrectly by inputting ' + answer + ' for ' + question,
@@ -2434,9 +2510,7 @@ function checkAnswer( shouldReveal = false ) {
 		vocabAnswered.push( questionArray );
 		document.getElementById( 'vocab-answer' ).value = '';
 		document.getElementById( 'wrong-answer' ).style.display = 'none';
-		if ( ! mute ) {
-			new Audio( './assets/audio/correct.mp3' ).play();
-		}
+		playAudio( 'correct' );
 
 		collectData(
 			'Answered vocabulary question correctly by inputting ' + answer + ' for ' + question,
@@ -2465,7 +2539,7 @@ function startRetryTest() {
 	allVocab = [];
 	vocabAnswered = [];
 
-	vocabToFocusOn.forEach( word => {
+	vocabToFocusOn.forEach( ( word ) => {
 		let findWordArray = findWord( word )[ 0 ];
 		allVocab.push( findWordArray );
 		findWordArray.asked = false;
@@ -2636,7 +2710,7 @@ function exportIncorrectVocab() {
 	for ( let i = 0; i < vocabToFocusOn.length; i++ ) {
 		exportArray.push( findWord( vocabToFocusOn[ i ] )[ 0 ] );
 
-		labels.forEach( heading => {
+		labels.forEach( ( heading ) => {
 			delete exportArray[ i ][ heading ];
 		} );
 	}
@@ -2650,7 +2724,6 @@ function exportIncorrectVocab() {
 function startFlashcards() {
 	startTest();
 	document.body.classList.add( 'is-displaying-flashcards' );
-	document.getElementById( 'option' ).innerHTML = '<a onclick="resetTest()">Reset</a>';
 	document.getElementById( 'focus-on-title' ).innerHTML = 'Starred words';
 	document.getElementById( 'focus-on-description' ).innerHTML =
 		'Press the star on the top right, then click the word below to jump to its flashcard.';
@@ -2659,7 +2732,7 @@ function startFlashcards() {
 		let savedFlashcards = JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
 			? JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
 			: [];
-		savedFlashcards.forEach( item => {
+		savedFlashcards.forEach( ( item ) => {
 			vocabToFocusOn.push( item.word );
 		} );
 	}
@@ -2718,7 +2791,7 @@ function buildAfterFlip( context, starred ) {
 	}
 
 	if ( starred ) {
-		number = finalVocab.findIndex( item => item.word === context.textContent );
+		number = finalVocab.findIndex( ( item ) => item.word === context.textContent );
 	}
 
 	let isSavedFlashcard = number === -1;
@@ -2727,7 +2800,7 @@ function buildAfterFlip( context, starred ) {
 		let savedFlashcards = JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
 			? JSON.parse( localStorage.getItem( 'savedFlashcards' ) )
 			: [];
-		let savedIndex = savedFlashcards.findIndex( item => item.word === context.textContent );
+		let savedIndex = savedFlashcards.findIndex( ( item ) => item.word === context.textContent );
 
 		document.getElementById( 'front-flashcard' ).innerHTML = document.getElementById(
 			'flashcard-setting-switch'
@@ -2899,9 +2972,9 @@ function toggleFlashcardShortcutsGuide() {
 function convertToCSV( arr ) {
 	let array = [ Object.keys( arr[ 0 ] ) ].concat( arr );
 	return array
-		.map( row => {
+		.map( ( row ) => {
 			return Object.values( row )
-				.map( value => {
+				.map( ( value ) => {
 					return typeof value === 'string' ? JSON.stringify( value ) : value;
 				} )
 				.toString();
@@ -3024,9 +3097,7 @@ function formAcceptableVocab( receivedCategory ) {
 			return;
 		}
 
-		if ( ! mute ) {
-			new Audio( './assets/audio/click.mp3' ).play();
-		}
+		playAudio();
 		if ( ! button.classList.contains( 'has-selected' ) ) {
 			acceptableVocab.push( category );
 			button.classList.add( 'has-selected' );
@@ -3044,7 +3115,7 @@ function formAcceptableVocab( receivedCategory ) {
 		let maxVocabOptions;
 		switch ( selectedOption ) {
 			case 'alevelocr':
-				maxVocabOptions = 22;
+				maxVocabOptions = 20;
 				break;
 			case 'gcseeduqas':
 				maxVocabOptions = 35;
@@ -3089,6 +3160,124 @@ function formAcceptableVocab( receivedCategory ) {
 	allVocab = vocabToTest.concat( findAllVocab() );
 }
 
+function changeMode( mode ) {
+	if (
+		document.body.classList.contains( 'has-begun-vocab-test' ) &&
+		! isTestingConjugations &&
+		! isTestingDeclensions
+	) {
+		document.getElementById( 'warning-continue-action' ).onclick = function () {
+			changeModeAction( mode );
+			warningModalActioned();
+		};
+		return openWarningModal();
+	}
+
+	changeModeAction( mode );
+}
+
+function changeModeAction( mode ) {
+	let allOptions = [ 'vocabulary', 'declensions', 'conjugations' ];
+
+	allOptions.forEach( ( option ) => {
+		document.getElementById( option + '-footer-item' ).classList.remove( 'is-active' );
+	} );
+
+	document.getElementById( mode + '-footer-item' ).classList.add( 'is-active' );
+
+	resetTest();
+
+	if ( mode === 'declensions' ) {
+		startTest( true );
+	}
+
+	if ( mode === 'conjugations' ) {
+		startTest( false, true );
+	}
+}
+
+function resetState() {
+	acceptableVocab = [];
+	allVocab = [];
+	competitiveMode = false;
+	competitiveTestType = undefined;
+	finalVocab = [];
+	isTableMode = false;
+	isTestingConjugations = false;
+	isTestingDeclensions = false;
+	isTestingParticipleParts = false;
+	vocab = [];
+	vocabAnswered = [];
+	vocabConjugation;
+	vocabCustomList = [];
+	vocabDeclension = undefined;
+	vocabToFocusOn = [];
+	vocabToTest = [];
+}
+
+function resetTest() {
+	selectAll( 'deselect-all' );
+
+	vocab.forEach( ( word ) => {
+		word.asked = false;
+		word.didReveal = false;
+		word.incorrectlyAnswered = 0;
+	} );
+
+	resetState();
+
+	collectData( 'Reset test', 'reset_test' );
+
+	document.body.classList = [];
+	document.getElementById( 'vocab-tester-wrapper' ).classList = [ 'main-content' ];
+	changeOption( selectedOption, false );
+
+	document.getElementById( 'progress-indicator-changing' ).innerHTML = '0';
+	document.getElementById( 'progress-indicator-slash' ).innerHTML = '/';
+	document.getElementById( 'progress-indicator-set' ).innerHTML = '';
+	document.getElementById( 'progress-bar-content' ).style.width = '0';
+
+	document.getElementById( 'vocab-incorrect-count' ).innerHTML = '0';
+	document.getElementById( 'vocab-answer' ).value = '';
+	document.getElementById( 'wrong-answer' ).style.display = 'none';
+	document.getElementById( 'competition-correction' ).innerHTML = '';
+
+	var ulElement = document.getElementById( 'wrong-vocab' );
+	var liElements = Array.from( ulElement.querySelectorAll( 'li' ) );
+
+	liElements.slice( 1 ).forEach( function ( li ) {
+		li.remove();
+	} );
+
+	document.getElementById( 'wrong-vocab' ).innerHTML =
+		'<li id="no-words-wrong">None so far - well done!</li>	';
+	document.getElementById( 'export-sidebar-prompt' ).style.display = 'none';
+
+	document.getElementById( 'vocab-tester-wrapper' ).classList.remove( 'is-complete' );
+	document.getElementById( 'word-table' ).classList.remove( 'is-active' );
+	document.getElementById( 'grammar-info-competition' ).classList.remove( 'is-active' );
+	document.getElementById( 'start-button' ).classList.add( 'is-inactive' );
+
+	document.getElementById( 'word-table-select' ).options.length = '0';
+
+	clearInterval( timer );
+	clearInterval( competitionCountdown );
+	document.getElementById( 'countdown-clock-circle' ).style.stroke = '';
+	document.getElementById( 'countdown-clock-circle' ).style.strokeDashoffset = 440;
+	document.getElementById( 'countdown-clock-time-left' ).innerHTML = '120';
+	document.getElementById( 'competition-countdown' ).innerHTML = '5';
+
+	document.getElementById( 'leaderboard-valid-name-warning' ).style.display = 'none';
+	document.getElementById( 'leaderboard-button-submit' ).innerHTML = 'Submit name';
+	document.getElementById( 'leaderboard-name-input' ).disabled = false;
+
+	document.getElementById( 'current-mode' ).innerHTML = 'Practice';
+	document.getElementById( 'switch-to-mode' ).innerHTML = 'Competitive mode';
+
+	document.getElementById( 'curtain' ).classList = [ 'curtain is-not-triggered' ];
+	document.getElementById( 'fileupload' ).value = '';
+}
+
 function updateLetterLimit() {
 	setTimeout( function () {
 		allVocab = vocabToTest.concat( findAllVocab() );
@@ -3117,16 +3306,16 @@ function collectData( content, analyticsID ) {
 }
 
 function muteAudio() {
-	let muteAudioLink = document.getElementById( 'mute-audio' );
+	let options = document.getElementById( 'option' );
 
-	if ( muteAudioLink.textContent.includes( 'Unmute' ) ) {
-		muteAudioLink.textContent = 'Mute sound effects';
-		mute = false;
+	options.classList.toggle( 'is-muted' );
+
+	mute = options.classList.contains( 'is-muted' );
+
+	if ( ! mute ) {
 		localStorage.setItem( 'defaultAudio', 'Unmuted' );
 	} else {
-		muteAudioLink.textContent = 'Unmute sound effects';
 		localStorage.setItem( 'defaultAudio', 'Muted' );
-		mute = true;
 	}
 	collectData( 'Audio toggled so mute is **' + mute + '**', 'audio_toggled' );
 }
@@ -3140,28 +3329,44 @@ function toggleFooter( show ) {
 	collectData( 'Footer toggled', 'footer_toggled' );
 }
 
-function changeDifficulty() {
+function changeHardDifficulty() {
 	let hardCheckbox = document.getElementById( 'hardCheckbox' );
 	let extremeCheckbox = document.getElementById( 'extremeCheckbox' );
 
-	if ( hardCheckbox.checked === false ) {
-		extremeCheckbox.disabled = true;
+	if ( extremeCheckbox.checked && hardCheckbox.checked === false ) {
 		extremeCheckbox.checked = false;
-	} else {
-		extremeCheckbox.disabled = false;
 	}
+
 	collectData(
 		'Difficulty changed so that the hard checkbox is ' + hardCheckbox.checked,
 		'difficulty_changed'
 	);
 }
 
-function toggleLimit() {
-	if ( document.getElementById( 'wordLimitCheckbox' ).checked === false ) {
-		document.getElementById( 'maxWordSelect' ).style.display = 'none';
-	} else {
-		document.getElementById( 'maxWordSelect' ).style.display = 'flex';
+function changeExtremeDifficulty() {
+	let hardCheckbox = document.getElementById( 'hardCheckbox' );
+	let extremeCheckbox = document.getElementById( 'extremeCheckbox' );
+
+	if ( extremeCheckbox.checked === true ) {
+		hardCheckbox.checked = true;
 	}
+
+	collectData(
+		'Difficulty changed so that the hard checkbox is ' + hardCheckbox.checked,
+		'extreme_difficulty_changed'
+	);
+}
+
+function toggleFileUpload() {
+	document.getElementById( 'file-upload-section' ).style.display = 'block';
+	document.getElementById( 'file-upload-link' ).style.display = 'none';
+}
+
+function toggleLimit() {
+	let wordLimitCheckbox = document.getElementById( 'wordLimitCheckbox' );
+	let maxWordSelect = document.getElementById( 'max-word-select' );
+
+	maxWordSelect.style.display = wordLimitCheckbox.checked ? 'block' : 'none';
 
 	collectData(
 		'Limit of words toggled to be marked as ' +

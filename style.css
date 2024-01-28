@@ -75,6 +75,7 @@ input {
 }
 button,
 select {
+	color: #000;
 	text-transform: none;
 }
 button,
@@ -151,6 +152,7 @@ body {
 	background-color: #f0f4ff;
 	background: url( './assets/arena.jpg' ) no-repeat center center fixed;
 	background-size: cover;
+	color: #000;
 	padding: 0;
 	font-family: 'Montserrat', sans-serif;
 	margin: 0;
@@ -163,23 +165,28 @@ button:focus,
 
 button:focus,
 input:focus {
-	outline: 1px auto #005fcc;
+	outline: 1px auto #cc593e;
 }
 
 button:not( .vocab-type ):not( .option-button ):not( .verb-table-option-button ),
 [type='submit'] {
-	background: #dacafa;
-	border-color: #efe7ff #d3c2f7 #c1a2ff;
+	background: #ee6c4d;
 	cursor: pointer;
 	outline: none;
-	font-family: 'Roboto', sans-serif;
-	border-width: 6px 12px 15px;
-	border-style: solid;
 	margin: 12px;
 	color: #2d2a2a;
-	box-shadow: 0 18px 26px rgba( 0, 0, 0, 0.1 );
-	padding: 0 24px;
+	padding: 12px;
 	font-size: 18px;
+	color: white;
+	width: 171px;
+	border-radius: 8px;
+	box-shadow: 0 8px 16px rgba( 0, 0, 0, 0.2 );
+	border: 2px solid #dc5e40;
+	border-bottom-width: 5px;
+	font-family: 'Montserrat', sans-serif;
+	text-transform: uppercase;
+	font-weight: 600;
+	border-bottom-color: #cc593e;
 }
 
 button:not( .vocab-type ):hover,
@@ -239,7 +246,7 @@ li {
 .loading-screen .progress-bar {
 	max-width: 300px;
 	right: 50%;
-	border: 2px solid #1d395d;
+	border: 2px solid #a52232;
 	border-radius: 14px;
 	transform: translateX( 50% );
 	position: absolute;
@@ -247,7 +254,7 @@ li {
 }
 
 .loading-screen .progress-bar .inner-progress {
-	background: #3d5a80;
+	background: #bb2730;
 	transition: width 1.2s ease;
 	animation: width-animation 1.2s;
 	border-radius: 14px;
@@ -331,29 +338,12 @@ li {
 	margin-left: 16px;
 }
 
-.reveal-answer-button,
-.start-declension-test-button,
-.leaderboard-button {
-	background: #facad7;
-	border-color: #ffe7e8 #f7c2d6 #e89f9f;
-	outline-color: #993359;
-}
-
-.submit-answer-button {
-	background: #c9eec7;
-	border-color: #b9deb7 #cae4c9 #a4c1a2;
-	outline-color: #288c21;
-}
-
-.start-vocabulary-test-button {
-	background: #e2d3ff;
-	border-color: #c9bce2 #c2b1e6 #bf9fff;
-	outline-color: #6a4ca7;
-}
-
 .start-vocab-options {
 	display: flex;
 	justify-content: space-between;
+	margin-top: 4px;
+	margin-bottom: 8px;
+	=: center;
 }
 
 .vocab-type {
@@ -372,6 +362,7 @@ li {
 }
 
 .vocab-type p {
+	color: #000;
 	margin-left: 12px;
 }
 
@@ -421,6 +412,10 @@ li {
 	animation: pulse 1.6s infinite;
 }
 
+.start-button-wrapper:not( .is-inactive ) .start-button {
+	animation: pulse 2s infinite;
+}
+
 .start-button-wrapper:not( .is-inactive ):hover img {
 	transform: scale( 1.2 );
 }
@@ -429,22 +424,31 @@ li {
 	cursor: pointer;
 	display: block;
 	font-size: 12px;
-	text-align: right;
+	text-align: center;
 	text-decoration: underline;
 	margin-top: 12px;
+}
+
+.selected-words-prompt:first-of-type {
+	margin-right: 6px;
 }
 
 .start-button-wrapper.is-inactive .selected-words-prompt {
 	pointer-events: none;
 }
 
-.file-upload {
-	font-size: 14px;
+.file-upload.toggle {
+	font-size: 12px;
+	margin-top: 12px;
+	display: none;
 }
 
-.file-upload input {
-	margin: 0 12px;
-	max-width: 100%;
+.file-upload.toggle p {
+	font-size: 12px;
+}
+
+.file-upload.toggle input {
+	margin-top: 12px;
 }
 
 .options-menu {
@@ -466,34 +470,89 @@ li {
 	text-decoration: none;
 }
 
-.options-menu .practise-options {
+.options-menu .quick-links {
 	align-items: baseline;
 	display: flex;
 	margin-right: auto;
-	margin-left: 18px;
+	margin-left: 26px;
 }
 
-.options-menu .practise-options a {
-	animation: pulse-orange 2s infinite;
-	margin-right: 14px;
+.mute,
+.not-mute {
+	display: none;
 }
 
-.options-menu .practise-options a,
-.has-begun-vocab-test .options-menu a {
+.options-menu:not( .is-muted ) .not-mute,
+.options-menu.is-muted .mute {
+	display: block;
+}
+
+.options-menu .quick-links a {
+	background: 0;
+	padding: 4px 8px;
+	margin: auto;
+	width: 24px;
+	height: 24px;
+}
+
+.options-menu .quick-links a:hover {
+	transform: scale( 0.9 );
+}
+
+.options-menu .quick-links {
 	background: #ee6c4d;
 	color: #fff;
+	border-bottom-left-radius: 12px;
+	border-bottom-right-radius: 12px;
+	padding-bottom: 2px;
+}
+
+.quick-links svg {
+	fill: white;
+	fill: rgba( 255, 255, 255, 0.85 );
+	height: 20px;
+	margin-top: 2px;
+}
+
+.quick-links .heightened svg {
+	height: 24px;
+	margin-top: 0;
+}
+
+.reset-test-option {
+	display: none;
+}
+
+.reset-test-option a {
+	background: #ee6c4d;
+	color: white;
+}
+
+.has-begun-vocab-test:not( .has-begun-conjugation-test ):not( .has-begun-declension-test )
+	.reset-test-option,
+.has-begun-vocab-test.is-competitive-mode .reset-test-option {
+	display: flex;
 }
 
 .options-menu .course-options {
-	align-items: stretch;
+	align-items: flex-start;
 	display: flex;
+}
+
+.has-begun-vocab-test.is-competitive-mode .practise-prompt,
+.has-begun-vocab-test.is-competitive-mode .course-options,
+.has-begun-vocab-test:not( .has-begun-declension-test ):not( .has-begun-conjugation-test )
+	.practise-prompt,
+.has-begun-vocab-test:not( .has-begun-declension-test ):not( .has-begun-conjugation-test )
+	.course-options {
+	display: none;
 }
 
 .select-all-option {
 	cursor: pointer;
 	margin-top: 14px;
 	background: white;
-	display: inline-block;
+	display: block;
 	float: right;
 	padding: 8px 12px;
 	border-radius: 8px;
@@ -549,13 +608,16 @@ li {
 }
 
 .literature-vocabulary .row-wrapper {
-	margin-bottom: 32px;
 	width: 100%;
 }
 
 .john-taylor-vocabulary {
-	display: flex;
+	display: none;
 	flex-direction: row;
+}
+
+.is-literature .john-taylor-vocabulary {
+	display: flex;
 }
 
 .john-taylor-vocabulary .literature-heading {
@@ -563,13 +625,18 @@ li {
 	width: 70%;
 }
 
+.literature-heading p {
+	letter-spacing: -0.2px;
+}
+
 .john-taylor-vocabulary .button-group {
 	margin: auto;
-	height: 80%;
+	border-radius: 12px;
 }
 
 .john-taylor-vocabulary .vocab-type {
 	text-align: center;
+	min-height: 50px;
 }
 
 .john-taylor-vocabulary .button-group p {
@@ -590,17 +657,55 @@ li {
 
 .top-footer-toggle {
 	background: #ee6c4d;
-	border-top-right-radius: 12px;
-	border-bottom-right-radius: 12px;
-	box-shadow: 2px 2px #756865;
+	border: 3px solid #cc593e;
+	border-left: 0;
+	border-top: 0;
+	border-bottom-right-radius: 24px;
 	cursor: pointer;
 	display: none;
-	height: 30px;
+	height: 50px;
 	position: fixed;
-	width: 28px;
+	width: 50px;
 	left: 0;
 	top: 0;
 	z-index: 3;
+}
+
+.footer-collapse {
+	background: #ec6c4c;
+	display: inline-block;
+	position: fixed;
+	bottom: 55px;
+	z-index: 1;
+	left: 20px;
+	cursor: pointer;
+	border-radius: 99%;
+	padding: 4px;
+}
+
+.footer-collapse.collapsed {
+	display: none;
+}
+
+.footer-collapse:hover {
+	transform: scale( 1.1 );
+}
+
+.footer-collapse svg {
+	width: 32px;
+	height: 28px;
+	fill: white;
+}
+
+.hide-footer .footer-collapse.collapsed {
+	display: inline-block;
+	bottom: inherit;
+	top: 10px;
+	z-index: 3;
+}
+
+.hide-footer .footer-collapse {
+	display: none;
 }
 
 .footer {
@@ -620,29 +725,84 @@ li {
 	display: block;
 }
 
-.footer-links {
+.footer-items {
 	align-items: center;
 	display: flex;
+	height: 90px;
+	justify-content: center;
 	margin: auto;
-	margin-left: 12px;
-	height: 80px;
 }
 
-.footer-links a {
+.is-competitive-mode .footer-items {
+	visibility: hidden;
+}
+
+.footer a {
 	cursor: pointer;
 	color: #fff;
-	margin-right: 24px;
+	background: #3a5087;
+	padding: 10px 22px;
+	border-bottom: 3px solid #324677;
+	font-size: 20px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+	letter-spacing: 0.2px;
+	box-shadow: 0 0 0 1px #2b3d6c;
+}
+
+.footer-items a:hover {
+	text-decoration: none;
+}
+
+.footer-item:not( .is-active ):hover {
+	border-radius: 8px;
+	transform: scale( 1.1 );
+}
+
+.footer a:first-of-type {
+	border-top-left-radius: 12px;
+	border-bottom-left-radius: 12px;
+}
+
+.footer-items a:last-of-type {
+	border-bottom-right-radius: 12px;
+	border-top-right-radius: 12px;
+}
+
+.footer-items a.is-active {
+	background: #1a2b63;
+	border-bottom: 3px solid #121d40;
+	pointer-events: none;
+}
+
+.dummy-link.view-games-link {
+	visibility: hidden;
+	margin-left: 24px;
 }
 
 .view-games-link {
-	margin: auto;
+	margin: auto 0;
 	margin-right: 24px;
 	font-size: 18px;
 	color: white;
+	border-radius: 12px;
 }
 
 .view-games-link a {
 	cursor: pointer;
+	font-size: 17px;
+	font-weight: 500;
+}
+
+.footer .view-games-link a {
+	border-radius: 6px;
+	padding: 6px 8px;
+	font-size: 15px;
+	text-decoration: none;
+}
+
+.view-games-link:hover {
+	transform: scale( 1.05 );
 }
 
 a:hover {
@@ -666,7 +826,8 @@ a:hover {
 
 .left-content {
 	margin-right: 12px;
-	width: 25%;
+	max-width: 30%;
+	width: 400px;
 }
 
 .main-content {
@@ -675,7 +836,7 @@ a:hover {
 	margin: 20px;
 	margin-bottom: 120px;
 	margin-top: 30px;
-	justify-content: space-evenly;
+	justify-content: space-around;
 }
 
 .hide-footer .main-content {
@@ -725,7 +886,7 @@ a:hover {
 	border-bottom-right-radius: 12px;
 }
 
-.literature-vocabulary .john-taylor-vocabulary .vocab-type:nth-of-type( n ).has-selected {
+.john-taylor-vocabulary .vocab-type.has-selected {
 	border-radius: 12px;
 }
 
@@ -742,13 +903,13 @@ a:hover {
 	border-radius: 14px;
 	display: inline-flex;
 	height: 24px;
+	transition: width 0.6s ease;
 	width: 50%;
 	margin: auto 0;
 }
 
 .progress-bar .inner-progress {
-	background: rgb( 77, 205, 9 );
-	background: linear-gradient( 90deg, rgb( 101, 212, 42 ) 36%, rgba( 81, 214, 10, 1 ) 92% );
+	background: #1ed15a;
 }
 
 .times-wrong,
@@ -779,6 +940,13 @@ a:hover {
 	text-decoration: underline;
 }
 
+.declension-return-to-test-prompt button#return-to-test-prompt {
+	width: auto;
+	padding: 6px;
+	font-size: 14px;
+	box-shadow: 0 3px 4px rgba( 0, 0, 0, 0.2 );
+}
+
 .celebration {
 	display: none;
 }
@@ -792,6 +960,7 @@ a:hover {
 	display: none;
 }
 
+.export-prompt,
 .sidebar-prompt,
 .sidebar-prompt:hover {
 	color: #fff;
@@ -817,11 +986,43 @@ a:hover {
 	text-decoration: underline;
 }
 
+.leaderboard-submit-success,
+.time-ended .competition-warning,
+.competition-leaderboard-text-success,
+.competition-leaderboard-text-fail {
+	display: none;
+}
+
+.leaderboard-submitted .leaderboard-submit-success,
+.time-ended .competition-correction,
+.leaderboard-eligible .competition-leaderboard-text-success,
+.leaderboard-ineligible .competition-leaderboard-text-fail {
+	display: block;
+}
+
+.competition-leaderboard-text-fail a {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
 .leaderboard-submit-name {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
 	padding-bottom: 24px;
+	align-items: center;
+}
+
+.leaderboard-submitted .leaderboard-submit-name {
+	display: none;
+}
+
+.leaderboard-submit-success {
+	text-align: center;
+	margin: 0 24px;
+	letter-spacing: -0.2px;
+	font-size: 15px;
+	margin-bottom: 12px;
 }
 
 .leaderboard-submit-name p {
@@ -829,6 +1030,7 @@ a:hover {
 }
 
 .leaderboard-submit-name .compact-options .option-button {
+	box-shadow: none;
 	margin: 0;
 }
 
@@ -842,9 +1044,12 @@ a:hover {
 }
 
 .leaderboard-submit-name input {
-	height: 45px;
-	margin: auto 12px auto;
+	margin: auto 16px auto;
 	max-width: 100%;
+	padding: 12px 6px;
+	width: 300px;
+	border-radius: 6px;
+	border: 0;
 }
 
 .leaderboard-button {
@@ -957,6 +1162,12 @@ a:hover {
 	display: block;
 	padding: 24px;
 	font-size: 18px;
+	letter-spacing: -0.25px;
+}
+
+.is-competitive-mode.has-begun-conjugation-test #vocab-test-competition,
+.is-competitive-mode.has-begun-declension-test #vocab-test-competition {
+	font-size: 16px;
 }
 
 .is-competitive-mode .main-content {
@@ -995,13 +1206,12 @@ a:hover {
 .has-begun-declension-test:not( .is-competitive-mode ) .left-content .select-declensions-wrapper,
 .has-begun-conjugation-test:not( .is-competitive-mode ) .left-content .select-verbs-wrapper,
 .has-begun-declension-test:not( .is-competitive-mode ) .show-word-table-toggle,
-.has-begun-vocab-test .options-menu a:nth-of-type( 1 ),
 .has-begun-conjugation-test #vocab-question-details,
 .has-begun-declension-test #vocab-question-details,
 #vocab-tester-wrapper.time-ended .show-word-table-toggle-competition,
 .has-begun-declension-test #vocab-tester-wrapper.time-ended #word-table-prompt-competitive,
 .has-begun-conjugation-test #vocab-tester-wrapper.time-ended #word-table-prompt-competitive,
-.has-begun-conjugation-test:not( .is-competitive-mode ) .show-word-table-toggle a:first-of-type {
+.has-begun-conjugation-test:not( .is-competitive-m.ode ) .show-word-table-toggle a:first-of-type {
 	display: block;
 }
 
@@ -1020,25 +1230,22 @@ a:hover {
 	flex-wrap: wrap;
 }
 
+.further-content h3,
 .select-declensions-wrapper h3,
 .select-verbs-wrapper h3 {
 	font-size: 16px;
+}
+
+.is-table-mode .further-content h3 {
+	display: none;
 }
 
 .select-declensions .toggle input {
 	margin-left: 8px;
 }
 
-.select-declensions .toggle.inset {
-	margin-left: 12px;
-}
-
 .select-verbs .toggle input {
 	margin-left: 10px;
-}
-
-.select-verbs-wrapper .verb-division {
-	margin-top: 14px;
 }
 
 .select-declensions p {
@@ -1047,41 +1254,133 @@ a:hover {
 
 .select-verbs p {
 	font-size: 12px;
+	margin: 10px 0;
 }
 
-.select-declensions .toggle.inset p {
-	font-size: 12px;
-	margin-top: 8px;
-	margin-bottom: 8px;
-}
-
-.select-declensions .toggle.neuter {
-	margin-top: 24px;
-}
-
-.select-declensions .toggle.neuter p {
-	font-size: 12px;
+.verb-toggle-group {
+	border: 1px solid #fff;
+	border-color: rgba( 255, 255, 255, 0.46 );
+	margin-bottom: 12px;
+	padding: 6px 12px;
 }
 
 .select-verbs-wrapper .singular-only-option {
 	margin-top: 24px;
 	flex-direction: column;
+	border: 1px solid #1a2b63;
+	padding: 12px;
+	background: #3b5087;
 }
 
 .select-verbs-wrapper .singular-only-option p {
-	font-size: 15px;
+	font-size: 14px;
 	line-height: 1.5;
-	margin-bottom: 6px;
+	margin: 0;
 	text-align: center;
+	font-weight: 500;
+	margin-bottom: 6px;
 }
 
 .select-verbs-wrapper .singular-only-option input {
 	margin: auto;
 }
 
-.has-begun-conjugation-test .vocab-submit-answer-wrapper,
-.has-begun-declension-test .vocab-submit-answer-wrapper {
-	margin-top: 32px;
+.noun-types {
+	margin-right: 12px;
+}
+
+.noun-types .toggle,
+.case-types .toggle {
+	border: 1px solid #fff;
+	margin-bottom: 18px;
+	padding: 14px 12px;
+	width: 155px;
+	border-color: rgba( 255, 255, 255, 0.65 );
+	border-radius: 4px;
+}
+
+.noun-types .toggle p,
+.case-types .toggle p {
+	margin: auto 0;
+}
+
+.noun-types .toggle.other {
+	border: 0;
+	padding: 0;
+	margin-left: 0;
+	width: 164px;
+}
+
+.other-toggles-wrapper {
+	padding: 0 4px;
+	margin-top: 24px;
+	width: 145px;
+}
+
+.other-toggles-wrapper .toggle p {
+	font-size: 12px;
+}
+
+.other-toggles-wrapper .toggle input {
+	margin-left: 14px;
+}
+
+.vocab-submit-answer-wrapper {
+	display: flex;
+	flex-direction: column;
+	margin: 0 60px;
+}
+
+.vocab-submit-prompt {
+	text-align: left;
+	margin-top: 36px;
+}
+
+.vocab-answer-margin {
+	margin-left: -12px;
+	text-align: left;
+}
+
+#vocab-answer {
+	border: 2px solid #374d84;
+	border-radius: 8px;
+	padding: 4px 6px;
+	height: 38px;
+	outline-color: #1a2b61;
+	width: calc( 100% - 12px );
+}
+
+.progress-indicator {
+	letter-spacing: 0.1px;
+	margin: auto;
+	margin-left: 12px;
+	min-width: 60px;
+}
+
+.progress-indicator p {
+	margin: 0;
+	font-size: 15px;
+}
+
+.progress-indicator span:first-of-type {
+	position: relative;
+	bottom: 5px;
+	margin-right: 5px;
+	min-width: 10px;
+}
+
+.progress-indicator span:last-of-type {
+	position: relative;
+	top: 5px;
+	min-width: 10px;
+	text-align: right;
+}
+
+.has-begun-declension-test .progress-indicator span,
+.has-begun-conjugation-test .progress-indicator span,
+.is-competitive-mode .progress-indicator span {
+	position: static;
+	margin: 0;
 }
 
 .vocab-submit-answer-wrapper input {
@@ -1093,13 +1392,19 @@ a:hover {
 }
 
 .submitted-grammar-info {
-	display: none;
-	padding: 16px;
-	margin-top: 18px;
+	margin-top: 12px;
+	height: 0;
+	opacity: 0;
+	overflow: hidden;
+	transition: 0.2s ease;
+	visibility: hidden;
+	display: flex;
 }
 
 .submitted-grammar-info.is-active {
-	display: flex;
+	height: 100%;
+	opacity: 1;
+	visibility: visible;
 }
 
 .submitted-grammar-info img {
@@ -1107,18 +1412,19 @@ a:hover {
 	border-radius: 12px;
 	padding: 4px;
 	margin-right: 18px;
-	width: 80px;
+	width: 65px;
 }
 
 .submitted-grammar-info p {
 	background: #fff;
 	border-radius: 8px;
 	color: #000;
-	padding: 12px;
+	padding: 8px 12px;
 	line-height: 1.5;
 	margin: auto 0;
 	text-align: center;
 	width: auto;
+	font-size: 15px;
 }
 
 .is-competitive-mode .submitted-grammar-info {
@@ -1140,7 +1446,7 @@ a:hover {
 
 #vocab-submit-word-form {
 	font-weight: 700;
-	font-size: 21px;
+	font-size: 1.2em;
 }
 
 #vocab-tester-wrapper.is-complete .celebration {
@@ -1152,12 +1458,8 @@ a:hover {
 	align-items: stretch;
 }
 
-.has-begun-vocab-test #vocab-tester-wrapper .right-content {
-	align-self: flex-start;
-}
-
-.has-begun-vocab-test .practise-prompt {
-	display: none;
+.has-begun-conjugation-test.is-competitive-mode #vocab-tester-wrapper.time-ended {
+	align-items: flex-start;
 }
 
 .vocab-submit-buttons {
@@ -1166,7 +1468,7 @@ a:hover {
 	margin-top: 18px;
 }
 
-.has-begun-conjugation-test:not( .is-competitive-mode ) .right-content {
+.has-begun-conjugation-test .right-content {
 	align-self: flex-start;
 }
 
@@ -1175,19 +1477,71 @@ a:hover {
 }
 
 #vocab-tester-wrapper .progress-bar {
-	border-radius: 2px;
-	margin-bottom: 12px;
-	max-width: 400px;
+	border-radius: 8px;
+	width: 100%;
+	margin: 0;
 }
 
 #vocab-tester-wrapper .progress-bar .inner-progress {
-	border-radius: 2px;
+	border-radius: inherit;
+	height: inherit;
+}
+
+.select-verbs-wrapper h3,
+.select-declensions-wrapper h3,
+.has-begun-vocab-test:not( .is-displaying-flashcards ) .focus-on-wrapper,
+.further-content h3 {
+	background: #3b5087;
+	border-top-left-radius: 12px;
+	border-top-right-radius: 12px;
+	box-shadow: 5px 0 #3b5087;
+	margin: -12px;
+	margin-bottom: 12px;
+	padding: 14px;
+}
+
+.select-verbs-wrapper h3,
+.select-declensions-wrapper h3,
+.further-content h3 {
+	padding: 16px;
+}
+
+.has-begun-vocab-test:not( .is-displaying-flashcards ) .focus-on-wrapper h3 {
+	margin: 0;
+	border-bottom: 1px solid white;
+	padding-bottom: 8px;
+	border-color: rgba( 255, 255, 255, 0.46 );
+}
+
+.flashcard-keyboard-shortcuts-guide {
+	margin-top: 32px;
+}
+
+.flashcard-keyboard-shortcuts-guide li {
+	letter-spacing: -0.2px;
+}
+
+.focus-on-wrapper p {
+	font-size: 14px;
+	margin: 0 2px;
+	margin-top: 8px;
+}
+
+.progress-wrapper {
+	display: flex;
+	background: #3b5087;
+	padding: 16px;
+	margin: -12px;
+	border-top-left-radius: 12px;
+	border-top-right-radius: 12px;
+	box-shadow: 5px 0 #3b5087;
+	margin-bottom: 32px;
 }
 
 #vocab-tester-wrapper .left-content {
+	flex: 1 0 400px;
 	margin-right: 32px;
-	flex-shrink: 0;
-	width: 20%;
+	width: auto;
 }
 
 .is-competitive-mode #vocab-tester-wrapper .left-content {
@@ -1211,12 +1565,19 @@ a:hover {
 #vocab-tester-wrapper .right-content {
 	flex-shrink: 1;
 	width: 100%;
+	max-width: 100%;
+	min-width: 0;
 }
 
 .further-content {
 	display: none;
-	width: 50%;
+	flex-direction: column;
 	margin-left: 32px;
+	flex: 1 0 25%;
+}
+
+.further-content.is-active {
+	display: flex;
 }
 
 .further-content table,
@@ -1229,14 +1590,13 @@ a:hover {
 	text-align: center;
 }
 
-.further-content table {
-	min-width: 350px;
-	overflow: hidden;
-}
-
 .further-content td.is-highlighted {
 	background-color: #ee6c4d;
 	color: #fff;
+}
+
+.verb-table-settings {
+	margin-bottom: 8px;
 }
 
 .noun-table,
@@ -1257,15 +1617,38 @@ a:hover {
 }
 
 .noun-table {
+	margin: auto;
 	overflow: scroll;
 }
 
+.noun-table tr td:first-of-type {
+	width: 50px;
+}
+
+.verb-tables {
+	margin: auto 0;
+	margin-top: 12px;
+}
+
+.is-table-mode .further-content .verb-tables {
+	margin: 0;
+}
+
 .further-content td {
-	padding: 12px;
+	padding: 8px;
+	font-size: 16px;
 }
 
 .further-content th {
 	padding: 8px;
+}
+
+.further-content .noun-table td {
+	padding: 12px 16px;
+}
+
+.further-content .noun-table tr:first-of-type th {
+	font-size: 15px;
 }
 
 .further-content table p {
@@ -1289,9 +1672,10 @@ a:hover {
 	cursor: pointer;
 	display: none;
 	margin-top: 24px;
-	font-size: 18px;
 	text-align: right;
 	text-decoration: underline;
+	font-size: 15px;
+	letter-spacing: -0.1px;
 }
 
 .has-begun-conjugation-test .show-enhanced-verb-table-prompt {
@@ -1318,6 +1702,9 @@ a:hover {
 }
 
 .verb-table input {
+	border: 0;
+	border-radius: 2px;
+	padding: 4px;
 	display: none;
 	margin: auto;
 }
@@ -1328,6 +1715,11 @@ a:hover {
 
 .further-content .verb-table p {
 	font-weight: normal;
+	margin: 0;
+}
+
+.further-content .verb-table .verb-table-title {
+	margin-bottom: 18px;
 }
 
 .verb-tables-heading {
@@ -1362,17 +1754,17 @@ a:hover {
 }
 
 #vocab-question {
-	font-size: 2em;
-	margin-bottom: 12px;
+	font-size: 2.3em;
+	margin: 0;
+	margin-bottom: 9px;
 }
 
 #vocab-question-details,
 #vocab-question-table-mode-details {
-	border-bottom: 1px solid #fff;
 	margin: 0;
-	font-size: 14px;
+	font-size: 1.1em;
+	border-bottom: 1px solid #fff;
 	padding-bottom: 12px;
-	text-align: center;
 }
 
 #vocab-question-table-mode-details,
@@ -1382,8 +1774,19 @@ a:hover {
 	display: none;
 }
 
-.vocab-tester-wrapper {
+.is-table-mode #vocab-question-table-mode {
+	font-size: 26px;
+	margin-bottom: 12px;
+}
+
+.is-table-mode #vocab-question-table-mode-details {
+	font-size: 15px;
 	text-align: center;
+}
+
+.verb-tables .verb-table .table-mode-prompt {
+	margin: 14px 0;
+	font-size: 15px;
 }
 
 .confetti {
@@ -1391,8 +1794,12 @@ a:hover {
 }
 
 .wrong-vocab-list {
-	max-height: 220px;
+	max-height: 250px;
 	overflow-y: scroll;
+}
+
+.is-displaying-flashcards .wrong-vocab-list {
+	max-height: 210px;
 }
 
 .options-wrapper {
@@ -1414,7 +1821,12 @@ a:hover {
 }
 
 .option-button p {
+	color: #000;
 	text-align: center;
+}
+
+.option-button:focus {
+	outline: 1px auto #445ea0;
 }
 
 .option-button:hover {
@@ -1484,7 +1896,7 @@ a:hover {
 @keyframes pulse {
 	0% {
 		transform: scale( 0.95 );
-		box-shadow: 0 0 0 0 rgba( 0, 0, 0, 0.7 );
+		box-shadow: 0 0 0 0 rgba( 238, 108, 77, 0.7 );
 	}
 
 	70% {
@@ -1521,6 +1933,58 @@ a:hover {
 	font-size: 13px;
 }
 
+.test-settings-wrapper h3 {
+	margin: 8px 0;
+}
+
+.toggle-settings-text {
+	margin: auto 0;
+}
+
+.test-settings-wrapper .toggle {
+	border: 1px solid white;
+	padding: 8px 6px;
+	border-color: rgba( 255, 255, 255, 0.46 );
+	margin-bottom: 12px;
+	padding-left: 12px;
+	border-radius: 12px;
+}
+
+.test-settings-wrapper .toggle.hard-difficulty {
+	margin-top: 12px;
+}
+
+.test-settings-wrapper .toggle p {
+	margin: auto 0;
+}
+
+.test-settings-wrapper .toggle-settings-header {
+	font-weight: 600;
+	font-size: 11px;
+	padding-bottom: 4px;
+}
+
+.settings-test-limit {
+	display: flex;
+}
+
+.settings-test-limit select {
+	display: none;
+	height: 25px;
+	margin: auto 8px;
+}
+
+.upload-custom-file-link {
+	text-align: right;
+}
+
+.upload-custom-file-link a {
+	cursor: pointer;
+	font-size: 13px;
+	margin-right: 6px;
+	text-decoration: underline;
+}
+
 .practise-declensions-link {
 	flex: 1;
 	margin: auto;
@@ -1546,28 +2010,15 @@ a:hover {
 	margin: auto 0;
 }
 
-.difficulty-text {
-	margin: auto 0;
-	margin-right: 8px;
-}
-
-.toggle.extreme-difficulty {
-	margin-top: 24px;
-}
-
-.extreme-difficulty .difficulty-text {
-	margin: 0;
-	margin-right: 12px;
-}
-
 .max-word-prompt {
 	display: none;
 	margin-bottom: 12px;
 }
 
 .configure-values {
-	display: flex;
 	align-items: center;
+	display: flex;
+	justify-content: center;
 }
 
 .configure-values input {
@@ -1630,19 +2081,156 @@ a:hover {
 	width: 50%;
 }
 
+.modal-wrapper.games-modal .modal-content h3 {
+	border: 0;
+	padding: 0;
+}
+
+.modal-wrapper.warning-modal {
+	background: rgba( 0, 0, 0, 0.55 );
+}
+
+.modal-wrapper.warning-modal .modal-content {
+	background: #3b5087;
+	color: #fff;
+	margin: auto;
+	max-width: 450px;
+	width: 80%;
+	border: 2px solid #121c40;
+	border-radius: 18px;
+	position: relative;
+	bottom: 15px;
+}
+
+.modal-wrapper.about-modal .modal-content {
+	margin: auto;
+	max-width: 750px;
+	width: 80%;
+	position: relative;
+	bottom: 25px;
+}
+
+.modal-wrapper.warning-modal .modal-content img {
+	-webkit-filter: invert( 100% );
+	filter: invert( 100% );
+}
+
+.modal-wrapper.warning-modal .modal-content h3 {
+	border-color: #fff;
+}
+
+.modal-wrapper.warning-modal .modal-content p {
+	display: none;
+	letter-spacing: 0.2px;
+	line-height: 1.5;
+	margin: 24px 0;
+}
+
+.has-begun-vocab-test:not( .has-begun-conjugation-test ):not( .is-displaying-flashcards )
+	.warning-modal
+	.vocab-warning-text,
+.is-displaying-flashcards .warning-modal .modal-content .flashcards-warning-text,
+.is-table-mode .warning-modal .modal-content .verb-warning-text {
+	display: block;
+}
+
+.warning-actions {
+	display: flex;
+	justify-content: center;
+}
+
+.about-me {
+	display: flex;
+	align-items: center;
+}
+
+.about-modal .modal-content h3 {
+	border-bottom: 0;
+	text-align: left;
+}
+
+.about-links {
+	display: flex;
+	font-size: 14px;
+	margin: 18px 0;
+}
+
+.about-links p {
+	margin: 0;
+}
+
+.open-source {
+	font-size: 12px;
+	text-align: right;
+	transform: skew( -2deg, 0deg );
+}
+
+.about-title span {
+	font-size: 11px;
+	margin-left: 18px;
+	position: relative;
+	bottom: 8px;
+}
+
+.about-links svg {
+	margin: auto 4px;
+	margin-right: 12px;
+}
+
+.about-links a {
+	color: #3c434a;
+	cursor: pointer;
+	font-size: 12px;
+}
+
+.about-signature {
+	text-align: right;
+	transform: skew( -4deg, 0deg );
+	margin-top: 9px;
+	font-size: 14px;
+}
+
+.left-about-me {
+	margin-right: 24px;
+	color: #2c3338;
+	letter-spacing: -0.1px;
+	font-size: 15px;
+	line-height: 1.3;
+}
+
+.left-about-me .about-greeting {
+	font-size: 18px;
+	font-weight: 600;
+}
+
+.gravatar {
+	text-align: center;
+	margin-bottom: 12px;
+}
+
+.gravatar img {
+	height: 120px;
+	border-radius: 99px;
+	border: 2px solid #000;
+}
+
 .game-wrapper {
+	border: 1px solid #dcdcde;
 	display: flex;
 	flex-direction: column;
 	margin-right: 14px;
 	background: #f6f7f7;
 	padding: 8px;
 	padding-top: 0;
-	border-radius: 20px;
+	border-radius: 14px;
 	margin-top: 16px;
+	align-items: center;
 }
 
 .game-wrapper img {
 	max-width: 100%;
+	align-self: flex-start;
+	height: auto;
 }
 
 .word-games {
@@ -1791,6 +2379,7 @@ a:hover {
 
 .is-displaying-flashcards .flashcard-settings {
 	display: block;
+	margin-bottom: 32px;
 }
 
 .is-displaying-flashcards .wrong-vocab-list a {
@@ -1920,6 +2509,7 @@ a:hover {
 .flashcard-star-button {
 	align-self: flex-end;
 	cursor: pointer;
+	height: 45px;
 }
 
 .flashcard-star-button svg {
@@ -1957,12 +2547,13 @@ a:hover {
 	text-decoration: underline;
 }
 
-/* Switch styles mainly from w3schools */
 .switch {
 	position: relative;
 	display: inline-block;
 	width: 60px;
 	height: 34px;
+	margin-top: auto;
+	margin-bottom: auto;
 }
 
 .switch input {
@@ -1994,6 +2585,10 @@ a:hover {
 	left: 4px;
 	bottom: 4px;
 	background-color: #fff;
+}
+
+input:checked + .slider:before,
+input:checked + .slider:after {
 	-webkit-transition: 0.4s;
 	transition: 0.4s;
 }
@@ -2025,7 +2620,7 @@ input:checked + .slider:after {
 	border: 0;
 	color: #fff;
 	cursor: pointer;
-	padding: 15px 14px;
+	padding: 13px;
 	border-bottom: 1px solid #fff;
 }
 
@@ -2057,13 +2652,14 @@ button.verb-table-option-button:hover {
 	display: none;
 	font-size: 2em;
 	font-weight: 600;
-	margin: 10px auto;
+	margin: 6px 0;
 	text-align: center;
 }
 
 .table-mode-options {
 	display: none;
 	justify-content: flex-end;
+	margin-top: 18px;
 }
 
 .table-mode-options a {
@@ -2075,6 +2671,16 @@ button.verb-table-option-button:hover {
 .table-mode-options a:first-of-type {
 	margin: auto;
 	margin-left: 8px;
+}
+
+.table-mode-options button.table-mode-button:not( .option-button ) {
+	width: auto;
+	font-size: 14px;
+	padding: 8px;
+	margin: 0;
+	margin-right: 16px;
+	border-radius: 6px;
+	box-shadow: 0 4px 8px rgba( 0, 0, 0, 0.2 );
 }
 
 .is-table-mode .verb-table-title,
@@ -2096,6 +2702,10 @@ button.verb-table-option-button:hover {
 	width: 100%;
 }
 
+.is-table-mode .left-content {
+	max-width: 20%;
+}
+
 .is-table-mode .verb-table input,
 .is-table-mode #vocab-question-table-mode,
 .is-table-mode #vocab-question-table-mode-details,
@@ -2109,6 +2719,8 @@ button.verb-table-option-button:hover {
 
 .is-table-mode .verb-table.is-marked table p {
 	display: block;
+	margin: 0;
+	letter-spacing: -0.2px;
 }
 
 .is-table-mode .further-content td.is-highlighted {
@@ -2121,23 +2733,38 @@ button.verb-table-option-button:hover {
 
 .is-table-mode .further-content td.answer-incorrect {
 	background: #d63639;
+	justify-content: space-between;
+	padding: 12px 8px;
 }
 
-.is-table-mode .further-content table {
-	width: 50%;
+.is-table-mode .verb-table td {
+	min-width: 210px;
+}
+
+.is-table-mode .verb-table td:first-of-type {
+	min-width: 0;
+	width: 45px;
 }
 
 .is-table-mode .further-content td.answer-incorrect p {
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
 }
 
-.is-table-mode .further-content td.answer-incorrect span {
+.is-table-mode .further-content td.answer-incorrect span:first-of-type {
 	margin-bottom: 12px;
 	font-size: 11px;
 	margin: auto;
+	margin-right: 6px;
 	margin-left: 0;
 	text-align: left;
+}
+
+.is-table-mode .verb-table tr:first-of-type td:first-of-type,
+.is-table-mode .verb-table tr:nth-of-type( 5 ) td:first-of-type {
+	font-size: 14px;
+	padding: 8px 0;
 }
 
 .is-table-mode .verb-table.is-marked input {
@@ -2162,6 +2789,10 @@ button.verb-table-option-button:hover {
 	width: auto;
 }
 
+.is-displaying-enhanced-word-table h3 {
+	display: none;
+}
+
 .is-displaying-enhanced-word-table .left-content,
 .is-displaying-enhanced-word-table.is-competitive-mode
 	#vocab-tester-wrapper.main-content
@@ -2176,6 +2807,11 @@ button.verb-table-option-button:hover {
 	margin-bottom: 18px;
 }
 
+.is-displaying-enhanced-word-table .further-content table th,
+.is-displaying-enhanced-word-table .further-content table td {
+	border-color: rgba( 255, 255, 255, 0.46 );
+}
+
 .is-displaying-enhanced-word-table #other-verbs-table {
 	display: flex;
 	flex-direction: column;
@@ -2183,8 +2819,7 @@ button.verb-table-option-button:hover {
 }
 
 .is-displaying-enhanced-word-table #other-verbs-table table {
-	margin: auto;
-	margin-bottom: 12px;
+	margin: 12px auto;
 }
 
 .is-displaying-enhanced-word-table .verb-table-settings {
@@ -2193,15 +2828,14 @@ button.verb-table-option-button:hover {
 }
 
 .is-displaying-enhanced-word-table .word-table-select-wrapper.toggle {
-	margin-left: 0;
-	margin-bottom: 12px;
+	margin: auto 0;
 }
 
 .is-displaying-enhanced-word-table .declension-return-to-test-prompt {
 	display: block;
 	font-size: 24px;
-	margin-top: 0;
-	margin-bottom: 8px;
+	margin: auto;
+	margin-right: 0;
 }
 
 .is-displaying-enhanced-word-table .verb-table-select-wrapper.toggle,
@@ -2236,8 +2870,9 @@ button.verb-table-option-button:hover {
 
 .is-displaying-enhanced-word-table .subjunctive-verb-table-toggle {
 	display: flex;
-	margin-top: 3px;
-	margin-left: 32px;
+	font-weight: 600;
+	margin: auto 0;
+	margin-left: 16px;
 }
 
 .is-displaying-enhanced-word-table .subjunctive-verb-table-toggle input {
@@ -2253,9 +2888,48 @@ button.verb-table-option-button:hover {
 	margin-top: 8px;
 }
 
+.is-displaying-enhanced-word-table .further-content .verb-table .verb-table-title {
+	font-size: 14px;
+	margin-bottom: 8px;
+	font-weight: 500;
+}
+
 @media only screen and ( max-width: 1800px ) {
 	.toggle input:checked + .slider:before {
 		display: none;
+	}
+}
+
+@media only screen and ( max-width: 1290px ) {
+	#vocab-tester-wrapper .left-content {
+		flex: 1 0 250px;
+	}
+
+	.is-table-mode .verb-table td {
+		min-width: 210px;
+	}
+
+	.noun-types {
+		margin-right: 0;
+	}
+
+	#vocab-tester-wrapper {
+		align-items: flex-start;
+		flex-direction: column-reverse;
+	}
+
+	#vocab-tester-wrapper .left-content,
+	#vocab-tester-wrapper .right-content,
+	.further-content {
+		margin: auto;
+		margin-bottom: 32px;
+		text-align: center;
+		min-width: calc( 100% - 48px ) !important;
+		width: calc( 100% - 48px ) !important;
+	}
+
+	.right-content {
+		order: 1;
 	}
 }
 
@@ -2274,6 +2948,15 @@ button.verb-table-option-button:hover {
 		width: 100%;
 	}
 
+	.test-settings-wrapper .toggle {
+		flex-direction: column;
+	}
+
+	.switch {
+		margin: auto;
+		margin-top: 8px;
+	}
+
 	.verb-table input {
 		width: 100px;
 	}
@@ -2288,6 +2971,10 @@ button.verb-table-option-button:hover {
 
 	.is-table-mode .declension-return-to-test-prompt {
 		display: none;
+	}
+
+	#vocab-tester-wrapper .right-content {
+		align-self: flex-start;
 	}
 
 	.word-table-select-wrapper select {
@@ -2306,8 +2993,24 @@ button.verb-table-option-button:hover {
 		max-width: 50%;
 	}
 
+	.is-table-mode .verb-table td:first-of-type {
+		min-width: 0;
+	}
+
+	#vocab-question {
+		font-size: 28px;
+	}
+
+	.vocab-submit-answer-wrapper {
+		margin: 0 30px;
+	}
+
 	.modal-wrapper.games-modal .modal-content {
 		width: 80%;
+	}
+
+	.about-me {
+		flex-direction: column;
 	}
 
 	.right-content .literature-vocabulary {
@@ -2334,13 +3037,12 @@ button.verb-table-option-button:hover {
 		border-top-right-radius: 12px;
 	}
 
-	.select-declensions .toggle.neuter {
-		margin-top: 4px;
+	.is-literature .john-taylor-vocabulary {
+		flex-direction: column;
 	}
 
-	/* This is a temporary quick-solution to be re-visited */
-	.john-taylor-vocabulary {
-		display: none;
+	.john-taylor-vocabulary .literature-heading {
+		width: auto;
 	}
 
 	.flashcard-container,
@@ -2348,9 +3050,23 @@ button.verb-table-option-button:hover {
 	.back-flashcard {
 		width: 80%;
 	}
+
+	.footer a,
+	.view-games-link {
+		font-size: 14px;
+		padding: 8px 12px;
+	}
+
+	.dummy-link.view-games-link {
+		display: none;
+	}
 }
 
 @media only screen and ( max-width: 600px ) {
+	body {
+		background-attachment: scroll;
+	}
+
 	#vocab-selector .left-content {
 		width: auto;
 		max-width: calc( 100% - 24px );
@@ -2362,7 +3078,7 @@ button.verb-table-option-button:hover {
 		position: absolute;
 		right: 0;
 		margin-right: 4px;
-		margin-top: -48px;
+		margin-top: -20px;
 	}
 
 	.practise-prompt {
@@ -2372,6 +3088,10 @@ button.verb-table-option-button:hover {
 
 	.select-all-option:last-of-type {
 		margin-bottom: 12px;
+	}
+
+	.gravatar {
+		display: none;
 	}
 
 	.options-menu {
@@ -2397,14 +3117,8 @@ button.verb-table-option-button:hover {
 		font-size: 12px;
 	}
 
-	.introductary-text,
-	.gravatar p {
+	.introductary-text {
 		display: none;
-	}
-
-	.footer-links a {
-		margin-right: 12px;
-		font-size: 12px;
 	}
 
 	.main-content {
@@ -2425,8 +3139,11 @@ button.verb-table-option-button:hover {
 		width: 100%;
 	}
 
-	.has-begun-vocab-test #vocab-tester-wrapper,
-	.vocab-submit-buttons {
+	.progress-indicator {
+		margin: auto;
+	}
+
+	.has-begun-vocab-test #vocab-tester-wrapper {
 		flex-direction: column-reverse;
 	}
 
@@ -2443,14 +3160,6 @@ button.verb-table-option-button:hover {
 
 	#vocab-question-table-mode {
 		font-size: 24px;
-	}
-
-	#vocab-tester-wrapper .left-content,
-	#vocab-tester-wrapper .right-content,
-	.further-content {
-		margin: auto;
-		text-align: center;
-		width: 80%;
 	}
 
 	#vocab-tester-wrapper .right-content,
@@ -2503,8 +3212,29 @@ button.verb-table-option-button:hover {
 		width: 50%;
 	}
 
-	.right-content {
-		order: 1;
+	.options-menu .quick-links {
+		margin-left: 12px;
+	}
+
+	.footer-collapse {
+		bottom: 70px;
+	}
+
+	.footer a {
+		padding: 8px 6px;
+	}
+
+	.footer-items {
+		margin-left: 12px;
+	}
+
+	.footer .view-games-link a {
+		background: inherit;
+		box-shadow: none;
+		padding: 0;
+		border: 0;
+		text-align: center;
+		font-size: 14px;
 	}
 }
 
@@ -2521,5 +3251,13 @@ button.verb-table-option-button:hover {
 
 	.submitted-grammar-info img {
 		display: none;
+	}
+
+	.view-games-link {
+		display: none;
+	}
+
+	.footer-items {
+		margin: auto;
 	}
 }

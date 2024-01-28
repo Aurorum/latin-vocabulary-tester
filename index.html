@@ -28,7 +28,7 @@
 		<script type="text/javascript" src="./scripts.js"></script>
 		<link rel="stylesheet" type="text/css" href="./style.css" />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&amp;family=Roboto&amp;display=swap"
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&amp;display=swap"
 			rel="stylesheet"
 		/>
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-1QZXG1GX8M"></script>
@@ -40,9 +40,6 @@
 			gtag( 'js', new Date() );
 			gtag( 'config', 'G-1QZXG1GX8M' );
 		</script>
-
-		<!-- PWA -->
-		<!-- App Manifest -->
 		<link rel="apple-touch-icon" href="assets/appleIcon.png" />
 		<meta name="theme-color" content="#1b2b63" />
 		<link rel="manifest" href="manifest.json" />
@@ -50,7 +47,7 @@
 	<body>
 		<div class="loading-screen" id="loading">
 			<div class="loading-screen-wrapper">
-				<img src="./assets/dictionary.svg" alt="" />
+				<img src="./assets/gladiator.svg" alt="" />
 				<div class="progress-bar">
 					<div class="inner-progress"></div>
 					<noscript>
@@ -72,14 +69,46 @@
 				<a id="switch-to-mode" onclick="switchMode()">Competitive mode</a>.
 			</p>
 			<div class="top-footer-toggle" onclick="toggleFooter(true)"></div>
+			<a class="footer-collapse collapsed" onclick="toggleFooter(true)">
+				<svg
+					alt="Expand footer"
+					xmlns="http://www.w3.org/2000/svg"
+					height="24"
+					viewBox="0 -960 960 960"
+					width="24"
+				>
+					<path
+						d="m480-340 180-180-57-56-123 123-123-123-57 56 180 180Zm0 260q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"
+					/>
+				</svg>
+			</a>
 		</div>
 		<div id="option" class="options-menu">
-			<div class="practise-options">
-				<a onclick="startTest(true)">Practise noun declensions</a>
-				<a onclick="startTest(false, true)">Practise verb conjugations</a>
+			<div class="quick-links">
+				<a class="not-mute heightened" onclick="muteAudio()"
+					><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+						<path
+							d="M561.539-155.617v-61.999q86.538-27.538 139.422-100Q753.846-390.077 753.846-481q0-90.923-52.885-163.384-52.884-72.462-139.422-100v-61.999Q673.23-776.46 743.537-686.46q70.307 89.999 70.307 205.46 0 115.461-70.307 205.46-70.307 90-181.998 119.923ZM146.156-380.001v-199.998h148.46l171.537-171.536v543.07L294.616-380.001h-148.46Zm415.383 46.154v-294.306q40.461 22 62.537 61.961Q646.153-526.23 646.153-480q0 45.615-22.269 84.884t-62.345 61.269Z"
+						/></svg
+				></a>
+				<a class="mute heightened" onclick="muteAudio()"
+					><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+						<path
+							d="M778.922-74.463 658.307-195.078q-20.769 13.307-43.769 23.076-22.999 9.769-47.614 16.385v-61.999q12.846-4.615 24.999-9.423 12.154-4.807 23-11.423L471.538-381.847v173.382L300.001-380.001h-148.46v-199.998h121.845L79.848-773.537 122-815.69l699.074 699.074-42.153 42.153Zm-19.539-216.23-42.999-42.998q20.846-32.539 31.847-69.808 11-37.27 11-77.501 0-90.923-52.885-163.384-52.884-72.462-139.422-100v-61.999Q679-776.46 749.114-686.46q70.115 89.999 70.115 205.46 0 52.615-15.654 101.038-15.654 48.423-44.192 89.269Zm-122.461-122.46-69.998-69.999v-145.001q40.461 22 62.537 61.961Q651.538-526.23 651.538-480q0 17.693-3.654 34.5-3.654 16.808-10.962 32.347ZM471.538-578.537l-86.307-86.692 86.307-86.306v172.998Z"
+						/></svg
+				></a>
+				<a onclick="openAboutModal()"
+					><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+						<path
+							d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"
+						/></svg
+				></a>
+			</div>
+			<div class="reset-test-option">
+				<a onclick="resetTest()">Reset test</a>
 			</div>
 			<div class="course-options">
-				<a class="alevelocrlink" onclick="changeOption('alevelocr')">A-Level (OCR)</a>
+				<a class="alevelocrlink" onclick="changeOption('alevelocr')">A-level (OCR)</a>
 				<a class="gcseeduqaslink" onclick="changeOption('gcseeduqas')">GCSE (Eduqas)</a>
 				<a class="gcseocrlink" onclick="changeOption('gcseocr')">GCSE (OCR)</a>
 				<a class="clclink" onclick="changeOption('clc')">CLC</a>
@@ -146,10 +175,12 @@
 				</div>
 
 				<div class="incorrect-words">
-					<h3 id="focus-on-title">Words to focus on</h3>
-					<p id="focus-on-description">
-						A list of words either entered incorrectly or for which the answer was revealed:
-					</p>
+					<div class="focus-on-wrapper">
+						<h3 id="focus-on-title">Words to focus on</h3>
+						<p id="focus-on-description">
+							A list of words either entered incorrectly or for which the answer was revealed:
+						</p>
+					</div>
 					<ul id="wrong-vocab" class="wrong-vocab-list">
 						<li id="no-words-wrong">None so far - well done!</li>
 					</ul>
@@ -160,7 +191,7 @@
 							onclick="exportIncorrectVocab()"
 							class="sidebar-prompt"
 						>
-							Export incorrect words.
+							Export incorrect words
 						</a>
 					</p>
 					<p id="clear-saved-vocab-sidebar" class="clear-sidebar-prompt-wrapper">
@@ -267,140 +298,146 @@
 								/>
 							</div>
 							<div class="indicative-toggle-wrapper">
-								<div class="toggle">
-									<p>Present active</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-pracind"
-									/>
+								<div class="verb-toggle-group">
+									<div class="toggle">
+										<p>Present active</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-pracind"
+										/>
+									</div>
+									<div class="toggle">
+										<p>Imperfect active</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-impacind"
+										/>
+									</div>
+									<div class="toggle">
+										<p>Perfect active</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-pfacind"
+										/>
+									</div>
+									<div class="toggle">
+										<p>Pluperfect active</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-placind"
+										/>
+									</div>
+									<div class="toggle">
+										<p>Future active</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-ftacind"
+										/>
+									</div>
+									<div class="toggle">
+										<p>Future perfect active</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-fpacind"
+										/>
+									</div>
 								</div>
-								<div class="toggle">
-									<p>Imperfect active</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-impacind"
-									/>
+								<div class="verb-toggle-group">
+									<div class="toggle verb-division">
+										<p>Imperatives</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-imp"
+										/>
+									</div>
+									<div class="toggle">
+										<p>Infinitives</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-inf"
+										/>
+									</div>
+									<div class="toggle">
+										<p>Participles</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-par"
+										/>
+									</div>
 								</div>
-								<div class="toggle">
-									<p>Perfect active</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-pfacind"
-									/>
-								</div>
-								<div class="toggle">
-									<p>Pluperfect active</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-placind"
-									/>
-								</div>
-								<div class="toggle">
-									<p>Future active</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-ftacind"
-									/>
-								</div>
-								<div class="toggle">
-									<p>Future perfect active</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-fpacind"
-									/>
-								</div>
-								<div class="toggle verb-division">
-									<p>Imperatives</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-imp"
-									/>
-								</div>
-								<div class="toggle">
-									<p>Infinitives</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-inf"
-									/>
-								</div>
-								<div class="toggle">
-									<p>Participles</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-par"
-									/>
-								</div>
-								<div class="toggle verb-division">
-									<p>Present passive</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-prpaind"
-									/>
-								</div>
-								<div class="toggle">
-									<p>Imperfect passive</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-imppaind"
-									/>
-								</div>
-								<div class="toggle">
-									<p>Perfect passive</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-pfpaind"
-									/>
-								</div>
-								<div class="toggle">
-									<p>Future passive</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-ftpaind"
-									/>
-								</div>
-								<div class="toggle">
-									<p>Future perfect passive</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-fppaind"
-									/>
-								</div>
-								<div class="toggle">
-									<p>Pluperfect passive</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-plpaind"
-									/>
+								<div class="verb-toggle-group">
+									<div class="toggle verb-division">
+										<p>Present passive</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-prpaind"
+										/>
+									</div>
+									<div class="toggle">
+										<p>Imperfect passive</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-imppaind"
+										/>
+									</div>
+									<div class="toggle">
+										<p>Perfect passive</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-pfpaind"
+										/>
+									</div>
+									<div class="toggle">
+										<p>Future passive</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-ftpaind"
+										/>
+									</div>
+									<div class="toggle">
+										<p>Future perfect passive</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-fppaind"
+										/>
+									</div>
+									<div class="toggle">
+										<p>Pluperfect passive</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-plpaind"
+										/>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -415,77 +452,81 @@
 								/>
 							</div>
 							<div class="subjunctive-toggle-wrapper">
-								<div class="toggle">
-									<p>Present active</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-pracsuj"
-									/>
+								<div class="verb-toggle-group">
+									<div class="toggle">
+										<p>Present active</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-pracsuj"
+										/>
+									</div>
+									<div class="toggle">
+										<p>Imperfect active</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-impacsuj"
+										/>
+									</div>
+									<div class="toggle">
+										<p>Perfect active</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-pfacsuj"
+										/>
+									</div>
+									<div class="toggle">
+										<p>Pluperfect active</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-placsuj"
+										/>
+									</div>
 								</div>
-								<div class="toggle">
-									<p>Imperfect active</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-impacsuj"
-									/>
-								</div>
-								<div class="toggle">
-									<p>Perfect active</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-pfacsuj"
-									/>
-								</div>
-								<div class="toggle">
-									<p>Pluperfect active</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-placsuj"
-									/>
-								</div>
-								<div class="toggle verb-division">
-									<p>Present passive</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-prpasuj"
-									/>
-								</div>
-								<div class="toggle">
-									<p>Imperfect passive</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-imppasuj"
-									/>
-								</div>
-								<div class="toggle">
-									<p>Perfect passive</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-pfpasuj"
-									/>
-								</div>
-								<div class="toggle">
-									<p>Pluperfect passive</p>
-									<input
-										type="checkbox"
-										checked
-										onclick="handleVerbSelection(this)"
-										id="verbs-plpasuj"
-									/>
+								<div class="verb-toggle-group">
+									<div class="toggle verb-division">
+										<p>Present passive</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-prpasuj"
+										/>
+									</div>
+									<div class="toggle">
+										<p>Imperfect passive</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-imppasuj"
+										/>
+									</div>
+									<div class="toggle">
+										<p>Perfect passive</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-pfpasuj"
+										/>
+									</div>
+									<div class="toggle">
+										<p>Pluperfect passive</p>
+										<input
+											type="checkbox"
+											checked
+											onclick="handleVerbSelection(this)"
+											id="verbs-plpasuj"
+										/>
+									</div>
 								</div>
 							</div>
 							<div class="toggle singular-only-option">
@@ -507,7 +548,7 @@
 				</div>
 
 				<div class="select-declensions-wrapper">
-					<h3>Select declensions and cases to practise</h3>
+					<h3>Select declensions and cases</h3>
 					<div class="select-declensions">
 						<div class="noun-types">
 							<div class="toggle">
@@ -526,14 +567,6 @@
 									checked
 									onclick="handleNounSelection(this)"
 									id="declensions-noun-2"
-								/>
-							</div>
-							<div class="toggle other inset">
-								<p>Remove '-er' nouns</p>
-								<input
-									type="checkbox"
-									onclick="handleNounSelection(this)"
-									id="declensions-noun-2-remove-er"
 								/>
 							</div>
 							<div class="toggle">
@@ -563,13 +596,23 @@
 									id="declensions-noun-5"
 								/>
 							</div>
-							<div class="toggle other neuter">
-								<p>Remove neuter nouns</p>
-								<input
-									type="checkbox"
-									onclick="handleNounSelection(this)"
-									id="declensions-neuter"
-								/>
+							<div class="other-toggles-wrapper">
+								<div class="toggle other neuter">
+									<p>Remove neuter nouns</p>
+									<input
+										type="checkbox"
+										onclick="handleNounSelection(this)"
+										id="declensions-neuter"
+									/>
+								</div>
+								<div class="toggle other inset">
+									<p>Remove '-er' nouns</p>
+									<input
+										type="checkbox"
+										onclick="handleNounSelection(this)"
+										id="declensions-noun-2-remove-er"
+									/>
+								</div>
 							</div>
 						</div>
 						<div class="case-types">
@@ -656,9 +699,18 @@
 				<div id="vocab-test-competition" class="competition-introduction">
 					<p id="competition-countdown" class="competition-countdown">5</p>
 					<p id="competition-correction"></p>
-					<p id="competition-warning">
+					<p class="competition-warning">
 						You have <strong>two minutes</strong> to <span id="competition-challenge"></span>! If
 						you get one wrong, your attempt will be over.
+					</p>
+					<p class="competition-leaderboard-text-success">
+						Congratulations! Enter your name below to be included on the Leaderboard - your name
+						will only appear if you are in the top three.
+					</p>
+					<p class="competition-leaderboard-text-fail">
+						Unfortunately, you need a score of
+						<strong id="competition-leaderboard-text-score"></strong> to be added to the Leaderboard
+						- good luck next time! You can <a onclick="resetTest()">try again</a>.
 					</p>
 					<p class="show-word-table-toggle show-word-table-toggle-competition">
 						<a id="word-table-prompt-competitive" onclick="toggleWordTable(true)">Show table</a>
@@ -674,6 +726,10 @@
 							</button>
 						</div>
 					</div>
+					<p class="leaderboard-submit-success">
+						Your name has been successfully submitted! It will be verified to ensure it's
+						appropriate, then it will be added to the Leaderboard.
+					</p>
 					<p id="leaderboard-valid-name-warning" class="valid-name-warning">
 						Error: please enter a valid name which you would like to appear on the Leaderboard.
 					</p>
@@ -733,23 +789,27 @@
 					</div>
 				</div>
 				<div id="vocab-tester" class="vocab-tester-wrapper">
-					<strong><p id="vocab-question"></p></strong>
-					<p id="vocab-question-details"></p>
-					<p id="wrong-answer" style="display: none">Not quite - try again!</p>
-
-					<p class="progress-indicator">
-						<span id="progress-indicator-changing">0</span
-						><span id="progress-indicator-slash">/</span><span id="progress-indicator-set"></span>
-					</p>
-					<div class="progress-bar">
-						<div class="inner-progress" id="progress-bar-content" style="width: 0%"></div>
+					<div class="progress-wrapper">
+						<div class="progress-bar">
+							<div class="inner-progress" id="progress-bar-content" style="width: 0%"></div>
+						</div>
+						<p class="progress-indicator">
+							<span id="progress-indicator-changing">0</span
+							><span id="progress-indicator-slash">/</span>
+							<span id="progress-indicator-set"></span>
+						</p>
 					</div>
 
 					<div class="vocab-submit-answer-wrapper">
-						<p class="vocab-submit-prompt">
-							Enter the <span id="vocab-submit-first-person-warning"></span
-							><span id="vocab-submit-word-form">root meaning</span> in the box below:
-						</p>
+						<div class="vocab-answer-margin">
+							<strong><p id="vocab-question"></p></strong>
+							<p id="vocab-question-details"></p>
+							<p id="wrong-answer" style="display: none">Not quite - try again!</p>
+							<p class="vocab-submit-prompt">
+								Enter the <span id="vocab-submit-first-person-warning"></span
+								><span id="vocab-submit-word-form">root meaning</span> in the box below:
+							</p>
+						</div>
 						<input
 							type="text"
 							id="vocab-answer"
@@ -757,13 +817,14 @@
 							autocorrect="off"
 							autocapitalize="off"
 							spellcheck="false"
+							placeholder="Type answer"
 						/>
 						<div class="vocab-submit-buttons">
 							<input
 								type="submit"
 								class="reveal-answer-button"
 								id="reveal-answer"
-								value="Reveal answer"
+								value="Reveal"
 								onclick="checkAnswer(true)"
 							/>
 							<input
@@ -780,14 +841,14 @@
 								<span id="grammar-type"></span>!
 							</p>
 						</div>
-						<p id="vocab-times-wrong" class="times-wrong">
-							Incorrectly answered: <span id="vocab-incorrect-count">0</span> times
-						</p>
-						<p class="show-word-table-toggle">
-							<a onclick="toggleTableMode()">Switch to table mode</a>
-							<a id="word-table-prompt" onclick="toggleWordTable(true)">Show table</a>
-						</p>
 					</div>
+					<p id="vocab-times-wrong" class="times-wrong">
+						Incorrectly answered: <span id="vocab-incorrect-count">0</span> times
+					</p>
+					<p class="show-word-table-toggle">
+						<a onclick="toggleTableMode()">Switch to table mode</a>
+						<a id="word-table-prompt" onclick="toggleWordTable(true)">Show table</a>
+					</p>
 				</div>
 
 				<div id="complete" class="celebration">
@@ -826,6 +887,7 @@
 				</div>
 			</div>
 			<div class="further-content" id="word-table">
+				<h3>Grammar tables</h3>
 				<div class="noun-table">
 					<table>
 						<thead>
@@ -2668,18 +2730,24 @@
 							<p style="margin: 0">Show subjunctive tables</p>
 							<input type="checkbox" onclick="handleSubjunctiveTableSelection(this)" />
 						</div>
+						<div class="declension-return-to-test-prompt">
+							<button id="return-to-test-prompt" onclick="toggleWordTable(false)">
+								Return to test
+							</button>
+						</div>
 					</div>
 					<p class="show-enhanced-verb-table-prompt">
 						<a onclick="toggleEnhancedWordTable()">Show all tables together</a>
 					</p>
-					<p class="declension-return-to-test-prompt">
-						<a id="return-to-test-prompt" onclick="toggleWordTable(false)">Return to test</a>
-					</p>
-					<p class="table-mode-options">
+					<div class="table-mode-options">
 						<a id="toggle-table-mode-prompt" onclick="toggleTableMode()">Switch to regular mode</a>
-						<a onclick="checkTableModeAnswer()">Check answers</a>
-						<a onclick="generateNewTableWord()">Generate new word</a>
-					</p>
+						<button class="table-mode-button" onclick="checkTableModeAnswer()">
+							Check answers
+						</button>
+						<button class="table-mode-button" onclick="generateNewTableWord()">
+							Generate new word
+						</button>
+					</div>
 					<p class="verb-tables-heading">Verb Tables</p>
 				</div>
 			</div>
@@ -2715,52 +2783,47 @@
 						<li id="conjugations-leaderboard-2">Loading...</li>
 					</ol>
 				</div>
-				<h3 class="start-button-wrapper-text">Begin vocabulary test</h3>
-				<div id="start-button" class="start-button-wrapper is-inactive">
-					<img onclick="startTest()" src="./assets/start.svg" alt="" />
-					<div class="start-vocab-options">
-						<a class="selected-words-prompt" onclick="startFlashcards()"
-							>Practice with flashcards</a
-						>
-						<a class="selected-words-prompt" onclick="toggleVocabSelectionTable(true)"
-							>View selected words</a
-						>
-					</div>
-				</div>
-				<p class="starting-warning">
-					You need to select some categories before beginning the test!
-				</p>
 				<div id="test-settings" class="test-settings-wrapper">
 					<h3>Configure test settings</h3>
-					<div class="toggle">
-						<p class="difficulty-text">
-							Enable hard difficulty (include English to Latin questions)
-						</p>
+					<div id="file-upload-link" class="upload-custom-file-link">
+						<a onclick="toggleFileUpload()">Upload vocabulary file</a>
+					</div>
+
+					<div class="toggle hard-difficulty">
+						<div class="toggle-settings-text">
+							<p class="toggle-settings-header">Enable hard difficulty</p>
+							<p>Include English to Latin questions</p>
+						</div>
 						<label class="switch">
-							<input id="hardCheckbox" onclick="changeDifficulty()" type="checkbox" checked />
+							<input id="hardCheckbox" onclick="changeHardDifficulty()" type="checkbox" checked />
 							<span class="slider round"></span>
 						</label>
 					</div>
 
 					<div class="toggle extreme-difficulty">
-						<p class="difficulty-text">
-							Enable extreme difficulty (answer every question in Latin)
-						</p>
-						<input type="checkbox" id="extremeCheckbox" />
+						<div class="toggle-settings-text">
+							<p class="toggle-settings-header">Enable extreme difficulty</p>
+							<p>Answer every question in Latin</p>
+						</div>
+						<label class="switch">
+							<input id="extremeCheckbox" onclick="changeExtremeDifficulty()" type="checkbox" />
+							<span class="slider round"></span>
+						</label>
 					</div>
 
 					<div class="toggle">
-						<p>Limit number of words to be tested on</p>
-						<input type="checkbox" onclick="toggleLimit()" id="wordLimitCheckbox" />
-					</div>
-
-					<div class="toggle extreme-difficulty max-word-prompt" id="maxWordSelect">
-						<p>Select maximum number of words to be tested on</p>
-						<select id="max-word-select" size="1"></select>
+						<p>Limit number of words in test</p>
+						<div class="settings-test-limit">
+							<select id="max-word-select" size="1"></select>
+							<label class="switch">
+								<input id="wordLimitCheckbox" onclick="toggleLimit()" type="checkbox" />
+								<span class="slider round"></span>
+							</label>
+						</div>
 					</div>
 
 					<div class="toggle">
-						<p>Filter words based on their starting character in Latin</p>
+						<p>Filter words based on starting letters</p>
 						<div class="configure-values">
 							<input
 								onkeypress="updateLetterLimit()"
@@ -2779,13 +2842,17 @@
 							/>
 						</div>
 					</div>
-				</div>
 
-				<div class="file-upload">
-					<p>Enter a file obtained by previously completing this test to include those words.</p>
-					<input type="file" accept=".csv" id="fileupload" />
+					<div id="file-upload-section" class="file-upload toggle">
+						<div>
+							<p>
+								When completing this test, you can save your incorrect words. Upload that file here
+								to include those words in your new test.
+							</p>
+							<input type="file" accept=".csv" id="fileupload" />
+						</div>
+					</div>
 				</div>
-
 				<div class="advanced-mode">
 					<h3>Advanced mode</h3>
 					<p>
@@ -2797,6 +2864,21 @@
 						<input type="file" accept=".json, .csv" id="advancedfileupload" />
 					</div>
 				</div>
+
+				<div id="start-button" class="start-button-wrapper is-inactive">
+					<button class="start-button" onclick="startTest()">Begin test</button>
+					<div class="start-vocab-options">
+						<a class="selected-words-prompt" onclick="startFlashcards()"
+							>Practice with flashcards</a
+						>
+						<a class="selected-words-prompt" onclick="toggleVocabSelectionTable(true)"
+							>View selected words</a
+						>
+					</div>
+				</div>
+				<p class="starting-warning">
+					You need to select some categories before beginning the test!
+				</p>
 			</div>
 
 			<div class="right-content">
@@ -2826,7 +2908,7 @@
 					<div class="literature-vocabulary">
 						<div class="row-wrapper ovid-vocabulary">
 							<div class="literature-heading">
-								<p>The lists below are based on Mathew Owen's "Ovid Unseens" book.</p>
+								<p>These lists are based on Mathew Owen's "Ovid Unseens" book</p>
 							</div>
 							<div class="button-group">
 								<button
@@ -2911,9 +2993,7 @@
 
 						<div class="row-wrapper prose-vocabulary">
 							<div class="literature-heading">
-								<p>
-									The lists below are based on Mathew Owen's "Prose Unseens for A-Level Latin" book.
-								</p>
+								<p>These lists are based on Mathew Owen's "Prose Unseens for A-Level Latin" book</p>
 							</div>
 							<div class="button-group">
 								<button
@@ -3002,20 +3082,20 @@
 								</button>
 							</div>
 						</div>
+					</div>
 
-						<div class="row-wrapper john-taylor-vocabulary">
-							<div class="literature-heading">
-								<p>This list is based on John Taylor's "300 Common Words for Verse Unseens".</p>
-							</div>
-							<div class="button-group">
-								<button
-									class="vocab-type"
-									id="john-taylor-verse"
-									onclick="formAcceptableVocab('john-taylor-verse')"
-								>
-									<p>John Taylor list</p>
-								</button>
-							</div>
+					<div class="row-wrapper john-taylor-vocabulary">
+						<div class="literature-heading">
+							<p>This list is based on John Taylor's "300 Common Words for Verse Unseens"</p>
+						</div>
+						<div class="button-group">
+							<button
+								class="vocab-type"
+								id="john-taylor-verse"
+								onclick="formAcceptableVocab('john-taylor-verse')"
+							>
+								<p>John Taylor list</p>
+							</button>
 						</div>
 					</div>
 
@@ -3124,41 +3204,6 @@
 							</div>
 						</div>
 
-						<div class="row-wrapper miscellaneous-nouns">
-							<div class="row-header">
-								<p>Miscellaneous nouns</p>
-								<img
-									src="./assets/dropdown.svg"
-									class="dropdown"
-									onclick="toggleRow(this)"
-									alt="Dropdown"
-								/>
-							</div>
-							<div class="row-4 button-group">
-								<button
-									class="vocab-type"
-									id="noun irreg"
-									onclick="formAcceptableVocab('noun irreg')"
-								>
-									<p>Irregular Nouns</p>
-								</button>
-								<button
-									class="vocab-type"
-									id="noun phrase"
-									onclick="formAcceptableVocab('noun phrase')"
-								>
-									<p>Noun Phrases</p>
-								</button>
-								<button
-									class="vocab-type"
-									id="noun & adj"
-									onclick="formAcceptableVocab('noun & adj')"
-								>
-									<p>Noun &amp; Adjectives</p>
-								</button>
-							</div>
-						</div>
-
 						<div class="row-wrapper">
 							<div class="row-header">
 								<p>Other</p>
@@ -3188,6 +3233,13 @@
 								</button>
 								<button class="vocab-type" id="pron" onclick="formAcceptableVocab('pron')">
 									<p>Pronouns</p>
+								</button>
+								<button
+									class="vocab-type miscellaneous-nouns"
+									id="misc"
+									onclick="formAcceptableVocab('misc')"
+								>
+									<p>Miscellaneous</p>
 								</button>
 							</div>
 						</div>
@@ -3422,7 +3474,7 @@
 					onclick="toggleVocabSelectionTable(false)"
 				/>
 				<h3>Selected choices</h3>
-				<p>Note: changing your selected categories will re-add any words which you remove here.</p>
+				<p>Note: changing your selected categories will re-add any words that you remove here.</p>
 				<table cellspacing="16" class="vocabulary-selection-table">
 					<thead>
 						<tr>
@@ -3467,6 +3519,32 @@
 				<p id="vocabulary-selection-error" class="vocabulary-selection-warning">
 					Error: you must leave at least one word selected.
 				</p>
+			</div>
+		</div>
+
+		<div id="warning-modal" class="modal-wrapper warning-modal">
+			<div class="modal-content">
+				<img
+					src="./assets/close.svg"
+					class="close-icon"
+					alt="Close"
+					onclick="closeWarningModal()"
+				/>
+				<h3>Are you sure?</h3>
+				<p class="vocab-warning-text">
+					Your current vocabulary test will be reset once you to switch a different tester!
+				</p>
+				<p class="flashcards-warning-text">
+					Your current flashcards will need to be reset if you switch to a different tester!
+				</p>
+				<p class="verb-warning-text">
+					You haven't checked your answers yet! These current answers will be lost once you generate
+					a new verb.
+				</p>
+				<div class="warning-actions">
+					<button onclick="closeWarningModal()">Cancel</button>
+					<button id="warning-continue-action">Continue</button>
+				</div>
 			</div>
 		</div>
 
@@ -3531,24 +3609,117 @@
 					</div>
 				</div>
 
-				<p class="game-subnote">All games are free, open-source and require no registration.</p>
+				<p class="game-subnote">
+					Fancy something else? Try Competitive mode to have your name added to the leaderboard!
+				</p>
 			</div>
 		</div>
 
+		<div id="about-modal" class="modal-wrapper about-modal">
+			<div class="modal-content">
+				<img src="./assets/close.svg" class="close-icon" alt="Close" onclick="closeAboutModal()" />
+				<div class="about-me">
+					<div class="left-about-me">
+						<p class="about-greeting">salve! 👋</p>
+						<p>
+							Thank you for checking out the Latin Vocabulary Tester! I started this tool in 2020,
+							back when I was still a Latin A-level student. At the time, I struggled with the
+							language side of the qualification, and I couldn’t find many useful tools to improve
+							my vocabulary or grammar.
+						</p>
+						<p>
+							All the features included here are things which either myself, my friends or my
+							teachers found useful during those two years. In the end, this tool really helped me
+							become more confident in Latin, and I'm hoping that it will assist others too! I've
+							also sought to make learning enjoyable, so you'll find plenty of Latin word games and
+							even a competitive leaderboard.
+						</p>
+						<p>
+							If you have any feedback, thoughts or questions, please don’t hesitate to get in
+							touch!
+						</p>
+					</div>
+					<div class="right-about-me">
+						<div class="gravatar">
+							<img
+								src="https://www.gravatar.com/avatar/581e9719c44732a58a27b872f282c053.jpg?s=360"
+							/>
+						</div>
+						<div class="about-links-wrapper">
+							<div class="about-links">
+								<svg height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+									<g>
+										<path
+											fill="#24292f"
+											d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4.236l-8 4.882-8-4.882V6h16v2.236z"
+										/>
+									</g>
+								</svg>
+								<div class="about-links-content">
+									<p class="about-title">Send me an email</p>
+									<a
+										href="mailto:email@latinvocabularytester.com?subject=Latin%20Vocabulary%20Tester"
+										onclick="collectData('Prepared email', 'prepared_email')"
+										class="about-link"
+										>email@latinvocabularytester.com</a
+									>
+								</div>
+							</div>
+							<div class="about-links">
+								<svg height="24" width="24" viewBox="0 0 24 24">
+									<path
+										d="M12,2C6.477,2,2,6.477,2,12c0,4.419,2.865,8.166,6.839,9.489c0.5,0.09,0.682-0.218,0.682-0.484 c0-0.236-0.009-0.866-0.014-1.699c-2.782,0.602-3.369-1.34-3.369-1.34c-0.455-1.157-1.11-1.465-1.11-1.465 c-0.909-0.62,0.069-0.608,0.069-0.608c1.004,0.071,1.532,1.03,1.532,1.03c0.891,1.529,2.341,1.089,2.91,0.833
+								c0.091-0.647,0.349-1.086,0.635-1.337c-2.22-0.251-4.555-1.111-4.555-4.943c0-1.091,0.39-1.984,1.03-2.682 C6.546,8.54,6.202,7.524,6.746,6.148c0,0,0.84-0.269,2.75,1.025C10.295,6.95,11.15,6.84,12,6.836 c0.85,0.004,1.705,0.114,2.504,0.336c1.909-1.294,2.748-1.025,2.748-1.025c0.546,1.376,0.202,2.394,0.1,2.646 c0.64,0.699,1.026,1.591,1.026,2.682c0,3.841-2.337,4.687-4.565,4.935c0.359,0.307,0.679,0.917,0.679,1.852 c0,1.335-0.012,2.415-0.012,2.741c0,0.269,0.18,0.579,0.688,0.481C19.138,20.161,22,16.416,22,12C22,6.477,17.523,2,12,2z"
+									></path>
+								</svg>
+								<div class="about-links-content">
+									<p class="about-title">View the code</p>
+									<a
+										class="about-link"
+										onclick="collectData('Viewed the code', 'viewed_code')"
+										href="https://github.com/Aurorum/latin-vocabulary-tester/"
+										target="_blank"
+										>Aurorum/latin-vocabulary-tester</a
+									>
+								</div>
+							</div>
+						</div>
+						<p class="open-source">An open-source project made with ❤️</p>
+						<p class="about-signature">-Aurorum</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<a class="footer-collapse" onclick="toggleFooter(false)">
+			<svg
+				alt="Collapse footer"
+				xmlns="http://www.w3.org/2000/svg"
+				height="24"
+				viewBox="0 -960 960 960"
+				width="24"
+			>
+				<path
+					d="m357-384 123-123 123 123 57-56-180-180-180 180 57 56ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"
+				></path>
+			</svg>
+		</a>
 		<div id="footer" class="footer">
-			<div class="footer-links">
+			<div class="view-games-link dummy-link">View Latin word games</div>
+			<div class="footer-items">
 				<a
-					onclick="collectData('Prepared email', 'prepared_email')"
-					href="mailto:contact@clubpenguinmountains.com?cc=aurorum@clubpenguinmountains.com&amp;subject=Latin%20Vocabulary%20Tester"
-					>Email me</a
+					id="vocabulary-footer-item"
+					class="footer-item is-active"
+					onclick="changeMode('vocabulary')"
 				>
-				<a
-					onclick="collectData('Viewed the code', 'viewed_code')"
-					href="https://github.com/Aurorum/latin-vocabulary-tester"
-					>View the code</a
-				>
-				<a class="collapse-footer" onclick="toggleFooter(false)">Collapse footer</a>
-				<a id="mute-audio" onclick="muteAudio()">Mute sound effects</a>
+					Vocabulary
+				</a>
+				<a id="declensions-footer-item" class="footer-item" onclick="changeMode('declensions')">
+					Declensions
+				</a>
+				<a id="conjugations-footer-item" class="footer-item" onclick="changeMode('conjugations')">
+					Conjugations
+				</a>
 			</div>
 			<div class="view-games-link">
 				<a onclick="openGamesModal()">View Latin word games</a>

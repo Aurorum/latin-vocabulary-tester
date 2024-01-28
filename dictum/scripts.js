@@ -50,6 +50,22 @@ window.onload = function () {
 	}
 };
 
+window.onerror = function ( message, source, line, col, error ) {
+	collectData( 'Dictum console error logged', 'dictum_console_error_logged' );
+	collectData(
+		'Error message: ' +
+			message +
+			'\nSource: ' +
+			source +
+			'\nLine number: ' +
+			line +
+			'\nColumn number: ' +
+			col +
+			'\nError object: ' +
+			error
+	);
+};
+
 function loadAllVocabFiles() {
 	let fileVariableMapping = {
 		'all.json': 'anyList',

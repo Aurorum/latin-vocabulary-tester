@@ -1472,7 +1472,7 @@
 	"246": {
 		"word": "vetor",
 		"full": "veto, vetare, vetui, vetitus",
-		"translation": "forbid, order...not, ordeer not",
+		"translation": "forbid, order...not, order not",
 		"type": "prpaind1s"
 	},
 	"247": {
@@ -1556,7 +1556,7 @@
 	"260": {
 		"word": "veter",
 		"full": "veto, vetare, vetui, vetitus",
-		"translation": "forbid, order...not, ordeer not",
+		"translation": "forbid, order...not, order not",
 		"type": "prpasuj1s"
 	},
 	"261": {
@@ -1814,7 +1814,7 @@
 	"303": {
 		"word": "vetat",
 		"full": "veto, vetare, vetui, vetitus",
-		"translation": "forbid, order...not, ordeer not",
+		"translation": "forbid, order...not, order not",
 		"type": "pracind3s"
 	},
 	"304": {
@@ -1862,13 +1862,13 @@
 	"311": {
 		"word": "vetem",
 		"full": "veto, vetare, vetui, vetitus",
-		"translation": "forbid, order...not, ordeer not",
+		"translation": "forbid, order...not, order not",
 		"type": "pracsuj1s"
 	},
 	"312": {
 		"word": "vetes",
 		"full": "veto, vetare, vetui, vetitus",
-		"translation": "forbid, order...not, ordeer not",
+		"translation": "forbid, order...not, order not",
 		"type": "pracsuj2s"
 	},
 	"313": {
@@ -2210,7 +2210,7 @@
 	"369": {
 		"word": "vetas",
 		"full": "veto, vetare, vetui, vetitus",
-		"translation": "forbid, order...not, ordeer not",
+		"translation": "forbid, order...not, order not",
 		"type": "pracind2s"
 	},
 	"370": {
@@ -2522,7 +2522,7 @@
 	"421": {
 		"word": "vetet",
 		"full": "veto, vetare, vetui, vetitus",
-		"translation": "forbid, order...not, ordeer not",
+		"translation": "forbid, order...not, order not",
 		"type": "pracsuj3s"
 	},
 	"422": {

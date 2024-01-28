@@ -3318,10 +3318,12 @@ function muteAudio() {
 }
 
 function toggleFooter( show ) {
-	if ( ! show ) {
+	if ( show === false ) {
 		document.body.classList.add( 'hide-footer' );
-	} else {
+	} else if ( show ) {
 		document.body.classList.remove( 'hide-footer' );
+	} else {
+		document.body.classList.toggle( 'hide-footer' );
 	}
 	collectData( 'Footer toggled', 'footer_toggled' );
 }

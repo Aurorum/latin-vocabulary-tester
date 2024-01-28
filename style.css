@@ -695,6 +695,7 @@ li {
 	width: 32px;
 	height: 28px;
 	fill: white;
+	fill: rgba( 255, 255, 255, 0.85 );
 }
 
 .hide-footer .footer-collapse.collapsed {
@@ -2199,8 +2200,13 @@ a:hover {
 }
 
 .left-about-me .about-greeting {
+	margin-top: 0;
 	font-size: 18px;
 	font-weight: 600;
+}
+
+.left-about-me p:last-of-type {
+	margin-bottom: 0;
 }
 
 .gravatar {

@@ -24,6 +24,8 @@ let vocabFilesLoaded = false;
 let vocabToFocusOn = [];
 let vocabToTest = [];
 
+const VOCAB_FILES_CACHE_VERSION = 1.0; // Increment when editing vocabulary lists.
+
 loadAllVocabFiles();
 
 window.onload = function () {
@@ -35,17 +37,18 @@ window.onload = function () {
 		navigator.serviceWorker.register( 'serviceWorker.js' );
 	}
 
-	setTimeout( function () {
+	let loadTimeout = setTimeout( function () {
 		function checkCondition() {
 			if ( vocabFilesLoaded ) {
 				changeOption( localStorage.getItem( 'defaultOption' ) || 'alevelocr', false );
 				document.getElementById( 'loading' ).style.display = 'none';
+				clearTimeout( loadTimeout );
 			} else {
-				setTimeout( checkCondition, 100 );
+				loadTimeout = setTimeout( checkCondition, 100 );
 			}
 		}
 		checkCondition();
-	}, 1200 );
+	}, 800 );
 
 	document.getElementById( 'vocab-answer' ).addEventListener( 'keyup', function ( event ) {
 		if ( event.key === 'Enter' ) {
@@ -139,16 +142,40 @@ function loadAllVocabFiles() {
 		'literature.json': 'vocabLiterature',
 	};
 
+	let vocabCache = caches.open( 'vocabCache' );
+
 	let promises = Object.entries( fileVariableMapping ).map( ( [ fileName, variableName ] ) => {
 		let filePath = `./vocab-lists/${ fileName }`;
 
-		return fetch( filePath )
-			.then( ( response ) => {
-				if ( ! response.ok ) {
-					collectData( 'Vocabulary lists failed to load', 'initialisation_error' );
-					collectData( error.message || error );
-				}
-				return response.json();
+		return vocabCache
+			.then( ( cache ) => {
+				return cache.match( fileName ).then( ( cacheResponse ) => {
+					if (
+						cacheResponse &&
+						parseFloat( localStorage.getItem( 'vocabFilesCacheVersion' ) ) ===
+							VOCAB_FILES_CACHE_VERSION
+					) {
+						return cacheResponse.json();
+					} else {
+						return fetch( filePath )
+							.then( ( response ) => {
+								if ( ! response.ok ) {
+									throw new Error( 'Vocabulary lists failed to load' );
+								}
+								return response.json();
+							} )
+							.then( ( vocabFile ) => {
+								cache.put( fileName, new Response( JSON.stringify( vocabFile ) ) );
+								localStorage.setItem( 'vocabFilesCacheVersion', VOCAB_FILES_CACHE_VERSION );
+
+								return vocabFile;
+							} )
+							.catch( ( error ) => {
+								collectData( 'Vocabulary lists failed to load', 'initialisation_error' );
+								collectData( error.message || error );
+							} );
+					}
+				} );
 			} )
 			.then( ( data ) => {
 				window[ variableName ] = data;
@@ -156,10 +183,6 @@ function loadAllVocabFiles() {
 				if ( variableName === 'vocabGCSEOCR' ) {
 					vocab = vocabGCSEOCR;
 				}
-			} )
-			.catch( ( error ) => {
-				collectData( 'Vocabulary lists failed to load', 'initialisation_error' );
-				collectData( error.message || error );
 			} );
 	} );
 
@@ -2085,8 +2108,6 @@ function buildTest() {
 
 	let vocabwithNumber = finalVocab[ randomNumber ];
 
-	let allVocabLength = allVocab.length;
-
 	if ( acceptableVocab.includes( 'redo' ) ) {
 		allVocabLength = document.getElementById( 'wrong-vocab' ).childElementCount - 1;
 	}
@@ -3217,8 +3238,8 @@ function resetTest() {
 
 	vocab.forEach( ( word ) => {
 		word.asked = false;
-		word.didReveal = false;
-		word.incorrectlyAnswered = 0;
+		delete word.didReveal;
+		delete word.incorrectlyAnswered;
 	} );
 
 	resetState();
@@ -3254,6 +3275,7 @@ function resetTest() {
 	document.getElementById( 'word-table' ).classList.remove( 'is-active' );
 	document.getElementById( 'grammar-info-competition' ).classList.remove( 'is-active' );
 	document.getElementById( 'start-button' ).classList.add( 'is-inactive' );
+	toggleWordTable( false );
 
 	document.getElementById( 'word-table-select' ).options.length = '0';
 

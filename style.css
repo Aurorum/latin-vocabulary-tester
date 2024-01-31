@@ -255,8 +255,8 @@ li {
 
 .loading-screen .progress-bar .inner-progress {
 	background: #bb2730;
-	transition: width 1.2s ease;
-	animation: width-animation 1.2s;
+	transition: width 0.8s ease;
+	animation: width-animation 0.8s;
 	border-radius: 14px;
 	width: 100%;
 }
@@ -787,6 +787,7 @@ li {
 	font-size: 18px;
 	color: white;
 	border-radius: 12px;
+	text-align: right;
 }
 
 .view-games-link a {
@@ -796,6 +797,7 @@ li {
 }
 
 .footer .view-games-link a {
+	border-bottom-width: 1px;
 	border-radius: 6px;
 	padding: 6px 8px;
 	font-size: 15px;
@@ -1663,6 +1665,8 @@ a:hover {
 
 .further-content #other-verbs-table td {
 	font-weight: normal;
+	padding: 12px 14px;
+	min-width: 200px;
 }
 
 .further-content #other-verbs-table table {
@@ -2906,39 +2910,6 @@ button.verb-table-option-button:hover {
 	}
 }
 
-@media only screen and ( max-width: 1290px ) {
-	#vocab-tester-wrapper .left-content {
-		flex: 1 0 250px;
-	}
-
-	.is-table-mode .verb-table td {
-		min-width: 210px;
-	}
-
-	.noun-types {
-		margin-right: 0;
-	}
-
-	#vocab-tester-wrapper {
-		align-items: flex-start;
-		flex-direction: column-reverse;
-	}
-
-	#vocab-tester-wrapper .left-content,
-	#vocab-tester-wrapper .right-content,
-	.further-content {
-		margin: auto;
-		margin-bottom: 32px;
-		text-align: center;
-		min-width: calc( 100% - 48px ) !important;
-		width: calc( 100% - 48px ) !important;
-	}
-
-	.right-content {
-		order: 1;
-	}
-}
-
 @media only screen and ( max-width: 1200px ) and ( min-width: 600px ) {
 	.is-displaying-word-table .right-content {
 		display: none;
@@ -2961,10 +2932,6 @@ button.verb-table-option-button:hover {
 	.switch {
 		margin: auto;
 		margin-top: 8px;
-	}
-
-	.verb-table input {
-		width: 100px;
 	}
 
 	.is-table-mode .further-content td.answer-incorrect p {
@@ -3019,6 +2986,10 @@ button.verb-table-option-button:hover {
 		flex-direction: column;
 	}
 
+	.left-about-me {
+		margin-bottom: 14px;
+	}
+
 	.right-content .literature-vocabulary {
 		flex-wrap: nowrap;
 	}
@@ -3063,8 +3034,63 @@ button.verb-table-option-button:hover {
 		padding: 8px 12px;
 	}
 
+	.verb-table-option-button {
+		font-size: 14px;
+	}
+
 	.dummy-link.view-games-link {
 		display: none;
+	}
+
+	.footer-items {
+		margin-left: 24px;
+	}
+}
+
+@media only screen and ( max-width: 960px ) {
+	#vocab-tester-wrapper .left-content {
+		flex: 1 0 250px;
+	}
+
+	.is-table-mode .verb-table td {
+		min-width: 210px;
+	}
+
+	.noun-types {
+		margin-right: 0;
+	}
+
+	#vocab-tester-wrapper {
+		align-items: flex-start;
+		flex-direction: column-reverse;
+	}
+
+	#vocab-tester-wrapper .left-content,
+	#vocab-tester-wrapper .right-content,
+	.further-content {
+		margin: auto;
+		margin-bottom: 32px;
+		text-align: center;
+		min-width: calc( 100% - 48px ) !important;
+		width: calc( 100% - 48px ) !important;
+	}
+
+	.noun-types .toggle,
+	.case-types .toggle {
+		width: 165px;
+	}
+
+	.right-content {
+		order: 1;
+	}
+
+	.footer .view-games-link a {
+		background: inherit;
+		box-shadow: none;
+		padding: 0;
+		border: 0;
+		text-align: center;
+		font-size: 14px;
 	}
 }
 
@@ -3232,15 +3258,6 @@ button.verb-table-option-button:hover {
 
 	.footer-items {
 		margin-left: 12px;
-	}
-
-	.footer .view-games-link a {
-		background: inherit;
-		box-shadow: none;
-		padding: 0;
-		border: 0;
-		text-align: center;
-		font-size: 14px;
 	}
 }
 

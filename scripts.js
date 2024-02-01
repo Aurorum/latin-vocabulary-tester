@@ -179,10 +179,6 @@ function loadAllVocabFiles() {
 			} )
 			.then( ( data ) => {
 				window[ variableName ] = data;
-
-				if ( variableName === 'vocabGCSEOCR' ) {
-					vocab = vocabGCSEOCR;
-				}
 			} );
 	} );
 
@@ -2561,6 +2557,7 @@ function startRetryTest() {
 		let findWordArray = findWord( word )[ 0 ];
 		allVocab.push( findWordArray );
 		findWordArray.asked = false;
+		findWordArray.originalCategory = findWordArray.category;
 		findWordArray.category = 'redo';
 	} );
 
@@ -3240,6 +3237,10 @@ function resetTest() {
 		word.asked = false;
 		delete word.didReveal;
 		delete word.incorrectlyAnswered;
+
+		if ( word.category === 'redo' && word.originalCategory ) {
+			word.category = word.originalCategory;
+		}
 	} );
 
 	resetState();
@@ -3269,7 +3270,7 @@ function resetTest() {
 
 	document.getElementById( 'wrong-vocab' ).innerHTML =
 		'<li id="no-words-wrong">None so far - well done!</li>	';
-	document.getElementById( 'export-sidebar-prompt' ).style.display = 'none';
+	document.getElementById( 'export-incorrect-vocab-sidebar' ).style.display = 'none';
 
 	document.getElementById( 'vocab-tester-wrapper' ).classList.remove( 'is-complete' );
 	document.getElementById( 'word-table' ).classList.remove( 'is-active' );

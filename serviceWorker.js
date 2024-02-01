@@ -14,7 +14,7 @@ let URLS_TO_CACHE = [
 	'./assets/dropdown-white.svg',
 	'./assets/laurel.svg',
 	'./assets/gladiator.svg',
-	'./assets/confetti.png',
+	'./assets/confetti.svg',
 	'./assets/scroll.svg',
 	'./assets/helmet.svg',
 	'./assets/start.svg',

@@ -3271,6 +3271,8 @@ function resetTest() {
 	document.getElementById( 'wrong-vocab' ).innerHTML =
 		'<li id="no-words-wrong">None so far - well done!</li>	';
 	document.getElementById( 'export-incorrect-vocab-sidebar' ).style.display = 'none';
+	document.getElementById( 'retry-test-button' ).classList.add( 'is-inactive' );
+	document.getElementById( 'retry-test-prompt' ).classList.add( 'is-inactive' );
 
 	document.getElementById( 'vocab-tester-wrapper' ).classList.remove( 'is-complete' );
 	document.getElementById( 'word-table' ).classList.remove( 'is-active' );

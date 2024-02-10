@@ -188,6 +188,7 @@
 	{
 		"word": "adipiscor, adipisci, adeptus sum",
 		"category": "34",
+		"alternativeCategory": "22",
 		"translation": "receive, obtain"
 	},
 	{
@@ -4459,6 +4460,7 @@
 	{
 		"word": "conspicor, conspicari, conspicatus sum",
 		"category": "34",
+		"alternativeCategory": "23",
 		"translation": "catch sight of"
 	},
 	{
@@ -7335,6 +7337,7 @@
 	{
 		"word": "egredior, egredi, egressus sum",
 		"category": "34",
+		"alternativeCategory": "24",
 		"translation": "go out"
 	},
 	{
@@ -10187,6 +10190,7 @@
 	{
 		"word": "ingredior, ingredi, ingressus sum",
 		"category": "34",
+		"alternativeCategory": "22",
 		"translation": "enter"
 	},
 	{
@@ -12102,6 +12106,7 @@
 	{
 		"word": "loquor, loqui, locutus sum",
 		"category": "34",
+		"alternativeCategory": "23",
 		"translation": "speak"
 	},
 	{
@@ -15210,6 +15215,7 @@
 	{
 		"word": "patior, pati, passus sum",
 		"category": "34",
+		"alternativeCategory": "24",
 		"translation": "suffer, endure"
 	},
 	{
@@ -16274,6 +16280,7 @@
 	{
 		"word": "precor, precari, precatus sum",
 		"category": "34",
+		"alternativeCategory": "22",
 		"translation": "pray (to)"
 	},
 	{
@@ -17916,6 +17923,7 @@
 	{
 		"word": "regredior, regredi, regressus sum",
 		"category": "34",
+		"alternativeCategory": "23",
 		"translation": "go back, return"
 	},
 	{
@@ -20071,6 +20079,7 @@
 	{
 		"word": "suspicor, suspicari, suspicatus sum",
 		"category": "34",
+		"alternativeCategory": "28",
 		"translation": "suspect"
 	},
 	{

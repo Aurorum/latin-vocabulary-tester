@@ -24,7 +24,7 @@ let vocabFilesLoaded = false;
 let vocabToFocusOn = [];
 let vocabToTest = [];
 
-const VOCAB_FILES_CACHE_VERSION = 1.0; // Increment when editing vocabulary lists.
+const VOCAB_FILES_CACHE_VERSION = 1.1; // Increment when editing vocabulary lists.
 
 loadAllVocabFiles();
 
@@ -2314,6 +2314,11 @@ function checkDeclensionOrConjugationAnswer( shouldReveal = false ) {
 			answerInput.value = '';
 			progressIndicator.innerHTML = parseInt( progressIndicator.textContent ) + 1;
 			playAudio( 'correct' );
+
+			if ( competitiveMode ) {
+				collectData( 'Competitive answer: ' + enteredAnswer + ' for ' + question )
+			}
+
 			collectData(
 				'Answered ' +
 					testType +

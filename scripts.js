@@ -3306,6 +3306,9 @@ function resetTest() {
 	document.getElementById( 'retry-test-prompt' ).classList.add( 'is-inactive' );
 
 	document.body.removeEventListener( 'keyup', flashcardsListener );
+	document.getElementById( 'flashcard' ).setAttribute( 'number', '0' );
+	document.getElementById( 'left-flashcard-button' ).classList.remove( 'is-inactive' );
+	document.getElementById( 'right-flashcard-button' ).classList.remove( 'is-inactive' );
 
 	document.getElementById( 'vocab-tester-wrapper' ).classList.remove( 'is-complete' );
 	document.getElementById( 'word-table' ).classList.remove( 'is-active' );

@@ -163,7 +163,9 @@ window.onerror = function ( message, source, line, col, error ) {
 			'\nColumn number: ' +
 			col +
 			'\nError object: ' +
-			error
+			error.stack
+			? error.stack
+			: error
 	);
 };
 
@@ -255,7 +257,7 @@ function handleInventoryClick( tile ) {
 }
 
 function resetInventory() {
-	document.querySelectorAll( '#inventory td' ).forEach( item => {
+	document.querySelectorAll( '#inventory td' ).forEach( ( item ) => {
 		item.classList.remove( 'is-active' );
 	} );
 	document.getElementById( 'board' ).classList.remove( 'is-placing-tile' );
@@ -266,7 +268,7 @@ function swapTiles() {
 		// Let user select tiles and re-click Swap.
 		isSwappingTiles = true;
 		document.getElementById( 'inventory-actions' ).classList.add( 'is-swapping-tiles' );
-		document.querySelectorAll( '#board td[data-active]' ).forEach( tile => {
+		document.querySelectorAll( '#board td[data-active]' ).forEach( ( tile ) => {
 			handleTileClick( tile );
 		} );
 
@@ -276,18 +278,18 @@ function swapTiles() {
 	}
 
 	let arrayToRemove = [];
-	document.querySelectorAll( '#inventory td.is-active' ).forEach( tile => {
+	document.querySelectorAll( '#inventory td.is-active' ).forEach( ( tile ) => {
 		arrayToRemove.push( tile.getAttribute( 'data-letter' ) );
 		tile.removeAttribute( 'data-letter' );
 		tile.classList.remove( 'is-active' );
 	} );
 
 	if ( currentTurnPlayer === 'player1' ) {
-		player1Inventory = player1Inventory.filter( el => ! arrayToRemove.includes( el ) );
+		player1Inventory = player1Inventory.filter( ( el ) => ! arrayToRemove.includes( el ) );
 	}
 
 	if ( currentTurnPlayer === 'player2' ) {
-		player2Inventory = player2Inventory.filter( el => ! arrayToRemove.includes( el ) );
+		player2Inventory = player2Inventory.filter( ( el ) => ! arrayToRemove.includes( el ) );
 	}
 
 	isSwappingTiles = false;
@@ -295,7 +297,7 @@ function swapTiles() {
 
 	assignInventory( currentTurnPlayer, true );
 
-	arrayToRemove.forEach( tile => {
+	arrayToRemove.forEach( ( tile ) => {
 		gameInventory.push( tile );
 	} );
 
@@ -306,7 +308,7 @@ function swapTiles() {
 }
 
 function cancelTileSwap() {
-	document.querySelectorAll( '#inventory td.is-active' ).forEach( tile => {
+	document.querySelectorAll( '#inventory td.is-active' ).forEach( ( tile ) => {
 		tile.classList.remove( 'is-active' );
 	} );
 
@@ -318,7 +320,7 @@ function cancelTileSwap() {
 function shuffleTiles() {
 	let currentInventory = [];
 
-	document.querySelectorAll( '#inventory td[data-letter]' ).forEach( tile => {
+	document.querySelectorAll( '#inventory td[data-letter]' ).forEach( ( tile ) => {
 		currentInventory.push( tile.getAttribute( 'data-letter' ) );
 	} );
 	currentInventory.sort( () => 0.5 - Math.random() );
@@ -335,8 +337,8 @@ function shuffleTiles() {
 function buildTileBag() {
 	let alphabet = 'abcdefghilmnopqrstuvx?';
 
-	alphabet.split( '' ).forEach( letter => {
-		let count = gameInventory.filter( el => el === letter ).length;
+	alphabet.split( '' ).forEach( ( letter ) => {
+		let count = gameInventory.filter( ( el ) => el === letter ).length;
 		let element = document.getElementById( letter + '-count' );
 		element.innerHTML = count;
 
@@ -458,7 +460,7 @@ function handleBlankTile( letter ) {
 
 function updateScore() {
 	turnWordArray = [];
-	document.querySelectorAll( 'td[data-letter][data-active]' ).forEach( item => {
+	document.querySelectorAll( 'td[data-letter][data-active]' ).forEach( ( item ) => {
 		let columnCheck = checkWords( item, 'column', true );
 		if ( columnCheck ) {
 			turnWordArray.push( columnCheck );
@@ -482,7 +484,7 @@ function updateScore() {
 
 function animateValue( obj, start, end, duration ) {
 	let startTimestamp = null;
-	let step = timestamp => {
+	let step = ( timestamp ) => {
 		if ( ! startTimestamp ) startTimestamp = timestamp;
 		let progress = Math.min( ( timestamp - startTimestamp ) / duration, 1 );
 		obj.innerHTML = Math.floor( progress * ( end - start ) + start );
@@ -496,7 +498,7 @@ function animateValue( obj, start, end, duration ) {
 function playTurn() {
 	collectData( 'Played turn', 'scrabble_played_turn' );
 	let invalidWords = [];
-	document.querySelectorAll( 'td[data-letter][data-active]' ).forEach( item => {
+	document.querySelectorAll( 'td[data-letter][data-active]' ).forEach( ( item ) => {
 		let columnCheck = checkWords( item, 'column' );
 		let rowCheck = checkWords( item, 'row' );
 
@@ -511,7 +513,7 @@ function playTurn() {
 		}
 	} );
 
-	invalidWords = invalidWords.filter( element => element !== undefined );
+	invalidWords = invalidWords.filter( ( element ) => element !== undefined );
 
 	invalidWords = invalidWords.filter( ( value, index, self ) => {
 		return self.indexOf( value ) === index;
@@ -545,7 +547,7 @@ function playTurn() {
 
 function submitTurn( isSkip = false, isPass = false, tilesSwapped = 0, multiplayer = false ) {
 	if ( isSkip ) {
-		document.querySelectorAll( 'td[data-letter][data-active]' ).forEach( tile => {
+		document.querySelectorAll( 'td[data-letter][data-active]' ).forEach( ( tile ) => {
 			handleTileClick( tile );
 		} );
 	}
@@ -595,7 +597,7 @@ function submitTurn( isSkip = false, isPass = false, tilesSwapped = 0, multiplay
 				player: currentTurnPlayer,
 				score,
 				tilesSwapped,
-				words: turnWordArray.map( arr => arr.map( innerArr => innerArr[ 0 ] ).join( '' ) ),
+				words: turnWordArray.map( ( arr ) => arr.map( ( innerArr ) => innerArr[ 0 ] ).join( '' ) ),
 				time: hours + ':' + minutes + period,
 			};
 
@@ -604,7 +606,7 @@ function submitTurn( isSkip = false, isPass = false, tilesSwapped = 0, multiplay
 
 		buildTurnHistory();
 
-		document.querySelectorAll( 'td[data-letter][data-active]' ).forEach( tile => {
+		document.querySelectorAll( 'td[data-letter][data-active]' ).forEach( ( tile ) => {
 			tile.removeAttribute( 'data-active' );
 			tile.setAttribute( 'data-locked', true );
 			let tileLetter = tile.classList.contains( 'blank-tile' )
@@ -815,11 +817,11 @@ function buildTurnHistory( option ) {
 		document.getElementById( 'turn-history-time' ).innerHTML = lastTurn.time;
 		document.getElementById( 'turn-history-words' ).innerHTML = '';
 
-		lastTurn.words.forEach( item => {
+		lastTurn.words.forEach( ( item ) => {
 			var node = document.createElement( 'LI' );
 			var wrappedText = item
 				.split( '' )
-				.map( letter => `<span>${ letter }</span>` )
+				.map( ( letter ) => `<span>${ letter }</span>` )
 				.join( '' );
 			node.innerHTML = wrappedText;
 			document.getElementById( 'turn-history-words' ).appendChild( node );
@@ -851,7 +853,7 @@ function checkWords( tile, direction, returnArray ) {
 	if ( direction === 'column' ) {
 		document
 			.querySelectorAll( 'td[data-column="' + tile.getAttribute( 'data-column' ) + '"]' )
-			.forEach( item => {
+			.forEach( ( item ) => {
 				array.push( [
 					item.getAttribute( 'data-letter' ),
 					item.getAttribute( 'class' ) || null,
@@ -876,7 +878,7 @@ function checkWords( tile, direction, returnArray ) {
 		return array;
 	}
 
-	word = array.map( item => item[ 0 ] ).join( '' );
+	word = array.map( ( item ) => item[ 0 ] ).join( '' );
 
 	if ( word.length > 1 ) {
 		let validWord = isWordValid( word );
@@ -910,7 +912,7 @@ function findSurroundedItems( array, startingIndex ) {
 		endIndex++;
 	}
 
-	return result.filter( item => item[ 0 ] !== null );
+	return result.filter( ( item ) => item[ 0 ] !== null );
 }
 
 function calculateScore( wordsArray ) {
@@ -941,12 +943,12 @@ function calculateScore( wordsArray ) {
 		[ '?' ]: 0,
 	};
 
-	wordsArray.forEach( word => {
+	wordsArray.forEach( ( word ) => {
 		let scores = [];
 
 		let doubleWord = false;
 		let tripleWord = false;
-		word.forEach( item => {
+		word.forEach( ( item ) => {
 			let score = alphabet[ item[ 0 ] ];
 
 			if ( item[ 1 ] ) {
@@ -1003,12 +1005,12 @@ function checkInvalidTileConnections() {
 	let rows = [];
 	let columns = [];
 
-	placedTiles.forEach( i => {
+	placedTiles.forEach( ( i ) => {
 		rows.push( i[ 0 ] );
 		columns.push( i[ 1 ] );
 	} );
 
-	let connectedToExistingTile = placedTiles.some( tile => {
+	let connectedToExistingTile = placedTiles.some( ( tile ) => {
 		let row = tile[ 0 ];
 		let column = tile[ 1 ];
 
@@ -1034,7 +1036,7 @@ function checkInvalidTileConnections() {
 	} );
 
 	// No tiles placed yet.
-	let isCentreTile = placedTiles.some( subArr =>
+	let isCentreTile = placedTiles.some( ( subArr ) =>
 		subArr.every( ( val, index ) => val === [ '8', '8' ][ index ] )
 	);
 
@@ -1054,7 +1056,7 @@ function checkInvalidTileConnections() {
 
 	// Check to see if existing tiles are filling the gaps.
 	if ( ! rowsValid && isEqual( rows ) ) {
-		valid = findMissingTiles( columns ).every( item => {
+		valid = findMissingTiles( columns ).every( ( item ) => {
 			let missingTile = document.querySelector(
 				'#row' + rows[ 0 ] + ' td[data-column="' + item + '"]'
 			);
@@ -1063,7 +1065,7 @@ function checkInvalidTileConnections() {
 	}
 
 	if ( ! columnsValid && isEqual( columns ) ) {
-		valid = findMissingTiles( rows ).every( item => {
+		valid = findMissingTiles( rows ).every( ( item ) => {
 			let missingTile = document.querySelector(
 				'#row' + item + ' td[data-column="' + columns[ 0 ] + '"]'
 			);
@@ -1083,11 +1085,11 @@ function isConsecutive( arr ) {
 		.map( function ( n, i ) {
 			return n - arr[ i ];
 		} );
-	return differenceAry.every( value => value == 1 );
+	return differenceAry.every( ( value ) => value == 1 );
 }
 
 function isEqual( arr ) {
-	return arr.every( val => val === arr[ 0 ] );
+	return arr.every( ( val ) => val === arr[ 0 ] );
 }
 
 function findMissingTiles( arr ) {
@@ -1111,7 +1113,7 @@ function findMissingTiles( arr ) {
 function generateGameData() {
 	collectData( 'Generated game data', 'scrabble_generate_game_data' );
 	let board = [];
-	document.querySelectorAll( '#board td:not([data-active])' ).forEach( tile => {
+	document.querySelectorAll( '#board td:not([data-active])' ).forEach( ( tile ) => {
 		let letter = tile.hasAttribute( 'data-letter' ) ? tile.getAttribute( 'data-letter' ) : '-';
 		let classList = letter !== '-' ? tile.getAttribute( 'class' ) : null;
 		board.push( [ letter, classList ] );
@@ -1181,12 +1183,12 @@ function sendData( data, id ) {
 		},
 		body: JSON.stringify( data ),
 	} )
-		.then( response => {
+		.then( ( response ) => {
 			if ( ! response.ok ) {
 				handleMultiplayerError();
 			}
 		} )
-		.catch( e => {
+		.catch( ( e ) => {
 			handleMultiplayerError();
 		} );
 }
@@ -1197,14 +1199,14 @@ function fetchData( id ) {
 			id +
 			'&force=true&hasName=false'
 	)
-		.then( response => {
+		.then( ( response ) => {
 			if ( response.ok ) {
 				return response.json();
 			} else {
 				handleMultiplayerError();
 			}
 		} )
-		.then( response => {
+		.then( ( response ) => {
 			if ( response === 404 ) {
 				document.body.classList.add( 'is-error-screen' );
 				document.body.classList.remove( 'is-game-start' );
@@ -1268,20 +1270,20 @@ function fetchData( id ) {
 				pollOnlineStatus();
 			}, 30000 );
 		} )
-		.catch( error => {
+		.catch( ( error ) => {
 			handleMultiplayerError();
 		} );
 }
 
 function canUseMultiplayerCheck() {
 	fetch( 'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/scrabble?test=y' )
-		.then( response => {
+		.then( ( response ) => {
 			if ( ! response.ok ) {
 				handleMultiplayerError();
 				return;
 			}
 		} )
-		.catch( error => {
+		.catch( ( error ) => {
 			handleMultiplayerError();
 			collectData( error );
 			return;
@@ -1294,13 +1296,13 @@ function canUseMultiplayerCheck() {
 		},
 		body: 'Test',
 	} )
-		.then( response => {
+		.then( ( response ) => {
 			if ( ! response.ok ) {
 				handleMultiplayerError();
 				return;
 			}
 		} )
-		.catch( e => {
+		.catch( ( e ) => {
 			handleMultiplayerError();
 			collectData( e );
 			return;
@@ -1352,12 +1354,12 @@ function pollOnlineStatus() {
 			'&unix=' +
 			Date.now()
 	)
-		.then( response => {
+		.then( ( response ) => {
 			if ( response.ok ) {
 				return response.json();
 			}
 		} )
-		.then( response => {
+		.then( ( response ) => {
 			if ( response === 404 ) {
 				return;
 			}
@@ -1377,7 +1379,7 @@ function pollOnlineStatus() {
 				document.getElementById( 'last-seen-player1' ).innerHTML = text;
 			}
 		} )
-		.catch( error => {
+		.catch( ( error ) => {
 			collectData( 'Last seen error', 'scrabble_last_seen_error' );
 			handleMultiplayerError();
 			collectData( error );
@@ -1397,12 +1399,12 @@ function pollData( id ) {
 			'&hasName=' +
 			hasName
 	)
-		.then( response => {
+		.then( ( response ) => {
 			if ( response.ok ) {
 				return response.json();
 			}
 		} )
-		.then( response => {
+		.then( ( response ) => {
 			if ( response === 304 ) {
 				return;
 			}
@@ -1460,7 +1462,7 @@ function pollData( id ) {
 				assignInventory( 'player1', true );
 			}
 		} )
-		.catch( error => {
+		.catch( ( error ) => {
 			handleMultiplayerError();
 			collectData( error );
 		} );

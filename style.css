@@ -356,6 +356,7 @@ li {
 	flex-grow: 1;
 }
 
+.is-gcseocr .row-5 .vocab-type:nth-of-type( 5 ).has-selected,
 .is-clc .row-4 .vocab-type:nth-of-type( 6 ).has-selected,
 .vocab-type:last-of-type.has-selected {
 	border-bottom-left-radius: 18px;

@@ -54,7 +54,9 @@ window.onerror = function ( message, source, line, col, error ) {
 			'\nColumn number: ' +
 			col +
 			'\nError object: ' +
-			error
+			error.stack
+			? error.stack
+			: error
 	);
 };
 
@@ -64,7 +66,7 @@ function generateBoardFromId() {
 	isMultiplayer = true;
 
 	fetch( 'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/word-bites?id=' + id )
-		.then( response => {
+		.then( ( response ) => {
 			if ( response.ok ) {
 				return response.json();
 			} else {
@@ -74,7 +76,7 @@ function generateBoardFromId() {
 				collectData( new Error( response.statusText ).message );
 			}
 		} )
-		.then( response => {
+		.then( ( response ) => {
 			if ( response === 404 ) {
 				document.getElementById( 'error-explanation' ).innerHTML =
 					"<p>Your friend's score and tiles couldn't be found in our database. There is likely a typo in the link which you've used.</p>";
@@ -108,7 +110,7 @@ function generateBoardFromId() {
 				return;
 			}
 		} )
-		.catch( error => {
+		.catch( ( error ) => {
 			document.body.classList.remove( 'is-welcome' );
 			document.body.classList.add( 'is-error' );
 			collectData( 'GET Request failed - network', 'word_bites_request_fail_network' );
@@ -174,7 +176,7 @@ function findLocation( groupingDirection ) {
 function shuffleGroupItems() {
 	document
 		.querySelectorAll( 'td[data-letter]:not(.horizontal-right):not(.vertical-bottom)' )
-		.forEach( item => {
+		.forEach( ( item ) => {
 			let direction = item.getAttribute( 'grouped' );
 			let random = findLocation( direction );
 			transferTileAttributes( item, random );
@@ -186,7 +188,7 @@ function shuffleGroupItems() {
 }
 
 function shuffleSingleItems() {
-	document.querySelectorAll( '#row9 td[data-letter]' ).forEach( item => {
+	document.querySelectorAll( '#row9 td[data-letter]' ).forEach( ( item ) => {
 		transferTileAttributes( item, findLocation() );
 	} );
 }
@@ -268,7 +270,7 @@ function generateBoard() {
 		.querySelector( '#row9 td[data-column="7"]' )
 		.setAttribute( 'data-letter', generateLetter( 'common' ) );
 
-	document.querySelectorAll( 'td' ).forEach( item => {
+	document.querySelectorAll( 'td' ).forEach( ( item ) => {
 		if ( item.hasAttribute( 'data-letter' ) ) {
 			grid.push( item.getAttribute( 'data-letter' ) );
 		} else {
@@ -293,19 +295,19 @@ function solveGrid() {
 	let horizontal = [];
 	let vertical = [];
 	let single = [];
-	document.querySelectorAll( 'td.horizontal-left' ).forEach( item => {
+	document.querySelectorAll( 'td.horizontal-left' ).forEach( ( item ) => {
 		let letterOne = item.getAttribute( 'data-letter' );
 		let letterTwo = getGroupedTile( item, 'horizontal' ).getAttribute( 'data-letter' );
 		horizontal.push( letterOne + letterTwo );
 	} );
 
-	document.querySelectorAll( 'td.vertical-top' ).forEach( item => {
+	document.querySelectorAll( 'td.vertical-top' ).forEach( ( item ) => {
 		let letterOne = item.getAttribute( 'data-letter' );
 		let letterTwo = getGroupedTile( item, 'vertical' ).getAttribute( 'data-letter' );
 		vertical.push( letterOne + letterTwo );
 	} );
 
-	document.querySelectorAll( 'td[data-letter]:not(.is-grouped)' ).forEach( item => {
+	document.querySelectorAll( 'td[data-letter]:not(.is-grouped)' ).forEach( ( item ) => {
 		single.push( item.getAttribute( 'data-letter' ) );
 	} );
 
@@ -315,20 +317,20 @@ function solveGrid() {
 		single,
 	};
 
-	let grid = validGuesses.filter( word => can_make_word( word, tiles ) );
+	let grid = validGuesses.filter( ( word ) => can_make_word( word, tiles ) );
 	isLoaded = true;
 
 	return grid;
 }
 
 function assignColours() {
-	document.querySelectorAll( 'td.horizontal-left' ).forEach( item => {
+	document.querySelectorAll( 'td.horizontal-left' ).forEach( ( item ) => {
 		let number = Math.floor( Math.random() * 6 ) + 1;
 		item.classList.add( 'colour-' + number );
 		getGroupedTile( item, 'horizontal' ).classList.add( 'colour-' + number );
 	} );
 
-	document.querySelectorAll( 'td.vertical-top' ).forEach( item => {
+	document.querySelectorAll( 'td.vertical-top' ).forEach( ( item ) => {
 		let number = Math.floor( Math.random() * 6 ) + 1;
 		item.classList.add( 'colour-' + number );
 		getGroupedTile( item, 'vertical' ).classList.add( 'colour-' + number );
@@ -371,14 +373,14 @@ function generateLetter( type ) {
 	}
 
 	if ( type === 'rare' ) {
-		letters = letters.filter( letter => ! commonLetters.includes( letter ) );
+		letters = letters.filter( ( letter ) => ! commonLetters.includes( letter ) );
 	}
 
 	return letters[ Math.floor( Math.random() * letters.length ) ];
 }
 
 function checkTileConnections() {
-	document.querySelectorAll( '#board td' ).forEach( item => {
+	document.querySelectorAll( '#board td' ).forEach( ( item ) => {
 		if ( item.hasAttribute( 'data-letter' ) ) {
 			let verticalTile = getGroupedTile( item, 'vertical' );
 
@@ -448,7 +450,7 @@ function handleTileClick( item ) {
 	}
 
 	if ( document.body.classList.contains( 'is-tile-active' ) ) {
-		document.querySelectorAll( '#board td[data-active="true"]' ).forEach( item => {
+		document.querySelectorAll( '#board td[data-active="true"]' ).forEach( ( item ) => {
 			item.removeAttribute( 'data-active' );
 			item.removeAttribute( 'data-active-grouped' );
 		} );
@@ -477,7 +479,7 @@ function transferTileAttributes( oldItem, newItem ) {
 		return;
 	}
 
-	[ 'data-letter', 'grouped', 'class' ].forEach( attribute => {
+	[ 'data-letter', 'grouped', 'class' ].forEach( ( attribute ) => {
 		if ( oldItem.hasAttribute( attribute ) ) {
 			newItem.setAttribute( attribute, oldItem.getAttribute( attribute ) );
 			oldItem.removeAttribute( attribute );
@@ -557,7 +559,7 @@ function moveTile( newItem ) {
 }
 
 function checkBoard() {
-	document.querySelectorAll( 'td[data-letter]' ).forEach( item => {
+	document.querySelectorAll( 'td[data-letter]' ).forEach( ( item ) => {
 		checkWords( item, 'column' );
 		checkWords( item, 'row' );
 	} );
@@ -581,7 +583,7 @@ function checkWords( tile, direction ) {
 	if ( direction === 'column' ) {
 		document
 			.querySelectorAll( 'td[data-column="' + tile.getAttribute( 'data-column' ) + '"]' )
-			.forEach( item => {
+			.forEach( ( item ) => {
 				array.push( item.getAttribute( 'data-letter' ) );
 			} );
 	}
@@ -660,7 +662,7 @@ function scorePoints( word ) {
 
 function animateValue( obj, start, end, duration ) {
 	let startTimestamp = null;
-	let step = timestamp => {
+	let step = ( timestamp ) => {
 		if ( ! startTimestamp ) startTimestamp = timestamp;
 		let progress = Math.min( ( timestamp - startTimestamp ) / duration, 1 );
 		let value = Math.floor( progress * ( end - start ) + start );
@@ -749,21 +751,21 @@ function endMultiplayerGame() {
 	}
 
 	let challengerWords = validWords.sort();
-	challengerWords.forEach( item => {
+	challengerWords.forEach( ( item ) => {
 		var node = document.createElement( 'LI' );
 		node.appendChild( document.createTextNode( item ) );
 		document.getElementById( 'challenger-words' ).appendChild( node );
 	} );
 
 	let opponentWords = multiplayerData.foundWords.sort();
-	opponentWords.forEach( item => {
+	opponentWords.forEach( ( item ) => {
 		var node = document.createElement( 'LI' );
 		node.appendChild( document.createTextNode( item ) );
 		document.getElementById( 'opponent-words' ).appendChild( node );
 	} );
 
 	document.getElementById( 'all-words-count' ).innerHTML = solvedGrid.length;
-	solvedGrid.forEach( item => {
+	solvedGrid.forEach( ( item ) => {
 		var node = document.createElement( 'LI' );
 		node.appendChild( document.createTextNode( item ) );
 		document.getElementById( 'all-words' ).appendChild( node );
@@ -783,7 +785,7 @@ function endMultiplayerGame() {
 			body: JSON.stringify( multiplayerData ),
 		}
 	)
-		.then( response => {
+		.then( ( response ) => {
 			if ( response.ok ) {
 				collectData( 'POST Request successful (opponent)', 'word_bites_post_success' );
 			} else {
@@ -792,7 +794,7 @@ function endMultiplayerGame() {
 				collectData( new Error( response.statusText ).message );
 			}
 		} )
-		.catch( error => {
+		.catch( ( error ) => {
 			document.getElementById( 'multiplayer-error' ).style.display = 'block';
 			collectData( 'POST Request failed - network (opponent)', 'word_bites_post_fail_network' );
 			collectData( error.toString() );
@@ -830,13 +832,13 @@ function handleCompleteGame() {
 	document.getElementById( 'challenger-name-list' ).innerHTML = multiplayerData.name + "'s words";
 	document.getElementById( 'opponent-name-list' ).innerHTML = "Opponent's words";
 
-	multiplayerData.foundWords.forEach( item => {
+	multiplayerData.foundWords.forEach( ( item ) => {
 		var node = document.createElement( 'LI' );
 		node.appendChild( document.createTextNode( item ) );
 		document.getElementById( 'challenger-words' ).appendChild( node );
 	} );
 
-	multiplayerData.opponentFoundWords.forEach( item => {
+	multiplayerData.opponentFoundWords.forEach( ( item ) => {
 		var node = document.createElement( 'LI' );
 		node.appendChild( document.createTextNode( item ) );
 		document.getElementById( 'opponent-words' ).appendChild( node );
@@ -869,14 +871,14 @@ function startTimer() {
 }
 
 function generateWordsTable() {
-	validWords.forEach( item => {
+	validWords.forEach( ( item ) => {
 		var node = document.createElement( 'LI' );
 		node.appendChild( document.createTextNode( item ) );
 		document.getElementById( 'user-words' ).appendChild( node );
 	} );
 
-	let missingWords = solvedGrid.filter( item => ! validWords.includes( item ) );
-	missingWords.forEach( item => {
+	let missingWords = solvedGrid.filter( ( item ) => ! validWords.includes( item ) );
+	missingWords.forEach( ( item ) => {
 		var node = document.createElement( 'LI' );
 		node.appendChild( document.createTextNode( item ) );
 		document.getElementById( 'missed-words' ).appendChild( node );
@@ -889,7 +891,7 @@ function viewAllWordsChallenger() {
 		solvedGrid = solveGrid();
 	}
 	document.getElementById( 'all-words-count' ).innerHTML = solvedGrid.length;
-	solvedGrid.forEach( item => {
+	solvedGrid.forEach( ( item ) => {
 		var node = document.createElement( 'LI' );
 		node.appendChild( document.createTextNode( item ) );
 		document.getElementById( 'all-words' ).appendChild( node );
@@ -976,7 +978,7 @@ function generateLink() {
 			body: JSON.stringify( data ),
 		}
 	)
-		.then( response => {
+		.then( ( response ) => {
 			if ( response.ok ) {
 				let link = 'https://latinvocabularytester.com/word-bites/?game=' + result;
 				input.value = link;
@@ -996,7 +998,7 @@ function generateLink() {
 				collectData( new Error( response.statusText ).message );
 			}
 		} )
-		.catch( e => {
+		.catch( ( e ) => {
 			document.getElementById( 'submit-api' ).style.display = 'none';
 			error.innerHTML =
 				'Error: failed to submit data. It is likely your network blocks requests to the server.';
@@ -1051,7 +1053,9 @@ function can_make_word_axis( word, parallel_tiles, perpendicular_tiles, single_t
 		word == '' ||
 		exists_bipartite_matching(
 			word,
-			perpendicular_tiles.filter( tile => word.includes( tile[ 0 ] ) || word.includes( tile[ 1 ] ) )
+			perpendicular_tiles.filter(
+				( tile ) => word.includes( tile[ 0 ] ) || word.includes( tile[ 1 ] )
+			)
 		)
 	);
 }

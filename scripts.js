@@ -204,7 +204,9 @@ window.onerror = function ( message, source, line, col, error ) {
 			'\nColumn number: ' +
 			col +
 			'\nError object: ' +
-			error
+			error.stack
+			? error.stack
+			: error
 	);
 };
 
@@ -310,6 +312,7 @@ function changeOption( option, manualChange = true ) {
 	vocab = optionMap[ option ];
 	document.body.classList.add( 'is-' + selectedOption );
 	localStorage.setItem( 'defaultOption', selectedOption );
+	document.getElementById( 'word-table-select' ).options.length = '0';
 
 	document.getElementById( 'switch-literature' ).innerHTML = 'Switch to literature vocabulary';
 	document.getElementById( 'switch-literature' ).onclick = function () {
@@ -2316,7 +2319,14 @@ function checkDeclensionOrConjugationAnswer( shouldReveal = false ) {
 			playAudio( 'correct' );
 
 			if ( competitiveMode ) {
-				collectData( 'Competitive answer: ' + enteredAnswer + ' for ' + question )
+				collectData(
+					'Competitive answer: ' +
+						enteredAnswer +
+						' for ' +
+						question +
+						' at ' +
+						new Date().toLocaleTimeString()
+				);
 			}
 
 			collectData(
@@ -2530,6 +2540,17 @@ function checkAnswer( shouldReveal = false ) {
 		document.getElementById( 'vocab-answer' ).value = '';
 		document.getElementById( 'wrong-answer' ).style.display = 'none';
 		playAudio( 'correct' );
+
+		if ( competitiveMode ) {
+			collectData(
+				'Competitive answer: ' +
+					answer +
+					' for ' +
+					question +
+					' at ' +
+					new Date().toLocaleTimeString()
+			);
+		}
 
 		collectData(
 			'Answered vocabulary question correctly by inputting ' + answer + ' for ' + question,
@@ -2761,31 +2782,33 @@ function startFlashcards() {
 	buildFlashcard();
 	starFlashcard( true );
 
-	document.body.addEventListener( 'keyup', function ( event ) {
-		event.preventDefault();
+	document.body.addEventListener( 'keyup', flashcardsListener );
+}
 
-		if ( event.keyCode === 13 ) {
-			flipFlashcard();
-		}
+function flashcardsListener( event ) {
+	event.preventDefault();
 
-		if ( event.keyCode === 83 ) {
-			starFlashcard();
-		}
+	if ( event.keyCode === 13 ) {
+		flipFlashcard();
+	}
 
-		if (
-			event.keyCode === 39 &&
-			! document.getElementById( 'right-flashcard-button' ).classList.contains( 'is-inactive' )
-		) {
-			buildFlashcard( 'next' );
-		}
+	if ( event.keyCode === 83 ) {
+		starFlashcard();
+	}
 
-		if (
-			event.keyCode === 37 &&
-			! document.getElementById( 'left-flashcard-button' ).classList.contains( 'is-inactive' )
-		) {
-			buildFlashcard( 'previous' );
-		}
-	} );
+	if (
+		event.keyCode === 39 &&
+		! document.getElementById( 'right-flashcard-button' ).classList.contains( 'is-inactive' )
+	) {
+		buildFlashcard( 'next' );
+	}
+
+	if (
+		event.keyCode === 37 &&
+		! document.getElementById( 'left-flashcard-button' ).classList.contains( 'is-inactive' )
+	) {
+		buildFlashcard( 'previous' );
+	}
 }
 
 function buildFlashcard( context, starred = false ) {
@@ -2885,13 +2908,13 @@ function flipFlashcard() {
 }
 
 function starFlashcard( auto ) {
-	let questionArray = document.getElementById( 'flashcard-setting-switch' ).checked
-		? findWord( document.getElementById( 'front-flashcard' ).textContent )[ 0 ]
-		: findWord( document.getElementById( 'back-flashcard' ).textContent )[ 0 ];
-	let index = vocabToFocusOn.indexOf( questionArray.word );
+	let questionText = document.getElementById( 'flashcard-setting-switch' ).checked
+		? document.getElementById( 'front-flashcard' ).textContent
+		: document.getElementById( 'back-flashcard' ).textContent;
+	let index = vocabToFocusOn.indexOf( questionText );
 
 	if ( ! auto ) {
-		index !== -1 ? vocabToFocusOn.splice( index, 1 ) : vocabToFocusOn.push( questionArray.word );
+		index !== -1 ? vocabToFocusOn.splice( index, 1 ) : vocabToFocusOn.push( questionText );
 	}
 
 	document.getElementById( 'wrong-vocab' ).innerHTML = '';
@@ -3273,11 +3296,16 @@ function resetTest() {
 		li.remove();
 	} );
 
+	document.getElementById( 'focus-on-title' ).innerHTML = 'Words to focus on';
+	document.getElementById( 'focus-on-description' ).innerHTML =
+		'A list of words either entered incorrectly or for which the answer was revealed:';
 	document.getElementById( 'wrong-vocab' ).innerHTML =
 		'<li id="no-words-wrong">None so far - well done!</li>	';
 	document.getElementById( 'export-incorrect-vocab-sidebar' ).style.display = 'none';
 	document.getElementById( 'retry-test-button' ).classList.add( 'is-inactive' );
 	document.getElementById( 'retry-test-prompt' ).classList.add( 'is-inactive' );
+
+	document.body.removeEventListener( 'keyup', flashcardsListener );
 
 	document.getElementById( 'vocab-tester-wrapper' ).classList.remove( 'is-complete' );
 	document.getElementById( 'word-table' ).classList.remove( 'is-active' );

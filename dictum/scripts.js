@@ -6,6 +6,8 @@ let selectedWord;
 let unix = 1644624000000;
 let userId = localStorage.getItem( 'userID' ) || Math.floor( Math.random() * 9999999 ) + 1;
 
+const VOCAB_LISTS_CACHE_VERSION = 1.0; // Increment when editing vocabulary lists.
+
 loadAllVocabFiles();
 
 window.onload = function () {
@@ -76,16 +78,41 @@ function loadAllVocabFiles() {
 		'valid.json': 'validGuesses',
 	};
 
+	let dictumCache = caches.open( 'dictumCache' );
+
 	let promises = Object.entries( fileVariableMapping ).map( ( [ fileName, variableName ] ) => {
 		let filePath = `./vocab-lists/${ fileName }`;
 
-		return fetch( filePath )
-			.then( ( response ) => {
-				if ( ! response.ok ) {
-					collectData( 'Dictum files failed to load' );
-					collectData( error.message || error );
-				}
-				return response.json();
+		return dictumCache
+			.then( ( cache ) => {
+				return cache.match( fileName ).then( ( cacheResponse ) => {
+					if (
+						cacheResponse &&
+						parseFloat( localStorage.getItem( 'dictumFilesCacheVersion' ) ) ===
+							VOCAB_LISTS_CACHE_VERSION
+					) {
+						return cacheResponse.json();
+					} else {
+						return fetch( filePath )
+							.then( ( response ) => {
+								if ( ! response.ok ) {
+									collectData( 'Dictum files failed to load' );
+									collectData( error.message || error );
+								}
+								return response.json();
+							} )
+							.then( ( data ) => {
+								cache.put( fileName, new Response( JSON.stringify( data ) ) );
+								localStorage.setItem( 'dictumFilesCacheVersion', VOCAB_LISTS_CACHE_VERSION );
+
+								return data;
+							} )
+							.catch( ( error ) => {
+								collectData( 'Dictum files failed to load' );
+								collectData( error.message || error );
+							} );
+					}
+				} );
 			} )
 			.then( ( data ) => {
 				window[ variableName ] = data;
@@ -93,10 +120,6 @@ function loadAllVocabFiles() {
 				if ( variableName === 'anyList' ) {
 					selectedList = anyList;
 				}
-			} )
-			.catch( ( error ) => {
-				collectData( 'Dictum files failed to load' );
-				collectData( error.message || error );
 			} );
 	} );
 

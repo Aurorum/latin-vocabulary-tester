@@ -2437,6 +2437,7 @@ a:hover {
 	position: relative;
 	margin: auto;
 }
+
 .front-flashcard,
 .back-flashcard {
 	display: flex;
@@ -2444,6 +2445,7 @@ a:hover {
 	position: absolute;
 	top: 0;
 	left: 0;
+	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 	overflow: hidden;
 	transition: transform 0.8s ease;

@@ -6,7 +6,7 @@ let selectedWord;
 let unix = 1644624000000;
 let userId = localStorage.getItem( 'userID' ) || Math.floor( Math.random() * 9999999 ) + 1;
 
-const VOCAB_LISTS_CACHE_VERSION = 1.0; // Increment when editing vocabulary lists.
+const VOCAB_LISTS_CACHE_VERSION = 1.1; // Increment when editing vocabulary lists.
 
 loadAllVocabFiles();
 

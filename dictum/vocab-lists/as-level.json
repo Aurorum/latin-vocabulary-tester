@@ -2796,10 +2796,10 @@
 		"type": "vocs"
 	},
 	"467": {
-		"word": "caela",
-		"full": "caelum, caeli, n",
-		"translation": "sky, heaven",
-		"type": "vocp"
+		"word": "bibit",
+		"full": "bibo, bibere, bibi",
+		"translation": "drink",
+		"type": "pracind3s"
 	},
 	"468": {
 		"word": "ornas",

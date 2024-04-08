@@ -2297,6 +2297,10 @@ function checkDeclensionOrConjugationAnswer( shouldReveal = false ) {
 		return;
 	}
 
+	if ( shouldReveal && competitiveMode ) {
+		return;
+	}
+
 	if ( shouldReveal ) {
 		answerInput.value = actualAnswer;
 		collectData(
@@ -2394,6 +2398,10 @@ function checkAnswer( shouldReveal = false ) {
 	let answerArray = hardDifficulty ? data.word.split( ',' ) : data.translation.split( ',' );
 
 	if ( ! shouldReveal && answer === '' ) {
+		return;
+	}
+
+	if ( shouldReveal && competitiveMode ) {
 		return;
 	}
 

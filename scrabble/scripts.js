@@ -1315,6 +1315,7 @@ function canUseMultiplayerCheck() {
 
 function handleMultiplayerError() {
 	canUseMultiplayer = false;
+	ceasePolling = true;
 	collectData( 'Multiplayer error - API connection problem', 'scrabble_multiplayer_error' );
 	if ( new URLSearchParams( window.location.search ).get( 'game' ) ) {
 		document.body.classList.add( 'is-error-screen' );
@@ -1563,7 +1564,7 @@ function startGame() {
 		collectData( 'Started multiplayer game', 'scrabble_started_multiplayer_game' );
 		setInterval( function () {
 			pollData( multiplayerId );
-		}, 1000 );
+		}, 2500 );
 
 		setInterval( function () {
 			pollOnlineStatus();

@@ -148,7 +148,7 @@ template {
 }
 
 /* Styles start from here */
-body {
+html {
 	background-color: #f0f4ff;
 	background: url( './assets/arena.jpg' ) no-repeat center center fixed;
 	background-size: cover;
@@ -1892,6 +1892,59 @@ a:hover {
 	margin-top: 28px;
 }
 
+.complete-actions .option-button {
+	flex: 1;
+	max-width: 300px;
+}
+
+.retry-prompts {
+	text-align: center;
+}
+
+.retry-prompts p {
+	display: none;
+}
+
+.retry-prompts p {
+	background: #3b5087;
+	border: 1px solid #1a2b63;
+	border-radius: 4px;
+	padding: 12px;
+}
+
+.retry-prompts a {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.retry-remove-notice,
+.retry-complete-notice {
+	font-weight: 500;
+}
+
+.show-retest-prompt .retry-remove-prompt,
+.show-retest-notice .retry-remove-notice,
+.show-retest-complete .retry-complete-notice {
+	display: inline-block;
+}
+
+.retry-reset-focus-prompt {
+	display: none;
+	font-size: 15px;
+	margin: 6px;
+	margin-top: 0;
+	text-align: right;
+}
+
+.retry-reset-focus-prompt a {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.show-reset-focus-prompt .retry-reset-focus-prompt {
+	display: block;
+}
+
 @keyframes curtain {
 	0% {
 		transform: none;
@@ -2458,12 +2511,15 @@ a:hover {
 .front-flashcard {
 	border-bottom: 4px solid #d66043;
 }
+
 .back-flashcard {
 	transform: rotateY( 180deg );
 }
+
 .flashcard-container.is-flipped .front-flashcard {
 	transform: rotateY( -180deg );
 }
+
 .flashcard-container.is-flipped .back-flashcard {
 	transform: rotateY( 0deg );
 }
@@ -2965,6 +3021,11 @@ button.verb-table-option-button:hover {
 		border-radius: 6px;
 		margin-left: 12px;
 		padding: 14px 24px;
+	}
+
+	.complete-actions .option-button {
+		flex: auto;
+		margin-left: 24px;
 	}
 
 	.option-button img {

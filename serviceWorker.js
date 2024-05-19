@@ -1,4 +1,4 @@
-let OFFLINE_VERSION = 5;
+let OFFLINE_VERSION = 6;
 let CACHE_NAME = 'offline';
 
 let URLS_TO_CACHE = [

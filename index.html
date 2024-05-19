@@ -862,9 +862,7 @@
 					<div class="confetti">
 						<img src="./assets/confetti.svg" width="150" />
 					</div>
-					<h3>
-						Congratulations - you've completed all <span id="celebration-word-count"></span> words!
-					</h3>
+					<h3>Congratulations - you've completed all <span id="celebration-word-count"></span>!</h3>
 					<p id="retry-test-prompt" class="try-retest-prompt is-inactive">
 						Click the button below if you'd like to focus on the incorrectly answered words!
 						<a
@@ -891,6 +889,25 @@
 							<p>Reset test</p>
 						</button>
 					</div>
+
+					<div class="retry-prompts">
+						<p class="retry-remove-prompt">
+							<strong>About to re-attempt incorrect words?</strong> Click
+							<a onclick="removeCorrectRetries()">here</a> to remove the
+							<span id="retry-count"></span> that you just translated correctly.
+						</p>
+						<p class="retry-remove-notice">
+							You've removed <span id="retry-remove-count"></span> from the test. That leaves
+							<span id="retry-remain-count"></span> to correctly answer!
+						</p>
+						<p class="retry-complete-notice">
+							Nice work! You've correctly translated all the words which you originally didn't know.
+						</p>
+					</div>
+
+					<p class="retry-reset-focus-prompt">
+						<a onclick="replaceCorrectRetries()">Reset list of words to focus on</a>
+					</p>
 				</div>
 			</div>
 			<div class="further-content" id="word-table">

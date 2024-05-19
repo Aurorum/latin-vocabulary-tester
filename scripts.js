@@ -22,9 +22,10 @@ let vocabCustomList = [];
 let vocabDeclension;
 let vocabFilesLoaded = false;
 let vocabToFocusOn = [];
+let vocabToFocusOnOriginal = [];
 let vocabToTest = [];
 
-const VOCAB_FILES_CACHE_VERSION = 1.1; // Increment when editing vocabulary lists.
+const VOCAB_FILES_CACHE_VERSION = 1.2; // Increment when editing vocabulary lists.
 
 loadAllVocabFiles();
 
@@ -2113,7 +2114,10 @@ function buildTest() {
 
 	let numberofWordsToAnswer = Math.min( trimmedWordSelection, allVocab.length );
 	document.getElementById( 'progress-indicator-set' ).innerHTML = numberofWordsToAnswer;
-	document.getElementById( 'celebration-word-count' ).innerHTML = numberofWordsToAnswer;
+
+	let wordString = numberofWordsToAnswer === 1 ? ' word' : ' words';
+	document.getElementById( 'celebration-word-count' ).innerHTML =
+		numberofWordsToAnswer + wordString;
 
 	// If there are more words to ask, else all words have been asked (so celebrate)
 	if ( numberofWordsToAnswer > vocabAnswered.length ) {
@@ -2178,6 +2182,25 @@ function buildTest() {
 		document.getElementById( 'vocab-submit-word-form' ).innerHTML = wordForm;
 
 		return;
+	}
+
+	let correctReanswerCount = allVocab.filter(
+		( item ) => ! item.hasOwnProperty( 'retriedIncorrectly' )
+	).length;
+	let toggleRetest = correctReanswerCount !== allVocab.length && correctReanswerCount > 0;
+	let wordLabel = correctReanswerCount === 1 ? ' word' : ' words';
+
+	document
+		.getElementById( 'vocab-tester-wrapper' )
+		.classList.toggle( 'show-retest-prompt', toggleRetest );
+	document.getElementById( 'retry-count' ).innerHTML = correctReanswerCount + wordLabel;
+
+	if (
+		acceptableVocab.every( ( item ) => item === 'redo' ) &&
+		correctReanswerCount === allVocab.length
+	) {
+		document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'show-retest-complete' );
+		collectData( 'Completed retest of all incorrect words', 'completed_incorrect_words' );
 	}
 
 	document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'is-complete' );
@@ -2298,6 +2321,7 @@ function checkDeclensionOrConjugationAnswer( shouldReveal = false ) {
 	}
 
 	if ( shouldReveal && competitiveMode ) {
+		collectData( 'Competitive answered revealed: ' + question );
 		return;
 	}
 
@@ -2392,16 +2416,11 @@ function checkAnswer( shouldReveal = false ) {
 	let answerInput = document.getElementById( 'vocab-answer' );
 	let incorrectCount = document.getElementById( 'vocab-incorrect-count' );
 	let incorrectCountNumber = parseInt( incorrectCount.textContent );
-	let isAnswerCorrect = false;
 	let questionArray = hardDifficulty ? findTranslation( question )[ 0 ] : findWord( question )[ 0 ];
 	let data = questionArray;
 	let answerArray = hardDifficulty ? data.word.split( ',' ) : data.translation.split( ',' );
 
 	if ( ! shouldReveal && answer === '' ) {
-		return;
-	}
-
-	if ( shouldReveal && competitiveMode ) {
 		return;
 	}
 
@@ -2431,26 +2450,45 @@ function checkAnswer( shouldReveal = false ) {
 		answerArray[ i ] = answerArray[ i ].toLowerCase().trim();
 	}
 
+	let isAnswerCorrect = false;
+
+	if ( ! isTestingParticipleParts ) {
+		isAnswerCorrect = answerArray.includes( answer );
+	} else {
+		if ( form.includes( 'first' ) ) {
+			isAnswerCorrect = answer === answerArray[ 0 ] || answer === data.pracind1s;
+		} else if ( form.includes( 'second' ) ) {
+			isAnswerCorrect = answer === answerArray[ 1 ] || answer === data.infpr;
+		} else if ( form.includes( 'third' ) ) {
+			isAnswerCorrect = answer === answerArray[ 2 ] || answer === data.pfacind1s;
+		} else if ( form.includes( 'nominative' ) ) {
+			isAnswerCorrect = answer === data.noms;
+		} else if ( form.includes( 'genitive' ) ) {
+			isAnswerCorrect = answer === data.gens;
+		}
+	}
+
+	if ( answer.length === 1 && ! [ 'a', 'e', 'i' ].includes( answer ) ) {
+		// Ensures genders aren't accepted as valid answers.
+		isAnswerCorrect = false;
+	}
+
 	if ( questionArray.didReveal !== true ) {
 		questionArray.didReveal = false;
 	}
 
-	document.getElementById( 'wrong-vocab' ).scrollTop =
-		document.getElementById( 'wrong-vocab' ).scrollHeight;
-
+	// Revealed answer.
 	if ( shouldReveal ) {
-		if ( ! vocabToFocusOn.includes( questionArray.word ) ) {
-			vocabToFocusOn.push( questionArray.word );
-
-			let node = document.createElement( 'LI' );
-			node.appendChild( document.createTextNode( question ) );
-			document.getElementById( 'wrong-vocab' ).appendChild( node );
-		}
 		document.getElementById( 'wrong-answer' ).style.display = 'none';
 		document.getElementById( 'no-words-wrong' ).style.display = 'none';
 		document.getElementById( 'export-incorrect-vocab-sidebar' ).style.display = 'block';
 
 		collectData( 'Answer revealed for ' + question, 'revealed_answer' );
+
+		if ( competitiveMode ) {
+			collectData( 'Competitive answered revealed: ' + question );
+			return;
+		}
 
 		questionArray.didReveal = true;
 
@@ -2469,34 +2507,31 @@ function checkAnswer( shouldReveal = false ) {
 				answerInput.value = data.gens;
 			}
 		}
-	} else {
-		if ( ! isTestingParticipleParts ) {
-			for ( let i = 0; i < answerArray.length; i++ ) {
-				if ( answer !== answerArray[ i ] ) {
-					isAnswerCorrect = false;
-				} else {
-					isAnswerCorrect = true;
-					break;
-				}
-			}
-		} else {
-			if ( form.includes( 'first' ) ) {
-				isAnswerCorrect = answer === answerArray[ 0 ] || answer === data.pracind1s;
-			} else if ( form.includes( 'second' ) ) {
-				isAnswerCorrect = answer === answerArray[ 1 ] || answer === data.infpr;
-			} else if ( form.includes( 'third' ) ) {
-				isAnswerCorrect = answer === answerArray[ 2 ] || answer === data.pfacind1s;
-			} else if ( form.includes( 'nominative' ) ) {
-				isAnswerCorrect = answer === data.noms;
-			} else if ( form.includes( 'genitive' ) ) {
-				isAnswerCorrect = answer === data.gens;
-			}
+	}
+
+	// Revealed or wrong answer.
+	if ( shouldReveal || ! isAnswerCorrect ) {
+		if ( questionArray.category === 'redo' ) {
+			questionArray.retriedIncorrectly = true;
 		}
 
-		if ( answer.length === 1 && answer !== 'a' && answer !== 'e' && answer !== 'i' ) {
-			isAnswerCorrect = false;
+		if ( ! vocabToFocusOn.includes( questionArray.word ) ) {
+			vocabToFocusOn.push( questionArray.word );
+			let node = document.createElement( 'LI' );
+			node.appendChild( document.createTextNode( question ) );
+			document.getElementById( 'wrong-vocab' ).appendChild( node );
 		}
 
+		document.getElementById( 'no-words-wrong' ).style.display = 'none';
+		document.getElementById( 'export-incorrect-vocab-sidebar' ).style.display = 'block';
+
+		document.getElementById( 'wrong-vocab' ).scrollTop =
+			document.getElementById( 'wrong-vocab' ).scrollHeight;
+	}
+
+	// Did not reveal answer (it could be either correct or wrong).
+	if ( ! shouldReveal ) {
+		// Answer was wrong.
 		if ( ! isAnswerCorrect ) {
 			playAudio( 'wrong' );
 
@@ -2519,14 +2554,6 @@ function checkAnswer( shouldReveal = false ) {
 
 			document.getElementById( 'wrong-answer' ).style.display = 'block';
 
-			if ( ! vocabToFocusOn.includes( questionArray.word ) ) {
-				vocabToFocusOn.push( questionArray.word );
-				let node = document.createElement( 'LI' );
-				node.appendChild( document.createTextNode( question ) );
-				document.getElementById( 'wrong-vocab' ).appendChild( node );
-				document.getElementById( 'no-words-wrong' ).style.display = 'none';
-				document.getElementById( 'export-incorrect-vocab-sidebar' ).style.display = 'block';
-			}
 			incorrectCount.innerHTML = incorrectCountNumber + 1;
 
 			if ( incorrectCountNumber === 0 ) {
@@ -2544,6 +2571,7 @@ function checkAnswer( shouldReveal = false ) {
 			return;
 		}
 
+		// Answer was correct.
 		vocabAnswered.push( questionArray );
 		document.getElementById( 'vocab-answer' ).value = '';
 		document.getElementById( 'wrong-answer' ).style.display = 'none';
@@ -2587,11 +2615,19 @@ function startRetryTest() {
 	allVocab = [];
 	vocabAnswered = [];
 
+	vocab.forEach( ( word ) => {
+		delete word.retriedIncorrectly;
+	} );
+
 	vocabToFocusOn.forEach( ( word ) => {
 		let findWordArray = findWord( word )[ 0 ];
 		allVocab.push( findWordArray );
 		findWordArray.asked = false;
-		findWordArray.originalCategory = findWordArray.category;
+
+		if ( findWordArray.category !== 'redo' ) {
+			findWordArray.originalCategory = findWordArray.category;
+		}
+
 		findWordArray.category = 'redo';
 	} );
 
@@ -2606,7 +2642,114 @@ function startRetryTest() {
 	buildTest();
 
 	document.getElementById( 'progress-bar-content' ).style.width = 0;
-	document.getElementById( 'vocab-tester-wrapper' ).classList.remove( 'is-complete' );
+
+	let vocabTestWrapper = document.getElementById( 'vocab-tester-wrapper' );
+	let classesToRemove = [
+		'is-complete',
+		'show-retest-prompt',
+		'show-retest-notice',
+		'show-retest-complete',
+	];
+
+	classesToRemove.forEach( ( className ) => vocabTestWrapper.classList.remove( className ) );
+
+	if (
+		vocabToFocusOn.length !== vocabToFocusOnOriginal.length &&
+		vocabToFocusOnOriginal.length > 0
+	) {
+		vocabTestWrapper.classList.add( 'show-reset-focus-prompt' );
+	}
+}
+
+function replaceCorrectRetries() {
+	vocabToFocusOn = vocabToFocusOnOriginal;
+
+	vocab.forEach( ( word ) => {
+		if ( word.hasOwnProperty( 'originalCategory' ) ) {
+			word.category = word.originalCategory;
+		}
+
+		delete word.retriedIncorrectly;
+	} );
+
+	let wrongVocab = document.getElementById( 'wrong-vocab' );
+	let noWordsWrongItem = document.getElementById( 'no-words-wrong' );
+
+	wrongVocab.innerHTML = '';
+	wrongVocab.appendChild( noWordsWrongItem );
+
+	vocabToFocusOn.forEach( ( vocab ) => {
+		let li = document.createElement( 'li' );
+		li.textContent = vocab;
+		wrongVocab.appendChild( li );
+	} );
+
+	collectData( 'Reset incorrect words list', 'reset_incorrect_words' );
+
+	let classesToRemove = [
+		'show-reset-focus-prompt',
+		'show-retest-prompt',
+		'show-retest-notice',
+		'show-retest-complete',
+	];
+	classesToRemove.forEach( ( className ) =>
+		document.getElementById( 'vocab-tester-wrapper' ).classList.remove( className )
+	);
+}
+
+function removeCorrectRetries() {
+	let indicesToRemove = [];
+
+	if ( ! vocabToFocusOnOriginal.length ) {
+		vocabToFocusOnOriginal = vocabToFocusOn;
+	}
+
+	vocabToFocusOn = vocabToFocusOn.filter( ( focusWord, i ) => {
+		let vocabItem = allVocab.find( ( item ) => item.word === focusWord );
+		let incorrectWord = vocabItem && vocabItem.hasOwnProperty( 'retriedIncorrectly' );
+
+		focusWord.category = focusWord.originalCategory;
+
+		if ( ! incorrectWord ) {
+			indicesToRemove.push( i );
+		}
+
+		return incorrectWord;
+	} );
+
+	let incorrectWordsList = document.getElementById( 'wrong-vocab' );
+
+	indicesToRemove.reverse().forEach( ( index ) => {
+		incorrectWordsList.removeChild( incorrectWordsList.children[ index + 1 ] );
+	} );
+
+	vocab.forEach( ( word ) => {
+		if ( word.category === 'redo' && ! vocabToFocusOn.includes( word.word ) ) {
+			word.category = word.originalCategory;
+		}
+
+		delete word.retriedIncorrectly;
+	} );
+
+	let testWrapper = document.getElementById( 'vocab-tester-wrapper' );
+	testWrapper.classList.add( 'show-reset-focus-prompt' );
+	testWrapper.classList.remove( 'show-retest-prompt' );
+
+	if ( vocabToFocusOn.length > 0 ) {
+		let indicesWordString = indicesToRemove.length === 1 ? ' word' : ' words';
+		document.getElementById( 'retry-remove-count' ).innerHTML =
+			indicesToRemove.length + indicesWordString;
+
+		let remainingWordString = vocabToFocusOn.length === 1 ? ' word' : ' words';
+		document.getElementById( 'retry-remain-count' ).innerHTML =
+			vocabToFocusOn.length + remainingWordString;
+
+		testWrapper.classList.add( 'show-retest-notice' );
+		collectData(
+			'Removed ' + indicesToRemove.length + ' words from incorrect list',
+			'removed_incorrect_words'
+		);
+	}
 }
 
 function exportIncorrectVocab() {
@@ -3044,29 +3187,24 @@ function formAcceptableVocab( receivedCategory ) {
 		}
 
 		if ( acceptableVocab.length >= maxVocabOptions ) {
-			document.getElementById( 'select-all-desktop' ).innerHTML = 'Deselect all';
-			document.getElementById( 'select-all-desktop' ).onclick = function () {
-				selectAll( 'deselect-all' );
-			};
-			document.getElementById( 'select-all-mobile' ).innerHTML = 'Deselect all';
-			document.getElementById( 'select-all-mobile' ).onclick = function () {
-				selectAll( 'deselect-all' );
-			};
+			updateSelectAll( 'select-all-desktop', 'Deselect all', 'deselect-all' );
+			updateSelectAll( 'select-all-mobile', 'Deselect all', 'deselect-all' );
 		} else {
-			document.getElementById( 'select-all-desktop' ).innerHTML = 'Select all';
-			document.getElementById( 'select-all-desktop' ).onclick = function () {
-				selectAll();
-			};
-			document.getElementById( 'select-all-mobile' ).innerHTML = 'Select all';
-			document.getElementById( 'select-all-mobile' ).onclick = function () {
-				selectAll();
-			};
+			updateSelectAll( 'select-all-desktop', 'Select all', undefined );
+			updateSelectAll( 'select-all-mobile', 'Select all', undefined );
 		}
 	} else {
 		acceptableVocab.push( category );
 	}
 
 	allVocab = vocabToTest.concat( findAllVocab() );
+}
+
+function updateSelectAll( elementId, text, onclickArg ) {
+	document.getElementById( elementId ).innerHTML = text;
+	document.getElementById( elementId ).onclick = function () {
+		selectAll( onclickArg );
+	};
 }
 
 function changeMode( mode ) {
@@ -3121,6 +3259,7 @@ function resetState() {
 	vocabCustomList = [];
 	vocabDeclension = undefined;
 	vocabToFocusOn = [];
+	vocabToFocusOnOriginal = [];
 	vocabToTest = [];
 }
 

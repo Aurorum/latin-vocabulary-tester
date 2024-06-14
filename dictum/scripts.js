@@ -6,7 +6,7 @@ let selectedWord;
 let unix = 1644624000000;
 let userId = localStorage.getItem( 'userID' ) || Math.floor( Math.random() * 9999999 ) + 1;
 
-const VOCAB_LISTS_CACHE_VERSION = 1.1; // Increment when editing vocabulary lists.
+const VOCAB_LISTS_CACHE_VERSION = 1.2; // Increment when editing vocabulary lists.
 
 loadAllVocabFiles();
 
@@ -154,7 +154,7 @@ function startGame( type ) {
 	document.body.classList.add( 'is-daily-word' );
 	document.body.classList.remove( 'is-displaying-modal' );
 	selectedWord = findWord();
-	canType = true;
+	canType = ! document.getElementById( 'game-board' ).classList.contains( 'is-completed' );
 }
 
 function checkVocabLoaded( type ) {
@@ -176,10 +176,10 @@ function findWord() {
 				max = 471;
 				break;
 			case 'as-list':
-				max = 856;
+				max = 1009;
 				break;
 			case 'any-list':
-				max = 1592;
+				max = 1745;
 		}
 
 		let chosenWord = selectedList[ Math.floor( Math.random() * max ) ];
@@ -452,6 +452,7 @@ function checkAnswer() {
 				if ( fullSubmission.join( '' ) === targetWord ) {
 					document.getElementById( 'copy-stats' ).style.display = 'flex';
 					document.getElementById( gameBoardId ).classList.add( 'is-answer' );
+					document.getElementById( 'game-board' ).classList.add( 'is-completed' );
 					finishAnswer( 'correct' );
 					correctAnswer();
 					collectData(
@@ -799,6 +800,18 @@ function findInflection( form ) {
 			break;
 		case 'ppp':
 			fullForm = 'present passive participle';
+			break;
+		case 'adj':
+			fullForm = 'adjective';
+			break;
+		case 'adv':
+			fullForm = 'adverb';
+			break;
+		case 'conjunction':
+			fullForm = 'conjunction';
+			break;
+		case 'pronoun':
+			fullForm = 'pronoun';
 			break;
 	}
 

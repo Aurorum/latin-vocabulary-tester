@@ -12778,19 +12778,7 @@
 	{
 		"word": "moenia, moenium, n pl",
 		"category": "noun 3",
-		"translation": "city walls, city",
-		"noms": "moene",
-		"nomp": "moenia",
-		"gens": "moenis",
-		"genp": "moenium",
-		"dats": "moeni",
-		"datp": "moenibus",
-		"accs": "moene",
-		"accp": "moenia",
-		"vocs": "moene",
-		"vocp": "moenia",
-		"abls": "moeni",
-		"ablp": "moenibus"
+		"translation": "city walls, city"
 	},
 	{
 		"word": "moneo, monere, monui, monitus",

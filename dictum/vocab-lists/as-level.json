@@ -240,10 +240,10 @@
 		"type": "pracsuj3s"
 	},
 	"41": {
-		"word": "moene",
-		"full": "moenia, moenium, n pl",
-		"translation": "city walls, city",
-		"type": "vocs"
+		"word": "audax",
+		"full": "audax, audacis",
+		"translation": "bold, daring",
+		"type": "adj"
 	},
 	"42": {
 		"word": "delet",
@@ -1472,7 +1472,7 @@
 	"246": {
 		"word": "vetor",
 		"full": "veto, vetare, vetui, vetitus",
-		"translation": "forbid, order...not, order not",
+		"translation": "forbid, order...not",
 		"type": "prpaind1s"
 	},
 	"247": {
@@ -1556,7 +1556,7 @@
 	"260": {
 		"word": "veter",
 		"full": "veto, vetare, vetui, vetitus",
-		"translation": "forbid, order...not, order not",
+		"translation": "forbid, order...not",
 		"type": "prpasuj1s"
 	},
 	"261": {
@@ -5134,5 +5134,923 @@
 		"full": "res, rei, f",
 		"translation": "thing, affair, matter, business",
 		"type": "genp"
+	},
+	"857": {
+		"word": "paulo",
+		"full": "paulum, paulo",
+		"translation": "a little, somewhat",
+		"type": "adv"
+	},
+	"858": {
+		"word": "autem",
+		"full": "autem",
+		"translation": "but, however",
+		"type": "conjunction"
+	},
+	"859": {
+		"word": "audeo",
+		"full": "audeo, audere, ausus sum",
+		"translation": "dare",
+		"type": "pracind1s"
+	},
+	"860": {
+		"word": "iusta",
+		"full": "iustus, iusta, iustum",
+		"translation": "right, just, lawful, complete",
+		"type": "adj"
+	},
+	"861": {
+		"word": "ipsum",
+		"full": "ipse, ipsa, ipsum",
+		"translation": "himself, herself, themself, themselves, -self",
+		"type": "pron"
+	},
+	"862": {
+		"word": "perii",
+		"full": "pereo, perire, perii",
+		"translation": "die, perish, be ruined",
+		"type": "pfacind1s"
+	},
+	"863": {
+		"word": "altus",
+		"full": "altus, alta, altum",
+		"translation": "high, deep",
+		"type": "adj"
+	},
+	"864": {
+		"word": "quale",
+		"full": "qualis?, quale",
+		"translation": "what sort of?",
+		"type": "adj"
+	},
+	"865": {
+		"word": "notus",
+		"full": "notus, nota, notum",
+		"translation": "known, well-known, famous",
+		"type": "adj"
+	},
+	"866": {
+		"word": "dirum",
+		"full": "dirus, dira, dirum",
+		"translation": "dreadful",
+		"type": "adj"
+	},
+	"867": {
+		"word": "saeva",
+		"full": "saevus, saeva, saevum",
+		"translation": "savage, cruel",
+		"type": "adj"
+	},
+	"868": {
+		"word": "posse",
+		"full": "possum, posse, potui",
+		"translation": "can, be able",
+		"type": "infpr"
+	},
+	"869": {
+		"word": "liber",
+		"full": "liber, libri, m",
+		"translation": "book",
+		"type": "noms"
+	},
+	"870": {
+		"word": "nolle",
+		"full": "nolo, nolle, nolui",
+		"translation": "not want, be unwilling, refuse",
+		"type": "infpr"
+	},
+	"871": {
+		"word": "potui",
+		"full": "possum, posse, potui",
+		"translation": "can, be able",
+		"type": "pfacind1s"
+	},
+	"872": {
+		"word": "volui",
+		"full": "volo, velle, volui",
+		"translation": "want, wish, be willing, intend",
+		"type": "pfacind1s"
+	},
+	"873": {
+		"word": "caede",
+		"full": "caedes, caedis, f",
+		"translation": "slaughter, killing, murder",
+		"type": "abls"
+	},
+	"874": {
+		"word": "quasi",
+		"full": "quasi",
+		"translation": "as if, just as, nearly",
+		"type": "adv"
+	},
+	"875": {
+		"word": "hodie",
+		"full": "hodie",
+		"translation": "today",
+		"type": "adv"
+	},
+	"876": {
+		"word": "posco",
+		"full": "posco, poscere, poposci",
+		"translation": "demand, ask for",
+		"type": "pracind1s"
+	},
+	"877": {
+		"word": "palam",
+		"full": "palam",
+		"translation": "openly",
+		"type": "adv"
+	},
+	"878": {
+		"word": "neque",
+		"full": "nec, neque",
+		"translation": "and not, nor, neither",
+		"type": "conjunction"
+	},
+	"879": {
+		"word": "altum",
+		"full": "altus, alta, altum",
+		"translation": "high, deep",
+		"type": "adj"
+	},
+	"880": {
+		"word": "caela",
+		"full": "caelum, caeli, n",
+		"translation": "sky, heaven",
+		"type": "nomp"
+	},
+	"881": {
+		"word": "nolui",
+		"full": "nolo, nolle, nolui",
+		"translation": "not want, be unwilling, refuse",
+		"type": "pfacind1s"
+	},
+	"882": {
+		"word": "durum",
+		"full": "durus, dura, durum",
+		"translation": "hard, harsh, rough",
+		"type": "adj"
+	},
+	"883": {
+		"word": "nasci",
+		"full": "nascor, nasci, natus sum",
+		"translation": "am born",
+		"type": "infpr"
+	},
+	"884": {
+		"word": "adsum",
+		"full": "adsum, adesse, adfui",
+		"translation": "be here, be present",
+		"type": "pracind1s"
+	},
+	"885": {
+		"word": "vetui",
+		"full": "veto, vetare, vetui, vetitus",
+		"translation": "forbid, order...not, order not",
+		"type": "pfacind1s"
+	},
+	"886": {
+		"word": "bonis",
+		"full": "bona, bonorum, n pl",
+		"translation": "goods, possessions, property",
+		"type": "datp"
+	},
+	"887": {
+		"word": "ferox",
+		"full": "ferox, ferocis",
+		"translation": "fierce, cruel, brave",
+		"type": "adj"
+	},
+	"888": {
+		"word": "disco",
+		"full": "disco, discere, didici",
+		"translation": "learn",
+		"type": "pracind1s"
+	},
+	"889": {
+		"word": "fieri",
+		"full": "fio, fieri, factus sum",
+		"translation": "become, be made, happen",
+		"type": "infpr"
+	},
+	"890": {
+		"word": "eadem",
+		"full": "idem, eadem, idem",
+		"translation": "the same",
+		"type": "pron"
+	},
+	"891": {
+		"word": "ullus",
+		"full": "ullus, ulla, ullum",
+		"translation": "any",
+		"type": "adj"
+	},
+	"892": {
+		"word": "velle",
+		"full": "volo, velle, volui",
+		"translation": "want, wish, be willing, intend",
+		"type": "infpr"
+	},
+	"893": {
+		"word": "absum",
+		"full": "absum, abesse, afui",
+		"translation": "be absent, be away, be distant",
+		"type": "pracind1s"
+	},
+	"894": {
+		"word": "minor",
+		"full": "minor, minari, minatus sum + dat",
+		"translation": "threaten",
+		"type": "pracind1s"
+	},
+	"895": {
+		"word": "pauci",
+		"full": "pauci, paucae, pauca",
+		"translation": "few, a few",
+		"type": "adj plural"
+	},
+	"896": {
+		"word": "nihil",
+		"full": "nihil",
+		"translation": "nothing",
+		"type": "adv"
+	},
+	"897": {
+		"word": "novus",
+		"full": "novus, nova, novum",
+		"translation": "new, fresh, recent",
+		"type": "adj"
+	},
+	"898": {
+		"word": "novum",
+		"full": "novus, nova, novum",
+		"translation": "new, fresh, recent",
+		"type": "adj"
+	},
+	"899": {
+		"word": "satis",
+		"full": "satis",
+		"translation": "enough",
+		"type": "adj"
+	},
+	"900": {
+		"word": "atque",
+		"full": "ac, atque",
+		"translation": "and",
+		"type": "conjunction"
+	},
+	"901": {
+		"word": "antea",
+		"full": "antea",
+		"translation": "before, previously",
+		"type": "adv"
+	},
+	"902": {
+		"word": "afuit",
+		"full": "absum, abesse, afui",
+		"translation": "be absent, be away",
+		"type": "pfacind3s"
+	},
+	"903": {
+		"word": "redii",
+		"full": "redeo, redire, redii",
+		"translation": "return, go back, come back",
+		"type": "pfacind1s"
+	},
+	"904": {
+		"word": "miser",
+		"full": "miser, misera, miserum",
+		"translation": "miserable, wretched, sad",
+		"type": "adj"
+	},
+	"905": {
+		"word": "latum",
+		"full": "latus, lata, latum",
+		"translation": "wide, broad",
+		"type": "adj"
+	},
+	"906": {
+		"word": "malus",
+		"full": "malus, mala, malum",
+		"translation": "evil, bad",
+		"type": "adj"
+	},
+	"907": {
+		"word": "summa",
+		"full": "summus, summa, summum",
+		"translation": "highest, greatest, top (of)",
+		"type": "adj"
+	},
+	"908": {
+		"word": "times",
+		"full": "timeo, timere, timui",
+		"translation": "fear, be afraid",
+		"type": "pracind2s"
+	},
+	"909": {
+		"word": "tanta",
+		"full": "tantus, tanta, tantum",
+		"translation": "so great, such a great, so much",
+		"type": "adj"
+	},
+	"910": {
+		"word": "sicut",
+		"full": "sicut",
+		"translation": "just as, like, as, as if",
+		"type": "adv"
+	},
+	"911": {
+		"word": "alter",
+		"full": "alter, altera, alterum",
+		"translation": "the other, one (of two), another, a second",
+		"type": "pron and adj"
+	},
+	"912": {
+		"word": "verum",
+		"full": "verus, vera, verum",
+		"translation": "true, real",
+		"type": "adj"
+	},
+	"913": {
+		"word": "etiam",
+		"full": "etiam",
+		"translation": "also, even, still",
+		"type": "adv"
+	},
+	"914": {
+		"word": "grave",
+		"full": "gravis, grave",
+		"translation": "heavy, serious, painful, important",
+		"type": "adj"
+	},
+	"915": {
+		"word": "acris",
+		"full": "acer, acris, acre",
+		"translation": "keen, sharp, fierce",
+		"type": "adj"
+	},
+	"916": {
+		"word": "totus",
+		"full": "totus, tota, totum",
+		"translation": "the whole, entire, all",
+		"type": "adj"
+	},
+	"917": {
+		"word": "paris",
+		"full": "par, paris",
+		"translation": "equal",
+		"type": "adj"
+	},
+	"918": {
+		"word": "tutus",
+		"full": "tutus, tuta, tutum",
+		"translation": "safe",
+		"type": "adj"
+	},
+	"919": {
+		"word": "certa",
+		"full": "certus, certa, certum",
+		"translation": "certain, sure, fixed",
+		"type": "adj"
+	},
+	"920": {
+		"word": "timeo",
+		"full": "timeo, timere, timui",
+		"translation": "fear, be afraid",
+		"type": "pracind1s"
+	},
+	"921": {
+		"word": "quoad",
+		"full": "quoad",
+		"translation": "as long as, until",
+		"type": "conjunction"
+	},
+	"922": {
+		"word": "illic",
+		"full": "illic",
+		"translation": "there",
+		"type": "adv"
+	},
+	"923": {
+		"word": "recta",
+		"full": "rectus, recta, rectum",
+		"translation": "straight, direct, right, proper",
+		"type": "adj"
+	},
+	"924": {
+		"word": "loqui",
+		"full": "loquor, loqui, locutus sum",
+		"translation": "speak, talk",
+		"type": "infpr"
+	},
+	"925": {
+		"word": "genus",
+		"full": "genus, generis, n",
+		"translation": "race, descent, birth, kind",
+		"type": "noms"
+	},
+	"926": {
+		"word": "caedi",
+		"full": "caedes, caedis, f",
+		"translation": "slaughter, killing, murder",
+		"type": "dats"
+	},
+	"927": {
+		"word": "dives",
+		"full": "dives, divitis",
+		"translation": "rich",
+		"type": "adj"
+	},
+	"928": {
+		"word": "carus",
+		"full": "carus, cara, carum",
+		"translation": "dear",
+		"type": "adj"
+	},
+	"929": {
+		"word": "licet",
+		"full": "licet, licere, licuit + dat",
+		"translation": "it is allowed",
+		"type": "pracind1s"
+	},
+	"930": {
+		"word": "digna",
+		"full": "dignus, digna, dignum + abl",
+		"translation": "worthy (of), deserving (of)",
+		"type": "adj"
+	},
+	"931": {
+		"word": "egere",
+		"full": "egeo, egere, egui + gen or abl",
+		"translation": "need, be in want of, lack",
+		"type": "infpr"
+	},
+	"932": {
+		"word": "carum",
+		"full": "carus, cara, carum",
+		"translation": "dear",
+		"type": "adj"
+	},
+	"933": {
+		"word": "breve",
+		"full": "brevis, breve",
+		"translation": "short, brief",
+		"type": "adj"
+	},
+	"934": {
+		"word": "bonus",
+		"full": "bonus, bona, bonum",
+		"translation": "good",
+		"type": "adj"
+	},
+	"935": {
+		"word": "parva",
+		"full": "parvus, parva, parvum",
+		"translation": "small",
+		"type": "adj"
+	},
+	"936": {
+		"word": "libri",
+		"full": "liber, libri, m",
+		"translation": "book",
+		"type": "nomp"
+	},
+	"937": {
+		"word": "oriri",
+		"full": "orior, oriri, ortus sum",
+		"translation": "rise, start, originate",
+		"type": "infpr"
+	},
+	"938": {
+		"word": "prius",
+		"full": "prius",
+		"translation": "before, previously",
+		"type": "adv"
+	},
+	"939": {
+		"word": "aliud",
+		"full": "alius, alia, aliud",
+		"translation": "other, one, another, else",
+		"type": "pron and adj"
+	},
+	"940": {
+		"word": "saepe",
+		"full": "saepe",
+		"translation": "often",
+		"type": "adv"
+	},
+	"941": {
+		"word": "timui",
+		"full": "timeo, timere, timui",
+		"translation": "fear, be afraid",
+		"type": "pfacind1s"
+	},
+	"942": {
+		"word": "dirus",
+		"full": "dirus, dira, dirum",
+		"translation": "dreadful",
+		"type": "adj"
+	},
+	"943": {
+		"word": "irata",
+		"full": "iratus, irata, iratum",
+		"translation": "angry",
+		"type": "adj"
+	},
+	"944": {
+		"word": "pario",
+		"full": "pario, parere, peperi, partus",
+		"translation": "bear (a child), win, acquire, gain, secure",
+		"type": "pracind1s"
+	},
+	"945": {
+		"word": "noctu",
+		"full": "noctu",
+		"translation": "by night",
+		"type": "abls"
+	},
+	"946": {
+		"word": "verus",
+		"full": "verus, vera, verum",
+		"translation": "true, real",
+		"type": "adj"
+	},
+	"947": {
+		"word": "redeo",
+		"full": "redeo, redire, redii",
+		"translation": "return, go back, come back",
+		"type": "pracind1s"
+	},
+	"948": {
+		"word": "nulla",
+		"full": "nullus, nulla, nullum",
+		"translation": "no, none, not any",
+		"type": "adj"
+	},
+	"949": {
+		"word": "media",
+		"full": "medius, media, medium",
+		"translation": "middle (of), middle",
+		"type": "adj"
+	},
+	"950": {
+		"word": "alius",
+		"full": "alius, alia, aliud",
+		"translation": "other, one, another",
+		"type": "pronoun"
+	},
+	"951": {
+		"word": "timet",
+		"full": "timeo, timere, timui",
+		"translation": "fear, be afraid",
+		"type": "pracind3s"
+	},
+	"952": {
+		"word": "malle",
+		"full": "malo, malle, malui",
+		"translation": "prefer",
+		"type": "infpr"
+	},
+	"953": {
+		"word": "paene",
+		"full": "paene",
+		"translation": "almost, nearly",
+		"type": "adv"
+	},
+	"954": {
+		"word": "emero",
+		"full": "emo, emere, emi, emptus",
+		"translation": "buy",
+		"type": "fpacind1s"
+	},
+	"955": {
+		"word": "adfui",
+		"full": "adsum, adesse, adfui",
+		"translation": "be here, be present",
+		"type": "pfacind1s"
+	},
+	"956": {
+		"word": "solus",
+		"full": "solus, sola, solum",
+		"translation": "alone, only, lonely, single",
+		"type": "adj"
+	},
+	"957": {
+		"word": "tamen",
+		"full": "tamen",
+		"translation": "however, nevertheless, yet",
+		"type": "adv"
+	},
+	"958": {
+		"word": "simul",
+		"full": "simul",
+		"translation": "at the same time, together",
+		"type": "adv"
+	},
+	"959": {
+		"word": "vivus",
+		"full": "vivus, viva, vivum",
+		"translation": "alive, living",
+		"type": "adj"
+	},
+	"960": {
+		"word": "malum",
+		"full": "malus, mala, malum",
+		"translation": "evil, bad",
+		"type": "adj"
+	},
+	"961": {
+		"word": "felix",
+		"full": "felix, felicis",
+		"translation": "fortunate, happy, prosperous",
+		"type": "adj"
+	},
+	"962": {
+		"word": "prior",
+		"full": "prior, prioris",
+		"translation": "previous, former",
+		"type": "adj"
+	},
+	"963": {
+		"word": "soleo",
+		"full": "soleo, solere, solitus sum",
+		"translation": "be accustomed",
+		"type": "pracind1s"
+	},
+	"964": {
+		"word": "magna",
+		"full": "magnus, magna, magnum",
+		"translation": "big, large, great",
+		"type": "adj"
+	},
+	"965": {
+		"word": "magis",
+		"full": "magis",
+		"translation": "more, rather",
+		"type": "adv"
+	},
+	"966": {
+		"word": "bonum",
+		"full": "bona, bonorum, n pl",
+		"translation": "goods, possessions, property",
+		"type": "noms"
+	},
+	"967": {
+		"word": "velut",
+		"full": "velut",
+		"translation": "just as, like, as, as if",
+		"type": "adv"
+	},
+	"968": {
+		"word": "adhuc",
+		"full": "adhuc",
+		"translation": "till now, still",
+		"type": "adv"
+	},
+	"969": {
+		"word": "pauca",
+		"full": "pauci, paucae, pauca",
+		"translation": "few, a few",
+		"type": "adj plural"
+	},
+	"970": {
+		"word": "illud",
+		"full": "ille, illa, illud",
+		"translation": "that, he, she, it",
+		"type": "pron"
+	},
+	"971": {
+		"word": "laeta",
+		"full": "laetus, laeta, laetum",
+		"translation": "happy, glad",
+		"type": "adj"
+	},
+	"972": {
+		"word": "vetus",
+		"full": "vetus, veteris",
+		"translation": "old",
+		"type": "adj"
+	},
+	"973": {
+		"word": "semel",
+		"full": "semel",
+		"translation": "once",
+		"type": "adv"
+	},
+	"974": {
+		"word": "moror",
+		"full": "moror, morari, moratus sum",
+		"translation": "delay, linger",
+		"type": "pracind1s"
+	},
+	"975": {
+		"word": "totum",
+		"full": "totus, tota, totum",
+		"translation": "the whole, entire, all",
+		"type": "adj"
+	},
+	"976": {
+		"word": "utrum",
+		"full": "utrum",
+		"translation": "whether",
+		"type": "adv"
+	},
+	"977": {
+		"word": "orior",
+		"full": "orior, oriri, ortus sum",
+		"translation": "rise, start, originate",
+		"type": "pracind1s"
+	},
+	"978": {
+		"word": "libro",
+		"full": "liber, libri, m",
+		"translation": "book",
+		"type": "dats"
+	},
+	"979": {
+		"word": "egero",
+		"full": "ago, agere, egi, actus",
+		"translation": "do, act, drive",
+		"type": "fpacind1s"
+	},
+	"980": {
+		"word": "conor",
+		"full": "conor, conari, conatus sum",
+		"translation": "try",
+		"type": "pracind1s"
+	},
+	"981": {
+		"word": "clara",
+		"full": "clarus, clara, clarum",
+		"translation": "clear, famous, distinguished",
+		"type": "adj"
+	},
+	"982": {
+		"word": "plena",
+		"full": "plenus, plena, plenum",
+		"translation": "full, filled",
+		"type": "adj"
+	},
+	"983": {
+		"word": "multa",
+		"full": "multus, multa, multum",
+		"translation": "much, many",
+		"type": "adj"
+	},
+	"984": {
+		"word": "prima",
+		"full": "primus, prima, primum",
+		"translation": "first, chief",
+		"type": "adj"
+	},
+	"985": {
+		"word": "aequa",
+		"full": "aequus, aequa, aequum",
+		"translation": "equal, fair, favourable, calm",
+		"type": "adj"
+	},
+	"986": {
+		"word": "dubia",
+		"full": "dubius, dubia, dubium",
+		"translation": "doubtful, wavering, uncertain",
+		"type": "adj"
+	},
+	"987": {
+		"word": "coepi",
+		"full": "coepi, coepisse, coeptus",
+		"translation": "began",
+		"type": "pfacind1s"
+	},
+	"988": {
+		"word": "malui",
+		"full": "malo, malle, malui",
+		"translation": "prefer",
+		"type": "pfacind1s"
+	},
+	"989": {
+		"word": "vivum",
+		"full": "vivus, viva, vivum",
+		"translation": "alive, living",
+		"type": "adj"
+	},
+	"990": {
+		"word": "levis",
+		"full": "levis, leve",
+		"translation": "light, slight",
+		"type": "adj"
+	},
+	"991": {
+		"word": "iacui",
+		"full": "iaceo, iacere, iacui",
+		"translation": "lie (down)",
+		"type": "pfacind1s"
+	},
+	"992": {
+		"word": "iaceo",
+		"full": "iaceo, iacere, iacui",
+		"translation": "lie (down)",
+		"type": "pracind1s"
+	},
+	"993": {
+		"word": "pereo",
+		"full": "pereo, perire, perii",
+		"translation": "die, perish, be ruined",
+		"type": "pracind1s"
+	},
+	"994": {
+		"word": "notum",
+		"full": "notus, nota, notum",
+		"translation": "known, well-known, famous",
+		"type": "adj"
+	},
+	"995": {
+		"word": "longa",
+		"full": "longus, longa, longum",
+		"translation": "long",
+		"type": "adj"
+	},
+	"996": {
+		"word": "miror",
+		"full": "miror, mirari, miratus sum",
+		"translation": "wonder at, admire",
+		"type": "pracind1s"
+	},
+	"997": {
+		"word": "aciei",
+		"full": "acies, aciei, f",
+		"translation": "line, battle line, army",
+		"type": "gens"
+	},
+	"998": {
+		"word": "sequi",
+		"full": "sequor, sequi, secutus sum",
+		"translation": "follow, pursue, attend",
+		"type": "infpr"
+	},
+	"999": {
+		"word": "nomen",
+		"full": "nomen, nominis, n",
+		"translation": "name",
+		"type": "noms"
+	},
+	"1000": {
+		"word": "lenta",
+		"full": "lentus, lenta, lentum",
+		"translation": "slow",
+		"type": "adj"
+	},
+	"1001": {
+		"word": "talis",
+		"full": "talis, tale",
+		"translation": "such",
+		"type": "adj"
+	},
+	"1002": {
+		"word": "ullum",
+		"full": "ullus, ulla, ullum",
+		"translation": "any",
+		"type": "adj"
+	},
+	"1003": {
+		"word": "durus",
+		"full": "durus, dura, durum",
+		"translation": "hard, harsh, rough",
+		"type": "adj"
+	},
+	"1004": {
+		"word": "usque",
+		"full": "usque",
+		"translation": "all the way, right up to, continuously",
+		"type": "adv"
+	},
+	"1005": {
+		"word": "omnis",
+		"full": "omnis, omne",
+		"translation": "all, every",
+		"type": "adj"
+	},
+	"1006": {
+		"word": "forte",
+		"full": "forte",
+		"translation": "by chance",
+		"type": "adv"
+	},
+	"1007": {
+		"word": "surgo",
+		"full": "surgo, surgere, surrexi",
+		"translation": "get up, stand up, rise",
+		"type": "pracind1s"
+	},
+	"1008": {
+		"word": "tutum",
+		"full": "tutus, tuta, tutum",
+		"translation": "safe",
+		"type": "adj"
+	},
+	"1009": {
+		"word": "queri",
+		"full": "queror, queri, questus sum",
+		"translation": "complain",
+		"type": "infpr"
 	}
 }

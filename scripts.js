@@ -71,8 +71,10 @@ window.onload = function () {
 			.then( ( data ) => {
 				leaderboardData = data;
 				updateLeaderboard( data.currentData, true );
+				populateLeaderboardSelect( data );
 			} )
 			.catch( ( error ) => {
+				populateLeaderboardSelect();
 				collectData( 'Failed to load from endpoint' );
 				collectData( error.message );
 			} );
@@ -756,6 +758,37 @@ function updateLeaderboardSection( data, type, duplicate ) {
 			document.getElementById( 'first-' + prefix + i ).innerHTML = data[ type ][ i ];
 		}
 	}
+}
+
+function populateLeaderboardSelect( data ) {
+	let yearSelect = document.getElementById( 'leaderboard-year' );
+
+	if ( data && typeof data === 'object' ) {
+		let years = Object.keys( data.historicData ).map( ( year ) => parseInt( year, 10 ) );
+		let nextYear = Math.max( ...years ) + 1;
+
+		if ( ! years.includes( nextYear ) ) {
+			years.push( nextYear );
+		}
+
+		years.sort( ( a, b ) => b - a );
+
+		years.forEach( ( year ) => {
+			let option = document.createElement( 'option' );
+			option.value = year;
+			option.textContent = year;
+			yearSelect.appendChild( option );
+		} );
+
+		return;
+	}
+
+	let currentYear = new Date().getFullYear();
+	let option = document.createElement( 'option' );
+
+	option.value = currentYear;
+	option.textContent = currentYear;
+	yearSelect.appendChild( option );
 }
 
 function buildDeclensionOrConjugationTest(

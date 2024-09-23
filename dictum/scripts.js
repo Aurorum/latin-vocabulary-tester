@@ -766,6 +766,8 @@ function findInflection( form ) {
 		fullForm += ' future';
 	} else if ( form.startsWith( 'pf' ) ) {
 		fullForm += ' perfect';
+	} else if ( form.startsWith( 'fp' ) ) {
+		fullForm += ' future perfect';
 	} else if ( form.startsWith( 'pl' ) ) {
 		fullForm += ' pluperfect';
 	}

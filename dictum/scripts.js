@@ -1,4 +1,5 @@
 let canType = false;
+let hasLoaded = false;
 let isDailyWord = true;
 let selectedOption = 'any-list';
 let selectedList;
@@ -22,11 +23,11 @@ window.onload = function () {
 
 	buildStats();
 
-	if ( localStorage.getItem( 'dailyWordLastTime' ) ) {
+	let dailyWordLastTime = localStorage.getItem( 'dailyWordLastTime' );
+
+	if ( dailyWordLastTime ) {
 		let currentDay = parseInt( timeDifference( Date.now(), unix ) );
-		let lastPlayedDay = parseInt(
-			timeDifference( parseInt( localStorage.getItem( 'dailyWordLastTime' ) ), unix )
-		);
+		let lastPlayedDay = parseInt( timeDifference( parseInt( dailyWordLastTime ), unix ) );
 
 		if ( currentDay !== lastPlayedDay ) {
 			localStorage.removeItem( 'dailyWord' );
@@ -40,6 +41,15 @@ window.onload = function () {
 				'dictum_streak_lost_inactivity'
 			);
 		}
+
+		collectData(
+			'currentDay: ' +
+				currentDay +
+				'\nlastPlayedDay: ' +
+				lastPlayedDay +
+				'\ndailyWordLastTime: ' +
+				dailyWordLastTime
+		);
 	}
 
 	if ( new URLSearchParams( window.location.search ).get( 'ref' ) ) {
@@ -50,6 +60,8 @@ window.onload = function () {
 				navigator.userAgent
 		);
 	}
+
+	hasLoaded = true;
 };
 
 window.onerror = function ( message, source, line, col, error ) {
@@ -127,12 +139,22 @@ function loadAllVocabFiles() {
 }
 
 function startGame( type ) {
-	if ( typeof anyList === 'undefined' || typeof validGuesses === 'undefined' ) {
+	if ( ! hasLoaded || typeof anyList === 'undefined' || typeof validGuesses === 'undefined' ) {
 		document.getElementById( 'loading-warning' ).style.display = 'block';
 		collectData( 'Started before initialisation', 'dictum_initialisation_error' );
+
+		if ( ! hasLoaded && typeof anyList !== 'undefined' ) {
+			collectData(
+				'Started before initialisation with onload incomplete',
+				'dictum_initialisation_onload_error'
+			);
+		}
+
 		checkVocabLoaded( type );
 		return;
 	}
+
+	selectedWord = findWord();
 
 	if ( type === 'streaks' ) {
 		isDailyWord = false;
@@ -143,27 +165,28 @@ function startGame( type ) {
 	if ( type !== 'streaks' && localStorage.getItem( 'dailyWord' ) ) {
 		document.getElementById( 'game' ).innerHTML = localStorage.getItem( 'dailyWord' );
 		collectData( 'Continued Daily Word', 'dictum_continued_daily_word' );
+
+		if ( selectedWord !== localStorage.getItem( 'dailyWord' ) ) {
+			collectData( 'Mismatch between selectedWord and dailyWord' );
+		}
 	}
 
 	if ( type !== 'streaks' ) {
 		selectedList = asLevelList;
 		localStorage.setItem( 'dailyWordLastTime', Date.now() );
 		collectData( 'Started Daily Word', 'dictum_started_daily_word' );
+		document.body.classList.add( 'is-daily-word' );
 	}
 
-	document.body.classList.add( 'is-daily-word' );
 	document.body.classList.remove( 'is-displaying-modal' );
-	selectedWord = findWord();
 	canType = ! document.getElementById( 'game-board' ).classList.contains( 'is-completed' );
 }
 
 function checkVocabLoaded( type ) {
-	if ( typeof anyList !== 'undefined' && typeof validGuesses !== 'undefined' ) {
+	if ( typeof anyList !== 'undefined' && typeof validGuesses !== 'undefined' && hasLoaded ) {
 		startGame( type );
 	} else {
-		setTimeout( function () {
-			checkVocabLoaded( type );
-		}, 100 );
+		setTimeout( checkVocabLoaded, 100, type );
 	}
 }
 
@@ -381,7 +404,6 @@ function removeLetter() {
 
 function checkAnswer() {
 	let targetWord = selectedWord.word;
-	let wordSplit = targetWord.split( '' );
 
 	let gameBoardId = document.querySelectorAll( '.game-row.is-not-completed' )[ 0 ].id;
 	let fullSubmission = [];
@@ -835,54 +857,19 @@ function collectData( content, analyticsID ) {
 }
 
 function keyPress( e, manual ) {
-	let keyNo;
+	let keyNo = manual ? null : e.keyCode || e.which;
 
 	if ( ! manual ) {
-		if ( window.event ) {
-			keyNo = e.keyCode;
-		} else if ( e.which ) {
-			keyNo = e.which;
-		}
-
 		if ( keyNo === 8 ) {
 			return removeLetter();
 		}
-
 		if ( keyNo === 13 ) {
 			return checkAnswer();
 		}
 	}
 
 	let keyCode = manual ? e : String.fromCharCode( keyNo ).toLowerCase();
-
-	let validKeys = [
-		'a',
-		'b',
-		'c',
-		'd',
-		'e',
-		'f',
-		'g',
-		'h',
-		'i',
-		'j',
-		'k',
-		'l',
-		'm',
-		'n',
-		'o',
-		'p',
-		'q',
-		'r',
-		's',
-		't',
-		'u',
-		'v',
-		'w',
-		'x',
-		'y',
-		'z',
-	];
+	let validKeys = 'abcdefghijklmnopqrstuvwxyz';
 
 	if ( validKeys.includes( keyCode ) ) {
 		addLetter( keyCode );

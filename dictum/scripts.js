@@ -154,8 +154,6 @@ function startGame( type ) {
 		return;
 	}
 
-	selectedWord = findWord();
-
 	if ( type === 'streaks' ) {
 		isDailyWord = false;
 		document.body.classList.add( 'is-streaks' );
@@ -165,10 +163,6 @@ function startGame( type ) {
 	if ( type !== 'streaks' && localStorage.getItem( 'dailyWord' ) ) {
 		document.getElementById( 'game' ).innerHTML = localStorage.getItem( 'dailyWord' );
 		collectData( 'Continued Daily Word', 'dictum_continued_daily_word' );
-
-		if ( selectedWord !== localStorage.getItem( 'dailyWord' ) ) {
-			collectData( 'Mismatch between selectedWord and dailyWord' );
-		}
 	}
 
 	if ( type !== 'streaks' ) {
@@ -178,6 +172,7 @@ function startGame( type ) {
 		document.body.classList.add( 'is-daily-word' );
 	}
 
+	selectedWord = findWord();
 	document.body.classList.remove( 'is-displaying-modal' );
 	canType = ! document.getElementById( 'game-board' ).classList.contains( 'is-completed' );
 }

@@ -5,6 +5,7 @@ let allVocab = [];
 let competitionCountdown;
 let competitiveMode = false;
 let competitiveTestType;
+let currentWord;
 let finalVocab = [];
 let hardDifficulty = false;
 let isTableMode = false;
@@ -108,7 +109,7 @@ window.onload = function () {
 			let result = reader.result;
 			result.split( /\r\n|\r|\n/ ).forEach( ( line ) => {
 				let str = line.split( '"', 2 ).join( '"' ).replace( '"', '' );
-				let wordArray = findWord( str )[ 0 ];
+				let wordArray = findWord( str );
 				if ( wordArray ) {
 					wordArray.category = 'uploaded';
 					document.getElementById( 'start-button' ).classList.remove( 'is-inactive' );
@@ -449,7 +450,7 @@ function startCompetition( test ) {
 
 function checkIncorrectAnswerGrammar() {
 	let grammarForm = getKeysInObject(
-		findWord( document.getElementById( 'vocab-question' ).textContent )[ 0 ],
+		currentWord,
 		document.getElementById( 'vocab-answer' ).value.toLowerCase().trim()
 	);
 	let possibleForms = [];
@@ -563,7 +564,6 @@ function getKeysInObject( object, value ) {
 function endCompetitionTimer() {
 	let leaderboardId;
 	let endingMessage;
-	let answerArray = findWord( document.getElementById( 'vocab-question' ).textContent )[ 0 ];
 	let score = parseInt( document.getElementById( 'progress-indicator-changing' ).textContent );
 
 	if ( isTestingConjugations ) {
@@ -572,9 +572,9 @@ function endCompetitionTimer() {
 			"Time's up! The <strong>" +
 			document.getElementById( 'vocab-submit-word-form' ).textContent +
 			'</strong> of <strong>' +
-			answerArray.word +
+			currentWord.word +
 			'</strong> was <strong>' +
-			answerArray[ vocabConjugation ] +
+			currentWord[ vocabConjugation ] +
 			'</strong>.';
 		checkIncorrectAnswerGrammar();
 	} else if ( isTestingDeclensions ) {
@@ -583,18 +583,18 @@ function endCompetitionTimer() {
 			"Time's up! The <strong>" +
 			document.getElementById( 'vocab-submit-word-form' ).textContent +
 			'</strong> of <strong>' +
-			answerArray.word +
+			currentWord.word +
 			'</strong> was <strong>' +
-			answerArray[ vocabDeclension ] +
+			currentWord[ vocabDeclension ] +
 			'</strong>.';
 		checkIncorrectAnswerGrammar();
 	} else {
 		leaderboardId = document.getElementById( 'first-vocabulary-leaderboard-2' ).textContent;
 		endingMessage =
 			"Time's up! The acceptable meanings for <strong>" +
-			answerArray.word +
+			currentWord.word +
 			'</strong> were: <strong>' +
-			answerArray.translation +
+			currentWord.translation +
 			'</strong>.';
 	}
 
@@ -808,7 +808,7 @@ function buildDeclensionOrConjugationTest(
 	hardDifficulty = false;
 
 	let randomNumber = Math.floor( Math.random() * finalVocab.length );
-	let vocabwithNumber = finalVocab[ randomNumber ];
+	currentWord = finalVocab[ randomNumber ];
 	if ( isConjugationTest ) {
 		isTestingConjugations = true;
 		handleVerbConjugations();
@@ -816,23 +816,23 @@ function buildDeclensionOrConjugationTest(
 		isTestingDeclensions = true;
 		handleNounDeclensions();
 	}
-	vocabwithNumber.asked = true;
+	currentWord.asked = true;
 
 	if ( addToTable && ( isTestingDeclensions || isTestingConjugations ) ) {
 		let select = document.getElementById( 'word-table-select' );
 		let option = document.createElement( 'option' );
 
 		option.setAttribute( 'data-type', isTestingDeclensions ? vocabDeclension : vocabConjugation );
-		option.text = vocabwithNumber.word;
+		option.text = currentWord.word;
 		select.add( option );
 		select.selectedIndex = select.length - 1;
 	}
 
-	document.getElementById( 'vocab-question' ).innerHTML = vocabwithNumber.word;
-	document.getElementById( 'vocab-question-table-mode' ).innerHTML = vocabwithNumber.word;
-	document.getElementById( 'vocab-question-details' ).innerHTML = vocabwithNumber.translation;
+	document.getElementById( 'vocab-question' ).innerHTML = currentWord.word;
+	document.getElementById( 'vocab-question-table-mode' ).innerHTML = currentWord.word;
+	document.getElementById( 'vocab-question-details' ).innerHTML = currentWord.translation;
 	document.getElementById( 'vocab-question-table-mode-details' ).innerHTML =
-		vocabwithNumber.translation;
+		currentWord.translation;
 
 	if ( isTableMode && isTestingConjugations ) {
 		resetTableMode();
@@ -1630,7 +1630,7 @@ function handleNounDeclensions() {
 }
 
 function constructWordTable( changingVerbTable = false ) {
-	let answer = findWord( document.getElementById( 'word-table-select' ).value )[ 0 ];
+	let answer = currentWord;
 	let selectedIndex = document.getElementById( 'word-table-select' ).selectedIndex;
 	let optionType = document
 		.querySelector( '#word-table-select option:nth-of-type(' + ( selectedIndex + 1 ) + ')' )
@@ -2139,7 +2139,7 @@ function buildTest() {
 
 	let randomNumber = Math.floor( Math.random() * finalVocab.length );
 
-	let vocabwithNumber = finalVocab[ randomNumber ];
+	currentWord = finalVocab[ randomNumber ];
 
 	if ( acceptableVocab.includes( 'redo' ) ) {
 		allVocabLength = document.getElementById( 'wrong-vocab' ).childElementCount - 1;
@@ -2156,13 +2156,10 @@ function buildTest() {
 	if ( numberofWordsToAnswer > vocabAnswered.length ) {
 		finalVocab[ randomNumber ].asked = true;
 
-		let data = vocabwithNumber;
+		document.getElementById( 'vocab-question' ).innerHTML = currentWord.word;
 
-		document.getElementById( 'vocab-question' ).innerHTML = vocabwithNumber.word;
-
-		let wordForm;
 		if ( hardDifficulty ) {
-			document.getElementById( 'vocab-question' ).innerHTML = vocabwithNumber.translation;
+			document.getElementById( 'vocab-question' ).innerHTML = currentWord.translation;
 		}
 
 		let verbsWithParticiples = [
@@ -2174,12 +2171,13 @@ function buildTest() {
 			'verb 3 dep',
 			'verb irreg',
 		];
+		let wordForm;
 
 		if ( hardDifficulty ) {
 			if (
-				( verbsWithParticiples.includes( vocabwithNumber.category ) &&
-					data.word.split( ',' ).length > 2 ) ||
-				data.impacsuj1s
+				( verbsWithParticiples.includes( currentWord.category ) &&
+					currentWord.word.split( ',' ).length > 2 ) ||
+				currentWord.impacsuj1s
 			) {
 				switch ( Math.floor( Math.random() * 3 ) ) {
 					case 0:
@@ -2193,7 +2191,7 @@ function buildTest() {
 						break;
 				}
 				isTestingParticipleParts = true;
-			} else if ( data.noms ) {
+			} else if ( currentWord.noms ) {
 				switch ( Math.floor( Math.random() * 2 ) ) {
 					case 0:
 						wordForm = 'nominative singular form';
@@ -2342,10 +2340,9 @@ function checkDeclensionOrConjugationAnswer( shouldReveal = false ) {
 	let answerInput = document.getElementById( 'vocab-answer' );
 	let enteredAnswer = answerInput.value.toLowerCase().trim();
 	let progressIndicator = document.getElementById( 'progress-indicator-changing' );
-	let actualAnswerArray = findWord( document.getElementById( 'vocab-question' ).textContent )[ 0 ];
 	let actualAnswer = isTestingConjugations
-		? actualAnswerArray[ vocabConjugation ]
-		: actualAnswerArray[ vocabDeclension ];
+		? currentWord[ vocabConjugation ]
+		: currentWord[ vocabDeclension ];
 	let isAnswerCorrect = enteredAnswer === actualAnswer;
 	let testType = isTestingConjugations ? 'conjugation' : 'declension';
 
@@ -2361,12 +2358,7 @@ function checkDeclensionOrConjugationAnswer( shouldReveal = false ) {
 	if ( shouldReveal ) {
 		answerInput.value = actualAnswer;
 		collectData(
-			'Answer revealed in ' +
-				testType +
-				' test for ' +
-				question +
-				' of ' +
-				document.getElementById( 'vocab-question' ).textContent,
+			'Answer revealed in ' + testType + ' test for ' + question + ' of ' + currentWord.word,
 			'revealed_' + testType + '_answer'
 		);
 	} else {
@@ -2429,7 +2421,7 @@ function checkDeclensionOrConjugationAnswer( shouldReveal = false ) {
 				'</strong> as the ' +
 				question +
 				' for <strong>' +
-				actualAnswerArray.word +
+				currentWord.word +
 				'</strong> instead of <strong>' +
 				actualAnswer +
 				'</strong>.';
@@ -2443,15 +2435,15 @@ function checkAnswer( shouldReveal = false ) {
 		return checkDeclensionOrConjugationAnswer( shouldReveal );
 	}
 
-	let question = document.getElementById( 'vocab-question' ).textContent;
+	let question = currentWord.word;
 	let answer = document.getElementById( 'vocab-answer' ).value.toLowerCase().trim();
 	let form = document.getElementById( 'vocab-submit-word-form' ).textContent;
 	let answerInput = document.getElementById( 'vocab-answer' );
 	let incorrectCount = document.getElementById( 'vocab-incorrect-count' );
 	let incorrectCountNumber = parseInt( incorrectCount.textContent );
-	let questionArray = hardDifficulty ? findTranslation( question )[ 0 ] : findWord( question )[ 0 ];
-	let data = questionArray;
-	let answerArray = hardDifficulty ? data.word.split( ',' ) : data.translation.split( ',' );
+	let answerArray = hardDifficulty
+		? currentWord.word.split( ',' )
+		: currentWord.translation.split( ',' );
 
 	if ( ! shouldReveal && answer === '' ) {
 		return;
@@ -2489,15 +2481,15 @@ function checkAnswer( shouldReveal = false ) {
 		isAnswerCorrect = answerArray.includes( answer );
 	} else {
 		if ( form.includes( 'first' ) ) {
-			isAnswerCorrect = answer === answerArray[ 0 ] || answer === data.pracind1s;
+			isAnswerCorrect = answer === answerArray[ 0 ] || answer === currentWord.pracind1s;
 		} else if ( form.includes( 'second' ) ) {
-			isAnswerCorrect = answer === answerArray[ 1 ] || answer === data.infpr;
+			isAnswerCorrect = answer === answerArray[ 1 ] || answer === currentWord.infpr;
 		} else if ( form.includes( 'third' ) ) {
-			isAnswerCorrect = answer === answerArray[ 2 ] || answer === data.pfacind1s;
+			isAnswerCorrect = answer === answerArray[ 2 ] || answer === currentWord.pfacind1s;
 		} else if ( form.includes( 'nominative' ) ) {
-			isAnswerCorrect = answer === data.noms;
+			isAnswerCorrect = answer === currentWord.noms;
 		} else if ( form.includes( 'genitive' ) ) {
-			isAnswerCorrect = answer === data.gens;
+			isAnswerCorrect = answer === currentWord.gens;
 		}
 	}
 
@@ -2506,8 +2498,8 @@ function checkAnswer( shouldReveal = false ) {
 		isAnswerCorrect = false;
 	}
 
-	if ( questionArray.didReveal !== true ) {
-		questionArray.didReveal = false;
+	if ( currentWord.didReveal !== true ) {
+		currentWord.didReveal = false;
 	}
 
 	// Revealed answer.
@@ -2523,33 +2515,33 @@ function checkAnswer( shouldReveal = false ) {
 			return;
 		}
 
-		questionArray.didReveal = true;
+		currentWord.didReveal = true;
 
 		if ( ! isTestingParticipleParts ) {
 			answerInput.value = answerArray[ 0 ];
 		} else {
 			if ( form.includes( 'first' ) ) {
-				answerInput.value = data.pracind1s || answerArray[ 0 ];
+				answerInput.value = currentWord.pracind1s || answerArray[ 0 ];
 			} else if ( form.includes( 'second' ) ) {
-				answerInput.value = data.infpr || answerArray[ 1 ];
+				answerInput.value = currentWord.infpr || answerArray[ 1 ];
 			} else if ( form.includes( 'third' ) ) {
-				answerInput.value = data.pfacind1s || answerArray[ 2 ];
+				answerInput.value = currentWord.pfacind1s || answerArray[ 2 ];
 			} else if ( form.includes( 'nominative' ) ) {
-				answerInput.value = data.noms;
+				answerInput.value = currentWord.noms;
 			} else if ( form.includes( 'genitive' ) ) {
-				answerInput.value = data.gens;
+				answerInput.value = currentWord.gens;
 			}
 		}
 	}
 
 	// Revealed or wrong answer.
 	if ( shouldReveal || ! isAnswerCorrect ) {
-		if ( questionArray.category === 'redo' ) {
-			questionArray.retriedIncorrectly = true;
+		if ( currentWord.category === 'redo' ) {
+			currentWord.retriedIncorrectly = true;
 		}
 
-		if ( ! vocabToFocusOn.includes( questionArray.word ) ) {
-			vocabToFocusOn.push( questionArray.word );
+		if ( ! vocabToFocusOn.includes( currentWord.word ) ) {
+			vocabToFocusOn.push( currentWord.word );
 			let node = document.createElement( 'LI' );
 			node.appendChild( document.createTextNode( question ) );
 			document.getElementById( 'wrong-vocab' ).appendChild( node );
@@ -2578,9 +2570,9 @@ function checkAnswer( shouldReveal = false ) {
 					'You entered <strong>' +
 					answer +
 					'</strong> as the translation for <strong>' +
-					questionArray.word +
+					currentWord.word +
 					'</strong> when the accepted answers were: <strong>' +
-					questionArray.translation +
+					currentWord.translation +
 					'</strong>.';
 				return endCompetitionTimer();
 			}
@@ -2605,7 +2597,7 @@ function checkAnswer( shouldReveal = false ) {
 		}
 
 		// Answer was correct.
-		vocabAnswered.push( questionArray );
+		vocabAnswered.push( currentWord );
 		document.getElementById( 'vocab-answer' ).value = '';
 		document.getElementById( 'wrong-answer' ).style.display = 'none';
 		playAudio( 'correct' );
@@ -2633,7 +2625,7 @@ function checkAnswer( shouldReveal = false ) {
 
 		document.getElementById( 'progress-indicator-changing' ).innerHTML = vocabAnswered.length;
 
-		questionArray.incorrectlyAnswered = incorrectCountNumber;
+		currentWord.incorrectlyAnswered = incorrectCountNumber;
 
 		incorrectCount.innerHTML = '0';
 
@@ -2653,7 +2645,7 @@ function startRetryTest() {
 	} );
 
 	vocabToFocusOn.forEach( ( word ) => {
-		let findWordArray = findWord( word )[ 0 ];
+		let findWordArray = findWord( word );
 		allVocab.push( findWordArray );
 		findWordArray.asked = false;
 
@@ -2789,7 +2781,7 @@ function exportIncorrectVocab() {
 	let exportArray = [];
 	let labels = [ 'word', 'category', 'translation', 'didReveal', 'incorrectlyAnswered' ];
 	for ( let i = 0; i < vocabToFocusOn.length; i++ ) {
-		let wordObject = findWord( vocabToFocusOn[ i ] )[ 0 ];
+		let wordObject = findWord( vocabToFocusOn[ i ] );
 		Object.keys( wordObject ).forEach( ( label ) => {
 			if ( ! labels.includes( label ) ) {
 				delete wordObject[ label ];
@@ -3010,7 +3002,7 @@ function starFlashcard( auto ) {
 				word: vocabToFocusOn[ k2 ],
 				translation: vocabToFocusOn[ k2 ].translation
 					? vocabToFocusOn[ k2 ].translation
-					: findWord( vocabToFocusOn[ k2 ] )[ 0 ].translation,
+					: findWord( vocabToFocusOn[ k2 ] ).translation,
 			} );
 			++k2;
 		}
@@ -3161,15 +3153,7 @@ function findDeclensionVocab() {
 }
 
 function findWord( word ) {
-	return vocab.filter( function ( vocab ) {
-		return vocab.word === word;
-	} );
-}
-
-function findTranslation( translation ) {
-	return vocab.filter( function ( vocab ) {
-		return vocab.translation === translation;
-	} );
+	return vocab.find( ( vocab ) => vocab.word === word );
 }
 
 function formAcceptableVocab( receivedCategory ) {
@@ -3340,6 +3324,7 @@ function resetTest() {
 	document.getElementById( 'wrong-vocab' ).innerHTML =
 		'<li id="no-words-wrong">None so far - well done!</li>	';
 	document.getElementById( 'export-incorrect-vocab-sidebar' ).style.display = 'none';
+	document.getElementById( 'clear-saved-vocab-sidebar' ).style.display = 'none';
 	document.getElementById( 'retry-test-button' ).classList.add( 'is-inactive' );
 	document.getElementById( 'retry-test-prompt' ).classList.add( 'is-inactive' );
 
@@ -3350,6 +3335,7 @@ function resetTest() {
 
 	document.getElementById( 'vocab-tester-wrapper' ).classList.remove( 'is-complete' );
 	document.getElementById( 'word-table' ).classList.remove( 'is-active' );
+	document.getElementById( 'grammar-info' ).classList.remove( 'is-active' );
 	document.getElementById( 'grammar-info-competition' ).classList.remove( 'is-active' );
 	document.getElementById( 'start-button' ).classList.add( 'is-inactive' );
 	toggleWordTable( false );

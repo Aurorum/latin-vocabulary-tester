@@ -104,31 +104,63 @@ window.onload = function () {
 	let fileInput = document.getElementById( 'fileupload' );
 	let advancedFileInput = document.getElementById( 'advancedfileupload' );
 
-	let readFile = ( reader, dataMessage ) => {
+	let readFile = ( reader ) => {
 		reader.onload = () => {
 			let result = reader.result;
-			result.split( /\r\n|\r|\n/ ).forEach( ( line ) => {
-				let str = line.split( '"', 2 ).join( '"' ).replace( '"', '' );
-				let wordArray = findWord( str );
-				if ( wordArray ) {
-					wordArray.category = 'uploaded';
-					document.getElementById( 'start-button' ).classList.remove( 'is-inactive' );
+			let lines = result.split( /\r\n|\r|\n/ );
+			let foundWord = false;
+
+			for ( let line of lines ) {
+				let item = line.split( '","' ).map( ( item ) => item.replace( /(^"|"$)/g, '' ) );
+
+				if ( item[ 0 ] === 'selectedOption' ) {
+					changeOption( item[ 1 ] );
+					break;
+				}
+			}
+
+			lines.forEach( ( line ) => {
+				let item = line.split( '","' ).map( ( item ) => item.replace( /(^"|"$)/g, '' ) );
+				let word = item[ 0 ];
+
+				if ( word !== 'selectedOption' ) {
+					let wordArray = findWord( word );
+					if ( wordArray ) {
+						wordArray.category = 'uploaded';
+						foundWord = true;
+					}
 				}
 			} );
-			collectData( dataMessage, 'csv_upload' );
+
 			formAcceptableVocab( 'uploaded' );
+			document.getElementById( 'file-upload-notice' ).classList.remove( 'is-inactive' );
+
+			if ( foundWord ) {
+				let lineCount = vocab.filter( ( item ) => item.category === 'uploaded' ).length;
+				let wordString = lineCount === 1 ? ' word' : ' words';
+				document.getElementById( 'start-button' ).classList.remove( 'is-inactive' );
+				document.getElementById( 'file-upload-message' ).innerHTML =
+					'Successfully uploaded ' + lineCount + wordString;
+				collectData( 'CSV file uploaded with ' + lineCount + ' words', 'csv_upload' );
+				return;
+			}
+
+			document.getElementById( 'file-upload-notice' ).classList.add( 'is-error' );
+			document.getElementById( 'file-upload-message' ).innerHTML = 'Error: invalid file format.';
+			collectData( 'CSV file upload failed', 'csv_upload_failed' );
 		};
 	};
 
 	let handleCustomFileUpload = () => {
 		let advancedReader = new FileReader();
-		readFile( advancedReader, 'Custom file uploaded in advanced mode' );
+		collectData( 'Custom file uploaded in advanced mode', 'csv_upload' );
+		readFile( advancedReader );
 		advancedReader.readAsText( advancedFileInput.files[ 0 ] );
 	};
 
 	let handleRegularFileUpload = () => {
 		let reader = new FileReader();
-		readFile( reader, 'CSV file uploaded' );
+		readFile( reader );
 		reader.readAsBinaryString( fileInput.files[ 0 ] );
 	};
 
@@ -312,6 +344,8 @@ function changeOption( option, manualChange = true ) {
 	};
 
 	selectAll( 'change-option' );
+	resetFileUpload();
+
 	selectedOption = option;
 	vocab = optionMap[ option ];
 	document.body.classList.add( 'is-' + selectedOption );
@@ -2789,6 +2823,11 @@ function exportIncorrectVocab() {
 		} );
 		exportArray.push( wordObject );
 	}
+	exportArray.push( [
+		'selectedOption',
+		selectedOption,
+		...Array( labels.length - 1 ).fill( '' ),
+	] );
 	collectData( 'CSV exported with ' + vocabToFocusOn.length + ' words', 'csv_export' );
 	csvData = convertToCSV( exportArray );
 	let dataBlob = new Blob( [ csvData ], { type: 'text/csv;charset=utf-8' } );
@@ -3358,6 +3397,7 @@ function resetTest() {
 
 	document.getElementById( 'curtain' ).classList = [ 'curtain is-not-triggered' ];
 	document.getElementById( 'fileupload' ).value = '';
+	document.getElementById( 'file-upload-notice' ).classList = [ 'is-inactive' ];
 }
 
 function updateLetterLimit() {
@@ -3439,6 +3479,20 @@ function changeExtremeDifficulty() {
 		'Difficulty changed so that the hard checkbox is ' + hardCheckbox.checked,
 		'extreme_difficulty_changed'
 	);
+}
+
+function resetFileUpload() {
+	if ( ! document.getElementById( 'fileupload' ).value ) {
+		return;
+	}
+
+	collectData( 'Reset file upload', 'reset_file_upload' );
+	acceptableVocab = acceptableVocab.filter( ( item ) => item !== 'uploaded' );
+	document.getElementById( 'file-upload-notice' ).classList = [ 'is-inactive' ];
+
+	if ( ! acceptableVocab.length ) {
+		document.getElementById( 'start-button' ).classList.add( 'is-inactive' );
+	}
 }
 
 function toggleFileUpload() {

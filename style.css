@@ -453,6 +453,24 @@ li {
 	margin-top: 12px;
 }
 
+.file-upload.toggle .file-upload-notice p {
+	background: #ee6c4e;
+	border: 1px solid #dc5e40;
+	border-radius: 4px;
+	font-size: 14px;
+	padding: 8px;
+	margin-top: 12px;
+}
+
+.file-upload.toggle .file-upload-notice p.is-error {
+	background: #d63638;
+	border-color: #b32d2e;
+}
+
+.file-upload-notice p.is-inactive {
+	display: none;
+}
+
 .options-menu {
 	display: flex;
 	justify-content: flex-end;

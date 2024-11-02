@@ -2862,30 +2862,37 @@
 						</div>
 					</div>
 
-					<div id="file-upload-section" class="file-upload toggle">
-						<div>
-							<p>
-								When completing this test, you can save your incorrect words. Upload that file here
-								to include those words in your new test.
-							</p>
-							<input type="file" accept=".csv" id="fileupload" />
-							<div class="file-upload-notice">
-								<p id="file-upload-notice" class="is-inactive">
-									<span id="file-upload-message"></span>
+					<div id="file-upload-section" class="file-upload-wrapper">
+						<div class="file-upload toggle">
+							<div>
+								<p class="toggle-settings-header">Upload previous test</p>
+								<p>
+									If you've exported words from a previous test, you can upload the file here to
+									include them in your new test.
 								</p>
+								<input type="file" accept=".csv" id="fileupload" />
+								<div class="file-upload-notice">
+									<p id="file-upload-notice" class="is-inactive">
+										<span id="file-upload-message"></span>
+									</p>
+								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-				<div class="advanced-mode">
-					<h3>Advanced mode</h3>
-					<p>
-						These features are much more complicated to set up - please get in touch if you wish to
-						use them.
-					</p>
-					<div class="file-upload">
-						<p>Upload your own lists with a JSON or CSV file.</p>
-						<input type="file" accept=".json, .csv" id="advancedfileupload" />
+						<div class="file-upload toggle">
+							<div>
+								<p class="toggle-settings-header">Upload custom lists</p>
+								<p>
+									If you've created a custom vocabulary list, you can upload it here.
+									<a onClick="openCustomListHelpModal()">Learn more</a>.
+								</p>
+								<input type="file" accept=".csv" id="advancedfileupload" />
+								<div class="file-upload-notice">
+									<p id="custom-file-upload-notice" class="is-inactive">
+										<span id="custom-file-upload-message"></span>
+									</p>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -3636,6 +3643,49 @@
 				<p class="game-subnote">
 					Fancy something else? Try Competitive mode to have your name added to the leaderboard!
 				</p>
+			</div>
+		</div>
+
+		<div id="custom-list-modal" class="modal-wrapper custom-list-modal">
+			<div class="modal-content">
+				<img src="./assets/close.svg" class="close-icon" alt="Close" onclick="closeGamesModal()" />
+
+				<div class="custom-list-help">
+					<div class="left-custom-list-help">
+						<p class="custom-list-subtitle">How do I upload my custom list?</p>
+						<p>
+							By default, vocabulary lists for the most popular qualifications are offered on this
+							tool. However, it's also possible to upload your own custom lists as a CSV file.
+						</p>
+						<p>
+							You can export a CSV file from most spreadsheet tools, such as Google Sheets or Excel.
+							It is essential that your spreadsheet is formatted with three columns.
+						</p>
+						<ul>
+							<li>Column A: Latin word</li>
+							<li>Column B: English translation</li>
+							<li>Column C: any category</li>
+						</ul>
+						<p>Once you've uploaded your list, it will be saved until you choose to delete it.</p>
+						<p>
+							It's not possible to test word forms (eg. principal parts and declensions) with custom
+							lists.
+						</p>
+					</div>
+					<div class="right-custom-list-help">
+						<img src="./assets/custom-list.png" alt="Example of a custom list" />
+						<p class="custom-list-caption">An example of a valid custom list</p>
+						<p class="custom-list-template-link">
+							<a
+								href="./assets/sample-custom-latin-list.csv"
+								download="custom-latin-list-template.csv"
+								onclick="collectData('Downloaded custom list template', 'downloaded_custom_list_template')"
+							>
+								Download template
+							</a>
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
 

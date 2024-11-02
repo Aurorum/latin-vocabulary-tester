@@ -139,6 +139,7 @@ window.onload = function () {
 				let lineCount = vocab.filter( ( item ) => item.category === 'uploaded' ).length;
 				let wordString = lineCount === 1 ? ' word' : ' words';
 				document.getElementById( 'start-button' ).classList.remove( 'is-inactive' );
+				document.getElementById( 'file-upload-notice' ).classList.remove( 'is-error' );
 				document.getElementById( 'file-upload-message' ).innerHTML =
 					'Successfully uploaded ' + lineCount + wordString;
 				collectData( 'CSV file uploaded with ' + lineCount + ' words', 'csv_upload' );
@@ -151,17 +152,50 @@ window.onload = function () {
 		};
 	};
 
-	let handleCustomFileUpload = () => {
-		let advancedReader = new FileReader();
-		collectData( 'Custom file uploaded in advanced mode', 'csv_upload' );
-		readFile( advancedReader );
-		advancedReader.readAsText( advancedFileInput.files[ 0 ] );
-	};
-
 	let handleRegularFileUpload = () => {
 		let reader = new FileReader();
 		readFile( reader );
 		reader.readAsBinaryString( fileInput.files[ 0 ] );
+	};
+
+	let handleCustomFileUpload = () => {
+		let advancedReader = new FileReader();
+		readCustomFile( advancedReader );
+		advancedReader.readAsText( advancedFileInput.files[ 0 ] );
+	};
+
+	let readCustomFile = ( reader ) => {
+		reader.onload = () => {
+			let result = reader.result;
+			let header = 'word,translation,category\n';
+
+			if ( ! result.startsWith( 'word,translation,category' ) ) {
+				result = header + result;
+			}
+
+			let list = csvToJSON( result );
+
+			document.getElementById( 'custom-file-upload-notice' ).classList.remove( 'is-inactive' );
+
+			if ( ! isValidCustomList( list ) ) {
+				collectData( 'Invalid custom list uploaded', 'invalid_custom_list' );
+				document.getElementById( 'custom-file-upload-notice' ).classList.add( 'is-error' );
+				document.getElementById( 'custom-file-upload-message' ).innerHTML = result.includes(
+					'selectedOption'
+				)
+					? "Error: invalid file format. If you're trying to upload a previous test, use the box above instead."
+					: 'Error: invalid file format.';
+				return;
+			}
+
+			document.getElementById( 'custom-file-upload-notice' ).classList.remove( 'is-error' );
+			document.getElementById( 'custom-file-upload-message' ).innerHTML =
+				'Successfully uploaded custom list';
+			collectData( 'Successful custom list uploaded', 'successful_custom_list' );
+			handleCustomList( list );
+			document.body.classList.add( 'has-custom-list-option' );
+			changeOption( 'custom-list', false );
+		};
 	};
 
 	fileInput.addEventListener( 'change', handleRegularFileUpload );
@@ -310,9 +344,10 @@ function handleParameters() {
 		);
 	}
 
-	if ( new URLSearchParams( window.location.search ).get( 'advanced' ) ) {
-		document.body.classList.add( 'is-advanced-mode' );
-		collectData( 'Activated advanced mode', 'activated_advance_mode' );
+	let customList = localStorage.getItem( 'customList' );
+	if ( customList && JSON.parse( customList ).length > 0 ) {
+		document.body.classList.add( 'has-custom-list-option' );
+		collectData( 'Loaded with custom list available', 'custom_list_option_available' );
 	} else if ( localStorage.getItem( 'defaultOption' ) === 'custom-list' ) {
 		changeOption( 'alevelocr', false );
 	}
@@ -358,7 +393,7 @@ function changeOption( option, manualChange = true ) {
 	};
 
 	if ( selectedOption === 'custom-list' && localStorage.getItem( 'customList' ) ) {
-		handleCustomList( localStorage.getItem( 'customList' ) );
+		handleCustomList( JSON.parse( localStorage.getItem( 'customList' ) ) );
 	}
 
 	if ( selectedOption === 'literature' ) {
@@ -1886,7 +1921,7 @@ function constructVocabSelectionTable() {
 
 		table += '<tr>';
 		table += '<td>' + allVocab[ i ].word + '</td>';
-		table += '<td>' + category + '</td>';
+		table += '<td>' + category.replace( /^custom-/, '' ) + '</td>';
 		table += '<td>' + allVocab[ i ].translation + '</td>';
 
 		table +=
@@ -1938,6 +1973,10 @@ window.onclick = function ( event ) {
 	if ( event.target === document.getElementById( 'about-modal' ) ) {
 		closeAboutModal();
 	}
+
+	if ( event.target === document.getElementById( 'custom-list-modal' ) ) {
+		closeCustomListHelpModal();
+	}
 };
 
 function openAboutModal() {
@@ -1948,6 +1987,16 @@ function openAboutModal() {
 function closeAboutModal() {
 	document.getElementById( 'about-modal' ).style.display = 'none';
 	collectData( 'Closed about modal', 'closed_about_modal' );
+}
+
+function openCustomListHelpModal() {
+	document.getElementById( 'custom-list-modal' ).style.display = 'flex';
+	collectData( 'Opened custom lists help modal', 'opened_custom_lists_modal' );
+}
+
+function closeCustomListHelpModal() {
+	document.getElementById( 'custom-list-modal' ).style.display = 'none';
+	collectData( 'Closed custom lists help modal', 'closed_custom_lists_modal' );
 }
 
 function openGamesModal() {
@@ -2037,6 +2086,18 @@ function handleSubjunctiveTableSelection( e ) {
 	window.scrollTo( 0, 0 );
 }
 
+function isValidCustomList( list ) {
+	return (
+		Array.isArray( list ) &&
+		list.every(
+			( item ) =>
+				typeof item.word === 'string' &&
+				typeof item.translation === 'string' &&
+				typeof item.category === 'string'
+		)
+	);
+}
+
 function csvToJSON( string, headers, quoteChar = '"', delimiter = ',' ) {
 	// Credit: csvToJSON function by matthew-e-brown on Stack Overflow.
 	const regex = new RegExp( `\\s*(${ quoteChar })?(.*?)\\1\\s*(?:${ delimiter }|$)`, 'gs' );
@@ -2060,47 +2121,39 @@ function csvToJSON( string, headers, quoteChar = '"', delimiter = ',' ) {
 }
 
 function handleCustomList( list ) {
-	let savedList = JSON.parse( localStorage.getItem( 'customList' ) ) || [];
-	vocabCustomList = ! isJSONFile( list ) ? csvToJSON( list ) : JSON.parse( list );
-	vocabCustomListExistingCategories = [];
-	vocabCustomListCategories = [];
+	let vocabCustomListCategories = [];
+	let savedCustomList = localStorage.getItem( 'customList' );
+	let updatedCustomList = savedCustomList ? JSON.parse( savedCustomList ) : [];
 
-	document.querySelectorAll( '.custom-category p' ).forEach( ( word ) => {
-		vocabCustomListExistingCategories.push( word.textContent );
-	} );
-
-	vocabCustomList.forEach( ( word, index ) => {
+	list.forEach( ( word ) => {
 		word.asked = false;
 
-		if ( word.noms === '' ) {
-			word.noms = null;
-		}
-
-		if ( word.impacsuj1s === '' ) {
-			word.impacsuj1s = null;
-		}
-
-		if (
-			savedList &&
-			savedList.findIndex(
-				( item ) => item.word === word.word && item.category === word.category
-			) === -1
-		) {
-			savedList.push( word );
+		if ( ! word.category.startsWith( 'custom-' ) ) {
+			word.category = 'custom-' + word.category;
 		}
 
 		if ( ! vocabCustomListCategories.includes( word.category ) ) {
 			vocabCustomListCategories.push( word.category );
 		}
+
+		let wordIsInExistingList = updatedCustomList.some(
+			( existingWord ) => existingWord.word === word.word && existingWord.category === word.category
+		);
+
+		if ( ! wordIsInExistingList ) {
+			updatedCustomList.push( word );
+		}
 	} );
 
-	localStorage.setItem( 'customList', JSON.stringify( savedList ) );
-	vocab = vocabCustomList;
-	let categoriesList = vocabCustomListCategories.filter(
-		( item ) => ! vocabCustomListExistingCategories.includes( item )
-	);
+	localStorage.setItem( 'customList', JSON.stringify( updatedCustomList ) );
+	vocabCustomList = list;
+	vocab = list;
 
-	categoriesList.forEach( ( category ) => {
+	vocabCustomListCategories.forEach( ( category ) => {
+		if ( document.getElementById( category ) ) {
+			return;
+		}
+
 		let button = document.createElement( 'button' );
 		button.id = category;
 		button.className = 'vocab-type';
@@ -2110,12 +2163,13 @@ function handleCustomList( list ) {
 
 		button.innerHTML =
 			'<div class="custom-category"><p>' +
-			category +
+			category.replace( /^custom-/, '' ) +
 			'</p><div onclick="removeCustomCategory(\'' +
 			category +
 			'\')" class="trash-icon"></div></div>';
 
 		document.querySelector( '.custom-lists .row-wrapper .button-group' ).appendChild( button );
+		collectData( 'Added category from custom list ' + category, 'added_custom_category' );
 	} );
 }
 
@@ -2132,6 +2186,8 @@ function removeCustomCategory( category ) {
 	wordsInCategory = vocabCustomList.filter( function ( vocab ) {
 		return vocab.category === category;
 	} );
+
+	collectData( 'Removed category from custom list ' + category, 'removed_custom_category' );
 
 	wordsInCategory.forEach( ( word ) => {
 		vocabCustomList.splice(
@@ -2150,6 +2206,13 @@ function removeCustomCategory( category ) {
 
 	let categoryButton = document.getElementById( category );
 	categoryButton.parentNode.removeChild( categoryButton );
+	playAudio();
+
+	if ( ! vocabCustomList.length ) {
+		collectData( 'Removed all categories from custom list', 'removed_all_custom_categories' );
+		document.body.classList.remove( 'has-custom-list-option' );
+		changeOption( 'alevelocr', false );
+	}
 }
 
 function buildTest() {
@@ -3288,6 +3351,10 @@ function changeModeAction( mode ) {
 
 	document.getElementById( mode + '-footer-item' ).classList.add( 'is-active' );
 
+	if ( selectedOption === 'custom-list' ) {
+		changeOption( 'alevelocr', false );
+	}
+
 	resetTest();
 
 	if ( mode === 'declensions' ) {
@@ -3312,7 +3379,6 @@ function resetState() {
 	vocab = [];
 	vocabAnswered = [];
 	vocabConjugation;
-	vocabCustomList = [];
 	vocabDeclension = undefined;
 	vocabToFocusOn = [];
 	vocabToFocusOnOriginal = [];
@@ -3339,6 +3405,11 @@ function resetTest() {
 	document.body.classList = [];
 	document.getElementById( 'vocab-tester-wrapper' ).classList = [ 'main-content' ];
 	changeOption( selectedOption, false );
+
+	let customList = localStorage.getItem( 'customList' );
+	if ( customList && JSON.parse( customList ).length > 0 ) {
+		document.body.classList.add( 'has-custom-list-option' );
+	}
 
 	document.getElementById( 'progress-indicator-changing' ).innerHTML = '0';
 	document.getElementById( 'progress-indicator-slash' ).innerHTML = '/';
@@ -3398,6 +3469,7 @@ function resetTest() {
 	document.getElementById( 'curtain' ).classList = [ 'curtain is-not-triggered' ];
 	document.getElementById( 'fileupload' ).value = '';
 	document.getElementById( 'file-upload-notice' ).classList = [ 'is-inactive' ];
+	document.getElementById( 'custom-file-upload-notice' ).classList = [ 'is-inactive' ];
 }
 
 function updateLetterLimit() {

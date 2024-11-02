@@ -439,10 +439,13 @@ li {
 	pointer-events: none;
 }
 
+.file-upload-wrapper {
+	display: none;
+}
+
 .file-upload.toggle {
 	font-size: 12px;
 	margin-top: 12px;
-	display: none;
 }
 
 .file-upload.toggle p {
@@ -451,6 +454,11 @@ li {
 
 .file-upload.toggle input {
 	margin-top: 12px;
+}
+
+.file-upload.toggle a {
+	cursor: pointer;
+	text-decoration: underline;
 }
 
 .file-upload.toggle .file-upload-notice p {
@@ -585,6 +593,10 @@ li {
 	display: none;
 	text-align: right;
 	margin-right: 32px;
+}
+
+.is-custom-list .select-all-option.select-all-option-mobile {
+	display: none;
 }
 
 .is-alevelocr .alevelocrlink,
@@ -887,6 +899,16 @@ a:hover {
 	border-bottom-left-radius: 18px;
 	border-bottom-right-radius: 18px;
 	flex: 1;
+}
+
+.is-custom-list .button-group,
+.is-custom-list .row-header {
+	max-width: 100%;
+	width: 450px;
+}
+
+.is-custom-list #vocab-selector .left-content {
+	width: 100%;
 }
 
 .literature-vocabulary .button-group {
@@ -1635,10 +1657,6 @@ a:hover {
 	display: block;
 }
 
-.is-custom-list #vocab-selector .left-content {
-	width: 35%;
-}
-
 .noun-table {
 	margin: auto;
 	overflow: scroll;
@@ -2181,7 +2199,8 @@ a:hover {
 	bottom: 15px;
 }
 
-.modal-wrapper.about-modal .modal-content {
+.modal-wrapper.about-modal .modal-content,
+.modal-wrapper.custom-list-modal .modal-content {
 	margin: auto;
 	max-width: 750px;
 	width: 80%;
@@ -2268,8 +2287,7 @@ a:hover {
 	margin-top: 9px;
 	font-size: 14px;
 }
-
-.left-about-me {
+. .left-about-me {
 	margin-right: 24px;
 	color: #2c3338;
 	letter-spacing: -0.1px;
@@ -2285,6 +2303,63 @@ a:hover {
 
 .left-about-me p:last-of-type {
 	margin-bottom: 0;
+}
+
+.custom-list-modal {
+	bottom: 75px;
+}
+
+.right-custom-list-help {
+	text-align: center;
+	margin-left: 48px;
+	width: 100%;
+}
+
+.right-custom-list-help img {
+	border: 1px solid #dcdcde;
+	border-radius: 12px;
+	max-width: 300px;
+}
+
+.right-custom-list-help .custom-list-caption {
+	color: #50575e;
+	font-size: 12px;
+	margin: 4px 0;
+}
+
+.custom-list-subtitle {
+	margin-top: 0;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.custom-list-help {
+	align-items: center;
+	display: flex;
+}
+
+.custom-list-help p,
+.custom-list-help li {
+	letter-spacing: -0.1px;
+}
+
+.left-custom-list-help p:last-of-type {
+	color: #50575e;
+	margin-bottom: 0;
+	font-size: 12px;
+	letter-spacing: normal;
+}
+
+.custom-list-template-link {
+	text-align: right;
+	margin-top: 18px;
+}
+
+.custom-list-template-link a {
+	color: #445ea0;
+	cursor: pointer;
+	font-size: 14px;
+	text-decoration: underline;
 }
 
 .gravatar {
@@ -2429,9 +2504,13 @@ a:hover {
 	margin-bottom: 0;
 }
 
-.is-advanced-mode:not( .is-competitive-mode ) .advanced-mode,
-.is-advanced-mode:not( .is-competitive-mode ) .customlistlink {
+.has-custom-list-option .customlistlink {
 	display: block;
+}
+
+.has-custom-list-option.is-competitive-mode .customlistlink,
+.has-custom-list-option.has-begun-vocab-test .customlistlink {
+	display: none;
 }
 
 .trash-icon {
@@ -3176,6 +3255,23 @@ button.verb-table-option-button:hover {
 		text-align: center;
 		font-size: 14px;
 	}
+
+	.is-custom-list .button-group,
+	.is-custom-list .row-header {
+		width: 100%;
+	}
+
+	.custom-list-help {
+		flex-wrap: wrap;
+	}
+
+	.right-custom-list-help {
+		margin: 0;
+	}
+
+	.right-custom-list-help img {
+		width: 100%;
+	}
 }
 
 @media only screen and ( max-width: 600px ) {
@@ -3350,10 +3446,24 @@ button.verb-table-option-button:hover {
 		font-size: 28px;
 	}
 
+	.course-options a {
+		display: flex;
+		min-height: 35px;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+	}
+
+	.is-custom-list #vocab-selector .left-content {
+		margin-top: 12px;
+		width: 80%;
+	}
+
 	.options-menu a {
 		border-radius: 0;
 		font-size: 10px;
-		margin-right: 2px;
+		margin: 0 2px;
+		padding: 6px;
 	}
 
 	.submitted-grammar-info img {

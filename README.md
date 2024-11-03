@@ -20,11 +20,11 @@ Covers the main indicative and subjunctive verb tenses, with some other common f
 
 There are numerous features to assist users with learning these conjugations; for example, the user will be notified if they enter an incorrect form of the verb which matches another form, and they can see tables comparing the different forms of the verb. It should be noted that irregular verbs are also accurately covered with this tool.
 
-<img alt="Table Mode" src="./assets/screenshots/screenshot-7.png"> |
+<img alt="Table Mode" src="./assets/screenshots/screenshot-7.png">
 
 ### Vocabulary Tester
 
-There are four different lists included with the Latin Vocabulary Tester, with the top two split into categories and the bottom two split into stages:
+By default, there are four different lists included with the Latin Vocabulary Tester, though it's also possible to upload your own custom lists from a valid CSV import. Of the default lists, the top two are split into categories, and the bottom two are split into stages:
 
 - AS Level list (OCR), including the vocabulary from Mathew Owen's "Ovid Unseens" and "Prose Unseens" books
 - GCSE (OCR)

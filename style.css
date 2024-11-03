@@ -2287,7 +2287,8 @@ a:hover {
 	margin-top: 9px;
 	font-size: 14px;
 }
-. .left-about-me {
+
+.left-about-me {
 	margin-right: 24px;
 	color: #2c3338;
 	letter-spacing: -0.1px;
@@ -3267,6 +3268,7 @@ button.verb-table-option-button:hover {
 
 	.right-custom-list-help {
 		margin: 0;
+		margin-top: 16px;
 	}
 
 	.right-custom-list-help img {

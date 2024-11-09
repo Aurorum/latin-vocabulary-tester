@@ -2145,6 +2145,7 @@ function handleCustomList( list ) {
 		}
 	} );
 
+	vocabCustomListCategories.sort();
 	localStorage.setItem( 'customList', JSON.stringify( updatedCustomList ) );
 	vocabCustomList = list;
 	vocab = list;
@@ -2169,8 +2170,15 @@ function handleCustomList( list ) {
 			'\')" class="trash-icon"></div></div>';
 
 		document.querySelector( '.custom-lists .row-wrapper .button-group' ).appendChild( button );
-		collectData( 'Added category from custom list ' + category, 'added_custom_category' );
 	} );
+
+	let formattedCategories = vocabCustomListCategories.map( ( category ) =>
+		category.replace( /^custom-/, '' )
+	);
+	collectData(
+		'Added categories from custom list: ' + formattedCategories.join( ', ' ),
+		'added_custom_categories'
+	);
 }
 
 function isJSONFile( list ) {

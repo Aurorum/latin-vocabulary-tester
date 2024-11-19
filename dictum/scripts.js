@@ -7,7 +7,7 @@ let selectedWord;
 let unix = 1644624000000;
 let userId = localStorage.getItem( 'userID' ) || Math.floor( Math.random() * 9999999 ) + 1;
 
-const VOCAB_LISTS_CACHE_VERSION = 1.2; // Increment when editing vocabulary lists.
+const VOCAB_LISTS_CACHE_VERSION = 1.3; // Increment when editing vocabulary lists.
 
 loadAllVocabFiles();
 
@@ -166,7 +166,7 @@ function startGame( type ) {
 	}
 
 	if ( type !== 'streaks' ) {
-		selectedList = asLevelList;
+		selectedList = anyList;
 		localStorage.setItem( 'dailyWordLastTime', Date.now() );
 		collectData( 'Started Daily Word', 'dictum_started_daily_word' );
 		document.body.classList.add( 'is-daily-word' );

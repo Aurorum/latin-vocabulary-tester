@@ -799,16 +799,19 @@ function leaderboardSubmitName() {
 
 function changeLeaderboardYear() {
 	let data = leaderboardData.currentData;
-	let yearSelect = document.getElementById( 'leaderboard-year' ).value;
+	let yearSelect = document.getElementById( 'leaderboard-year' );
 
-	collectData( 'Changed leaderboard year to ' + yearSelect, 'changed_leaderboard_year' );
+	let selectedYear = parseInt( yearSelect.value );
+	let latestYear = Math.max( ...[ ...yearSelect.options ].map( ( option ) => option.value ) );
 
-	if ( yearSelect === '2024' ) {
+	collectData( 'Changed leaderboard year to ' + selectedYear, 'changed_leaderboard_year' );
+
+	if ( selectedYear === latestYear ) {
 		updateLeaderboard( data, false );
 		return;
 	}
 
-	data = leaderboardData.historicData[ yearSelect ];
+	data = leaderboardData.historicData[ selectedYear ];
 	updateLeaderboard( data, false );
 }
 

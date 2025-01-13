@@ -1058,6 +1058,7 @@ a:hover {
 	align-items: center;
 }
 
+.leaderboard-approved .leaderboard-submit-success span,
 .leaderboard-submitted .leaderboard-submit-name {
 	display: none;
 }

@@ -62,23 +62,7 @@ window.onload = function () {
 
 	// Create leaderboard.
 	if ( navigator.onLine ) {
-		fetch( 'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/leaderboard' )
-			.then( ( response ) => {
-				if ( ! response.ok ) {
-					collectData( 'Failed to load from endpoint' );
-				}
-				return response.json();
-			} )
-			.then( ( data ) => {
-				leaderboardData = data;
-				updateLeaderboard( data.currentData, true );
-				populateLeaderboardSelect( data );
-			} )
-			.catch( ( error ) => {
-				populateLeaderboardSelect();
-				collectData( 'Failed to load from endpoint' );
-				collectData( error.message );
-			} );
+		fetchLeaderboard();
 	}
 
 	// Handle parameters in URL.
@@ -686,15 +670,17 @@ function endCompetitionTimer() {
 
 	document.getElementById( 'vocab-tester-wrapper' ).classList.remove( 'time-started' );
 
-	if ( leaderboardId === 'Empty' || leaderboardId === 'Loading' ) {
+	if ( leaderboardId === 'Loading' ) {
 		document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'leaderboard-eligible' );
 		return;
 	}
 
-	let neededScore = leaderboardId.substring(
+	let minimumLeaderboardScore = leaderboardId.substring(
 		leaderboardId.lastIndexOf( '-' ) + 1,
 		leaderboardId.lastIndexOf( 'words' )
 	);
+
+	let neededScore = Math.max( parseInt( minimumLeaderboardScore, 10 ) || 0, 0 );
 
 	if ( parseInt( neededScore ) >= score ) {
 		document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'leaderboard-ineligible' );
@@ -763,6 +749,26 @@ function switchMode() {
 	collectData( 'Switched to Practice mode', 'switched_mode' );
 }
 
+function fetchLeaderboard() {
+	fetch( 'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/leaderboard' )
+		.then( ( response ) => {
+			if ( ! response.ok ) {
+				collectData( 'Failed to load from endpoint' );
+			}
+			return response.json();
+		} )
+		.then( ( data ) => {
+			leaderboardData = data;
+			updateLeaderboard( data.currentData, true );
+			populateLeaderboardSelect( data );
+		} )
+		.catch( ( error ) => {
+			populateLeaderboardSelect();
+			collectData( 'Failed to load from endpoint' );
+			collectData( error.message );
+		} );
+}
+
 function leaderboardSubmitName() {
 	if ( ! document.getElementById( 'leaderboard-name-input' ).value.trim().length ) {
 		document.getElementById( 'leaderboard-valid-name-warning' ).style.display = 'block';
@@ -773,15 +779,7 @@ function leaderboardSubmitName() {
 	document.getElementById( 'leaderboard-button-submit' ).innerHTML = 'Submitting';
 	document.getElementById( 'leaderboard-name-input' ).disabled = true;
 
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function () {
-		if ( this.readyState == 4 && this.status == 200 ) {
-			document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'leaderboard-submitted' );
-		}
-	};
-
-	xhttp.open(
-		'GET',
+	fetch(
 		'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/leaderboard-submit?username=' +
 			document.getElementById( 'leaderboard-name-input' ).value +
 			'&score=' +
@@ -791,10 +789,22 @@ function leaderboardSubmitName() {
 			'&option=' +
 			selectedOption +
 			'&id=' +
-			userId,
-		true
-	);
-	xhttp.send();
+			userId
+	)
+		.then( ( response ) => {
+			return response.json();
+		} )
+		.then( ( data ) => {
+			document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'leaderboard-submitted' );
+			if ( data.approved ) {
+				fetchLeaderboard();
+				document.getElementById( 'vocab-tester-wrapper' ).classList.add( 'leaderboard-approved' );
+			}
+		} )
+		.catch( ( error ) => {
+			console.log( 'Error submitting leaderboard' );
+			console.log( error.message );
+		} );
 }
 
 function changeLeaderboardYear() {
@@ -807,8 +817,7 @@ function changeLeaderboardYear() {
 	collectData( 'Changed leaderboard year to ' + selectedYear, 'changed_leaderboard_year' );
 
 	if ( selectedYear === latestYear ) {
-		updateLeaderboard( data, false );
-		return;
+		return updateLeaderboard( data, false );
 	}
 
 	data = leaderboardData.historicData[ selectedYear ];

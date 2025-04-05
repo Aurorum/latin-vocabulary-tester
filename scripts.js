@@ -26,7 +26,7 @@ let vocabToFocusOn = [];
 let vocabToFocusOnOriginal = [];
 let vocabToTest = [];
 
-const VOCAB_FILES_CACHE_VERSION = 1.3; // Increment when editing vocabulary lists.
+const VOCAB_FILES_CACHE_VERSION = 1.4; // Increment when editing vocabulary lists.
 
 loadAllVocabFiles();
 

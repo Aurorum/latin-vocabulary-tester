@@ -2110,26 +2110,27 @@ function isValidCustomList( list ) {
 	);
 }
 
-function csvToJSON( string, headers, quoteChar = '"', delimiter = ',' ) {
-	// Credit: csvToJSON function by matthew-e-brown on Stack Overflow.
-	const regex = new RegExp( `\\s*(${ quoteChar })?(.*?)\\1\\s*(?:${ delimiter }|$)`, 'gs' );
-	const match = ( string ) =>
-		[ ...string.matchAll( regex ) ]
-			.map( ( match ) => match[ 2 ] )
-			.filter( ( _, i, a ) => i < a.length - 1 );
+function csvToJSON( csvString ) {
+	const placeholder = '###__PLACEHOLDER__###';
 
-	const lines = string.split( '\n' );
-	const heads = headers || match( lines.splice( 0, 1 )[ 0 ] );
+	const replaced = csvString.replace( /"([^"]*)"/g, ( match, p ) => {
+		return `"${ p.replace( /,/g, placeholder ) }"`;
+	} );
 
-	return lines.map( ( line ) =>
-		match( line ).reduce(
-			( acc, cur, i ) => ( {
-				...acc,
-				[ heads[ i ] || 'id' ]: cur.length > 0 ? Number( cur.trim() ) || cur.trim() : null,
-			} ),
-			{}
-		)
-	);
+	const lines = replaced.trim().split( '\n' );
+	const headers = lines[ 0 ].split( ',' ).map( ( h ) => h.trim() );
+
+	return lines.slice( 1 ).map( ( line ) => {
+		const values = line
+			.split( ',' )
+			.map( ( v ) =>
+				v.trim().replace( new RegExp( placeholder, 'g' ), ',' ).replace( /^"|"$/g, '' )
+			);
+		return headers.reduce( ( obj, header, i ) => {
+			obj[ header ] = values[ i ] || '';
+			return obj;
+		}, {} );
+	} );
 }
 
 function handleCustomList( list ) {

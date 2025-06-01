@@ -802,8 +802,8 @@ function leaderboardSubmitName() {
 			}
 		} )
 		.catch( ( error ) => {
-			console.log( 'Error submitting leaderboard' );
-			console.log( error.message );
+			collectData( 'Error submitting leaderboard' );
+			collectData( error.message );
 		} );
 }
 
@@ -1711,40 +1711,43 @@ function handleNounDeclensions() {
 }
 
 function constructWordTable( changingVerbTable = false ) {
-	let answer = currentWord;
+	let answer = findWord( document.getElementById( 'word-table-select' ).value ) || currentWord;
 	let selectedIndex = document.getElementById( 'word-table-select' ).selectedIndex;
 	let optionType = document
 		.querySelector( '#word-table-select option:nth-of-type(' + ( selectedIndex + 1 ) + ')' )
 		.getAttribute( 'data-type' );
 
 	if ( isTestingDeclensions ) {
-		let declensionTable = document.querySelectorAll( '.further-content .noun-table table td' );
+		let declensionCells = document.querySelectorAll( '.further-content .noun-table table td' );
 
 		collectData(
 			'Answer declension table shown for ' + answer.word,
 			'constructed_declension_table'
 		);
 
-		for ( let i = 0; i < declensionTable.length; i++ ) {
-			if ( declensionTable[ i ].id && declensionTable[ i ].id.endsWith( 'slot' ) ) {
-				declensionTable[ i ].innerHTML = answer[ declensionTable[ i ].id.replace( '-slot', '' ) ];
-				document.getElementById( declensionTable[ i ].id ).classList.remove( 'is-highlighted' );
+		declensionCells.forEach( ( cell ) => {
+			if ( cell.id && cell.id.endsWith( 'slot' ) ) {
+				let key = cell.id.replace( '-slot', '' );
+				cell.innerHTML = answer[ key ];
+				cell.classList.remove( 'is-highlighted' );
 			}
-		}
+		} );
 	}
 
 	if ( isTestingConjugations ) {
-		let verbTable = document.querySelectorAll( '.further-content .verb-tables table td' );
+		let verbCells = document.querySelectorAll( '.further-content .verb-tables table td' );
 
 		collectData( 'Answer verb table shown for ' + answer.word, 'constructed_verb_table' );
 
-		for ( let i = 0; i < verbTable.length; i++ ) {
-			if ( verbTable[ i ].id && verbTable[ i ].id.endsWith( 'slot' ) ) {
-				verbTable[ i ].childNodes[ 3 ].innerHTML =
-					answer[ verbTable[ i ].id.replace( '-slot', '' ) ];
-				document.getElementById( verbTable[ i ].id ).classList.remove( 'is-highlighted' );
+		verbCells.forEach( ( cell ) => {
+			if ( cell.id && cell.id.endsWith( 'slot' ) ) {
+				let key = cell.id.replace( '-slot', '' );
+				if ( cell.childNodes[ 3 ] ) {
+					cell.childNodes[ 3 ].innerHTML = answer[ key ];
+				}
+				cell.classList.remove( 'is-highlighted' );
 			}
-		}
+		} );
 
 		let indicativeOrSubjunctive = optionType.includes( 'suj' ) ? 'suj' : 'ind';
 		let wordTableId = optionType.substring( 0, 2 ) + indicativeOrSubjunctive + '-table';

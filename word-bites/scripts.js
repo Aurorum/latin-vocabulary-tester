@@ -285,10 +285,13 @@ function boardFunctions() {
 	shuffleGroupItems();
 	shuffleSingleItems();
 	assignColours();
+
 	setTimeout( () => {
 		solvedGrid = solveGrid();
 		document.getElementById( 'total-count' ).innerHTML = ' / ' + solvedGrid.length;
 	}, 150 );
+
+	enableDragAndDrop();
 }
 
 function solveGrid() {
@@ -479,7 +482,7 @@ function transferTileAttributes( oldItem, newItem ) {
 		return;
 	}
 
-	[ 'data-letter', 'grouped', 'class' ].forEach( ( attribute ) => {
+	[ 'data-letter', 'grouped', 'class', 'draggable' ].forEach( ( attribute ) => {
 		if ( oldItem.hasAttribute( attribute ) ) {
 			newItem.setAttribute( attribute, oldItem.getAttribute( attribute ) );
 			oldItem.removeAttribute( attribute );
@@ -506,7 +509,14 @@ function moveTile( newItem ) {
 		integer = -1;
 	}
 
+	oldItem.classList.remove( 'shake' );
+
+	if ( newItem.getAttribute( 'data-letter' ) ) {
+		return shakeActiveTiles();
+	}
+
 	if ( oldSecondItem ) {
+		oldSecondItem.classList.remove( 'shake' );
 		let vertical = document.querySelector(
 			'#row' +
 				( parseInt( newItem.parentElement.getAttribute( 'data-row' ) ) + integer ) +
@@ -527,6 +537,10 @@ function moveTile( newItem ) {
 		if ( ! newSecondItem ) {
 			// edge of board.
 			return;
+		}
+
+		if ( newSecondItem.getAttribute( 'data-letter' ) ) {
+			return shakeActiveTiles();
 		}
 
 		if ( newSecondItem === oldItem ) {
@@ -556,6 +570,92 @@ function moveTile( newItem ) {
 
 	transferTileAttributes( oldItem, newItem );
 	checkBoard();
+}
+
+function shakeActiveTiles() {
+	const activeTiles = document.querySelectorAll( 'td[data-active="true"]' );
+
+	activeTiles.forEach( ( tile ) => {
+		tile.classList.remove( 'shake' );
+		tile.classList.add( 'shake' );
+	} );
+}
+
+function enableDragAndDrop() {
+	const tiles = document.querySelectorAll( '#board td' );
+
+	tiles.forEach( ( tile ) => {
+		if ( tile.getAttribute( 'data-letter' ) ) {
+			tile.setAttribute( 'draggable', 'true' );
+		}
+
+		tile.addEventListener( 'dragstart', ( e ) => {
+			e.dataTransfer.setData( 'text/plain', tile.id );
+			handleTileClick( tile );
+
+			let dragImage = document.createElement( 'div' );
+			dragImage.classList.add( 'drag-image' );
+			dragImage.style.flexDirection = 'column';
+
+			let mainTile = document.createElement( 'div' );
+			mainTile.classList = tile.classList;
+			mainTile.classList.add( 'draggable-tile' );
+			mainTile.textContent = tile.getAttribute( 'data-letter' );
+			mainTile.style.width = tile.offsetWidth + 'px';
+			mainTile.style.height = tile.offsetHeight + 'px';
+
+			dragImage.appendChild( mainTile );
+
+			let groupedLetter = getGroupedTile( tile, tile.getAttribute( 'grouped' ), true );
+
+			if ( groupedLetter ) {
+				let groupedTile = document.createElement( 'div' );
+				groupedTile.classList = groupedLetter.classList;
+				groupedTile.classList.add( 'draggable-tile' );
+				groupedTile.textContent = groupedLetter.getAttribute( 'data-letter' );
+				groupedTile.style.width = tile.offsetWidth + 'px';
+				groupedTile.style.height = tile.offsetHeight + 'px';
+
+				if ( groupedLetter.getAttribute( 'grouped' ) === 'horizontal' ) {
+					dragImage.style.flexDirection = 'row';
+				}
+
+				if ( mainTile.classList.contains( 'vertical-top' ) ) {
+					dragImage.style.flexDirection = 'column-reverse';
+				}
+
+				if ( mainTile.classList.contains( 'horizontal-left' ) ) {
+					dragImage.style.flexDirection = 'row-reverse';
+				}
+
+				dragImage.appendChild( groupedTile );
+			}
+
+			dragImage.appendChild( mainTile );
+			document.body.appendChild( dragImage );
+
+			let dragX = tile.classList.contains( 'horizontal-right' )
+				? tile.offsetWidth * 1.5
+				: tile.offsetWidth / 2;
+
+			let dragY = tile.classList.contains( 'vertical-bottom' )
+				? tile.offsetHeight * 1.5
+				: tile.offsetHeight / 2;
+
+			e.dataTransfer.setDragImage( dragImage, dragX, dragY );
+		} );
+
+		tile.addEventListener( 'dragover', ( e ) => {
+			e.preventDefault();
+		} );
+
+		tile.addEventListener( 'drop', ( e ) => {
+			e.preventDefault();
+			const targetTile = e.target;
+
+			moveTile( targetTile );
+		} );
+	} );
 }
 
 function checkBoard() {
@@ -1001,7 +1101,7 @@ function generateLink() {
 		.catch( ( e ) => {
 			document.getElementById( 'submit-api' ).style.display = 'none';
 			error.innerHTML =
-				'Error: failed to submit data. It is likely your network blocks requests to the server.';
+				'Error: failed to submit data. Your network may be blocking requests to the server.';
 			error.style.display = 'block';
 			collectData( 'POST Request failed - network', 'word_bites_post_fail_network' );
 			collectData( e.toString() );

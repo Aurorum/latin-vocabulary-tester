@@ -660,13 +660,76 @@ table td[data-letter].colour-6 {
 	background: #dfb6e2 !important;
 }
 
-table td[data-active][data-letter] {
+table td[data-active][data-letter],
+.draggable-tile {
 	background: #02395c !important;
 	border-color: transparent;
 }
 
 table td[data-active][data-letter]:before {
 	color: #f8f5f5;
+}
+
+.draggable-tile {
+	align-items: center;
+	background-color: #08588b !important;
+	border: 1.5px solid #02395c;
+	color: #fff;
+	display: flex;
+	font-family: 'Roboto Mono', monospace;
+	font-size: 4vmin;
+	font-weight: 700;
+	justify-content: center;
+	text-transform: uppercase;
+	opacity: 0.85;
+}
+
+.draggable-tile.horizontal-left {
+	border-right: 0;
+}
+
+.draggable-tile.horizontal-right {
+	border-left: 0;
+}
+
+.draggable-tile.vertical-top {
+	border-bottom: 0;
+}
+
+.draggable-tile.vertical-bottom {
+	border-top: 0;
+}
+
+.drag-image {
+	background: transparent;
+	display: flex;
+	position: absolute;
+	top: -9999px;
+}
+
+@keyframes shake {
+	0% {
+		transform: translateX( 0 );
+	}
+	20% {
+		transform: translateX( -3px );
+	}
+	40% {
+		transform: translateX( 3px );
+	}
+	60% {
+		transform: translateX( -3px );
+	}
+	80% {
+		transform: translateX( 3px );
+	}
+	100% {
+		transform: translateX( 0 );
+	}
+}
+
+.shake {
+	animation: shake 0.4s ease;
 }
 
 .player-details-wrapper {
@@ -758,7 +821,7 @@ table td[data-active][data-letter]:before {
 }
 
 #instruction-screen p {
-	font-size: 13px;
+	font-size: 1em;
 	text-align: left;
 }
 

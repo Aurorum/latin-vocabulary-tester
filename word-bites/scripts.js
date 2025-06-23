@@ -65,33 +65,37 @@ function generateBoardFromId() {
 	collectData( 'Generated board from id ' + id, 'word_bites_generate_from_id' );
 	isMultiplayer = true;
 
+	const showError = ( errorMessage, eventMessage, eventName ) => {
+		if ( errorMessage ) {
+			document.getElementById( 'error-explanation' ).innerHTML = '<p>' + errorMessage + '</p>';
+		}
+		document.body.classList.remove( 'is-welcome' );
+		document.body.classList.add( 'is-error' );
+		collectData( eventMessage, 'word_bites_' + eventName );
+	};
+
 	fetch( 'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/word-bites?id=' + id )
 		.then( ( response ) => {
-			if ( response.ok ) {
+			if ( response.status === 404 ) {
+				return showError(
+					"Your friend's score and tiles couldn't be found in our database. There is likely a typo in the link which you've used.",
+					'Game not found',
+					'word_bites_game_not_found'
+				);
+			} else if ( response.ok ) {
 				return response.json();
 			} else {
-				document.body.classList.remove( 'is-welcome' );
-				document.body.classList.add( 'is-error' );
-				collectData( 'GET Request failed - client', 'word_bites_request_fail_client' );
+				showError( null, 'GET Request failed - client', 'word_bites_request_fail_client' );
 				collectData( new Error( response.statusText ).message );
 			}
 		} )
 		.then( ( response ) => {
-			if ( response === 404 ) {
-				document.getElementById( 'error-explanation' ).innerHTML =
-					"<p>Your friend's score and tiles couldn't be found in our database. There is likely a typo in the link which you've used.</p>";
-				document.body.classList.remove( 'is-welcome' );
-				document.body.classList.add( 'is-error' );
-				collectData( 'Game not found', 'word_bites_game_not_found' );
-				return;
-			}
-			let data = JSON.parse( response );
-			multiplayerData = data;
+			multiplayerData = response;
 
 			document.getElementById( 'welcome-title' ).innerHTML =
-				data.name + ' challenges you to Latin Word Bites!';
+				multiplayerData.name + ' challenges you to Latin Word Bites!';
 			document.querySelectorAll( 'td' ).forEach( ( item, index ) => {
-				let letter = data.grid[ index ];
+				let letter = multiplayerData.grid[ index ];
 
 				if ( letter != '-' ) {
 					item.setAttribute( 'data-letter', letter );
@@ -103,7 +107,7 @@ function generateBoardFromId() {
 			} );
 			boardFunctions();
 
-			if ( Number.isInteger( data.opponentScore ) ) {
+			if ( Number.isInteger( multiplayerData.opponentScore ) ) {
 				document.body.classList.remove( 'is-welcome' );
 				document.body.classList.add( 'is-game-over-challenger' );
 				handleCompleteGame();
@@ -111,9 +115,7 @@ function generateBoardFromId() {
 			}
 		} )
 		.catch( ( error ) => {
-			document.body.classList.remove( 'is-welcome' );
-			document.body.classList.add( 'is-error' );
-			collectData( 'GET Request failed - network', 'word_bites_request_fail_network' );
+			showError( null, 'GET Request failed - network', 'word_bites_request_fail_network' );
 			collectData( error.toString() );
 		} );
 }

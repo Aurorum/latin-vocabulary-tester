@@ -459,20 +459,7 @@ function handleBlankTile( letter ) {
 }
 
 function updateScore() {
-	turnWordArray = [];
-	document.querySelectorAll( 'td[data-letter][data-active]' ).forEach( ( item ) => {
-		let columnCheck = checkWords( item, 'column', true );
-		if ( columnCheck ) {
-			turnWordArray.push( columnCheck );
-		}
-
-		let rowCheck = checkWords( item, 'row', true );
-		if ( rowCheck ) {
-			turnWordArray.push( rowCheck );
-		}
-	} );
-
-	turnWordArray = Array.from( new Set( turnWordArray.map( JSON.stringify ) ), JSON.parse );
+	let turnWordArray = generateTurn();
 	let score = calculateScore( turnWordArray );
 	turnEstimatedScore = score;
 
@@ -497,27 +484,7 @@ function animateValue( obj, start, end, duration ) {
 
 function playTurn() {
 	collectData( 'Played turn', 'scrabble_played_turn' );
-	let invalidWords = [];
-	document.querySelectorAll( 'td[data-letter][data-active]' ).forEach( ( item ) => {
-		let columnCheck = checkWords( item, 'column' );
-		let rowCheck = checkWords( item, 'row' );
-
-		if ( ! Array.isArray( columnCheck ) || ! Array.isArray( rowCheck ) ) {
-			if ( Array.isArray( columnCheck ) ) {
-				invalidWords.push( columnCheck[ 0 ] );
-			}
-
-			if ( Array.isArray( rowCheck ) ) {
-				invalidWords.push( rowCheck[ 0 ] );
-			}
-		}
-	} );
-
-	invalidWords = invalidWords.filter( ( element ) => element !== undefined );
-
-	invalidWords = invalidWords.filter( ( value, index, self ) => {
-		return self.indexOf( value ) === index;
-	} );
+	let invalidWords = checkInvalidWords();
 
 	if ( invalidWords.length > 0 ) {
 		let finalString = '';
@@ -627,7 +594,6 @@ function submitTurn( isSkip = false, isPass = false, tilesSwapped = 0, multiplay
 
 		// Make sure Player 2 does not miss out on a final turn.
 		if ( ! multiplayer ) {
-			collectData( 'Nearing the end game', 'scrabble_near_end_game' );
 			if ( outOfTiles && player1FinalPass && currentTurnPlayer === 'player2' ) {
 				player2FinalPass = player2FinalPass === 'penultimate' ? 'final' : 'penultimate';
 				collectData( 'Avoided Player 2 missing final turn', 'scrabble_player2_final_turn_case' );
@@ -830,7 +796,7 @@ function buildTurnHistory( option ) {
 }
 
 // Mechanisms for checking full words (and their validity)
-function checkWords( tile, direction, returnArray ) {
+function checkWords( tile, direction ) {
 	let array = [];
 
 	if ( direction === 'row' ) {
@@ -868,32 +834,58 @@ function checkWords( tile, direction, returnArray ) {
 			? parseInt( tile.getAttribute( 'data-column' ) ) - 1
 			: parseInt( tile.parentElement.getAttribute( 'data-row' ) ) - 1;
 
-	array = findSurroundedItems( array, number );
-
-	if ( array.length < 2 ) {
-		return;
-	}
-
-	if ( returnArray ) {
-		return array;
-	}
-
-	word = array.map( ( item ) => item[ 0 ] ).join( '' );
-
-	if ( word.length > 1 ) {
-		let validWord = isWordValid( word );
-
-		if ( validWord ) {
-			return true;
-		} else {
-			return [ word ];
-		}
-	}
+	return findSurroundedItems( array, number );
 }
 
 function isWordValid( word ) {
 	collectData( 'Checked word for validity: ' + word, 'scrabble_word_check' );
 	return validWords.includes( word );
+}
+
+function generateTurn() {
+	let turn = [];
+
+	document.querySelectorAll( 'td[data-letter][data-active]' ).forEach( ( item ) => {
+		let columnCheck = checkWords( item, 'column' );
+		let rowCheck = checkWords( item, 'row' );
+
+		if ( Array.isArray( columnCheck ) ) {
+			turn.push( columnCheck );
+		}
+
+		if ( Array.isArray( rowCheck ) ) {
+			turn.push( rowCheck );
+		}
+	} );
+
+	let seen = new Set();
+	let deduplicatedTurn = turn.filter( ( item ) => {
+		let key = JSON.stringify( item );
+		return ! seen.has( key ) && seen.add( key );
+	} );
+
+	deduplicatedTurn = deduplicatedTurn.filter( ( group ) => group.length >= 2 );
+
+	return deduplicatedTurn;
+}
+
+function checkInvalidWords() {
+	let invalidWords = [];
+	let turn = generateTurn();
+
+	let words = turn.map( ( group ) => group.map( ( item ) => item[ 0 ] ).join( '' ) );
+
+	words.forEach( ( word ) => {
+		if ( ! isWordValid( word ) ) {
+			invalidWords.push( word );
+		}
+	} );
+
+	invalidWords = invalidWords.filter( ( value, index, self ) => {
+		return self.indexOf( value ) === index;
+	} );
+
+	return invalidWords;
 }
 
 function findSurroundedItems( array, startingIndex ) {

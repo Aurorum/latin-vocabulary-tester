@@ -1,20 +1,21 @@
 let blankTilePlacement;
 let canUseMultiplayer = true;
-let ceasePolling = false;
 let currentTurnPlayer = 'player1';
+let connectedRef = null;
+let gameRef = null;
+let lastSeenInterval = null;
+let opponentPresenceRef = null;
+let selfPresenceRef = null;
 let isMultiplayerGame = true;
 let isSwappingTiles = false;
 let lockedTile;
 let multiplayerId;
-let outOfTiles = false;
 let passCount = 0;
 let placedTiles = [];
-let player1FinalPass = false;
 let player1Inventory = [];
 let player1MultiplayerId;
 let player1Name = 'Player 1';
 let player1Score = 0;
-let player2FinalPass = false;
 let player2Inventory = [];
 let player2MultiplayerId;
 let player2Name = 'Player 2';
@@ -188,11 +189,6 @@ function assignInventory( player, display ) {
 		} else {
 			break;
 		}
-	}
-
-	// Start a little early to allow "Final turn" message.
-	if ( gameInventory.length < 5 ) {
-		outOfTiles = true;
 	}
 
 	if ( gameInventory.length < 7 ) {
@@ -459,7 +455,7 @@ function handleBlankTile( letter ) {
 }
 
 function updateScore() {
-	let turnWordArray = generateTurn();
+	turnWordArray = generateTurn();
 	let score = calculateScore( turnWordArray );
 	turnEstimatedScore = score;
 
@@ -521,6 +517,11 @@ function submitTurn( isSkip = false, isPass = false, tilesSwapped = 0, multiplay
 
 	if ( isPass ) {
 		collectData( 'Passed turn', 'scrabble_passed_turn' );
+	}
+
+	// A pass or a tile exchange scores nothing - both count toward the
+	// six-consecutive-scoreless-turns rule that ends the game below.
+	if ( isPass || tilesSwapped > 0 ) {
 		passCount++;
 	} else if ( ! isSkip ) {
 		passCount = 0;
@@ -592,18 +593,6 @@ function submitTurn( isSkip = false, isPass = false, tilesSwapped = 0, multiplay
 			tile.classList.add( 'colour-' + currentTurnPlayer.replace( 'player', '' ) );
 		} );
 
-		// Make sure Player 2 does not miss out on a final turn.
-		if ( ! multiplayer ) {
-			if ( outOfTiles && player1FinalPass && currentTurnPlayer === 'player2' ) {
-				player2FinalPass = player2FinalPass === 'penultimate' ? 'final' : 'penultimate';
-				collectData( 'Avoided Player 2 missing final turn', 'scrabble_player2_final_turn_case' );
-			}
-
-			if ( outOfTiles && currentTurnPlayer === 'player1' ) {
-				player1FinalPass = player1FinalPass === 'penultimate' ? 'final' : 'penultimate';
-			}
-		}
-
 		if ( ! multiplayer ) {
 			assignInventory( currentTurnPlayer, true );
 		}
@@ -619,28 +608,16 @@ function submitTurn( isSkip = false, isPass = false, tilesSwapped = 0, multiplay
 		if ( ! multiplayer ) {
 			if ( currentTurnPlayer === 'player1' ) {
 				currentTurnPlayer = 'player2';
-				document.getElementById( 'player-turn' ).innerHTML =
-					player2FinalPass === 'penultimate'
-						? player2Name + "'s final turn"
-						: player2Name + "'s turn";
+				document.getElementById( 'player-turn' ).textContent = player2Name + "'s turn";
 			} else if ( currentTurnPlayer === 'player2' ) {
 				currentTurnPlayer = 'player1';
-				document.getElementById( 'player-turn' ).innerHTML =
-					player1FinalPass === 'penultimate'
-						? player1Name + "'s final turn"
-						: player1Name + "'s turn";
+				document.getElementById( 'player-turn' ).textContent = player1Name + "'s turn";
 			}
 		} else {
 			if ( currentTurnPlayer === 'player1' ) {
-				document.getElementById( 'player-turn' ).innerHTML =
-					player1FinalPass === 'penultimate'
-						? player1Name + "'s final turn"
-						: player1Name + "'s turn";
+				document.getElementById( 'player-turn' ).textContent = player1Name + "'s turn";
 			} else if ( currentTurnPlayer === 'player2' ) {
-				document.getElementById( 'player-turn' ).innerHTML =
-					player2FinalPass === 'penultimate'
-						? player2Name + "'s final turn"
-						: player2Name + "'s turn";
+				document.getElementById( 'player-turn' ).textContent = player2Name + "'s turn";
 			}
 		}
 
@@ -654,14 +631,16 @@ function submitTurn( isSkip = false, isPass = false, tilesSwapped = 0, multiplay
 
 		if ( isMultiplayerGame ) {
 			document.title = 'Latin Scrabble';
-			pollOnlineStatus();
 		}
 
-		if ( player1FinalPass === 'final' && player2FinalPass === 'final' ) {
-			endGame( multiplayer );
-		}
+		// Game over once the bag is empty and a player has used every tile on
+		// their rack in a single turn, or after six consecutive scoreless
+		// turns (three rounds each, for two players) with words left unplayed.
+		let rackEmptiedWithNoTilesLeft =
+			gameInventory.length === 0 &&
+			( player1Inventory.length === 0 || player2Inventory.length === 0 );
 
-		if ( passCount === 4 ) {
+		if ( rackEmptiedWithNoTilesLeft || passCount === 6 ) {
 			endGame( multiplayer );
 		}
 
@@ -709,15 +688,15 @@ function endGame( multiplayer ) {
 	}
 
 	if ( ! draw ) {
-		document.getElementById( 'winner-name' ).innerHTML = winner;
+		document.getElementById( 'winner-name' ).textContent = winner;
 		document.getElementById( 'final-point-calculation' ).innerHTML = Math.abs(
 			player1Score - player2Score
 		);
 		collectData( 'Game had a winner as ' + winner, 'scrabble_victory' );
 	}
 
-	document.getElementById( 'end-name-player1' ).innerHTML = player1Name;
-	document.getElementById( 'end-name-player2' ).innerHTML = player2Name;
+	document.getElementById( 'end-name-player1' ).textContent = player1Name;
+	document.getElementById( 'end-name-player2' ).textContent = player2Name;
 	document.getElementById( 'end-score-player1' ).innerHTML = player1Score + ' points';
 	document.getElementById( 'end-score-player2' ).innerHTML = player2Score + ' points';
 	document.getElementById( 'end-score-calc-player1' ).innerHTML =
@@ -729,7 +708,7 @@ function endGame( multiplayer ) {
 	document.body.classList.add( 'is-game-over' );
 	document.body.classList.add( 'is-displaying-modal' );
 
-	ceasePolling = true;
+	stopMultiplayerSync();
 }
 
 function buildTurnHistory( option ) {
@@ -773,7 +752,7 @@ function buildTurnHistory( option ) {
 		document.getElementById( 'turn-history' ).setAttribute( 'data-turn', lastTurnCount );
 
 		let passedOrSwapped = lastTurn.tilesSwapped > 0 ? 'Swapped ' + lastTurn.tilesSwapped : 'Passed';
-		document.getElementById( 'turn-history-name' ).innerHTML =
+		document.getElementById( 'turn-history-name' ).textContent =
 			lastTurn.player === 'player2' ? player2Name : player1Name;
 		document.getElementById( 'turn-history-count' ).innerHTML = 'Turn #' + lastTurnCount;
 		document.getElementById( 'turn-history-word-count' ).innerHTML =
@@ -1125,14 +1104,25 @@ function generateGameData() {
 		multiplayerId,
 		currentTurnPlayer,
 		passCount,
-		outOfTiles,
-		player1FinalPass,
-		player2FinalPass,
 		turnHistory,
 	};
 }
 
 function buildGameWithData( data ) {
+	data = Object.assign(
+		{
+			gameInventory: [],
+			player1Inventory: [],
+			player2Inventory: [],
+			turnHistory: {},
+		},
+		data
+	);
+
+	Object.keys( data.turnHistory ).forEach( ( turnKey ) => {
+		data.turnHistory[ turnKey ].words = data.turnHistory[ turnKey ].words || [];
+	} );
+
 	collectData( 'Built game with data', 'scrabble_build_game_with_data' );
 	document.querySelectorAll( '#board td' ).forEach( ( tile, index ) => {
 		if ( data.board[ index ][ 0 ] !== '-' ) {
@@ -1152,10 +1142,7 @@ function buildGameWithData( data ) {
 	player1Score = data.player1Score;
 	player2Score = data.player2Score;
 	currentTurnPlayer = data.currentTurnPlayer;
-	outOfTiles = data.outOfTiles;
 	passCount = data.passCount;
-	player1FinalPass = data.player1FinalPass;
-	player2FinalPass = data.player2FinalPass;
 	player1MultiplayerId = data.player1MultiplayerId;
 	player2MultiplayerId = data.player2MultiplayerId;
 	multiplayerId = data.multiplayerId;
@@ -1168,38 +1155,138 @@ function buildGameWithData( data ) {
 }
 
 function sendData( data, id ) {
-	fetch( 'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/scrabble?id=' + id, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'text/plain',
-		},
-		body: JSON.stringify( data ),
-	} )
-		.then( ( response ) => {
-			if ( ! response.ok ) {
-				handleMultiplayerError();
-			}
-		} )
-		.catch( ( e ) => {
+	db.ref( 'games/' + id )
+		.set( data )
+		.catch( () => {
 			handleMultiplayerError();
 		} );
 }
 
-function fetchData( id ) {
-	fetch(
-		'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/scrabble?id=' +
-			id +
-			'&force=true&hasName=false'
-	)
-		.then( ( response ) => {
-			if ( response.ok ) {
-				return response.json();
-			} else {
-				handleMultiplayerError();
+// Applies an incoming game snapshot to the UI. Runs on every real-time update
+// (including the first one), for both the game creator and joining clients.
+function applyGameUpdate( data ) {
+	let player2NameBeforeUpdate = player2Name;
+
+	buildGameWithData( data );
+
+	let receivedPlayerId = new URLSearchParams( window.location.search ).get( 'game' ).slice( -3 );
+
+	document.getElementById( 'player1-name' ).textContent = player1Name;
+	document.getElementById( 'player2-name' ).textContent = player2Name;
+
+	if ( receivedPlayerId === player1MultiplayerId ) {
+		document.getElementById( 'player1-name' ).textContent = player1Name + ' (You)';
+		document.body.classList.add( 'is-player1' );
+		assignInventory( 'player1', true );
+	}
+
+	if ( receivedPlayerId === player2MultiplayerId ) {
+		document.getElementById( 'player2-name' ).textContent = player2Name + ' (You)';
+		document.body.classList.add( 'is-player2' );
+		assignInventory( 'player2', true );
+	}
+
+	let isYourTurn =
+		( currentTurnPlayer === 'player1' && document.body.classList.contains( 'is-player1' ) ) ||
+		( currentTurnPlayer === 'player2' && document.body.classList.contains( 'is-player2' ) );
+
+	document.title = isYourTurn ? 'Your turn - Latin Scrabble' : 'Latin Scrabble';
+
+	// Player 2 has just joined and chosen a name - dismiss Player 1's invite screen.
+	if ( player2NameBeforeUpdate === 'Player 2' && player2Name !== 'Player 2' ) {
+		document.getElementById( 'player2-name' ).textContent = player2Name;
+
+		if ( document.getElementById( 'player-turn' ).innerHTML === "Player 2's turn" ) {
+			document.getElementById( 'player-turn' ).textContent = player2Name + "'s turn";
+		}
+
+		document.body.classList.remove( 'is-invite-screen' );
+		document.body.classList.remove( 'is-displaying-modal' );
+	}
+
+	let inventory = document.getElementById( 'inventory-row' );
+	if (
+		inventory.getAttribute( 'data-player' ) === 'player1' &&
+		document.body.classList.contains( 'is-player2' )
+	) {
+		assignInventory( 'player2', true );
+	}
+
+	if (
+		inventory.getAttribute( 'data-player' ) === 'player2' &&
+		document.body.classList.contains( 'is-player1' )
+	) {
+		assignInventory( 'player1', true );
+	}
+}
+
+// One-time UI setup for a client that is joining via a shared link
+// (as opposed to the client that created the game).
+function initialiseMultiplayerUI( id ) {
+	let receivedPlayerId = new URLSearchParams( window.location.search ).get( 'game' ).slice( -3 );
+
+	if ( receivedPlayerId === player1MultiplayerId ) {
+		document.getElementById( 'last-seen-player1' ).innerHTML = 'Online';
+	}
+
+	if ( receivedPlayerId === player2MultiplayerId ) {
+		document.getElementById( 'last-seen-player2' ).innerHTML = 'Online';
+		document.getElementById( 'multiplayer-name-title' ).textContent =
+			player1Name + ' challenges you to Latin Scrabble';
+		collectData( 'Player 2 opened challenge', 'scrabble_player_two_opens' );
+	}
+
+	if ( receivedPlayerId !== player1MultiplayerId && receivedPlayerId !== player2MultiplayerId ) {
+		document.body.classList.add( 'is-spectator' );
+		collectData( 'Spectator opened game', 'scrabble_spectator_opened' );
+	}
+
+	document.body.classList.add( 'is-multiplayer-game' );
+
+	if ( receivedPlayerId === player2MultiplayerId && player2Name === 'Player 2' ) {
+		document.body.classList.add( 'is-multiplayer-name-selection' );
+	} else {
+		document.body.classList.remove( 'is-displaying-modal' );
+		document.body.classList.remove( 'is-game-start' );
+		document.body.classList.remove( 'is-multiplayer-name-selection' );
+	}
+
+	startPresence( id, receivedPlayerId );
+}
+
+// Subscribes to realtime updates for a game the local client just created,
+// without re-running the "joining player" UI setup above.
+function subscribeToGame( id ) {
+	gameRef = db.ref( 'games/' + id );
+
+	gameRef.on(
+		'value',
+		( snapshot ) => {
+			let data = snapshot.val();
+
+			if ( data === null ) {
+				return;
 			}
-		} )
-		.then( ( response ) => {
-			if ( response === 404 ) {
+
+			applyGameUpdate( data );
+		},
+		() => {
+			handleMultiplayerError();
+		}
+	);
+}
+
+function fetchData( id ) {
+	let hasInitialised = false;
+
+	gameRef = db.ref( 'games/' + id );
+
+	gameRef.on(
+		'value',
+		( snapshot ) => {
+			let data = snapshot.val();
+
+			if ( data === null ) {
 				document.body.classList.add( 'is-error-screen' );
 				document.body.classList.remove( 'is-game-start' );
 				document.getElementById( 'error-explanation' ).innerHTML =
@@ -1209,96 +1296,108 @@ function fetchData( id ) {
 			}
 
 			collectData( 'Fetched data for ' + id, 'scrabble_fetch_data' );
-			buildGameWithData( JSON.parse( response ) );
+			applyGameUpdate( data );
 
-			let receivedPlayerId = new URLSearchParams( window.location.search )
-				.get( 'game' )
-				.slice( -3 );
-
-			document.getElementById( 'player1-name' ).innerHTML = player1Name;
-			document.getElementById( 'player2-name' ).innerHTML = player2Name;
-
-			if ( receivedPlayerId === player1MultiplayerId ) {
-				document.getElementById( 'player1-name' ).innerHTML = player1Name + ' (You)';
-				document.body.classList.add( 'is-player1' );
-				document.getElementById( 'last-seen-player1' ).innerHTML = 'Online';
-				assignInventory( 'player1', true );
+			if ( ! hasInitialised ) {
+				hasInitialised = true;
+				initialiseMultiplayerUI( id );
 			}
-
-			if ( receivedPlayerId === player2MultiplayerId ) {
-				document.getElementById( 'player2-name' ).innerHTML = player2Name + ' (You)';
-				document.body.classList.add( 'is-player2' );
-				assignInventory( 'player2', true );
-				document.body.classList.add( 'is-multiplayer-name-selection' );
-				document.getElementById( 'multiplayer-name-title' ).innerHTML =
-					player1Name + ' challenges you to Latin Scrabble';
-				collectData( 'Player 2 opened challenge', 'scrabble_player_two_opens' );
-				document.getElementById( 'last-seen-player2' ).innerHTML = 'Online';
-			}
-
-			if (
-				receivedPlayerId !== player1MultiplayerId &&
-				receivedPlayerId !== player2MultiplayerId
-			) {
-				document.body.classList.add( 'is-spectator' );
-				collectData( 'Spectator opened game', 'scrabble_spectator_opened' );
-			}
-
-			document.body.classList.add( 'is-multiplayer-game' );
-
-			if ( receivedPlayerId === player2MultiplayerId && player2Name === 'Player 2' ) {
-				document.body.classList.add( 'is-multiplayer-name-selection' );
-			} else {
-				document.body.classList.remove( 'is-displaying-modal' );
-				document.body.classList.remove( 'is-game-start' );
-				document.body.classList.remove( 'is-multiplayer-name-selection' );
-			}
-
-			pollOnlineStatus();
-			setInterval( function () {
-				pollData( multiplayerId );
-			}, 1000 );
-			setInterval( function () {
-				pollOnlineStatus();
-			}, 30000 );
-		} )
-		.catch( ( error ) => {
+		},
+		() => {
 			handleMultiplayerError();
-		} );
+		}
+	);
+}
+
+// Realtime presence: marks the local player online, and listens for the
+// opponent's online/last-seen state instead of polling for it.
+function startPresence( gameId, selfId ) {
+	if ( selfId !== player1MultiplayerId && selfId !== player2MultiplayerId ) {
+		return;
+	}
+
+	selfPresenceRef = db.ref( 'presence/' + gameId + '/' + selfId );
+
+	connectedRef = db.ref( '.info/connected' );
+	connectedRef.on( 'value', ( snapshot ) => {
+		if ( snapshot.val() !== true ) {
+			return;
+		}
+
+		selfPresenceRef
+			.onDisconnect()
+			.set( { online: false, lastSeen: firebase.database.ServerValue.TIMESTAMP } )
+			.then( () => {
+				selfPresenceRef.set( { online: true } );
+			} );
+	} );
+
+	let opponentId = selfId === player1MultiplayerId ? player2MultiplayerId : player1MultiplayerId;
+	let opponentLabel = selfId === player1MultiplayerId ? 'last-seen-player2' : 'last-seen-player1';
+	let latestOpponentPresence = null;
+
+	// Presence only changes on connect/disconnect, but the "X minutes ago"
+	// text needs to keep counting up in between - a timer re-renders it from
+	// the last known value instead of waiting for the next presence event.
+	function renderOpponentPresence() {
+		let text = 'Online';
+
+		if ( ! latestOpponentPresence || ! latestOpponentPresence.online ) {
+			let lastSeen =
+				latestOpponentPresence && latestOpponentPresence.lastSeen
+					? latestOpponentPresence.lastSeen
+					: Date.now();
+			let elapsed = Math.max( 0, Date.now() - lastSeen );
+			text =
+				elapsed < 60000 ? 'Last seen: just now' : 'Last seen: ' + formatTime( elapsed ) + ' ago';
+		}
+
+		document.getElementById( opponentLabel ).innerHTML = text;
+	}
+
+	opponentPresenceRef = db.ref( 'presence/' + gameId + '/' + opponentId );
+	opponentPresenceRef.on( 'value', ( snapshot ) => {
+		latestOpponentPresence = snapshot.val();
+		renderOpponentPresence();
+	} );
+
+	if ( lastSeenInterval ) {
+		clearInterval( lastSeenInterval );
+	}
+	lastSeenInterval = setInterval( renderOpponentPresence, 30000 );
+}
+
+// Detaches realtime listeners and marks the local player offline, once a
+// game ends or a connection error makes further sync pointless.
+function stopMultiplayerSync() {
+	if ( gameRef ) {
+		gameRef.off();
+	}
+
+	if ( opponentPresenceRef ) {
+		opponentPresenceRef.off();
+	}
+
+	if ( lastSeenInterval ) {
+		clearInterval( lastSeenInterval );
+		lastSeenInterval = null;
+	}
+
+	if ( connectedRef ) {
+		connectedRef.off();
+		connectedRef = null;
+	}
+
+	if ( selfPresenceRef ) {
+		selfPresenceRef.onDisconnect().cancel();
+		selfPresenceRef.set( { online: false, lastSeen: firebase.database.ServerValue.TIMESTAMP } );
+	}
 }
 
 function canUseMultiplayerCheck() {
-	fetch( 'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/scrabble?test=y' )
-		.then( ( response ) => {
-			if ( ! response.ok ) {
-				handleMultiplayerError();
-				return;
-			}
-		} )
-		.catch( ( error ) => {
-			handleMultiplayerError();
-			collectData( error );
-			return;
-		} );
-
-	fetch( 'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/scrabble?test=y', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'text/plain',
-		},
-		body: 'Test',
-	} )
-		.then( ( response ) => {
-			if ( ! response.ok ) {
-				handleMultiplayerError();
-				return;
-			}
-		} )
-		.catch( ( e ) => {
-			handleMultiplayerError();
-			collectData( e );
-			return;
-		} );
+	db.ref( '.info/connected' ).on( 'value', ( snapshot ) => {
+		canUseMultiplayer = snapshot.val() === true;
+	} );
 
 	if ( new URLSearchParams( window.location.search ).get( 'game' ) ) {
 		fetchData( new URLSearchParams( window.location.search ).get( 'game' ).slice( 0, 5 ) );
@@ -1307,158 +1406,13 @@ function canUseMultiplayerCheck() {
 
 function handleMultiplayerError() {
 	canUseMultiplayer = false;
-	ceasePolling = true;
+	stopMultiplayerSync();
 	collectData( 'Multiplayer error - API connection problem', 'scrabble_multiplayer_error' );
 	if ( new URLSearchParams( window.location.search ).get( 'game' ) ) {
 		document.body.classList.add( 'is-error-screen' );
 		document.body.classList.add( 'is-displaying-modal' );
 		document.body.classList.remove( 'is-game-start' );
 	}
-}
-
-function pollOnlineStatus() {
-	if ( ceasePolling ) {
-		return;
-	}
-
-	let selfId = null;
-	let opponentId = null;
-	if ( document.body.classList.contains( 'is-player1' ) ) {
-		selfId = player1MultiplayerId;
-		opponentId = player2MultiplayerId;
-	}
-
-	if ( document.body.classList.contains( 'is-player2' ) ) {
-		selfId = player2MultiplayerId;
-		opponentId = player1MultiplayerId;
-	}
-
-	if ( ! selfId ) {
-		return;
-	}
-
-	fetch(
-		'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/scrabble-online?game=' +
-			multiplayerId +
-			'&self=' +
-			selfId +
-			'&opponent=' +
-			opponentId +
-			'&unix=' +
-			Date.now()
-	)
-		.then( ( response ) => {
-			if ( response.ok ) {
-				return response.json();
-			}
-		} )
-		.then( ( response ) => {
-			if ( response === 404 ) {
-				return;
-			}
-
-			let difference = Date.now() - parseInt( response );
-			let text = 'Online';
-
-			if ( difference > 90000 ) {
-				text = 'Last seen: ' + formatTime( difference ) + ' ago';
-			}
-
-			if ( selfId === player1MultiplayerId ) {
-				document.getElementById( 'last-seen-player2' ).innerHTML = text;
-			}
-
-			if ( selfId === player2MultiplayerId ) {
-				document.getElementById( 'last-seen-player1' ).innerHTML = text;
-			}
-		} )
-		.catch( ( error ) => {
-			collectData( 'Last seen error', 'scrabble_last_seen_error' );
-			handleMultiplayerError();
-			collectData( error );
-		} );
-}
-
-function pollData( id ) {
-	if ( ceasePolling ) {
-		return;
-	}
-	let hasName = player2Name !== 'Player 2';
-	fetch(
-		'https://clubpenguinmountains.com/wp-json/latin-vocabulary-tester/scrabble?id=' +
-			id +
-			'&turn=' +
-			Object.keys( turnHistory ).length +
-			'&hasName=' +
-			hasName
-	)
-		.then( ( response ) => {
-			if ( response.ok ) {
-				return response.json();
-			}
-		} )
-		.then( ( response ) => {
-			if ( response === 304 ) {
-				return;
-			}
-
-			buildGameWithData( JSON.parse( response ) );
-
-			let receivedPlayerId = new URLSearchParams( window.location.search )
-				.get( 'game' )
-				.slice( -3 );
-
-			if ( receivedPlayerId === player1MultiplayerId ) {
-				document.getElementById( 'player1-name' ).innerHTML = player1Name + ' (You)';
-				document.getElementById( 'player2-name' ).innerHTML = player2Name;
-				document.body.classList.add( 'is-player1' );
-			}
-
-			if ( receivedPlayerId === player2MultiplayerId ) {
-				document.getElementById( 'player2-name' ).innerHTML = player2Name + ' (You)';
-				document.body.classList.add( 'is-player2' );
-			}
-
-			let isYourTurn =
-				( currentTurnPlayer === 'player1' && document.body.classList.contains( 'is-player1' ) ) ||
-				( currentTurnPlayer === 'player2' && document.body.classList.contains( 'is-player2' ) );
-
-			if ( isYourTurn ) {
-				document.title = 'Your turn - Latin Scrabble';
-			} else {
-				document.title = 'Latin Scrabble';
-			}
-
-			if ( ! hasName ) {
-				document.getElementById( 'player2-name' ).innerHTML = player2Name;
-
-				if ( document.getElementById( 'player-turn' ).innerHTML === "Player 2's turn" ) {
-					document.getElementById( 'player-turn' ).innerHTML = player2Name + "'s turn";
-				}
-
-				document.body.classList.remove( 'is-invite-screen' );
-				document.body.classList.remove( 'is-displaying-modal' );
-			}
-
-			let inventory = document.getElementById( 'inventory-row' );
-			if (
-				inventory.getAttribute( 'data-player' ) === 'player1' &&
-				document.body.classList.contains( 'is-player2' )
-			) {
-				assignInventory( 'player2', true );
-			}
-
-			if (
-				inventory.getAttribute( 'data-player' ) === 'player2' &&
-				document.body.classList.contains( 'is-player1' )
-			) {
-				assignInventory( 'player1', true );
-			}
-		} )
-		.catch( ( error ) => {
-			handleMultiplayerError();
-			collectData( error );
-		} );
 }
 
 function collectData( content, analyticsID ) {
@@ -1479,7 +1433,7 @@ function formatTime( milliseconds ) {
 	let minutes = Math.floor( milliseconds / 60000 );
 
 	if ( minutes < 60 ) {
-		return minutes + ' minutes';
+		return minutes === 1 ? '1 minute' : minutes + ' minutes';
 	} else if ( minutes < 1440 ) {
 		let hours = Math.floor( minutes / 60 );
 		if ( hours === 1 ) {
@@ -1521,9 +1475,9 @@ function startGame() {
 	player1Name = document.getElementById( 'p1name' ).value.trim() || 'Player 1';
 	player2Name = document.getElementById( 'p2name' ).value.trim() || 'Player 2';
 
-	document.getElementById( 'player1-name' ).innerHTML = player1Name;
-	document.getElementById( 'player2-name' ).innerHTML = player2Name;
-	document.getElementById( 'player-turn' ).innerHTML = player1Name + "'s turn";
+	document.getElementById( 'player1-name' ).textContent = player1Name;
+	document.getElementById( 'player2-name' ).textContent = player2Name;
+	document.getElementById( 'player-turn' ).textContent = player1Name + "'s turn";
 	document.body.classList.remove( 'is-game-start' );
 
 	collectData( 'Started game', 'scrabble_started_game' );
@@ -1552,15 +1506,9 @@ function startGame() {
 		sendData( generateGameData(), multiplayerId );
 		document.body.classList.add( 'player1-turn' );
 		document.getElementById( 'last-seen-player1' ).innerHTML = 'Online';
-		pollOnlineStatus();
+		subscribeToGame( multiplayerId );
+		startPresence( multiplayerId, player1MultiplayerId );
 		collectData( 'Started multiplayer game', 'scrabble_started_multiplayer_game' );
-		setInterval( function () {
-			pollData( multiplayerId );
-		}, 2500 );
-
-		setInterval( function () {
-			pollOnlineStatus();
-		}, 30000 );
 		return;
 	}
 
@@ -1591,10 +1539,10 @@ function startGameAsPlayerTwo() {
 	document.getElementById( 'error-name' ).classList.remove( 'is-active' );
 	sendData( generateGameData(), multiplayerId );
 
-	document.getElementById( 'player2-name' ).innerHTML = player2Name + ' (You)';
+	document.getElementById( 'player2-name' ).textContent = player2Name + ' (You)';
 
 	if ( document.getElementById( 'player-turn' ).innerHTML === "Player 2's turn" ) {
-		document.getElementById( 'player-turn' ).innerHTML = player2Name + "'s turn";
+		document.getElementById( 'player-turn' ).textContent = player2Name + "'s turn";
 	}
 
 	document.body.classList.remove( 'is-displaying-modal' );

@@ -3188,6 +3188,7 @@ function convertToCSV( arr ) {
 function isWithinValue( vocab ) {
 	let minValue = document.getElementById( 'min-vocab-value' ).value.toLowerCase();
 	let maxValue = document.getElementById( 'max-vocab-value' ).value.toLowerCase();
+	vocab = vocab.toLowerCase();
 
 	if ( minValue < maxValue ) {
 		return (

@@ -8,6 +8,7 @@ let unix = 1644624000000;
 let userId = localStorage.getItem( 'userID' ) || Math.floor( Math.random() * 9999999 ) + 1;
 
 const VOCAB_LISTS_CACHE_VERSION = 1.4; // Increment when editing vocabulary lists.
+const DAILY_WORD_CYCLES = [ { start: 1, size: 1736 } ]; // Add cycles when adding words.
 
 loadAllVocabFiles();
 
@@ -205,9 +206,93 @@ function findWord() {
 	}
 
 	let day = parseInt( timeDifference( Date.now(), unix ) );
-	let chosenWord = selectedList[ day ];
-	collectData( 'Selected word: ' + chosenWord.word );
+	let { cycle, position, size } = findDailyWordPosition( day );
+	let orderedKeys = getDailyWordOrder( cycle, size );
+	let chosenWord = selectedList[ orderedKeys[ position - 1 ] ];
+
+	if ( ! chosenWord ) {
+		collectData(
+			'Daily Word missing for day ' + day + ' (cycle ' + cycle + ', size ' + size + ')',
+			'dictum_daily_word_missing'
+		);
+		chosenWord = selectedList[ ( day % Object.keys( selectedList ).length ) + 1 ];
+	}
+
+	collectData(
+		'Selected word: ' +
+			chosenWord.word +
+			' (day ' +
+			day +
+			', cycle ' +
+			cycle +
+			', position ' +
+			position +
+			')'
+	);
 	return chosenWord;
+}
+
+function findDailyWordPosition( day ) {
+	let cyclesBefore = 0;
+	let current = DAILY_WORD_CYCLES[ 0 ];
+
+	for ( let i = 1; i < DAILY_WORD_CYCLES.length; i++ ) {
+		if ( DAILY_WORD_CYCLES[ i ].start > day ) {
+			break;
+		}
+
+		let cycles = ( DAILY_WORD_CYCLES[ i ].start - current.start ) / current.size;
+
+		if ( ! Number.isInteger( cycles ) ) {
+			collectData(
+				'Daily Word cycle starting day ' +
+					DAILY_WORD_CYCLES[ i ].start +
+					' is not on a cycle boundary',
+				'dictum_cycle_misconfigured'
+			);
+		}
+
+		cyclesBefore += Math.round( cycles );
+		current = DAILY_WORD_CYCLES[ i ];
+	}
+
+	let offset = day - current.start;
+
+	return {
+		cycle: cyclesBefore + Math.floor( offset / current.size ),
+		position: ( offset % current.size ) + 1,
+		size: current.size,
+	};
+}
+
+function getDailyWordOrder( cycle, size ) {
+	let keys = [];
+	for ( let i = 1; i <= size; i++ ) {
+		keys.push( i );
+	}
+
+	if ( cycle === 0 ) {
+		return keys;
+	}
+
+	let random = mulberry32( cycle );
+
+	for ( let i = keys.length - 1; i > 0; i-- ) {
+		let j = Math.floor( random() * ( i + 1 ) );
+		[ keys[ i ], keys[ j ] ] = [ keys[ j ], keys[ i ] ];
+	}
+
+	return keys;
+}
+
+function mulberry32( seed ) {
+	return function () {
+		seed |= 0;
+		seed = ( seed + 0x6d2b79f5 ) | 0;
+		let t = Math.imul( seed ^ ( seed >>> 15 ), 1 | seed );
+		t = ( t + Math.imul( t ^ ( t >>> 7 ), 61 | t ) ) ^ t;
+		return ( ( t ^ ( t >>> 14 ) ) >>> 0 ) / 4294967296;
+	};
 }
 
 function toggleStats() {
